@@ -81,6 +81,8 @@
 <h2 class="fs-3 d-none d-md-block px-3 pt-3">Macros</h2>
 <div class="offcanvas-body px-md-3 pb-md-3 w-100">
 <div class="list-group w-100" role="tablist" id="sidebar-list">
+		<a style="display: none" class="list-group-item list-group-item-action active" id="default-tab" href="#default"
+			data-bs-toggle="list" role="tab" aria-controls="default">Default</a>
 			<a class="list-group-item list-group-item-action" id="LiveGraphicsVectorField3D.pl-tab" href="#LiveGraphicsVectorField3D.pl"
 				data-bs-toggle="list" role="tab" aria-controls="LiveGraphicsVectorField3D.pl">
 				LiveGraphicsVectorField3D.pl
@@ -259,7 +261,11 @@
 		</div>
 		<div class="main-content">
 			<div class="tab-content p-3">
-					<div class="tab-pane fade" id="LiveGraphicsVectorField3D.pl" role="tabpanel" aria-labelledby="LiveGraphicsVectorField3D.pl-tab"
+				<div class="tab-pane fade active show" style="font-size:120%; font-style: italic;"
+	id="default" role="tabpanel" aria-labelledby="default-tab" tabindex="0">
+Select a link to the left to see a list of problems.
+</div>
+	<div class="tab-pane fade" id="LiveGraphicsVectorField3D.pl" role="tabpanel" aria-labelledby="LiveGraphicsVectorField3D.pl-tab"
 		tabindex="0">
 		<h1 class="fs-3">Sample Problems forMacros: LiveGraphicsVectorField3D.pl</h1>
 		<ul>
@@ -615,7 +621,6 @@
 		<ul>
 				<li><a href="IntegralCalc/LimitsOfIntegration.html">Answer Blanks in Limits of Integration</a></li>
 				<li><a href="problem-techniques/AnswerInExponent.html">Answer in an Exponent</a></li>
-				<li><a href="problem-techniques/ConstantsInProblems.html">Constants in Problems</a></li>
 				<li><a href="problem-techniques/LayoutTable.html">Layout Table</a></li>
 				<li><a href="Misc/Matching.html">Matching Problem</a></li>
 				<li><a href="Sequences/SeriesTest.html">Series Test</a></li>

@@ -2,7 +2,7 @@
 DOCUMENT();
 loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
 
-Context()->variables->add(t=>"Real", y => 'Real', z => 'Real');
+Context()->variables->add(t=>'Real', y => 'Real', z => 'Real');
 $f = Compute('-16 t^2 + 5 t + 4');
 $g = Compute('x^2+y^2+z^2');
 

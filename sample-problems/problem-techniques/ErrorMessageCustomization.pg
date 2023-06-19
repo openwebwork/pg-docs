@@ -13,4 +13,9 @@ Factor [`-1`] from [`-x+2`]
 [`-x+2 =`] [__]{$ans1} [`\cdot \big(`] [__]{$ans2} [`\big)`]
 END_PGML
 
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+
 ENDDOCUMENT();

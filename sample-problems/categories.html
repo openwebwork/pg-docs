@@ -81,6 +81,8 @@
 <h2 class="fs-3 d-none d-md-block px-3 pt-3">Categories</h2>
 <div class="offcanvas-body px-md-3 pb-md-3 w-100">
 <div class="list-group w-100" role="tablist" id="sidebar-list">
+		<a style="display: none" class="list-group-item list-group-item-action active" id="default-tab" href="#default"
+			data-bs-toggle="list" role="tab" aria-controls="default">Default</a>
 			<a class="list-group-item list-group-item-action" id="Riemann_sums-tab" href="#Riemann_sums"
 				data-bs-toggle="list" role="tab" aria-controls="Riemann_sums">
 				Riemann sums
@@ -339,7 +341,11 @@
 		</div>
 		<div class="main-content">
 			<div class="tab-content p-3">
-					<div class="tab-pane fade" id="Riemann_sums" role="tabpanel" aria-labelledby="Riemann_sums-tab"
+				<div class="tab-pane fade active show" style="font-size:120%; font-style: italic;"
+	id="default" role="tabpanel" aria-labelledby="default-tab" tabindex="0">
+Select a link to the left to see a list of problems.
+</div>
+	<div class="tab-pane fade" id="Riemann_sums" role="tabpanel" aria-labelledby="Riemann_sums-tab"
 		tabindex="0">
 		<h1 class="fs-3">Sample Problems forCategories: Riemann sums</h1>
 		<ul>
@@ -562,7 +568,7 @@
 		<h1 class="fs-3">Sample Problems forCategories: fraction</h1>
 		<ul>
 				<li><a href="Algebra/InequalityAnswer.html">Answer as an Inequality</a></li>
-				<li><a href="Algebra/FractionAnswer.html">Fraction Answer</a></li>
+				<li><a href="Algebra/AlgebraicFractionAnswer.html">Fraction Answer</a></li>
 		</ul>
 	</div>
 	<div class="tab-pane fade" id="function" role="tabpanel" aria-labelledby="function-tab"

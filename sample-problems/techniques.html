@@ -80,6 +80,8 @@
 
 <div class="offcanvas-body p-md-3 w-100">
 	<div class="list-group w-100" role="tablist" id="sidebar-list">
+	<a style="display: none" class="list-group-item list-group-item-action active" id="default-tab" href="#default"
+			data-bs-toggle="list" role="tab" aria-controls="default">Default</a>
 			<a class="list-group-item list-group-item-action" id="A-tab" href="#A"
 				data-bs-toggle="list" role="tab" aria-controls="A">
 				A .. C
@@ -98,7 +100,11 @@
 		</div>
 		<div class="main-content">
 			<div class="tab-content p-3">
-					<div class="tab-pane fade" id="A" role="tabpanel" aria-labelledby="A-tab" tabindex="0">
+				<div class="tab-pane fade active show" style="font-size:120%; font-style: italic;"
+	id="default" role="tabpanel" aria-labelledby="default-tab" tabindex="0">
+Select a link to the left to see a list of problems.
+</div>
+	<div class="tab-pane fade" id="A" role="tabpanel" aria-labelledby="A-tab" tabindex="0">
 		<h1 class="fs-3">Sample Problems for Techniques: A .. C</h1>
 		<ul>
 				<li><a href="problem-techniques/AdaptiveParameters.html">Adaptive Parameters</a></li>

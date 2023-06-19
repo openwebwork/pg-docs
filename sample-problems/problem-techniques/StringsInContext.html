@@ -85,9 +85,10 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGcourse.pl&#39;);
 				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
 					<p><b>Setup</b></p>
 						<p>Add the strings that are to be allowed in answers to the Context. Note that the add call has the form string =&gt; { options }. The most common use of options is to allow “aliases”, i.e., strings that are marked the same as others, e.g.,</p>
-<p>Context()-&gt;strings-&gt;add(none =&gt; {}, N =&gt; { alias =&gt; “none” }); (Which would allow “N” to be used instead of “none”.)</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a> Context()-&gt;strings-&gt;add(none =&gt; {}, N =&gt; { alias =&gt; <span class="kw">&quot;</span><span class="st">none</span><span class="kw">&quot;</span> });</span></code></pre></div>
+<p>(Which would allow “N” to be used instead of “none”.)</p>
 <p>By default, strings are case-insensitive. To make them case sensitive, include this as an option in the Context call.</p>
-<p>There are some shortcuts available if you need to add many allowable strings all at once. See parserAutoStrings.pl</p>
+<p>There are some shortcuts available if you need to add many allowable strings all at once. See <a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/">parserAutoStrings.pl</a>.</p>
 				</div>
 			</div>
 			<div class="row">

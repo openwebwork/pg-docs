@@ -21,7 +21,7 @@
 		<div class="row">
 			<div class="col">
 				<h1>Custom Answer Checker</h1>
-				<p>This shows how to check "arbitrary" conditions on the student's answer.</p>
+				<p>This provides a custom answer checker.</p>
 			</div>
 			<div class="col text-end">
 				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../index.html">Return to the PG docs home</a>
@@ -69,12 +69,6 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGcourse.pl&#39;);
     }
 );
 $val = Compute(&#39;cos(pi/3)&#39;);
-
-BEGIN_PGML
-Enter a value of [`x`] for which [`\cos(x) = [$val]`]
-
-[`x=`] [___]{$ans}
-END_PGML
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
@@ -88,12 +82,6 @@ END_PGML
     }
 );
 $val = Compute(&#39;cos(pi/3)&#39;);
-
-BEGIN_PGML
-Enter a value of [`x`] for which [`\cos(x) = [$val]`]
-
-[`x=`] [___]{$ans}
-END_PGML
 </pre>
 				</div>
 				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
@@ -109,9 +97,35 @@ END_PGML
 <span id="value-error-6"><a href="#value-error-6" aria-hidden="true"></a>     }</span>
 <span id="value-error-7"><a href="#value-error-7" aria-hidden="true"></a> );</span></code></pre></div>
 <p>Another handle tip for troubleshooting. To see all of the keys and values in the <code>$ansHash</code> when the submit answers button is pressed, include this in your custom answer checker:</p>
-<pre><code>foreach my $key ( keys %{$ansHash} ) {
-  warn &quot;key: $key, value: $ansHash-&gt;{$key}&quot;;
-}</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="kw">for</span> <span class="kw">my</span> <span class="dt">$key</span> ( <span class="fu">keys</span> <span class="dt">%</span>{<span class="dt">$ansHash</span>} ) {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>  <span class="fu">warn</span> <span class="kw">&quot;</span><span class="st">key: </span><span class="dt">$key</span><span class="st">, value: </span><span class="dt">$ansHash</span>-&gt;<span class="st">{</span><span class="dt">$key</span><span class="st">}</span><span class="kw">&quot;</span>;</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>}</span></code></pre></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="BEGIN_PGML
+Enter a value of [`x`] for which [`\cos(x) = [$val]`]
+
+[`x=`] [___]{$ans}
+END_PGML
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
+Enter a value of [`x`] for which [`\cos(x) = [$val]`]
+
+[`x=`] [___]{$ans}
+END_PGML
+</pre>
+				</div>
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first border border-dark">
+					<p><b>Statement</b></p>
+						This is the problem statement in PGML.
 				</div>
 			</div>
 			<div class="row">

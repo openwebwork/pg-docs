@@ -12,4 +12,8 @@ BEGIN_PGML
 A solution to [`[@ $f->{f} @]`] is [`(x,y) =`] [___]{$f}
 END_PGML
 
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
 ENDDOCUMENT();
