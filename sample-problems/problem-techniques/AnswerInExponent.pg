@@ -1,49 +1,27 @@
 DOCUMENT();
 
-loadMacros('PGstandard.pl', 'PGML.pl', 'unionTables.pl', 'niceTables.pl', 'PGcourse.pl');
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
 
 Context()->variables->are(a => 'Real', b => 'Real');
 
 $n = random(3, 9);
 
-# TeX
-$expression = "a^{$n} b^{$n}";
-
-# MathObjects
-$base     = Formula('a * b');
-$exponent = Formula($n);
-
-# Display exponents nicely
-$w1 = 10;    # width of 1st answer blank
-$w2 = 10;    # width of 2nd answer blank
-
-if ($displayMode eq 'TeX') {
-    $showpower =
-        "\( \displaystyle $expression = ("
-        . ans_rule($w1) . ")^{"
-        . ans_rule($w2) . "}\)";
-} else {
-    $showpower = ColumnTable(
-        "\( \displaystyle $expression = \Big( \) "
-            . ans_rule($w1)
-            . " \( \Big) \)",
-        ans_rule($w2) . $BR . $BR,
-        indent     => 0,
-        separation => 0,
-        valign     => 'BOTTOM'
-    );
-}
+$ans_rule1 = ans_rule(4);
+$ans_rule2 = ans_rule(4);
 
 BEGIN_PGML
 Rewrite the following using a single exponent.
 
-[$showpower]*
+[@ MODES(
+    TeX => "\\( \\displaystyle a^{$n}b^{$n} = ( $ans_rule1)^{$ans_rule2} \\)",
+    HTML =>"<div><span>\\( \\displaystyle a^{$n}b^{$n} = (\\)$ans_rule1\\()\\)</span>" .
+        "<span style='vertical-align: 1.4em'> $ans_rule2 </span></div>"
+)@]*
 
-[@ LayoutTable([$showpower] . \(=\)) @]*
 END_PGML
 
-ANS($base->cmp);
-ANS($exponent->cmp);
+ANS(Compute('a b')->cmp);
+ANS(Real($n)->cmp);
 
 BEGIN_PGML_SOLUTION
 Solution explanation goes here.

@@ -1,0 +1,31 @@
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+Context()->variables->set(x=>{limits=>[-1,1]});
+
+# Alternately
+Context()->flags->set(limits=>[2,5]);
+
+$f = Compute('sqrt(x+1)');
+
+## Or, setting the limits only for the given
+##    formula, we don't need to reset the Context,
+##    and just include
+# $func = Compute('sqrt(x-1)');
+# $func->{limits} = [2,5];
+
+$g = Compute("sqrt(x^2 - 4)");
+$g->{test_points} = [[-3],[-2],[2],[3],[4]];
+
+BEGIN_PGML
+Enter [`[$f]`] [___]{$f}
+
+Enter [`[$g]`] [___]{$g}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

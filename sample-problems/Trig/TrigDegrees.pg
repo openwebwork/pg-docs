@@ -8,7 +8,7 @@ $ans1 = Compute("sin(30)");
 $ans2 = Compute("arcsin(0.5)");
 
 BEGIN_PGML
-1. [`\sin(30)=`] [___]{$ans1}
+1. [`\sin(30^{\circ})=`] [___]{$ans1}
 2. [`\arcsin(1/2)=`] [___]{$ans2}
 
 Interpret arguments of the sine and arcsine in terms of degrees.

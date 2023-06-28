@@ -1,21 +1,21 @@
 DOCUMENT();
 
-loadMacros('PGstandard.pl', 'PGML.pl', 'parserGraphTool.pl',
-  'PGcourse.pl');
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserGraphTool.pl', 'PGcourse.pl');
 
-#  * availableTools: this determines which tools should be shown on the
 
-$x0 = non_zero_random(-6,6);
-$y0 = non_zero_random(-6,6);
-$line = nicestring([$y0,$x0],['x','y']);
-
+$x0   = non_zero_random(-6, 6);
+$y0   = non_zero_random(-6, 6);
+$line = nicestring([ $y0, $x0 ], [ 'x', 'y' ]);
 
 $gt = GraphTool("{line, solid, ($x0, 0), (0, $y0)}")->with(
     bBox           => [ -11, 11, 11, -11 ],
-    availableTools =>
-        [ 'PointTool', 'LineTool', 'CircleTool', 'QuadraticTool', 'CubicTool', 'FillTool', 'SolidDashTool' ],
+    availableTools => [
+        'PointTool',  'LineTool',
+        'CircleTool', 'QuadraticTool',
+        'CubicTool',  'FillTool',
+        'SolidDashTool'
+    ],
 );
-
 
 BEGIN_PGML
 On the graph below, plot the line [`[$line] = [$x0*$y0]`]
@@ -40,6 +40,5 @@ and thus the [`x`]-intercept is number in the fraction under the [`x`] or
 [@ $gt->generateAnswerGraph @]*
 
 END_PGML_SOLUTION
-
 
 ENDDOCUMENT();

@@ -17,9 +17,7 @@ much as possible.
 [`(xyz)^{[$a]} =`] [_____] [`\cdot`] [_____] [`\cdot`] [_____]
 END_PGML
 
-
 $showPartialCorrectAnswers = 0;
-install_problem_grader(~~&std_problem_grader);
 
 UNORDERED_ANS($answer1->cmp, $answer2->cmp, $answer3->cmp);
 

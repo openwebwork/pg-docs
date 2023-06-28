@@ -4,11 +4,10 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>SeriesTest</title>
+	<title>SeriesTest.pg</title>
 
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/lib/codemirror.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/theme/eclipse.min.css">
 	<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/addon/runmode/runmode-standalone.min.js" defer>
 	</script>
 	<script src="https://openwebwork.github.io/pg-docs/sample-problems/PG.js" defer></script>
@@ -24,7 +23,7 @@
 				<p>Series: limit comparison test</p>
 			</div>
 			<div class="col text-end">
-				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../index.html">Return to the PG docs home</a>
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
 </div>
 		</div>
 		<div class="row">
@@ -37,10 +36,10 @@
 				<div class="col">
 					<h2>POD for Macro Files</h2>
 					<ul>
-								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/answers/PGgraders.html">PGgraders.pl</a></li>
-								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserMultiAnswer.html">parserMultiAnswer.pl</a></li>
+								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/ui/niceTables.html">niceTables.pl</a></li>
 								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserPopUp.html">parserPopUp.pl</a></li>
-								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/ui/unionTables.html">unionTables.pl</a></li>
+								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/core/PGgraders.html">PGgraders.pl</a></li>
+								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserMultiAnswer.html">parserMultiAnswer.pl</a></li>
 					</ul>
 				</div>
 		</div>
@@ -55,7 +54,7 @@
 
 loadMacros(
     &#39;PGstandard.pl&#39;,  &#39;PGML.pl&#39;,
-    &#39;unionTables.pl&#39;, &#39;parserPopUp.pl&#39;,
+    &#39;niceTables.pl&#39;, &#39;parserPopUp.pl&#39;,
     &#39;PGgraders.pl&#39;,   &#39;parserMultiAnswer.pl&#39;,
     &#39;PGcourse.pl&#39;
 );
@@ -65,19 +64,19 @@ loadMacros(
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
 
 loadMacros(
     &#39;PGstandard.pl&#39;,  &#39;PGML.pl&#39;,
-    &#39;unionTables.pl&#39;, &#39;parserPopUp.pl&#39;,
+    &#39;niceTables.pl&#39;, &#39;parserPopUp.pl&#39;,
     &#39;PGgraders.pl&#39;,   &#39;parserMultiAnswer.pl&#39;,
     &#39;PGcourse.pl&#39;
 );
 </pre>
 				</div>
-				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Preamble</b></p>
-						<p>We load <code>unionTables.pl</code> to create a table in which answer blanks are stacked on top of each other to form a fraction. We use <code>PGgraders.pl</code> to give partial credit incrementally. We use <code>parserMultiAnswer.pl</code> for the fraction answer so that we can accept two correct answers, depending on how much a student has simplified their answer.</p>
+						<p>We load <code>niceTables.pl</code> to create a table in which answer blanks are stacked on top of each other to form a fraction. We use <code>PGgraders.pl</code> to give partial credit incrementally. We use <code>parserMultiAnswer.pl</code> for the fraction answer so that we can accept two correct answers, depending on how much a student has simplified their answer.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -135,25 +134,15 @@ $popup =
     PopUp([ &#39;Choose&#39;, &#39;Converges&#39;, &#39;Diverges&#39;, &#39;Inconclusive&#39; ], &#39;Converges&#39;);
 
 # Display the fraction and answer blanks nicely
-if ($displayMode eq &#39;TeX&#39;) {
-    $showfraction =
-        &quot;\[ $fraction &quot;
-        . $multians-&gt;ans_rule(10)
-        . $multians-&gt;ans_rule(10) . &quot; \]&quot;;
-} else {
-    $showfraction = ColumnTable(
-        &quot;\( \displaystyle $fraction \)&quot;,
-        $multians-&gt;ans_rule(20) . $BR . $HR . $multians-&gt;ans_rule(20),
-        separation =&gt; 10
-    );
-}
+$frac = LayoutTable([[[ans_rule(10), rowbottom =&gt; 1]],[ans_rule(10)]],
+    center =&gt; 0, allcellcss =&gt; {padding =&gt; &#39;4pt&#39;});
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context()-&gt;variables-&gt;are(n =&gt; &#39;Real&#39;);
+					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context()-&gt;variables-&gt;are(n =&gt; &#39;Real&#39;);
 
 $a = random(2, 9);
 $b = random(2, 9);
@@ -205,21 +194,11 @@ $popup =
     PopUp([ &#39;Choose&#39;, &#39;Converges&#39;, &#39;Diverges&#39;, &#39;Inconclusive&#39; ], &#39;Converges&#39;);
 
 # Display the fraction and answer blanks nicely
-if ($displayMode eq &#39;TeX&#39;) {
-    $showfraction =
-        &quot;\[ $fraction &quot;
-        . $multians-&gt;ans_rule(10)
-        . $multians-&gt;ans_rule(10) . &quot; \]&quot;;
-} else {
-    $showfraction = ColumnTable(
-        &quot;\( \displaystyle $fraction \)&quot;,
-        $multians-&gt;ans_rule(20) . $BR . $HR . $multians-&gt;ans_rule(20),
-        separation =&gt; 10
-    );
-}
+$frac = LayoutTable([[[ans_rule(10), rowbottom =&gt; 1]],[ans_rule(10)]],
+    center =&gt; 0, allcellcss =&gt; {padding =&gt; &#39;4pt&#39;});
 </pre>
 				</div>
-				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Setup</b></p>
 						<p>We use the <code>MultiAnswer</code> object <code>$multians</code> to allow students to enter one of two correct answers. We could have also accomplished this using two custom answer checkers.</p>
 <p>We display the answerblanks nicely as a fraction in HTML and TeX modes by how we constructed <code>$showfraction</code>.</p>
@@ -236,11 +215,11 @@ converges or diverges.
 a. Choose a series [``\sum_{n=[$c]}^\infty b_n``] with terms of the form
 [``b_n = \frac{1}{n^p}``] and apply the limit comparison test.  Write your
 answer as a fully reduced fraction.  For [``n \geq [$c]``],
-[$showfraction]*** [@ ANS($multians-&gt;cmp); &#39;&#39; @]*
+[```\frac{\lim_{n \to \infty} a_n}{\lim_{n \to \infty} b_n}```][$frac]* [@ ANS($multians-&gt;cmp); &#39;&#39; @]
 
 b. Evaluate the limit in the previous part.  Enter [` \infty `] as _infinity_
 and [` -\infty `] as _-infinity_.  If the limit does not exist, enter _DNE_.
-[$BR]*
+
 [``\lim_{n\to\infty} \frac{a_{n}}{b_{n}} =``] [_]{$limit}{15}
 
 c. By the limit comparison test, does the series converge, diverge, or is the
@@ -252,7 +231,7 @@ END_PGML
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
+					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
 Use the limit comparison test to determine whether
 [``\sum_{n=[$c]}^{\infty} a_n = \sum_{n=[$c]}^{\infty} \frac{[$a] n + [$b]}{[$c] n^{[$d]} + [$e]}``]
 converges or diverges.
@@ -260,11 +239,11 @@ converges or diverges.
 a. Choose a series [``\sum_{n=[$c]}^\infty b_n``] with terms of the form
 [``b_n = \frac{1}{n^p}``] and apply the limit comparison test.  Write your
 answer as a fully reduced fraction.  For [``n \geq [$c]``],
-[$showfraction]*** [@ ANS($multians-&gt;cmp); &#39;&#39; @]*
+[```\frac{\lim_{n \to \infty} a_n}{\lim_{n \to \infty} b_n}```][$frac]* [@ ANS($multians-&gt;cmp); &#39;&#39; @]
 
 b. Evaluate the limit in the previous part.  Enter [` \infty `] as _infinity_
 and [` -\infty `] as _-infinity_.  If the limit does not exist, enter _DNE_.
-[$BR]*
+
 [``\lim_{n\to\infty} \frac{a_{n}}{b_{n}} =``] [_]{$limit}{15}
 
 c. By the limit comparison test, does the series converge, diverge, or is the
@@ -272,9 +251,9 @@ test inconclusive?  [_]{$popup}
 END_PGML
 </pre>
 				</div>
-				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Statement</b></p>
-						This is the problem statement in PGML.
+						<p>Most of this is standard latex markup in a PGML block. Note that to display the fraction above, we use <code>[$frac]*</code> followed by the PGML codeblock <code>[@ ANS($multians-&gt;cmp); '' @]</code> which does the answer checking using the multianswer described above. There is a <code>''</code> at the tend of the codeblock to return an empty string instead of a HASHREF which we get from the ANS method.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -292,7 +271,7 @@ $ENV{grader_message} =
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">install_problem_grader(~~&amp;custom_problem_grader_fluid);
+					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">install_problem_grader(~~&amp;custom_problem_grader_fluid);
 
 $ENV{grader_numright} = [ 2,   4 ];
 $ENV{grader_scores}   = [ 0.4, 1 ];
@@ -300,8 +279,8 @@ $ENV{grader_message} =
     &#39;You can earn 40% partial credit for 2 - 3 correct answers.&#39;;
 </pre>
 				</div>
-				<div class="explanation answers col-sm-12 col-md-6 order-md-last order-first border border-dark">
-					<p><b>Answers</b></p>
+				<div class="explanation answer col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Answer</b></p>
 						<p>We use the problem grader fluid to give partial credit incrementally: 0% for 0-1 correct answers, 40% for 2-3 correct answers, and full credit for 4 correct answers.</p>
 				</div>
 			</div>
@@ -318,13 +297,13 @@ ENDDOCUMENT();" aria-label="copy to clipboard">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
+					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
 Solution explanation goes here.
 END_PGML_SOLUTION
 
 ENDDOCUMENT();</pre>
 				</div>
-				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Solution</b></p>
 						A solution should be provided here.
 				</div>

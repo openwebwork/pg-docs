@@ -4,11 +4,10 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>NumericalTolerance</title>
+	<title>NumericalTolerance.pg</title>
 
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/lib/codemirror.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/theme/eclipse.min.css">
 	<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/addon/runmode/runmode-standalone.min.js" defer>
 	</script>
 	<script src="https://openwebwork.github.io/pg-docs/sample-problems/PG.js" defer></script>
@@ -24,7 +23,7 @@
 				<p>Explains the difference in tolerance type and numerical tolerance.</p>
 			</div>
 			<div class="col text-end">
-				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../index.html">Return to the PG docs home</a>
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
 </div>
 		</div>
 		<div class="row">
@@ -33,6 +32,13 @@
 				<p>
 				Download file: <a href="NumericalTolerance.pg">NumericalTolerance.pg</a>
 </p>
+			</div>
+			<div class="col">
+				<h2>See Also</h2>
+				<ul>
+						<li><a href="https://openwebwork.github.io/pg-docs/sample-problems/problem-techniques/DigitsTolType.html">
+Number of Digits and Tolerance in Answers</a></li>
+				</ul>
 			</div>
 		</div>
 		<div class="row">
@@ -50,11 +56,11 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGcourse.pl&#39;);
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
 loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGcourse.pl&#39;);
 </pre>
 				</div>
-				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Preamble</b></p>
 						These standard macros need to be loaded.
 				</div>
@@ -71,7 +77,7 @@ $ans2 = Compute(&#39;1.5708&#39;);
 
 Context(&#39;Numeric&#39;)-&gt;flags-&gt;set(
     tolerance =&gt; 0.0001,
-    tolType   =&gt; &quot;absolute&quot;,
+    tolType   =&gt; &#39;absolute&#39;,
 );
 
 $ans3 = Compute(&#39;1.5708&#39;);" aria-label="copy to clipboard">
@@ -80,7 +86,7 @@ $ans3 = Compute(&#39;1.5708&#39;);" aria-label="copy to clipboard">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">$ans1 = Compute(&#39;1.5708&#39;)-&gt;cmp(
+					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">$ans1 = Compute(&#39;1.5708&#39;)-&gt;cmp(
     tolType   =&gt; &#39;absolute&#39;,
     tolerance =&gt; .0001,
 );
@@ -89,19 +95,19 @@ $ans2 = Compute(&#39;1.5708&#39;);
 
 Context(&#39;Numeric&#39;)-&gt;flags-&gt;set(
     tolerance =&gt; 0.0001,
-    tolType   =&gt; &quot;absolute&quot;,
+    tolType   =&gt; &#39;absolute&#39;,
 );
 
 $ans3 = Compute(&#39;1.5708&#39;);</pre>
 				</div>
-				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Setup</b></p>
 						<p>This shows three different ways of setting the toltype and tolerance of the answer. The <code>tolType</code> can be <code>absolute</code> (specifying a decimal distance from the correct answer that will be allowed) or <code>relative</code> (specifying a percent error that will be allowed).</p>
-<p>Thus if the correct answer is 17, a tolerance of 0.01 will mean that the student answer must be in the interval (16.99,17.01) if the tolType is absolute, and in the interval (16.83,17.17) if tolType is relative (or omitted, as relative tolerance is the default).</p>
+<p>Thus if the correct answer is 17, a tolerance of 0.01 will mean that the student answer must be in the interval <code>(16.99,17.01)</code> if the <code>tolType</code> is <code>absolute</code>, and in the interval <code>(16.83,17.17)</code> if <code>tolType</code> is <code>relative</code> (or omitted, as relative tolerance is the default).</p>
 <ol type="1">
-<li><p>The default Context(‘Numeric’) is used (but not needed) and within the Compute call, the tolerance type and level is set.</p></li>
-<li><p>The tolerance and toltype is set on the answer check with the cmp call. See the problem statement below.</p></li>
-<li><p>The tolerance and toltype can be set on the Context. This is useful if the desired toltype and/or tolerance is the same for many answer. Typically this would go at the top of the setup section.</p></li>
+<li><p>The default <code>Context('Numeric')</code> is used (but not needed) and within the Compute call, the <code>tolerance</code> type and level is set.</p></li>
+<li><p>The <code>tolerance</code> and <code>toltype</code> is set on the answer check with the cmp call. See the problem statement below.</p></li>
+<li><p>The <code>tolerance</code> and <code>toltype</code> can be set on the <code>Context</code>. This is useful if the desired toltype and/or tolerance is the same for many answer. Typically this would go at the top of the setup section.</p></li>
 </ol>
 				</div>
 			</div>
@@ -127,7 +133,7 @@ END_PGML
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
+					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
 For each of the following Enter your answer accurate to four decimal places .
 
 1. Enter [`` \frac{\pi}{2}= ``] [____]{$ans1}
@@ -142,7 +148,7 @@ For each of the following Enter your answer accurate to four decimal places .
 END_PGML
 </pre>
 				</div>
-				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Statement</b></p>
 						This is the problem statement in PGML.
 				</div>
@@ -160,13 +166,13 @@ ENDDOCUMENT();" aria-label="copy to clipboard">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
+					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
 Solution explanation goes here.
 END_PGML_SOLUTION
 
 ENDDOCUMENT();</pre>
 				</div>
-				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Solution</b></p>
 						A solution should be provided here.
 				</div>

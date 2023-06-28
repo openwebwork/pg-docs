@@ -1,6 +1,5 @@
 DOCUMENT();
-loadMacros('PGstandard.pl', 'PGML.pl', 'parserNumberWithUnits.pl',
-  'PGcourse.pl');
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserNumberWithUnits.pl', 'PGcourse.pl');
 
 $ans = NumberWithUnits('4', 'ft');
 
@@ -12,7 +11,7 @@ A link to a
 [@ htmlLink( alias('local.html'), "local problem", "TARGET='_blank'" ) @]*
 
 Click [@htmlLink("${htmlURL}phaseplaneplotters/index.html",
-  "sketch the graph.", "TARGET=~~"plotter~~"" )@]* to use xFunctions for
+  "sketch the graph.", "TARGET='plotter'" )@]* to use xFunctions for
 plotting.
 
 Enter 4 feet: [__]{$ans}

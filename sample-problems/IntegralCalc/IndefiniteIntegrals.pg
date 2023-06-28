@@ -7,10 +7,10 @@ loadMacros(
 
 
 # Specific antiderivative:  Marks correct e^x, e^x + pi, etc
-$specific = Formula("e^x");
+$specific = Formula('e^x');
 
 #  General antiderivative: Marks correct e^x + C, e^x + C - 3, e^x + K, etc.
-$general = FormulaUpToConstant("e^x");
+$general = FormulaUpToConstant('e^x');
 
 BEGIN_PGML
 a. Enter a specific antiderivative for [`e^x`]:

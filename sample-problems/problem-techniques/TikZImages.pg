@@ -2,13 +2,12 @@ DOCUMENT();
 
 loadMacros('PGstandard.pl', 'PGML.pl', 'PGtikz.pl', 'PGcourse.pl');
 
-
 $graph_image = createTikZImage();
 $graph_image->tikzLibraries("arrows.meta");
 
 # Randomization
-$a = non_zero_random(-6,6);  # horizonatal translation
-$b = random(-4,4);           # vertical translation
+$a = non_zero_random(-6, 6);    # horizonatal translation
+$b = random(-4, 4);             # vertical translation
 
 $graph_image->BEGIN_TIKZ
 \tikzset{>={Stealth[scale=1.5]}}
@@ -29,10 +28,9 @@ END_TIKZ
 
 BEGIN_PGML
 
->> [@ image($graph_image, width => 400, tex_size => 1000) @]* <<
+>> [@ image($graph_image, width => 400, tex_size => 600) @]* <<
 
 END_PGML
-
 
 BEGIN_PGML_SOLUTION
 Solution explanation goes here.

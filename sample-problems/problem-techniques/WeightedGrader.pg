@@ -12,12 +12,7 @@ END_PGML
 
 install_weighted_grader();
 
-WEIGHTED_ANS(
-  Real(1)->cmp, 20,
-  Real(3)->cmp, 50,
-  Real(7)->cmp, 30
-);
-
+WEIGHTED_ANS(Real(1)->cmp, 20, Real(3)->cmp, 50, Real(7)->cmp, 30);
 
 BEGIN_PGML_SOLUTION
 Solution explanation goes here.

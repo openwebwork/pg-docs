@@ -1,4 +1,3 @@
-
 DOCUMENT();
 
 loadMacros('PGstandard.pl', 'PGML.pl', 'randomPerson.pl', 'PGcourse.pl');

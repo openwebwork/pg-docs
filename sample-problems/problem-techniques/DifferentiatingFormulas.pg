@@ -1,13 +1,13 @@
 DOCUMENT();
 loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
 
-Context()->variables->add(y=>"Real");
+Context()->variables->add(y => "Real");
 
-$a = random(2,4,1);
+$a = random(2, 4, 1);
 $f = Formula("x*y^2");
 
 $fx  = $f->D('x');
-$fxa = $fx->substitute(x=>"$a");
+$fxa = $fx->substitute(x => "$a");
 $fy  = $f->D('y');
 $fyx = $fy->D('x')->reduce;
 

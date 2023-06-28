@@ -17,5 +17,4 @@ BEGIN_PGML_SOLUTION
 Solution explanation goes here.
 END_PGML_SOLUTION
 
-
 ENDDOCUMENT();

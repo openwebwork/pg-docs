@@ -4,11 +4,10 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>ProvingTrigIdentities</title>
+	<title>ProvingTrigIdentities.pg</title>
 
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/lib/codemirror.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/theme/eclipse.min.css">
 	<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/addon/runmode/runmode-standalone.min.js" defer>
 	</script>
 	<script src="https://openwebwork.github.io/pg-docs/sample-problems/PG.js" defer></script>
@@ -24,7 +23,7 @@
 				<p>Proving trig identities</p>
 			</div>
 			<div class="col text-end">
-				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../index.html">Return to the PG docs home</a>
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
 </div>
 		</div>
 		<div class="row">
@@ -57,12 +56,12 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;scaffold.pl&#39;, &#
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
 
 loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;scaffold.pl&#39;, &#39;PGcourse.pl&#39;);
 </pre>
 				</div>
-				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Preamble</b></p>
 						<p>This is a scaffolded problem, so load <code>scaffold.pl</code>.</p>
 				</div>
@@ -96,7 +95,7 @@ Context()-&gt;functions-&gt;add(sin =&gt; { class =&gt; &#39;NewFunc&#39;, TeX =
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context()-&gt;variables-&gt;are(t =&gt; &#39;Real&#39;);
+					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context()-&gt;variables-&gt;are(t =&gt; &#39;Real&#39;);
 
 # Redefine sin(x) to be e^(pi x).
 Context()-&gt;functions-&gt;remove(&#39;sin&#39;);
@@ -118,9 +117,9 @@ package main;
 Context()-&gt;functions-&gt;add(sin =&gt; { class =&gt; &#39;NewFunc&#39;, TeX =&gt; &#39;\sin&#39; },);
 </pre>
 				</div>
-				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Setup</b></p>
-						<p>We cleverly redefine the sine function so that when the student enters <code>sin(t)</code>, it is interpreted and evaluated internally as <code>exp(pi*t)</code> but displayed to the student as <code>sin(t)</code>.</p>
+						<p>We cleverly redefine the sine function so that when the student enters <code>sin(t)</code>, it is interpreted and evaluated internally as <code>exp(pi*t)</code> but displayed to the student as <code>sin(t)</code>. This prevents the entering of the orginally expression as the answer. An alternative method to doing this is in <a href="https://openwebwork.github.io/pg-docs/sample-problems/Trig/TrigIdentities.html">Trigonometric Identities</a>.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -130,25 +129,29 @@ Context()-&gt;functions-&gt;add(sin =&gt; { class =&gt; &#39;NewFunc&#39;, TeX =
 This problem has three parts.  A part may be open if it is correct or if it is
 the first incorrect part.  Clicking on the heading for a part toggles whether it
 is displayed.
+
+In this multi-part problem, we will use algebra to verify the identity
+
+&gt;&gt;[`\displaystyle \frac{\sin(t)}{1 - \cos(t)} = \frac{1 + \cos(t)}{\sin(t)}.`]&lt;&lt;
+
 END_PGML
 
 Scaffold::Begin(is_open =&gt; &#39;correct_or_first_incorrect&#39;);
 
 Section::Begin(&#39;Part 1&#39;);
 BEGIN_PGML
-In this multi-part problem, we will use algebra to verify the identity
-
-&gt;&gt;[`\displaystyle \frac{\sin(t)}{1 - \cos(t)} = \frac{1 + \cos(t)}{\sin(t)}.`]&lt;&lt;
 
 First, using algebra we may rewrite the equation above as
-[`\displaystyle \sin(t) = \left( \frac{1 + \cos(t)}{\sin(t)} \right) \cdot \Big(`] [_]{&#39;1 - cos(t)&#39;}{15} [` \Big) `].
+[`\displaystyle \sin(t) = \left( \frac{1 + \cos(t)}{\sin(t)} \right) \cdot \Big(`]
+[_]{&#39;1 - cos(t)&#39;}{15} [` \Big) `].
 END_PGML
 Section::End();
 
 Section::Begin(&#39;Part 2&#39;);
 BEGIN_PGML
 Using algebra we may rewrite the equation as
-[`\sin(t) \cdot \big(`] [_]{&#39;sin(t)&#39;}{15} [`\big) = \big(1 + \cos(t)\big) \cdot \big(1 - \cos(t)\big)`].
+[`\sin(t) \cdot \big(`] [_]{&#39;sin(t)&#39;}{15}
+[`\big) = \big(1 + \cos(t)\big) \cdot \big(1 - \cos(t)\big)`].
 END_PGML
 Section::End();
 
@@ -176,29 +179,33 @@ ENDDOCUMENT();" aria-label="copy to clipboard">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
+					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
 This problem has three parts.  A part may be open if it is correct or if it is
 the first incorrect part.  Clicking on the heading for a part toggles whether it
 is displayed.
+
+In this multi-part problem, we will use algebra to verify the identity
+
+&gt;&gt;[`\displaystyle \frac{\sin(t)}{1 - \cos(t)} = \frac{1 + \cos(t)}{\sin(t)}.`]&lt;&lt;
+
 END_PGML
 
 Scaffold::Begin(is_open =&gt; &#39;correct_or_first_incorrect&#39;);
 
 Section::Begin(&#39;Part 1&#39;);
 BEGIN_PGML
-In this multi-part problem, we will use algebra to verify the identity
-
-&gt;&gt;[`\displaystyle \frac{\sin(t)}{1 - \cos(t)} = \frac{1 + \cos(t)}{\sin(t)}.`]&lt;&lt;
 
 First, using algebra we may rewrite the equation above as
-[`\displaystyle \sin(t) = \left( \frac{1 + \cos(t)}{\sin(t)} \right) \cdot \Big(`] [_]{&#39;1 - cos(t)&#39;}{15} [` \Big) `].
+[`\displaystyle \sin(t) = \left( \frac{1 + \cos(t)}{\sin(t)} \right) \cdot \Big(`]
+[_]{&#39;1 - cos(t)&#39;}{15} [` \Big) `].
 END_PGML
 Section::End();
 
 Section::Begin(&#39;Part 2&#39;);
 BEGIN_PGML
 Using algebra we may rewrite the equation as
-[`\sin(t) \cdot \big(`] [_]{&#39;sin(t)&#39;}{15} [`\big) = \big(1 + \cos(t)\big) \cdot \big(1 - \cos(t)\big)`].
+[`\sin(t) \cdot \big(`] [_]{&#39;sin(t)&#39;}{15}
+[`\big) = \big(1 + \cos(t)\big) \cdot \big(1 - \cos(t)\big)`].
 END_PGML
 Section::End();
 
@@ -222,7 +229,7 @@ identities (entering what they were given).  Uses PGML.&#39;
 
 ENDDOCUMENT();</pre>
 				</div>
-				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Statement</b></p>
 						This is the problem statement in PGML.
 				</div>

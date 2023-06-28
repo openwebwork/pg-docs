@@ -27,7 +27,7 @@ $c = norm($v3);    # vector length
 $v5 = unit($v3);   # unit vector in same direction
 $d = $v1 . $v2;    # dot product
 $v6 = $v3 x $v4;      # cross product
-$v3->isParallel($v4); # =1 if parallel, =0 if skew
+$v3->isParallel($v4); # returns 1 if parallel, 0 if skew
 
 BEGIN_PGML
 [`\vec{v}_1=[$v1]`]

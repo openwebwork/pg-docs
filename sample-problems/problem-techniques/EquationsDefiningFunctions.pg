@@ -1,14 +1,12 @@
 DOCUMENT();
-loadMacros('PGstandard.pl', 'PGML.pl', 'parserAssignment.pl',
-  'PGcourse.pl');
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserAssignment.pl', 'PGcourse.pl');
 
-Context("Numeric")->variables->are(x=>"Real",y=>"Real");
+Context("Numeric")->variables->are(x => "Real", y => "Real");
 parser::Assignment->Allow;
 parser::Assignment->Function("f");
 
 $eqn = Formula("y=5x+2");
-$f = Formula("f(x)=5x+2");
-
+$f   = Formula("f(x)=5x+2");
 
 BEGIN_PGML
 Enter [`y = 5x+2`] [___]{$eqn}

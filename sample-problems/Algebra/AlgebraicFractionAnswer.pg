@@ -14,8 +14,6 @@ do {
     $c = random(1, 9, 1);
 } until ($a*$c != $b);
 
-$fraction = "\frac{$a y}{y-$c} + \frac{$b}{$c - y} ";
-
 $num = Formula("$a y - $b");
 $den = Formula("y - $c");
 
@@ -54,35 +52,29 @@ $multians = MultiAnswer($num, $den)->with(
     }
 );
 
-# Display the fraction and answer blanks nicely
-# Context()->texStrings;
-# if ($displayMode eq 'TeX') {
-#     $showfraction =
-#         "\[ $fraction = "
-#         . $multians->ans_rule(10)
-#         . $multians->ans_rule(10) . " \]";
-# } else {
-#     $showfraction = ColumnTable(
-#         "\( \displaystyle $fraction = \)",
-#         $multians->ans_rule(20) . $BR . $HR . $multians->ans_rule(20),
-#         separation => 10,
-#     );
-# }
-# Context()->normalStrings;
-
-$frac = LayoutTable([[[ans_rule(10), rowbottom => 1]],[ans_rule(10)]],
-    center => 0, allcellcss => {padding => '4pt'});
+$frac = LayoutTable(
+    [[
+        "\(\displaystyle\frac{$a y}{y-$c} + \frac{$b}{$c - y}=\)",
+        LayoutTable(
+            [
+                [[ans_rule(4), bottom => 1]],
+                [ans_rule(4)],
+            ],
+            padding => [0.5, 0],
+        )
+    ]],
+    padding => [0, 0.5],
+    valign => 'middle',
+);
 
 BEGIN_PGML
-Perform the indicated operations.
-Express your answer in reduced form.
+Perform the indicated operations. Express your answer in reduced form.
 
-[``[$fraction]=``][$frac]***
+[$frac]*
 
 END_PGML
 
 ANS($multians->cmp());
-# ANS($multians->cmp());
 
 BEGIN_PGML_SOLUTION
 Solution explanation goes here.

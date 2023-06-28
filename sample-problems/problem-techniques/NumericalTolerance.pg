@@ -10,7 +10,7 @@ $ans2 = Compute('1.5708');
 
 Context('Numeric')->flags->set(
     tolerance => 0.0001,
-    tolType   => "absolute",
+    tolType   => 'absolute',
 );
 
 $ans3 = Compute('1.5708');

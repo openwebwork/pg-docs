@@ -2,7 +2,6 @@ DOCUMENT();
 
 loadMacros('PGstandard.pl', 'PGML.pl', 'draggableProof.pl', 'PGcourse.pl');
 
-# These are the statements of the proof in the correct order.
 $proof = DraggableProof(
     # These are the correct statements of the proof in the correct order.
     [

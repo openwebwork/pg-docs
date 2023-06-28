@@ -4,11 +4,10 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>DataTables</title>
+	<title>DataTables.pg</title>
 
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/lib/codemirror.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/theme/eclipse.min.css">
 	<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/addon/runmode/runmode-standalone.min.js" defer>
 	</script>
 	<script src="https://openwebwork.github.io/pg-docs/sample-problems/PG.js" defer></script>
@@ -24,7 +23,7 @@
 				<p>This shows how to present and format a table for data.</p>
 			</div>
 			<div class="col text-end">
-				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../index.html">Return to the PG docs home</a>
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
 </div>
 		</div>
 		<div class="row">
@@ -49,18 +48,18 @@
 				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
 						type="button" data-code="DOCUMENT();
-loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;niceTables.pl&#39;,&#39;PGcourse.pl&#39;);
+loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;niceTables.pl&#39;, &#39;PGcourse.pl&#39;);
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
-loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;niceTables.pl&#39;,&#39;PGcourse.pl&#39;);
+					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;niceTables.pl&#39;, &#39;PGcourse.pl&#39;);
 </pre>
 				</div>
-				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Preamble</b></p>
 						<p>This shows how to use the <code>DataTable</code> function in <code>niceTables.pl</code>.</p>
 				</div>
@@ -69,27 +68,27 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;niceTables.pl&#39;,&
 				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
 						type="button" data-code="# where the data goes in as an array ref of array refs.  The first row can
-@rows = ([&#39;\(x\)&#39;,&#39;\(y\)&#39;]);
-for $i (1..5) {
-  push(@rows,[$i, random(1,10) ]);
+@rows = ([ &#39;\(x\)&#39;, &#39;\(y\)&#39; ]);
+for $i (1 .. 5) {
+    push(@rows, [ $i, random(1, 10) ]);
 }
 
 $tab1 = DataTable(~~@rows);
 
-$a = non_zero_random(-4,4);
+$a = non_zero_random(-4, 4);
 $f = Compute(&quot;x/(x-[$a])&quot;)-&gt;reduce;
 
-$tab2 = DataTable([
-  [&#39;\(x\)&#39;,&#39;\(f(x)\)&#39;],
-  [$a-2, ans_rule(10) ],
-  [$a-1, ans_rule(10) ],
-  [$a+1, ans_rule(10) ],
-  [$a+2, ans_rule(10) ]
-],
-align =&gt; &#39;|r|l|&#39;,
-horizontalrules =&gt; 1
+$tab2 = DataTable(
+    [
+        [ &#39;\(x\)&#39;, &#39;\(f(x)\)&#39; ],
+        [ $a - 2,    ans_rule(10) ],
+        [ $a - 1,    ans_rule(10) ],
+        [ $a + 1,    ans_rule(10) ],
+        [ $a + 2,    ans_rule(10) ]
+    ],
+    align           =&gt; &#39;|r|l|&#39;,
+    horizontalrules =&gt; 1
 );
-
 
 BEGIN_PGML
 Here&#39;s some data:
@@ -101,8 +100,8 @@ Fill out the following table for [``f(x)=[$f]``].
 [$tab2]*
 END_PGML
 
-for $i (-2,-1,1,2) {
-  ANS($f-&gt;eval(x=&gt;$a+$i)-&gt;cmp);
+for $i (-2, -1, 1, 2) {
+    ANS($f-&gt;eval(x =&gt; $a + $i)-&gt;cmp);
 }
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -110,28 +109,28 @@ for $i (-2,-1,1,2) {
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll"># where the data goes in as an array ref of array refs.  The first row can
-@rows = ([&#39;\(x\)&#39;,&#39;\(y\)&#39;]);
-for $i (1..5) {
-  push(@rows,[$i, random(1,10) ]);
+					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll"># where the data goes in as an array ref of array refs.  The first row can
+@rows = ([ &#39;\(x\)&#39;, &#39;\(y\)&#39; ]);
+for $i (1 .. 5) {
+    push(@rows, [ $i, random(1, 10) ]);
 }
 
 $tab1 = DataTable(~~@rows);
 
-$a = non_zero_random(-4,4);
+$a = non_zero_random(-4, 4);
 $f = Compute(&quot;x/(x-[$a])&quot;)-&gt;reduce;
 
-$tab2 = DataTable([
-  [&#39;\(x\)&#39;,&#39;\(f(x)\)&#39;],
-  [$a-2, ans_rule(10) ],
-  [$a-1, ans_rule(10) ],
-  [$a+1, ans_rule(10) ],
-  [$a+2, ans_rule(10) ]
-],
-align =&gt; &#39;|r|l|&#39;,
-horizontalrules =&gt; 1
+$tab2 = DataTable(
+    [
+        [ &#39;\(x\)&#39;, &#39;\(f(x)\)&#39; ],
+        [ $a - 2,    ans_rule(10) ],
+        [ $a - 1,    ans_rule(10) ],
+        [ $a + 1,    ans_rule(10) ],
+        [ $a + 2,    ans_rule(10) ]
+    ],
+    align           =&gt; &#39;|r|l|&#39;,
+    horizontalrules =&gt; 1
 );
-
 
 BEGIN_PGML
 Here&#39;s some data:
@@ -143,12 +142,12 @@ Fill out the following table for [``f(x)=[$f]``].
 [$tab2]*
 END_PGML
 
-for $i (-2,-1,1,2) {
-  ANS($f-&gt;eval(x=&gt;$a+$i)-&gt;cmp);
+for $i (-2, -1, 1, 2) {
+    ANS($f-&gt;eval(x =&gt; $a + $i)-&gt;cmp);
 }
 </pre>
 				</div>
-				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Setup</b></p>
 						<p>We use the <code>DataTable</code> function from <code>niceTables.pl</code> to demonstrate some of it’s features. A <code>DataTable</code> is meant to display data in a tabular format.</p>
 <p>The basic form of a <code>DataTable</code> is</p>
@@ -177,13 +176,13 @@ ENDDOCUMENT();" aria-label="copy to clipboard">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
+					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
 Solution explanation goes here.
 END_PGML_SOLUTION
 
 ENDDOCUMENT();</pre>
 				</div>
-				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Solution</b></p>
 						A solution should be provided here.
 				</div>

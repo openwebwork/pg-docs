@@ -1,9 +1,8 @@
 DOCUMENT();
-loadMacros('PGstandard.pl', 'PGML.pl', 'contextInequalities.pl',
-  'PGcourse.pl');
+loadMacros('PGstandard.pl', 'PGML.pl', 'contextInequalities.pl', 'PGcourse.pl');
 
 Context("Inequalities-Only");
-Context()->variables->add(y=>"Real");
+Context()->variables->add(y => "Real");
 # Context()->constants->add(EmptySet => Set());
 # Context()->flags->set(noneWord=>"EmptySet");
 # Context()->flags->set(ignoreEndpointTypes=>1);

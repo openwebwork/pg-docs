@@ -19,7 +19,6 @@ If [`f(t) = [$f]`], then [`f(3u)`] = [____]{$ans}
 ) @]*
 END_PGML
 
-#; generate the word HINT: before the block of text that is the hint, so you
 BEGIN_PGML_HINT
 Substitute [`3u`] wherever you see [`t`] in the formula for [`f(t) = [$f]`].
 END_PGML_HINT

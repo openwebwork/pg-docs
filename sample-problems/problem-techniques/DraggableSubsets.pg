@@ -3,12 +3,8 @@ loadMacros('PGstandard.pl', 'PGML.pl', 'draggableSubsets.pl', 'PGcourse.pl');
 
 $draggable = DraggableSubsets(
     [
-        'mouse',        'ebola bacteria',
-        'flu virus',    'krill',
-        'house cat',    'emu',
-        'coyote',       'tapir',
-        'hippopotamus', 'elephant',
-        'blue whale',   'eagle'
+        'mouse',  'ebola bacteria', 'flu virus',    'krill',    'house cat',  'emu',
+        'coyote', 'tapir',          'hippopotamus', 'elephant', 'blue whale', 'eagle'
     ],
     [ [], [ 0, 4, 6, 7, 8, 9, 10 ], [ 5, 11 ], [ 1, 2, 3 ] ],
     # ['mouse','house cat','coyote','tapir','hippopatamus','elephant']

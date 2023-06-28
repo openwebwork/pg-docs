@@ -1,21 +1,19 @@
 DOCUMENT();
-loadMacros('PGstandard.pl', 'PGML.pl', 'niceTables.pl', 'PGtikz.pl', 'unionTables.pl',
-  'PGcourse.pl');
+loadMacros('PGstandard.pl', 'PGML.pl', 'niceTables.pl', 'PGtikz.pl', 'PGcourse.pl');
 
-$a = random(-2,2);
+$a   = random(0, 3);
 $ans = Compute("x^2+$a")->reduce;
 
-$left = PGML::Format(<<END_PGML);
+$left = qq|
 A common situation is that there is a problem with a graph and
 the problem is on the left column and the graph is on the right
 column.
-
-This even works if we add an equation like [`e^{i\pi}+1 = 0`]
-
+$PAR
+This even works if we add an equation like \(e^{i\pi}+1 = 0\)
+$PAR
 Or if we add an answer blank.
-
-Enter the expression [`$ans=`]
-END_PGML
+$PAR
+A formula for the function graphed on the right is \(f(x)=\)| . ans_rule(10);
 
 $graph = createTikZImage();
 $graph->tikzLibraries('arrows.meta');
@@ -36,9 +34,9 @@ $graph->BEGIN_TIKZ
 \draw[blue,ultra thick] plot[domain=-2.5:2.5,smooth] (\x,{\x*\x+$a});
 END_TIKZ
 
-# TEXT(LayoutTable([[$left, image($graph, width => 400, tex_size => 600)]],
-#   align => 'lc'));
-TEXT(ColumnTable($left,image($graph, width => 400, tex_size => 600)));
+TEXT(LayoutTable([ [ $left, image($graph, width => 400, tex_size => 600) ] ], align => 'lc'));
+
+ANS($ans->cmp);
 
 BEGIN_PGML_SOLUTION
 Solution explanation goes here.

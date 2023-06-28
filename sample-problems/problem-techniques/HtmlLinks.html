@@ -4,11 +4,10 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>HtmlLinks</title>
+	<title>HtmlLinks.pg</title>
 
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/lib/codemirror.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/theme/eclipse.min.css">
 	<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/addon/runmode/runmode-standalone.min.js" defer>
 	</script>
 	<script src="https://openwebwork.github.io/pg-docs/sample-problems/PG.js" defer></script>
@@ -24,7 +23,7 @@
 				<p>This shows how to make an html link in a PG problem.</p>
 			</div>
 			<div class="col text-end">
-				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../index.html">Return to the PG docs home</a>
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
 </div>
 		</div>
 		<div class="row">
@@ -49,20 +48,18 @@
 				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
 						type="button" data-code="DOCUMENT();
-loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;parserNumberWithUnits.pl&#39;,
-  &#39;PGcourse.pl&#39;);
+loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;parserNumberWithUnits.pl&#39;, &#39;PGcourse.pl&#39;);
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
-loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;parserNumberWithUnits.pl&#39;,
-  &#39;PGcourse.pl&#39;);
+					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;parserNumberWithUnits.pl&#39;, &#39;PGcourse.pl&#39;);
 </pre>
 				</div>
-				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Preamble</b></p>
 						<p>An example below uses units, so we load <code>parserNumberWithUnits.pl</code>.</p>
 				</div>
@@ -77,10 +74,10 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;parserNumberWithUnit
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">$ans = NumberWithUnits(&#39;4&#39;, &#39;ft&#39;);
+					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">$ans = NumberWithUnits(&#39;4&#39;, &#39;ft&#39;);
 </pre>
 				</div>
-				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Setup</b></p>
 						This perl code sets up the problem.
 				</div>
@@ -96,7 +93,7 @@ A link to a
 [@ htmlLink( alias(&#39;local.html&#39;), &quot;local problem&quot;, &quot;TARGET=&#39;_blank&#39;&quot; ) @]*
 
 Click [@htmlLink(&quot;${htmlURL}phaseplaneplotters/index.html&quot;,
-  &quot;sketch the graph.&quot;, &quot;TARGET=~~&quot;plotter~~&quot;&quot; )@]* to use xFunctions for
+  &quot;sketch the graph.&quot;, &quot;TARGET=&#39;plotter&#39;&quot; )@]* to use xFunctions for
 plotting.
 
 Enter 4 feet: [__]{$ans}
@@ -110,7 +107,7 @@ ENDDOCUMENT();" aria-label="copy to clipboard">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
+					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
 The answer to all questions is on
 [@ htmlLink( &quot;http://www.google.com/&quot;, &quot;this page&quot; ) @]*
 
@@ -118,7 +115,7 @@ A link to a
 [@ htmlLink( alias(&#39;local.html&#39;), &quot;local problem&quot;, &quot;TARGET=&#39;_blank&#39;&quot; ) @]*
 
 Click [@htmlLink(&quot;${htmlURL}phaseplaneplotters/index.html&quot;,
-  &quot;sketch the graph.&quot;, &quot;TARGET=~~&quot;plotter~~&quot;&quot; )@]* to use xFunctions for
+  &quot;sketch the graph.&quot;, &quot;TARGET=&#39;plotter&#39;&quot; )@]* to use xFunctions for
 plotting.
 
 Enter 4 feet: [__]{$ans}
@@ -128,14 +125,14 @@ END_PGML
 
 ENDDOCUMENT();</pre>
 				</div>
-				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Statement</b></p>
 						<p>We need no additions to the PG file except in the text section, where we use the <code>htmlLink</code> function to insert the link. There are four examples here in all, the page to load is given as the first argument to <code>htmlLink</code>, and the text to display as the link as the second argument.</p>
 <ol type="1">
 <li><p>This is a link to a general URL.</p></li>
 <li><p>The second example shows how to link to a page that is in the same directory on the WeBWorK server as the PG file: the alias function puts in the correct link for this file. Setting the target to be _blank will open a new (blank) window or tab.</p></li>
 <li><p>The third example shows how to link to a page that is under the html subdirectory of a course’s main directory. In this example, which is taken from the problem <code>Library/Rochester/setDiffEQ6AutonomousStability/ur_de_6_3.pg</code>, phaseplaneplotters is a subdirectory that has been added under the course’s html directory. The course’s html directory can be linked using <code>${htmlURL}</code> as in the example given or by using <code>alias("${htmlDirectory}phaseplaneplotters/index.html")</code>.</p></li>
-<li><p>The fourth example uses the built-in helpLink feature of WeBWorK. The Following is a list of all help topics: angle, decimal, equation, exponent formula, fraction, inequality, limit, log, matrix, number, point, vector, interval, unit, syntax.</p></li>
+<li><p>The fourth example uses the built-in <code>helpLink</code> feature of WeBWorK. The following is a list of all help topics: angle, decimal, equation, exponent formula, fraction, inequality, limit, log, matrix, number, point, vector, interval, unit, syntax.</p></li>
 </ol>
 				</div>
 			</div>

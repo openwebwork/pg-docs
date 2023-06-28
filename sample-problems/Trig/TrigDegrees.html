@@ -4,11 +4,10 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>TrigDegrees</title>
+	<title>TrigDegrees.pg</title>
 
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/lib/codemirror.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/theme/eclipse.min.css">
 	<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/addon/runmode/runmode-standalone.min.js" defer>
 	</script>
 	<script src="https://openwebwork.github.io/pg-docs/sample-problems/PG.js" defer></script>
@@ -24,7 +23,7 @@
 				<p>Trigonometry: trig functions in degrees using context TrigDegrees</p>
 			</div>
 			<div class="col text-end">
-				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../index.html">Return to the PG docs home</a>
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
 </div>
 		</div>
 		<div class="row">
@@ -37,7 +36,7 @@
 				<div class="col">
 					<h2>POD for Macro Files</h2>
 					<ul>
-								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/contexts/contextTrigDegrees.pl">contextTrigDegrees.pl</a></li>
+								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/contexts/contextTrigDegrees.html">contextTrigDegrees.pl</a></li>
 					</ul>
 				</div>
 		</div>
@@ -57,12 +56,12 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;contextTrigDegrees.p
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
 
 loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;contextTrigDegrees.pl&#39;, &#39;PGcourse.pl&#39;);
 </pre>
 				</div>
-				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Preamble</b></p>
 						<p>We load the <code>contextTrigDegrees.pl</code> macro to help with trig functions with degrees.</p>
 				</div>
@@ -80,23 +79,23 @@ $ans2 = Compute(&quot;arcsin(0.5)&quot;);
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context(&#39;TrigDegrees&#39;);
+					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context(&#39;TrigDegrees&#39;);
 
 $ans1 = Compute(&quot;sin(30)&quot;);
 $ans2 = Compute(&quot;arcsin(0.5)&quot;);
 </pre>
 				</div>
-				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Setup</b></p>
 						<p>To override the WeBWorK default of evaluating trig functions in radians, use the <code>TrigDegrees</code> context, which redefines the standard trig functions to be in degrees, both in any formulas that appear later in the PG code and in any formulas that students enter in answer blanks.</p>
-<p>These redefined functions allow students to enter inverse functions using syntax such as <code>atan(x)</code>, or <code>arctan(x)</code>, or <code>tan^(-1)(x)</code>. You may want to mention the syntax options in the main text section of the problem.</p>
+<p>These redefined functions allow students to enter inverse functions using syntax such as <code>atan(x)</code>, or <code>arctan(x)</code>, or <code>tan^(-1)(x)</code>.</p>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
 						type="button" data-code="BEGIN_PGML
-1. [`\sin(30)=`] [___]{$ans1}
+1. [`\sin(30^{\circ})=`] [___]{$ans1}
 2. [`\arcsin(1/2)=`] [___]{$ans2}
 
 Interpret arguments of the sine and arcsine in terms of degrees.
@@ -107,17 +106,17 @@ END_PGML
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
-1. [`\sin(30)=`] [___]{$ans1}
+					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
+1. [`\sin(30^{\circ})=`] [___]{$ans1}
 2. [`\arcsin(1/2)=`] [___]{$ans2}
 
 Interpret arguments of the sine and arcsine in terms of degrees.
 END_PGML
 </pre>
 				</div>
-				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Statement</b></p>
-						This is the problem statement in PGML.
+						<p>Since this is in degrees, you should tell the students this.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -135,7 +134,7 @@ ENDDOCUMENT();" aria-label="copy to clipboard">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
+					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
 Solution explanation goes here.
 END_PGML_SOLUTION
 
@@ -143,7 +142,7 @@ COMMENT(&quot;Redefines trig functions to be in degrees (not radians).&quot;);
 
 ENDDOCUMENT();</pre>
 				</div>
-				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Solution</b></p>
 						A solution should be provided here.
 				</div>

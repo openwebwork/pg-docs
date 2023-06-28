@@ -1,11 +1,10 @@
 DOCUMENT();
-loadMacros('PGstandard.pl', 'PGML.pl', 'parserImplicitEquation.pl',
-  'PGcourse.pl');
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserImplicitEquation.pl', 'PGcourse.pl');
 
 Context("ImplicitEquation");
 Context()->variables->set(
-x=>{limits=>[-2,2]},
-y=>{limits=>[0,4]}
+    x => { limits => [ -2, 2 ] },
+    y => { limits => [ 0,  4 ] }
 );
 
 $ans = ImplicitEquation("y = (x-1)^2");

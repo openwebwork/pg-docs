@@ -21,6 +21,8 @@ $gr2->addSurface(
 );
 
 BEGIN_PGML
+This just shows the two plots side by side.
+
 [@ $gr1->Print @]* [@ $gr2->Print @]*
 END_PGML
 

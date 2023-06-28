@@ -1,9 +1,8 @@
 DOCUMENT();
 
 loadMacros(
-    'PGstandard.pl',        'PGML.pl',
-    'parserVectorUtils.pl', 'parserParametricLine.pl',
-    'PGcourse.pl'
+    'PGstandard.pl',           'PGML.pl', 'parserVectorUtils.pl',
+    'parserParametricLine.pl', 'PGcourse.pl'
 );
 
 Context('Vector')->variables->are(t => 'Real');

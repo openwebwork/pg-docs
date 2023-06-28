@@ -2,7 +2,7 @@ DOCUMENT();
 
 loadMacros(
     'PGstandard.pl',  'PGML.pl',
-    'unionTables.pl', 'parserPopUp.pl',
+    'niceTables.pl', 'parserPopUp.pl',
     'PGgraders.pl',   'parserMultiAnswer.pl',
     'PGcourse.pl'
 );
@@ -59,18 +59,8 @@ $popup =
     PopUp([ 'Choose', 'Converges', 'Diverges', 'Inconclusive' ], 'Converges');
 
 # Display the fraction and answer blanks nicely
-if ($displayMode eq 'TeX') {
-    $showfraction =
-        "\[ $fraction "
-        . $multians->ans_rule(10)
-        . $multians->ans_rule(10) . " \]";
-} else {
-    $showfraction = ColumnTable(
-        "\( \displaystyle $fraction \)",
-        $multians->ans_rule(20) . $BR . $HR . $multians->ans_rule(20),
-        separation => 10
-    );
-}
+$frac = LayoutTable([[[ans_rule(10), rowbottom => 1]],[ans_rule(10)]],
+    center => 0, allcellcss => {padding => '4pt'});
 
 BEGIN_PGML
 Use the limit comparison test to determine whether
@@ -80,11 +70,11 @@ converges or diverges.
 a. Choose a series [``\sum_{n=[$c]}^\infty b_n``] with terms of the form
 [``b_n = \frac{1}{n^p}``] and apply the limit comparison test.  Write your
 answer as a fully reduced fraction.  For [``n \geq [$c]``],
-[$showfraction]*** [@ ANS($multians->cmp); '' @]*
+[```\frac{\lim_{n \to \infty} a_n}{\lim_{n \to \infty} b_n}```][$frac]* [@ ANS($multians->cmp); '' @]
 
 b. Evaluate the limit in the previous part.  Enter [` \infty `] as _infinity_
 and [` -\infty `] as _-infinity_.  If the limit does not exist, enter _DNE_.
-[$BR]*
+
 [``\lim_{n\to\infty} \frac{a_{n}}{b_{n}} =``] [_]{$limit}{15}
 
 c. By the limit comparison test, does the series converge, diverge, or is the

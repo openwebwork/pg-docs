@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>VolumeOfRevolution.pg</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/lib/codemirror.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/addon/runmode/runmode-standalone.min.js" defer>
+	</script>
+	<script src="https://openwebwork.github.io/pg-docs/sample-problems/PG.js" defer></script>
+	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css" >
+</head>
+
+
+<body>
+	<div class="container-fluid p-3">
+		<div class="row">
+			<div class="col">
+				<h1>Volume of Solids of Revolution</h1>
+				<p>Volume of solids of revolution</p>
+			</div>
+			<div class="col text-end">
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
+</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<h2>Complete Code</h2>
+				<p>
+				Download file: <a href="VolumeOfRevolution.pg">VolumeOfRevolution.pg</a>
+</p>
+			</div>
+				<div class="col">
+					<h2>POD for Macro Files</h2>
+					<ul>
+								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/ui/niceTables.html">niceTables.pl</a></li>
+								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/answers/answerHints.html">answerHints.pl</a></li>
+								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/core/weightedGrader.html">weightedGrader.pl</a></li>
+					</ul>
+				</div>
+		</div>
+		<div class="row">
+			<div class="col text-center"><h2 class="fw-bold fs-3">PG problem file</h2></div>
+			<div class="col text-center"><h2 class="fw-bold fs-3">Explanation</h2></div>
+		</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="DOCUMENT();
+
+loadMacros(
+    &#39;PGstandard.pl&#39;,     &#39;PGML.pl&#39;,
+    &#39;niceTables.pl&#39;,    &#39;answerHints.pl&#39;,
+    &#39;weightedGrader.pl&#39;, &#39;PGcourse.pl&#39;
+);
+
+install_weighted_grader();
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+
+loadMacros(
+    &#39;PGstandard.pl&#39;,     &#39;PGML.pl&#39;,
+    &#39;niceTables.pl&#39;,    &#39;answerHints.pl&#39;,
+    &#39;weightedGrader.pl&#39;, &#39;PGcourse.pl&#39;
+);
+
+install_weighted_grader();
+</pre>
+				</div>
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Preamble</b></p>
+						<p>We load <code>weightedGrader.pl</code> and install it. We load <code>answerHints.pl</code> to give student feedback on particular incorrect answers. We load <code>niceTables.pl</code> so that we can construct tables in HTML mode that will make the answer blanks for the limits of integration appear at the top and bottom of the integral symbol.</p>
+<p>If the weighted grader is to be used, the command <code>install_weighted_grader();</code> must be called.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="Context()-&gt;variables-&gt;are(x =&gt; &#39;Real&#39;, dx =&gt; &#39;Real&#39;, y =&gt; &#39;Real&#39;, dy =&gt; &#39;Real&#39;);
+
+$upper = Real(&#39;1&#39;);
+$lower = Real(&#39;0&#39;);
+$int   = Compute(&#39;(pi x^2 - pi x^4) dx&#39;);
+$vol   = Compute(&#39;2pi/15&#39;);
+
+$integral = LayoutTable([
+    [ &#39; &#39;, NAMED_ANS_RULE(&#39;upperlimit&#39;, 4)],
+    [&#39;\(V= \)&#39;,&#39;\(\displaystyle \int \;\;\)&#39; . NAMED_ANS_RULE(&#39;integrand&#39;, 10)
+        . &#39;\(\;=\;  \)&#39; . NAMED_ANS_RULE(&#39;volume&#39;, 4)],
+    [ &#39; &#39;,NAMED_ANS_RULE(&#39;lowerlimit&#39;, 4)],
+],
+    align =&gt; &#39;rl&#39;, valign =&gt; &#39;middle&#39;, allcellcss =&gt; {padding =&gt; &#39;3pt&#39;});
+
+@weights = (5, 5, 40, 50);" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context()-&gt;variables-&gt;are(x =&gt; &#39;Real&#39;, dx =&gt; &#39;Real&#39;, y =&gt; &#39;Real&#39;, dy =&gt; &#39;Real&#39;);
+
+$upper = Real(&#39;1&#39;);
+$lower = Real(&#39;0&#39;);
+$int   = Compute(&#39;(pi x^2 - pi x^4) dx&#39;);
+$vol   = Compute(&#39;2pi/15&#39;);
+
+$integral = LayoutTable([
+    [ &#39; &#39;, NAMED_ANS_RULE(&#39;upperlimit&#39;, 4)],
+    [&#39;\(V= \)&#39;,&#39;\(\displaystyle \int \;\;\)&#39; . NAMED_ANS_RULE(&#39;integrand&#39;, 10)
+        . &#39;\(\;=\;  \)&#39; . NAMED_ANS_RULE(&#39;volume&#39;, 4)],
+    [ &#39; &#39;,NAMED_ANS_RULE(&#39;lowerlimit&#39;, 4)],
+],
+    align =&gt; &#39;rl&#39;, valign =&gt; &#39;middle&#39;, allcellcss =&gt; {padding =&gt; &#39;3pt&#39;});
+
+@weights = (5, 5, 40, 50);</pre>
+				</div>
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Setup</b></p>
+						<p>To keep the code that needs to be modified compartmentalized, we define the functions involved, the limits of integration, the integrand, the volume, and an array of weights (which sum to 100) for each of these answers.</p>
+<p>The code for correctly displaying the answer blanks creates <code>$integral</code> which will be displayed correctly both in TeX and HTML modes. Notice that it uses <code>NAMED_ANS_RULE(name, width)</code> for all of the answer blanks instead of <code>ans_rule(width)</code>.</p>
+<p>We define <code>$integral</code> to display the integral and answer blanks correctly using a <code>LayoutTable</code> from <a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/ui/niceTables.html">niceTables.pl</a>.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="BEGIN_PGML
+Set up and evaluate an integral for the volume of the solid of revolution
+obtained by rotating the region bounded by [`y = x`] and [`y = x^2`] about
+the [`x`]-axis.
+
+[$integral]*
+
+[@ MODES(
+    TeX  =&gt; &#39;&#39;,
+    HTML =&gt; &lt;&lt; &quot;END_HTML&quot;
+${BITALIC}${BBOLD}Note:${EBOLD} You can earn
+$weights[0]${PERCENT} for the upper limit of integration,
+$weights[1]${PERCENT} for the lower limit of integration,
+$weights[2]${PERCENT} for the integrand, and
+$weights[3]${PERCENT} for the finding the volume.
+${EITALIC}
+END_HTML
+) @]*
+END_PGML
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
+Set up and evaluate an integral for the volume of the solid of revolution
+obtained by rotating the region bounded by [`y = x`] and [`y = x^2`] about
+the [`x`]-axis.
+
+[$integral]*
+
+[@ MODES(
+    TeX  =&gt; &#39;&#39;,
+    HTML =&gt; &lt;&lt; &quot;END_HTML&quot;
+${BITALIC}${BBOLD}Note:${EBOLD} You can earn
+$weights[0]${PERCENT} for the upper limit of integration,
+$weights[1]${PERCENT} for the lower limit of integration,
+$weights[2]${PERCENT} for the integrand, and
+$weights[3]${PERCENT} for the finding the volume.
+${EITALIC}
+END_HTML
+) @]*
+END_PGML
+</pre>
+				</div>
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Statement</b></p>
+						<p>Standard PGML and latex is used to describe the problem. The integral that was formatted using a table above is inserted with <code>[$integral]*</code></p>
+<p>A note is added that specifies for the students how the answer will be graded (the <code>weightedGrader.pl</code> macro does not do this automatically, as some other graders do.)</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="NAMED_WEIGHTED_ANS(upperlimit =&gt; $upper-&gt;cmp, $weights[0]);
+NAMED_WEIGHTED_ANS(lowerlimit =&gt; $lower-&gt;cmp, $weights[1]);
+NAMED_WEIGHTED_ANS(
+    integrand =&gt; $int-&gt;cmp-&gt;withPostFilter(AnswerHints(
+        Formula(&#39;pi x^2 - pi x^4 dx&#39;) =&gt;
+            &quot;Don&#39;t forget to multiply every term in the integrand by dx&quot;,
+        Formula(&#39;pi (x^2 - x^4)&#39;)  =&gt; &quot;Don&#39;t forget the differential dx&quot;,
+        Formula(&#39;pi(x^4 - x^2)dx&#39;) =&gt; &#39;Is the parabola above the line?&#39;,
+        Formula(&#39;pi(x^4 - x^2)&#39;)   =&gt; &#39;Is the parabola above the line?&#39;,
+        Formula(&#39;pi(x - x^2)&#39;)     =&gt; &#39;Make sure you use the disk method.&#39;,
+        Formula(&#39;pi(x - x^2)dx&#39;)   =&gt; &#39;Make sure you use the disk method.&#39;,
+    )),
+    $weights[2]
+);
+NAMED_WEIGHTED_ANS(&#39;volume&#39; =&gt; $vol-&gt;cmp, $weights[3]);
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">NAMED_WEIGHTED_ANS(upperlimit =&gt; $upper-&gt;cmp, $weights[0]);
+NAMED_WEIGHTED_ANS(lowerlimit =&gt; $lower-&gt;cmp, $weights[1]);
+NAMED_WEIGHTED_ANS(
+    integrand =&gt; $int-&gt;cmp-&gt;withPostFilter(AnswerHints(
+        Formula(&#39;pi x^2 - pi x^4 dx&#39;) =&gt;
+            &quot;Don&#39;t forget to multiply every term in the integrand by dx&quot;,
+        Formula(&#39;pi (x^2 - x^4)&#39;)  =&gt; &quot;Don&#39;t forget the differential dx&quot;,
+        Formula(&#39;pi(x^4 - x^2)dx&#39;) =&gt; &#39;Is the parabola above the line?&#39;,
+        Formula(&#39;pi(x^4 - x^2)&#39;)   =&gt; &#39;Is the parabola above the line?&#39;,
+        Formula(&#39;pi(x - x^2)&#39;)     =&gt; &#39;Make sure you use the disk method.&#39;,
+        Formula(&#39;pi(x - x^2)dx&#39;)   =&gt; &#39;Make sure you use the disk method.&#39;,
+    )),
+    $weights[2]
+);
+NAMED_WEIGHTED_ANS(&#39;volume&#39; =&gt; $vol-&gt;cmp, $weights[3]);
+</pre>
+				</div>
+				<div class="explanation answer col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Answer</b></p>
+						<p>To install the answer evaluator call <code>NAMED_WEIGHTED_ANS(name =&gt; $answer-&gt;cmp()-&gt;withPostFilter(), weight)</code> instead of using <code>ANS($answer-&gt;cmp()-&gt;withPostFilter())</code>. Providing customized answer hints for students is a good idea, because the whole point of this homework exercise it to learn how to set up this integral using proper notation. If we just wanted to ask for the volume, we could have done it using only one answer blank.</p>
+<p>If you would like to give full credit for the overall volume, you can replace the last <code>NAMED_WEIGHTED_ANS</code> with</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>CREDIT_ANS(<span class="dt">$vol</span>-&gt;<span class="dt">cmp</span>, [ <span class="kw">&#39;</span><span class="st">upperlimit</span><span class="kw">&#39;</span>, <span class="kw">&#39;</span><span class="st">lowerlimit</span><span class="kw">&#39;</span>, <span class="kw">&#39;</span><span class="st">integrand</span><span class="kw">&#39;</span> ], <span class="dt">$weights</span>[<span class="dv">3</span>]);</span></code></pre></div>
+<p>Of course, if you want to give equal credit, then each of the <code>NAMED_WEIGHTED_ANS</code> commands can be replaced with <code>ANS</code>, however make sure that they listed in order.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+COMMENT(&#39;Weights each answer blank separately.&#39;);
+
+ENDDOCUMENT();" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+COMMENT(&#39;Weights each answer blank separately.&#39;);
+
+ENDDOCUMENT();</pre>
+				</div>
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Solution</b></p>
+						A solution should be provided here.
+				</div>
+			</div>
+	</div>
+
+	<script type="module">
+		for (const pre of document.body.querySelectorAll('pre.CodeMirror')) {
+			CodeMirror.runMode(pre.textContent, 'PG', pre);
+		}
+
+		for (const btn of document.querySelectorAll('.clipboard-btn')) {
+			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+		}
+	</script>
+</body>
+
+</html>
