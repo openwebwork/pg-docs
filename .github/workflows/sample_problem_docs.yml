@@ -41,7 +41,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: parse sample problems
         run: |
-          perl pg/bin/parse-prob-doc.pl  \
+          perl pg/bin/parse-problem-doc.pl  \
             --problem_dir=/home/runner/work/pg-docs/pg-docs/pg/doc/sample-problems \
             --out_dir=/home/runner/work/pg-docs/pg-docs/sample-problems \
             --pod_root=https://openwebwork.github.io/pg-docs/pod \
