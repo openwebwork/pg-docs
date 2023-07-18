@@ -48,7 +48,8 @@ jobs:
         run: |
           perl webwork2/bin/dev_scripts/generate-ww-pg-pod.pl -v \
             --pg-root=/home/runner/work/pg-docs/pg-docs/pg \
-            --output-dir=/home/runner/work/pg-docs/pg-docs/pod
+            --output-dir=/home/runner/work/pg-docs/pg-docs/pod \
+            --base-url=https://openwebwork.github.io/pg-docs/pod
       - name: remove pg and webwork code
         run: |
           rm -rf pg
