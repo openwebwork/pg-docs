@@ -51,8 +51,9 @@
 						type="button" data-code="DOCUMENT();
 
 loadMacros(
-    &#39;PGstandard.pl&#39;,  &#39;PGML.pl&#39;, &#39;niceTables.pl&#39;,
-    &#39;parserMultiAnswer.pl&#39;, &#39;PGcourse.pl&#39;
+    &#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;,
+    &#39;niceTables.pl&#39;, &#39;parserMultiAnswer.pl&#39;,
+    &#39;PGcourse.pl&#39;
 );
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -63,8 +64,9 @@ loadMacros(
 					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
 
 loadMacros(
-    &#39;PGstandard.pl&#39;,  &#39;PGML.pl&#39;, &#39;niceTables.pl&#39;,
-    &#39;parserMultiAnswer.pl&#39;, &#39;PGcourse.pl&#39;
+    &#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;,
+    &#39;niceTables.pl&#39;, &#39;parserMultiAnswer.pl&#39;,
+    &#39;PGcourse.pl&#39;
 );
 </pre>
 				</div>
@@ -83,7 +85,7 @@ do {
     $a = random(2, 8, 2);
     $b = random(3, 9, 2);
     $c = random(1, 9, 1);
-} until ($a*$c != $b);
+} until ($a * $c != $b);
 
 $num = Formula(&quot;$a y - $b&quot;);
 $den = Formula(&quot;y - $c&quot;);
@@ -124,18 +126,15 @@ $multians = MultiAnswer($num, $den)-&gt;with(
 );
 
 $frac = LayoutTable(
-    [[
+    [ [
         &quot;\(\displaystyle\frac{$a y}{y-$c} + \frac{$b}{$c - y}=\)&quot;,
         LayoutTable(
-            [
-                [[ans_rule(4), bottom =&gt; 1]],
-                [ans_rule(4)],
-            ],
-            padding =&gt; [0.5, 0],
+            [ [ [ ans_rule(4), bottom =&gt; 1 ] ], [ ans_rule(4) ], ],
+            padding =&gt; [ 0.5, 0 ],
         )
-    ]],
-    padding =&gt; [0, 0.5],
-    valign =&gt; &#39;middle&#39;,
+    ] ],
+    padding =&gt; [ 0, 0.5 ],
+    valign  =&gt; &#39;middle&#39;,
 );
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -150,7 +149,7 @@ do {
     $a = random(2, 8, 2);
     $b = random(3, 9, 2);
     $c = random(1, 9, 1);
-} until ($a*$c != $b);
+} until ($a * $c != $b);
 
 $num = Formula(&quot;$a y - $b&quot;);
 $den = Formula(&quot;y - $c&quot;);
@@ -191,18 +190,15 @@ $multians = MultiAnswer($num, $den)-&gt;with(
 );
 
 $frac = LayoutTable(
-    [[
+    [ [
         &quot;\(\displaystyle\frac{$a y}{y-$c} + \frac{$b}{$c - y}=\)&quot;,
         LayoutTable(
-            [
-                [[ans_rule(4), bottom =&gt; 1]],
-                [ans_rule(4)],
-            ],
-            padding =&gt; [0.5, 0],
+            [ [ [ ans_rule(4), bottom =&gt; 1 ] ], [ ans_rule(4) ], ],
+            padding =&gt; [ 0.5, 0 ],
         )
-    ]],
-    padding =&gt; [0, 0.5],
-    valign =&gt; &#39;middle&#39;,
+    ] ],
+    padding =&gt; [ 0, 0.5 ],
+    valign  =&gt; &#39;middle&#39;,
 );
 </pre>
 				</div>
@@ -290,7 +286,8 @@ ENDDOCUMENT();</pre>
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard) btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

@@ -1,0 +1,29 @@
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserVectorUtils.pl', 'PGcourse.pl');
+
+Context("Vector");
+Context()->variables->are(t => "Real");
+
+$P     = non_zero_point3D();
+$disp  = non_zero_vector3D();
+$Q     = Point($P + $disp);
+$speed = random(3, 9, 1);
+
+$ans = Compute("$P + $speed *t * $disp/norm($disp)");
+
+BEGIN_PGML
+A particle starts at the point [` P = [$P] `]
+when [` t = 0 `] and moves along a straight line
+toward [` Q = [$Q] `] at a speed of [` [$speed] `]
+cm/sec.  Assume that [`x, y,`] and [`z`] are measured
+in cm.  Do not enter units with your answers.
+
+Find the vector parametric equation for the position of the object.
+[` \vec{r}(t) = `] [____]{$ans}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

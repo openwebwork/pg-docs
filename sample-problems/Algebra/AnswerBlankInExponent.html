@@ -33,12 +33,6 @@
 				Download file: <a href="AnswerBlankInExponent.pg">AnswerBlankInExponent.pg</a>
 </p>
 			</div>
-				<div class="col">
-					<h2>POD for Macro Files</h2>
-					<ul>
-								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/ui/niceTables.html">niceTables.pl</a></li>
-					</ul>
-				</div>
 		</div>
 		<div class="row">
 			<div class="col text-center"><h2 class="fw-bold fs-3">PG problem file</h2></div>
@@ -49,7 +43,7 @@
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
 						type="button" data-code="DOCUMENT();
 
-loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;niceTables.pl&#39;, &#39;PGcourse.pl&#39;);
+loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGcourse.pl&#39;);
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
@@ -58,12 +52,12 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;niceTables.pl&#39;, 
 					</button>
 					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
 
-loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;niceTables.pl&#39;, &#39;PGcourse.pl&#39;);
+loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGcourse.pl&#39;);
 </pre>
 				</div>
 				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Preamble</b></p>
-						<p>The macro <code>niceTables.pl</code> provides a way to format the problem.</p>
+						These standard macros need to be loaded.
 				</div>
 			</div>
 			<div class="row">
@@ -81,30 +75,16 @@ $base     = Formula(&quot;a*b&quot;);
 $exponent = Formula(&quot;$n&quot;);
 
 # Display exponents nicely
-# Context()-&gt;texStrings;
-
-$tab = LayoutTable([[
-    [&quot;\(\displaystyle $expression= \Big(\)&quot; . ans_rule(4) . &quot;\(\Big)\)&quot;, cellcss =&gt; { padding =&gt; &#39;20pt 0pt 0pt 4pt&#39;}],
-    [ ans_rule(4), cellcss =&gt; {padding =&gt; &#39;0pt 0pt 20pt 0pt&#39;}]
-]]);
-
-# if ($displayMode eq &#39;TeX&#39;) {
-#     $showpower =
-#         &quot;\( \displaystyle $expression = (&quot;
-#         . ans_rule(4) . &quot;)^{&quot;
-#         . ans_rule(4) . &quot;}\)&quot;;
-# } else {
-#     $showpower = ColumnTable(
-#         &quot;\( \displaystyle $expression = \Big( \)&quot;
-#             . ans_rule(4)
-#             . &quot;\( \Big) \)&quot;,
-#         ans_rule(4) . $BR . $BR,
-#         indent     =&gt; 0,
-#         separation =&gt; 0,
-#         valign     =&gt; &#39;BOTTOM&#39;
-#     );
-# }
-# Context()-&gt;normalStrings;
+$exp = MODES(
+    HTML =&gt; &quot;&lt;span&gt;\(\displaystyle $expression= \Big(\)&quot;
+        . ans_rule(4)
+        . &#39;\(\Big)\)&lt;/span&gt;&lt;span style=&quot;vertical-align: 12pt;&quot;&gt;&#39;
+        . ans_rule(4)
+        . &#39;&lt;/span&gt;&#39;,
+    TeX =&gt; &quot;\( \displaystyle $expression = (&quot;
+        . ans_rule(4) . &quot;)^{&quot;
+        . ans_rule(4) . &quot;}\)&quot;
+);
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
@@ -123,36 +103,22 @@ $base     = Formula(&quot;a*b&quot;);
 $exponent = Formula(&quot;$n&quot;);
 
 # Display exponents nicely
-# Context()-&gt;texStrings;
-
-$tab = LayoutTable([[
-    [&quot;\(\displaystyle $expression= \Big(\)&quot; . ans_rule(4) . &quot;\(\Big)\)&quot;, cellcss =&gt; { padding =&gt; &#39;20pt 0pt 0pt 4pt&#39;}],
-    [ ans_rule(4), cellcss =&gt; {padding =&gt; &#39;0pt 0pt 20pt 0pt&#39;}]
-]]);
-
-# if ($displayMode eq &#39;TeX&#39;) {
-#     $showpower =
-#         &quot;\( \displaystyle $expression = (&quot;
-#         . ans_rule(4) . &quot;)^{&quot;
-#         . ans_rule(4) . &quot;}\)&quot;;
-# } else {
-#     $showpower = ColumnTable(
-#         &quot;\( \displaystyle $expression = \Big( \)&quot;
-#             . ans_rule(4)
-#             . &quot;\( \Big) \)&quot;,
-#         ans_rule(4) . $BR . $BR,
-#         indent     =&gt; 0,
-#         separation =&gt; 0,
-#         valign     =&gt; &#39;BOTTOM&#39;
-#     );
-# }
-# Context()-&gt;normalStrings;
+$exp = MODES(
+    HTML =&gt; &quot;&lt;span&gt;\(\displaystyle $expression= \Big(\)&quot;
+        . ans_rule(4)
+        . &#39;\(\Big)\)&lt;/span&gt;&lt;span style=&quot;vertical-align: 12pt;&quot;&gt;&#39;
+        . ans_rule(4)
+        . &#39;&lt;/span&gt;&#39;,
+    TeX =&gt; &quot;\( \displaystyle $expression = (&quot;
+        . ans_rule(4) . &quot;)^{&quot;
+        . ans_rule(4) . &quot;}\)&quot;
+);
 </pre>
 				</div>
 				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Setup</b></p>
 						<p>We want the only variables to be <code>a</code> and <code>b</code> and choose a random power.</p>
-<p>The exponential layout is made with a table with padding on the top of the left cell and on the bottom of the right cell.</p>
+<p>The exponential layout is in HTML using a pair of adjacent <code>span</code> elements with the right one shifted up using the CSS style <code>vertical-align</code>. In hardcopy mode, we use the LaTeX exponent.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -161,7 +127,7 @@ $tab = LayoutTable([[
 						type="button" data-code="BEGIN_PGML
 Rewrite the following using a single exponent.
 
-[$tab]***
+[$exp]*
 END_PGML
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -172,13 +138,13 @@ END_PGML
 					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
 Rewrite the following using a single exponent.
 
-[$tab]***
+[$exp]*
 END_PGML
 </pre>
 				</div>
 				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Statement</b></p>
-						<p>We insert the nicely formatted answer blanks using <code>$showpower</code>.</p>
+						<p>We insert exponential stored as <code>$exp</code>.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -233,7 +199,8 @@ ENDDOCUMENT();</pre>
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard) btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

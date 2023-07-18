@@ -72,7 +72,8 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;parserGraphTool.pl&#
 						type="button" data-code="$x1 = random(1, 5);
 
 $gt1 = GraphTool(&quot;{interval, (-$x1,$x1]}&quot;)-&gt;with(
-    availableTools =&gt; [ &#39;PointTool&#39;, &#39;IntervalTool&#39;, &#39;IncludeExcludePointTool&#39; ],
+    availableTools =&gt;
+        [ &#39;PointTool&#39;, &#39;IntervalTool&#39;, &#39;IncludeExcludePointTool&#39; ],
     numberLine     =&gt; 1,
     bBox           =&gt; [ -6, 6 ],
     ticksDistanceX =&gt; 1,
@@ -83,7 +84,8 @@ $gt1 = GraphTool(&quot;{interval, (-$x1,$x1]}&quot;)-&gt;with(
 $x2 = random(-5, 5);
 
 $gt2 = GraphTool(&quot;{interval, (-inf,$x2)}&quot;)-&gt;with(
-    availableTools =&gt; [ &#39;PointTool&#39;, &#39;IntervalTool&#39;, &#39;IncludeExcludePointTool&#39; ],
+    availableTools =&gt;
+        [ &#39;PointTool&#39;, &#39;IntervalTool&#39;, &#39;IncludeExcludePointTool&#39; ],
     numberLine     =&gt; 1,
     bBox           =&gt; [ -6, 6 ],
     ticksDistanceX =&gt; 1,
@@ -99,7 +101,8 @@ $gt2 = GraphTool(&quot;{interval, (-inf,$x2)}&quot;)-&gt;with(
 					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">$x1 = random(1, 5);
 
 $gt1 = GraphTool(&quot;{interval, (-$x1,$x1]}&quot;)-&gt;with(
-    availableTools =&gt; [ &#39;PointTool&#39;, &#39;IntervalTool&#39;, &#39;IncludeExcludePointTool&#39; ],
+    availableTools =&gt;
+        [ &#39;PointTool&#39;, &#39;IntervalTool&#39;, &#39;IncludeExcludePointTool&#39; ],
     numberLine     =&gt; 1,
     bBox           =&gt; [ -6, 6 ],
     ticksDistanceX =&gt; 1,
@@ -110,7 +113,8 @@ $gt1 = GraphTool(&quot;{interval, (-$x1,$x1]}&quot;)-&gt;with(
 $x2 = random(-5, 5);
 
 $gt2 = GraphTool(&quot;{interval, (-inf,$x2)}&quot;)-&gt;with(
-    availableTools =&gt; [ &#39;PointTool&#39;, &#39;IntervalTool&#39;, &#39;IncludeExcludePointTool&#39; ],
+    availableTools =&gt;
+        [ &#39;PointTool&#39;, &#39;IntervalTool&#39;, &#39;IncludeExcludePointTool&#39; ],
     numberLine     =&gt; 1,
     bBox           =&gt; [ -6, 6 ],
     ticksDistanceX =&gt; 1,
@@ -178,7 +182,8 @@ ENDDOCUMENT();</pre>
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard) btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

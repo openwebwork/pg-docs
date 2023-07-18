@@ -75,19 +75,19 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGcourse.pl&#39;);
 
 $v1 = Vector(&quot;&lt;1,3&gt;&quot;);
 $v2 = Compute(&quot;&lt;-3,1&gt;&quot;);
-$v3 = 3*i + 2*j - 4*k;
-$v4 = Vector(1,1,0);
+$v3 = 3 * i + 2 * j - 4 * k;
+$v4 = Vector(1, 1, 0);
 
 # create an array of the components of $v3
 @v3comp = $v3-&gt;value;
 
-$a = 3*i + j;
+$a = 3 * i + j;
 # $b = $a + $v1; # this results in an error
-$c = norm($v3);    # vector length
-$v5 = unit($v3);   # unit vector in same direction
-$d = $v1 . $v2;    # dot product
-$v6 = $v3 x $v4;      # cross product
-$v3-&gt;isParallel($v4); # returns 1 if parallel, 0 if skew
+$c  = norm($v3);         # vector length
+$v5 = unit($v3);         # unit vector in same direction
+$d  = $v1 . $v2;         # dot product
+$v6 = $v3 x $v4;         # cross product
+$v3-&gt;isParallel($v4);    # returns 1 if parallel, 0 if skew
 
 BEGIN_PGML
 [`\vec{v}_1=[$v1]`]
@@ -117,7 +117,6 @@ The first element of [`\vec{v}_3`] is [@ $v3-&gt;extract(1) @]
 
 The third element of [`\vec{v}_4`] is [@ $v4-&gt;extract(3) @]
 END_PGML
-
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
@@ -138,19 +137,19 @@ END_PGML
 
 $v1 = Vector(&quot;&lt;1,3&gt;&quot;);
 $v2 = Compute(&quot;&lt;-3,1&gt;&quot;);
-$v3 = 3*i + 2*j - 4*k;
-$v4 = Vector(1,1,0);
+$v3 = 3 * i + 2 * j - 4 * k;
+$v4 = Vector(1, 1, 0);
 
 # create an array of the components of $v3
 @v3comp = $v3-&gt;value;
 
-$a = 3*i + j;
+$a = 3 * i + j;
 # $b = $a + $v1; # this results in an error
-$c = norm($v3);    # vector length
-$v5 = unit($v3);   # unit vector in same direction
-$d = $v1 . $v2;    # dot product
-$v6 = $v3 x $v4;      # cross product
-$v3-&gt;isParallel($v4); # returns 1 if parallel, 0 if skew
+$c  = norm($v3);         # vector length
+$v5 = unit($v3);         # unit vector in same direction
+$d  = $v1 . $v2;         # dot product
+$v6 = $v3 x $v4;         # cross product
+$v3-&gt;isParallel($v4);    # returns 1 if parallel, 0 if skew
 
 BEGIN_PGML
 [`\vec{v}_1=[$v1]`]
@@ -180,7 +179,6 @@ The first element of [`\vec{v}_3`] is [@ $v3-&gt;extract(1) @]
 
 The third element of [`\vec{v}_4`] is [@ $v4-&gt;extract(3) @]
 END_PGML
-
 </pre>
 				</div>
 				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
@@ -225,7 +223,8 @@ ENDDOCUMENT();</pre>
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard) btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

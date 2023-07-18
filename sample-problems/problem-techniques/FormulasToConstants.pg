@@ -1,6 +1,9 @@
 DOCUMENT();
 
-loadMacros('PGstandard.pl', 'PGML.pl', 'parserFormulaUpToConstant.pl', 'PGcourse.pl');
+loadMacros(
+    'PGstandard.pl',                'PGML.pl',
+    'parserFormulaUpToConstant.pl', 'PGcourse.pl'
+);
 
 $func  = Formula('sin(x)');
 $gfunc = FormulaUpToConstant('sin(x) + C');

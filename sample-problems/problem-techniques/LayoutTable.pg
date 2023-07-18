@@ -1,5 +1,8 @@
 DOCUMENT();
-loadMacros('PGstandard.pl', 'PGML.pl', 'niceTables.pl', 'PGtikz.pl', 'PGcourse.pl');
+loadMacros(
+    'PGstandard.pl', 'PGML.pl', 'niceTables.pl', 'PGtikz.pl',
+    'PGcourse.pl'
+);
 
 $a   = random(0, 3);
 $ans = Compute("x^2+$a")->reduce;
@@ -34,7 +37,10 @@ $graph->BEGIN_TIKZ
 \draw[blue,ultra thick] plot[domain=-2.5:2.5,smooth] (\x,{\x*\x+$a});
 END_TIKZ
 
-TEXT(LayoutTable([ [ $left, image($graph, width => 400, tex_size => 600) ] ], align => 'lc'));
+TEXT(LayoutTable(
+    [ [ $left, image($graph, width => 400, tex_size => 600) ] ],
+    align => 'lc'
+));
 
 ANS($ans->cmp);
 

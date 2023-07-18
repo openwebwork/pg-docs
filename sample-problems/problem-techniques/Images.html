@@ -52,8 +52,12 @@
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
 						type="button" data-code="DOCUMENT();
 
-loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGgraphmacros.pl&#39;, &#39;PGtikz.pl&#39;,
-  &#39;PGlateximage.pl&#39;, &#39;parserGraphTool.pl&#39;, &#39;PGcourse.pl&#39;);
+loadMacros(
+    &#39;PGstandard.pl&#39;,    &#39;PGML.pl&#39;,
+    &#39;PGgraphmacros.pl&#39;, &#39;PGtikz.pl&#39;,
+    &#39;PGlateximage.pl&#39;,  &#39;parserGraphTool.pl&#39;,
+    &#39;PGcourse.pl&#39;
+);
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
@@ -62,8 +66,12 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGgraphmacros.pl&#39
 					</button>
 					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
 
-loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGgraphmacros.pl&#39;, &#39;PGtikz.pl&#39;,
-  &#39;PGlateximage.pl&#39;, &#39;parserGraphTool.pl&#39;, &#39;PGcourse.pl&#39;);
+loadMacros(
+    &#39;PGstandard.pl&#39;,    &#39;PGML.pl&#39;,
+    &#39;PGgraphmacros.pl&#39;, &#39;PGtikz.pl&#39;,
+    &#39;PGlateximage.pl&#39;,  &#39;parserGraphTool.pl&#39;,
+    &#39;PGcourse.pl&#39;
+);
 </pre>
 				</div>
 				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
@@ -74,7 +82,7 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGgraphmacros.pl&#39
 			<div class="row">
 				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
-						type="button" data-code="$WWPlot = init_graph(-1,-1,4,4);
+						type="button" data-code="$WWPlot = init_graph(-1, -1, 4, 4);
 add_functions($WWPlot, &quot;x^2/4 for x in &lt;-1,4&gt; using color:blue and weight:2&quot;);
 
 $TikZ = createTikZImage();
@@ -83,7 +91,7 @@ $TikZ-&gt;BEGIN_TIKZ
 END_TIKZ
 
 $LaTeXImage = createLaTeXImage();
-$LaTeXImage-&gt;texPackages([[&#39;xy&#39;,&#39;all&#39;]]);
+$LaTeXImage-&gt;texPackages([ [ &#39;xy&#39;, &#39;all&#39; ] ]);
 $LaTeXImage-&gt;BEGIN_LATEX_IMAGE
 \xymatrix{ A \ar[r] &amp; B \ar[d] \\\\
            D \ar[u] &amp; C \ar[l] }
@@ -96,7 +104,7 @@ $gt = GraphTool(&quot;{circle, solid, (1, 1), (2, 2)}&quot;);
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">$WWPlot = init_graph(-1,-1,4,4);
+					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">$WWPlot = init_graph(-1, -1, 4, 4);
 add_functions($WWPlot, &quot;x^2/4 for x in &lt;-1,4&gt; using color:blue and weight:2&quot;);
 
 $TikZ = createTikZImage();
@@ -105,7 +113,7 @@ $TikZ-&gt;BEGIN_TIKZ
 END_TIKZ
 
 $LaTeXImage = createLaTeXImage();
-$LaTeXImage-&gt;texPackages([[&#39;xy&#39;,&#39;all&#39;]]);
+$LaTeXImage-&gt;texPackages([ [ &#39;xy&#39;, &#39;all&#39; ] ]);
 $LaTeXImage-&gt;BEGIN_LATEX_IMAGE
 \xymatrix{ A \ar[r] &amp; B \ar[d] \\\\
            D \ar[u] &amp; C \ar[l] }
@@ -139,7 +147,6 @@ $gt = GraphTool(&quot;{circle, solid, (1, 1), (2, 2)}&quot;);
 
 END_PGML
 
-
 ENDDOCUMENT();" aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
@@ -162,7 +169,6 @@ ENDDOCUMENT();" aria-label="copy to clipboard">
 * A graphtool plot [!A graphtool plot with a circle!]{$gt}{120}
 
 END_PGML
-
 
 ENDDOCUMENT();</pre>
 				</div>
@@ -187,7 +193,8 @@ ENDDOCUMENT();</pre>
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard) btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

@@ -69,8 +69,12 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;draggableSubsets.pl&
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
 						type="button" data-code="$draggable = DraggableSubsets(
     [
-        &#39;mouse&#39;,  &#39;ebola bacteria&#39;, &#39;flu virus&#39;,    &#39;krill&#39;,    &#39;house cat&#39;,  &#39;emu&#39;,
-        &#39;coyote&#39;, &#39;tapir&#39;,          &#39;hippopotamus&#39;, &#39;elephant&#39;, &#39;blue whale&#39;, &#39;eagle&#39;
+        &#39;mouse&#39;,        &#39;ebola bacteria&#39;,
+        &#39;flu virus&#39;,    &#39;krill&#39;,
+        &#39;house cat&#39;,    &#39;emu&#39;,
+        &#39;coyote&#39;,       &#39;tapir&#39;,
+        &#39;hippopotamus&#39;, &#39;elephant&#39;,
+        &#39;blue whale&#39;,   &#39;eagle&#39;
     ],
     [ [], [ 0, 4, 6, 7, 8, 9, 10 ], [ 5, 11 ], [ 1, 2, 3 ] ],
     # [&#39;mouse&#39;,&#39;house cat&#39;,&#39;coyote&#39;,&#39;tapir&#39;,&#39;hippopatamus&#39;,&#39;elephant&#39;]
@@ -80,7 +84,8 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;draggableSubsets.pl&
         { label =&gt; &#39;Birds&#39;,   indices =&gt; [] },
         { label =&gt; &#39;Other&#39;,   indices =&gt; [] }
     ],
-    AllowNewBuckets =&gt; 0
+    AllowNewBuckets =&gt; 0,
+    OrderedSubsets  =&gt; 1
 );
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -90,8 +95,12 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;draggableSubsets.pl&
 					</button>
 					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">$draggable = DraggableSubsets(
     [
-        &#39;mouse&#39;,  &#39;ebola bacteria&#39;, &#39;flu virus&#39;,    &#39;krill&#39;,    &#39;house cat&#39;,  &#39;emu&#39;,
-        &#39;coyote&#39;, &#39;tapir&#39;,          &#39;hippopotamus&#39;, &#39;elephant&#39;, &#39;blue whale&#39;, &#39;eagle&#39;
+        &#39;mouse&#39;,        &#39;ebola bacteria&#39;,
+        &#39;flu virus&#39;,    &#39;krill&#39;,
+        &#39;house cat&#39;,    &#39;emu&#39;,
+        &#39;coyote&#39;,       &#39;tapir&#39;,
+        &#39;hippopotamus&#39;, &#39;elephant&#39;,
+        &#39;blue whale&#39;,   &#39;eagle&#39;
     ],
     [ [], [ 0, 4, 6, 7, 8, 9, 10 ], [ 5, 11 ], [ 1, 2, 3 ] ],
     # [&#39;mouse&#39;,&#39;house cat&#39;,&#39;coyote&#39;,&#39;tapir&#39;,&#39;hippopatamus&#39;,&#39;elephant&#39;]
@@ -101,7 +110,8 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;draggableSubsets.pl&
         { label =&gt; &#39;Birds&#39;,   indices =&gt; [] },
         { label =&gt; &#39;Other&#39;,   indices =&gt; [] }
     ],
-    AllowNewBuckets =&gt; 0
+    AllowNewBuckets =&gt; 0,
+    OrderedSubsets  =&gt; 1
 );
 </pre>
 				</div>
@@ -113,7 +123,7 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;draggableSubsets.pl&
 <span id="draggable-subsets-usage-3"><a href="#draggable-subsets-usage-3" aria-hidden="true"></a>        <span class="dt">$answer_sets</span>,</span>
 <span id="draggable-subsets-usage-4"><a href="#draggable-subsets-usage-4" aria-hidden="true"></a>        <span class="dt">%options</span></span>
 <span id="draggable-subsets-usage-5"><a href="#draggable-subsets-usage-5" aria-hidden="true"></a>    );</span></code></pre></div>
-<p>where <code>$full_set</code> is the set of all labelled boxes. The <code>$answer_sets</code> is a nested array reference of distribution of the correct subsets. There are many options. The example here shows the use of <code>DefaultSubsets</code> which shows how to label and initialize the buckets. The <code>AllowNewBuckets</code> option allows the student in add a new bucket (1) or not (0).</p>
+<p>where <code>$full_set</code> is the set of all labelled boxes. The <code>$answer_sets</code> is a nested array reference of distribution of the correct subsets. There are many options. The example here shows the use of <code>DefaultSubsets</code> which shows how to label and initialize the buckets. The <code>AllowNewBuckets</code> option allows the student in add a new bucket (1) or not (0). The <code>OrderedSubsets</code> option requires that the subsets in the student answer be the same as in the correct answer.</p>
 <p>See the <a href="../Misc/DraggableProof.html">DraggableProofs</a> for an example of how to create drag and drop proof problems.</p>
 				</div>
 			</div>
@@ -175,7 +185,8 @@ ENDDOCUMENT();</pre>
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard) btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

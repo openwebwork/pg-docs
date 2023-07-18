@@ -1,0 +1,68 @@
+DOCUMENT();
+loadMacros(
+    'PGstandard.pl',           'PGML.pl',
+    'parserParametricLine.pl', 'parserMultiAnswer.pl',
+    'PGcourse.pl'
+);
+
+Context("Vector");
+Context()->variables->are(t => "Real");
+
+$P = Point(4, 0);
+$Q = Point(0, 2);
+$V = Vector(-4, 2);
+
+$t    = Formula("t");
+$line = Vector("$P + $t * $V");
+
+$multians = MultiAnswer($line, Real("0"), Real("1"))->with(
+    singleResult => 0,
+    checker      => sub {
+        my ($correct, $student, $ansHash) = @_;
+        my ($linestu, $astu,    $bstu)    = @{$student};
+        my ($linecor, $acor,    $bcor)    = @{$correct};
+
+        if ((ParametricLine("$line") == $linestu)
+            && ($linestu->eval(t => $astu) == $line->eval(t => "0"))
+            && ($linestu->eval(t => $bstu) == $line->eval(t => "1")))
+        {
+            return [ 1, 1, 1 ];
+
+        } elsif ((ParametricLine("$line") == $linestu)
+            && ($linestu->eval(t => $astu) == $line->eval(t => "0")))
+        {
+            return [ 1, 1, 0 ];
+
+        } elsif ((ParametricLine("$line") == $linestu)
+            && ($linestu->eval(t => $bstu) == $line->eval(t => "1")))
+        {
+            return [ 1, 0, 1 ];
+
+        } elsif ((ParametricLine("$line") == $linestu)) {
+            return [ 1, 0, 0 ];
+
+        } else {
+            return [ 0, 0, 0 ];
+        }
+
+    }
+);
+
+BEGIN_PGML
+Find a vector parametric equation for the line
+segment from the point [`P = [$P]`]
+to [`Q = [$Q]`].
+
+[` \vec{r}(t) = `] [__]{$multians}
+
+for
+[__]{$multians}
+[` \leq t \leq `]
+[__]{$multians}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

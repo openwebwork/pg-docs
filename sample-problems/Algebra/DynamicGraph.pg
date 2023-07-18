@@ -2,15 +2,11 @@ DOCUMENT();
 
 loadMacros('PGstandard.pl', 'PGML.pl', 'PGtikz.pl', 'PGcourse.pl');
 
-$a = random(2, 3, 1);    # negative of left x-intercept
-$b = random(2, 4, 2);    # right x-intercept
-$c = random(3, 6, 1);    # y-intercept
+$a = random(1, 4);    # negative of left x-intercept
+$b = random(2, 4);    # right x-intercept
+$c = random(2, 6);    # y-intercept
 
 $k = -$c / ($a * $b);
-
-$A = $k;
-$B = $k * ($a - $b);
-$C = -$k * $a * $b;
 
 $graph = createTikZImage();
 $graph->tikzLibraries('arrows.meta');
@@ -28,7 +24,7 @@ $graph->BEGIN_TIKZ
 \draw[->,thick] (0,-1) -- (0,7) node[below right,outer sep=3pt] {\(y\)};
 \foreach \y in {1,...,6}
     \draw (5pt,\y) -- (-5pt,\y) node[left] {\(\y\)};
-\draw[blue,ultra thick] plot[domain=-6:6,smooth] (\x,{$A*\x*\x+$B*\x+$C});
+\draw[blue,ultra thick] plot[domain=-6:6,smooth] (\x,{$k*(\x+$a)*(\x-$b)});
 END_TIKZ
 
 BEGIN_PGML

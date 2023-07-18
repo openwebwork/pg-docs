@@ -49,7 +49,10 @@
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
 						type="button" data-code="DOCUMENT();
 
-loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;contextLimitedComplex.pl&#39;, &#39;PGcourse.pl&#39;);
+loadMacros(
+    &#39;PGstandard.pl&#39;,            &#39;PGML.pl&#39;,
+    &#39;contextLimitedComplex.pl&#39;, &#39;PGcourse.pl&#39;
+);
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
@@ -58,7 +61,10 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;contextLimitedComple
 					</button>
 					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
 
-loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;contextLimitedComplex.pl&#39;, &#39;PGcourse.pl&#39;);
+loadMacros(
+    &#39;PGstandard.pl&#39;,            &#39;PGML.pl&#39;,
+    &#39;contextLimitedComplex.pl&#39;, &#39;PGcourse.pl&#39;
+);
 </pre>
 				</div>
 				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
@@ -71,23 +77,23 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;contextLimitedComple
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
 						type="button" data-code="Context(&#39;LimitedComplex&#39;);
 
-$x0 = non_zero_random(-5,5);
-$y0 = non_zero_random(-5,5);
-$x1 = non_zero_random(-5,5);
-$y1 = non_zero_random(-5,5);
+$x0 = non_zero_random(-5, 5);
+$y0 = non_zero_random(-5, 5);
+$x1 = non_zero_random(-5, 5);
+$y1 = non_zero_random(-5, 5);
 
-$z0 = Complex($x0,$y0);
-$z1 = Complex($x1,$y1);
+$z0 = Complex($x0, $y0);
+$z1 = Complex($x1, $y1);
 
-$ans1 = $z0+$z1;
-$ans2 = $z0*$z1;
+$ans1 = $z0 + $z1;
+$ans2 = $z0 * $z1;
 
 # Determine the polar form of the answer to give a hint.  Since in
 # LimitedComplex, most functions are diasbled, so we work on the components.
-$arg0 = atan($y0/$x0) + ($x0 &gt; 0 ? ($y0&gt;0 ? 0 : 2*pi): pi);
-$arg1 = atan($y1/$x1) + ($x1 &gt; 0 ? ($y1&gt;0 ? 0 : 2*pi): pi);
-$abs0 = sqrt($x0**2+$y0**2);
-$abs1 = sqrt($x1**2+$y1**2);
+$arg0 = atan($y0 / $x0) + ($x0 &gt; 0 ? ($y0 &gt; 0 ? 0 : 2 * pi) : pi);
+$arg1 = atan($y1 / $x1) + ($x1 &gt; 0 ? ($y1 &gt; 0 ? 0 : 2 * pi) : pi);
+$abs0 = sqrt($x0**2 + $y0**2);
+$abs1 = sqrt($x1**2 + $y1**2);
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
@@ -96,23 +102,23 @@ $abs1 = sqrt($x1**2+$y1**2);
 					</button>
 					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context(&#39;LimitedComplex&#39;);
 
-$x0 = non_zero_random(-5,5);
-$y0 = non_zero_random(-5,5);
-$x1 = non_zero_random(-5,5);
-$y1 = non_zero_random(-5,5);
+$x0 = non_zero_random(-5, 5);
+$y0 = non_zero_random(-5, 5);
+$x1 = non_zero_random(-5, 5);
+$y1 = non_zero_random(-5, 5);
 
-$z0 = Complex($x0,$y0);
-$z1 = Complex($x1,$y1);
+$z0 = Complex($x0, $y0);
+$z1 = Complex($x1, $y1);
 
-$ans1 = $z0+$z1;
-$ans2 = $z0*$z1;
+$ans1 = $z0 + $z1;
+$ans2 = $z0 * $z1;
 
 # Determine the polar form of the answer to give a hint.  Since in
 # LimitedComplex, most functions are diasbled, so we work on the components.
-$arg0 = atan($y0/$x0) + ($x0 &gt; 0 ? ($y0&gt;0 ? 0 : 2*pi): pi);
-$arg1 = atan($y1/$x1) + ($x1 &gt; 0 ? ($y1&gt;0 ? 0 : 2*pi): pi);
-$abs0 = sqrt($x0**2+$y0**2);
-$abs1 = sqrt($x1**2+$y1**2);
+$arg0 = atan($y0 / $x0) + ($x0 &gt; 0 ? ($y0 &gt; 0 ? 0 : 2 * pi) : pi);
+$arg1 = atan($y1 / $x1) + ($x1 &gt; 0 ? ($y1 &gt; 0 ? 0 : 2 * pi) : pi);
+$abs0 = sqrt($x0**2 + $y0**2);
+$abs1 = sqrt($x1**2 + $y1**2);
 </pre>
 				</div>
 				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
@@ -167,7 +173,6 @@ END_PGML
 Solution explanation goes here.
 END_PGML_SOLUTION
 
-
 ENDDOCUMENT();" aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
@@ -177,7 +182,6 @@ ENDDOCUMENT();" aria-label="copy to clipboard">
 					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
 Solution explanation goes here.
 END_PGML_SOLUTION
-
 
 ENDDOCUMENT();</pre>
 				</div>
@@ -194,7 +198,8 @@ ENDDOCUMENT();</pre>
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard) btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

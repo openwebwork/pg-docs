@@ -39,6 +39,13 @@
 								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/graph/PGtikz.html">PGtikz.pl</a></li>
 					</ul>
 				</div>
+			<div class="col">
+				<h2>See Also</h2>
+				<ul>
+						<li><a href="https://openwebwork.github.io/pg-docs/sample-problems/VectorCalc/VectorFieldGraph2D.html">
+Two-D Vector Field</a></li>
+				</ul>
+			</div>
 		</div>
 		<div class="row">
 			<div class="col text-center"><h2 class="fw-bold fs-3">PG problem file</h2></div>
@@ -125,6 +132,7 @@ END_TIKZ
 					<p><b>Setup</b></p>
 						<p>A direction field is a vector field where the length of the vectors are constant. We use the same technique as <a href="https://openwebwork.github.io/pg-docs/sample-problems/VectorCalc/VectorFieldGraph2D.html">Two-D Vector Field</a>.</p>
 <p>The vector field &lt;y,-x&gt; is used and then when the vector is drawn is scaled by its length or <code>sqrt(x^2+y^2)</code>. Since this is not defined at the origin, we don’t draw the vector there and use the <code>ifthen</code> package to load the <code>\ifthenelse</code> latex command.</p>
+<p>If you want a slope field, where only the slope is draw with no arrow delete the <code>-&gt;</code> in the option of the <code>\draw</code> command inside the <code>\foreach</code> loops.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -189,7 +197,8 @@ ENDDOCUMENT();
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard) btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

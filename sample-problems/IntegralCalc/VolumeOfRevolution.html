@@ -53,7 +53,7 @@
 
 loadMacros(
     &#39;PGstandard.pl&#39;,     &#39;PGML.pl&#39;,
-    &#39;niceTables.pl&#39;,    &#39;answerHints.pl&#39;,
+    &#39;niceTables.pl&#39;,     &#39;answerHints.pl&#39;,
     &#39;weightedGrader.pl&#39;, &#39;PGcourse.pl&#39;
 );
 
@@ -68,7 +68,7 @@ install_weighted_grader();
 
 loadMacros(
     &#39;PGstandard.pl&#39;,     &#39;PGML.pl&#39;,
-    &#39;niceTables.pl&#39;,    &#39;answerHints.pl&#39;,
+    &#39;niceTables.pl&#39;,     &#39;answerHints.pl&#39;,
     &#39;weightedGrader.pl&#39;, &#39;PGcourse.pl&#39;
 );
 
@@ -91,13 +91,22 @@ $lower = Real(&#39;0&#39;);
 $int   = Compute(&#39;(pi x^2 - pi x^4) dx&#39;);
 $vol   = Compute(&#39;2pi/15&#39;);
 
-$integral = LayoutTable([
-    [ &#39; &#39;, NAMED_ANS_RULE(&#39;upperlimit&#39;, 4)],
-    [&#39;\(V= \)&#39;,&#39;\(\displaystyle \int \;\;\)&#39; . NAMED_ANS_RULE(&#39;integrand&#39;, 10)
-        . &#39;\(\;=\;  \)&#39; . NAMED_ANS_RULE(&#39;volume&#39;, 4)],
-    [ &#39; &#39;,NAMED_ANS_RULE(&#39;lowerlimit&#39;, 4)],
-],
-    align =&gt; &#39;rl&#39;, valign =&gt; &#39;middle&#39;, allcellcss =&gt; {padding =&gt; &#39;3pt&#39;});
+$integral = LayoutTable(
+    [
+        [ &#39; &#39;, NAMED_ANS_RULE(&#39;upperlimit&#39;, 4) ],
+        [
+            &#39;\(V= \)&#39;,
+            &#39;\(\displaystyle \int \;\;\)&#39;
+                . NAMED_ANS_RULE(&#39;integrand&#39;, 10)
+                . &#39;\(\;=\;  \)&#39;
+                . NAMED_ANS_RULE(&#39;volume&#39;, 4)
+        ],
+        [ &#39; &#39;, NAMED_ANS_RULE(&#39;lowerlimit&#39;, 4) ],
+    ],
+    align      =&gt; &#39;rl&#39;,
+    valign     =&gt; &#39;middle&#39;,
+    allcellcss =&gt; { padding =&gt; &#39;3pt&#39; }
+);
 
 @weights = (5, 5, 40, 50);" aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -112,13 +121,22 @@ $lower = Real(&#39;0&#39;);
 $int   = Compute(&#39;(pi x^2 - pi x^4) dx&#39;);
 $vol   = Compute(&#39;2pi/15&#39;);
 
-$integral = LayoutTable([
-    [ &#39; &#39;, NAMED_ANS_RULE(&#39;upperlimit&#39;, 4)],
-    [&#39;\(V= \)&#39;,&#39;\(\displaystyle \int \;\;\)&#39; . NAMED_ANS_RULE(&#39;integrand&#39;, 10)
-        . &#39;\(\;=\;  \)&#39; . NAMED_ANS_RULE(&#39;volume&#39;, 4)],
-    [ &#39; &#39;,NAMED_ANS_RULE(&#39;lowerlimit&#39;, 4)],
-],
-    align =&gt; &#39;rl&#39;, valign =&gt; &#39;middle&#39;, allcellcss =&gt; {padding =&gt; &#39;3pt&#39;});
+$integral = LayoutTable(
+    [
+        [ &#39; &#39;, NAMED_ANS_RULE(&#39;upperlimit&#39;, 4) ],
+        [
+            &#39;\(V= \)&#39;,
+            &#39;\(\displaystyle \int \;\;\)&#39;
+                . NAMED_ANS_RULE(&#39;integrand&#39;, 10)
+                . &#39;\(\;=\;  \)&#39;
+                . NAMED_ANS_RULE(&#39;volume&#39;, 4)
+        ],
+        [ &#39; &#39;, NAMED_ANS_RULE(&#39;lowerlimit&#39;, 4) ],
+    ],
+    align      =&gt; &#39;rl&#39;,
+    valign     =&gt; &#39;middle&#39;,
+    allcellcss =&gt; { padding =&gt; &#39;3pt&#39; }
+);
 
 @weights = (5, 5, 40, 50);</pre>
 				</div>
@@ -269,7 +287,8 @@ ENDDOCUMENT();</pre>
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard) btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

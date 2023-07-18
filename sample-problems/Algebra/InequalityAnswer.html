@@ -72,7 +72,7 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;contextInequalities.
 						type="button" data-code="Context(&#39;Inequalities-Only&#39;);
 Context()-&gt;flags-&gt;set(formatStudentAnswer =&gt; &#39;parsed&#39;);
 
-$a = random(3, 9);
+$a   = random(3, 9);
 $ans = Compute(&quot;x &gt;= -10 / $a&quot;);
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -83,7 +83,7 @@ $ans = Compute(&quot;x &gt;= -10 / $a&quot;);
 					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context(&#39;Inequalities-Only&#39;);
 Context()-&gt;flags-&gt;set(formatStudentAnswer =&gt; &#39;parsed&#39;);
 
-$a = random(3, 9);
+$a   = random(3, 9);
 $ans = Compute(&quot;x &gt;= -10 / $a&quot;);
 </pre>
 				</div>
@@ -157,7 +157,8 @@ ENDDOCUMENT();</pre>
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard) btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

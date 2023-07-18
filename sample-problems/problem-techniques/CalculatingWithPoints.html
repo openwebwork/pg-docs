@@ -62,7 +62,10 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGcourse.pl&#39;);
 				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
 						type="button" data-code="Context(&quot;Point&quot;);
-@points = (Point(random(1, 5, 1), random(-5, -1, 1)), Point(random(5, 10, 1), random(6, 11, 1)));
+@points = (
+    Point(random(1, 5,  1), random(-5, -1, 1)),
+    Point(random(5, 10, 1), random(6,  11, 1))
+);
 
 # If $point[0] = (x1,y1) and $point[1] = (x2,y2),
 # then the following makes $d1 = x1 - x2, $d2 = y1 - y2
@@ -77,7 +80,10 @@ $mid    = ($points[1] + $points[0]) / 2;
 						</svg>
 					</button>
 					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context(&quot;Point&quot;);
-@points = (Point(random(1, 5, 1), random(-5, -1, 1)), Point(random(5, 10, 1), random(6, 11, 1)));
+@points = (
+    Point(random(1, 5,  1), random(-5, -1, 1)),
+    Point(random(5, 10, 1), random(6,  11, 1))
+);
 
 # If $point[0] = (x1,y1) and $point[1] = (x2,y2),
 # then the following makes $d1 = x1 - x2, $d2 = y1 - y2
@@ -162,7 +168,8 @@ ENDDOCUMENT();</pre>
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard) btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

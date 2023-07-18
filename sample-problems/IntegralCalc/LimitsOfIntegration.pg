@@ -1,7 +1,7 @@
 DOCUMENT();
 
 loadMacros(
-    'PGstandard.pl',  'PGML.pl', 'niceTables.pl', 'answerHints.pl',
+    'PGstandard.pl', 'PGML.pl', 'niceTables.pl', 'answerHints.pl',
     'PGcourse.pl'
 );
 
@@ -12,12 +12,18 @@ Context()->variables->are(
     dt => 'Real'
 );
 
-$integral = LayoutTable([
-    [ ' ',ans_rule(4)],
-    ['\(f(x)= \)' . ans_rule(10) . '\(+\)','\(\displaystyle \int \;\;\)' . ans_rule(10)],
-    [ ' ',ans_rule(4)],
-],
-    align => 'rl', allcellcss => {padding => '3pt'});
+$integral = LayoutTable(
+    [
+        [ ' ', ans_rule(4) ],
+        [
+            '\(f(x)= \)' . ans_rule(10) . '\(+\)',
+            '\(\displaystyle \int \;\;\)' . ans_rule(10)
+        ],
+        [ ' ', ans_rule(4) ],
+    ],
+    align      => 'rl',
+    allcellcss => { padding => '3pt' }
+);
 
 BEGIN_PGML
 Find a formula for the function [`f(x)`] such that [`f '(x) = [$fpx]`] and
@@ -28,7 +34,6 @@ END_PGML
 
 $fpx = Formula("sin(x)");
 $fpt = Formula("sin(t)");
-
 
 ANS(Compute('x')->cmp());
 ANS(Compute('5')->cmp());

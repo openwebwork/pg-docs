@@ -71,24 +71,23 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;parserVectorUtils.pl
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
 						type="button" data-code="Context(&#39;Vector&#39;);
 
-$U = non_zero_vector3D(-9,9,1);
-$V = non_zero_vector3D(-9,9,1);
+$U = non_zero_vector3D(-9, 9, 1);
+$V = non_zero_vector3D(-9, 9, 1);
 
 # value works only for vectors of constants
 @Uarray = $U-&gt;value;
 $Ucomp2 = $Uarray[1];
 
-$UdotV = $U . $V;
+$UdotV   = $U . $V;
 $UcrossV = $U x $V;
-$Vlength = norm( $V );
-$Vunit = unit($V);
+$Vlength = norm($V);
+$Vunit   = unit($V);
 
 # Prevent students from entering the dot and cross products,
 # and the vector functions norm and unit.
 
-Context()-&gt;operators-&gt;undefine(&#39;.&#39;,&quot;&gt;&lt;&quot;);
+Context()-&gt;operators-&gt;undefine(&#39;.&#39;, &quot;&gt;&lt;&quot;);
 Context()-&gt;functions-&gt;disable(&#39;Vector&#39;);
-
 
 BEGIN_PGML
 Suppose [` \vec{u} = [$U] `] and [` \vec{v} = [$V] `].
@@ -116,24 +115,23 @@ END_PGML
 					</button>
 					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context(&#39;Vector&#39;);
 
-$U = non_zero_vector3D(-9,9,1);
-$V = non_zero_vector3D(-9,9,1);
+$U = non_zero_vector3D(-9, 9, 1);
+$V = non_zero_vector3D(-9, 9, 1);
 
 # value works only for vectors of constants
 @Uarray = $U-&gt;value;
 $Ucomp2 = $Uarray[1];
 
-$UdotV = $U . $V;
+$UdotV   = $U . $V;
 $UcrossV = $U x $V;
-$Vlength = norm( $V );
-$Vunit = unit($V);
+$Vlength = norm($V);
+$Vunit   = unit($V);
 
 # Prevent students from entering the dot and cross products,
 # and the vector functions norm and unit.
 
-Context()-&gt;operators-&gt;undefine(&#39;.&#39;,&quot;&gt;&lt;&quot;);
+Context()-&gt;operators-&gt;undefine(&#39;.&#39;, &quot;&gt;&lt;&quot;);
 Context()-&gt;functions-&gt;disable(&#39;Vector&#39;);
-
 
 BEGIN_PGML
 Suppose [` \vec{u} = [$U] `] and [` \vec{v} = [$V] `].
@@ -194,7 +192,8 @@ ENDDOCUMENT();
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard) btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

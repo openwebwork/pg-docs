@@ -87,8 +87,10 @@ $answer1 =
     List($f-&gt;eval(t =&gt; $a - 1), $f-&gt;eval(t =&gt; $a), $f-&gt;eval(t =&gt; $a + 1));
 
 $answer2 = $f-&gt;with(
-    limits     =&gt; [ $a - 5,     $a + 5 ],
-    test_at    =&gt; [ [ $a - 1 ], [ $a - 0.0000001 ], [$a], [ $a + 0.0000001 ], [ $a + 1 ] ],
+    limits  =&gt; [ $a - 5, $a + 5 ],
+    test_at =&gt; [
+        [ $a - 1 ], [ $a - 0.0000001 ], [$a], [ $a + 0.0000001 ], [ $a + 1 ]
+    ],
     num_points =&gt; 10,
 );
 " aria-label="copy to clipboard">
@@ -115,8 +117,10 @@ $answer1 =
     List($f-&gt;eval(t =&gt; $a - 1), $f-&gt;eval(t =&gt; $a), $f-&gt;eval(t =&gt; $a + 1));
 
 $answer2 = $f-&gt;with(
-    limits     =&gt; [ $a - 5,     $a + 5 ],
-    test_at    =&gt; [ [ $a - 1 ], [ $a - 0.0000001 ], [$a], [ $a + 0.0000001 ], [ $a + 1 ] ],
+    limits  =&gt; [ $a - 5, $a + 5 ],
+    test_at =&gt; [
+        [ $a - 1 ], [ $a - 0.0000001 ], [$a], [ $a + 0.0000001 ], [ $a + 1 ]
+    ],
     num_points =&gt; 10,
 );
 </pre>
@@ -220,7 +224,8 @@ ENDDOCUMENT();</pre>
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard) btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

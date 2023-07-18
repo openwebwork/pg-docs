@@ -1,5 +1,8 @@
 DOCUMENT();
-loadMacros('PGstandard.pl', 'PGML.pl', 'parserNumberWithUnits.pl', 'PGcourse.pl');
+loadMacros(
+    'PGstandard.pl',            'PGML.pl',
+    'parserNumberWithUnits.pl', 'PGcourse.pl'
+);
 
 $ans = NumberWithUnits('4', 'ft');
 

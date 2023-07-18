@@ -6,7 +6,6 @@ loadMacros(
     'unionTables.pl',    'PGcourse.pl'
 );
 
-
 $showPartialCorrectAnswers = 0;
 
 # Incremental grader

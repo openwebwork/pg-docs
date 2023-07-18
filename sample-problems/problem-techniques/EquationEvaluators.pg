@@ -1,5 +1,8 @@
 DOCUMENT();
-loadMacros('PGstandard.pl', 'PGML.pl', 'parserImplicitEquation.pl', 'PGcourse.pl');
+loadMacros(
+    'PGstandard.pl',             'PGML.pl',
+    'parserImplicitEquation.pl', 'PGcourse.pl'
+);
 
 Context("ImplicitEquation");
 Context()->variables->set(

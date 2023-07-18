@@ -50,9 +50,7 @@ Differential Equation</p>
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
 						type="button" data-code="DOCUMENT();
 
-loadMacros(
-    &#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;parserAssignment.pl&#39;, &#39;PGcourse.pl&#39;
-);
+loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;parserAssignment.pl&#39;, &#39;PGcourse.pl&#39;);
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
@@ -61,9 +59,7 @@ loadMacros(
 					</button>
 					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
 
-loadMacros(
-    &#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;parserAssignment.pl&#39;, &#39;PGcourse.pl&#39;
-);
+loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;parserAssignment.pl&#39;, &#39;PGcourse.pl&#39;);
 </pre>
 				</div>
 				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
@@ -108,9 +104,12 @@ $cmp = $answer-&gt;cmp(
         #  Linear independence (Wronskian)
         my $x = Real(1.43);
 
-        my $a11 = $stu-&gt;eval(&#39;c1&#39; =&gt; 1, &#39;c2&#39; =&gt; 0, &#39;c3&#39; =&gt; 0, x =&gt; $x, y =&gt; 0);
-        my $a12 = $stu-&gt;eval(&#39;c1&#39; =&gt; 0, &#39;c2&#39; =&gt; 1, &#39;c3&#39; =&gt; 0, x =&gt; $x, y =&gt; 0);
-        my $a13 = $stu-&gt;eval(&#39;c1&#39; =&gt; 0, &#39;c2&#39; =&gt; 0, &#39;c3&#39; =&gt; 1, x =&gt; $x, y =&gt; 0);
+        my $a11 =
+            $stu-&gt;eval(&#39;c1&#39; =&gt; 1, &#39;c2&#39; =&gt; 0, &#39;c3&#39; =&gt; 0, x =&gt; $x, y =&gt; 0);
+        my $a12 =
+            $stu-&gt;eval(&#39;c1&#39; =&gt; 0, &#39;c2&#39; =&gt; 1, &#39;c3&#39; =&gt; 0, x =&gt; $x, y =&gt; 0);
+        my $a13 =
+            $stu-&gt;eval(&#39;c1&#39; =&gt; 0, &#39;c2&#39; =&gt; 0, &#39;c3&#39; =&gt; 1, x =&gt; $x, y =&gt; 0);
 
         my $a21 = $stu-&gt;D(&#39;x&#39;)
             -&gt;eval(&#39;c1&#39; =&gt; 1, &#39;c2&#39; =&gt; 0, &#39;c3&#39; =&gt; 0, x =&gt; $x, y =&gt; 0);
@@ -184,9 +183,12 @@ $cmp = $answer-&gt;cmp(
         #  Linear independence (Wronskian)
         my $x = Real(1.43);
 
-        my $a11 = $stu-&gt;eval(&#39;c1&#39; =&gt; 1, &#39;c2&#39; =&gt; 0, &#39;c3&#39; =&gt; 0, x =&gt; $x, y =&gt; 0);
-        my $a12 = $stu-&gt;eval(&#39;c1&#39; =&gt; 0, &#39;c2&#39; =&gt; 1, &#39;c3&#39; =&gt; 0, x =&gt; $x, y =&gt; 0);
-        my $a13 = $stu-&gt;eval(&#39;c1&#39; =&gt; 0, &#39;c2&#39; =&gt; 0, &#39;c3&#39; =&gt; 1, x =&gt; $x, y =&gt; 0);
+        my $a11 =
+            $stu-&gt;eval(&#39;c1&#39; =&gt; 1, &#39;c2&#39; =&gt; 0, &#39;c3&#39; =&gt; 0, x =&gt; $x, y =&gt; 0);
+        my $a12 =
+            $stu-&gt;eval(&#39;c1&#39; =&gt; 0, &#39;c2&#39; =&gt; 1, &#39;c3&#39; =&gt; 0, x =&gt; $x, y =&gt; 0);
+        my $a13 =
+            $stu-&gt;eval(&#39;c1&#39; =&gt; 0, &#39;c2&#39; =&gt; 0, &#39;c3&#39; =&gt; 1, x =&gt; $x, y =&gt; 0);
 
         my $a21 = $stu-&gt;D(&#39;x&#39;)
             -&gt;eval(&#39;c1&#39; =&gt; 1, &#39;c2&#39; =&gt; 0, &#39;c3&#39; =&gt; 0, x =&gt; $x, y =&gt; 0);
@@ -300,7 +302,8 @@ ENDDOCUMENT();</pre>
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard) btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

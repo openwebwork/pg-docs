@@ -2,10 +2,10 @@ DOCUMENT();
 
 loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
 
-Context()->variables->set(x=>{limits=>[-1,1]});
+Context()->variables->set(x => { limits => [ -1, 1 ] });
 
 # Alternately
-Context()->flags->set(limits=>[2,5]);
+Context()->flags->set(limits => [ 2, 5 ]);
 
 $f = Compute('sqrt(x+1)');
 
@@ -16,7 +16,7 @@ $f = Compute('sqrt(x+1)');
 # $func->{limits} = [2,5];
 
 $g = Compute("sqrt(x^2 - 4)");
-$g->{test_points} = [[-3],[-2],[2],[3],[4]];
+$g->{test_points} = [ [-3], [-2], [2], [3], [4] ];
 
 BEGIN_PGML
 Enter [`[$f]`] [___]{$f}

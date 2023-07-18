@@ -61,7 +61,6 @@ Surface Graph in Cylindrical Coordinates</a></li>
 						type="button" data-code="DOCUMENT();
 
 loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;plotly3D.pl&#39;, &#39;PGcourse.pl&#39;);
-
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
@@ -71,7 +70,6 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;plotly3D.pl&#39;, &#
 					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
 
 loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;plotly3D.pl&#39;, &#39;PGcourse.pl&#39;);
-
 </pre>
 				</div>
 				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
@@ -85,10 +83,10 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;plotly3D.pl&#39;, &#
 						type="button" data-code="
 $gr = Graph3D();
 $gr-&gt;addSurface(
-    [&#39;x&#39;, &#39;y&#39;, &#39;x^2+y^2&#39;],
-    [-3, 3, 30],
-    [-3, 3, 30],
-    variables =&gt; [&#39;x&#39;,&#39;y&#39;]
+    [ &#39;x&#39;, &#39;y&#39;, &#39;x^2+y^2&#39; ],
+    [ -3,  3,   30 ],
+    [ -3,  3,   30 ],
+    variables =&gt; [ &#39;x&#39;, &#39;y&#39; ]
 );
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -99,10 +97,10 @@ $gr-&gt;addSurface(
 					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">
 $gr = Graph3D();
 $gr-&gt;addSurface(
-    [&#39;x&#39;, &#39;y&#39;, &#39;x^2+y^2&#39;],
-    [-3, 3, 30],
-    [-3, 3, 30],
-    variables =&gt; [&#39;x&#39;,&#39;y&#39;]
+    [ &#39;x&#39;, &#39;y&#39;, &#39;x^2+y^2&#39; ],
+    [ -3,  3,   30 ],
+    [ -3,  3,   30 ],
+    variables =&gt; [ &#39;x&#39;, &#39;y&#39; ]
 );
 </pre>
 				</div>
@@ -171,7 +169,8 @@ ENDDOCUMENT();</pre>
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard) btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

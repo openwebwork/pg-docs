@@ -65,14 +65,14 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGcourse.pl&#39;);
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
 						type="button" data-code="Context(&#39;Complex&#39;);
 
-$z0 = Complex(non_zero_random(-5,4), non_zero_random(-5,5));
-$z1 = Complex([-1,4]);
+$z0 = Complex(non_zero_random(-5, 4), non_zero_random(-5, 5));
+$z1 = Complex([ -1, 4 ]);
 $z2 = Complex(&quot;2-4i&quot;);
-$z3 = 3-4*i;
+$z3 = 3 - 4 * i;
 
-$ans1 = $z0+$z1;
-$a0 = non_zero_random(-4,4);
-$a1 = random(1,5);
+$ans1 = $z0 + $z1;
+$a0   = non_zero_random(-4, 4);
+$a1   = random(1, 5);
 $ans2 = Compute(&quot;$a0*$z1-$a1*$z2&quot;);
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -82,14 +82,14 @@ $ans2 = Compute(&quot;$a0*$z1-$a1*$z2&quot;);
 					</button>
 					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context(&#39;Complex&#39;);
 
-$z0 = Complex(non_zero_random(-5,4), non_zero_random(-5,5));
-$z1 = Complex([-1,4]);
+$z0 = Complex(non_zero_random(-5, 4), non_zero_random(-5, 5));
+$z1 = Complex([ -1, 4 ]);
 $z2 = Complex(&quot;2-4i&quot;);
-$z3 = 3-4*i;
+$z3 = 3 - 4 * i;
 
-$ans1 = $z0+$z1;
-$a0 = non_zero_random(-4,4);
-$a1 = random(1,5);
+$ans1 = $z0 + $z1;
+$a0   = non_zero_random(-4, 4);
+$a1   = random(1, 5);
 $ans2 = Compute(&quot;$a0*$z1-$a1*$z2&quot;);
 </pre>
 				</div>
@@ -148,7 +148,6 @@ END_PGML
 Solution explanation goes here.
 END_PGML_SOLUTION
 
-
 ENDDOCUMENT();" aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
@@ -158,7 +157,6 @@ ENDDOCUMENT();" aria-label="copy to clipboard">
 					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
 Solution explanation goes here.
 END_PGML_SOLUTION
-
 
 ENDDOCUMENT();</pre>
 				</div>
@@ -175,7 +173,8 @@ ENDDOCUMENT();</pre>
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard) btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

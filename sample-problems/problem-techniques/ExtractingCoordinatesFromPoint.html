@@ -63,17 +63,16 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGcourse.pl&#39;);
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
 						type="button" data-code="Context(&#39;Point&#39;);
 
-push(@point, Point(random(1,5), random(-5,-1)));
-push(@point, Point(random(5,10), random(6,11)));
+push(@point, Point(random(1, 5),  random(-5, -1)));
+push(@point, Point(random(5, 10), random(6,  11)));
 
 # now we have two points, $point[0] = (x1,y1)
 # and $point[1] = (x2,y2).
 # the following makes $d1 = x1 - x2, $d2 = y1 - y2
 ($d1, $d2) = ($point[0] - $point[1])-&gt;value;
 
-
 $length = Compute(&quot;sqrt( ($d1)^2+($d2)^2 )&quot;);
-$mid = ( $point[1] + $point[0] ) / 2;
+$mid    = ($point[1] + $point[0]) / 2;
 
 BEGIN_PGML
 Consider the two points [`[$point[0]]`] and [`[$point[1]]`].
@@ -92,17 +91,16 @@ END_PGML
 					</button>
 					<pre class="CodeMirror cm-s-default m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context(&#39;Point&#39;);
 
-push(@point, Point(random(1,5), random(-5,-1)));
-push(@point, Point(random(5,10), random(6,11)));
+push(@point, Point(random(1, 5),  random(-5, -1)));
+push(@point, Point(random(5, 10), random(6,  11)));
 
 # now we have two points, $point[0] = (x1,y1)
 # and $point[1] = (x2,y2).
 # the following makes $d1 = x1 - x2, $d2 = y1 - y2
 ($d1, $d2) = ($point[0] - $point[1])-&gt;value;
 
-
 $length = Compute(&quot;sqrt( ($d1)^2+($d2)^2 )&quot;);
-$mid = ( $point[1] + $point[0] ) / 2;
+$mid    = ($point[1] + $point[0]) / 2;
 
 BEGIN_PGML
 Consider the two points [`[$point[0]]`] and [`[$point[1]]`].
@@ -156,7 +154,8 @@ ENDDOCUMENT();</pre>
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard) btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

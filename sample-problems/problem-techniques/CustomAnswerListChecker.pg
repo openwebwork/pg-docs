@@ -14,7 +14,7 @@ $ans = List("(0,$c),($c,0),($c-1,1)")->cmp(
         #  Loop though the student answers
         for my $i (0 .. $n - 1) {
             my $ith = Value::List->NameForNumber($i + 1);
-            my $p   = $student->[$i];                       # i-th student answer
+            my $p   = $student->[$i];                      # i-th student answer
 
             #  Check that the student's answer is a point
             if ($p->type ne "Point") {
@@ -24,8 +24,10 @@ $ans = List("(0,$c),($c,0),($c-1,1)")->cmp(
 
             #  Check that the point hasn't been given before
             for (my $j = 0, $used = 0; $j < $i; $j++) {
-                if ($student->[$j]->type eq "Point" && $student->[$j] == $p) {
-                    push(@errors, "Your $ith point is the same as a previous one")
+                if ($student->[$j]->type eq "Point" && $student->[$j] == $p)
+                {
+                    push(@errors,
+                        "Your $ith point is the same as a previous one")
                         unless $ansHash->{isPreview};
                     $used = 1;
                     last;

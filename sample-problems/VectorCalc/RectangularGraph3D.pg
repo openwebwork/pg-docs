@@ -3,13 +3,12 @@ DOCUMENT();
 loadMacros('PGstandard.pl', 'PGML.pl', 'plotly3D.pl', 'PGcourse.pl');
 
 
-
 $gr = Graph3D();
 $gr->addSurface(
-    ['x', 'y', 'x^2+y^2'],
-    [-3, 3, 30],
-    [-3, 3, 30],
-    variables => ['x','y']
+    [ 'x', 'y', 'x^2+y^2' ],
+    [ -3,  3,   30 ],
+    [ -3,  3,   30 ],
+    variables => [ 'x', 'y' ]
 );
 
 BEGIN_PGML

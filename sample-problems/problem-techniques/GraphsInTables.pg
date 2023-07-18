@@ -1,15 +1,22 @@
 DOCUMENT();
 
 loadMacros(
-    'PGstandard.pl', 'PGML.pl',           'PGtikz.pl', 'parserPopUp.pl',
-    'niceTables.pl', 'PGchoicemacros.pl', 'PGcourse.pl'
+    'PGstandard.pl', 'PGML.pl',
+    'PGtikz.pl',     'parserPopUp.pl',
+    'niceTables.pl', 'PGchoicemacros.pl',
+    'PGcourse.pl'
 );
 
 # The form of the functions for the tikz plotting.
 @eqn_plot = ('-exp(\x)', 'exp(-\x)', '-exp(-\x)', 'exp(\x)');
 
 # The tex form of the functions.
-@eqn = ("\( y = -e^{x} \)", "\( y = e^{-x} \)", "\( y = -e^{-x} \)", "\( y = e^{x} \)");
+@eqn = (
+    "\( y = -e^{x} \)",
+    "\( y = e^{-x} \)",
+    "\( y = -e^{-x} \)",
+    "\( y = e^{x} \)"
+);
 
 # Alternate text for each image.
 @alt_text = (
@@ -53,7 +60,15 @@ $k = random(0, 3);
 
 $popup = PopUp([ "?", "A", "B", "C", "D" ], $letter[ $inv[$k] ]);
 
-$tab = LayoutTable([ [ 'A', 'B' ], [ $fig[0], $fig[1] ], [ 'C', 'D' ], [ $fig[2], $fig[3] ], ], texalignment => 'cc');
+$tab = LayoutTable(
+    [
+        [ 'A',     'B' ],
+        [ $fig[0], $fig[1] ],
+        [ 'C',     'D' ],
+        [ $fig[2], $fig[3] ],
+    ],
+    texalignment => 'cc'
+);
 
 BEGIN_PGML
 Consider the exponential equation [$eqn[$k]].
