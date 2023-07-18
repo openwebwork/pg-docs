@@ -1,22 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>contexts/contextInequalities.pl</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>contexts/contextInequalities.pl</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>contexts/contextInequalities.pl</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">contexts/contextInequalities.pl</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#USAGE">USAGE</a></li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
 
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-  <li><a href="#USAGE">USAGE</a></li>
-</ul>
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
@@ -24,30 +52,30 @@
 
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
-<p>Implements contexts that provides for inequalities that produce the cooresponding Interval, Set or Union MathObjects. There are two such contexts: Context(&quot;Inequalities&quot;), in which both intervals and inequalities are defined, and Context(&quot;Inequalities-Only&quot;), which allows only inequalities as a means of producing intervals.</p>
+<p>Implements contexts that provides for inequalities that produce the cooresponding <code>Interval</code>, <code>Set</code> or <code>Union</code> <code>MathObjects</code>. There are two such contexts: <code>Context(&quot;Inequalities&quot;)</code>, in which both intervals and inequalities are defined, and <code>Context(&quot;Inequalities-Only&quot;)</code>, which allows only inequalities as a means of producing intervals.</p>
 
 <a href="#_podtop_"><h1 id="USAGE">USAGE</h1></a>
 
-<pre><code>        loadMacros(&quot;contextInequalities.pl&quot;);
-        
-        Context(&quot;Inequalities&quot;);
-        $S1 = Compute(&quot;1 &lt; x &lt;= 4&quot;);
-        $S2 = Inequality(&quot;(1,4]&quot;);     # force interval to be inequality
-        
-        Context(&quot;Inequalities-Only&quot;);
-        $S1 = Compute(&quot;1 &lt; x &lt;= 4&quot;);
-        $S2 = Inequality(&quot;(1,4]&quot;);     # generates an error
-        
-        $S3 = Compute(&quot;x &lt; -2 or x &gt; 2&quot;);  # forms the Union (-inf,-2) U (2,inf)
-        $S4 = Compute(&quot;x &gt; 2 and x &lt;= 4&quot;); # forms the Interval (2,4]
-        $S5 = Compute(&quot;x = 1&quot;);            # forms the Set
-        $S6 = Compute(&quot;x != 1&quot;);           # forms the Union (-inf,1) U (1,inf)</code></pre>
+<pre><code>loadMacros(&quot;contextInequalities.pl&quot;);
+
+Context(&quot;Inequalities&quot;);
+$S1 = Compute(&quot;1 &lt; x &lt;= 4&quot;);
+$S2 = Inequality(&quot;(1,4]&quot;);     # force interval to be inequality
+
+Context(&quot;Inequalities-Only&quot;);
+$S1 = Compute(&quot;1 &lt; x &lt;= 4&quot;);
+$S2 = Inequality(&quot;(1,4]&quot;);     # generates an error
+
+$S3 = Compute(&quot;x &lt; -2 or x &gt; 2&quot;);  # forms the Union (-inf,-2) U (2,inf)
+$S4 = Compute(&quot;x &gt; 2 and x &lt;= 4&quot;); # forms the Interval (2,4]
+$S5 = Compute(&quot;x = 1&quot;);            # forms the Set
+$S6 = Compute(&quot;x != 1&quot;);           # forms the Union (-inf,1) U (1,inf)</code></pre>
 
 <p>You can set the &quot;noneWord&quot; flag to specify the string to use when the inequalities specify the empty set. By default, it is &quot;NONE&quot;, but you can change it to other strings. Be sure that you use a string that is defined in the Context, however, if you expect the student to be able to enter it. For example</p>
 
-<pre><code>        Context(&quot;Inequalities&quot;);
-        Context()-&gt;constants-&gt;add(EmptySet =&gt; Set());
-        Context()-&gt;flags-&gt;set(noneWord=&gt;&quot;EmptySet&quot;);</code></pre>
+<pre><code>Context(&quot;Inequalities&quot;);
+Context()-&gt;constants-&gt;add(EmptySet =&gt; Set());
+Context()-&gt;flags-&gt;set(noneWord=&gt;&quot;EmptySet&quot;);</code></pre>
 
 <p>creates an empty set as a named constant and uses that name.</p>
 
@@ -58,7 +86,7 @@
 <dt><span style="white-space: nowrap;"><code>showNotEquals</code></span></dt>
 <dd>
 
-<p>This controls whether intervals of the form (-inf,a) U (a,inf) are displayed as x != a or not. The default is 1, meaning convert to x != a.</p>
+<p>This controls whether intervals of the form <code>(-inf,a) U (a,inf)</code> are displayed as <code>x != a</code> or not. The default is 1, meaning convert to <code>x != a</code>.</p>
 
 </dd>
 <dt><span style="white-space: nowrap;"><code>allowSloppyInequalities</code></span></dt>
@@ -71,37 +99,26 @@
 
 <p>Inequalities and interval notation both can coexist side by side, but you may wish to convert from one to the other. Use Inequality() to convert from an Interval, Set or Union to an Inequality, and use Interval(), Set(), or Union() to convert from an Inequality object to one in interval notation. For example:</p>
 
-<pre><code>        $I0 = Compute(&quot;(1,2]&quot;);            # the interval (1,2]
-        $I1 = Inequality($I1);             # the inequality 1 &lt; x &lt;= 2
-        
-        $I0 = Compute(&quot;1 &lt; x &lt;= 2&quot;);       # the inequality 1 &lt; x &lt;= 2
-        $I1 = Interval($I0);               # the interval (1,2]</code></pre>
+<pre><code>$I0 = Compute(&quot;(1,2]&quot;);            # the interval (1,2]
+$I1 = Inequality($I1);             # the inequality 1 &lt; x &lt;= 2
 
-<p>Note that ineqaulities and inervals can be compared and combined regardless of the format, so $I0 == $I1 is true in either example above.</p>
+$I0 = Compute(&quot;1 &lt; x &lt;= 2&quot;);       # the inequality 1 &lt; x &lt;= 2
+$I1 = Interval($I0);               # the interval (1,2]</code></pre>
+
+<p>Note that ineqaulities and inervals can be compared and combined regardless of the format, so <code>$I0 == $I1</code> is true in either example above.</p>
 
 <p>Since Inequality objects are actually Interval objects, the variable used to create them doesn&#39;t matter. That is,</p>
 
-<pre><code>        $I0 = Compute(&quot;1 &lt; x &lt;= 2&quot;);
-        $I1 = Compute(&quot;1 &lt; y &lt;= 2&quot;);</code></pre>
+<pre><code>$I0 = Compute(&quot;1 &lt; x &lt;= 2&quot;);
+$I1 = Compute(&quot;1 &lt; y &lt;= 2&quot;);</code></pre>
 
-<p>would both produce the same interval, so $I0 == $I1 would be true in this case. If you need to distinguish between these two, use</p>
+<p>would both produce the same interval, so <code>$I0 == $I1</code> would be true in this case. If you need to distinguish between these two, use</p>
 
-<pre><code>        $I0 == $I1 &amp;&amp; $I0-&gt;{varName} eq $I1-&gt;{varName}</code></pre>
+<pre><code>$I0 == $I1 &amp;&amp; $I0-&gt;{varName} eq $I1-&gt;{varName}</code></pre>
 
 <p>instead.</p>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

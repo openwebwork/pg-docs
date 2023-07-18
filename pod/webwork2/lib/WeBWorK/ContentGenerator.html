@@ -1,37 +1,61 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>WeBWorK::ContentGenerator</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>WeBWorK::ContentGenerator</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>WeBWorK::ContentGenerator</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
-
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-  <li><a href="#INVOCATION">INVOCATION</a></li>
-  <li><a href="#DATA-MODIFIERS">DATA MODIFIERS</a></li>
-  <li><a href="#STANDARD-METHODS">STANDARD METHODS</a>
-    <ul>
-      <li><a href="#Template-escape-handlers">Template escape handlers</a></li>
-      <li><a href="#Template-conditions">Template conditions</a></li>
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">WeBWorK::ContentGenerator</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#INVOCATION">INVOCATION</a></li><li class="nav-item"><a class="nav-link p-0" href="#DATA-MODIFIERS">DATA MODIFIERS</a></li><li class="nav-item"><a class="nav-link p-0" href="#STANDARD-METHODS">STANDARD METHODS</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#Template-escape-handlers">Template escape handlers</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Template-conditions">Template conditions</a></li>
     </ul>
-  </li>
-  <li><a href="#HTML-MACROS">HTML MACROS</a>
-    <ul>
-      <li><a href="#Template-escape-handler-macros">Template escape handler macros</a></li>
-      <li><a href="#Parameter-management">Parameter management</a></li>
-      <li><a href="#Utilities">Utilities</a></li>
+  </li><li class="nav-item"><a class="nav-link p-0" href="#HTML-MACROS">HTML MACROS</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#Template-escape-handler-macros">Template escape handler macros</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Parameter-management">Parameter management</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Utilities">Utilities</a></li>
     </ul>
-  </li>
-</ul>
+  </li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
+
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
@@ -39,12 +63,12 @@
 
 <a href="#_podtop_"><h1 id="SYNOPSIS">SYNOPSIS</h1></a>
 
-<pre><code> # start with a WeBWorK::Controller object: $c
+<pre><code># start with a WeBWorK::Controller object: $c
 
- use WeBWorK::ContentGenerator::SomeSubclass;
+use WeBWorK::ContentGenerator::SomeSubclass;
 
- my $cg = WeBWorK::ContentGenerator::SomeSubclass-&gt;new($c);
- my $result = $cg-&gt;go();</code></pre>
+my $cg = WeBWorK::ContentGenerator::SomeSubclass-&gt;new($c);
+my $result = $cg-&gt;go();</code></pre>
 
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
@@ -142,7 +166,7 @@
 <dt>prepare_activity_entry()</dt>
 <dd>
 
-<p>Prepare a string to be sent to the activity log, if it is turned on. This can be overriden by different modules.</p>
+<p>Prepare a string to be sent to the activity log, if it is turned on. This can be overridden by different modules.</p>
 
 </dd>
 </dl>
@@ -258,12 +282,12 @@
 
 <p>$args is a reference to a hash containing the following fields:</p>
 
-<pre><code> style       =&gt; text|buttons
- separator   =&gt; HTML to place in between links</code></pre>
+<pre><code>style       =&gt; text|buttons
+separator   =&gt; HTML to place in between links</code></pre>
 
 <p>For example:</p>
 
-<pre><code> &lt;!--#nav style=&quot;buttons&quot; separator=&quot; &quot;--&gt;</code></pre>
+<pre><code>&lt;!--#nav style=&quot;buttons&quot; separator=&quot; &quot;--&gt;</code></pre>
 
 </dd>
 <dt>options()</dt>
@@ -281,11 +305,11 @@
 
 <p>Print &quot;breadcrubs&quot; from the root of the virtual hierarchy to the current page. $args is a reference to a hash containing the following fields:</p>
 
-<pre><code> style    =&gt; type of separator: text|image
- image    =&gt; if style=image, URL of image to use as path separator
- text     =&gt; if style=text, text to use as path separator
-             if style=image, the ALT text of each separator image
- textonly =&gt; suppress all HTML, return only plain text</code></pre>
+<pre><code>style    =&gt; type of separator: text|image
+image    =&gt; if style=image, URL of image to use as path separator
+text     =&gt; if style=text, text to use as path separator
+            if style=image, the ALT text of each separator image
+textonly =&gt; suppress all HTML, return only plain text</code></pre>
 
 <p>The implementation in this package gathers the route information from the current request.</p>
 
@@ -305,7 +329,7 @@
 
 <p>Display the current time and date using default format &quot;3:37pm on Jan 7, 2004&quot;. The display format can be adjusted by giving a style in the template. For example,</p>
 
-<pre><code>  &lt;!--#timestamp style=&quot;%m/%d/%y at %I:%M%P&quot;--&gt;</code></pre>
+<pre><code>&lt;!--#timestamp style=&quot;%m/%d/%y at %I:%M%P&quot;--&gt;</code></pre>
 
 <p>will give standard WeBWorK time format. Wording and other formatting can be done in the template itself.</p>
 
@@ -363,16 +387,16 @@
 
 <p>Returns the specified URL from either %webworkURLs or %courseURLs in the course environment. $args is a reference to a hash containing the following fields:</p>
 
-<pre><code> type =&gt; type of URL: webwork|course (defaults to webwork)
- name =&gt; name of URL type (must be &#39;theme&#39; or undefined)
- file =&gt; the local file name</code></pre>
+<pre><code>type =&gt; type of URL: webwork|course (defaults to webwork)
+name =&gt; name of URL type (must be &#39;theme&#39; or undefined)
+file =&gt; the local file name</code></pre>
 
 </dd>
 </dl>
 
 <h2 id="Template-conditions">Template conditions</h2>
 
-<p>Template condition methods are called in the template. If a method is defined here or overriden in the instantiated subclass, it is invoked.</p>
+<p>Template condition methods are called in the template. If a method is defined here or overridden in the instantiated subclass, it is invoked.</p>
 
 <p>The following conditions are currently defined:</p>
 
@@ -387,15 +411,15 @@
 
 <p>A subclass could redefine this method to, for example, &quot;hide&quot; a method from the template:</p>
 
-<pre><code>    sub can ($c, $arg) {
-        my ($c, $arg) = @_;
+<pre><code>sub can ($c, $arg) {
+    my ($c, $arg) = @_;
 
-        if ($arg eq &quot;floobar&quot;) {
-                return 0;
-        } else {
-                return $c-&gt;SUPER::can($arg);
-        }
-    }</code></pre>
+    if ($arg eq &quot;floobar&quot;) {
+            return 0;
+    } else {
+            return $c-&gt;SUPER::can($arg);
+    }
+}</code></pre>
 
 </dd>
 <dt>have_warnings</dt>
@@ -433,7 +457,7 @@
 
 <p>Helper macro for the <code>#path</code> escape sequence: $args is a hash reference containing the &quot;style&quot;, &quot;image&quot;, &quot;text&quot;, and &quot;textonly&quot; arguments to the escape. @path consists of ordered key-value pairs of the form:</p>
 
-<pre><code> &quot;Page Name&quot; =&gt; Mojo::URL</code></pre>
+<pre><code>&quot;Page Name&quot; =&gt; Mojo::URL</code></pre>
 
 <p>If the page should not have a link associated with it, the URL should be the empty string. Authentication data is added to each URL so you don&#39;t have to. A fully-formed path line is returned, suitable for returning by a function implementing the <code>#path</code> escape.</p>
 
@@ -443,7 +467,7 @@
 
 <p>Helper macro for the <code>#nav</code> escape sequence: <code>$args</code> is a hash reference containing the &quot;style&quot; and &quot;separator&quot; arguments to the escape. <code>@links</code> consists of ordered tuples of the form:</p>
 
-<pre><code> &quot;Link Name&quot;, Mojo::URL</code></pre>
+<pre><code>&quot;Link Name&quot;, Mojo::URL</code></pre>
 
 <p>If a nav element should not have a link associated with it, the URL should be the empty string. <code>$tail</code> should be a hash reference of URL query parameters to add to each URL after the authentication information. A fully-formed nav line is returned, suitable for returning by a function implementing the <code>#nav</code> escape.</p>
 
@@ -582,18 +606,7 @@
 </dd>
 </dl>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

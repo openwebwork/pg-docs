@@ -1,21 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>contexts/contextCurrency.pl</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>contexts/contextCurrency.pl</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>contexts/contextCurrency.pl</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">contexts/contextCurrency.pl</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
 
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-</ul>
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
@@ -27,115 +56,104 @@
 
 <p>To use the context, put</p>
 
-<pre><code>        loadMacros(&quot;contextCurrency.pl&quot;);</code></pre>
+<pre><code>loadMacros(&quot;contextCurrency.pl&quot;);</code></pre>
 
 <p>at the top of your problem file, and then issue the</p>
 
-<pre><code>        Context(&quot;Currency&quot;);</code></pre>
+<pre><code>Context(&quot;Currency&quot;);</code></pre>
 
 <p>command to select the context. You can set the currency symbol and the comma or decimal values as in the following examples</p>
 
-<pre><code>        Context()-&gt;currency-&gt;set(symbol=&gt;&#39;#&#39;);
-        Context()-&gt;currency-&gt;set(symbol=&gt;&#39;euro&#39;);          # accepts &#39;12 euro&#39;
-        Context()-&gt;currency-&gt;set(comma=&gt;&#39;.&#39;,decimal=&gt;&#39;,&#39;); # accepts &#39;10.000,00&#39;</code></pre>
+<pre><code>Context()-&gt;currency-&gt;set(symbol=&gt;&#39;#&#39;);
+Context()-&gt;currency-&gt;set(symbol=&gt;&#39;euro&#39;);          # accepts &#39;12 euro&#39;
+Context()-&gt;currency-&gt;set(comma=&gt;&#39;.&#39;,decimal=&gt;&#39;,&#39;); # accepts &#39;10.000,00&#39;</code></pre>
 
 <p>You can add additional symbols (in case you want to allow more than one way to write the currency). For example:</p>
 
-<pre><code>        Context(&quot;Currency&quot;)-&gt;currency-&gt;addSymbol(&quot;dollars&quot;,&quot;dollar&quot;);</code></pre>
+<pre><code>Context(&quot;Currency&quot;)-&gt;currency-&gt;addSymbol(&quot;dollars&quot;,&quot;dollar&quot;);</code></pre>
 
 <p>would accept &#39;$12,345.67&#39; or &#39;12.50 dollars&#39; or &#39;1 dollar&#39; as acceptable values. Note that if the symbol cantains any alphabetic characters, it is expected to come at the end of the number (as in the examples above) and if the symbol has only non-alphabetic characters, it comes before it. You can change this as in these examples:</p>
 
-<pre><code>        Context()-&gt;currency-&gt;setSymbol(euro=&gt;{associativity=&gt;&quot;left&quot;});
-        Context()-&gt;currency-&gt;setSymbol(&#39;#&#39;=&gt;{associativity=&gt;&quot;right&quot;});</code></pre>
+<pre><code>Context()-&gt;currency-&gt;setSymbol(euro=&gt;{associativity=&gt;&quot;left&quot;});
+Context()-&gt;currency-&gt;setSymbol(&#39;#&#39;=&gt;{associativity=&gt;&quot;right&quot;});</code></pre>
 
 <p>You can remove a symbol as follows:</p>
 
-<pre><code>        Context()-&gt;currency-&gt;removeSymbol(&#39;dollar&#39;);</code></pre>
+<pre><code>Context()-&gt;currency-&gt;removeSymbol(&#39;dollar&#39;);</code></pre>
 
 <p>To create a currency value, use</p>
 
-<pre><code>        $m = Currency(10.99);</code></pre>
+<pre><code>$m = Currency(10.99);</code></pre>
 
 <p>or</p>
 
-<pre><code>        $m1 = Compute(&#39;$10.99&#39;);
-        $m2 = Compute(&#39;$10,000.00&#39;);</code></pre>
+<pre><code>$m1 = Compute(&#39;$10.99&#39;);
+$m2 = Compute(&#39;$10,000.00&#39;);</code></pre>
 
 <p>and so on. Be careful, however, that you do not put dollar signs inside double quotes, as this refers to variable substitution. For example,</p>
 
-<pre><code>        $m = Compute(&quot;$10.99&quot;);</code></pre>
+<pre><code>$m = Compute(&quot;$10.99&quot;);</code></pre>
 
 <p>will most likely set $m to the Real value .99 rather than the monetary value of $10.99, since perl thinks $10 is the name of a variable, and will substitute that into the string before processing it. Since that variable is most likely empty, the result will be the same as $m = Compute(&quot;.99&quot;);</p>
 
 <p>You can use monetary values within computations, as in</p>
 
-<pre><code>        $m1 = Compute(&#39;$10.00&#39;);
-        $m2 = 3*$m1;  $m3 = $m2 + .5;
-        $m4 = Compute(&#39;$10.00 + $2.59&#39;);</code></pre>
+<pre><code>$m1 = Compute(&#39;$10.00&#39;);
+$m2 = 3*$m1;  $m3 = $m2 + .5;
+$m4 = Compute(&#39;$10.00 + $2.59&#39;);</code></pre>
 
 <p>so that $m2 will be $30.00, $m3 will be $30.50, and $m4 will be $12.59. Students can perform computations within their answers unless you disable the operators and functions as well.</p>
 
 <p>The tolerance for this context is set initially to .005 and the tolType to &#39;absolute&#39; so that monetary values will have to match to the nearest penny. You can change that on a global basis using</p>
 
-<pre><code>        Context()-&gt;flags-&gt;set(tolerance=&gt;.0001,tolType=&gt;&quot;relative&quot;);</code></pre>
+<pre><code>Context()-&gt;flags-&gt;set(tolerance=&gt;.0001,tolType=&gt;&quot;relative&quot;);</code></pre>
 
 <p>for example. You can also change the tolerance on an individual currency value as follows:</p>
 
-<pre><code>        $m = Compute(&#39;$1,250,000.00&#39;)-&gt;with(tolerance=&gt;.0001,tolType=&gt;&#39;relative&#39;);</code></pre>
+<pre><code>$m = Compute(&#39;$1,250,000.00&#39;)-&gt;with(tolerance=&gt;.0001,tolType=&gt;&#39;relative&#39;);</code></pre>
 
 <p>which would require students to be correct to three significant digits.</p>
 
 <p>The default tolerance of .005 works properly only if your original monetary values have no more than 2 decimal places. If you were to do</p>
 
-<pre><code>        $m = Currency(34.125);</code></pre>
+<pre><code>$m = Currency(34.125);</code></pre>
 
 <p>for example, then $m would print as $34.12, but neither a student answer of $34.12 nor of $34.13 would be marked correct. That is because neither of these are less than .5 away from the correct answer of $34.125. If you create currency values that have more decimal places than the usual two, you may want to round or truncate them. Currency objects have two methods for accomplishing this: round() and truncate(), which produce rounded or truncated copies of the original Currency object:</p>
 
-<pre><code>        $m = Currency(34.127)-&gt;round;    # produces $34.13
-        $m = Currency(34.127)-&gt;truncate; # produces $34.12</code></pre>
+<pre><code>$m = Currency(34.127)-&gt;round;    # produces $34.13
+$m = Currency(34.127)-&gt;truncate; # produces $34.12</code></pre>
 
 <p>By default, the answer checker for Currency values requires the student to enter the currency symbol, not just a real number. You can relax that condition by including the promoteReals=&gt;1 option to the cmp() method of the Currency value. For example,</p>
 
-<pre><code>        ANS(Compute(&#39;$150&#39;)-&gt;cmp(promoteReals=&gt;1));</code></pre>
+<pre><code>ANS(Compute(&#39;$150&#39;)-&gt;cmp(promoteReals=&gt;1));</code></pre>
 
 <p>would allow the student to enter just 150 rather than $150.</p>
 
 <p>By default, the students may omit the commas, but you can force them to supply the commas using forceCommas=&gt;1 in your cmp() call.</p>
 
-<pre><code>        ANS(Compute(&#39;$10,000.00&#39;)-&gt;cmp(forceCommas=&gt;1));</code></pre>
+<pre><code>ANS(Compute(&#39;$10,000.00&#39;)-&gt;cmp(forceCommas=&gt;1));</code></pre>
 
 <p>By default, students need not enter decimal digits, so could use $100 or $1,000. as valid entries. You can require that the cents be provided using the forceDecimals=&gt;1 flag.</p>
 
-<pre><code>        ANS(Compute(&#39;$10.95&#39;)-&gt;cmp(forceDecimals=&gt;1));</code></pre>
+<pre><code>ANS(Compute(&#39;$10.95&#39;)-&gt;cmp(forceDecimals=&gt;1));</code></pre>
 
 <p>By default, if the monetary value includes decimals digits, it must have exactly two. You can weaken this requirement to allow any number of decimals by using noExtraDecimals=&gt;0.</p>
 
-<pre><code>        ANS(Compute(&#39;$10.23372&#39;)-&gt;cmp(noExtraDecimals=&gt;0);</code></pre>
+<pre><code>ANS(Compute(&#39;$10.23372&#39;)-&gt;cmp(noExtraDecimals=&gt;0);</code></pre>
 
 <p>If forceDecimals is set to 1 at the same time, then they must have 2 or more decimals, otherwise any number is OK.</p>
 
 <p>By default, currency values are always formatted to display using two decimal places, but you can request that if the decimals would be .00 then they should not be displayed. This is controlled via the trimTrailingZeros context flag:</p>
 
-<pre><code>        Context()-&gt;flags-&gt;set(trimTrailingZeros=&gt;1);</code></pre>
+<pre><code>Context()-&gt;flags-&gt;set(trimTrailingZeros=&gt;1);</code></pre>
 
 <p>It can also be set on an individual currency value:</p>
 
-<pre><code>        $m = Compute(&#39;$50&#39;)-&gt;with(trimtrailingZeros=&gt;1);</code></pre>
+<pre><code>$m = Compute(&#39;$50&#39;)-&gt;with(trimtrailingZeros=&gt;1);</code></pre>
 
 <p>so that this $m will print as $50 rather than $50.00.</p>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

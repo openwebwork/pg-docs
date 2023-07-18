@@ -1,41 +1,69 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>ChoiceList</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ChoiceList</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>ChoiceList</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
-
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a>
-    <ul>
-      <li><a href="#Variables-and-methods-available-to-sub-classes">Variables and methods available to sub-classes</a>
-        <ul>
-          <li><a href="#Variables">Variables</a></li>
-          <li><a href="#Methods">Methods</a></li>
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">ChoiceList</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#Variables-and-methods-available-to-sub-classes">Variables and methods available to sub-classes</a>
+        <ul class="nav flex-column w-100">
+          <li class="nav-item"><a class="nav-link p-0" href="#Variables">Variables</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#Methods">Methods</a></li>
         </ul>
       </li>
-      <li><a href="#Usage">Usage</a>
-        <ul>
-          <li><a href="#qa-Usage:-ml-qa-qw-question1-answer1-question2-answer2">qa Usage: $ml-&gt;qa( qw( question1 answer1 question2 answer2 ) );</a></li>
-          <li><a href="#cmp">cmp</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Usage">Usage</a>
+        <ul class="nav flex-column w-100">
+          <li class="nav-item"><a class="nav-link p-0" href="#qa-Usage:-ml-qa-qw-question1-answer1-question2-answer2">qa Usage: $ml-&gt;qa( qw( question1 answer1 question2 answer2 ) );</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#cmp">cmp</a></li>
         </ul>
       </li>
     </ul>
-  </li>
-</ul>
+  </li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
+
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<pre><code>        ChoiceList.pm  -- super-class for all ChoiceList structures</code></pre>
+<pre><code>ChoiceList.pm  -- super-class for all ChoiceList structures</code></pre>
 
 <a href="#_podtop_"><h1 id="SYNOPSIS">SYNOPSIS</h1></a>
 
@@ -54,103 +82,92 @@
 <p><b>Multiple choice:</b> Given a single question and a list of answers, select the single correct answer. This structure creates a standard multiple choice question as would be seen on a standardize test. Extra answers are entered along with the question in a simple format and (as with Match.pm), if necessary, can be appended in order at the end (i.e. &#39;None of the above&#39;)</p>
 
 
-<P>See <a href="Match">Match.pm</a>, <a href="Select">Select.pm</a>, <a href="Multiple">Multiple.pm</a>, and <a href="PGchoicemacros">PGchoicemacros.pl</a>
+<p>See <a href="Match">Match.pm</a>, <a href="Select">Select.pm</a>, <a href="Multiple">Multiple.pm</a>, and <a href="PGchoicemacros">PGchoicemacros.pl</a>
 
-<a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
+<a href="#_podtop_"></a></p><h1 id="DESCRIPTION">DESCRIPTION</h1>
 
 <h2 id="Variables-and-methods-available-to-sub-classes">Variables and methods available to sub-classes</h2>
 
 <h3 id="Variables">Variables</h3>
 
-<pre><code>        questions                               # array of questions as entered using qa()
-        answers                                 # array of answers as entered using qa()
-        extras                                  # array of extras as entered using extra()
+<pre><code>questions                               # array of questions as entered using qa()
+answers                                 # array of answers as entered using qa()
+extras                                  # array of extras as entered using extra()
 
-        selected_q                              # randomly selected subset of &quot;questions&quot;
-        selected_a                              # the answers for the selected questions
-        selected_e                              # randomly selected subset of &quot;extras&quot;
+selected_q                              # randomly selected subset of &quot;questions&quot;
+selected_a                              # the answers for the selected questions
+selected_e                              # randomly selected subset of &quot;extras&quot;
 
-        ans_rule_len                    # determines the length of the answer blanks
-                                                        # default is 4
+ans_rule_len                    # determines the length of the answer blanks
+                                                # default is 4
 
-        slice                                   # index used to select specific questions
-        shuffle                                 # permutation array which can be applied to slice
-                                                        # to shuffle the answers
+slice                                   # index used to select specific questions
+shuffle                                 # permutation array which can be applied to slice
+                                                # to shuffle the answers
 
-        inverted_shuffle                # the inverse permutation array
+inverted_shuffle                # the inverse permutation array
 
-        rf_print_q                              # reference to any subroutine which should
-                                                        # take ($self, @questions) as parameters and
-                                                        # output the questions in a formatted string.
-                                                        # If you want to change the way questions are
-                                                        # printed, write your own print method and set
-                                                        # this equal to a reference to to that method
-                                                        # (i.e. $sl-&gt;rf_print_q = ~~&amp;printing_routine_q)
+rf_print_q                              # reference to any subroutine which should
+                                                # take ($self, @questions) as parameters and
+                                                # output the questions in a formatted string.
+                                                # If you want to change the way questions are
+                                                # printed, write your own print method and set
+                                                # this equal to a reference to to that method
+                                                # (i.e. $sl-&gt;rf_print_q = ~~&amp;printing_routine_q)
 
-        rf_print_a                              # reference to any subroutine which should
-                                                        # take ($self, @answers) as parameters and
-                                                        # output the answers in a formatted string.
-                                                        # If you want to change the way answers are
-                                                        # printed, write your own print method and set
-                                                        # this equal to a reference to to that method
-                                                        # (i.e. $sl-&gt;rf_print_a = ~~&amp;printing_routine_a)
+rf_print_a                              # reference to any subroutine which should
+                                                # take ($self, @answers) as parameters and
+                                                # output the answers in a formatted string.
+                                                # If you want to change the way answers are
+                                                # printed, write your own print method and set
+                                                # this equal to a reference to to that method
+                                                # (i.e. $sl-&gt;rf_print_a = ~~&amp;printing_routine_a)
 
-        ra_pop_up_list              # Field used in sub classes that use pop_up_list_print_q
-                                                        # to format the questions. (Placing a pop_up_list next to
-                                                        # each question instead of an answer blank.
-                                                        # It is initialized to
-                                                        # =&gt; [no_answer =&gt;&#39;  ?&#39;, T =&gt; &#39;True&#39;, F =&gt; &#39;False&#39;]
+ra_pop_up_list              # Field used in sub classes that use pop_up_list_print_q
+                                                # to format the questions. (Placing a pop_up_list next to
+                                                # each question instead of an answer blank.
+                                                # It is initialized to
+                                                # =&gt; [no_answer =&gt;&#39;  ?&#39;, T =&gt; &#39;True&#39;, F =&gt; &#39;False&#39;]
 
-        ans_rule_len                    # field which can be used in the question printing routines
-                                                        # to determine the length of the answer blanks before the questions.</code></pre>
+ans_rule_len                    # field which can be used in the question printing routines
+                                                # to determine the length of the answer blanks before the questions.</code></pre>
 
 <h3 id="Methods">Methods</h3>
 
-<pre><code>        qa( array )                             # accepts an array of strings which can be used
-                                                        # for questions and answers
+<pre><code>qa( array )                             # accepts an array of strings which can be used
+                                                # for questions and answers
 
-        extra( array )                  # accepts an array of strings which can be used
-                                                        # as extra answers
+extra( array )                  # accepts an array of strings which can be used
+                                                # as extra answers
 
-        print_q                                 # yields a formatted string of question to be
-                                                        # matched with answer blanks
-        print_a                                 # yields a formatted string of answers
+print_q                                 # yields a formatted string of question to be
+                                                # matched with answer blanks
+print_a                                 # yields a formatted string of answers
 
-        choose([3, 4], 1)               # chooses questions indexed 3 and 4 and one other
-                                                        # randomly
-        choose_extra([3, 4], 1) # choooses extra answers indexed 3 and 4 and one
-                                                        # other
-        makeLast( array )               # accepts an array of strings (like qa) which will
-                                                        # be forced to the end of the list of answers.
+choose([3, 4], 1)               # chooses questions indexed 3 and 4 and one other
+                                                # randomly
+choose_extra([3, 4], 1) # choooses extra answers indexed 3 and 4 and one
+                                                # other
+makeLast( array )               # accepts an array of strings (like qa) which will
+                                                # be forced to the end of the list of answers.
 
-        ra_correct_ans                  # outputs a reference to the array of correct answers
-        correct_ans                             # outputs a concatenated string of correct answers (only for Multiple)</code></pre>
+ra_correct_ans                  # outputs a reference to the array of correct answers
+correct_ans                             # outputs a concatenated string of correct answers (only for Multiple)</code></pre>
 
 <h2 id="Usage">Usage</h2>
 
-<pre><code>        None -- see SYNOPSIS above</code></pre>
+<pre><code>None -- see SYNOPSIS above</code></pre>
 
 <h3 id="qa-Usage:-ml-qa-qw-question1-answer1-question2-answer2">qa Usage: $ml-&gt;qa( qw( question1 answer1 question2 answer2 ) );</h3>
 
 <h3 id="cmp">cmp</h3>
 
-<pre><code>        Usage    ANS($ml -&gt; cmp);
-        </code></pre>
+<pre><code>Usage    ANS($ml -&gt; cmp);
+</code></pre>
 
 <p>provides a MathObject like comparison method returns a string of comparison methods for checking the list object</p>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

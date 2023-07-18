@@ -1,22 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>graph/PGtikz.pl</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>graph/PGtikz.pl</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>graph/PGtikz.pl</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">graph/PGtikz.pl</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#DETAILED-USAGE">DETAILED USAGE</a></li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
 
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-  <li><a href="#DETAILED-USAGE">DETAILED USAGE</a></li>
-</ul>
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
@@ -26,12 +54,12 @@
 
 <p>This is a convenience macro for utilizing the LaTeXImage object to insert TikZ images into problems. Create a TikZ image as follows:</p>
 
-<pre><code>    $image = createTikZImage();
-    $image-&gt;BEGIN_TIKZ
-    \draw (-2,0) -- (2,0);
-    \draw (0,-2) -- (0,2);
-    \draw (0,0) circle[radius=1.5];
-    END_TIKZ</code></pre>
+<pre><code>$image = createTikZImage();
+$image-&gt;BEGIN_TIKZ
+\draw (-2,0) -- (2,0);
+\draw (0,-2) -- (0,2);
+\draw (0,0) circle[radius=1.5];
+END_TIKZ</code></pre>
 
 <p>The LaTeX code is in a perl interpolated heredoc, so you may need to be careful with backslashes. In the above, \d does not require escaping the backslash. But if the code needed a double backslash line break, you would need to use \\\\.</p>
 
@@ -39,81 +67,70 @@
 
 <p>Then insert the image into the problem with</p>
 
-<pre><code>    image(insertGraph($image));</code></pre>
+<pre><code>image(insertGraph($image));</code></pre>
 
 <a href="#_podtop_"><h1 id="DETAILED-USAGE">DETAILED USAGE</h1></a>
 
 <p>There are several LaTeXImage parameters that may need to be set for the LaTeXImage object return by createTikZImage to generate the desired image.</p>
 
-<pre><code>    $image-&gt;tex()              Add the tikz commands that define the image.
-                               This takes a single string parameter.  It is
-                               generally best to use single quotes around the
-                               string.  Escaping of special characters may be
-                               needed in some cases.
+<pre><code>$image-&gt;tex()              Add the tikz commands that define the image.
+                           This takes a single string parameter.  It is
+                           generally best to use single quotes around the
+                           string.  Escaping of special characters may be
+                           needed in some cases.
 
-    $image-&gt;tikzOptions()      Add options that will be passed to
-                               \begin{tikzpicture}.  This takes a single
-                               string parameter.
-                               For example:
-                               $image-&gt;tikzOptions(
-                                   &quot;x=.5cm,y=.5cm,declare function={f(\x)=sqrt(\x);}&quot;
-                               );
+$image-&gt;tikzOptions()      Add options that will be passed to
+                           \begin{tikzpicture}.  This takes a single
+                           string parameter.
+                           For example:
+                           $image-&gt;tikzOptions(
+                               &quot;x=.5cm,y=.5cm,declare function={f(\x)=sqrt(\x);}&quot;
+                           );
 
-    $image-&gt;tikzLibraries()    Add additional tikz libraries to load.  This
-                               takes a single string parameter.
-                               For example:
-                               $image-&gt;tikzLibraries(&quot;arrows.meta,calc&quot;);
+$image-&gt;tikzLibraries()    Add additional tikz libraries to load.  This
+                           takes a single string parameter.
+                           For example:
+                           $image-&gt;tikzLibraries(&quot;arrows.meta,calc&quot;);
 
-    $image-&gt;texPackages()      Add tex packages to load.  This takes an array for
-                               its parameter.  Each element of this array should
-                               either be the package name as a string, or an
-                               array with two elements, the first of which is the
-                               package name as a string and the second of which
-                               is a string containing the options for the package.
-                               For example:
-                               $image-&gt;texPackages([
-                                   &quot;pgfplots&quot;,
-                                   [&quot;hf-tikz&quot;, &quot;customcolors&quot;],
-                                   [&quot;xcolor&quot;, &quot;cmyk,table&quot;]
-                               ]);
+$image-&gt;texPackages()      Add tex packages to load.  This takes an array for
+                           its parameter.  Each element of this array should
+                           either be the package name as a string, or an
+                           array with two elements, the first of which is the
+                           package name as a string and the second of which
+                           is a string containing the options for the package.
+                           For example:
+                           $image-&gt;texPackages([
+                               &quot;pgfplots&quot;,
+                               [&quot;hf-tikz&quot;, &quot;customcolors&quot;],
+                               [&quot;xcolor&quot;, &quot;cmyk,table&quot;]
+                           ]);
 
-    $image-&gt;addToPreamble()    Additional commands to add to the TeX preamble.
-                               This takes a single string parameter.
+$image-&gt;addToPreamble()    Additional commands to add to the TeX preamble.
+                           This takes a single string parameter.
 
-    $image-&gt;ext()              Set the file type to be used for the image.
-                               The valid image types are &#39;png&#39;, &#39;gif&#39;, &#39;svg&#39;,
-                               and &#39;pdf&#39;.  The default is an &#39;svg&#39; image.  You
-                               should determine if an &#39;svg&#39; image works well with
-                               the TikZ code that you utilize.  If not, then use
-                               this method to change the exension to &#39;png&#39; or
-                               &#39;gif&#39;.
+$image-&gt;ext()              Set the file type to be used for the image.
+                           The valid image types are &#39;png&#39;, &#39;gif&#39;, &#39;svg&#39;,
+                           and &#39;pdf&#39;.  The default is an &#39;svg&#39; image.  You
+                           should determine if an &#39;svg&#39; image works well with
+                           the TikZ code that you utilize.  If not, then use
+                           this method to change the exension to &#39;png&#39; or
+                           &#39;gif&#39;.
 
-                               This macro sets the extension to &#39;pdf&#39; when a
-                               hardcopy is generated.
+                           This macro sets the extension to &#39;pdf&#39; when a
+                           hardcopy is generated.
 
-    $image-&gt;convertOptions()   If ImageMagick&#39;s convert command is used to build
-                               the output image (presently only done for &#39;png&#39;
-                               output) these input and output options will be
-                               used. For example:
-                               $image-&gt;convertOptions({
-                                   input =&gt; {density =&gt; 300},
-                                   output =&gt; {quality =&gt; 100, resize =&gt; &quot;500x500&quot;}
-                               });
-                               For a complete list of options, see:
-                               https://imagemagick.org/script/command-line-options.php</code></pre>
+$image-&gt;convertOptions()   If ImageMagick&#39;s convert command is used to build
+                           the output image (presently only done for &#39;png&#39;
+                           output) these input and output options will be
+                           used. For example:
+                           $image-&gt;convertOptions({
+                               input =&gt; {density =&gt; 300},
+                               output =&gt; {quality =&gt; 100, resize =&gt; &quot;500x500&quot;}
+                           });
+                           For a complete list of options, see:
+                           https://imagemagick.org/script/command-line-options.php</code></pre>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

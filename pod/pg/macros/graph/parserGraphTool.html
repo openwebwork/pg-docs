@@ -1,23 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>parsers/parserGraphTool.pl</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>graph/parserGraphTool.pl</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>parsers/parserGraphTool.pl</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">graph/parserGraphTool.pl</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#GRAPH-OBJECTS">GRAPH OBJECTS</a></li><li class="nav-item"><a class="nav-link p-0" href="#OPTIONS">OPTIONS</a></li><li class="nav-item"><a class="nav-link p-0" href="#METHODS">METHODS</a></li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
 
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-  <li><a href="#GRAPH-OBJECTS">GRAPH OBJECTS</a></li>
-  <li><a href="#OPTIONS">OPTIONS</a></li>
-</ul>
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
@@ -29,29 +56,29 @@
 
 <p>To create a GraphTool object pass a list of graph objects (discussed below) for the students to graph to <code>GraphTool()</code>. For example:</p>
 
-<pre><code>    $gt = GraphTool(&quot;{line,solid,(0,0),(1,1)}&quot;, &quot;{circle,dashed,(2,2),(4,2)}&quot;);</code></pre>
+<pre><code>$gt = GraphTool(&quot;{line,solid,(0,0),(1,1)}&quot;, &quot;{circle,dashed,(2,2),(4,2)}&quot;);</code></pre>
 
 <p>or</p>
 
-<pre><code>    $gt = GraphTool(&quot;{line,solid,(0,0),(1,1)}&quot;)-&gt;with(bBox =&gt; [-20, 20, 20, -20]);</code></pre>
+<pre><code>$gt = GraphTool(&quot;{line,solid,(0,0),(1,1)}&quot;)-&gt;with(bBox =&gt; [-20, 20, 20, -20]);</code></pre>
 
 <p>Then, for standard PG use <code>$gt-&gt;ans_rule()</code> to insert the JavaScript graph into the problem (or a print graph when a hard copy is generated), and <code>$gt-&gt;cmp</code> to produce the answer checker. For example:</p>
 
-<pre><code>    BEGIN_TEXT
-    Graph the line \(y = x\).
-    $PAR
-    \{$gt-&gt;ans_rule()\}
-    END_TEXT
+<pre><code>BEGIN_TEXT
+Graph the line \(y = x\).
+$PAR
+\{$gt-&gt;ans_rule()\}
+END_TEXT
 
-    ANS($gt-&gt;cmp);</code></pre>
+ANS($gt-&gt;cmp);</code></pre>
 
 <p>For PGML you can just do</p>
 
-<pre><code>    BEGIN_PGML
-    Graph the line [`y = x`].
+<pre><code>BEGIN_PGML
+Graph the line [`y = x`].
 
-    [_]{$gt}
-    END_PGML</code></pre>
+[_]{$gt}
+END_PGML</code></pre>
 
 <a href="#_podtop_"><h1 id="GRAPH-OBJECTS">GRAPH OBJECTS</h1></a>
 
@@ -59,41 +86,80 @@
 
 <p>For points the name &quot;point&quot; must be followed by the coordinates. For example:</p>
 
-<pre><code>    &quot;{point,(3,5)}&quot;</code></pre>
+<pre><code>&quot;{point,(3,5)}&quot;</code></pre>
 
 <p>For lines the name &quot;line&quot; must be followed by the word &quot;solid&quot; or &quot;dashed&quot; to indicate if the line is expected to be drawn solid or dashed. That is followed by two distinct points on the line. For example:</p>
 
-<pre><code>    &quot;{line,dashed,(1,5),(3,4)}&quot;</code></pre>
+<pre><code>&quot;{line,dashed,(1,5),(3,4)}&quot;</code></pre>
 
 <p>For circles the name &quot;circle&quot; must be followed by the word &quot;solid&quot; or &quot;dashed&quot; to indicate if the circle is expected to be drawn solid or dashed. That is followed by the point that is to be the center of circle, and then by a point on the circle. For example:</p>
 
-<pre><code>    &quot;{circle,solid,(1,1),(4,5)}&quot;</code></pre>
+<pre><code>&quot;{circle,solid,(1,1),(4,5)}&quot;</code></pre>
 
 <p>For parabolas the name &quot;parabola&quot; must be followed by the word &quot;solid&quot; or &quot;dashed&quot; to indicate if the parabola is expected to be drawn solid or dashed. The next element in the braces must be the word &quot;vertical&quot; for a parabola that opens up or down, or &quot;horizontal&quot; for a parabola that opens to the left or right. That is followed by the vertex and then another point on the parabola. For example:</p>
 
-<pre><code>    &quot;{parabola,solid,vertical,(1,0),(3,3)}&quot;</code></pre>
+<pre><code>&quot;{parabola,solid,vertical,(1,0),(3,3)}&quot;</code></pre>
 
 <p>For three point quadratics the name &quot;quadratic&quot; must be followed by the word &quot;solid&quot; or &quot;dashed&quot; to indicate if the quadratic is expected to be drawn solid or dashed. That is followed by the three points that define the quadratic. For example:</p>
 
-<pre><code>    &quot;{quadratic,solid,(-1,2),(1,0),(3,3)}&quot;</code></pre>
+<pre><code>&quot;{quadratic,solid,(-1,2),(1,0),(3,3)}&quot;</code></pre>
 
 <p>For four point cubics the name &quot;cubic&quot; must be followed by the word &quot;solid&quot; or &quot;dashed&quot; to indicate if the cubic is expected to be drawn solid or dashed. That is followed by the four points that define the cubic. For example:</p>
 
-<pre><code>    &quot;{cubic,solid,(1,-3),(-1,2),(4,3),(3,2)}&quot;</code></pre>
+<pre><code>&quot;{cubic,solid,(1,-3),(-1,2),(4,3),(3,2)}&quot;</code></pre>
 
 <p>For fills the name &quot;fill&quot; must be followed by a point in the region that is to be filled. For example:</p>
 
-<pre><code>    &quot;{fill,(5,5)}&quot;</code></pre>
+<pre><code>&quot;{fill,(5,5)}&quot;</code></pre>
 
 <p>For intervals the name &quot;interval&quot; must be followed by a single interval. Some examples are:</p>
 
-<pre><code>    &quot;{interval,[3,10)}&quot;
-    &quot;{interval,(-infinity,8]}&quot;
-    &quot;{interval,(2,infinity)}&quot;</code></pre>
+<pre><code>&quot;{interval,[3,10)}&quot;
+&quot;{interval,(-infinity,8]}&quot;
+&quot;{interval,(2,infinity)}&quot;</code></pre>
 
 <p>Note that for an infinite interval endpoint in a correct answer you may use &quot;inf&quot;, or anything that is interpreted into a MathObject infinity. However, for static graph objects it must be &quot;infinity&quot;. The JavaScript will always return &quot;infinity&quot; for student answers.</p>
 
-<p>The student answers that are returned by the JavaScript will be a list of the list objects discussed above and will be parsed by WeBWorK and passed to the checker as such. The default grader is the default list_checker. Most of the time that will not work as desired, and you will need to provide your own list_checker. This can either be passed as part of the <code>cmpOptions</code> hash discussed below, or directly to the GraphTool object&#39;s <code>cmp()</code> method.</p>
+<p>The student answers that are returned by the JavaScript will be a list of the list objects discussed above and will be parsed by WeBWorK and passed to the checker as such. The default checker is designed to grade the graph based on appearance. This means that if a student graphs duplicate objects, then the duplicates are ignored. Furthermore, if two objects are graphed whose only difference is that one is solid and the other is dashed (in this case the dashed object is covered by the solid object and only the solid object is really visible), then the dashed object is ignored.</p>
+
+<p>A custom list_checker may be provided instead of using the default checker. This can either be passed as part of the <code>cmpOptions</code> hash discussed below, or directly to the GraphTool object&#39;s <code>cmp()</code> method. The variable <code>$graphToolObjectCmps</code> can be used in a custom checker and contains a hash whose keys are the types of the objects described above, and whose values are methods that can be called passing a MathObject list constructed from one of the objects described above. When one of these methods is called it will return two methods. The first method when called passing a MathObject point will return 0 if the point satisfies the equation of the object, -1 if the equation evaluated at the point is negative, and 1 if the equation evaluated at the point is positive. The second method when called passing another MathObject list constructed from one of the objects described as above will return 1 if the two objects are exactly the same, and 0 otherwise. A second parameter may be passed and if that parameter is 1, then the method will return 1 if the two objects are the same ignoring if the two objects are solid or dashed, and 0 otherwise. In the following example, the <code>$lineCmp</code> method is defined to be the second method (indexed by 1) that is returned by calling the <code>&#39;line&#39;</code> method on the first correct answer in the example.</p>
+
+<pre><code>$m = 2 * random(1, 4);
+
+$gt = GraphTool(&quot;{line, solid, ($m / 2, 0), (0, -$m)}&quot;)-&gt;with(
+    bBox       =&gt; [ -11, 11, 11, -11 ],
+    cmpOptions =&gt; {
+        list_checker =&gt; sub {
+            my ($correct, $student, $ans, $value) = @_;
+            return 0 if $ans-&gt;{isPreview};
+
+            my $score = 0;
+            my @errors;
+
+            my $lineCmp = ($graphToolObjectCmps-&gt;{line}-&gt;($correct-&gt;[0]))[1];
+
+         for (0 .. $#$student) {
+                if ($lineCmp-&gt;($student-&gt;[$_])) { ++$score; next; }
+
+                my $nth = Value::List-&gt;NameForNumber($_ + 1);
+
+                if ($student-&gt;[$_]-&gt;extract(1) ne &#39;line&#39;) {
+                    push(@errors, &quot;The $nth object graphed is not a line.&quot;);
+                    next;
+                }
+
+                if ($student-&gt;[$_]-&gt;extract(2) ne &#39;solid&#39;) {
+                    push(@errors, &quot;The $nth object graphed should be a solid line.&quot;);
+                    next;
+                }
+
+                push(@errors, &quot;The $nth object graphed is incorrect.&quot;);
+            }
+
+            return ($score, @errors);
+        }
+    }
+}</code></pre>
 
 <a href="#_podtop_"><h1 id="OPTIONS">OPTIONS</h1></a>
 
@@ -119,7 +185,7 @@
 <p>These are the distances between successive major (labeled) ticks on the x and y axes, respectively.</p>
 
 </dd>
-<dt>minorTicksX, minorTicksY (Default: <code>minorTicksX =&gt; 1, minorTicksY =&gt; 2</code>)</dt>
+<dt>minorTicksX, minorTicksY (Default: <code>minorTicksX =&gt; 1, minorTicksY =&gt; 1</code>)</dt>
 <dd>
 
 <p>These are the number of minor (unlabeled) ticks between major ticks on the x and y axes, respectively.</p>
@@ -142,14 +208,14 @@
 
 <p>This is an advanced option that you usually do not want to use. It is usually constructed by the macro internally using the above options. If defined it should be a single string that is formatted in JavaScript object notation, and will override all of the above options. It will be passed to the JavaScript <code>graphTool</code> method which will pass it on to the JSX graph board when it is initialized. It may consist of any of the valid attributes documented for <code>JXG.JSXGraph.initBoard</code> at <a href="https://jsxgraph.org/docs/symbols/JXG.JSXGraph.html#.initBoard">https://jsxgraph.org/docs/symbols/JXG.JSXGraph.html#.initBoard</a>. For example the following value for <code>JSXGraphOptions</code> will give the same result for the JavaScript graph as the default values for the options above:</p>
 
-<pre><code>    JSXGraphOptions =&gt; JSON-&gt;new-&gt;encode({
-        boundingBox =&gt; [-10, 10, 10, -10],
-        defaultAxes =&gt; {
-            x =&gt; { ticks =&gt; { ticksDistance =&gt; 2, minorTicks =&gt; 1} },
-            y =&gt; { ticks =&gt; { ticksDistance =&gt; 2, minorTicks =&gt; 1} }
-        },
-        grid =&gt; { gridX =&gt; 1, gridY =&gt; 1 }
-    })</code></pre>
+<pre><code>JSXGraphOptions =&gt; JSON-&gt;new-&gt;encode({
+    boundingBox =&gt; [-10, 10, 10, -10],
+    defaultAxes =&gt; {
+        x =&gt; { ticks =&gt; { ticksDistance =&gt; 2, minorTicks =&gt; 1} },
+        y =&gt; { ticks =&gt; { ticksDistance =&gt; 2, minorTicks =&gt; 1} }
+    },
+    grid =&gt; { gridX =&gt; 1, gridY =&gt; 1 }
+})</code></pre>
 
 </dd>
 <dt>snapSizeX, snapSizeY (Default: <code>snapSizeX =&gt; 1, snapSizeY =&gt; 1</code>)</dt>
@@ -227,13 +293,13 @@
 
 <p>Note that if this option is set to 1, then some of the options listed above have different default values. The options with different default values and their corresponding default values are:</p>
 
-<pre><code>    bBox           =&gt; [ -10, 0.4, 10, -0.4 ],
-    xAxisLabel     =&gt; &#39;&#39;,
-    availableTools =&gt; [ &#39;IntervalTool&#39;, &#39;IncludeExcludePointTool&#39; ],</code></pre>
+<pre><code>bBox           =&gt; [ -10, 0.4, 10, -0.4 ],
+xAxisLabel     =&gt; &#39;&#39;,
+availableTools =&gt; [ &#39;IntervalTool&#39;, &#39;IncludeExcludePointTool&#39; ],</code></pre>
 
 <p>In addition, <code>bBox</code> may be provided as an array reference with only two entries which will be interpreted as a horizontal range. For example,</p>
 
-<pre><code>    bBox =&gt; [ -12, 12 ]</code></pre>
+<pre><code>bBox =&gt; [ -12, 12 ]</code></pre>
 
 <p>will give a graph with horizontal extremes <code>-12</code> and <code>12</code>.</p>
 
@@ -250,18 +316,67 @@
 </dd>
 </dl>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+<a href="#_podtop_"><h1 id="METHODS">METHODS</h1></a>
+
+<dl>
+
+<dt>generateAnswerGraph</dt>
+<dd>
+
+<p>This method may be called for a GraphTool object to output a static version of the graph into the problem. The typical place where this might be desired is in the solution for the problem. For example</p>
+
+<pre><code>BEGIN_PGML_SOLUTION
+The correct graph is
+
+[@ $gt-&gt;generateAnswerGraph(ariaDescription =&gt; &#39;a better description than the default&#39;) @]*
+END_PGML_SOLUTION</code></pre>
+
+<p>The following options may be passed to this method.</p>
+
+<dl>
+
+<dt><code>showCorrect</code></dt>
+<dd>
+
+<p>Whether to show correct answers in the graph. This is 1 by default.</p>
+
+</dd>
+<dt><code>cssClass</code></dt>
+<dd>
+
+<p>A css class that will be added to the containing div. The default value is &#39;graphtool-solution-container&#39;. Note that this default class is provided in the graphtool.css file. A custom class may also be used, and injected into the header via HEADER_TEXT. It is recommended that this class be prefixed with the graph tool answer name to avoid possible conflict with other problems. This may be obtained with <code>$gt-&gt;ANS_NAME</code>. This class must set the width and height of the div.graphtool-graph contained within, or the div.graphtool-number-line contained within if numberLine is set. Note that this option is only used in HTML output.</p>
+
+</dd>
+<dt><code>ariaDescription</code></dt>
+<dd>
+
+<p>An aria description that will be added to the graph. The default value is &#39;graph of solution&#39;. Note that this option is only used in HTML output.</p>
+
+</dd>
+<dt><code>objects</code></dt>
+<dd>
+
+<p>Additional objects to display in the graph. The default value is the empty string.</p>
+
+</dd>
+<dt><code>width</code> and <code>height</code></dt>
+<dd>
+
+<p>The width and height of the answer graph in HTML output. If neither of these are given, then the css class will be used instead. If only one of these is given, then the other will be computed from the given value.</p>
+
+</dd>
+<dt><code>texSize</code></dt>
+<dd>
+
+<p>This is the size of the image that will be output when a hard copy of the problem is generated. The default value is the value of the graph tool object <code>texSize</code> option which defaults to 400.</p>
+
+</dd>
+</dl>
+
+</dd>
+</dl>
+
+		</div>
+	</div>
 </body>
 </html>
-
-

@@ -1,51 +1,81 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>misc/randomPerson.pl</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>misc/randomPerson.pl</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>misc/randomPerson.pl</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
-
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a>
-    <ul>
-      <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
-      <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-      <li><a href="#USAGE">USAGE</a></li>
-      <li><a href="#randomPerson">randomPerson</a>
-        <ul>
-          <li><a href="#Examples-and-options">Examples and options</a></li>
-          <li><a href="#randomLastName">randomLastName</a></li>
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">misc/randomPerson.pl</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#USAGE">USAGE</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#randomPerson">randomPerson</a>
+        <ul class="nav flex-column w-100">
+          <li class="nav-item"><a class="nav-link p-0" href="#Examples-and-options">Examples and options</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#randomLastName">randomLastName</a></li>
         </ul>
       </li>
-      <li><a href="#CONSTRUCTOR-Person">CONSTRUCTOR Person</a></li>
-      <li><a href="#name">name</a></li>
-      <li><a href="#subject">subject</a></li>
-      <li><a href="#Subject">Subject</a></li>
-      <li><a href="#possessive">possessive</a></li>
-      <li><a href="#Possessive">Possessive</a></li>
-      <li><a href="#possession">possession</a></li>
-      <li><a href="#Possession">Possession</a></li>
-      <li><a href="#object">object</a></li>
-      <li><a href="#one-of-Object">one of Object</a></li>
-      <li><a href="#verb-or-Verb">verb or Verb</a>
-        <ul>
-          <li><a href="#do-or-Do">do or Do</a></li>
-          <li><a href="#are-or-Are">are or Are</a></li>
-          <li><a href="#go-or-Go">go or Go</a></li>
-          <li><a href="#have-or-Have">have or Have</a></li>
-          <li><a href="#were-or-Were">were or Were</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#CONSTRUCTOR-Person">CONSTRUCTOR Person</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#name">name</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#subject">subject</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Subject">Subject</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#possessive">possessive</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Possessive">Possessive</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#possession">possession</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Possession">Possession</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#object">object</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#one-of-Object">one of Object</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#verb-or-Verb">verb or Verb</a>
+        <ul class="nav flex-column w-100">
+          <li class="nav-item"><a class="nav-link p-0" href="#do-or-Do">do or Do</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#are-or-Are">are or Are</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#go-or-Go">go or Go</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#have-or-Have">have or Have</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#were-or-Were">were or Were</a></li>
         </ul>
       </li>
     </ul>
-  </li>
-</ul>
+  </li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
+
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
@@ -53,7 +83,7 @@
 
 <h2 id="SYNOPSIS">SYNOPSIS</h2>
 
-<pre><code>    loadMacros(&#39;randomPerson.pl&#39;);</code></pre>
+<pre><code>loadMacros(&#39;randomPerson.pl&#39;);</code></pre>
 
 <h2 id="DESCRIPTION">DESCRIPTION</h2>
 
@@ -67,40 +97,40 @@
 
 <p>First load the <code>randomPerson</code> macro with</p>
 
-<pre><code>    loadMacros(&#39;randomPerson.pl&#39;);</code></pre>
+<pre><code>loadMacros(&#39;randomPerson.pl&#39;);</code></pre>
 
 <p>and then call the randomPerson subroutine</p>
 
-<pre><code>    $p = randomPerson();</code></pre>
+<pre><code>$p = randomPerson();</code></pre>
 
 <p>The variable <code>$p</code> is now a <code>Person</code> object with methods to access the names, pronouns and verb conjugation. It can be used within a problem as</p>
 
-<pre><code>    BEGIN_PGML
-    [$p] travels 1.5 miles to school.
-    After school, [$p-&gt;they] [$p-&gt;go] to work.
-    [$p-&gt;Their] dog greets [$p-&gt;them] when [$p-&gt;they] [$p-&gt;verb(&#39;get&#39;)] home.
-    The books on the table are [$p-&gt;theirs].
-    END_PGML</code></pre>
+<pre><code>BEGIN_PGML
+[$p] travels 1.5 miles to school.
+After school, [$p-&gt;they] [$p-&gt;go] to work.
+[$p-&gt;Their] dog greets [$p-&gt;them] when [$p-&gt;they] [$p-&gt;verb(&#39;get&#39;)] home.
+The books on the table are [$p-&gt;theirs].
+END_PGML</code></pre>
 
 <p>Depending on the he/she/they pronoun, the methods <code>they</code>, <code>them</code>, <code>their</code> and <code>theirs</code> (with or without capitalization) will select the correct subject, object, possession, possesive forms of the pronoun. Also, note that <code>go</code> is one of a few special verbs with irregular conjugation.</p>
 
 <p>If you would like multiple people to be randomly choosen with unique names, use</p>
 
-<pre><code>    @persons = randomPerson(n =&gt; 4);</code></pre>
+<pre><code>@persons = randomPerson(n =&gt; 4);</code></pre>
 
 <p>generates an array of 4 unique <code>Person</code> objects.</p>
 
 <p>Additionally, you can specify your own list of names and pronouns to draw from. For example</p>
 
-<pre><code>    $p1 = randomPerson(names =&gt; [[&#39;Bart&#39; =&gt; &#39;he&#39;], [&#39;Lisa&#39; =&gt; &#39;she&#39;]]);</code></pre>
+<pre><code>$p1 = randomPerson(names =&gt; [[&#39;Bart&#39; =&gt; &#39;he&#39;], [&#39;Lisa&#39; =&gt; &#39;she&#39;]]);</code></pre>
 
 <p>or without the pronouns, which will be assigned randomly from he/she/they:</p>
 
-<pre><code>    $p2 = randomPerson(names =&gt; [&#39;Bart&#39;, &#39;Lisa&#39;]);</code></pre>
+<pre><code>$p2 = randomPerson(names =&gt; [&#39;Bart&#39;, &#39;Lisa&#39;]);</code></pre>
 
 <p>To use pronouns beyond &#39;he&#39;, &#39;she&#39;, and &#39;they&#39;, first add the pronoun and its related forms like this:</p>
 
-<pre><code>    $Person::PRONOUNS{&#39;it&#39;} = { possessive =&gt; &#39;its&#39;, possession =&gt; &#39;its&#39;, object =&gt; &#39;it&#39; };</code></pre>
+<pre><code>$Person::PRONOUNS{&#39;it&#39;} = { possessive =&gt; &#39;its&#39;, possession =&gt; &#39;its&#39;, object =&gt; &#39;it&#39; };</code></pre>
 
 <p>If a new pronoun is added, verb conjugation for that pronoun will match &#39;he&#39;/&#39;she&#39; verb conjugation, not &#39;they&#39; verb conjugation.</p>
 
@@ -116,14 +146,14 @@
 
 <p>Example</p>
 
-<pre><code>    randomPerson()</code></pre>
+<pre><code>randomPerson()</code></pre>
 
 </li>
 <li><p><code><span style="white-space: nowrap;">n =&gt; k</span></code> returns an array of k Person objects with unique names.</p>
 
 <p>Example</p>
 
-<pre><code>    randomPerson(n=&gt;5)</code></pre>
+<pre><code>randomPerson(n=&gt;5)</code></pre>
 
 <p>returns an array of 5 Person objects with unique names.</p>
 
@@ -134,26 +164,26 @@
 
 <p>Example:</p>
 
-<pre><code>    $a = randomPerson(names =&gt; [[ Bart =&gt; &#39;he&#39; ], [ Lisa =&gt; &#39;she&#39; ], [ Matty =&gt; &#39;they&#39; ]]);</code></pre>
+<pre><code>$a = randomPerson(names =&gt; [[ Bart =&gt; &#39;he&#39; ], [ Lisa =&gt; &#39;she&#39; ], [ Matty =&gt; &#39;they&#39; ]]);</code></pre>
 
 <p>Alternatively, each person name/pronoun can be set as an hashref. For example the above can be written:</p>
 
-<pre><code>    $a = randomPerson(names =&gt; [
-        { name =&gt; &#39;Bart&#39;, pronoun =&gt; &#39;he&#39; },
-        { name =&gt; &#39;Lisa&#39;, pronoun =&gt; &#39;she&#39; },
-        { name =&gt; &#39;Matty&#39;, pronoun =&gt; &#39;they&#39; }
-    ]);</code></pre>
+<pre><code>$a = randomPerson(names =&gt; [
+    { name =&gt; &#39;Bart&#39;, pronoun =&gt; &#39;he&#39; },
+    { name =&gt; &#39;Lisa&#39;, pronoun =&gt; &#39;she&#39; },
+    { name =&gt; &#39;Matty&#39;, pronoun =&gt; &#39;they&#39; }
+]);</code></pre>
 
 <p>If the pronoun is missing using either arrayrefs or hashrefs, then a pronoun is determined randomly. Each of the following are legal</p>
 
-<pre><code>    $p1 = randomPerson( names =&gt; [&#39;Larry&#39;, &#39;Moe&#39;, &#39;Curly&#39;]);
-    $p2 = randomPerson( names =&gt; [&#39;Larry&#39;, [ Moe =&gt; &#39;he&#39; ], &#39;Curly&#39;]);
-    $p3 = randomPerson( names =&gt; [{ name =&gt; &#39;Larry&#39;}, { name =&gt; &#39;Moe&#39; }, { name =&gt; &#39;Curly&#39; }]);
-    $p4 = randomPerson( names =&gt; [{ name =&gt; &#39;Larry&#39;}, { name =&gt; &#39;Moe&#39;, pronoun =&gt; &#39;he&#39; }, { name =&gt; &#39;Curly&#39; }]);</code></pre>
+<pre><code>$p1 = randomPerson( names =&gt; [&#39;Larry&#39;, &#39;Moe&#39;, &#39;Curly&#39;]);
+$p2 = randomPerson( names =&gt; [&#39;Larry&#39;, [ Moe =&gt; &#39;he&#39; ], &#39;Curly&#39;]);
+$p3 = randomPerson( names =&gt; [{ name =&gt; &#39;Larry&#39;}, { name =&gt; &#39;Moe&#39; }, { name =&gt; &#39;Curly&#39; }]);
+$p4 = randomPerson( names =&gt; [{ name =&gt; &#39;Larry&#39;}, { name =&gt; &#39;Moe&#39;, pronoun =&gt; &#39;he&#39; }, { name =&gt; &#39;Curly&#39; }]);</code></pre>
 
 <p>And the option <code>n</code> can be used to return an array with that number of persons.</p>
 
-<pre><code>    @p = randomPerson(n =&gt; 2, names =&gt; [[ Bart =&gt; &#39;he&#39; ], [ Lisa =&gt; &#39;she&#39; ], [ Matty =&gt; &#39;they&#39; ]]);</code></pre>
+<pre><code>@p = randomPerson(n =&gt; 2, names =&gt; [[ Bart =&gt; &#39;he&#39; ], [ Lisa =&gt; &#39;she&#39; ], [ Matty =&gt; &#39;they&#39; ]]);</code></pre>
 
 </li>
 </ul>
@@ -162,13 +192,13 @@
 
 <p>This returns a random last name based on popular last names in the United States. Example</p>
 
-<pre><code>    $p = randomLastName();</code></pre>
+<pre><code>$p = randomLastName();</code></pre>
 
 <p>Note it is just a string, and doesn&#39;t have the pronouns that the Person object does.</p>
 
 <p>If an array is requested and a number is passed in the form <code><span style="white-space: nowrap;">n =&gt; k</span></code> (which defaults to 1), then an array of k unique last names is returned.</p>
 
-<pre><code>    @lastnames = randomLastName(n =&gt; 4);</code></pre>
+<pre><code>@lastnames = randomLastName(n =&gt; 4);</code></pre>
 
 <p>generates 4 unique last names.</p>
 
@@ -178,7 +208,7 @@
 
 <p>Make a Person with</p>
 
-<pre><code>    Person-&gt;new(name =&gt; &#39;Roger&#39;, pronoun =&gt; &#39;he&#39;)</code></pre>
+<pre><code>Person-&gt;new(name =&gt; &#39;Roger&#39;, pronoun =&gt; &#39;he&#39;)</code></pre>
 
 <p>for example. This is used by the <code>randomPerson</code> method which returns a blessed Person object which can be used to write a problem with a random name with pronouns and verb conjugation.</p>
 
@@ -186,8 +216,8 @@
 
 <p>This returns the name of the person.</p>
 
-<pre><code>    $p = new Person(name =&gt; &#39;Roger&#39;, pronoun =&gt; &#39;he&#39;);
-    $p-&gt;name;</code></pre>
+<pre><code>$p = new Person(name =&gt; &#39;Roger&#39;, pronoun =&gt; &#39;he&#39;);
+$p-&gt;name;</code></pre>
 
 <p>returns the name &#39;Roger&#39;.</p>
 
@@ -195,8 +225,8 @@
 
 <p>These return the subject pronoun in lowercase. The second option is syntactic sugar.</p>
 
-<pre><code>    $p-&gt;subject
-    $p-&gt;they</code></pre>
+<pre><code>$p-&gt;subject
+$p-&gt;they</code></pre>
 
 <p>returns one of (he, she, they)</p>
 
@@ -204,8 +234,8 @@
 
 <p>These return the subject pronoun, capitalized. The second option is syntactic sugar.</p>
 
-<pre><code>    $p-&gt;Subject
-    $p-&gt;They</code></pre>
+<pre><code>$p-&gt;Subject
+$p-&gt;They</code></pre>
 
 <p>returns one of (He, She, They)</p>
 
@@ -213,8 +243,8 @@
 
 <p>These return the possessive adjective in lowercase. The second option is syntactic sugar.</p>
 
-<pre><code>    $p-&gt;possessive
-    $p-&gt;their</code></pre>
+<pre><code>$p-&gt;possessive
+$p-&gt;their</code></pre>
 
 <p>returns one of (his, her, their)</p>
 
@@ -222,8 +252,8 @@
 
 <p>These return the possessive adjective, capitalized. The second option is syntactic sugar.</p>
 
-<pre><code>    $p-&gt;Possessive
-    $p-&gt;Their</code></pre>
+<pre><code>$p-&gt;Possessive
+$p-&gt;Their</code></pre>
 
 <p>returns one of (His, Her, Their)</p>
 
@@ -231,8 +261,8 @@
 
 <p>These return the possessive pronoun in lowercase. The second option is syntactic sugar.</p>
 
-<pre><code>    $p-&gt;possession
-    $p-&gt;theirs</code></pre>
+<pre><code>$p-&gt;possession
+$p-&gt;theirs</code></pre>
 
 <p>returns one of (his, hers, theirs)</p>
 
@@ -240,8 +270,8 @@
 
 <p>These return the possessive pronoun, capitalized. The second option is syntactic sugar.</p>
 
-<pre><code>    $p-&gt;Possession
-    %p-&gt;Theirs</code></pre>
+<pre><code>$p-&gt;Possession
+%p-&gt;Theirs</code></pre>
 
 <p>returns one of (His, Hers, Theirs)</p>
 
@@ -249,8 +279,8 @@
 
 <p>These return the object pronoun in lowercase. The second option is syntactic sugar.</p>
 
-<pre><code>    $p-&gt;object
-    $p-&gt;them</code></pre>
+<pre><code>$p-&gt;object
+$p-&gt;them</code></pre>
 
 <p>returns one of (him, her, them)</p>
 
@@ -258,8 +288,8 @@
 
 <p>These return the object pronoun, capitalized. The second option is syntactic sugar.</p>
 
-<pre><code>    $p-&gt;Object
-    $p-&gt;Them</code></pre>
+<pre><code>$p-&gt;Object
+$p-&gt;Them</code></pre>
 
 <p>returns (Him, Her, Them)</p>
 
@@ -267,32 +297,32 @@
 
 <p>Returns the correct conjugation of the verb. If only one argument is passed in, it should be a regular verb in the third person plural conjugation (the &quot;they&quot; version). For example:</p>
 
-<pre><code>    $p1 = new Person(name =&gt; &#39;Roger&#39;, pronoun =&gt; &#39;he&#39;);
-    $p1-&gt;verb(&#39;find&#39;);</code></pre>
+<pre><code>$p1 = new Person(name =&gt; &#39;Roger&#39;, pronoun =&gt; &#39;he&#39;);
+$p1-&gt;verb(&#39;find&#39;);</code></pre>
 
 <p>returns &#39;finds&#39;. All that happens is an &#39;s&#39; or an &#39;es&#39; is appended, or &#39;y&#39;-&gt;&#39;ies&#39;, according to some simple English conjugation rules.</p>
 
-<pre><code>    $p2 = new Person(name =&gt; &#39;Max&#39;, pronoun =&gt; &#39;they&#39;);
-    $p2-&gt;verb(&#39;find&#39;)</code></pre>
+<pre><code>$p2 = new Person(name =&gt; &#39;Max&#39;, pronoun =&gt; &#39;they&#39;);
+$p2-&gt;verb(&#39;find&#39;)</code></pre>
 
 <p>returns &#39;find&#39;. The verb can be called directly as a method as well.</p>
 
 <p>If a second argument is passed, it should be the third person singular conjugation of the same verb (the &quot;he/she&quot; version). For example:</p>
 
-<pre><code>    $p1 = new Person(name =&gt; &#39;Roger&#39;, pronoun =&gt; &#39;he&#39;);
-    $p1-&gt;verb(&#39;fly&#39;, &#39;flies&#39;);</code></pre>
+<pre><code>$p1 = new Person(name =&gt; &#39;Roger&#39;, pronoun =&gt; &#39;he&#39;);
+$p1-&gt;verb(&#39;fly&#39;, &#39;flies&#39;);</code></pre>
 
 <p>returns &#39;flies&#39;</p>
 
-<pre><code>    $p2 = new Person(name =&gt; &#39;Max&#39;, pronoun =&gt; &#39;they&#39;);
-    $p2-&gt;verb(&#39;fly&#39;, &#39;flies&#39;);</code></pre>
+<pre><code>$p2 = new Person(name =&gt; &#39;Max&#39;, pronoun =&gt; &#39;they&#39;);
+$p2-&gt;verb(&#39;fly&#39;, &#39;flies&#39;);</code></pre>
 
 <p>returns &#39;fly&#39;</p>
 
 <p>Captilization can be done by capitalizing the verb. For example:</p>
 
-<pre><code>    $p2 = new Person(name =&gt; &#39;Max&#39;, pronoun =&gt; &#39;they&#39;);
-    $p2-&gt;Verb(&#39;Say&#39;);</code></pre>
+<pre><code>$p2 = new Person(name =&gt; &#39;Max&#39;, pronoun =&gt; &#39;they&#39;);
+$p2-&gt;Verb(&#39;Say&#39;);</code></pre>
 
 <p>returns &#39;Say&#39;.</p>
 
@@ -300,64 +330,53 @@
 
 <p>Returns the correct conjugation of to do with captilization. For example</p>
 
-<pre><code>    $p-&gt;do;</code></pre>
+<pre><code>$p-&gt;do;</code></pre>
 
 <p>or</p>
 
-<pre><code>    $p-&gt;Do;</code></pre>
+<pre><code>$p-&gt;Do;</code></pre>
 
 <h3 id="are-or-Are"><code>are</code> or <code>Are</code></h3>
 
 <p>Returns the correct conjugation of to be with captilization. For example</p>
 
-<pre><code>    $p-&gt;are;</code></pre>
+<pre><code>$p-&gt;are;</code></pre>
 
 <p>or</p>
 
-<pre><code>    $p-&gt;Are;</code></pre>
+<pre><code>$p-&gt;Are;</code></pre>
 
 <h3 id="go-or-Go"><code>go</code> or <code>Go</code></h3>
 
 <p>Returns the correct conjugation of to go with captilization. For example</p>
 
-<pre><code>    $p-&gt;go;</code></pre>
+<pre><code>$p-&gt;go;</code></pre>
 
 <p>or</p>
 
-<pre><code>    $p-&gt;Go;</code></pre>
+<pre><code>$p-&gt;Go;</code></pre>
 
 <h3 id="have-or-Have"><code>have</code> or <code>Have</code></h3>
 
 <p>Returns the correct conjugation of to have with captilization. For example</p>
 
-<pre><code>    $p-&gt;have;</code></pre>
+<pre><code>$p-&gt;have;</code></pre>
 
 <p>or</p>
 
-<pre><code>    $p-&gt;Have;</code></pre>
+<pre><code>$p-&gt;Have;</code></pre>
 
 <h3 id="were-or-Were"><code>were</code> or <code>Were</code></h3>
 
 <p>Returns the correct conjugation of past tense of to be with captilization. For example</p>
 
-<pre><code>    $p-&gt;were;</code></pre>
+<pre><code>$p-&gt;were;</code></pre>
 
 <p>or</p>
 
-<pre><code>    $p-&gt;Were;</code></pre>
+<pre><code>$p-&gt;Were;</code></pre>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

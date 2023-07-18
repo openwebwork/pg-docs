@@ -1,42 +1,70 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>WeBWorK::PG::Translator</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>WeBWorK::PG::Translator</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>WeBWorK::PG::Translator</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
-
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#SYNPOSIS">SYNPOSIS</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a>
-    <ul>
-      <li><a href="#be_strict">be_strict</a></li>
-      <li><a href="#evaluate_modules">evaluate_modules</a></li>
-      <li><a href="#load_extra_packages">load_extra_packages</a></li>
-      <li><a href="#new">new</a></li>
-      <li><a href="#Safe-compartment-pass-through-macros">Safe compartment pass through macros</a></li>
-      <li><a href="#set_mask">set_mask</a></li>
-      <li><a href="#PG_errorMessage">PG_errorMessage</a></li>
-      <li><a href="#Translate">Translate</a></li>
-      <li><a href="#Answer-evaluation-methods">Answer evaluation methods</a>
-        <ul>
-          <li><a href="#access-methods">access methods</a></li>
-          <li><a href="#process_answers">process_answers</a></li>
-          <li><a href="#grade_problem">grade_problem</a></li>
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">WeBWorK::PG::Translator</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNPOSIS">SYNPOSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#be_strict">be_strict</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#evaluate_modules">evaluate_modules</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#load_extra_packages">load_extra_packages</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#new">new</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Safe-compartment-pass-through-macros">Safe compartment pass through macros</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#set_mask">set_mask</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#PG_errorMessage">PG_errorMessage</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Translate">Translate</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Answer-evaluation-methods">Answer evaluation methods</a>
+        <ul class="nav flex-column w-100">
+          <li class="nav-item"><a class="nav-link p-0" href="#access-methods">access methods</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#process_answers">process_answers</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#grade_problem">grade_problem</a></li>
         </ul>
       </li>
-      <li><a href="#PG_restricted_eval">PG_restricted_eval</a></li>
-      <li><a href="#PG_answer_eval">PG_answer_eval</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#PG_restricted_eval">PG_restricted_eval</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#PG_answer_eval">PG_answer_eval</a></li>
     </ul>
-  </li>
-</ul>
+  </li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
+
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
@@ -44,30 +72,30 @@
 
 <a href="#_podtop_"><h1 id="SYNPOSIS">SYNPOSIS</h1></a>
 
-<pre><code>    my $pt = new WeBWorK::PG::Translator;    # create a translator
-    $pt-&gt;environment(\%envir);               # provide the environment variable for the problem
-    $pt-&gt;initialize();                       # initialize the translator
-    $pt-&gt; set_mask();                        # set the operation mask for the translator safe compartment
-    $pt-&gt;source_string($source);             # provide the source string for the problem
+<pre><code>my $pt = new WeBWorK::PG::Translator;    # create a translator
+$pt-&gt;environment(\%envir);               # provide the environment variable for the problem
+$pt-&gt;initialize();                       # initialize the translator
+$pt-&gt; set_mask();                        # set the operation mask for the translator safe compartment
+$pt-&gt;source_string($source);             # provide the source string for the problem
 
-    # Load the unprotected macro files.
-    # These files are evaluated with the Safe compartment wide open.
-    # Other macros are loaded from within the problem using loadMacros.
-    $pt-&gt;unrestricted_load(&quot;${courseScriptsDirectory}PG.pl&quot;);
+# Load the unprotected macro files.
+# These files are evaluated with the Safe compartment wide open.
+# Other macros are loaded from within the problem using loadMacros.
+$pt-&gt;unrestricted_load(&quot;${courseScriptsDirectory}PG.pl&quot;);
 
-    $pt-&gt;translate();    # translate the problem (the following pieces of information are created)
+$pt-&gt;translate();    # translate the problem (the following pieces of information are created)
 
-    $PG_PROBLEM_TEXT_ARRAY_REF = $pt-&gt;ra_text();      # output text for the body of the HTML file (in array form)
-    $PG_PROBLEM_TEXT_REF = $pt-&gt;r_text();             # output text for the body of the HTML file
-    $PG_HEADER_TEXT_REF = $pt-&gt;r_header;              # text for the header of the HTML file
-    $PG_POST_HEADER_TEXT_REF = $pt-&gt;r_post_header
-    $PG_ANSWER_HASH_REF = $pt-&gt;rh_correct_answers;    # a hash of answer evaluators
-    $PG_FLAGS_REF = $pt-&gt;rh_flags;                    # misc. status flags.
+$PG_PROBLEM_TEXT_ARRAY_REF = $pt-&gt;ra_text();      # output text for the body of the HTML file (in array form)
+$PG_PROBLEM_TEXT_REF = $pt-&gt;r_text();             # output text for the body of the HTML file
+$PG_HEADER_TEXT_REF = $pt-&gt;r_header;              # text for the header of the HTML file
+$PG_POST_HEADER_TEXT_REF = $pt-&gt;r_post_header
+$PG_ANSWER_HASH_REF = $pt-&gt;rh_correct_answers;    # a hash of answer evaluators
+$PG_FLAGS_REF = $pt-&gt;rh_flags;                    # misc. status flags.
 
-    $pt-&gt;process_answers;    # evaluates all of the answers
+$pt-&gt;process_answers;    # evaluates all of the answers
 
-    my $rh_answer_results = $pt-&gt;rh_evaluated_answers;  # provides a hash of the results of evaluating the answers.
-    my $rh_problem_result = $pt-&gt;grade_problem;         # grades the problem using the default problem grading method.</code></pre>
+my $rh_answer_results = $pt-&gt;rh_evaluated_answers;  # provides a hash of the results of evaluating the answers.
+my $rh_problem_result = $pt-&gt;grade_problem;         # grades the problem using the default problem grading method.</code></pre>
 
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
@@ -77,55 +105,55 @@
 
 <p>This creates a substitute for <code>use strict;</code> which cannot be used in PG problem sets or PG macro files. Use this way to imitate the behavior of <code>use strict;</code></p>
 
-<pre><code>    BEGIN { be_strict(); }</code></pre>
+<pre><code>BEGIN { be_strict(); }</code></pre>
 
 <h2 id="evaluate_modules">evaluate_modules</h2>
 
-<pre><code>    Usage:  $obj-&gt;evaluate_modules(&#39;WWPlot&#39;, &#39;Fun&#39;, &#39;Circle&#39;);</code></pre>
+<pre><code>Usage:  $obj-&gt;evaluate_modules(&#39;WWPlot&#39;, &#39;Fun&#39;, &#39;Circle&#39;);</code></pre>
 
 <p>Adds the modules WWPlot.pm, Fun.pm and Circle.pm in the courseScripts directory to the list of modules which can be used by the PG problems.</p>
 
 <h2 id="load_extra_packages">load_extra_packages</h2>
 
-<pre><code>    Usage:  $obj-&gt;load_extra_packages(&#39;AlgParserWithImplicitExpand&#39;,
-                                      &#39;Expr&#39;,&#39;ExprWithImplicitExpand&#39;);</code></pre>
+<pre><code>Usage:  $obj-&gt;load_extra_packages(&#39;AlgParserWithImplicitExpand&#39;,
+                                  &#39;Expr&#39;,&#39;ExprWithImplicitExpand&#39;);</code></pre>
 
 <p>Loads extra packages for modules that contain more than one package. Works in conjunction with evaluate_modules. It is assumed that the file containing the extra packages (along with the base package name which is the same as the name of the file minus the .pm extension) has already been loaded using evaluate_modules</p>
 
 <h2 id="new">new</h2>
 
-<pre><code>    Creates the translator object.</code></pre>
+<pre><code>Creates the translator object.</code></pre>
 
 <p>(b) The following routines defined within the PG module are shared:</p>
 
-<pre><code>    &amp;be_strict
-    &amp;read_whole_problem_file
-    &amp;convertPath
-    &amp;surePathToTmpFile
-    &amp;fileFromPath
-    &amp;directoryFromPath
-    &amp;PG_answer_eval
-    &amp;PG_restricted_eval
-    &amp;send_mail_to</code></pre>
+<pre><code>&amp;be_strict
+&amp;read_whole_problem_file
+&amp;convertPath
+&amp;surePathToTmpFile
+&amp;fileFromPath
+&amp;directoryFromPath
+&amp;PG_answer_eval
+&amp;PG_restricted_eval
+&amp;send_mail_to</code></pre>
 
 <p>In addition the environment hash <code>%envir</code> is shared. This variable is unpacked when PG.pl is run and provides most of the environment variables for each problem template.</p>
 
 
-    <a href = "${Global::webworkDocsURL}techdescription/pglanguage/PGenvironment.html">environment variables</a>
+    <a href="${Global::webworkDocsURL}techdescription/pglanguage/PGenvironment.html">environment variables</a>
 
 <p>(c) Sharing macros:</p>
 
 <p>The macros shared with the safe compartment are</p>
 
-<pre><code>    &#39;&amp;read_whole_problem_file&#39;
-    &#39;&amp;convertPath&#39;
-    &#39;&amp;surePathToTmpFile&#39;
-    &#39;&amp;fileFromPath&#39;
-    &#39;&amp;directoryFromPath&#39;
-    &#39;&amp;PG_answer_eval&#39;
-    &#39;&amp;PG_restricted_eval&#39;
-    &#39;&amp;be_strict&#39;
-    &#39;&amp;send_mail_to&#39;</code></pre>
+<pre><code>&#39;&amp;read_whole_problem_file&#39;
+&#39;&amp;convertPath&#39;
+&#39;&amp;surePathToTmpFile&#39;
+&#39;&amp;fileFromPath&#39;
+&#39;&amp;directoryFromPath&#39;
+&#39;&amp;PG_answer_eval&#39;
+&#39;&amp;PG_restricted_eval&#39;
+&#39;&amp;be_strict&#39;
+&#39;&amp;send_mail_to&#39;</code></pre>
 
 <h2 id="Safe-compartment-pass-through-macros">Safe compartment pass through macros</h2>
 
@@ -135,14 +163,14 @@
 
 <p>Specifically the following are allowed:</p>
 
-<pre><code>    time
-        - Gives the current Unix time.
-    atan, sin, cos, exp, log, sqrt
-        - Arithemetic commands.  More are defined in PGauxiliaryFunctions.pl</code></pre>
+<pre><code>time
+    - Gives the current Unix time.
+atan, sin, cos, exp, log, sqrt
+    - Arithemetic commands.  More are defined in PGauxiliaryFunctions.pl</code></pre>
 
 <p>The following are specifically not allowed:</p>
 
-<pre><code>        eval, unlink, symlink, system, exec, print, require</code></pre>
+<pre><code>eval, unlink, symlink, system, exec, print, require</code></pre>
 
 <h2 id="PG_errorMessage">PG_errorMessage</h2>
 
@@ -162,15 +190,15 @@
 
 <p>First every incidence of</p>
 
-<pre><code>    BEGIN_TEXT
-    problem text
-    END_TEXT</code></pre>
+<pre><code>BEGIN_TEXT
+problem text
+END_TEXT</code></pre>
 
 <p>is replaced by</p>
 
-<pre><code>    TEXT(EV3(&lt;&lt;&#39;END_TEXT&#39;));
-    problem text
-    END_TEXT</code></pre>
+<pre><code>TEXT(EV3(&lt;&lt;&#39;END_TEXT&#39;));
+problem text
+END_TEXT</code></pre>
 
 <p>The first construction is syntactic sugar for the second. This is explained in <code>PGbasicmacros.pl</code>.</p>
 
@@ -180,9 +208,9 @@
 
 <p>This is done to alleviate a basic incompatibility between TeX and Perl. TeX uses backslashes to denote a command word (as opposed to text which is to be entered literally). Perl uses backslashes to escape the following symbol. This escape mechanism takes place immediately when a Perl script is compiled and takes place throughout the code and within every quoted string (both double and single quoted strings) with the single exception of single quoted &quot;here&quot; documents. That is backlashes which appear in</p>
 
-<pre><code>    TEXT(&lt;&lt;&#39;EOF&#39;);
-    ... text including \{   \} for example
-    EOF</code></pre>
+<pre><code>TEXT(&lt;&lt;&#39;EOF&#39;);
+... text including \{   \} for example
+EOF</code></pre>
 
 <p>are the only ones not immediately evaluated. This behavior makes it very difficult to use TeX notation for defining mathematics within text.</p>
 
@@ -212,43 +240,32 @@
 
 <h3 id="access-methods">access methods</h3>
 
-<pre><code>    $obj-&gt;rh_student_answers</code></pre>
+<pre><code>$obj-&gt;rh_student_answers</code></pre>
 
 <h3 id="process_answers">process_answers</h3>
 
-<pre><code>    $obj-&gt;process_answers()</code></pre>
+<pre><code>$obj-&gt;process_answers()</code></pre>
 
 <h3 id="grade_problem">grade_problem</h3>
 
-<pre><code>    $obj-&gt;rh_problem_state(%problem_state);  # sets the current problem state
-    $obj-&gt;grade_problem(%form_options);</code></pre>
+<pre><code>$obj-&gt;rh_problem_state(%problem_state);  # sets the current problem state
+$obj-&gt;grade_problem(%form_options);</code></pre>
 
 <h2 id="PG_restricted_eval">PG_restricted_eval</h2>
 
-<pre><code>    PG_restricted_eval($string)</code></pre>
+<pre><code>PG_restricted_eval($string)</code></pre>
 
 <p>Evaluated in package &#39;main&#39;. Result of last statement is returned. When called from within a safe compartment the safe compartment package is &#39;main&#39;.</p>
 
 <h2 id="PG_answer_eval">PG_answer_eval</h2>
 
-<pre><code>    PG_answer_eval($string)</code></pre>
+<pre><code>PG_answer_eval($string)</code></pre>
 
 <p>Evaluated in package defined by the current safe compartment. Result of last statement is returned. When called from within a safe compartment the safe compartment package is &#39;main&#39;.</p>
 
 <p>There is still some confusion about how these two evaluation subroutines work and how best to define them. It is useful to have two evaluation procedures since at some point one might like to make the answer evaluations more stringent.</p>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

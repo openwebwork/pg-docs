@@ -1,21 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>parsers/parserPrime.pl</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>parsers/parserPrime.pl</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>parsers/parserPrime.pl</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">parsers/parserPrime.pl</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
 
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-</ul>
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
@@ -27,80 +56,69 @@
 
 <p>To accomplish this, put the line</p>
 
-<pre><code>        loadMacros(&quot;parserPrime.pl&quot;);</code></pre>
+<pre><code>loadMacros(&quot;parserPrime.pl&quot;);</code></pre>
 
 <p>at the beginning of your problem file, then set the Context to the one you wish to use in the problem. Then use the command:</p>
 
-<pre><code>        parser::Prime-&gt;Enable;</code></pre>
+<pre><code>parser::Prime-&gt;Enable;</code></pre>
 
 <p>(You can also pass the Enable command a context pointer if you wish to alter a context other than the current one.)</p>
 
 <p>Once this is done, you will be able to enter primes in your Formulas to refer to differentiation. For example:</p>
 
-<pre><code>        Formula(&quot;(3x^2+2x+1)&#39;&quot;)</code></pre>
+<pre><code>Formula(&quot;(3x^2+2x+1)&#39;&quot;)</code></pre>
 
 <p>would mean the derivative of 3x^2+2x+1 and would be equivalent to</p>
 
-<pre><code>        Formula(&quot;3*2*x+2&quot;)</code></pre>
+<pre><code>Formula(&quot;3*2*x+2&quot;)</code></pre>
 
 <p>The variable of differentiation is taken from the variables used in the formula being differentiated. If there is more than one variable used, the first one alphabetically is used. For example</p>
 
-<pre><code>        Formula(&quot;(ln(x))&#39; + (x^2+3y)&#39;&quot;)</code></pre>
+<pre><code>Formula(&quot;(ln(x))&#39; + (x^2+3y)&#39;&quot;)</code></pre>
 
 <p>would produce the equivalent to</p>
 
-<pre><code>        Formula(&quot;(1/x) + (2*x+0)&quot;).</code></pre>
+<pre><code>Formula(&quot;(1/x) + (2*x+0)&quot;).</code></pre>
 
 <p>This can have unexpected results, however, since.</p>
 
-<pre><code>        Formula(&quot;(x^2)&#39; + (y^2)&#39;&quot;)</code></pre>
+<pre><code>Formula(&quot;(x^2)&#39; + (y^2)&#39;&quot;)</code></pre>
 
 <p>would generate</p>
 
-<pre><code>        Formula(&quot;2*x + 2*y&quot;)</code></pre>
+<pre><code>Formula(&quot;2*x + 2*y&quot;)</code></pre>
 
 <p>which may not be what you want. In order to specify the variable for differentiation, you can list it in the Enable() call. For example:</p>
 
-<pre><code>        parser::Prime-&gt;Enable(&quot;x&quot;);</code></pre>
+<pre><code>parser::Prime-&gt;Enable(&quot;x&quot;);</code></pre>
 
 <p>would make</p>
 
-<pre><code>        Formula(&quot;(x^2)&#39; + (y^2)&#39;&quot;)</code></pre>
+<pre><code>Formula(&quot;(x^2)&#39; + (y^2)&#39;&quot;)</code></pre>
 
 <p>generate</p>
 
-<pre><code>        Formula(&quot;2*x + 0&quot;)</code></pre>
+<pre><code>Formula(&quot;2*x + 0&quot;)</code></pre>
 
 <p>rather than the default 2x+2y.</p>
 
 <p>The prime operator also defines a reduction rule that allows the prime notation to be replaced by the actual derivative when the Formula is reduced. This is off by default, but you can set it via</p>
 
-<pre><code>        Context()-&gt;reduction-&gt;set(&quot;(f)&#39;&quot;=&gt;1);</code></pre>
+<pre><code>Context()-&gt;reduction-&gt;set(&quot;(f)&#39;&quot;=&gt;1);</code></pre>
 
 <p>so that it will be on for all reductions, or specify it for a single reduction as follows:</p>
 
-<pre><code>        $f = Formula(&quot;(x^2)&#39;&quot;)-&gt;reduce(&quot;(f)&#39;&quot;=&gt;1);</code></pre>
+<pre><code>$f = Formula(&quot;(x^2)&#39;&quot;)-&gt;reduce(&quot;(f)&#39;&quot;=&gt;1);</code></pre>
 
 <p>to obtain $f as Formula(&quot;2*x&quot;).</p>
 
 <p>Note that once the prime has been added to the Context, student answers will be allowed to include primes as well, so if you want students to actually perform the differentiation themselves, you may wish to disable the prime at the end of the problem (so it will not be active while student answers are being parsed). To do that use</p>
 
-<pre><code>        parser::Prime-&gt;Disable;</code></pre>
+<pre><code>parser::Prime-&gt;Disable;</code></pre>
 
 <p>(You can pass Disable a context pointer to remove the prime operator from a context other than the current one.)</p>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

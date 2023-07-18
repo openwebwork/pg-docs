@@ -1,72 +1,99 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>answers/PGasu.pl</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>answers/PGasu.pl</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>answers/PGasu.pl</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
-
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#SYNPOSIS">SYNPOSIS</a>
-    <ul>
-      <li>
-        <ul>
-          <li><a href="#auto_right">auto_right()</a></li>
-          <li><a href="#no_decs">no_decs()</a></li>
-          <li><a href="#must_include">must_include()</a></li>
-          <li><a href="#no_trig_fun">no_trig_fun()</a></li>
-          <li><a href="#no_trig">no_trig()</a></li>
-          <li><a href="#exact_no_trig">exact_no_trig()</a></li>
-          <li><a href="#must_have_filter">must_have_filter()</a></li>
-          <li><a href="#catch_errors_filter">catch_errors_filter()</a></li>
-          <li><a href="#raw_student_answer_filter">raw_student_answer_filter()</a></li>
-          <li><a href="#no_decimal_list">no_decimal_list()</a></li>
-          <li><a href="#no_decimals">no_decimals()</a></li>
-          <li><a href="#with_comments">with_comments()</a></li>
-          <li><a href="#pc_evaluator">pc_evaluator()</a></li>
-          <li><a href="#weighted_partial_grader">weighted_partial_grader</a></li>
-        </ul>
-      </li>
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">answers/PGasu.pl</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNPOSIS">SYNPOSIS</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#auto_right">auto_right()</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#no_decs">no_decs()</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#must_include">must_include()</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#no_trig_fun">no_trig_fun()</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#no_trig">no_trig()</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#exact_no_trig">exact_no_trig()</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#must_have_filter">must_have_filter()</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#catch_errors_filter">catch_errors_filter()</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#raw_student_answer_filter">raw_student_answer_filter()</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#no_decimal_list">no_decimal_list()</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#no_decimals">no_decimals()</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#with_comments">with_comments()</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#pc_evaluator">pc_evaluator()</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#weighted_partial_grader">weighted_partial_grader</a></li>
     </ul>
-  </li>
-</ul>
+  </li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
+
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<pre><code>        PGasu.pl -- located in the pg/macros directory</code></pre>
+<p>PGasu.pl -- located in the pg/macros directory</p>
 
 <a href="#_podtop_"><h1 id="SYNPOSIS">SYNPOSIS</h1></a>
 
-<pre><code>        Macros contributed by John Jones</code></pre>
+<p>Macros contributed by John Jones</p>
 
-<h3 id="auto_right">auto_right()</h3>
+<h2 id="auto_right">auto_right()</h2>
 
-<pre><code>        Usage: ANS(auto_right());
-          or
-               ANS(auto_right(&quot;this answer can be left blank&quot;));</code></pre>
+<p>Usage: <code>ANS(auto_right());</code></p>
+
+<p>or</p>
+
+<pre><code>ANS(auto_right(&quot;this answer can be left blank&quot;));</code></pre>
 
 <p>This answer checker marks any answer correct. It is useful when you want to leave multiple answer blanks, only some of which will be used. If you turn off showing partial correct answers and partial credit, the effect is not visible to the students. The comment in the second case is what will be displayed as the correct answer. This helps avoid confusion.</p>
 
-<h3 id="no_decs">no_decs()</h3>
+<h2 id="no_decs"><code>no_decs()</code></h2>
 
 <p>Can be wrapped around an numerical evaluation. It marks the answer wrong if it contains a decimal point. Usage:</p>
 
-<pre><code>  ANS(no_decs(num_cmp(&quot;sqrt(3)&quot;)));</code></pre>
+<pre><code>ANS(no_decs(num_cmp(&quot;sqrt(3)&quot;)));</code></pre>
 
 <p>This will accept &quot;sqrt(3)&quot; or &quot;3^(1/2)&quot; as answers, but not 1.7320508</p>
 
-<h3 id="must_include">must_include()</h3>
+<h2 id="must_include"><code>must_include()</code></h2>
 
 <p>Wrapper for other answer evaluators. It insists that a string is part of the answer to be marked right.</p>
 
-<h3 id="no_trig_fun">no_trig_fun()</h3>
+<h2 id="no_trig_fun">no_trig_fun()</h2>
 
 <p>Wrapper for other answer evaluators. It marks the answer wrong if it contains one of the six basic trig functions.</p>
 
@@ -74,11 +101,11 @@
 
 <p>A similar effect can be accomplished with Contexts() by undefining the trig functions. See http://webwork.maa.org/wiki/Modifying_contexts_%28advanced%29#.282.29_Functions</p>
 
-<h3 id="no_trig">no_trig()</h3>
+<h2 id="no_trig">no_trig()</h2>
 
-<h3 id="exact_no_trig">exact_no_trig()</h3>
+<h2 id="exact_no_trig">exact_no_trig()</h2>
 
-<h3 id="must_have_filter">must_have_filter()</h3>
+<h2 id="must_have_filter">must_have_filter()</h2>
 
 <p>Filter for checking that an answer has (or doesn&#39;t have) a certain string in it. This can be used to screen answers where you want them in a particular form (e.g., if you allow most functions, but not trig functions in the answer, or if the answer must include some string).</p>
 
@@ -88,45 +115,34 @@
 
 <p>A similar effect can be accomplished with Contexts() by undefining the trig functions. See http://webwork.maa.org/wiki/Modifying_contexts_%28advanced%29</p>
 
-<h3 id="catch_errors_filter">catch_errors_filter()</h3>
+<h2 id="catch_errors_filter">catch_errors_filter()</h2>
 
-<h3 id="raw_student_answer_filter">raw_student_answer_filter()</h3>
+<h2 id="raw_student_answer_filter">raw_student_answer_filter()</h2>
 
-<h3 id="no_decimal_list">no_decimal_list()</h3>
+<h2 id="no_decimal_list">no_decimal_list()</h2>
 
-<h3 id="no_decimals">no_decimals()</h3>
+<h2 id="no_decimals">no_decimals()</h2>
 
-<h3 id="with_comments">with_comments()</h3>
+<h2 id="with_comments">with_comments()</h2>
 
-<pre><code>        # Wrapper for an answer evaluator which can also supply comments</code></pre>
+<pre><code># Wrapper for an answer evaluator which can also supply comments</code></pre>
 
-<h3 id="pc_evaluator">pc_evaluator()</h3>
+<h2 id="pc_evaluator">pc_evaluator()</h2>
 
-<pre><code>                # Wrapper for multiple answer evaluators, it takes a list of the following as inputs
-                # [answer_evaluator, partial credit factor, comment]
-                # it applies evaluators from the list until it hits one with positive credit,
-                # weights it by the partial credit factor, and throws in its comment</code></pre>
+<pre><code># Wrapper for multiple answer evaluators, it takes a list of the following as inputs
+# [answer_evaluator, partial credit factor, comment]
+# it applies evaluators from the list until it hits one with positive credit,
+# weights it by the partial credit factor, and throws in its comment</code></pre>
 
-<h3 id="weighted_partial_grader">weighted_partial_grader</h3>
+<h2 id="weighted_partial_grader">weighted_partial_grader</h2>
 
 <p>This is a grader which weights the different parts of the problem differently. The weights passed to it through the environment. In the problem:</p>
 
-<pre><code> $ENV{&#39;partial_weights&#39;} = [.2,.2,.2,.3];</code></pre>
+<pre><code>$ENV{&#39;partial_weights&#39;} = [.2,.2,.2,.3];</code></pre>
 
 <p>This will soon be superceded by a better grader.</p>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

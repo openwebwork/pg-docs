@@ -1,38 +1,62 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>answers/PGstringevaluators.pl</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>answers/PGstringevaluators.pl</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>answers/PGstringevaluators.pl</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">answers/PGstringevaluators.pl</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#MathObjects-and-answer-evaluators">MathObjects and answer evaluators</a></li>
+    </ul>
+  </li><li class="nav-item"><a class="nav-link p-0" href="#String-Filters">String Filters</a></li><li class="nav-item"><a class="nav-link p-0" href="#str_cmp">str_cmp</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#Examples">Examples</a></li>
+    </ul>
+  </li><li class="nav-item"><a class="nav-link p-0" href="#mode_str_cmp-functions">&quot;mode&quot;_str_cmp functions</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#Examples1">Examples</a></li>
+    </ul>
+  </li><li class="nav-item"><a class="nav-link p-0" href="#SEE-ALSO">SEE ALSO</a></li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
 
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a>
-    <ul>
-      <li><a href="#MathObjects-and-answer-evaluators">MathObjects and answer evaluators</a></li>
-    </ul>
-  </li>
-  <li><a href="#String-Filters">String Filters</a></li>
-  <li><a href="#str_cmp">str_cmp</a>
-    <ul>
-      <li><a href="#Examples">Examples</a></li>
-    </ul>
-  </li>
-  <li><a href="#mode_str_cmp-functions">&quot;mode&quot;_str_cmp functions</a>
-    <ul>
-      <li><a href="#Examples1">Examples</a></li>
-    </ul>
-  </li>
-  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
-</ul>
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
@@ -40,9 +64,9 @@
 
 <a href="#_podtop_"><h1 id="SYNOPSIS">SYNOPSIS</h1></a>
 
-<pre><code>        ANS(str_cmp(&quot;increasing&quot;));
-        
-        ANS(unordered_str_cmp(&quot;A C E&quot;));</code></pre>
+<pre><code>ANS(str_cmp(&quot;increasing&quot;));
+
+ANS(unordered_str_cmp(&quot;A C E&quot;));</code></pre>
 
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
@@ -63,7 +87,7 @@
 
 <p>Removes all whitespace from the string. It applies the following substitution to the string:</p>
 
-<pre><code>        $filteredAnswer =~ s/\s+//g;</code></pre>
+<pre><code>$filteredAnswer =~ s/\s+//g;</code></pre>
 
 </dd>
 <dt>compress_whitespace</dt>
@@ -71,9 +95,9 @@
 
 <p>Removes leading and trailing whitespace, and replaces all other blocks of whitespace by a single space. Applies the following substitutions:</p>
 
-<pre><code>        $filteredAnswer =~ s/^\s*//;
-        $filteredAnswer =~ s/\s*$//;
-        $filteredAnswer =~ s/\s+/ /g;</code></pre>
+<pre><code>$filteredAnswer =~ s/^\s*//;
+$filteredAnswer =~ s/\s*$//;
+$filteredAnswer =~ s/\s+/ /g;</code></pre>
 
 </dd>
 <dt>trim_whitespace</dt>
@@ -81,8 +105,8 @@
 
 <p>Removes leading and trailing whitespace. Applies the following substitutions:</p>
 
-<pre><code>        $filteredAnswer =~ s/^\s*//;
-        $filteredAnswer =~ s/\s*$//;</code></pre>
+<pre><code>$filteredAnswer =~ s/^\s*//;
+$filteredAnswer =~ s/\s*$//;</code></pre>
 
 </dd>
 <dt>nullify</dt>
@@ -96,7 +120,7 @@
 
 <p>Ignores the case of the string. More accurately, it converts the string to uppercase (by convention). Applies the following function:</p>
 
-<pre><code>        $filteredAnswer = uc($filteredAnswer);</code></pre>
+<pre><code>$filteredAnswer = uc($filteredAnswer);</code></pre>
 
 </dd>
 <dt>ignore_order</dt>
@@ -104,15 +128,15 @@
 
 <p>Ignores the order of the letters in the string. This is used for problems of the form &quot;Choose all that apply.&quot; Specifically, it removes all whitespace and lexically sorts the letters in ascending alphabetical order. Applies the following functions:</p>
 
-<pre><code>        $filteredAnswer = join(&quot;&quot;, lex_sort(split(/\s*/, $filteredAnswer)));</code></pre>
+<pre><code>$filteredAnswer = join(&quot;&quot;, lex_sort(split(/\s*/, $filteredAnswer)));</code></pre>
 
 </dd>
 </dl>
 
 <a href="#_podtop_"><h1 id="str_cmp">str_cmp</h1></a>
 
-<pre><code>        ANS(str_cmp($answer_or_answer_array_ref, @filters));
-        ANS(str_cmp($answer_or_answer_array_ref, %options));</code></pre>
+<pre><code>ANS(str_cmp($answer_or_answer_array_ref, @filters));
+ANS(str_cmp($answer_or_answer_array_ref, %options));</code></pre>
 
 <p>Compares a string or a list of strings, using a named hash of options to set parameters. This can make for more readable code than using the &quot;mode&quot;_str_cmp() style, but some people find one or the other easier to remember.</p>
 
@@ -140,25 +164,25 @@
 
 <p>If %options is not detected, the rest of the argument list is assumed to be a list of filter names. Hence, the following two forms are equivalent:</p>
 
-<pre><code>        ANS(str_cmp($ans, &#39;remove_whitespace&#39;, &#39;ignore_order&#39;));
-        ANS(str_cmp($ans, filters=&gt;[&#39;remove_whitespace&#39;, &#39;ignore_order&#39;]));</code></pre>
+<pre><code>ANS(str_cmp($ans, &#39;remove_whitespace&#39;, &#39;ignore_order&#39;));
+ANS(str_cmp($ans, filters=&gt;[&#39;remove_whitespace&#39;, &#39;ignore_order&#39;]));</code></pre>
 
 <h2 id="Examples">Examples</h2>
 
-<pre><code>        # same as std_str_cmp() -- matches &quot;Hello&quot;, &quot;  hello&quot;, etc.
-        str_cmp(&quot;Hello&quot;)
+<pre><code># same as std_str_cmp() -- matches &quot;Hello&quot;, &quot;  hello&quot;, etc.
+str_cmp(&quot;Hello&quot;)
 
-        # same as std_str_cmp_list()
-        str_cmp([&quot;Hello&quot;, &quot;Goodbye&quot;]);
+# same as std_str_cmp_list()
+str_cmp([&quot;Hello&quot;, &quot;Goodbye&quot;]);
 
-        # matches &quot;hello&quot;, &quot; hello  &quot;, etc.
-        str_cmp(&#39; hello &#39;, &#39;trim_whitespace&#39;);
+# matches &quot;hello&quot;, &quot; hello  &quot;, etc.
+str_cmp(&#39; hello &#39;, &#39;trim_whitespace&#39;);
 
-        # matches &quot;ACB&quot; and &quot;A B C&quot;, but not &quot;abc&quot;
-        str_cmp(&#39;ABC&#39;, filters=&gt;&#39;ignore_order&#39;);
+# matches &quot;ACB&quot; and &quot;A B C&quot;, but not &quot;abc&quot;
+str_cmp(&#39;ABC&#39;, filters=&gt;&#39;ignore_order&#39;);
 
-        # matches &quot;def&quot; and &quot;d e f&quot; but not &quot;fed&quot;
-        str_cmp(&#39;D E F&#39;, &#39;remove_whitespace&#39;, &#39;ignore_case&#39;);</code></pre>
+# matches &quot;def&quot; and &quot;d e f&quot; but not &quot;fed&quot;
+str_cmp(&#39;D E F&#39;, &#39;remove_whitespace&#39;, &#39;ignore_case&#39;);</code></pre>
 
 <a href="#_podtop_"><h1 id="mode_str_cmp-functions">&quot;mode&quot;_str_cmp functions</h1></a>
 
@@ -169,8 +193,8 @@
 <dt>standard</dt>
 <dd>
 
-<pre><code>        std_str_cmp($correctString)
-        std_str_cmp_list(@correctStringList)</code></pre>
+<pre><code>std_str_cmp($correctString)
+std_str_cmp_list(@correctStringList)</code></pre>
 
 <p>Filters: compress_whitespace, ignore_case</p>
 
@@ -178,8 +202,8 @@
 <dt>standard, case sensitive</dt>
 <dd>
 
-<pre><code>        std_cs_str_cmp($correctString)
-        std_cs_str_cmp_list(@correctStringList)</code></pre>
+<pre><code>std_cs_str_cmp($correctString)
+std_cs_str_cmp_list(@correctStringList)</code></pre>
 
 <p>Filters: compress_whitespace</p>
 
@@ -187,8 +211,8 @@
 <dt>strict</dt>
 <dd>
 
-<pre><code>        strict_str_cmp($correctString)
-        strict_str_cmp_list(@correctStringList)</code></pre>
+<pre><code>strict_str_cmp($correctString)
+strict_str_cmp_list(@correctStringList)</code></pre>
 
 <p>Filters: trim_whitespace</p>
 
@@ -196,8 +220,8 @@
 <dt>unordered</dt>
 <dd>
 
-<pre><code>        unordered_str_cmp( $correctString )
-        unordered_str_cmp_list( @correctStringList )</code></pre>
+<pre><code>unordered_str_cmp( $correctString )
+unordered_str_cmp_list( @correctStringList )</code></pre>
 
 <p>Filters: ignore_order, ignore_case</p>
 
@@ -205,8 +229,8 @@
 <dt>unordered, case sensitive</dt>
 <dd>
 
-<pre><code>        unordered_cs_str_cmp( $correctString )
-        unordered_cs_str_cmp_list( @correctStringList )</code></pre>
+<pre><code>unordered_cs_str_cmp( $correctString )
+unordered_cs_str_cmp_list( @correctStringList )</code></pre>
 
 <p>Filters: ignore_order</p>
 
@@ -214,8 +238,8 @@
 <dt>ordered</dt>
 <dd>
 
-<pre><code>        ordered_str_cmp( $correctString )
-        ordered_str_cmp_list( @correctStringList )</code></pre>
+<pre><code>ordered_str_cmp( $correctString )
+ordered_str_cmp_list( @correctStringList )</code></pre>
 
 <p>Filters: remove_whitespace, ignore_case</p>
 
@@ -223,8 +247,8 @@
 <dt>ordered, case sensitive</dt>
 <dd>
 
-<pre><code>        ordered_cs_str_cmp( $correctString )
-        ordered_cs_str_cmp_list( @correctStringList )</code></pre>
+<pre><code>ordered_cs_str_cmp( $correctString )
+ordered_cs_str_cmp_list( @correctStringList )</code></pre>
 
 <p>Filters: remove_whitespace</p>
 
@@ -233,47 +257,36 @@
 
 <h2 id="Examples1">Examples</h2>
 
-<pre><code>        # Accepts &quot;W. Mozart&quot;, &quot;W. MOZarT&quot;, and so forth. Case insensitive. All
-        # internal spaces treated as single spaces.
-        ANS(std_str_cmp(&quot;W. Mozart&quot;));
+<pre><code># Accepts &quot;W. Mozart&quot;, &quot;W. MOZarT&quot;, and so forth. Case insensitive. All
+# internal spaces treated as single spaces.
+ANS(std_str_cmp(&quot;W. Mozart&quot;));
 
-        # Rejects &quot;mozart&quot;. Same as std_str_cmp() but case sensitive.
-        ANS(std_cs_str_cmp(&quot;Mozart&quot;));
+# Rejects &quot;mozart&quot;. Same as std_str_cmp() but case sensitive.
+ANS(std_cs_str_cmp(&quot;Mozart&quot;));
 
-        # Accepts only the exact string.
-        ANS(strict_str_cmp(&quot;W. Mozart&quot;));
+# Accepts only the exact string.
+ANS(strict_str_cmp(&quot;W. Mozart&quot;));
 
-        # Accepts &quot;a c B&quot;, &quot;CBA&quot; and so forth. Unordered, case insensitive, spaces
-        # ignored.
-        ANS(unordered_str_cmp(&quot;ABC&quot;));
+# Accepts &quot;a c B&quot;, &quot;CBA&quot; and so forth. Unordered, case insensitive, spaces
+# ignored.
+ANS(unordered_str_cmp(&quot;ABC&quot;));
 
-        # Rejects &quot;abc&quot;. Same as unordered_str_cmp() but case sensitive.
-        ANS(unordered_cs_str_cmp(&quot;ABC&quot;));
+# Rejects &quot;abc&quot;. Same as unordered_str_cmp() but case sensitive.
+ANS(unordered_cs_str_cmp(&quot;ABC&quot;));
 
-        # Accepts &quot;a b C&quot;, &quot;A B C&quot; and so forth. Ordered, case insensitive, spaces
-        # ignored.
-        ANS(ordered_str_cmp(&quot;ABC&quot;));
+# Accepts &quot;a b C&quot;, &quot;A B C&quot; and so forth. Ordered, case insensitive, spaces
+# ignored.
+ANS(ordered_str_cmp(&quot;ABC&quot;));
 
-        # Rejects &quot;abc&quot;, accepts &quot;A BC&quot; and so forth. Same as ordered_str_cmp() but
-        # case sensitive.
-        ANS(ordered_cs_str_cmp(&quot;ABC&quot;));</code></pre>
+# Rejects &quot;abc&quot;, accepts &quot;A BC&quot; and so forth. Same as ordered_str_cmp() but
+# case sensitive.
+ANS(ordered_cs_str_cmp(&quot;ABC&quot;));</code></pre>
 
 <a href="#_podtop_"><h1 id="SEE-ALSO">SEE ALSO</h1></a>
 
-<p><a href="//pg/macros/core/PGanswermacros.html">PGanswermacros.pl</a>, <a href="//pg/doc/MathObjects">MathObjects</a>.</p>
+<p><a href="//pg/macros/core/PGanswermacros.html">PGanswermacros.pl</a>, <a href="//pg/doc/MathObjects/UsingMathObjects.html">UsingMathObjects</a>.</p>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

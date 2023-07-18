@@ -1,66 +1,98 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>core/PGanswermacros.pl</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>core/PGanswermacros.pl</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>core/PGanswermacros.pl</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
-
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#SYNPOSIS">SYNPOSIS</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-  <li><a href="#MACROS">MACROS</a>
-    <ul>
-      <li><a href="#Answer-evaluator-macros">Answer evaluator macros</a></li>
-      <li><a href="#Filters">Filters</a>
-        <ul>
-          <li>
-            <ul>
-              <li><a href="#compare_numbers">compare_numbers</a></li>
-              <li><a href="#std_num_filter">std_num_filter</a></li>
-              <li><a href="#std_num_array_filter">std_num_array_filter</a></li>
-              <li><a href="#function_from_string2">function_from_string2</a></li>
-              <li><a href="#is_zero_array">is_zero_array</a></li>
-              <li><a href="#best_approx_parameters">best_approx_parameters</a></li>
-              <li><a href="#calculate_difference_vector">calculate_difference_vector</a></li>
-              <li><a href="#fix_answer_for_display">fix_answer_for_display</a></li>
-              <li><a href="#evaluatesToNumber">evaluatesToNumber</a></li>
-              <li><a href="#is_numeric_expression">is_numeric_expression</a></li>
-              <li><a href="#is_a_number">is_a_number</a></li>
-              <li><a href="#is_a_fraction">is_a_fraction</a></li>
-              <li><a href="#phase_pi-I-often-discovered-that-the-answers-I-was-getting-when-using-the-arctan-function-would-be-off-by-phases-of-pi-which-for-the-tangent-function-were-equivalent-values.-This-method-allows-for-this">phase_pi I often discovered that the answers I was getting, when using the arctan function would be off by phases of pi, which for the tangent function, were equivalent values. This method allows for this.</a></li>
-              <li><a href="#is_an_arithemetic_expression">is_an_arithemetic_expression</a></li>
-              <li><a href="#math_constants">math_constants</a></li>
-              <li><a href="#is_array">is_array</a></li>
-              <li><a href="#check_syntax">check_syntax</a></li>
-              <li><a href="#check_strings">check_strings</a></li>
-              <li><a href="#check_units">check_units</a></li>
-              <li><a href="#std_problem_grader">std_problem_grader</a></li>
-              <li><a href="#std_problem_grader2">std_problem_grader2</a></li>
-              <li><a href="#avg_problem_grader">avg_problem_grader</a></li>
-            </ul>
-          </li>
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">core/PGanswermacros.pl</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNPOSIS">SYNPOSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#MACROS">MACROS</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#Answer-evaluator-macros">Answer evaluator macros</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Filters">Filters</a>
+        <ul class="nav flex-column w-100">
+          <li class="nav-item"><a class="nav-link p-0" href="#compare_numbers">compare_numbers</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#std_num_filter">std_num_filter</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#std_num_array_filter">std_num_array_filter</a></li>
         </ul>
       </li>
-      <li><a href="#Utility-subroutines">Utility subroutines</a>
-        <ul>
-          <li>
-            <ul>
-              <li><a href="#pretty_print">pretty_print</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#function_from_string2">function_from_string2</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#is_zero_array">is_zero_array</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#best_approx_parameters">best_approx_parameters</a>
+        <ul class="nav flex-column w-100">
+          <li class="nav-item">
+            <ul class="nav flex-column w-100">
+              <li class="nav-item"><a class="nav-link p-0" href="#calculate_difference_vector">calculate_difference_vector</a></li>
             </ul>
           </li>
+          <li class="nav-item"><a class="nav-link p-0" href="#fix_answer_for_display">fix_answer_for_display</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#evaluatesToNumber">evaluatesToNumber</a>
+            <ul class="nav flex-column w-100">
+              <li class="nav-item"><a class="nav-link p-0" href="#is_numeric_expression">is_numeric_expression</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link p-0" href="#is_a_number">is_a_number</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#is_a_fraction">is_a_fraction</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#phase_pi">phase_pi</a>
+            <ul class="nav flex-column w-100">
+              <li class="nav-item"><a class="nav-link p-0" href="#is_an_arithemetic_expression">is_an_arithemetic_expression</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link p-0" href="#math_constants">math_constants</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#is_array">is_array</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#check_syntax">check_syntax</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#check_strings">check_strings</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#check_units">check_units</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#std_problem_grader">std_problem_grader</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#std_problem_grader2">std_problem_grader2</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#avg_problem_grader">avg_problem_grader</a></li>
+        </ul>
+      </li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Utility-subroutines">Utility subroutines</a>
+        <ul class="nav flex-column w-100">
+          <li class="nav-item"><a class="nav-link p-0" href="#pretty_print">pretty_print</a></li>
         </ul>
       </li>
     </ul>
-  </li>
-</ul>
+  </li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
+
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
@@ -70,37 +102,37 @@
 
 <p>Number Answer Evaluators:</p>
 
-<pre><code>        num_cmp()       --      uses an input hash to determine parameters
-        
-        std_num_cmp(), std_num_cmp_list(), std_num_cmp_abs, std_num_cmp_abs_list()
-        frac_num_cmp(), frac_num_cmp_list(), frac_num_cmp_abs, frac_num_cmp_abs_list()
-        arith_num_cmp(), arith_num_cmp_list(), arith_num_cmp_abs, arith_num_cmp_abs_list()
-        strict_num_cmp(), strict_num_cmp_list(), strict_num_cmp_abs, strict_num_cmp_abs_list()
-        
-        numerical_compare_with_units()  --      requires units as part of the answer
-        std_num_str_cmp()       --      also accepts a set of strings as possible answers</code></pre>
+<pre><code>num_cmp()   --      uses an input hash to determine parameters
+
+std_num_cmp(), std_num_cmp_list(), std_num_cmp_abs, std_num_cmp_abs_list()
+frac_num_cmp(), frac_num_cmp_list(), frac_num_cmp_abs, frac_num_cmp_abs_list()
+arith_num_cmp(), arith_num_cmp_list(), arith_num_cmp_abs, arith_num_cmp_abs_list()
+strict_num_cmp(), strict_num_cmp_list(), strict_num_cmp_abs, strict_num_cmp_abs_list()
+
+numerical_compare_with_units()      --      requires units as part of the answer
+std_num_str_cmp()   --      also accepts a set of strings as possible answers</code></pre>
 
 <p>Function Answer Evaluators:</p>
 
-<pre><code>        fun_cmp()       --      uses an input hash to determine parameters
-        
-        function_cmp(), function_cmp_abs()
-        function_cmp_up_to_constant(), function_cmp_up_to_constant_abs()
-        multivar_function_cmp()</code></pre>
+<pre><code>fun_cmp()   --      uses an input hash to determine parameters
+
+function_cmp(), function_cmp_abs()
+function_cmp_up_to_constant(), function_cmp_up_to_constant_abs()
+multivar_function_cmp()</code></pre>
 
 <p>String Answer Evaluators:</p>
 
-<pre><code>        str_cmp()       --      uses an input hash to determine parameters
-        
-        std_str_cmp(), std_str_cmp_list(), std_cs_str_cmp(), std_cs_str_cmp_list()
-        strict_str_cmp(), strict_str_cmp_list()
-        ordered_str_cmp(), ordered_str_cmp_list(), ordered_cs_str_cmp(), ordered_cs_str_cmp_list()
-        unordered_str_cmp(), unordered_str_cmp_list(), unordered_cs_str_cmp(), unordered_cs_str_cmp_list()</code></pre>
+<pre><code>str_cmp()   --      uses an input hash to determine parameters
+
+std_str_cmp(), std_str_cmp_list(), std_cs_str_cmp(), std_cs_str_cmp_list()
+strict_str_cmp(), strict_str_cmp_list()
+ordered_str_cmp(), ordered_str_cmp_list(), ordered_cs_str_cmp(), ordered_cs_str_cmp_list()
+unordered_str_cmp(), unordered_str_cmp_list(), unordered_cs_str_cmp(), unordered_cs_str_cmp_list()</code></pre>
 
 <p>Miscellaneous Answer Evaluators:</p>
 
-<pre><code>        checkbox_cmp()
-        radio_cmp()</code></pre>
+<pre><code>checkbox_cmp()
+radio_cmp()</code></pre>
 
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
@@ -108,14 +140,14 @@
 
 <p>When called with the student&#39;s answer, the answer evaluator will compare this answer to the correct answer that it keeps internally and returns an AnswerHash representing the results of the comparison. Part of the answer hash is a score, which is a number between 0 and 1 representing the correctness of the student&#39;s answer. The fields of an AnswerHash are as follows:</p>
 
-<pre><code>        score                =&gt; $correctQ,
-        correct_ans          =&gt; $originalCorrEqn,
-        student_ans          =&gt; $modified_student_ans,
-        original_student_ans =&gt; $original_student_answer,
-        ans_message                  =&gt; $PGanswerMessage,
-        type                 =&gt; &#39;typeString&#39;,
-        preview_text_string  =&gt; $preview_text_string,
-        preview_latex_string =&gt; $preview_latex_string, # optional</code></pre>
+<pre><code>score                =&gt; $correctQ,
+correct_ans          =&gt; $originalCorrEqn,
+student_ans          =&gt; $modified_student_ans,
+original_student_ans =&gt; $original_student_answer,
+ans_message              =&gt; $PGanswerMessage,
+type                 =&gt; &#39;typeString&#39;,
+preview_text_string  =&gt; $preview_text_string,
+preview_latex_string =&gt; $preview_latex_string, # optional</code></pre>
 
 <dl>
 
@@ -181,7 +213,7 @@
 
 <p><a href="//pg/macros/answers/PGstringevaluators.html">PGstringevaluators.pl</a> - contains answer evaluators for evaluating strings, including str_cmp() and related.</p>
 
-<p><a href="//pg/macros/answers/PGtextevaluators.html">PGtextevaluators.pl</a> - contains answer evaluators that handle free response questions and questionnaires.</p>
+<p><a href="//pg/macros/deprecated/PGtextevaluators.html">PGtextevaluators.pl</a> - contains answer evaluators that handle free response questions and questionnaires.</p>
 
 <p><a href="//pg/macros/answers/PGmiscevaluators.html">PGmiscevaluators.pl</a> - contains answer evaluators that don&#39;t seem to fit into other categories.</p>
 
@@ -189,7 +221,7 @@
 
 <p>A filter is a short subroutine with the following structure. It accepts an AnswerHash, followed by a hash of options. It returns an AnswerHash</p>
 
-<pre><code>        $ans_hash = filter($ans_hash, %options);</code></pre>
+<pre><code>$ans_hash = filter($ans_hash, %options);</code></pre>
 
 <p>See the AnswerHash.pm file for a list of entries which can be expected to be found in an AnswerHash, such as &#39;student_ans&#39;, &#39;score&#39; and so forth. Other entries may be present for specialized answer evaluators.</p>
 
@@ -197,58 +229,58 @@
 
 <p>Here is an outline of how a filter is constructed:</p>
 
-<pre><code>        sub filter{
-                my $rh_ans = shift;
-                my %options = @_;
-                assign_option_aliases(\%options,
-                                &#39;alias1&#39;        =&gt; &#39;option5&#39;
-                                &#39;alias2&#39;        =&gt; &#39;option7&#39;
-                );
-                set_default_options(\%options,
-                                &#39;_filter_name&#39;  =&gt;      &#39;filter&#39;,
-                                &#39;option5&#39;               =&gt;  .0001,
-                                &#39;option7&#39;               =&gt;      &#39;ascii&#39;,
-                                &#39;allow_unknown_options  =&gt;      0,
-                }
-                .... body code of filter .......
-                        if ($error) {
-                                $rh_ans-&gt;throw_error(&quot;FILTER_ERROR&quot;, &quot;Something went wrong&quot;);
-                                # see AnswerHash.pm for details on using the throw_error method.
+<pre><code>sub filter{
+    my $rh_ans = shift;
+    my %options = @_;
+    assign_option_aliases(\%options,
+            &#39;alias1&#39;    =&gt; &#39;option5&#39;
+            &#39;alias2&#39;    =&gt; &#39;option7&#39;
+    );
+    set_default_options(\%options,
+            &#39;_filter_name&#39;    =&gt;    &#39;filter&#39;,
+            &#39;option5&#39;        =&gt;  .0001,
+            &#39;option7&#39;        =&gt;    &#39;ascii&#39;,
+            &#39;allow_unknown_options    =&gt;    0,
+    }
+    .... body code of filter .......
+        if ($error) {
+            $rh_ans-&gt;throw_error(&quot;FILTER_ERROR&quot;, &quot;Something went wrong&quot;);
+            # see AnswerHash.pm for details on using the throw_error method.
 
-                $rh_ans;  #reference to an AnswerHash object is returned.
-        }</code></pre>
+    $rh_ans;  #reference to an AnswerHash object is returned.
+}</code></pre>
 
-<h4 id="compare_numbers">compare_numbers</h4>
+<h3 id="compare_numbers">compare_numbers</h3>
 
-<h4 id="std_num_filter">std_num_filter</h4>
+<h3 id="std_num_filter">std_num_filter</h3>
 
-<pre><code>        std_num_filter($rh_ans, %options)
-        returns $rh_ans</code></pre>
+<pre><code>std_num_filter($rh_ans, %options)
+returns $rh_ans</code></pre>
 
 <p>Replaces some constants using math_constants, then evaluates a perl expression.</p>
 
-<h4 id="std_num_array_filter">std_num_array_filter</h4>
+<h3 id="std_num_array_filter">std_num_array_filter</h3>
 
-<pre><code>        std_num_array_filter($rh_ans, %options)
-        returns $rh_ans</code></pre>
+<pre><code>std_num_array_filter($rh_ans, %options)
+returns $rh_ans</code></pre>
 
 <p>Assumes the {student_ans} field is a numerical array, and applies BOTH check_syntax and std_num_filter to each element of the array. Does it&#39;s best to generate sensible error messages for syntax errors. A typical error message displayed in {studnet_ans} might be ( 56, error message, -4).</p>
 
-<h4 id="function_from_string2">function_from_string2</h4>
+<h2 id="function_from_string2">function_from_string2</h2>
 
-<h4 id="is_zero_array">is_zero_array</h4>
+<h2 id="is_zero_array"><code>is_zero_array</code></h2>
 
-<h4 id="best_approx_parameters">best_approx_parameters</h4>
+<h2 id="best_approx_parameters"><code>best_approx_parameters</code></h2>
 
-<pre><code>        best_approx_parameters($rh_ans,%options);   #requires the following fields in $rh_ans
-                              {rf_student_ans}          # reference to the test answer
-                              {rf_correct_ans}          # reference to the comparison answer
-                              {evaluation_points},  # an array of row vectors indicating the points
-                                                                # to evaluate when comparing the functions
+<pre><code>best_approx_parameters($rh_ans,%options);   # requires the following fields in $rh_ans
+                      {rf_student_ans}      # reference to the test answer
+                      {rf_correct_ans}      # reference to the comparison answer
+                      {evaluation_points},  # an array of row vectors indicating the points
+                                            # to evaluate when comparing the functions
 
-                               %options                         # debug =&gt; 1   gives more error answers
-                                                                        # param_vars =&gt; [&#39;&#39;]  additional parameters used to adapt to function
-                               )</code></pre>
+                       %options             # debug =&gt; 1   gives more error answers
+                                            # param_vars =&gt; [&#39;&#39;]  additional parameters used to adapt to function
+                       )</code></pre>
 
 <p>The parameters for the comparison function which best approximates the test_function are stored in the field {ra_parameters}.</p>
 
@@ -256,105 +288,102 @@
 
 <p>The comparison function should have $dim_of_params_space more input variables than the test function.</p>
 
-<h4 id="calculate_difference_vector">calculate_difference_vector</h4>
+<h4 id="calculate_difference_vector"><code>calculate_difference_vector</code></h4>
 
-<pre><code>        calculate_difference_vector( $ans_hash, %options);
+<pre><code>calculate_difference_vector( $ans_hash, %options);
 
-                                      {rf_student_ans},     # a reference to the test function
-                                     {rf_correct_ans},      # a reference to the correct answer function
-                                     {evaluation_points},   # an array of row vectors indicating the points
-                                                            # to evaluate when comparing the functions
-                                     {ra_parameters}        # these are the (optional) additional inputs to
-                                                            # the comparison function which adapt it properly
-                                                            # to the problem at hand.
+    {rf_student_ans},     # a reference to the test function
+    rf_correct_ans},      # a reference to the correct answer function
+    evaluation_points},   # an array of row vectors indicating the points
+                          # to evaluate when comparing the functions
+    ra_parameters}        # these are the (optional) additional inputs to
+                          # the comparison function which adapt it properly
+                          # to the problem at hand.
 
-                                     %options               # mode =&gt; &#39;rel&#39;  specifies that each element in the
-                                                            # difference matrix is divided by the correct answer.
-                                                            # unless the correct answer is nearly 0.
-                                    )</code></pre>
+    %options               # mode =&gt; &#39;rel&#39;  specifies that each element in the
+                           # difference matrix is divided by the correct answer.
+                           # unless the correct answer is nearly 0.</code></pre>
 
-<h4 id="fix_answer_for_display">fix_answer_for_display</h4>
+<h3 id="fix_answer_for_display"><code>fix_answer_for_display</code></h3>
 
-<h4 id="evaluatesToNumber">evaluatesToNumber</h4>
+<h3 id="evaluatesToNumber"><code>evaluatesToNumber</code></h3>
 
 <h4 id="is_numeric_expression">is_numeric_expression</h4>
 
-<h4 id="is_a_number">is_a_number</h4>
+<h3 id="is_a_number"><code>is_a_number</code></h3>
 
-<h4 id="is_a_fraction">is_a_fraction</h4>
+<h3 id="is_a_fraction"><code>is_a_fraction</code></h3>
 
-<h4 id="phase_pi-I-often-discovered-that-the-answers-I-was-getting-when-using-the-arctan-function-would-be-off-by-phases-of-pi-which-for-the-tangent-function-were-equivalent-values.-This-method-allows-for-this">phase_pi I often discovered that the answers I was getting, when using the arctan function would be off by phases of pi, which for the tangent function, were equivalent values. This method allows for this.</h4>
+<h3 id="phase_pi"><code>phase_pi</code></h3>
 
-<h4 id="is_an_arithemetic_expression">is_an_arithemetic_expression</h4>
+<p>I often discovered that the answers I was getting, when using the arctan function would be off by phases of pi, which for the tangent function, were equivalent values. This method allows for this.</p>
 
-<h4 id="math_constants">math_constants</h4>
+<h4 id="is_an_arithemetic_expression"><code>is_an_arithemetic_expression</code></h4>
+
+<h3 id="math_constants"><code>math_constants</code></h3>
 
 <p>replaces pi, e, and ^ with their Perl equivalents if useBaseTenLog is non-zero, convert log to logten</p>
 
-<h4 id="is_array">is_array</h4>
+<h3 id="is_array"><code>is_array</code></h3>
 
-<pre><code>        is_array($rh_ans)
-                returns: $rh_ans.   Throws error &quot;NOTARRAY&quot; if this is not an array</code></pre>
+<p><code>is_array($rh_ans)</code></p>
 
-<h4 id="check_syntax">check_syntax</h4>
+<p>returns:</p>
 
-<pre><code>        check_syntax( $rh_ans, %options)
-                returns an answer hash.</code></pre>
+<p><code>$rh_ans</code>. Throws error &quot;NOTARRAY&quot; if this is not an array</p>
+
+<h3 id="check_syntax"><code>check_syntax</code></h3>
+
+<p><code>check_syntax( $rh_ans, %options)</code></p>
+
+<p>returns an answer hash.</p>
 
 <p>latex2html preview code are installed in the answer hash. The input has been transformed, changing 7pi to 7*pi or 7x to 7*x. Syntax error messages may be generated and stored in student_ans Additional syntax error messages are stored in {ans_message} and duplicated in {error_message}</p>
 
-<h4 id="check_strings">check_strings</h4>
+<h3 id="check_strings"><code>check_strings</code></h3>
 
-<pre><code>        check_strings ($rh_ans, %options)
-                returns $rh_ans</code></pre>
+<p><code>check_strings ($rh_ans, %options)</code></p>
 
-<h4 id="check_units">check_units</h4>
+<p>returns $rh_ans</p>
 
-<pre><code>        check_strings ($rh_ans, %options)
-                returns $rh_ans</code></pre>
+<h3 id="check_units"><code>check_units</code></h3>
 
-<h4 id="std_problem_grader">std_problem_grader</h4>
+<p><code>check_strings ($rh_ans, %options)</code></p>
 
-<p>This is an all-or-nothing grader. A student must get all parts of the problem write before receiving credit. You should make sure to use this grader on multiple choice and true-false questions, otherwise students will be able to deduce how many answers are correct by the grade reported by webwork.</p>
+<p>returns <code>$rh_ans</code></p>
 
-<pre><code>        install_problem_grader(~~&amp;std_problem_grader);</code></pre>
-
-<h4 id="std_problem_grader2">std_problem_grader2</h4>
+<h3 id="std_problem_grader"><code>std_problem_grader</code></h3>
 
 <p>This is an all-or-nothing grader. A student must get all parts of the problem write before receiving credit. You should make sure to use this grader on multiple choice and true-false questions, otherwise students will be able to deduce how many answers are correct by the grade reported by webwork.</p>
 
-<pre><code>        install_problem_grader(~~&amp;std_problem_grader2);</code></pre>
+<pre><code>install_problem_grader(~~&amp;std_problem_grader);</code></pre>
+
+<h3 id="std_problem_grader2"><code>std_problem_grader2</code></h3>
+
+<p>This is an all-or-nothing grader. A student must get all parts of the problem write before receiving credit. You should make sure to use this grader on multiple choice and true-false questions, otherwise students will be able to deduce how many answers are correct by the grade reported by webwork.</p>
+
+<pre><code>install_problem_grader(~~&amp;std_problem_grader2);</code></pre>
 
 <p>The only difference between the two versions is at the end of the subroutine, where std_problem_grader2 records the attempt only if there have been no syntax errors, whereas std_problem_grader records it regardless.</p>
 
-<h4 id="avg_problem_grader">avg_problem_grader</h4>
+<h3 id="avg_problem_grader"><code>avg_problem_grader</code></h3>
 
 <p>This grader gives a grade depending on how many questions from the problem are correct. (The highest grade is the one that is kept. One can never lower the recorded grade on a problem by repeating it.) Many professors (and almost all students :-) ) prefer this grader.</p>
 
-<pre><code>    install_problem_grader(~~&amp;avg_problem_grader);</code></pre>
+<pre><code>install_problem_grader(~~&amp;avg_problem_grader);</code></pre>
 
 <h2 id="Utility-subroutines">Utility subroutines</h2>
 
-<h4 id="pretty_print">pretty_print</h4>
+<h3 id="pretty_print"><code>pretty_print</code></h3>
 
-<pre><code>        Usage: warn pretty_print( $rh_hash_input)
-                   TEXT(pretty_print($ans_hash));
-                   TEXT(~~%envir);</code></pre>
+<p>Usage: <code>warn pretty_print( $rh_hash_input)</code></p>
+
+<pre><code>TEXT(pretty_print($ans_hash));
+TEXT(~~%envir);</code></pre>
 
 <p>This can be very useful for printing out messages about objects while debugging</p>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

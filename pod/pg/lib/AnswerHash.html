@@ -1,284 +1,310 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>AnswerHash</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>AnswerHash</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>AnswerHash</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">AnswerHash</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNPOSIS">SYNPOSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION-:-AnswerHash">DESCRIPTION : AnswerHash</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item">
+        <ul class="nav flex-column w-100">
+          <li class="nav-item"><a class="nav-link p-0" href="#AnswerHash-Methods">AnswerHash Methods:</a>
+            <ul class="nav flex-column w-100">
+              <li class="nav-item"><a class="nav-link p-0" href="#new">new</a></li>
+              <li class="nav-item"><a class="nav-link p-0" href="#setKeys">setKeys</a></li>
+              <li class="nav-item"><a class="nav-link p-0" href="#data">data</a></li>
+              <li class="nav-item"><a class="nav-link p-0" href="#input">input</a></li>
+              <li class="nav-item"><a class="nav-link p-0" href="#input1">input</a></li>
+              <li class="nav-item"><a class="nav-link p-0" href="#stringify_hash">stringify_hash</a></li>
+              <li class="nav-item"><a class="nav-link p-0" href="#throw_error">throw_error</a></li>
+              <li class="nav-item"><a class="nav-link p-0" href="#catch_error">catch_error</a></li>
+              <li class="nav-item"><a class="nav-link p-0" href="#clear_error">clear_error</a></li>
+              <li class="nav-item"><a class="nav-link p-0" href="#error_flag">error_flag</a></li>
+              <li class="nav-item"><a class="nav-link p-0" href="#error_message">error_message</a></li>
+              <li class="nav-item"><a class="nav-link p-0" href="#OR">OR</a></li>
+              <li class="nav-item"><a class="nav-link p-0" href="#AND">AND</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li><li class="nav-item"><a class="nav-link p-0" href="#Description:-AnswerEvaluator">Description: AnswerEvaluator</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item">
+        <ul class="nav flex-column w-100">
+          <li class="nav-item"><a class="nav-link p-0" href="#AnswerEvaluator-Methods">AnswerEvaluator Methods</a>
+            <ul class="nav flex-column w-100">
+              <li class="nav-item"><a class="nav-link p-0" href="#new1">new</a></li>
+              <li class="nav-item"><a class="nav-link p-0" href="#evaluate">evaluate</a></li>
+              <li class="nav-item"><a class="nav-link p-0" href="#install_pre_filter">install_pre_filter</a></li>
+              <li class="nav-item"><a class="nav-link p-0" href="#install_evaluator">install_evaluator</a></li>
+              <li class="nav-item"><a class="nav-link p-0" href="#install_post_filter">install_post_filter</a></li>
+              <li class="nav-item"><a class="nav-link p-0" href="#withPreFilter">withPreFilter</a></li>
+              <li class="nav-item"><a class="nav-link p-0" href="#withPostFilter">withPostFilter</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li><li class="nav-item"><a class="nav-link p-0" href="#Description:-Filters">Description: Filters</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item">
+        <ul class="nav flex-column w-100">
+          <li class="nav-item"><a class="nav-link p-0" href="#Built-in-filters">Built in filters</a>
+            <ul class="nav flex-column w-100">
+              <li class="nav-item"><a class="nav-link p-0" href="#blank_prefilter">blank_prefilter</a></li>
+              <li class="nav-item"><a class="nav-link p-0" href="#blank_postfilter">blank_postfilter</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
 
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#SYNPOSIS">SYNPOSIS</a></li>
-  <li><a href="#DESCRIPTION-:-AnswerHash">DESCRIPTION : AnswerHash</a>
-    <ul>
-      <li>
-        <ul>
-          <li><a href="#AnswerHash-Methods">AnswerHash Methods:</a>
-            <ul>
-              <li><a href="#new">new</a></li>
-              <li><a href="#setKeys">setKeys</a></li>
-              <li><a href="#data">data</a></li>
-              <li><a href="#input">input</a></li>
-              <li><a href="#input1">input</a></li>
-              <li><a href="#stringify_hash">stringify_hash</a></li>
-              <li><a href="#throw_error">throw_error</a></li>
-              <li><a href="#catch_error">catch_error</a></li>
-              <li><a href="#clear_error">clear_error</a></li>
-              <li><a href="#error_flag">error_flag</a></li>
-              <li><a href="#error_message">error_message</a></li>
-              <li><a href="#OR">OR</a></li>
-              <li><a href="#AND">AND</a></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><a href="#Description:-AnswerEvaluator">Description: AnswerEvaluator</a>
-    <ul>
-      <li>
-        <ul>
-          <li><a href="#AnswerEvaluator-Methods">AnswerEvaluator Methods</a>
-            <ul>
-              <li><a href="#new1">new</a></li>
-              <li><a href="#evaluate">evaluate</a></li>
-              <li><a href="#install_pre_filter">install_pre_filter</a></li>
-              <li><a href="#install_evaluator">install_evaluator</a></li>
-              <li><a href="#install_post_filter">install_post_filter</a></li>
-              <li><a href="#withPreFilter">withPreFilter</a></li>
-              <li><a href="#withPostFilter">withPostFilter</a></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><a href="#Description:-Filters">Description: Filters</a>
-    <ul>
-      <li>
-        <ul>
-          <li><a href="#Built-in-filters">Built in filters</a>
-            <ul>
-              <li><a href="#blank_prefilter">blank_prefilter</a></li>
-              <li><a href="#blank_postfilter">blank_postfilter</a></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<pre><code>        AnswerHash.pm -- located in the courseScripts directory
+<pre><code>AnswerHash.pm -- located in the courseScripts directory
 
-        This file contains the packages/classes:
-        AnswerHash   and AnswerEvaluator</code></pre>
+This file contains the packages/classes:
+AnswerHash   and AnswerEvaluator</code></pre>
 
 <a href="#_podtop_"><h1 id="SYNPOSIS">SYNPOSIS</h1></a>
 
-<pre><code>        AnswerHash  -- this class stores information related to the student&#39;s
-                       answer.  It is little more than a standard perl hash with
-                       a special name, but it does have some access and
-                       manipulation methods.  More of these may be added as it
-                       becomes necessary.
+<pre><code>AnswerHash  -- this class stores information related to the student&#39;s
+               answer.  It is little more than a standard perl hash with
+               a special name, but it does have some access and
+               manipulation methods.  More of these may be added as it
+               becomes necessary.
 
-        Usage:     $rh_ans = new AnswerHash;
+Usage:     $rh_ans = new AnswerHash;
 
-        AnswerEvaluator -- this class organizes the construction of
-                           answer evaluator subroutines which check the
-                           student&#39;s answer.  By plugging filters into the
-                           answer evaluator class you can customize the way the
-                           student&#39;s answer is normalized and checked.  Our hope
-                           is that with properly designed filters, it will be
-                           possible to reuse the filters in different
-                           combinations to obtain different answer evaluators,
-                           thus greatly reducing the programming and maintenance
-                           required for constructing answer evaluators.
+AnswerEvaluator -- this class organizes the construction of
+                   answer evaluator subroutines which check the
+                   student&#39;s answer.  By plugging filters into the
+                   answer evaluator class you can customize the way the
+                   student&#39;s answer is normalized and checked.  Our hope
+                   is that with properly designed filters, it will be
+                   possible to reuse the filters in different
+                   combinations to obtain different answer evaluators,
+                   thus greatly reducing the programming and maintenance
+                   required for constructing answer evaluators.
 
-        Usage:          $ans_eval  = new AnswerEvaluator;</code></pre>
+Usage:          $ans_eval  = new AnswerEvaluator;</code></pre>
 
 <a href="#_podtop_"><h1 id="DESCRIPTION-:-AnswerHash">DESCRIPTION : AnswerHash</h1></a>
 
 <p>The answer hash class is guaranteed to contain the following instance variables:</p>
 
-<pre><code>        score                   =&gt;      $correctQ,
-        correct_ans             =&gt;      $originalCorrEqn,
-        student_ans             =&gt;      $modified_student_ans
-        original_student_ans    =&gt;      $original_student_answer,
-        ans_message             =&gt;      $PGanswerMessage,
-        type                    =&gt;      &#39;typeString&#39;,
-        preview_text_string     =&gt;      $preview_text_string,
-        preview_latex_string    =&gt;      $preview_latex_string
+<pre><code>score                   =&gt;      $correctQ,
+correct_ans             =&gt;      $originalCorrEqn,
+student_ans             =&gt;      $modified_student_ans
+original_student_ans    =&gt;      $original_student_answer,
+ans_message             =&gt;      $PGanswerMessage,
+type                    =&gt;      &#39;typeString&#39;,
+preview_text_string     =&gt;      $preview_text_string,
+preview_latex_string    =&gt;      $preview_latex_string
 
 
-        $ans_hash-&gt;{score}              --      a number between 0 and 1 indicating
-                                                whether the answer is correct. Fractions
-                                                allow the implementation of partial
-                                                credit for incorrect answers.
+$ans_hash-&gt;{score}              --      a number between 0 and 1 indicating
+                                        whether the answer is correct. Fractions
+                                        allow the implementation of partial
+                                        credit for incorrect answers.
 
-        $ans_hash-&gt;{correct_ans}                --      The correct answer, as supplied by the
-                                                instructor and then formatted. This can
-                                                be viewed by the student after the answer date.
+$ans_hash-&gt;{correct_ans}                --      The correct answer, as supplied by the
+                                        instructor and then formatted. This can
+                                        be viewed by the student after the answer date.
 
-        $ans_hash-&gt;{student_ans}                --      This is the student answer, after reformatting;
-                                                for example the answer might be forced
-                                                to capital letters for comparison with
-                                                the instructors answer. For a numerical
-                                                answer, it gives the evaluated answer.
-                                                This is displayed in the section reporting
-                                                the results of checking the student answers.
+$ans_hash-&gt;{student_ans}                --      This is the student answer, after reformatting;
+                                        for example the answer might be forced
+                                        to capital letters for comparison with
+                                        the instructors answer. For a numerical
+                                        answer, it gives the evaluated answer.
+                                        This is displayed in the section reporting
+                                        the results of checking the student answers.
 
-        $ans_hash-&gt;{original_student_ans}       --      This is the original student answer.
-                                                 This is displayed on the preview page and may be used for
-                                                 sticky answers.
+$ans_hash-&gt;{original_student_ans}       --      This is the original student answer.
+                                         This is displayed on the preview page and may be used for
+                                         sticky answers.
 
-        $ans_hash-&gt;{ans_message}                --      Any error message, or hint provided by
-                                                the answer evaluator.
-                                                This is also displayed in the section reporting
-                                                the results of checking the student answers.
+$ans_hash-&gt;{ans_message}                --      Any error message, or hint provided by
+                                        the answer evaluator.
+                                        This is also displayed in the section reporting
+                                        the results of checking the student answers.
 
-        $ans_hash-&gt;{type}                       --      A string indicating the type of answer evaluator.
-                                                This helps in preprocessing the student answer for errors.
-                                                Some examples:
-                                                        &#39;number_with_units&#39;
-                                                        &#39;function&#39;
-                                                        &#39;frac_number&#39;
-                                                        &#39;arith_number&#39;
-
-
-        $ans_hash-&gt;{preview_text_string}        --
-                                                This typically shows how the student answer was parsed. It is
-                                                displayed on the preview page. For a student answer of 2sin(3x)
-                                                this would be 2*sin(3*x). For string answers it is typically the
-                                                same as $ans_hash{student_ans}.
+$ans_hash-&gt;{type}                       --      A string indicating the type of answer evaluator.
+                                        This helps in preprocessing the student answer for errors.
+                                        Some examples:
+                                                &#39;number_with_units&#39;
+                                                &#39;function&#39;
+                                                &#39;frac_number&#39;
+                                                &#39;arith_number&#39;
 
 
-        $ans_hash-&gt;{preview_latex_string}       --
-                                                THIS IS OPTIONAL. This is latex version of the student answer
-                                                which is used to show a typeset view on the answer on the preview
-                                                page. For a student answer of 2/3, this would be \frac{2}{3}.
+$ans_hash-&gt;{preview_text_string}        --
+                                        This typically shows how the student answer was parsed. It is
+                                        displayed on the preview page. For a student answer of 2sin(3x)
+                                        this would be 2*sin(3*x). For string answers it is typically the
+                                        same as $ans_hash{student_ans}.
 
-                                                &#39;ans_message&#39;                   =&gt;      &#39;&#39;, # null string
 
-                                                &#39;preview_text_string&#39;   =&gt;      undef,
-                                                &#39;preview_latex_string&#39;  =&gt;  undef,
-                                                &#39;error_flag&#39;                    =&gt;  undef,
-                                                &#39;error_message&#39;             =&gt;  &#39;&#39;,</code></pre>
+$ans_hash-&gt;{preview_latex_string}       --
+                                        THIS IS OPTIONAL. This is latex version of the student answer
+                                        which is used to show a typeset view on the answer on the preview
+                                        page. For a student answer of 2/3, this would be \frac{2}{3}.
+
+                                        &#39;ans_message&#39;                   =&gt;      &#39;&#39;, # null string
+
+                                        &#39;preview_text_string&#39;   =&gt;      undef,
+                                        &#39;preview_latex_string&#39;  =&gt;  undef,
+                                        &#39;error_flag&#39;                    =&gt;  undef,
+                                        &#39;error_message&#39;             =&gt;  &#39;&#39;,</code></pre>
 
 <h3 id="AnswerHash-Methods">AnswerHash Methods:</h3>
 
 <h4 id="new">new</h4>
 
-<pre><code>        Useage          $rh_anshash = new AnswerHash;
+<pre><code>Useage          $rh_anshash = new AnswerHash;
 
-        returns an object of type AnswerHash.</code></pre>
+returns an object of type AnswerHash.</code></pre>
 
 <h4 id="setKeys">setKeys</h4>
 
-<pre><code>                        $rh_ans-&gt;setKeys(score=&gt;1, student_answer =&gt; &quot;yes&quot;);
-                        Sets standard elements in the AnswerHash (the ones defined
-                        above). Will give error if one attempts to set non-standard keys.
+<pre><code>$rh_ans-&gt;setKeys(score=&gt;1, student_answer =&gt; &quot;yes&quot;);
+Sets standard elements in the AnswerHash (the ones defined
+above). Will give error if one attempts to set non-standard keys.
 
-                        To set a non-standard element in a hash use
+To set a non-standard element in a hash use
 
-                        $rh_ans-&gt;{non-standard-key} = newValue;
+$rh_ans-&gt;{non-standard-key} = newValue;
 
-                        There are no safety checks when using this method.</code></pre>
+There are no safety checks when using this method.</code></pre>
 
 <h4 id="data">data</h4>
 
-<pre><code>        Usage:      $rh_ans-&gt;data(&#39;foo&#39;);               set $rh_ans-&gt;{student_ans} = &#39;foo&#39;;
-                    $student_input = $rh_ans-&gt;data();   retrieve value of $rh_ans-&gt;{student_ans}
+<pre><code>Usage:      $rh_ans-&gt;data(&#39;foo&#39;);               set $rh_ans-&gt;{student_ans} = &#39;foo&#39;;
+            $student_input = $rh_ans-&gt;data();   retrieve value of $rh_ans-&gt;{student_ans}
 
-        synonym for input</code></pre>
+synonym for input</code></pre>
 
 <h4 id="input">input</h4>
 
-<pre><code>        Usage:      $rh_ans-&gt;input(&#39;foo&#39;)    sets $rh_ans-&gt;{student_ans} = &#39;foo&#39;;
-                                $student_input = $rh_ans-&gt;input();
+<pre><code>Usage:      $rh_ans-&gt;input(&#39;foo&#39;)    sets $rh_ans-&gt;{student_ans} = &#39;foo&#39;;
+                        $student_input = $rh_ans-&gt;input();
 
-        synonym for data</code></pre>
+synonym for data</code></pre>
 
 <h4 id="input1">input</h4>
 
-<pre><code>        Usage:      $rh_ans-&gt;score(1)
-                                $score = $rh_ans-&gt;score();
+<pre><code>Usage:      $rh_ans-&gt;score(1)
+                        $score = $rh_ans-&gt;score();
 
-        Retrieve or set $rh_ans-&gt;{score}, the student&#39;s score on the problem.</code></pre>
+Retrieve or set $rh_ans-&gt;{score}, the student&#39;s score on the problem.</code></pre>
 
 <h4 id="stringify_hash">stringify_hash</h4>
 
-<pre><code>        Usage:      $rh_ans-&gt;stringify_hash;
+<pre><code>Usage:      $rh_ans-&gt;stringify_hash;
 
-        Turns all values in the hash into strings (so they won&#39;t cause trouble outside
-        the safe compartment).
+Turns all values in the hash into strings (so they won&#39;t cause trouble outside
+the safe compartment).
 
-        Hashes and arrays are converted into a JSON string.</code></pre>
+Hashes and arrays are converted into a JSON string.</code></pre>
 
 <h4 id="throw_error">throw_error</h4>
 
-<pre><code>        Usage:  $rh_ans-&gt;throw_error(&quot;FLAG&quot;, &quot;message&quot;);
+<pre><code>Usage:  $rh_ans-&gt;throw_error(&quot;FLAG&quot;, &quot;message&quot;);
 
-        FLAG is a distinctive word that describes the type of error.
-        Examples are EVAL for an evaluation error or &quot;SYNTAX&quot; for a syntax error.
-        The entry $rh_ans-&gt;{error_flag} is set to &quot;FLAG&quot;.
+FLAG is a distinctive word that describes the type of error.
+Examples are EVAL for an evaluation error or &quot;SYNTAX&quot; for a syntax error.
+The entry $rh_ans-&gt;{error_flag} is set to &quot;FLAG&quot;.
 
-        The catch_error and clear_error methods use
-        this entry.
+The catch_error and clear_error methods use
+this entry.
 
-        message is a descriptive message for the end user, defining what error occured.</code></pre>
+message is a descriptive message for the end user, defining what error occured.</code></pre>
 
 <h4 id="catch_error">catch_error</h4>
 
-<pre><code>        Usage:  $rh_ans-&gt;catch_error(&quot;FLAG2&quot;);
+<pre><code>Usage:  $rh_ans-&gt;catch_error(&quot;FLAG2&quot;);
 
-        Returns true (1) if  $rh_ans-&gt;{error_flag} equals &quot;FLAG2&quot;, otherwise it returns
-        false (empty string).</code></pre>
+Returns true (1) if  $rh_ans-&gt;{error_flag} equals &quot;FLAG2&quot;, otherwise it returns
+false (empty string).</code></pre>
 
 <h4 id="clear_error">clear_error</h4>
 
-<pre><code>        Usage:   $rh_ans-&gt;clear_error(&quot;FLAG2&quot;);
+<pre><code>Usage:   $rh_ans-&gt;clear_error(&quot;FLAG2&quot;);
 
-        If $rh_ans-&gt;{error_flag} equals &quot;FLAG2&quot; then the {error_flag} entry is set to
-        the empty string as is the entry {error_message}</code></pre>
+If $rh_ans-&gt;{error_flag} equals &quot;FLAG2&quot; then the {error_flag} entry is set to
+the empty string as is the entry {error_message}</code></pre>
 
 <h4 id="error_flag">error_flag</h4>
 
 <h4 id="error_message">error_message</h4>
 
-<pre><code>        Usage:    $flag = $rh_ans -&gt; error_flag();
+<pre><code>Usage:    $flag = $rh_ans -&gt; error_flag();
 
-                          $message = $rh_ans -&gt; error_message();
+                  $message = $rh_ans -&gt; error_message();
 
-        Retrieve or set the {error_flag} and {error_message} entries.
+Retrieve or set the {error_flag} and {error_message} entries.
 
-        Use catch_error and throw_error where possible.</code></pre>
+Use catch_error and throw_error where possible.</code></pre>
 
 <h4 id="OR">OR</h4>
 
-<pre><code>        Usage:     $rh_ans-&gt;OR($rh_ans2);
+<pre><code>Usage:     $rh_ans-&gt;OR($rh_ans2);
 
-        Returns a new AnswerHash whose score is the maximum of the scores in $rh_ans and $rh_ans2.
-        The correct answers for the two hashes are combined with &quot;OR&quot;.
-        The types are concatenated with &quot;OR&quot; as well.
-        Currently nothing is done with the error flags and messages.</code></pre>
+Returns a new AnswerHash whose score is the maximum of the scores in $rh_ans and $rh_ans2.
+The correct answers for the two hashes are combined with &quot;OR&quot;.
+The types are concatenated with &quot;OR&quot; as well.
+Currently nothing is done with the error flags and messages.</code></pre>
 
 <h4 id="AND">AND</h4>
 
-<pre><code>        Usage:     $rh_ans-&gt;AND($rh_ans2);
+<pre><code>Usage:     $rh_ans-&gt;AND($rh_ans2);
 
-        Returns a new AnswerHash whose score is the minimum of the scores in $rh_ans and $rh_ans2.
-        The correct answers for the two hashes are combined with &quot;AND&quot;.
-        The types are concatenated with &quot;AND&quot; as well.
-         Currently nothing is done with the error flags and messages.</code></pre>
+Returns a new AnswerHash whose score is the minimum of the scores in $rh_ans and $rh_ans2.
+The correct answers for the two hashes are combined with &quot;AND&quot;.
+The types are concatenated with &quot;AND&quot; as well.
+ Currently nothing is done with the error flags and messages.</code></pre>
 
 <a href="#_podtop_"><h1 id="Description:-AnswerEvaluator">Description: AnswerEvaluator</h1></a>
 
@@ -288,7 +314,7 @@
 
 <h4 id="evaluate">evaluate</h4>
 
-<pre><code>        $answer_evaluator-&gt;evaluate($student_answer_string)</code></pre>
+<pre><code>$answer_evaluator-&gt;evaluate($student_answer_string)</code></pre>
 
 <h4 id="install_pre_filter">install_pre_filter</h4>
 
@@ -298,44 +324,44 @@
 
 <h4 id="withPreFilter">withPreFilter</h4>
 
-<pre><code>    $answerHash-&gt;withPreFilter(filter[,options]);
+<pre><code>$answerHash-&gt;withPreFilter(filter[,options]);
 
-    Installs a prefilter (possibly with options), and returns the AnswerHash. This is so that you
-    can add a filter to a checker without having to save the checker in a variable, e.g.,
+Installs a prefilter (possibly with options), and returns the AnswerHash. This is so that you
+can add a filter to a checker without having to save the checker in a variable, e.g.,
 
-        ANS(Real(10)-&gt;cmp-&gt;withPreFilter(...));
+    ANS(Real(10)-&gt;cmp-&gt;withPreFilter(...));
 
-    or
+or
 
-        ANS(num_cmp(10)-&gt;withPreFilter(...));</code></pre>
+    ANS(num_cmp(10)-&gt;withPreFilter(...));</code></pre>
 
 <h4 id="withPostFilter">withPostFilter</h4>
 
-<pre><code>    $answerHash-&gt;withPostFilter(filter[,options]);
+<pre><code>$answerHash-&gt;withPostFilter(filter[,options]);
 
-    Installs a postfilter (possibly with options), and returns the AnswerHash. This is so that you
-    can add a filter to a checker without having to save the checker in a variable, e.g.,
+Installs a postfilter (possibly with options), and returns the AnswerHash. This is so that you
+can add a filter to a checker without having to save the checker in a variable, e.g.,
 
-        ANS(Real(10)-&gt;cmp-&gt;withPostFilter(...));
+    ANS(Real(10)-&gt;cmp-&gt;withPostFilter(...));
 
-    or
+or
 
-        ANS(num_cmp(10)-&gt;withPostFilter(...));</code></pre>
+    ANS(num_cmp(10)-&gt;withPostFilter(...));</code></pre>
 
 <a href="#_podtop_"><h1 id="Description:-Filters">Description: Filters</h1></a>
 
 <p>A filter is a subroutine which takes one AnswerHash as an input, followed by a hash of options.</p>
 
-<pre><code>                Usage:   filter($ans_hash, option1 =&gt;value1, option2=&gt; value2 );</code></pre>
+<pre><code>Usage:   filter($ans_hash, option1 =&gt;value1, option2=&gt; value2 );</code></pre>
 
 <p>The filter performs some operations on the input AnswerHash and returns an AnswerHash as output.</p>
 
 <p>Many AnswerEvaluator objects are merely a sequence of filters placed into three queues:</p>
 
-<pre><code>        pre_filters:    these normalize student input, prepare text and so forth
-        evaluators:     these decide whether or not an answer is correct
-        post_filters:   typically these clean up error messages or process errors
-                                        and generate error messages.</code></pre>
+<pre><code>pre_filters:    these normalize student input, prepare text and so forth
+evaluators:     these decide whether or not an answer is correct
+post_filters:   typically these clean up error messages or process errors
+                                and generate error messages.</code></pre>
 
 <p>If a filter detects an error it can throw an error message using the <code>$rh_ans-</code>throw_error()&gt; method. This skips the AnswerHash by all remaining pre_filter <code>$rh_ans-</code>catch_error&gt;, decides how ( or whether) it is supposed to handle the error and then passes the result on to the next post_filter.</p>
 
@@ -347,18 +373,7 @@
 
 <h4 id="blank_postfilter">blank_postfilter</h4>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

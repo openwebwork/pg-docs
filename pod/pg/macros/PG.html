@@ -1,67 +1,91 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>PG.pl</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>PG.pl</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>PG.pl</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
-
-
-<ul id="index">
-  <li>
-    <ul>
-      <li>
-        <ul>
-          <li>
-            <ul>
-              <li><a href="#ADD_CSS_FILE">ADD_CSS_FILE</a></li>
-              <li><a href="#ADD_JS_FILE">ADD_JS_FILE</a></li>
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">PG.pl</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item">
+    <ul class="nav flex-column w-100">
+      <li class="nav-item">
+        <ul class="nav flex-column w-100">
+          <li class="nav-item">
+            <ul class="nav flex-column w-100">
+              <li class="nav-item"><a class="nav-link p-0" href="#ADD_CSS_FILE">ADD_CSS_FILE</a></li>
+              <li class="nav-item"><a class="nav-link p-0" href="#ADD_JS_FILE">ADD_JS_FILE</a></li>
             </ul>
           </li>
         </ul>
       </li>
-      <li><a href="#Problem-Grader-Subroutines">Problem Grader Subroutines</a></li>
-      <li><a href="#Filter-utilities">Filter utilities</a>
-        <ul>
-          <li>
-            <ul>
-              <li><a href="#assign_option_aliases">assign_option_aliases</a></li>
-              <li><a href="#set_default_options">set_default_options</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Problem-Grader-Subroutines">Problem Grader Subroutines</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Filter-utilities">Filter utilities</a>
+        <ul class="nav flex-column w-100">
+          <li class="nav-item">
+            <ul class="nav flex-column w-100">
+              <li class="nav-item"><a class="nav-link p-0" href="#assign_option_aliases">assign_option_aliases</a></li>
+              <li class="nav-item"><a class="nav-link p-0" href="#set_default_options">set_default_options</a></li>
             </ul>
           </li>
         </ul>
       </li>
     </ul>
-  </li>
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#SYNPOSIS">SYNPOSIS</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-  <li><a href="#USAGE">USAGE</a></li>
-  <li><a href="#PRIVATE-MACROS">PRIVATE MACROS</a></li>
-  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
-</ul>
+  </li><li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNPOSIS">SYNPOSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#USAGE">USAGE</a></li><li class="nav-item"><a class="nav-link p-0" href="#PRIVATE-MACROS">PRIVATE MACROS</a></li><li class="nav-item"><a class="nav-link p-0" href="#SEE-ALSO">SEE ALSO</a></li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
+
 
 <h4 id="ADD_CSS_FILE">ADD_CSS_FILE</h4>
 
 <p>Request that the problem HTML page also include additional CSS files from the webwork2/htdocs/ directory or from an external location.</p>
 
-<pre><code>        ADD_CSS_FILE($file, $external);</code></pre>
+<pre><code>ADD_CSS_FILE($file, $external);</code></pre>
 
 <p>If external is 1, it is assumed the full url is provided. If external is 0 or not given, then file name will be prefixed with the webwork2/htdocs/ directory. For example:</p>
 
-<pre><code>        ADD_CSS_FILE(&quot;css/rtl.css&quot;);
-        ADD_CSS_FILE(&quot;https://external.domain.com/path/to/file.css&quot;, 1);</code></pre>
+<pre><code>ADD_CSS_FILE(&quot;css/rtl.css&quot;);
+ADD_CSS_FILE(&quot;https://external.domain.com/path/to/file.css&quot;, 1);</code></pre>
 
 <h4 id="ADD_JS_FILE">ADD_JS_FILE</h4>
 
 <p>Request that the problem HTML page also include additional JS files from the webwork2/htdocs/ directory or from an external location.</p>
 
-<pre><code>        ADD_JS_FILE($file, $external);</code></pre>
+<pre><code>ADD_JS_FILE($file, $external);</code></pre>
 
 <p>If external is 1, it is assumed the full url is provided. If external is 0 or not given, then file name will be prefixed with the webwork2/htdocs/ directory.</p>
 
@@ -69,9 +93,9 @@
 
 <p>For example:</p>
 
-<pre><code>        ADD_JS_FILE(&quot;js/apps/Base64/Base64.js&quot;);
-        ADD_JS_FILE(&quot;//web.geogebra.org/4.4/web/web.nocache.js&quot;, 1);
-        ADD_JS_FILE(&quot;js/apps/GraphTool/graphtool.js&quot;, 0, { id =&gt; &quot;gt_script&quot;, defer =&gt; undef });</code></pre>
+<pre><code>ADD_JS_FILE(&quot;js/Base64/Base64.js&quot;);
+ADD_JS_FILE(&quot;//web.geogebra.org/4.4/web/web.nocache.js&quot;, 1);
+ADD_JS_FILE(&quot;js/GraphTool/graphtool.js&quot;, 0, { id =&gt; &quot;gt_script&quot;, defer =&gt; undef });</code></pre>
 
 <h2 id="Problem-Grader-Subroutines">Problem Grader Subroutines</h2>
 
@@ -83,21 +107,21 @@
 
 <p>Use this to assign aliases for the standard options. It must come before set_default_options within the subroutine.</p>
 
-<pre><code>                assign_option_aliases(\%options,
-                                &#39;alias1&#39;        =&gt; &#39;option5&#39;
-                                &#39;alias2&#39;        =&gt; &#39;option7&#39;
-                );</code></pre>
+<pre><code>assign_option_aliases(\%options,
+                &#39;alias1&#39;        =&gt; &#39;option5&#39;
+                &#39;alias2&#39;        =&gt; &#39;option7&#39;
+);</code></pre>
 
 <p>If the subroutine is called with an option &quot; alias1 =&gt; 23 &quot; it will behave as if it had been called with the option &quot; option5 =&gt; 23 &quot;</p>
 
 <h4 id="set_default_options">set_default_options</h4>
 
-<pre><code>                set_default_options(\%options,
-                                &#39;_filter_name&#39;  =&gt;      &#39;filter&#39;,
-                                &#39;option5&#39;               =&gt;  .0001,
-                                &#39;option7&#39;               =&gt;      &#39;ascii&#39;,
-                                &#39;allow_unknown_options  =&gt;      0,
-                }</code></pre>
+<pre><code>set_default_options(\%options,
+                &#39;_filter_name&#39;  =&gt;      &#39;filter&#39;,
+                &#39;option5&#39;               =&gt;  .0001,
+                &#39;option7&#39;               =&gt;      &#39;ascii&#39;,
+                &#39;allow_unknown_options  =&gt;      0,
+}</code></pre>
 
 <p>Note that the first entry is a reference to the options with which the filter was called.</p>
 
@@ -114,11 +138,11 @@
 <dt>includePGproblem($filePath)</dt>
 <dd>
 
-<pre><code> includePGproblem($filePath);
+<pre><code>includePGproblem($filePath);
 
- Essentially runs the pg problem specified by $filePath, which is
- a path relative to the top of the templates directory.  The output
- of that problem appears in the given problem.</code></pre>
+Essentially runs the pg problem specified by $filePath, which is
+a path relative to the top of the templates directory.  The output
+of that problem appears in the given problem.</code></pre>
 
 </dd>
 </dl>
@@ -131,22 +155,22 @@
 
 <p>In a PG problem:</p>
 
-<pre><code>        DOCUMENT();             # should be the first statment in the problem
+<pre><code>DOCUMENT();             # should be the first statment in the problem
 
-        loadMacros(.....);      # (optional) load other macro files if needed.
+loadMacros(.....);      # (optional) load other macro files if needed.
 
-        HEADER_TEXT(...);       # (optional) used only for inserting javaScript into problems.
+HEADER_TEXT(...);       # (optional) used only for inserting javaScript into problems.
 
-        TEXT(                   # insert text of problems
-                &quot;Problem text to be displayed. &quot;,
-                &quot;Enter 1 in this blank:&quot;,
-                ANS_RULE(1,30)      # ANS_RULE() defines an answer blank 30 characters long.
-                                        # It is defined in F&lt;PGbasicmacros.pl&gt;
-        );
+TEXT(                   # insert text of problems
+        &quot;Problem text to be displayed. &quot;,
+        &quot;Enter 1 in this blank:&quot;,
+        ANS_RULE(1,30)      # ANS_RULE() defines an answer blank 30 characters long.
+                                # It is defined in F&lt;PGbasicmacros.pl&gt;
+);
 
-        ANS(answer_evalutors);  # see F&lt;PGanswermacros.pl&gt; for examples of answer evaluatiors.
+ANS(answer_evalutors);  # see F&lt;PGanswermacros.pl&gt; for examples of answer evaluatiors.
 
-        ENDDOCUMENT()           # must be the last statement in the problem</code></pre>
+ENDDOCUMENT()           # must be the last statement in the problem</code></pre>
 
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
@@ -186,7 +210,7 @@
 <dt>HEADER_TEXT()</dt>
 <dd>
 
-<pre><code> HEADER_TEXT(&quot;string1&quot;, &quot;string2&quot;, &quot;string3&quot;);</code></pre>
+<pre><code>HEADER_TEXT(&quot;string1&quot;, &quot;string2&quot;, &quot;string3&quot;);</code></pre>
 
 <p>HEADER_TEXT() concatenates its arguments and appends them to the stored header text string. It can be used more than once in a file.</p>
 
@@ -198,7 +222,7 @@
 <dt>TEXT()</dt>
 <dd>
 
-<pre><code> TEXT(&quot;string1&quot;, &quot;string2&quot;, &quot;string3&quot;);</code></pre>
+<pre><code>TEXT(&quot;string1&quot;, &quot;string2&quot;, &quot;string3&quot;);</code></pre>
 
 <p>TEXT() concatenates its arguments and appends them to the stored problem text string. It is used to define the text which will appear in the body of the problem. It can be used more than once in a file.</p>
 
@@ -212,8 +236,8 @@
 <dt>ANS()</dt>
 <dd>
 
-<pre><code> TEXT(ans_rule(), ans_rule(), ans_rule());
- ANS($answer_evaluator1, $answer_evaluator2, $answer_evaluator3);</code></pre>
+<pre><code>TEXT(ans_rule(), ans_rule(), ans_rule());
+ANS($answer_evaluator1, $answer_evaluator2, $answer_evaluator3);</code></pre>
 
 <p>Adds the answer evaluators listed to the list of unlabeled answer evaluators. They will be paired with unlabeled answer rules (a.k.a. answer blanks) in the order entered. This is the standard method for entering answers.</p>
 
@@ -223,8 +247,8 @@
 <dt>LABELED_ANS()</dt>
 <dd>
 
-<pre><code> TEXT(labeled_ans_rule(&quot;name1&quot;), labeled_ans_rule(&quot;name2&quot;));
- LABELED_ANS(name1 =&gt; answer_evaluator1, name2 =&gt; answer_evaluator2);</code></pre>
+<pre><code>TEXT(labeled_ans_rule(&quot;name1&quot;), labeled_ans_rule(&quot;name2&quot;));
+LABELED_ANS(name1 =&gt; answer_evaluator1, name2 =&gt; answer_evaluator2);</code></pre>
 
 <p>Adds the answer evaluators listed to the list of labeled answer evaluators. They will be paired with labeled answer rules (a.k.a. answer blanks) in the order entered. This allows pairing of answer evaluators and answer rules that may not have been entered in the same order.</p>
 
@@ -232,7 +256,7 @@
 <dt>STOP_RENDERING()</dt>
 <dd>
 
-<pre><code> STOP_RENDERING() unless all_answers_are_correct();</code></pre>
+<pre><code>STOP_RENDERING() unless all_answers_are_correct();</code></pre>
 
 <p>Temporarily suspends accumulation of problem text and storing of answer blanks and answer evaluators until RESUME_RENDERING() is called.</p>
 
@@ -240,7 +264,7 @@
 <dt>RESUME_RENDERING()</dt>
 <dd>
 
-<pre><code> RESUME_RENDERING();</code></pre>
+<pre><code>RESUME_RENDERING();</code></pre>
 
 <p>Resumes accumulating problem text and storing answer blanks and answer evaluators. Reverses the effect of STOP_RENDERING().</p>
 
@@ -248,7 +272,7 @@
 <dt>ENDDOCUMENT()</dt>
 <dd>
 
-<pre><code> ENDDOCUMENT();</code></pre>
+<pre><code>ENDDOCUMENT();</code></pre>
 
 <p>When PG problems are evaluated, the result of evaluating the entire problem is interpreted as the return value of ENDDOCUMENT(). Therefore, ENDDOCUMENT() must be the last executable statement of every problem. It can only appear once. It returns a list consisting of:</p>
 
@@ -325,7 +349,7 @@
 <dt>RECORD_ANS_NAME()</dt>
 <dd>
 
-<pre><code> RECORD_ANS_NAME(&quot;label&quot;, &quot;VALUE&quot;);</code></pre>
+<pre><code>RECORD_ANS_NAME(&quot;label&quot;, &quot;VALUE&quot;);</code></pre>
 
 <p>Records the label for an answer blank. Used internally by <a href="//pg/macros/core/PGbasicmacros.html">PGbasicmacros.pl</a> to record the order of explicitly-labelled answer blanks.</p>
 
@@ -333,7 +357,7 @@
 <dt>NEW_ANS_NAME()</dt>
 <dd>
 
-<pre><code> NEW_ANS_NAME();</code></pre>
+<pre><code>NEW_ANS_NAME();</code></pre>
 
 <p>Generates an anonymous answer label from the internal count The label is added to the list of implicity-labeled answers. Used internally by <a href="//pg/macros/core/PGbasicmacros.html">PGbasicmacros.pl</a> to generate labels for unlabeled answer blanks.</p>
 
@@ -341,7 +365,7 @@
 <dt>ANS_NUM_TO_NAME()</dt>
 <dd>
 
-<pre><code> ANS_NUM_TO_NAME($num);</code></pre>
+<pre><code>ANS_NUM_TO_NAME($num);</code></pre>
 
 <p>Generates an answer label from the supplied answer number, but does not add it to the list of inplicitly-labeled answers. Used internally by <a href="//pg/macros/core/PGbasicmacros.html">PGbasicmacros.pl</a> in generating answers blanks that use radio buttons or check boxes. (This type of answer blank uses multiple HTML INPUT elements with the same label, but the label should only be added to the list of implicitly- labeled answers once.)</p>
 
@@ -349,7 +373,7 @@
 <dt>RECORD_FROM_LABEL()</dt>
 <dd>
 
-<pre><code> RECORD_FORM_LABEL(&quot;label&quot;);</code></pre>
+<pre><code>RECORD_FORM_LABEL(&quot;label&quot;);</code></pre>
 
 <p>Stores the label of a form field in the &quot;extra&quot; answers list. This is used to keep track of answer blanks that are not associated with an answer evaluator.</p>
 
@@ -357,7 +381,7 @@
 <dt>NEW_ANS_ARRAY_NAME()</dt>
 <dd>
 
-<pre><code> NEW_ANS_ARRAY_NAME($num, $row, $col);</code></pre>
+<pre><code>NEW_ANS_ARRAY_NAME($num, $row, $col);</code></pre>
 
 <p>Generates a new answer label for an array (vector) element and adds it to the list of implicitly-labeled answers.</p>
 
@@ -365,7 +389,7 @@
 <dt>NEW_ANS_ARRAY_NAME_EXTENSION()</dt>
 <dd>
 
-<pre><code> NEW_ANS_ARRAY_NAME_EXTENSION($num, $row, $col);</code></pre>
+<pre><code>NEW_ANS_ARRAY_NAME_EXTENSION($num, $row, $col);</code></pre>
 
 <p>Generate an additional answer label for an existing array (vector) element and add it to the list of &quot;extra&quot; answers.</p>
 
@@ -373,18 +397,18 @@
 <dt>get_PG_ANSWERS_HASH()</dt>
 <dd>
 
-<pre><code> get_PG_ANSWERS_HASH();
- get_PG_ANSWERS_HASH($key);</code></pre>
+<pre><code>get_PG_ANSWERS_HASH();
+get_PG_ANSWERS_HASH($key);</code></pre>
 
 </dd>
 <dt>includePGproblem($filePath)</dt>
 <dd>
 
-<pre><code> includePGproblem($filePath);
+<pre><code>includePGproblem($filePath);
 
- Essentially runs the pg problem specified by $filePath, which is
- a path relative to the top of the templates directory.  The output
- of that problem appears in the given problem.</code></pre>
+Essentially runs the pg problem specified by $filePath, which is
+a path relative to the top of the templates directory.  The output
+of that problem appears in the given problem.</code></pre>
 
 </dd>
 </dl>
@@ -393,18 +417,7 @@
 
 <p><a href="//pg/macros/core/PGbasicmacros.html">PGbasicmacros.pl</a>, <a href="//pg/macros/core/PGanswermacros.html">PGanswermacros.pl</a>.</p>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

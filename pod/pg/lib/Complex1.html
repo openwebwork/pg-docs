@@ -1,30 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>Complex1</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Complex1</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>Complex1</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">Complex1</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#OPERATIONS">OPERATIONS</a></li><li class="nav-item"><a class="nav-link p-0" href="#CREATION">CREATION</a></li><li class="nav-item"><a class="nav-link p-0" href="#STRINGIFICATION">STRINGIFICATION</a></li><li class="nav-item"><a class="nav-link p-0" href="#USAGE">USAGE</a></li><li class="nav-item"><a class="nav-link p-0" href="#ERRORS-DUE-TO-DIVISION-BY-ZERO-OR-LOGARITHM-OF-ZERO">ERRORS DUE TO DIVISION BY ZERO OR LOGARITHM OF ZERO</a></li><li class="nav-item"><a class="nav-link p-0" href="#ERRORS-DUE-TO-INDIGESTIBLE-ARGUMENTS">ERRORS DUE TO INDIGESTIBLE ARGUMENTS</a></li><li class="nav-item"><a class="nav-link p-0" href="#BUGS">BUGS</a></li><li class="nav-item"><a class="nav-link p-0" href="#AUTHORS">AUTHORS</a></li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
 
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-  <li><a href="#OPERATIONS">OPERATIONS</a></li>
-  <li><a href="#CREATION">CREATION</a></li>
-  <li><a href="#STRINGIFICATION">STRINGIFICATION</a></li>
-  <li><a href="#USAGE">USAGE</a></li>
-  <li><a href="#ERRORS-DUE-TO-DIVISION-BY-ZERO-OR-LOGARITHM-OF-ZERO">ERRORS DUE TO DIVISION BY ZERO OR LOGARITHM OF ZERO</a></li>
-  <li><a href="#ERRORS-DUE-TO-INDIGESTIBLE-ARGUMENTS">ERRORS DUE TO INDIGESTIBLE ARGUMENTS</a></li>
-  <li><a href="#BUGS">BUGS</a></li>
-  <li><a href="#AUTHORS">AUTHORS</a></li>
-</ul>
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
@@ -32,11 +52,11 @@
 
 <a href="#_podtop_"><h1 id="SYNOPSIS">SYNOPSIS</h1></a>
 
-<pre><code>        use Math::Complex;
+<pre><code>use Math::Complex;
 
-        $z = Math::Complex-&gt;make(5, 6);
-        $t = 4 - 3*i + $z;
-        $j = cplxe(1, 2*pi/3);</code></pre>
+$z = Math::Complex-&gt;make(5, 6);
+$t = 4 - 3*i + $z;
+$j = cplxe(1, 2*pi/3);</code></pre>
 
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
@@ -44,53 +64,53 @@
 
 <p>If you wonder what complex numbers are, they were invented to be able to solve the following equation:</p>
 
-<pre><code>        x*x = -1</code></pre>
+<pre><code>x*x = -1</code></pre>
 
 <p>and by definition, the solution is noted <i>i</i> (engineers use <i>j</i> instead since <i>i</i> usually denotes an intensity, but the name does not matter). The number <i>i</i> is a pure <i>imaginary</i> number.</p>
 
 <p>The arithmetics with pure imaginary numbers works just like you would expect it with real numbers... you just have to remember that</p>
 
-<pre><code>        i*i = -1</code></pre>
+<pre><code>i*i = -1</code></pre>
 
 <p>so you have:</p>
 
-<pre><code>        5i + 7i = i * (5 + 7) = 12i
-        4i - 3i = i * (4 - 3) = i
-        4i * 2i = -8
-        6i / 2i = 3
-        1 / i = -i</code></pre>
+<pre><code>5i + 7i = i * (5 + 7) = 12i
+4i - 3i = i * (4 - 3) = i
+4i * 2i = -8
+6i / 2i = 3
+1 / i = -i</code></pre>
 
 <p>Complex numbers are numbers that have both a real part and an imaginary part, and are usually noted:</p>
 
-<pre><code>        a + bi</code></pre>
+<pre><code>a + bi</code></pre>
 
 <p>where <code>a</code> is the <i>real</i> part and <code>b</code> is the <i>imaginary</i> part. The arithmetic with complex numbers is straightforward. You have to keep track of the real and the imaginary parts, but otherwise the rules used for real numbers just apply:</p>
 
-<pre><code>        (4 + 3i) + (5 - 2i) = (4 + 5) + i(3 - 2) = 9 + i
-        (2 + i) * (4 - i) = 2*4 + 4i -2i -i*i = 8 + 2i + 1 = 9 + 2i</code></pre>
+<pre><code>(4 + 3i) + (5 - 2i) = (4 + 5) + i(3 - 2) = 9 + i
+(2 + i) * (4 - i) = 2*4 + 4i -2i -i*i = 8 + 2i + 1 = 9 + 2i</code></pre>
 
 <p>A graphical representation of complex numbers is possible in a plane (also called the <i>complex plane</i>, but it&#39;s really a 2D plane). The number</p>
 
-<pre><code>        z = a + bi</code></pre>
+<pre><code>z = a + bi</code></pre>
 
 <p>is the point whose coordinates are (a, b). Actually, it would be the vector originating from (0, 0) to (a, b). It follows that the addition of two complex numbers is a vectorial addition.</p>
 
 <p>Since there is a bijection between a point in the 2D plane and a complex number (i.e. the mapping is unique and reciprocal), a complex number can also be uniquely identified with polar coordinates:</p>
 
-<pre><code>        [rho, theta]</code></pre>
+<pre><code>[rho, theta]</code></pre>
 
 <p>where <code>rho</code> is the distance to the origin, and <code>theta</code> the angle between the vector and the <i>x</i> axis. There is a notation for this using the exponential form, which is:</p>
 
-<pre><code>        rho * exp(i * theta)</code></pre>
+<pre><code>rho * exp(i * theta)</code></pre>
 
 <p>where <i>i</i> is the famous imaginary number introduced above. Conversion between this form and the cartesian form <code>a + bi</code> is immediate:</p>
 
-<pre><code>        a = rho * cos(theta)
-        b = rho * sin(theta)</code></pre>
+<pre><code>a = rho * cos(theta)
+b = rho * sin(theta)</code></pre>
 
 <p>which is also expressed by this formula:</p>
 
-<pre><code>        z = rho * exp(i * theta) = rho * (cos theta + i * sin theta)</code></pre>
+<pre><code>z = rho * exp(i * theta) = rho * (cos theta + i * sin theta)</code></pre>
 
 <p>In other words, it&#39;s the projection of the vector onto the <i>x</i> and <i>y</i> axes. Mathematicians call <i>rho</i> the <i>norm</i> or <i>modulus</i> and <i>theta</i> the <i>argument</i> of the complex number. The <i>norm</i> of <code>z</code> will be noted <code>abs(z)</code>.</p>
 
@@ -100,15 +120,15 @@
 
 <p>For instance, the <code>sqrt</code> routine which computes the square root of its argument is only defined for non-negative real numbers and yields a non-negative real number (it is an application from <b>R+</b> to <b>R+</b>). If we allow it to return a complex number, then it can be extended to negative real numbers to become an application from <b>R</b> to <b>C</b> (the set of complex numbers):</p>
 
-<pre><code>        sqrt(x) = x &gt;= 0 ? sqrt(x) : sqrt(-x)*i</code></pre>
+<pre><code>sqrt(x) = x &gt;= 0 ? sqrt(x) : sqrt(-x)*i</code></pre>
 
 <p>It can also be extended to be an application from <b>C</b> to <b>C</b>, whilst its restriction to <b>R</b> behaves as defined above by using the following definition:</p>
 
-<pre><code>        sqrt(z = [r,t]) = sqrt(r) * exp(i * t/2)</code></pre>
+<pre><code>sqrt(z = [r,t]) = sqrt(r) * exp(i * t/2)</code></pre>
 
 <p>Indeed, a negative real number can be noted <code>[x,pi]</code> (the modulus <i>x</i> is always non-negative, so <code>[x,pi]</code> is really <code>-x</code>, a negative number) and the above definition states that</p>
 
-<pre><code>        sqrt([x,pi]) = sqrt(x) * exp(i*pi/2) = [sqrt(x),pi/2] = sqrt(x)*i</code></pre>
+<pre><code>sqrt([x,pi]) = sqrt(x) * exp(i*pi/2) = [sqrt(x),pi/2] = sqrt(x)*i</code></pre>
 
 <p>which is exactly what we had defined for negative real numbers above. The <code>sqrt</code> returns only one of the solutions: if you want the both, use the <code>root</code> function.</p>
 
@@ -116,24 +136,24 @@
 
 <p>A <i>new</i> operation possible on a complex number that is the identity for real numbers is called the <i>conjugate</i>, and is noted with an horizontal bar above the number, or <code>~z</code> here.</p>
 
-<pre><code>         z = a + bi
-        ~z = a - bi</code></pre>
+<pre><code>z = a + bi
+~z = a - bi</code></pre>
 
 <p>Simple... Now look:</p>
 
-<pre><code>        z * ~z = (a + bi) * (a - bi) = a*a + b*b</code></pre>
+<pre><code>z * ~z = (a + bi) * (a - bi) = a*a + b*b</code></pre>
 
 <p>We saw that the norm of <code>z</code> was noted <code>abs(z)</code> and was defined as the distance to the origin, also known as:</p>
 
-<pre><code>        rho = abs(z) = sqrt(a*a + b*b)</code></pre>
+<pre><code>rho = abs(z) = sqrt(a*a + b*b)</code></pre>
 
 <p>so</p>
 
-<pre><code>        z * ~z = abs(z) ** 2</code></pre>
+<pre><code>z * ~z = abs(z) ** 2</code></pre>
 
 <p>If z is a pure real number (i.e. <code>b == 0</code>), then the above yields:</p>
 
-<pre><code>        a * a = abs(a) ** 2</code></pre>
+<pre><code>a * a = abs(a) ** 2</code></pre>
 
 <p>which is true (<code>abs</code> has the regular meaning for real number, i.e. stands for the absolute value). This example explains why the norm of <code>z</code> is noted <code>abs(z)</code>: it extends the <code>abs</code> function to complex numbers, yet is the regular <code>abs</code> we know when the complex number actually has no imaginary part... This justifies <i>a posteriori</i> our use of the <code>abs</code> notation for the norm.</p>
 
@@ -141,80 +161,80 @@
 
 <p>Given the following notations:</p>
 
-<pre><code>        z1 = a + bi = r1 * exp(i * t1)
-        z2 = c + di = r2 * exp(i * t2)
-        z = &lt;any complex or real number&gt;</code></pre>
+<pre><code>z1 = a + bi = r1 * exp(i * t1)
+z2 = c + di = r2 * exp(i * t2)
+z = &lt;any complex or real number&gt;</code></pre>
 
 <p>the following (overloaded) operations are supported on complex numbers:</p>
 
-<pre><code>        z1 + z2 = (a + c) + i(b + d)
-        z1 - z2 = (a - c) + i(b - d)
-        z1 * z2 = (r1 * r2) * exp(i * (t1 + t2))
-        z1 / z2 = (r1 / r2) * exp(i * (t1 - t2))
-        z1 ** z2 = exp(z2 * log z1)
-        ~z = a - bi
-        abs(z) = r1 = sqrt(a*a + b*b)
-        sqrt(z) = sqrt(r1) * exp(i * t/2)
-        exp(z) = exp(a) * exp(i * b)
-        log(z) = log(r1) + i*t
-        sin(z) = 1/2i (exp(i * z1) - exp(-i * z))
-        cos(z) = 1/2 (exp(i * z1) + exp(-i * z))
-        atan2(z1, z2) = atan(z1/z2)</code></pre>
+<pre><code>z1 + z2 = (a + c) + i(b + d)
+z1 - z2 = (a - c) + i(b - d)
+z1 * z2 = (r1 * r2) * exp(i * (t1 + t2))
+z1 / z2 = (r1 / r2) * exp(i * (t1 - t2))
+z1 ** z2 = exp(z2 * log z1)
+~z = a - bi
+abs(z) = r1 = sqrt(a*a + b*b)
+sqrt(z) = sqrt(r1) * exp(i * t/2)
+exp(z) = exp(a) * exp(i * b)
+log(z) = log(r1) + i*t
+sin(z) = 1/2i (exp(i * z1) - exp(-i * z))
+cos(z) = 1/2 (exp(i * z1) + exp(-i * z))
+atan2(z1, z2) = atan(z1/z2)</code></pre>
 
 <p>The following extra operations are supported on both real and complex numbers:</p>
 
-<pre><code>        Re(z) = a
-        Im(z) = b
-        arg(z) = t
-        abs(z) = r
+<pre><code>Re(z) = a
+Im(z) = b
+arg(z) = t
+abs(z) = r
 
-        cbrt(z) = z ** (1/3)
-        log10(z) = log(z) / log(10)
-        logn(z, n) = log(z) / log(n)
+cbrt(z) = z ** (1/3)
+log10(z) = log(z) / log(10)
+logn(z, n) = log(z) / log(n)
 
-        tan(z) = sin(z) / cos(z)
+tan(z) = sin(z) / cos(z)
 
-        csc(z) = 1 / sin(z)
-        sec(z) = 1 / cos(z)
-        cot(z) = 1 / tan(z)
+csc(z) = 1 / sin(z)
+sec(z) = 1 / cos(z)
+cot(z) = 1 / tan(z)
 
-        asin(z) = -i * log(i*z + sqrt(1-z*z))
-        acos(z) = -i * log(z + i*sqrt(1-z*z))
-        atan(z) = i/2 * log((i+z) / (i-z))
+asin(z) = -i * log(i*z + sqrt(1-z*z))
+acos(z) = -i * log(z + i*sqrt(1-z*z))
+atan(z) = i/2 * log((i+z) / (i-z))
 
-        acsc(z) = asin(1 / z)
-        asec(z) = acos(1 / z)
-        acot(z) = atan(1 / z) = -i/2 * log((i+z) / (z-i))
+acsc(z) = asin(1 / z)
+asec(z) = acos(1 / z)
+acot(z) = atan(1 / z) = -i/2 * log((i+z) / (z-i))
 
-        sinh(z) = 1/2 (exp(z) - exp(-z))
-        cosh(z) = 1/2 (exp(z) + exp(-z))
-        tanh(z) = sinh(z) / cosh(z) = (exp(z) - exp(-z)) / (exp(z) + exp(-z))
+sinh(z) = 1/2 (exp(z) - exp(-z))
+cosh(z) = 1/2 (exp(z) + exp(-z))
+tanh(z) = sinh(z) / cosh(z) = (exp(z) - exp(-z)) / (exp(z) + exp(-z))
 
-        csch(z) = 1 / sinh(z)
-        sech(z) = 1 / cosh(z)
-        coth(z) = 1 / tanh(z)
+csch(z) = 1 / sinh(z)
+sech(z) = 1 / cosh(z)
+coth(z) = 1 / tanh(z)
 
-        asinh(z) = log(z + sqrt(z*z+1))
-        acosh(z) = log(z + sqrt(z*z-1))
-        atanh(z) = 1/2 * log((1+z) / (1-z))
+asinh(z) = log(z + sqrt(z*z+1))
+acosh(z) = log(z + sqrt(z*z-1))
+atanh(z) = 1/2 * log((1+z) / (1-z))
 
-        acsch(z) = asinh(1 / z)
-        asech(z) = acosh(1 / z)
-        acoth(z) = atanh(1 / z) = 1/2 * log((1+z) / (z-1))</code></pre>
+acsch(z) = asinh(1 / z)
+asech(z) = acosh(1 / z)
+acoth(z) = atanh(1 / z) = 1/2 * log((1+z) / (z-1))</code></pre>
 
 <p><i>arg</i>, <i>abs</i>, <i>log</i>, <i>csc</i>, <i>cot</i>, <i>acsc</i>, <i>acot</i>, <i>csch</i>, <i>coth</i>, <i>acosech</i>, <i>acotanh</i>, have aliases <i>rho</i>, <i>theta</i>, <i>ln</i>, <i>cosec</i>, <i>cotan</i>, <i>acosec</i>, <i>acotan</i>, <i>cosech</i>, <i>cotanh</i>, <i>acosech</i>, <i>acotanh</i>, respectively. <code>Re</code>, <code>Im</code>, <code>arg</code>, <code>abs</code>, <code>rho</code>, and <code>theta</code> can be used also also mutators. The <code>cbrt</code> returns only one of the solutions: if you want all three, use the <code>root</code> function.</p>
 
 <p>The <i>root</i> function is available to compute all the <i>n</i> roots of some complex, where <i>n</i> is a strictly positive integer. There are exactly <i>n</i> such roots, returned as a list. Getting the number mathematicians call <code>j</code> such that:</p>
 
-<pre><code>        1 + j + j*j = 0;</code></pre>
+<pre><code>1 + j + j*j = 0;</code></pre>
 
 <p>is a simple matter of writing:</p>
 
-<pre><code>        $j = ((root(1, 3))[1];</code></pre>
+<pre><code>$j = ((root(1, 3))[1];</code></pre>
 
 <p>The <i>k</i>th root for <code>z = [r,t]</code> is given by:</p>
 
-<pre><code>        (root(z, n))[k] = r**(1/n) * exp(i * (t + 2*k*pi)/n)</code></pre>
+<pre><code>(root(z, n))[k] = r**(1/n) * exp(i * (t + 2*k*pi)/n)</code></pre>
 
 <p>The <i>spaceship</i> comparison operator, &lt;=&gt;, is also defined. In order to ensure its restriction to real numbers is conform to what you would expect, the comparison is run on the real part of the complex number first, and imaginary parts are compared only when the real parts match.</p>
 
@@ -222,30 +242,30 @@
 
 <p>To create a complex number, use either:</p>
 
-<pre><code>        $z = Math::Complex-&gt;make(3, 4);
-        $z = cplx(3, 4);</code></pre>
+<pre><code>$z = Math::Complex-&gt;make(3, 4);
+$z = cplx(3, 4);</code></pre>
 
 <p>if you know the cartesian form of the number, or</p>
 
-<pre><code>        $z = 3 + 4*i;</code></pre>
+<pre><code>$z = 3 + 4*i;</code></pre>
 
 <p>if you like. To create a number using the polar form, use either:</p>
 
-<pre><code>        $z = Math::Complex-&gt;emake(5, pi/3);
-        $x = cplxe(5, pi/3);</code></pre>
+<pre><code>$z = Math::Complex-&gt;emake(5, pi/3);
+$x = cplxe(5, pi/3);</code></pre>
 
 <p>instead. The first argument is the modulus, the second is the angle (in radians, the full circle is 2*pi). (Mnemonic: <code>e</code> is used as a notation for complex numbers in the polar form).</p>
 
 <p>It is possible to write:</p>
 
-<pre><code>        $x = cplxe(-3, pi/4);</code></pre>
+<pre><code>$x = cplxe(-3, pi/4);</code></pre>
 
 <p>but that will be silently converted into <code>[3,-3pi/4]</code>, since the modulus must be non-negative (it represents the distance to the origin in the complex plane).</p>
 
 <p>It is also possible to have a complex number as either argument of either the <code>make</code> or <code>emake</code>: the appropriate component of the argument will be used.</p>
 
-<pre><code>        $z1 = cplx(-2,  1);
-        $z2 = cplx($z1, 4);</code></pre>
+<pre><code>$z1 = cplx(-2,  1);
+$z2 = cplx($z1, 4);</code></pre>
 
 <a href="#_podtop_"><h1 id="STRINGIFICATION">STRINGIFICATION</h1></a>
 
@@ -257,13 +277,13 @@
 
 <p>For instance:</p>
 
-<pre><code>        use Math::Complex;
+<pre><code>use Math::Complex;
 
-        Complex1::display_format(&#39;polar&#39;);
-        $j = ((root(1, 3))[1];
-        print &quot;j = $j\n&quot;;               # Prints &quot;j = [1,2pi/3]
-        $j-&gt;display_format(&#39;cartesian&#39;);
-        print &quot;j = $j\n&quot;;               # Prints &quot;j = -0.5+0.866025403784439i&quot;</code></pre>
+Complex1::display_format(&#39;polar&#39;);
+$j = ((root(1, 3))[1];
+print &quot;j = $j\n&quot;;               # Prints &quot;j = [1,2pi/3]
+$j-&gt;display_format(&#39;cartesian&#39;);
+print &quot;j = $j\n&quot;;               # Prints &quot;j = -0.5+0.866025403784439i&quot;</code></pre>
 
 <p>The polar format attempts to emphasize arguments like <i>k*pi/n</i> (where <i>n</i> is a positive integer and <i>k</i> an integer within [-9,+9]).</p>
 
@@ -273,42 +293,42 @@
 
 <p>Here are some examples:</p>
 
-<pre><code>        use Math::Complex;
+<pre><code>use Math::Complex;
 
-        $j = cplxe(1, 2*pi/3);  # $j ** 3 == 1
-        print &quot;j = $j, j**3 = &quot;, $j ** 3, &quot;\n&quot;;
-        print &quot;1 + j + j**2 = &quot;, 1 + $j + $j**2, &quot;\n&quot;;
+$j = cplxe(1, 2*pi/3);  # $j ** 3 == 1
+print &quot;j = $j, j**3 = &quot;, $j ** 3, &quot;\n&quot;;
+print &quot;1 + j + j**2 = &quot;, 1 + $j + $j**2, &quot;\n&quot;;
 
-        $z = -16 + 0*i;                 # Force it to be a complex
-        print &quot;sqrt($z) = &quot;, sqrt($z), &quot;\n&quot;;
+$z = -16 + 0*i;                 # Force it to be a complex
+print &quot;sqrt($z) = &quot;, sqrt($z), &quot;\n&quot;;
 
-        $k = exp(i * 2*pi/3);
-        print &quot;$j - $k = &quot;, $j - $k, &quot;\n&quot;;
+$k = exp(i * 2*pi/3);
+print &quot;$j - $k = &quot;, $j - $k, &quot;\n&quot;;
 
-        $z-&gt;Re(3);                      # Re, Im, arg, abs,
-        $j-&gt;arg(2);                     # (the last two aka rho, theta)
-                                        # can be used also as mutators.</code></pre>
+$z-&gt;Re(3);                      # Re, Im, arg, abs,
+$j-&gt;arg(2);                     # (the last two aka rho, theta)
+                                # can be used also as mutators.</code></pre>
 
 <a href="#_podtop_"><h1 id="ERRORS-DUE-TO-DIVISION-BY-ZERO-OR-LOGARITHM-OF-ZERO">ERRORS DUE TO DIVISION BY ZERO OR LOGARITHM OF ZERO</h1></a>
 
 <p>The division (/) and the following functions</p>
 
-<pre><code>        log     ln      log10   logn
-        tan     sec     csc     cot
-        atan    asec    acsc    acot
-        tanh    sech    csch    coth
-        atanh   asech   acsch   acoth</code></pre>
+<pre><code>log     ln      log10   logn
+tan     sec     csc     cot
+atan    asec    acsc    acot
+tanh    sech    csch    coth
+atanh   asech   acsch   acoth</code></pre>
 
 <p>cannot be computed for all arguments because that would mean dividing by zero or taking logarithm of zero. These situations cause fatal runtime errors looking like this</p>
 
-<pre><code>        cot(0): Division by zero.
-        (Because in the definition of cot(0), the divisor sin(0) is 0)
-        Died at ...</code></pre>
+<pre><code>cot(0): Division by zero.
+(Because in the definition of cot(0), the divisor sin(0) is 0)
+Died at ...</code></pre>
 
 <p>or</p>
 
-<pre><code>        atanh(-1): Logarithm of zero.
-        Died at...</code></pre>
+<pre><code>atanh(-1): Logarithm of zero.
+Died at...</code></pre>
 
 <p>For the <code>csc</code>, <code>cot</code>, <code>asec</code>, <code>acsc</code>, <code>acot</code>, <code>csch</code>, <code>coth</code>, <code>asech</code>, <code>acsch</code>, the argument cannot be <code>0</code> (zero). For the the logarithmic functions and the <code>atanh</code>, <code>acoth</code>, the argument cannot be <code>1</code> (one). For the <code>atanh</code>, <code>acoth</code>, the argument cannot be <code>-1</code> (minus one). For the <code>atan</code>, <code>acot</code>, the argument cannot be <code>i</code> (the imaginary unit). For the <code>atan</code>, <code>acoth</code>, the argument cannot be <code>-i</code> (the negative imaginary unit). For the <code>tan</code>, <code>sec</code>, <code>tanh</code>, the argument cannot be <i>pi/2 + k * pi</i>, where <i>k</i> is any integer.</p>
 
@@ -318,10 +338,10 @@
 
 <p>The <code>make</code> and <code>emake</code> accept both real and complex arguments. When they cannot recognize the arguments they will die with error messages like the following</p>
 
-<pre><code>    Complex1::make: Cannot take real part of ...
-    Complex1::make: Cannot take real part of ...
-    Complex1::emake: Cannot take rho of ...
-    Complex1::emake: Cannot take theta of ...</code></pre>
+<pre><code>Complex1::make: Cannot take real part of ...
+Complex1::make: Cannot take real part of ...
+Complex1::emake: Cannot take rho of ...
+Complex1::emake: Cannot take theta of ...</code></pre>
 
 <a href="#_podtop_"><h1 id="BUGS">BUGS</h1></a>
 
@@ -337,18 +357,7 @@
 
 <p>Extensive patches by Daniel S. Lewart &lt;<i>d-lewart@uiuc.edu</i>&gt;.</p>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

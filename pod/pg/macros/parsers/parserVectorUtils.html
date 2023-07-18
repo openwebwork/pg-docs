@@ -1,32 +1,60 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>parsers/parserVectorUtils.pl</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>parsers/parserVectorUtils.pl</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>parsers/parserVectorUtils.pl</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
-
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-  <li><a href="#MACROS">MACROS</a>
-    <ul>
-      <li><a href="#Overline">Overline</a></li>
-      <li><a href="#BoldMath">BoldMath</a></li>
-      <li><a href="#GRAD">$GRAD</a></li>
-      <li><a href="#non_zero_point">non_zero_point</a></li>
-      <li><a href="#non_zero_vector-non_zero_vector2D-non_zero_vector3D">non_zero_vector, non_zero_vector2D, non_zero_vector3D</a></li>
-      <li><a href="#Line">Line</a></li>
-      <li><a href="#Plane">Plane</a></li>
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">parsers/parserVectorUtils.pl</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#MACROS">MACROS</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#Overline">Overline</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#BoldMath">BoldMath</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#GRAD">$GRAD</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#non_zero_point">non_zero_point</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#non_zero_vector-non_zero_vector2D-non_zero_vector3D">non_zero_vector, non_zero_vector2D, non_zero_vector3D</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Line">Line</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Plane">Plane</a></li>
     </ul>
-  </li>
-</ul>
+  </li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
+
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
@@ -40,7 +68,7 @@
 
 <h2 id="Overline">Overline</h2>
 
-<pre><code>        Overline($vectorName)</code></pre>
+<pre><code>Overline($vectorName)</code></pre>
 
 <p>formats a vector name (should be used in math mode)</p>
 
@@ -48,23 +76,23 @@
 
 <h2 id="BoldMath">BoldMath</h2>
 
-<pre><code>        BoldMath($vectorName)</code></pre>
+<pre><code>BoldMath($vectorName)</code></pre>
 
 <p>This gets a bold letter in TeX as well as HTML modes. Although \boldsymbol{} works fine on screen in latex2html mode, the PDF file produces non-bold letters. I haven&#39;t been able to track this down, so used \mathbf{} in TeX mode, which produces roman bold, not math-italic bold.</p>
 
 <h2 id="GRAD">$GRAD</h2>
 
-<pre><code>        TEXT($GRAD)
+<pre><code>TEXT($GRAD)
 
-        BEGIN_TEXT
-        $GRAD
-        END_TEXT</code></pre>
+BEGIN_TEXT
+$GRAD
+END_TEXT</code></pre>
 
 <p>Grad symbol.</p>
 
 <h2 id="non_zero_point">non_zero_point</h2>
 
-<pre><code>        non_zero_point($Dim,$L_bound,$U_bound,$step)</code></pre>
+<pre><code>non_zero_point($Dim,$L_bound,$U_bound,$step)</code></pre>
 
 <p>Create a non-zero point with the given number of coordinates with the given random range (which defaults to (-5,5,1)).</p>
 
@@ -74,49 +102,38 @@
 
 <h2 id="non_zero_vector-non_zero_vector2D-non_zero_vector3D">non_zero_vector, non_zero_vector2D, non_zero_vector3D</h2>
 
-<pre><code>        non_zero_vector($Dim,$L_bound,$U_bound,$step)
+<pre><code>non_zero_vector($Dim,$L_bound,$U_bound,$step)
 
-        non_zero_vector2D($L_bound,$U_bound,$step)
+non_zero_vector2D($L_bound,$U_bound,$step)
 
-        non_zero_vector3D($L_bound,$U_bound,$step)</code></pre>
+non_zero_vector3D($L_bound,$U_bound,$step)</code></pre>
 
 <p>Functions the same as non_zero_point but for Vectors. non_zero_vector2D and non_zero_vector3D automatically set Dimension to 2 and 3 respectively.</p>
 
 <h2 id="Line">Line</h2>
 
-<pre><code>        $P = Point(@coords1);
-        $V = Vector(@coords2);
-        $t = &#39;t&#39;;
-        Line($P,$V);
-        Line($P,$V,$t);</code></pre>
+<pre><code>$P = Point(@coords1);
+$V = Vector(@coords2);
+$t = &#39;t&#39;;
+Line($P,$V);
+Line($P,$V,$t);</code></pre>
 
 <p>Form the vector-parametric form for a line given its point and vector, where $P is the point and $V the direction vector for the line, and $t is the variable to use (default is &#39;t&#39;).</p>
 
 <p>For example:</p>
 
-<pre><code>        Line([1,-3],[2,1]);            # produces Vector(&quot;1+2t&quot;,&quot;-3+t&quot;).
-        Line(Point(1,-3),Vector(2,1)); # produces Vector(&quot;1+2t&quot;,&quot;-3+t&quot;).</code></pre>
+<pre><code>Line([1,-3],[2,1]);            # produces Vector(&quot;1+2t&quot;,&quot;-3+t&quot;).
+Line(Point(1,-3),Vector(2,1)); # produces Vector(&quot;1+2t&quot;,&quot;-3+t&quot;).</code></pre>
 
 <p>(It may be better to use the ParametricLine class from parserParametricLine.pl).</p>
 
 <h2 id="Plane">Plane</h2>
 
-<pre><code>        Plane($point,$NormalVector)</code></pre>
+<pre><code>Plane($point,$NormalVector)</code></pre>
 
 <p>Creates a displayable string for a plane given its normal vector and a point on the plane. (Better to use the ImplicitPlane class from parserImplicitPlane.pl).</p>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

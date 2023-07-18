@@ -1,44 +1,69 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>core/PGauxiliaryFunctions.pl</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>core/PGauxiliaryFunctions.pl</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>core/PGauxiliaryFunctions.pl</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
-
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a>
-    <ul>
-      <li>
-        <ul>
-          <li><a href="#step-function">step function</a></li>
-          <li><a href="#ceil-Function">ceil Function</a></li>
-          <li><a href="#floor-Function">floor Function</a></li>
-          <li><a href="#max-function">max function</a></li>
-          <li><a href="#min-function">min function</a></li>
-          <li><a href="#round-function">round function</a></li>
-          <li><a href="#Round-function">Round function</a></li>
-          <li><a href="#lcm-function">lcm function</a></li>
-          <li><a href="#gcf-function">gcf function</a></li>
-          <li><a href="#gcd-function">gcd function</a></li>
-          <li><a href="#random_coprime-function">random_coprime function</a></li>
-          <li><a href="#random_pairwise_coprime-function">random_pairwise_coprime function</a></li>
-          <li><a href="#isPrime-function">isPrime function</a></li>
-          <li><a href="#reduce-function">reduce function</a></li>
-          <li><a href="#preFormat-function">preFormat function</a></li>
-          <li><a href="#random_subset-function">random_subset function</a></li>
-        </ul>
-      </li>
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">core/PGauxiliaryFunctions.pl</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#step-function">step function</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#ceil-Function">ceil Function</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#floor-Function">floor Function</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#max-function">max function</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#min-function">min function</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#round-function">round function</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Round-function">Round function</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#lcm-function">lcm function</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#gcf-function">gcf function</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#gcd-function">gcd function</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#random_coprime-function">random_coprime function</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#random_pairwise_coprime-function">random_pairwise_coprime function</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#isPrime-function">isPrime function</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#reduce-function">reduce function</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#preFormat-function">preFormat function</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#random_subset-function">random_subset function</a></li>
     </ul>
-  </li>
-</ul>
+  </li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
+
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
@@ -48,137 +73,137 @@
 
 <p>This macro creates the following functions that are available for PG:</p>
 
-<pre><code>        step($number)
-        ceil($number)
-        floor($number)
-        max(@listNumbers)
-        min(@listNumbers)
-        round($number)
-        lcm(@listNumbers)
-        gcf(@listNumbers)
-        gcd(@listNumbers)
-        isPrime($number)
-        reduce($numerator,$denominator)
-        preformat($scalar, &quot;QuotedString&quot;)
-        random_pairwise_coprime($ar1, $ar2, ... )
-        random_coprime($ar1, $ar2, ... )
-        random_subset($n, @set)</code></pre>
+<pre><code>step($number)
+ceil($number)
+floor($number)
+max(@listNumbers)
+min(@listNumbers)
+round($number)
+lcm(@listNumbers)
+gcf(@listNumbers)
+gcd(@listNumbers)
+isPrime($number)
+reduce($numerator,$denominator)
+preformat($scalar, &quot;QuotedString&quot;)
+random_pairwise_coprime($ar1, $ar2, ... )
+random_coprime($ar1, $ar2, ... )
+random_subset($n, @set)</code></pre>
 
-<h3 id="step-function">step function</h3>
+<h2 id="step-function">step function</h2>
 
-<pre><code>        Usage: step(x);</code></pre>
+<p>Usage: <code>step(x);</code></p>
 
 <p>returns the step function (or Heaviside function) with jump at x=0. That is when x&lt;0, it returns 0, when x&gt;=0 the function returns 1.</p>
 
 <p>Example:</p>
 
-<pre><code>        step(3.14159) returns 1</code></pre>
+<pre><code>step(3.14159) returns 1</code></pre>
 
-<h3 id="ceil-Function">ceil Function</h3>
+<h2 id="ceil-Function">ceil Function</h2>
 
-<pre><code>        Usage: ceil(x);</code></pre>
+<p>Usage: <code>ceil(x);</code></p>
 
 <p>returns the ceiling function of x. This rounds up to the nearest integer.</p>
 
 <p>Examples:</p>
 
-<pre><code>        ceil(3.14159) returns 4
-        ceil(-9.75) return -9</code></pre>
+<pre><code>ceil(3.14159) returns 4
+ceil(-9.75) return -9</code></pre>
 
-<h3 id="floor-Function">floor Function</h3>
+<h2 id="floor-Function">floor Function</h2>
 
-<pre><code>        Usage: floor(x);</code></pre>
+<p>Usage: <code>floor(x);</code></p>
 
 <p>returns the floor function of x. This rounds down to the nearest integer.</p>
 
 <p>Examples:</p>
 
-<pre><code>        floor(3.14159) returns 3
-        floor(-9.75) return -10</code></pre>
+<pre><code>floor(3.14159) returns 3
+floor(-9.75) return -10</code></pre>
 
-<h3 id="max-function">max function</h3>
+<h2 id="max-function">max function</h2>
 
-<pre><code>        Usage: max(@arr);</code></pre>
+<p>Usage: <code>max(@arr);</code></p>
 
 <p>returns the maximum of the values in the array @arr.</p>
 
 <p>Example</p>
 
-<pre><code>        max(1,2,3,4,5,6,7) returns 7</code></pre>
+<pre><code>max(1,2,3,4,5,6,7) returns 7</code></pre>
 
-<h3 id="min-function">min function</h3>
+<h2 id="min-function">min function</h2>
 
-<pre><code>        Usage: min(@arr);</code></pre>
+<p>Usage: <code>min(@arr);</code></p>
 
 <p>returns the minimum of the values in the array @arr.</p>
 
 <p>Example</p>
 
-<pre><code>        min(1,2,3,4,5,6,7) returns 1</code></pre>
+<pre><code>min(1,2,3,4,5,6,7) returns 1</code></pre>
 
-<h3 id="round-function">round function</h3>
+<h2 id="round-function">round function</h2>
 
-<pre><code>        Usage: round(x);</code></pre>
+<p>Usage: <code>round(x);</code></p>
 
 <p>returns integer nearest x.</p>
 
 <p>Example:</p>
 
-<pre><code>        round(3.14159) returns 3</code></pre>
+<pre><code>round(3.14159) returns 3</code></pre>
 
-<h3 id="Round-function">Round function</h3>
+<h2 id="Round-function">Round function</h2>
 
-<pre><code>        Usage: Round(x);</code></pre>
+<p>Usage: <code>Round(x);</code></p>
 
 <p>returns integer nearest x.</p>
 
-<pre><code>        Usage: Round(x,n);</code></pre>
+<p>Usage: <code>Round(x,n);</code></p>
 
 <p>returns the number rounded to n digits.</p>
 
 <p>Example:</p>
 
-<pre><code>        Round(1.789,2) returns 1.79</code></pre>
+<pre><code>Round(1.789,2) returns 1.79</code></pre>
 
-<h3 id="lcm-function">lcm function</h3>
+<h2 id="lcm-function">lcm function</h2>
 
-<pre><code>        Usage: lcm(@arr);</code></pre>
+<p>Usage: <code>lcm(@arr);</code></p>
 
 <p>returns the lowest common multiple of the array @arr of integers.</p>
 
 <p>Example:</p>
 
-<pre><code>        lcm(3,4,5,6) returns 60.</code></pre>
+<pre><code>lcm(3,4,5,6) returns 60.</code></pre>
 
 <p>Note: it checks for an empty array, however doesn&#39;t check if the inputs are integers.</p>
 
-<h3 id="gcf-function">gcf function</h3>
+<h2 id="gcf-function">gcf function</h2>
 
-<pre><code>        Usage: gcf(@arr);</code></pre>
+<p>Usage: <code>gcf(@arr);</code></p>
 
 <p>returns the greatest common factor of the array @arr of integers.</p>
 
 <p>Example:</p>
 
-<pre><code>        gcf(20,30,45) returns 5.</code></pre>
+<pre><code>gcf(20,30,45) returns 5.</code></pre>
 
 <p>Note: it checks for an empty array, however doesn&#39;t check if the inputs are integers.</p>
 
-<h3 id="gcd-function">gcd function</h3>
+<h2 id="gcd-function">gcd function</h2>
 
-<pre><code>        Usage: gcd(@arr);</code></pre>
+<p><code>Usage: gcd(@arr);</code></p>
 
 <p>returns the greatest common divisor of the array @arr of integers.</p>
 
 <p>Example:</p>
 
-<pre><code>        gcd(20,30,45) returns 5.</code></pre>
+<pre><code>gcd(20,30,45) returns 5.</code></pre>
 
 <p>Note: this is just an alias for gcf.</p>
 
-<h3 id="random_coprime-function">random_coprime function</h3>
+<h2 id="random_coprime-function">random_coprime function</h2>
 
-<pre><code>        Usage: random_coprime(array of array_refs);</code></pre>
+<p>Usage: <code>random_coprime(array of array_refs);</code></p>
 
 <p>returns relatively prime integers. The arguments should be references to arrays of integers. This returns an n-tuple of relatively prime integers, each one coming from the corresponding array. Random selection is uniform among all possible tuples that are relatively prime. This does not consider (0,0) to be relatively prime.</p>
 
@@ -188,84 +213,73 @@
 
 <p>Examples:</p>
 
-<pre><code>        random_coprime([1..9],[1..9]) may return (2,9) or (1,1) but not (6,8)
-        random_coprime([-9..-1,1..9],[1..9],[1..9]) may return (-3,7,4), (-1,1,1), or (-2,2,3) but not (-2,2,4)</code></pre>
+<pre><code>random_coprime([1..9],[1..9]) may return (2,9) or (1,1) but not (6,8)
+random_coprime([-9..-1,1..9],[1..9],[1..9]) may return (-3,7,4), (-1,1,1), or (-2,2,3) but not (-2,2,4)</code></pre>
 
 <p>Note: in the example above (-2,2,3) is valid because not all three share a factor greater than 1. If you don&#39;t want to allow pairs of numbers to have a common factor, see random_pairwise_coprime.</p>
 
-<pre><code>        random_pairwise_coprime([-9..-1,1..9],[1..9],[1..9]) may return (-3,7,4) or (-1,1,1) but not (-2,2,3)</code></pre>
+<pre><code>random_pairwise_coprime([-9..-1,1..9],[1..9],[1..9]) may return (-3,7,4) or (-1,1,1) but not (-2,2,3)</code></pre>
 
 <p>WARNING: random_coprime() will use a lot of memory and CPU resources if used with too many/too large arguments. For example, random_coprime([-20..20],[-20..20],[-20..20],[-20..20],[-20..20]) involves processing 41^5 arrays. Consider using random_pairwise_coprime() instead. Or breaking things up like: random_coprime([-20..20],[-20..20]),random_coprime([-20..20],[-20..20],[-20..20])</p>
 
 <p>Note for Problem Authors: one reason for developing this function is to be able to create polynomials that don&#39;t have a constant factor. For example, if random_coprime([-9..-1,1..9],[1..9],[1..9]) returns (-5,5,3) then building the quadratic 3x^2+5x-5 doesn&#39;t lead to a constant multiple to be factored.</p>
 
-<h3 id="random_pairwise_coprime-function">random_pairwise_coprime function</h3>
+<h2 id="random_pairwise_coprime-function">random_pairwise_coprime function</h2>
 
-<pre><code>        Usage: random_pairwise_coprime($arr);</code></pre>
+<p>Usage: <code>random_pairwise_coprime($arr);</code></p>
 
 <p>This is similar to the random_coprime function with the additional constraint that all pairs of numbers are also coprime.</p>
 
 <p>Examples:</p>
 
-<pre><code>        random_coprime([-9..-1,1..9],[1..9],[1..9]) may return (-3,7,4), (-1,1,1), or (-2,2,3) but not (-2,2,4)
-        random_pairwise_coprime([-9..-1,1..9],[1..9],[1..9]) may return (-3,7,4) or (-1,1,1) but not (-2,2,3) or (3,5,6)</code></pre>
+<pre><code>random_coprime([-9..-1,1..9],[1..9],[1..9]) may return (-3,7,4), (-1,1,1), or (-2,2,3) but not (-2,2,4)
+random_pairwise_coprime([-9..-1,1..9],[1..9],[1..9]) may return (-3,7,4) or (-1,1,1) but not (-2,2,3) or (3,5,6)</code></pre>
 
-<h3 id="isPrime-function">isPrime function</h3>
+<h2 id="isPrime-function">isPrime function</h2>
 
-<pre><code>        Usage: isPrime(n);</code></pre>
+<p>Usage: <code>isPrime(n);</code></p>
 
 <p>returns 1 if n is prime and 0 otherwise.</p>
 
 <p>Example:</p>
 
-<pre><code>        isPrime(7) returns 1.
-        isPrime(8) returns 0</code></pre>
+<pre><code>isPrime(7) returns 1.
+isPrime(8) returns 0</code></pre>
 
 <p>Note: this doesn&#39;t check if n is negative.</p>
 
-<h3 id="reduce-function">reduce function</h3>
+<h2 id="reduce-function">reduce function</h2>
 
-<pre><code>        Usage: reduce(num,den);</code></pre>
+<p>Usage: <code>reduce(num,den);</code></p>
 
 <p>returns the fraction num/den as an array with first entry as the numerator and second as the denominator.</p>
 
 <p>Example:</p>
 
-<pre><code>        reduce(15,20) returns (3,4)</code></pre>
+<pre><code>reduce(15,20) returns (3,4)</code></pre>
 
-<h3 id="preFormat-function">preFormat function</h3>
+<h2 id="preFormat-function">preFormat function</h2>
 
-<pre><code>        Usage: preFormat($scalar, &quot;quoted string&quot;);</code></pre>
+<p>Usage: <code>preFormat($scalar, &quot;quoted string&quot;);</code></p>
 
 <p>returns the string preformatted with the $scalar as 0, 1, or -1. takes a number and fixed object, as in &quot;$a x&quot; and formats</p>
 
 <p>Example:</p>
 
-<pre><code>        preformat(-1, &quot;\pi&quot;) returns &quot;-\pi&quot;</code></pre>
+<pre><code>preformat(-1, &quot;\pi&quot;) returns &quot;-\pi&quot;</code></pre>
 
-<h3 id="random_subset-function">random_subset function</h3>
+<h2 id="random_subset-function">random_subset function</h2>
 
-<pre><code>        Usage: random_subset($n, @set);</code></pre>
+<p>Usage: <code>random_subset($n, @set);</code></p>
 
 <p>This function returns a randomly ordered array of $n elements selected from the array @set without replacement. Accepts either an array or an array reference for @set.</p>
 
 <p>Example to choose 3 random elements (both do the same thing):</p>
 
-<pre><code>        random_subset(3, &#39;first&#39;, &#39;second&#39;, &#39;third&#39;, &#39;fourth&#39;, &#39;fifth&#39;)
-        random_subset(3, [&#39;first&#39;, &#39;second&#39;, &#39;third&#39;, &#39;fourth&#39;, &#39;fifth&#39;])</code></pre>
+<pre><code>random_subset(3, &#39;first&#39;, &#39;second&#39;, &#39;third&#39;, &#39;fourth&#39;, &#39;fifth&#39;)
+random_subset(3, [&#39;first&#39;, &#39;second&#39;, &#39;third&#39;, &#39;fourth&#39;, &#39;fifth&#39;])</code></pre>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

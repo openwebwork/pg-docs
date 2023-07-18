@@ -1,38 +1,59 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>MatrixReal1</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MatrixReal1</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>MatrixReal1</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
-
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-  <li><a href="#SYNOPSIS">SYNOPSIS</a>
-    <ul>
-      <li><a href="#Eigensystems">Eigensystems</a></li>
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">MatrixReal1</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#Eigensystems">Eigensystems</a></li>
     </ul>
-  </li>
-  <li><a href="#OVERLOADED-OPERATORS">OVERLOADED OPERATORS</a>
-    <ul>
-      <li><a href="#SYNOPSIS1">SYNOPSIS</a></li>
-      <li><a href="#DESCRIPTION1">DESCRIPTION</a></li>
+  </li><li class="nav-item"><a class="nav-link p-0" href="#OVERLOADED-OPERATORS">OVERLOADED OPERATORS</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS1">SYNOPSIS</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION1">DESCRIPTION</a></li>
     </ul>
-  </li>
-  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
-  <li><a href="#VERSION">VERSION</a></li>
-  <li><a href="#AUTHORS">AUTHORS</a></li>
-  <li><a href="#CREDITS">CREDITS</a></li>
-  <li><a href="#COPYRIGHT">COPYRIGHT</a></li>
-  <li><a href="#LICENSE-AGREEMENT">LICENSE AGREEMENT</a></li>
-</ul>
+  </li><li class="nav-item"><a class="nav-link p-0" href="#SEE-ALSO">SEE ALSO</a></li><li class="nav-item"><a class="nav-link p-0" href="#VERSION">VERSION</a></li><li class="nav-item"><a class="nav-link p-0" href="#AUTHORS">AUTHORS</a></li><li class="nav-item"><a class="nav-link p-0" href="#CREDITS">CREDITS</a></li><li class="nav-item"><a class="nav-link p-0" href="#COPYRIGHT">COPYRIGHT</a></li><li class="nav-item"><a class="nav-link p-0" href="#LICENSE-AGREEMENT">LICENSE AGREEMENT</a></li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
+
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
@@ -44,7 +65,7 @@
 
 <p>Implements the data type &quot;matrix of reals&quot;, which can be used almost like any other basic Perl type thanks to <b>OPERATOR OVERLOADING</b>, i.e.,</p>
 
-<pre><code>  $product = $matrix1 * $matrix2;</code></pre>
+<pre><code>$product = $matrix1 * $matrix2;</code></pre>
 
 <p>does what you would like it to do (a matrix multiplication).</p>
 
@@ -94,47 +115,47 @@
 
 <p>This method allows you to read in a matrix from a string (for instance, from the keyboard, from a file or from your code).</p>
 
-<p>The syntax is simple: each row must start with &quot;<code>[ </code>&quot; and end with &quot;<code> ]\n</code>&quot; (&quot;<code>\n</code>&quot; being the newline character and &quot;<code> </code>&quot; a space or tab) and contain one or more numbers, all separated from each other by spaces or tabs.</p>
+<p>The syntax is simple: each row must start with &quot;<code>[ </code>&quot; and end with &quot;<code>]\n</code>&quot; (&quot;<code>\n</code>&quot; being the newline character and &quot;<code></code>&quot; a space or tab) and contain one or more numbers, all separated from each other by spaces or tabs.</p>
 
 <p>Additional spaces or tabs can be added at will, but no comments.</p>
 
 <p>Examples:</p>
 
-<pre><code>  $string = &quot;[ 1 2 3 ]\n[ 2 2 -1 ]\n[ 1 1 1 ]\n&quot;;
-  $matrix = MatrixReal1-&gt;new_from_string($string);
-  print &quot;$matrix&quot;;</code></pre>
+<pre><code>$string = &quot;[ 1 2 3 ]\n[ 2 2 -1 ]\n[ 1 1 1 ]\n&quot;;
+$matrix = MatrixReal1-&gt;new_from_string($string);
+print &quot;$matrix&quot;;</code></pre>
 
 <p>By the way, this prints</p>
 
-<pre><code>  [  1.000000000000E+00  2.000000000000E+00  3.000000000000E+00 ]
-  [  2.000000000000E+00  2.000000000000E+00 -1.000000000000E+00 ]
-  [  1.000000000000E+00  1.000000000000E+00  1.000000000000E+00 ]</code></pre>
+<pre><code>[  1.000000000000E+00  2.000000000000E+00  3.000000000000E+00 ]
+[  2.000000000000E+00  2.000000000000E+00 -1.000000000000E+00 ]
+[  1.000000000000E+00  1.000000000000E+00  1.000000000000E+00 ]</code></pre>
 
 <p>But you can also do this in a much more comfortable way using the shell-like &quot;here-document&quot; syntax:</p>
 
-<pre><code>  $matrix = MatrixReal1-&gt;new_from_string(&lt;&lt;&#39;MATRIX&#39;);
-  [  1  0  0  0  0  0  1  ]
-  [  0  1  0  0  0  0  0  ]
-  [  0  0  1  0  0  0  0  ]
-  [  0  0  0  1  0  0  0  ]
-  [  0  0  0  0  1  0  0  ]
-  [  0  0  0  0  0  1  0  ]
-  [  1  0  0  0  0  0 -1  ]
-  MATRIX</code></pre>
+<pre><code>$matrix = MatrixReal1-&gt;new_from_string(&lt;&lt;&#39;MATRIX&#39;);
+[  1  0  0  0  0  0  1  ]
+[  0  1  0  0  0  0  0  ]
+[  0  0  1  0  0  0  0  ]
+[  0  0  0  1  0  0  0  ]
+[  0  0  0  0  1  0  0  ]
+[  0  0  0  0  0  1  0  ]
+[  1  0  0  0  0  0 -1  ]
+MATRIX</code></pre>
 
 <p>You can even use variables in the matrix:</p>
 
-<pre><code>  $c1 =   2  /  3;
-  $c2 =  -2  /  5;
-  $c3 =  26  /  9;
+<pre><code>$c1 =   2  /  3;
+$c2 =  -2  /  5;
+$c3 =  26  /  9;
 
-  $matrix = MatrixReal1-&gt;new_from_string(&lt;&lt;&quot;MATRIX&quot;);
+$matrix = MatrixReal1-&gt;new_from_string(&lt;&lt;&quot;MATRIX&quot;);
 
-      [   3    2    0   ]
-      [   0    3    2   ]
-      [  $c1  $c2  $c3  ]
+    [   3    2    0   ]
+    [   0    3    2   ]
+    [  $c1  $c2  $c3  ]
 
-  MATRIX</code></pre>
+MATRIX</code></pre>
 
 <p>(Remember that you may use spaces and tabs to format the matrix to your taste)</p>
 
@@ -144,57 +165,57 @@
 
 <p>If the string you supply (or someone else supplies) does not obey the syntax mentioned above, an exception is raised, which can be caught by &quot;eval&quot; as follows:</p>
 
-<pre><code>  print &quot;Please enter your matrix (in one line): &quot;;
-  $string = &lt;STDIN&gt;;
-  $string =~ s/\\n/\n/g;
-  eval { $matrix = MatrixReal1-&gt;new_from_string($string); };
-  if ($@)
-  {
-      print &quot;$@&quot;;
-      # ...
-      # (error handling)
-  }
-  else
-  {
-      # continue...
-  }</code></pre>
+<pre><code>print &quot;Please enter your matrix (in one line): &quot;;
+$string = &lt;STDIN&gt;;
+$string =~ s/\\n/\n/g;
+eval { $matrix = MatrixReal1-&gt;new_from_string($string); };
+if ($@)
+{
+    print &quot;$@&quot;;
+    # ...
+    # (error handling)
+}
+else
+{
+    # continue...
+}</code></pre>
 
 <p>or as follows:</p>
 
-<pre><code>  eval { $matrix = MatrixReal1-&gt;new_from_string(&lt;&lt;&quot;MATRIX&quot;); };
-  [   3    2    0   ]
-  [   0    3    2   ]
-  [  $c1  $c2  $c3  ]
-  MATRIX
-  if ($@)
-  # ...</code></pre>
+<pre><code>eval { $matrix = MatrixReal1-&gt;new_from_string(&lt;&lt;&quot;MATRIX&quot;); };
+[   3    2    0   ]
+[   0    3    2   ]
+[  $c1  $c2  $c3  ]
+MATRIX
+if ($@)
+# ...</code></pre>
 
 <p>Actually, the method shown above for reading a matrix from the keyboard is a little awkward, since you have to enter a lot of &quot;\n&quot;&#39;s for the newlines.</p>
 
 <p>A better way is shown in this piece of code:</p>
 
-<pre><code>  while (1)
-  {
-      print &quot;\nPlease enter your matrix &quot;;
-      print &quot;(multiple lines, &lt;ctrl-D&gt; = done):\n&quot;;
-      eval { $new_matrix =
-          MatrixReal1-&gt;new_from_string(join(&#39;&#39;,&lt;STDIN&gt;)); };
-      if ($@)
-      {
-          $@ =~ s/\s+at\b.*?$//;
-          print &quot;${@}Please try again.\n&quot;;
-      }
-      else { last; }
-  }</code></pre>
+<pre><code>while (1)
+{
+    print &quot;\nPlease enter your matrix &quot;;
+    print &quot;(multiple lines, &lt;ctrl-D&gt; = done):\n&quot;;
+    eval { $new_matrix =
+        MatrixReal1-&gt;new_from_string(join(&#39;&#39;,&lt;STDIN&gt;)); };
+    if ($@)
+    {
+        $@ =~ s/\s+at\b.*?$//;
+        print &quot;${@}Please try again.\n&quot;;
+    }
+    else { last; }
+}</code></pre>
 
 <p>Possible error messages of the &quot;new_from_string()&quot; method are:</p>
 
-<pre><code>  MatrixReal1::new_from_string(): syntax error in input string
-  MatrixReal1::new_from_string(): empty input string</code></pre>
+<pre><code>MatrixReal1::new_from_string(): syntax error in input string
+MatrixReal1::new_from_string(): empty input string</code></pre>
 
 <p>If the input string has rows with varying numbers of columns, the following warning will be printed to STDERR:</p>
 
-<pre><code>  MatrixReal1::new_from_string(): missing elements will be set to zero!</code></pre>
+<pre><code>MatrixReal1::new_from_string(): missing elements will be set to zero!</code></pre>
 
 <p>If everything is okay, the method returns an object reference to the (newly allocated) matrix containing the elements you specified.</p>
 
@@ -312,27 +333,27 @@
 
 <p>Note that (especially for vectors) it makes a big difference if you have a row vector, like this:</p>
 
-<pre><code>  [ -1 0 1 ]</code></pre>
+<pre><code>[ -1 0 1 ]</code></pre>
 
 <p>or a column vector, like this:</p>
 
-<pre><code>  [ -1 ]
-  [  0 ]
-  [  1 ]</code></pre>
+<pre><code>[ -1 ]
+[  0 ]
+[  1 ]</code></pre>
 
 <p>the one vector being the transposed of the other!</p>
 
 <p>This is especially true for the matrix product of two vectors:</p>
 
-<pre><code>               [ -1 ]
-  [ -1 0 1 ] * [  0 ]  =  [ 2 ] ,  whereas
-               [  1 ]
+<pre><code>[ -1 ]
+[ -1 0 1 ] * [  0 ]  =  [ 2 ] ,  whereas
+[  1 ]
 
-                             *     [ -1  0  1 ]
-  [ -1 ]                                            [  1  0 -1 ]
-  [  0 ] * [ -1 0 1 ]  =  [ -1 ]   [  1  0 -1 ]  =  [  0  0  0 ]
-  [  1 ]                  [  0 ]   [  0  0  0 ]     [ -1  0  1 ]
-                          [  1 ]   [ -1  0  1 ]</code></pre>
+              *     [ -1  0  1 ]
+[ -1 ]                                            [  1  0 -1 ]
+[  0 ] * [ -1 0 1 ]  =  [ -1 ]   [  1  0 -1 ]  =  [  0  0  0 ]
+[  1 ]                  [  0 ]   [  0  0  0 ]     [ -1  0  1 ]
+           [  1 ]   [ -1  0  1 ]</code></pre>
 
 <p>So be careful about what you really mean!</p>
 
@@ -368,14 +389,14 @@
 
 <p>Note that the dimensions of the two matrices &quot;<code>$matrix1</code>&quot; and &quot;<code>$matrix2</code>&quot; (i.e., their numbers of rows and columns) must harmonize in the following way (example):</p>
 
-<pre><code>                          [ 2 2 ]
-                          [ 2 2 ]
-                          [ 2 2 ]
+<pre><code>[ 2 2 ]
+[ 2 2 ]
+[ 2 2 ]
 
-              [ 1 1 1 ]   [ * * ]
-              [ 1 1 1 ]   [ * * ]
-              [ 1 1 1 ]   [ * * ]
-              [ 1 1 1 ]   [ * * ]</code></pre>
+[ 1 1 1 ]   [ * * ]
+[ 1 1 1 ]   [ * * ]
+[ 1 1 1 ]   [ * * ]
+[ 1 1 1 ]   [ * * ]</code></pre>
 
 <p>I.e., the number of columns of matrix &quot;<code>$matrix1</code>&quot; has to be the same as the number of rows of matrix &quot;<code>$matrix2</code>&quot;.</p>
 
@@ -423,58 +444,58 @@
 
 <p>Consider the following little program:</p>
 
-<pre><code>  #!perl -w
+<pre><code>#!perl -w
 
-  use MatrixReal1 qw(new_from_string);
+use MatrixReal1 qw(new_from_string);
 
-  $A = MatrixReal1-&gt;new_from_string(&lt;&lt;&quot;MATRIX&quot;);
-  [  1   2   3  ]
-  [  5   7  11  ]
-  [ 23  19  13  ]
-  MATRIX
+$A = MatrixReal1-&gt;new_from_string(&lt;&lt;&quot;MATRIX&quot;);
+[  1   2   3  ]
+[  5   7  11  ]
+[ 23  19  13  ]
+MATRIX
 
-  $b = MatrixReal1-&gt;new_from_string(&lt;&lt;&quot;MATRIX&quot;);
-  [   0   ]
-  [   1   ]
-  [  29   ]
-  MATRIX
+$b = MatrixReal1-&gt;new_from_string(&lt;&lt;&quot;MATRIX&quot;);
+[   0   ]
+[   1   ]
+[  29   ]
+MATRIX
 
-  $LR = $A-&gt;decompose_LR();
-  if (($dim,$x,$B) = $LR-&gt;solve_LR($b))
-  {
-      $test = $A * $x;
-      print &quot;x = \n$x&quot;;
-      print &quot;A * x = \n$test&quot;;
-  }
+$LR = $A-&gt;decompose_LR();
+if (($dim,$x,$B) = $LR-&gt;solve_LR($b))
+{
+    $test = $A * $x;
+    print &quot;x = \n$x&quot;;
+    print &quot;A * x = \n$test&quot;;
+}
 
-  ($A_,$b_) = $A-&gt;normalize($b);
+($A_,$b_) = $A-&gt;normalize($b);
 
-  $LR = $A_-&gt;decompose_LR();
-  if (($dim,$x,$B) = $LR-&gt;solve_LR($b_))
-  {
-      $test = $A * $x;
-      print &quot;x = \n$x&quot;;
-      print &quot;A * x = \n$test&quot;;
-  }</code></pre>
+$LR = $A_-&gt;decompose_LR();
+if (($dim,$x,$B) = $LR-&gt;solve_LR($b_))
+{
+    $test = $A * $x;
+    print &quot;x = \n$x&quot;;
+    print &quot;A * x = \n$test&quot;;
+}</code></pre>
 
 <p>This will print:</p>
 
-<pre><code>  x =
-  [  1.000000000000E+00 ]
-  [  1.000000000000E+00 ]
-  [ -1.000000000000E+00 ]
-  A * x =
-  [  4.440892098501E-16 ]
-  [  1.000000000000E+00 ]
-  [  2.900000000000E+01 ]
-  x =
-  [  1.000000000000E+00 ]
-  [  1.000000000000E+00 ]
-  [ -1.000000000000E+00 ]
-  A * x =
-  [  0.000000000000E+00 ]
-  [  1.000000000000E+00 ]
-  [  2.900000000000E+01 ]</code></pre>
+<pre><code>x =
+[  1.000000000000E+00 ]
+[  1.000000000000E+00 ]
+[ -1.000000000000E+00 ]
+A * x =
+[  4.440892098501E-16 ]
+[  1.000000000000E+00 ]
+[  2.900000000000E+01 ]
+x =
+[  1.000000000000E+00 ]
+[  1.000000000000E+00 ]
+[ -1.000000000000E+00 ]
+A * x =
+[  0.000000000000E+00 ]
+[  1.000000000000E+00 ]
+[  2.900000000000E+01 ]</code></pre>
 
 <p>You can see that in the second example (where &quot;normalize()&quot; has been used), the result is &quot;better&quot;, i.e., more accurate!</p>
 
@@ -493,11 +514,11 @@
 
 <p>&quot;R&quot; has non-zero values on the main diagonal as well as to the right and above of the main diagonal and all zero&#39;s in the lower left half of the matrix, as follows:</p>
 
-<pre><code>          [ 1 0 0 0 0 ]      [ x x x x x ]
-          [ x 1 0 0 0 ]      [ 0 x x x x ]
-      L = [ x x 1 0 0 ]  R = [ 0 0 x x x ]
-          [ x x x 1 0 ]      [ 0 0 0 x x ]
-          [ x x x x 1 ]      [ 0 0 0 0 x ]</code></pre>
+<pre><code>[ 1 0 0 0 0 ]      [ x x x x x ]
+[ x 1 0 0 0 ]      [ 0 x x x x ]
+L = [ x x 1 0 0 ]  R = [ 0 0 x x x ]
+[ x x x 1 0 ]      [ 0 0 0 x x ]
+[ x x x x 1 ]      [ 0 0 0 0 x ]</code></pre>
 
 <p>Note that &quot;<code>L * R</code>&quot; is equivalent to matrix &quot;A&quot; in the sense that <code>L * R * x = b &lt;==&gt; A * x = b</code> for all vectors &quot;x&quot;, leaving out of account permutations of the rows and columns (these are taken care of &quot;magically&quot; by this module!) and numerical errors.</p>
 
@@ -505,11 +526,11 @@
 
 <p>Because we know that &quot;L&quot; has one&#39;s on its main diagonal, we can store both matrices together in the same array without information loss! I.e.,</p>
 
-<pre><code>                 [ R R R R R ]
-                 [ L R R R R ]
-            LR = [ L L R R R ]
-                 [ L L L R R ]
-                 [ L L L L R ]</code></pre>
+<pre><code>[ R R R R R ]
+[ L R R R R ]
+LR = [ L L R R R ]
+[ L L L R R ]
+[ L L L L R ]</code></pre>
 
 <p>Beware, though, that &quot;LR&quot; and &quot;<code>L * R</code>&quot; are not the same!!!</p>
 
@@ -525,22 +546,22 @@
 
 <p>From the illustration above it is clear that solving &quot;<code>L * y = b</code>&quot; and &quot;<code>R * x = y</code>&quot; is straightforward: we immediately know that <code>y[1] = b[1]</code>. We then deduce swiftly that</p>
 
-<pre><code>  y[2] = b[2] - L[2,1] * y[1]</code></pre>
+<pre><code>y[2] = b[2] - L[2,1] * y[1]</code></pre>
 
 <p>(and we know &quot;<code>y[1]</code>&quot; by now!), that</p>
 
-<pre><code>  y[3] = b[3] - L[3,1] * y[1] - L[3,2] * y[2]</code></pre>
+<pre><code>y[3] = b[3] - L[3,1] * y[1] - L[3,2] * y[2]</code></pre>
 
 <p>and so on.</p>
 
 <p>Having effortlessly calculated the vector &quot;y&quot;, we now proceed to calculate the vector &quot;x&quot; in a similar fashion: we see immediately that <code>x[n] = y[n] / R[n,n]</code>. It follows that</p>
 
-<pre><code>  x[n-1] = ( y[n-1] - R[n-1,n] * x[n] ) / R[n-1,n-1]</code></pre>
+<pre><code>x[n-1] = ( y[n-1] - R[n-1,n] * x[n] ) / R[n-1,n-1]</code></pre>
 
 <p>and</p>
 
-<pre><code>  x[n-2] = ( y[n-2] - R[n-2,n-1] * x[n-1] - R[n-2,n] * x[n] )
-           / R[n-2,n-2]</code></pre>
+<pre><code>x[n-2] = ( y[n-2] - R[n-2,n-1] * x[n-1] - R[n-2,n] * x[n] )
+         / R[n-2,n-2]</code></pre>
 
 <p>and so on.</p>
 
@@ -571,14 +592,14 @@
 
 <p>Therefore, you should always use this method like this:</p>
 
-<pre><code>  if ( ($dim,$x_vec,$base) = $LR-&gt;solve_LR($b_vec) )
-  {
-      # do something with the solution...
-  }
-  else
-  {
-      # do something with the fact that there is no solution...
-  }</code></pre>
+<pre><code>if ( ($dim,$x_vec,$base) = $LR-&gt;solve_LR($b_vec) )
+{
+    # do something with the solution...
+}
+else
+{
+    # do something with the fact that there is no solution...
+}</code></pre>
 
 <p>The three items returned are: the dimension &quot;<code>$dimension</code>&quot; of the solution space (which is zero if only one solution exists, one if the solution is a straight line, two if the solution is a plane, and so on), the solution vector &quot;<code>$x_vector</code>&quot; (which is the vector &quot;x&quot; of your equation system <code>A * x = b</code>) and a matrix &quot;<code>$base_matrix</code>&quot; representing a base of the solution space (a set of vectors which put up the solution space like the spokes of an umbrella).</p>
 
@@ -590,33 +611,33 @@
 
 <p>But also any vector &quot;<code>$vector</code>&quot;</p>
 
-<pre><code>  $vector = $x_vector-&gt;clone();
+<pre><code>$vector = $x_vector-&gt;clone();
 
-  $machine_infinity = 1E+99; # or something like that
+$machine_infinity = 1E+99; # or something like that
 
-  for ( $i = 1; $i &lt;= $dimension; $i++ )
-  {
-      $vector += rand($machine_infinity) * $base_matrix-&gt;column($i);
-  }</code></pre>
+for ( $i = 1; $i &lt;= $dimension; $i++ )
+{
+    $vector += rand($machine_infinity) * $base_matrix-&gt;column($i);
+}</code></pre>
 
 <p>is a solution to your problem <code>A * x = b</code>, i.e., if &quot;<code>$A_matrix</code>&quot; contains your matrix &quot;A&quot;, then</p>
 
-<pre><code>  print abs( $A_matrix * $vector - $b_vector ), &quot;\n&quot;;</code></pre>
+<pre><code>print abs( $A_matrix * $vector - $b_vector ), &quot;\n&quot;;</code></pre>
 
 <p>should print a number around 1E-16 or so!</p>
 
 <p>By the way, note that you can actually calculate those vectors &quot;<code>$vector</code>&quot; a little more efficient as follows:</p>
 
-<pre><code>  $rand_vector = $x_vector-&gt;shadow();
+<pre><code>$rand_vector = $x_vector-&gt;shadow();
 
-  $machine_infinity = 1E+99; # or something like that
+$machine_infinity = 1E+99; # or something like that
 
-  for ( $i = 1; $i &lt;= $dimension; $i++ )
-  {
-      $rand_vector-&gt;assign($i,1, rand($machine_infinity) );
-  }
+for ( $i = 1; $i &lt;= $dimension; $i++ )
+{
+    $rand_vector-&gt;assign($i,1, rand($machine_infinity) );
+}
 
-  $vector = $x_vector + ( $base_matrix * $rand_vector );</code></pre>
+$vector = $x_vector + ( $base_matrix * $rand_vector );</code></pre>
 
 <p>Note that the input matrix and vector are not changed by this method in any way.</p>
 
@@ -629,14 +650,14 @@
 
 <p>Therefore, you should always use this method in the following way:</p>
 
-<pre><code>  if ( $inverse_matrix = $LR-&gt;invert_LR() )
-  {
-      # do something with the inverse matrix...
-  }
-  else
-  {
-      # do something with the fact that there is no inverse matrix...
-  }</code></pre>
+<pre><code>if ( $inverse_matrix = $LR-&gt;invert_LR() )
+{
+    # do something with the inverse matrix...
+}
+else
+{
+    # do something with the fact that there is no inverse matrix...
+}</code></pre>
 
 <p>Note that by definition (disregarding numerical errors), the product of the initial matrix and its inverse (or vice-versa) is always a matrix containing one&#39;s on the main diagonal (elements (1,1), (2,2), (3,3) and so on) and zero&#39;s elsewhere.</p>
 
@@ -647,7 +668,7 @@
 
 <p>In fact this method is just a shortcut for</p>
 
-<pre><code>  abs($matrix) * abs($inverse_matrix)</code></pre>
+<pre><code>abs($matrix) * abs($inverse_matrix)</code></pre>
 
 <p>Both input matrices must be quadratic and have the same size, and the result is meaningful only if one of them is the inverse of the other (for instance, as returned by the method &quot;invert_LR()&quot;).</p>
 
@@ -657,11 +678,11 @@
 
 <p>Numerical stability means for example that if</p>
 
-<pre><code>  abs( $vec_correct - $vec_with_error ) &lt; $epsilon</code></pre>
+<pre><code>abs( $vec_correct - $vec_with_error ) &lt; $epsilon</code></pre>
 
 <p>holds, there must be a &quot;<code>$delta</code>&quot; which doesn&#39;t depend on the vector &quot;<code>$vec_correct</code>&quot; (nor &quot;<code>$vec_with_error</code>&quot;, by the way) so that</p>
 
-<pre><code>  abs( $matrix * $vec_correct - $matrix * $vec_with_error ) &lt; $delta</code></pre>
+<pre><code>abs( $matrix * $vec_correct - $matrix * $vec_with_error ) &lt; $delta</code></pre>
 
 <p>also holds.</p>
 
@@ -692,8 +713,8 @@
 
 <p>This is a (more efficient!) shortcut for</p>
 
-<pre><code>  $temp           = ~$vector1 * $vector2;
-  $scalar_product =  $temp-&gt;element(1,1);</code></pre>
+<pre><code>$temp           = ~$vector1 * $vector2;
+$scalar_product =  $temp-&gt;element(1,1);</code></pre>
 
 <p>or the sum <code>i=1..n</code> of the products <code>vector1[i] * vector2[i]</code>.</p>
 
@@ -710,17 +731,17 @@
 
 <p>In 3 dimensions, the vector product of two vectors &quot;x&quot; and &quot;y&quot; is defined as</p>
 
-<pre><code>              |  x[1]  y[1]  e[1]  |
-  determinant |  x[2]  y[2]  e[2]  |
-              |  x[3]  y[3]  e[3]  |</code></pre>
+<pre><code>|  x[1]  y[1]  e[1]  |
+determinant |  x[2]  y[2]  e[2]  |
+|  x[3]  y[3]  e[3]  |</code></pre>
 
 <p>where the &quot;<code>x[i]</code>&quot; and &quot;<code>y[i]</code>&quot; are the components of the two vectors &quot;x&quot; and &quot;y&quot;, respectively, and the &quot;<code>e[i]</code>&quot; are unity vectors (i.e., vectors with a length equal to one) with a one in row &quot;i&quot; and zero&#39;s elsewhere (this means that you have numbers and vectors as elements in this matrix!).</p>
 
 <p>This determinant evaluates to the rather simple formula</p>
 
-<pre><code>  z[1] = x[2] * y[3] - x[3] * y[2]
-  z[2] = x[3] * y[1] - x[1] * y[3]
-  z[3] = x[1] * y[2] - x[2] * y[1]</code></pre>
+<pre><code>z[1] = x[2] * y[3] - x[3] * y[2]
+z[2] = x[3] * y[1] - x[1] * y[3]
+z[3] = x[1] * y[2] - x[2] * y[1]</code></pre>
 
 <p>A characteristic property of the vector product is that the resulting vector is orthogonal to both of the input vectors (if neither of both is the null vector, otherwise this is trivial), i.e., the scalar product of each of the input vectors with the resulting vector is always zero.</p>
 
@@ -729,7 +750,7 @@
 
 <p>This is actually a shortcut for</p>
 
-<pre><code>  $length = sqrt( $vector-&gt;scalar_product($vector) );</code></pre>
+<pre><code>$length = sqrt( $vector-&gt;scalar_product($vector) );</code></pre>
 
 <p>and returns the length of a given (column!) vector &quot;<code>$vector</code>&quot;.</p>
 
@@ -737,32 +758,32 @@
 
 <p>The general definition for norms of vectors is the following:</p>
 
-<pre><code>  sub vector_norm
-  {
-      croak &quot;Usage: \$norm = \$vector-&gt;vector_norm(\$n);&quot;
-        if (@_ != 2);
+<pre><code>sub vector_norm
+{
+    croak &quot;Usage: \$norm = \$vector-&gt;vector_norm(\$n);&quot;
+      if (@_ != 2);
 
-      my($vector,$n) = @_;
-      my($rows,$cols) = ($vector-&gt;[1],$vector-&gt;[2]);
-      my($k,$comp,$sum);
+    my($vector,$n) = @_;
+    my($rows,$cols) = ($vector-&gt;[1],$vector-&gt;[2]);
+    my($k,$comp,$sum);
 
-      croak &quot;MatrixReal1::vector_norm(): vector is not a column vector&quot;
-        unless ($cols == 1);
+    croak &quot;MatrixReal1::vector_norm(): vector is not a column vector&quot;
+      unless ($cols == 1);
 
-      croak &quot;MatrixReal1::vector_norm(): norm index must be &gt; 0&quot;
-        unless ($n &gt; 0);
+    croak &quot;MatrixReal1::vector_norm(): norm index must be &gt; 0&quot;
+      unless ($n &gt; 0);
 
-      croak &quot;MatrixReal1::vector_norm(): norm index must be integer&quot;
-        unless ($n == int($n));
+    croak &quot;MatrixReal1::vector_norm(): norm index must be integer&quot;
+      unless ($n == int($n));
 
-      $sum = 0;
-      for ( $k = 0; $k &lt; $rows; $k++ )
-      {
-          $comp = abs( $vector-&gt;[0][$k][0] );
-          $sum += $comp ** $n;
-      }
-      return( $sum ** (1 / $n) );
-  }</code></pre>
+    $sum = 0;
+    for ( $k = 0; $k &lt; $rows; $k++ )
+    {
+        $comp = abs( $vector-&gt;[0][$k][0] );
+        $sum += $comp ** $n;
+    }
+    return( $sum ** (1 / $n) );
+}</code></pre>
 
 <p>Note that the case &quot;n = 1&quot; is the &quot;one&quot;-norm for matrices applied to a vector, the case &quot;n = 2&quot; is the euclidian norm or length of a vector, and if &quot;n&quot; goes to infinity, you have the &quot;infinity&quot;- or &quot;maximum&quot;-norm for matrices applied to a vector!</p>
 
@@ -781,11 +802,11 @@
 
 <p>All three methods, GSM (&quot;Global Step Method&quot; or &quot;Gesamtschrittverfahren&quot;), SSM (&quot;Single Step Method&quot; or &quot;Einzelschrittverfahren&quot;) and RM (&quot;Relaxation Method&quot; or &quot;Relaxationsverfahren&quot;), are fix-point iterations, that is, can be described by an iteration function &quot;<code>x(t+1) = Phi( x(t) )</code>&quot; which has the property:</p>
 
-<pre><code>  Phi(x)  =  x    &lt;==&gt;    A * x  =  b</code></pre>
+<pre><code>Phi(x)  =  x    &lt;==&gt;    A * x  =  b</code></pre>
 
 <p>We can define &quot;<code>Phi(x)</code>&quot; as follows:</p>
 
-<pre><code>  Phi(x)  :=  ( En - A ) * x  +  b</code></pre>
+<pre><code>Phi(x)  :=  ( En - A ) * x  +  b</code></pre>
 
 <p>where &quot;En&quot; is a matrix of the same size as &quot;A&quot; (&quot;n&quot; rows and columns) with one&#39;s on its main diagonal and zero&#39;s elsewhere.</p>
 
@@ -793,48 +814,48 @@
 
 <p>Proof:</p>
 
-<pre><code>           A * x        =   b
+<pre><code>A * x        =   b
 
-  &lt;==&gt;  -( A * x )      =  -b
+&lt;==&gt;  -( A * x )      =  -b
 
-  &lt;==&gt;  -( A * x ) + x  =  -b + x
+&lt;==&gt;  -( A * x ) + x  =  -b + x
 
-  &lt;==&gt;  -( A * x ) + x + b  =  x
+&lt;==&gt;  -( A * x ) + x + b  =  x
 
-  &lt;==&gt;  x - ( A * x ) + b  =  x
+&lt;==&gt;  x - ( A * x ) + b  =  x
 
-  &lt;==&gt;  ( En - A ) * x + b  =  x</code></pre>
+&lt;==&gt;  ( En - A ) * x + b  =  x</code></pre>
 
 <p>This last step is true because</p>
 
-<pre><code>  x[i] - ( a[i,1] x[1] + ... + a[i,i] x[i] + ... + a[i,n] x[n] ) + b[i]</code></pre>
+<pre><code>x[i] - ( a[i,1] x[1] + ... + a[i,i] x[i] + ... + a[i,n] x[n] ) + b[i]</code></pre>
 
 <p>is the same as</p>
 
-<pre><code>  ( -a[i,1] x[1] + ... + (1 - a[i,i]) x[i] + ... + -a[i,n] x[n] ) + b[i]</code></pre>
+<pre><code>( -a[i,1] x[1] + ... + (1 - a[i,i]) x[i] + ... + -a[i,n] x[n] ) + b[i]</code></pre>
 
 <p>qed</p>
 
 <p>Note that actually solving the equation system &quot;<code>A * x = b</code>&quot; means to calculate</p>
 
-<pre><code>        a[i,1] x[1] + ... + a[i,i] x[i] + ... + a[i,n] x[n]  =  b[i]
+<pre><code>a[i,1] x[1] + ... + a[i,i] x[i] + ... + a[i,n] x[n]  =  b[i]
 
-  &lt;==&gt;  a[i,i] x[i]  =
-        b[i]
-        - ( a[i,1] x[1] + ... + a[i,i] x[i] + ... + a[i,n] x[n] )
-        + a[i,i] x[i]
+&lt;==&gt;  a[i,i] x[i]  =
+b[i]
+- ( a[i,1] x[1] + ... + a[i,i] x[i] + ... + a[i,n] x[n] )
++ a[i,i] x[i]
 
-  &lt;==&gt;  x[i]  =
-        ( b[i]
-            - ( a[i,1] x[1] + ... + a[i,i] x[i] + ... + a[i,n] x[n] )
-            + a[i,i] x[i]
-        ) / a[i,i]
+&lt;==&gt;  x[i]  =
+( b[i]
+    - ( a[i,1] x[1] + ... + a[i,i] x[i] + ... + a[i,n] x[n] )
+    + a[i,i] x[i]
+) / a[i,i]
 
-  &lt;==&gt;  x[i]  =
-        ( b[i] -
-            ( a[i,1] x[1] + ... + a[i,i-1] x[i-1] +
-              a[i,i+1] x[i+1] + ... + a[i,n] x[n] )
-        ) / a[i,i]</code></pre>
+&lt;==&gt;  x[i]  =
+( b[i] -
+    ( a[i,1] x[1] + ... + a[i,i-1] x[i-1] +
+      a[i,i+1] x[i+1] + ... + a[i,n] x[n] )
+) / a[i,i]</code></pre>
 
 <p>There is one major restriction, though: a fix-point iteration is guaranteed to converge only if the first derivative of the iteration function has an absolute value less than one in an area around the point &quot;<code>x(*)</code>&quot; for which &quot;<code>Phi( x(*) ) = x(*)</code>&quot; is to be true, and if the start vector &quot;<code>x(0)</code>&quot; lies within that area!</p>
 
@@ -856,14 +877,14 @@
 
 <p>Therefore, you should always test their return value using some code like:</p>
 
-<pre><code>  if ( $xn_vector = $A_matrix-&gt;solve_GSM($x0_vector,$b_vector,1E-12) )
-  {
-      # do something with the solution...
-  }
-  else
-  {
-      # do something with the fact that there is no solution...
-  }</code></pre>
+<pre><code>if ( $xn_vector = $A_matrix-&gt;solve_GSM($x0_vector,$b_vector,1E-12) )
+{
+    # do something with the solution...
+}
+else
+{
+    # do something with the fact that there is no solution...
+}</code></pre>
 
 <p>Otherwise, they iterate until <code>abs( Phi(x) - x ) &lt; epsilon</code>.</p>
 
@@ -873,28 +894,28 @@
 
 <p>In the &quot;Global Step Method&quot; (&quot;GSM&quot;), the new vector &quot;<code>x(t+1)</code>&quot; (called &quot;y&quot; here) is calculated from the vector &quot;<code>x(t)</code>&quot; (called &quot;x&quot; here) according to the formula:</p>
 
-<pre><code>  y[i] =
-  ( b[i]
-      - ( a[i,1] x[1] + ... + a[i,i-1] x[i-1] +
-          a[i,i+1] x[i+1] + ... + a[i,n] x[n] )
-  ) / a[i,i]</code></pre>
+<pre><code>y[i] =
+( b[i]
+    - ( a[i,1] x[1] + ... + a[i,i-1] x[i-1] +
+        a[i,i+1] x[i+1] + ... + a[i,n] x[n] )
+) / a[i,i]</code></pre>
 
 <p>In the &quot;Single Step Method&quot; (&quot;SSM&quot;), the components of the vector &quot;<code>x(t+1)</code>&quot; which have already been calculated are used to calculate the remaining components, i.e.</p>
 
-<pre><code>  y[i] =
-  ( b[i]
-      - ( a[i,1] y[1] + ... + a[i,i-1] y[i-1] +  # note the &quot;y[]&quot;!
-          a[i,i+1] x[i+1] + ... + a[i,n] x[n] )  # note the &quot;x[]&quot;!
-  ) / a[i,i]</code></pre>
+<pre><code>y[i] =
+( b[i]
+    - ( a[i,1] y[1] + ... + a[i,i-1] y[i-1] +  # note the &quot;y[]&quot;!
+        a[i,i+1] x[i+1] + ... + a[i,n] x[n] )  # note the &quot;x[]&quot;!
+) / a[i,i]</code></pre>
 
 <p>In the &quot;Relaxation method&quot; (&quot;RM&quot;), the components of the vector &quot;<code>x(t+1)</code>&quot; are calculated by &quot;mixing&quot; old and new value (like cold and hot water), and the weight &quot;<code>$weight</code>&quot; determines the &quot;aperture&quot; of both the &quot;hot water tap&quot; as well as of the &quot;cold water tap&quot;, according to the formula:</p>
 
-<pre><code>  y[i] =
-  ( b[i]
-      - ( a[i,1] y[1] + ... + a[i,i-1] y[i-1] +  # note the &quot;y[]&quot;!
-          a[i,i+1] x[i+1] + ... + a[i,n] x[n] )  # note the &quot;x[]&quot;!
-  ) / a[i,i]
-  y[i] = weight * y[i] + (1 - weight) * x[i]</code></pre>
+<pre><code>y[i] =
+( b[i]
+    - ( a[i,1] y[1] + ... + a[i,i-1] y[i-1] +  # note the &quot;y[]&quot;!
+        a[i,i+1] x[i+1] + ... + a[i,n] x[n] )  # note the &quot;x[]&quot;!
+) / a[i,i]
+y[i] = weight * y[i] + (1 - weight) * x[i]</code></pre>
 
 <p>Note that the weight &quot;<code>$weight</code>&quot; should be greater than zero and less than two (!).</p>
 
@@ -992,7 +1013,7 @@
 
 <p>Example:</p>
 
-<pre><code>    $matrix = -$matrix;</code></pre>
+<pre><code>$matrix = -$matrix;</code></pre>
 
 </dd>
 <dt>&#39;~&#39;</dt>
@@ -1004,10 +1025,10 @@
 
 <p>Examples:</p>
 
-<pre><code>    $temp = ~$vector * $vector;
-    $length = sqrt( $temp-&gt;element(1,1) );
+<pre><code>$temp = ~$vector * $vector;
+$length = sqrt( $temp-&gt;element(1,1) );
 
-    if (~$matrix == $matrix) { # matrix is symmetric ... }</code></pre>
+if (~$matrix == $matrix) { # matrix is symmetric ... }</code></pre>
 
 </dd>
 <dt>abs</dt>
@@ -1019,7 +1040,7 @@
 
 <p>Example:</p>
 
-<pre><code>    $error = abs( $A * $x - $b );</code></pre>
+<pre><code>$error = abs( $A * $x - $b );</code></pre>
 
 </dd>
 <dt>test</dt>
@@ -1031,7 +1052,7 @@
 
 <p>Example:</p>
 
-<pre><code>    if ($xn_vector) { # result of iteration is not zero ... }</code></pre>
+<pre><code>if ($xn_vector) { # result of iteration is not zero ... }</code></pre>
 
 </dd>
 <dt>&#39;!&#39;</dt>
@@ -1043,10 +1064,10 @@
 
 <p>Examples:</p>
 
-<pre><code>    if (! $b_vector) { # heterogenous equation system ... }
-    else             { # homogenous equation system ... }
+<pre><code>if (! $b_vector) { # heterogenous equation system ... }
+else             { # homogenous equation system ... }
 
-    unless ($x_vector) { # not the null-vector! }</code></pre>
+unless ($x_vector) { # not the null-vector! }</code></pre>
 
 </dd>
 <dt>&#39;&quot;&quot;&quot;&quot;&#39;</dt>
@@ -1062,18 +1083,18 @@
 
 <p>Examples:</p>
 
-<pre><code>    $matrix = MatrixReal1-&gt;new_from_string(&lt;&lt;&quot;MATRIX&quot;);
-    [ 1  0 ]
-    [ 0 -1 ]
-    MATRIX
-    print &quot;$matrix&quot;;
+<pre><code>$matrix = MatrixReal1-&gt;new_from_string(&lt;&lt;&quot;MATRIX&quot;);
+[ 1  0 ]
+[ 0 -1 ]
+MATRIX
+print &quot;$matrix&quot;;
 
-    [  1.000000000000E+00  0.000000000000E+00 ]
-    [  0.000000000000E+00 -1.000000000000E+00 ]
+[  1.000000000000E+00  0.000000000000E+00 ]
+[  0.000000000000E+00 -1.000000000000E+00 ]
 
-    $string = &quot;$matrix&quot;;
-    $test = MatrixReal1-&gt;new_from_string($string);
-    if ($test == $matrix) { print &quot;:-)\n&quot;; } else { print &quot;:-(\n&quot;; }</code></pre>
+$string = &quot;$matrix&quot;;
+$test = MatrixReal1-&gt;new_from_string($string);
+if ($test == $matrix) { print &quot;:-)\n&quot;; } else { print &quot;:-(\n&quot;; }</code></pre>
 
 </dd>
 <dt>&#39;+&#39;</dt>
@@ -1085,9 +1106,9 @@
 
 <p>Examples:</p>
 
-<pre><code>    $matrix_S = $matrix_A + $matrix_B;
+<pre><code>$matrix_S = $matrix_A + $matrix_B;
 
-    $matrix_A += $matrix_B;</code></pre>
+$matrix_A += $matrix_B;</code></pre>
 
 </dd>
 <dt>&#39;-&#39;</dt>
@@ -1099,15 +1120,15 @@
 
 <p>Examples:</p>
 
-<pre><code>    $matrix_D = $matrix_A - $matrix_B;
+<pre><code>$matrix_D = $matrix_A - $matrix_B;
 
-    $matrix_A -= $matrix_B;</code></pre>
+$matrix_A -= $matrix_B;</code></pre>
 
 <p>Note that this is the same as:</p>
 
-<pre><code>    $matrix_S = $matrix_A + -$matrix_B;
+<pre><code>$matrix_S = $matrix_A + -$matrix_B;
 
-    $matrix_A += -$matrix_B;</code></pre>
+$matrix_A += -$matrix_B;</code></pre>
 
 <p>(The latter are less efficient, though)</p>
 
@@ -1121,17 +1142,17 @@
 
 <p>Examples:</p>
 
-<pre><code>    $matrix_P = $matrix_A * $matrix_B;
+<pre><code>$matrix_P = $matrix_A * $matrix_B;
 
-    $matrix_A *= $matrix_B;
+$matrix_A *= $matrix_B;
 
-    $vector_b = $matrix_A * $vector_x;
+$vector_b = $matrix_A * $vector_x;
 
-    $matrix_B = -1 * $matrix_A;
+$matrix_B = -1 * $matrix_A;
 
-    $matrix_B = $matrix_A * -1;
+$matrix_B = $matrix_A * -1;
 
-    $matrix_A *= -1;</code></pre>
+$matrix_A *= -1;</code></pre>
 
 </dd>
 <dt>&#39;==&#39;</dt>
@@ -1143,13 +1164,13 @@
 
 <p>Example:</p>
 
-<pre><code>    if ( $A * $x == $b ) { print &quot;EUREKA!\n&quot;; }</code></pre>
+<pre><code>if ( $A * $x == $b ) { print &quot;EUREKA!\n&quot;; }</code></pre>
 
 <p>Note that in most cases, due to numerical errors (due to the finite precision of computer arithmetics), it is a bad idea to compare two matrices or vectors this way.</p>
 
 <p>Better use the norm of the difference of the two matrices you want to compare and compare that norm with a small number, like this:</p>
 
-<pre><code>    if ( abs( $A * $x - $b ) &lt; 1E-12 ) { print &quot;BINGO!\n&quot;; }</code></pre>
+<pre><code>if ( abs( $A * $x - $b ) &lt; 1E-12 ) { print &quot;BINGO!\n&quot;; }</code></pre>
 
 </dd>
 <dt>&#39;!=&#39;</dt>
@@ -1161,7 +1182,7 @@
 
 <p>Example:</p>
 
-<pre><code>    while ($x0_vector != $xn_vector) { # proceed with iteration ... }</code></pre>
+<pre><code>while ($x0_vector != $xn_vector) { # proceed with iteration ... }</code></pre>
 
 <p>(Stops when the iteration becomes stationary)</p>
 
@@ -1175,23 +1196,23 @@
 
 <p>Examples:</p>
 
-<pre><code>    if ( $matrix1 &lt; $matrix2 ) { # ... }
+<pre><code>if ( $matrix1 &lt; $matrix2 ) { # ... }
 
-    if ( $vector &lt; $epsilon ) { # ... }
+if ( $vector &lt; $epsilon ) { # ... }
 
-    if ( 1E-12 &lt; $vector ) { # ... }
+if ( 1E-12 &lt; $vector ) { # ... }
 
-    if ( $A * $x - $b &lt; 1E-12 ) { # ... }</code></pre>
+if ( $A * $x - $b &lt; 1E-12 ) { # ... }</code></pre>
 
 <p>These are just shortcuts for saying:</p>
 
-<pre><code>    if ( abs($matrix1) &lt; abs($matrix2) ) { # ... }
+<pre><code>if ( abs($matrix1) &lt; abs($matrix2) ) { # ... }
 
-    if ( abs($vector) &lt; abs($epsilon) ) { # ... }
+if ( abs($vector) &lt; abs($epsilon) ) { # ... }
 
-    if ( abs(1E-12) &lt; abs($vector) ) { # ... }
+if ( abs(1E-12) &lt; abs($vector) ) { # ... }
 
-    if ( abs( $A * $x - $b ) &lt; abs(1E-12) ) { # ... }</code></pre>
+if ( abs( $A * $x - $b ) &lt; abs(1E-12) ) { # ... }</code></pre>
 
 <p>Uses the &quot;one&quot;-norm for matrices and Perl&#39;s built-in &quot;abs()&quot; for scalars.</p>
 
@@ -1205,11 +1226,11 @@
 
 <p>Example:</p>
 
-<pre><code>    if ( $A * $x - $b &lt;= 1E-12 ) { # ... }</code></pre>
+<pre><code>if ( $A * $x - $b &lt;= 1E-12 ) { # ... }</code></pre>
 
 <p>which in fact is the same as:</p>
 
-<pre><code>    if ( abs( $A * $x - $b ) &lt;= abs(1E-12) ) { # ... }</code></pre>
+<pre><code>if ( abs( $A * $x - $b ) &lt;= abs(1E-12) ) { # ... }</code></pre>
 
 <p>Uses the &quot;one&quot;-norm for matrices and Perl&#39;s built-in &quot;abs()&quot; for scalars.</p>
 
@@ -1221,11 +1242,11 @@
 
 <p>As with the &#39;&lt;&#39; and &#39;&lt;=&#39; operator, this</p>
 
-<pre><code>    if ( $xn - $x0 &gt; 1E-12 ) { # ... }</code></pre>
+<pre><code>if ( $xn - $x0 &gt; 1E-12 ) { # ... }</code></pre>
 
 <p>is just a shortcut for:</p>
 
-<pre><code>    if ( abs( $xn - $x0 ) &gt; abs(1E-12) ) { # ... }</code></pre>
+<pre><code>if ( abs( $xn - $x0 ) &gt; abs(1E-12) ) { # ... }</code></pre>
 
 <p>Uses the &quot;one&quot;-norm for matrices and Perl&#39;s built-in &quot;abs()&quot; for scalars.</p>
 
@@ -1237,11 +1258,11 @@
 
 <p>As with the &#39;&lt;&#39;, &#39;&lt;=&#39; and &#39;&gt;&#39; operator, the following</p>
 
-<pre><code>    if ( $LR &gt;= $A ) { # ... }</code></pre>
+<pre><code>if ( $LR &gt;= $A ) { # ... }</code></pre>
 
 <p>is simply a shortcut for:</p>
 
-<pre><code>    if ( abs($LR) &gt;= abs($A) ) { # ... }</code></pre>
+<pre><code>if ( abs($LR) &gt;= abs($A) ) { # ... }</code></pre>
 
 <p>Uses the &quot;one&quot;-norm for matrices and Perl&#39;s built-in &quot;abs()&quot; for scalars.</p>
 
@@ -1272,18 +1293,7 @@
 
 <p>This package is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

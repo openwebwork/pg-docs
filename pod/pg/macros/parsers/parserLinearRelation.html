@@ -1,21 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>parsers/parserLinearRelation.pl</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>parsers/parserLinearRelation.pl</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>parsers/parserLinearRelation.pl</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">parsers/parserLinearRelation.pl</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
 
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-</ul>
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
@@ -27,25 +56,25 @@
 
 <p>Activate the context with:</p>
 
-<pre><code>    Context(&quot;LinearRelation&quot;);</code></pre>
+<pre><code>Context(&quot;LinearRelation&quot;);</code></pre>
 
 <p>Use <code>LinearRelation(formula)</code>, <code>Formula(formula)</code>, or <code>Compute(formula)</code> to to create a LinearRelation object using a string formula. Alternatively, use <code>LinearRelation(vector,point,sign</code> where <code>vector</code> is the normal vector and <code>point</code> is a point on the plane. Either can be an array reference or a Math Object Vector or Point. And <code>sign</code> is one of the (in)equality symbols. Or use <code>LinearRelation(vector,real,sign)</code> where <code>real</code> is the dot product of any point in the plane with the normal vector.</p>
 
 <p>Usage examples:</p>
 
-<pre><code>    $LR = LinearRelation(&quot;x + y + 2z &lt;= 5&quot;);
-    $LR = Formula(&quot;x + y + 2z &lt;= 5&quot;);
-    $LR = Compute(&quot;x + y + 2z &lt;= 5&quot;);
-    $LR = LinearRelation([1,1,2], [1,2,1], &quot;&lt;=&quot;);
-    $LR = LinearRelation([1,1,2], 5, &quot;&lt;=&quot;);
-    $LR = LinearRelation(Vector(1,1,2), Point(1,2,1), &quot;&lt;=&quot;);
-    $LR = LinearRelation(Vector(1,1,2), 5, &quot;&lt;=&quot;);</code></pre>
+<pre><code>$LR = LinearRelation(&quot;x + y + 2z &lt;= 5&quot;);
+$LR = Formula(&quot;x + y + 2z &lt;= 5&quot;);
+$LR = Compute(&quot;x + y + 2z &lt;= 5&quot;);
+$LR = LinearRelation([1,1,2], [1,2,1], &quot;&lt;=&quot;);
+$LR = LinearRelation([1,1,2], 5, &quot;&lt;=&quot;);
+$LR = LinearRelation(Vector(1,1,2), Point(1,2,1), &quot;&lt;=&quot;);
+$LR = LinearRelation(Vector(1,1,2), 5, &quot;&lt;=&quot;);</code></pre>
 
-<p>If <code>$pg{specialPGEnvironmentVars}{parseAlternatives}</code> is true in your configuration, then you may also work with sloppy inequality signs (=&lt;, =&gt;, &lt;&gt;) and with the characters &le;, &ge;, and &ne;.</p>
+<p>If <code>$pg{specialPGEnvironmentVars}{parseAlternatives}</code> is true in your configuration, then you may also work with sloppy inequality signs (=&lt;, =&gt;, &lt;&gt;) and with the characters ≤, ≥, and ≠.</p>
 
 <p>By default, the context has three variables x, y, and z. You should explicitly set the variables if your situation should use something different. For example with</p>
 
-<pre><code>    Context()-&gt;variables-&gt;are(m =&gt; &#39;Real&#39;, n =&gt;&#39;Real&#39;);</code></pre>
+<pre><code>Context()-&gt;variables-&gt;are(m =&gt; &#39;Real&#39;, n =&gt;&#39;Real&#39;);</code></pre>
 
 <p>Note that things like <code>LinearRelation(&quot;1 = 1&quot;)</code> and <code>&lt;LinearRelation(&quot;1 &lt; 5&quot;)</code>&gt; are allowed. These two examples are equivalent, but not equiivalent to <code>&lt;LinearRelation(&quot;1 &lt; 1&quot;)</code>&gt; and <code>&lt;LinearRelation(&quot;1 </code> 5&quot;)&gt;&gt; which are equivalent to each other.</p>
 
@@ -73,18 +102,7 @@
 </dd>
 </dl>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

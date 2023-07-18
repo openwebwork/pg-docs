@@ -1,23 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>parsers/parserRadioMultiAnswer.pl</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>parsers/parserRadioMultiAnswer.pl</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>parsers/parserRadioMultiAnswer.pl</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">parsers/parserRadioMultiAnswer.pl</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#CONSTRUCTOR">CONSTRUCTOR</a></li><li class="nav-item"><a class="nav-link p-0" href="#OPTIONS">OPTIONS</a></li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
 
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-  <li><a href="#CONSTRUCTOR">CONSTRUCTOR</a></li>
-  <li><a href="#OPTIONS">OPTIONS</a></li>
-</ul>
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
@@ -29,76 +56,76 @@
 
 <p>To create a RadioMultiAnswer pass a list of lists each with an sprintf-style string and answers, followed by the index of the correct part to RadioMultiAnswer() in the order they will appear in the problem. For example:</p>
 
-<pre><code>    $rma = RadioMultiAnswer([
-               [&#39;The unique solution is \(x=\) %s and \(y=\) %s.&#39;, 5, 6],
-               [&#39;There are an infinite number of solutions parameterized by &#39;
-                    . &#39;\(x=\) %s and \(y=\) %s.&#39;, &#39;23-3t&#39;, &#39;t&#39;]
-               [&#39;There are no solutions.&#39;]
-           ], 0);</code></pre>
+<pre><code>$rma = RadioMultiAnswer([
+           [&#39;The unique solution is \(x=\) %s and \(y=\) %s.&#39;, 5, 6],
+           [&#39;There are an infinite number of solutions parameterized by &#39;
+                . &#39;\(x=\) %s and \(y=\) %s.&#39;, &#39;23-3t&#39;, &#39;t&#39;]
+           [&#39;There are no solutions.&#39;]
+       ], 0);</code></pre>
 
 <p>The sprintf <code>&#39;%s&#39;</code> format specifiers are where the answer rules for the answers listed in the part will be placed. If <code>&#39;%s*&#39;</code> is used instead of the <code>&#39;%s&#39;</code> format specifier, then an answer array will be used instead of a single answer rule for that answer. In each part there should be one of these format specifiers for each answer in that part.</p>
 
 <p>Then, use $rma-&gt;ans_rule to create the radio parts and answer blanks inside. Note that you only call ans_rule once for each RadioMultiAnswer object. You can pass the width of all of the blanks, which defaults to 20 otherwise. For example:</p>
 
-<pre><code>    BEGIN_TEXT
-    Solve the system of linear equations \(x+3y = 23\) and \(2x+y=16\).
+<pre><code>BEGIN_TEXT
+Solve the system of linear equations \(x+3y = 23\) and \(2x+y=16\).
 
-    \{$rma-&gt;ans_rule(10)\}
-    END_TEXT</code></pre>
+\{$rma-&gt;ans_rule(10)\}
+END_TEXT</code></pre>
 
 <p>Then, call $rma-&gt;cmp to produce the answer evaluator for the RadioMultiAnswer.</p>
 
 <p>For PGML:</p>
 
-<pre><code>    BEGIN_PGML
-    Solve the system of linear equations [`x+3y=23`] and [`2x+y=16`].
+<pre><code>BEGIN_PGML
+Solve the system of linear equations [`x+3y=23`] and [`2x+y=16`].
 
-    [__________]{$rma}
-    END_PGML</code></pre>
+[__________]{$rma}
+END_PGML</code></pre>
 
 <p>You may provide a checker routine that will be called to determine if the answers are correct or not. If one is not provided a default checker will be used. The default checker returns 1 if the student selects the correct radio answer, and all answers in that part are equal to correct answers in that part. The checker will only be called if the student answers have no syntax errors and their types match the types of the correct answers, so you don&#39;t have to worry about handling bad data from the student (at least as far as type checking goes).</p>
 
 <p>The checker routine should accept four parameters: a reference to the array of correct answers, a reference to the array of student answers, a reference to the RadioMultiAnswer itself, and a reference to the answer hash. It should do whatever checking it needs to do and then return a score for the RadioMultiAnswer as a whole (every answer blank will be given the same score). You can add error messages in the checker routine by calling the RadioMultiAnswer&#39;s appendMessage() method. For example:</p>
 
-<pre><code>    $rma-&gt;appendMessage(&#39;The function can&#39;t be the identity&#39;);</code></pre>
+<pre><code>$rma-&gt;appendMessage(&#39;The function can&#39;t be the identity&#39;);</code></pre>
 
 <p>You can also call Value::Error() in the checker routine to generate an error and die.</p>
 
 <p>The checker routine can be supplied either when the RadioMultiAnswer is created, or when the cmp() method is called. For example:</p>
 
-<pre><code>    $rma = RadioMultiAnswer(...,
-        checker =&gt; sub {
-            my ($correct, $student, $self, $ans) = @_; # get the parameters
-            my ($radio_cor, $a_cor, $b_cor) = @$correct; # extract the correct answers
-            my ($radio_stu, $a_stu, $b_stu) = @$student; # extract the student answers
-            return ($radio_cor == $radio_stu
-                &amp;&amp; $a_cor-&gt;[0] == $a_stu-&gt;[0]
-                &amp;&amp; $a_cor-&gt;[1] == $a_stu-&gt;[1]);
-        }
-    );
-    ANS($rma-&gt;cmp);</code></pre>
-
-<p>or</p>
-
-<pre><code>    $rma = RadioMultiAnswer(...);
-    sub check {
+<pre><code>$rma = RadioMultiAnswer(...,
+    checker =&gt; sub {
         my ($correct, $student, $self, $ans) = @_; # get the parameters
         my ($radio_cor, $a_cor, $b_cor) = @$correct; # extract the correct answers
         my ($radio_stu, $a_stu, $b_stu) = @$student; # extract the student answers
         return ($radio_cor == $radio_stu
             &amp;&amp; $a_cor-&gt;[0] == $a_stu-&gt;[0]
             &amp;&amp; $a_cor-&gt;[1] == $a_stu-&gt;[1]);
-    };
-    ANS($rma-&gt;cmp(checker =&gt; ~~&amp;check));</code></pre>
+    }
+);
+ANS($rma-&gt;cmp);</code></pre>
+
+<p>or</p>
+
+<pre><code>$rma = RadioMultiAnswer(...);
+sub check {
+    my ($correct, $student, $self, $ans) = @_; # get the parameters
+    my ($radio_cor, $a_cor, $b_cor) = @$correct; # extract the correct answers
+    my ($radio_stu, $a_stu, $b_stu) = @$student; # extract the student answers
+    return ($radio_cor == $radio_stu
+        &amp;&amp; $a_cor-&gt;[0] == $a_stu-&gt;[0]
+        &amp;&amp; $a_cor-&gt;[1] == $a_stu-&gt;[1]);
+};
+ANS($rma-&gt;cmp(checker =&gt; ~~&amp;check));</code></pre>
 
 <p>See the checker option below for more details.</p>
 
 <a href="#_podtop_"><h1 id="CONSTRUCTOR">CONSTRUCTOR</h1></a>
 
-<pre><code>    RadioMultiAnswer([[&#39;First part %s, %s&#39;, $answer1, $answer2],
-                      [&#39;Second part %s, %s&#39;, $answer3, $answer4],
-                      [&#39;Third part&#39;]], 0);
-    RadioMultiAnswer(...)-&gt;with(...);</code></pre>
+<pre><code>RadioMultiAnswer([[&#39;First part %s, %s&#39;, $answer1, $answer2],
+                  [&#39;Second part %s, %s&#39;, $answer3, $answer4],
+                  [&#39;Third part&#39;]], 0);
+RadioMultiAnswer(...)-&gt;with(...);</code></pre>
 
 <p>Create a new RadioMultiAnswer item from a list of lists each of which has a first element that is a sprintf style string and the remaining elements of each list are items. The items are converted to Value items, if they aren&#39;t already.</p>
 
@@ -117,11 +144,11 @@
 
 <p>So, for the CONSTRUCTOR example shown above the correct answer array will be</p>
 
-<pre><code>    [ 1, [ $answer1, $answer2 ], [ $answer3, $answer4 ], [] ]</code></pre>
+<pre><code>[ 1, [ $answer1, $answer2 ], [ $answer3, $answer4 ], [] ]</code></pre>
 
 <p>and if the student selects the incorrect second part, then the student answer array will be:</p>
 
-<pre><code>    [ 2, [ &#39;&#39;, &#39;&#39; ], [ &#39;5t+2&#39;, &#39;t&#39; ], [] ]</code></pre>
+<pre><code>[ 2, [ &#39;&#39;, &#39;&#39; ], [ &#39;5t+2&#39;, &#39;t&#39; ], [] ]</code></pre>
 
 <p>where the entries in the latter arrays are not actually strings but are MathObjects.</p>
 
@@ -191,7 +218,7 @@
 
 <p>Values are the form of the student answer that will be displayed in the past answers table for the radio button choices part of the answer. By default these are B0, B1, etc. However, that can be changed with this option. The value of the option should be a reference to an array containing the values for the choices. For example:</p>
 
-<pre><code>    values =&gt; [ &#39;first choice&#39;, &#39;second choice&#39;, ... ]</code></pre>
+<pre><code>values =&gt; [ &#39;first choice&#39;, &#39;second choice&#39;, ... ]</code></pre>
 
 <p>If a choice is not represented in the hash, then <code>Bn</code> will be used for the value instead where <code>n</code> is the 0 based index of the choice.</p>
 
@@ -224,18 +251,7 @@
 </dd>
 </dl>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

@@ -1,30 +1,57 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>WWSafe</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>WWSafe</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>WWSafe</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
-
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-  <li><a href="#WARNING">WARNING</a>
-    <ul>
-      <li><a href="#RECENT-CHANGES">RECENT CHANGES</a></li>
-      <li><a href="#Methods-in-class-Safe">Methods in class Safe</a></li>
-      <li><a href="#Some-Safety-Issues">Some Safety Issues</a></li>
-      <li><a href="#AUTHOR">AUTHOR</a></li>
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">WWSafe</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#WARNING">WARNING</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#RECENT-CHANGES">RECENT CHANGES</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Methods-in-class-Safe">Methods in class Safe</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Some-Safety-Issues">Some Safety Issues</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#AUTHOR">AUTHOR</a></li>
     </ul>
-  </li>
-</ul>
+  </li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
+
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
@@ -32,13 +59,13 @@
 
 <a href="#_podtop_"><h1 id="SYNOPSIS">SYNOPSIS</h1></a>
 
-<pre><code>  use WWSafe;
+<pre><code>use WWSafe;
 
-  $compartment = new Safe;
+$compartment = new Safe;
 
-  $compartment-&gt;permit(qw(time sort :browse));
+$compartment-&gt;permit(qw(time sort :browse));
 
-  $result = $compartment-&gt;reval($unsafe_code);</code></pre>
+$result = $compartment-&gt;reval($unsafe_code);</code></pre>
 
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
@@ -67,11 +94,11 @@
 
 <p>Since it is only at the compilation stage that the operator mask applies, controlled access to potentially unsafe operations can be achieved by having a handle to a wrapper subroutine (written outside the compartment) placed into the compartment. For example,</p>
 
-<pre><code>    $cpt = new Safe;
-    sub wrapper {
-        # vet arguments and perform potentially unsafe operations
-    }
-    $cpt-&gt;share(&#39;&amp;wrapper&#39;);</code></pre>
+<pre><code>$cpt = new Safe;
+sub wrapper {
+    # vet arguments and perform potentially unsafe operations
+}
+$cpt-&gt;share(&#39;&amp;wrapper&#39;);</code></pre>
 
 </dd>
 </dl>
@@ -92,7 +119,7 @@
 
 <p>To create a new compartment, use</p>
 
-<pre><code>    $cpt = new Safe;</code></pre>
+<pre><code>$cpt = new Safe;</code></pre>
 
 <p>Optional argument is (NAMESPACE), where NAMESPACE is the root namespace to use for the compartment (defaults to &quot;Safe::Root0&quot;, incremented for each new compartment).</p>
 
@@ -155,7 +182,7 @@
 
 <p>This method is similar to share() but allows you to explicitly name the package that symbols should be shared from. The symbol names (including type characters) are supplied as an array reference.</p>
 
-<pre><code>    $safe-&gt;share_from(&#39;main&#39;, [ &#39;$foo&#39;, &#39;%bar&#39;, &#39;func&#39; ]);</code></pre>
+<pre><code>$safe-&gt;share_from(&#39;main&#39;, [ &#39;$foo&#39;, &#39;%bar&#39;, &#39;func&#39; ]);</code></pre>
 
 </dd>
 <dt>varglob (VARNAME)</dt>
@@ -163,10 +190,10 @@
 
 <p>This returns a glob reference for the symbol table entry of VARNAME in the package of the compartment. VARNAME must be the <b>name</b> of a variable without any leading type marker. For example,</p>
 
-<pre><code>    $cpt = new Safe &#39;Root&#39;;
-    $Root::foo = &quot;Hello world&quot;;
-    # Equivalent version which doesn&#39;t need to know $cpt&#39;s package name:
-    ${$cpt-&gt;varglob(&#39;foo&#39;)} = &quot;Hello world&quot;;</code></pre>
+<pre><code>$cpt = new Safe &#39;Root&#39;;
+$Root::foo = &quot;Hello world&quot;;
+# Equivalent version which doesn&#39;t need to know $cpt&#39;s package name:
+${$cpt-&gt;varglob(&#39;foo&#39;)} = &quot;Hello world&quot;;</code></pre>
 
 </dd>
 <dt>reval (STRING)</dt>
@@ -271,18 +298,7 @@
 
 <p>Currently maintained by the Perl 5 Porters, &lt;perl5-porters@perl.org&gt;.</p>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

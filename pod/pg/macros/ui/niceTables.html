@@ -1,41 +1,71 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>ui/niceTables.pl</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ui/niceTables.pl</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>ui/niceTables.pl</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
-
-
-<ul id="index">
-  <li><a href="#niceTables.pl">niceTables.pl</a>
-    <ul>
-      <li><a href="#Description">Description</a></li>
-      <li><a href="#Options-for-the-WHOLE-TABLE">Options for the WHOLE TABLE</a>
-        <ul>
-          <li><a href="#All-output-formats">All output formats</a></li>
-          <li><a href="#HTML-output">HTML output</a></li>
-          <li><a href="#PDF-hardcopy-output">PDF hardcopy output</a></li>
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">ui/niceTables.pl</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#niceTables.pl">niceTables.pl</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#Description">Description</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Options-for-the-WHOLE-TABLE">Options for the WHOLE TABLE</a>
+        <ul class="nav flex-column w-100">
+          <li class="nav-item"><a class="nav-link p-0" href="#All-output-formats">All output formats</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#HTML-output">HTML output</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#PDF-hardcopy-output">PDF hardcopy output</a></li>
         </ul>
       </li>
-      <li><a href="#Options-for-CELLS">Options for CELLS</a>
-        <ul>
-          <li><a href="#All-output-formats1">All output formats</a></li>
-          <li><a href="#HTML-output1">HTML output</a></li>
-          <li><a href="#PDF-hardcopy-output1">PDF hardcopy output</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Options-for-CELLS">Options for CELLS</a>
+        <ul class="nav flex-column w-100">
+          <li class="nav-item"><a class="nav-link p-0" href="#All-output-formats1">All output formats</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#HTML-output1">HTML output</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#PDF-hardcopy-output1">PDF hardcopy output</a></li>
         </ul>
       </li>
-      <li><a href="#Options-for-ROWS">Options for ROWS</a></li>
-      <li><a href="#Options-for-COLUMNS">Options for COLUMNS</a></li>
-      <li><a href="#Deprecations">Deprecations</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Options-for-ROWS">Options for ROWS</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Options-for-COLUMNS">Options for COLUMNS</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Deprecations">Deprecations</a></li>
     </ul>
-  </li>
-</ul>
+  </li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
+
 
 <a href="#_podtop_"><h1 id="niceTables.pl">niceTables.pl</h1></a>
 
@@ -65,23 +95,23 @@
 
 <p>Command for a typical table:</p>
 
-<pre><code>    DataTable(
-        [
-            [a,b,c,...],
-            [d,e,f,...],
-            ...
-        ],
-        options
-    );
+<pre><code>DataTable(
+    [
+        [a,b,c,...],
+        [d,e,f,...],
+        ...
+    ],
+    options
+);
 
-    LayoutTable(
-        [
-            [a,b,c,...],
-            [d,e,f,...],
-            ...
-        ],
-        options
-    );</code></pre>
+LayoutTable(
+    [
+        [a,b,c,...],
+        [d,e,f,...],
+        ...
+    ],
+    options
+);</code></pre>
 
 <p>The cell entries above like <code>a</code> may be simple cell content, a hash reference with <code>data =&gt; cellContent</code> and options, or an array reference where the 0th entry is the the cell content and it is followed by option key-value pairs.</p>
 
@@ -191,6 +221,12 @@
 <p>Can be <code>&#39;top&#39;</code>, <code>&#39;middle&#39;</code>, or <code>&#39;bottom&#39;</code>. Applies to all rows. See below to override for an individual row.</p>
 
 </dd>
+<dt><code>padding =&gt; [ , ]</code></dt>
+<dd>
+
+<p>An array of two non-negative numbers used to define cell-padding. The first is for top-down padding, the second for left-right padding. In HTML, each padding is the value multiplied by 0.85rem. In LaTeX, the left-right padding is the value multiplied by 10pt, and the top-down padding is implemented by setting <code>\arraystretch</code> to the value. (0.85rem and 10pt are default font sizes at the time of this feature&#39;s introduction.) The default for a DataTable is <code>[0,0.5]</code> and the default for a LayoutTable is <code>[1,1]</code>. <code>padding</code> may also be entered as a single nonnegative number to describe both top-down and left-right padding at the same time.</p>
+
+</dd>
 </dl>
 
 <h3 id="HTML-output">HTML output</h3>
@@ -271,11 +307,11 @@
 
 <p>Each cell entry can be an array reference where the first entry is the actual cell content, and then key-value pairs follow. For example, in a table with four columns, to make the first cell span two columns, enter the first cell as an array reference:</p>
 
-<pre><code>  [[a, colspan =&gt; 2], b, c]</code></pre>
+<pre><code>[[a, colspan =&gt; 2], b, c]</code></pre>
 
 <p>Alternatively, using a hash reference with a data key:</p>
 
-<pre><code>  [{data =&gt; a, colspan =&gt; 2}, b, c]</code></pre>
+<pre><code>[{data =&gt; a, colspan =&gt; 2}, b, c]</code></pre>
 
 <h3 id="All-output-formats1">All output formats</h3>
 
@@ -491,18 +527,7 @@
 </li>
 </ul>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

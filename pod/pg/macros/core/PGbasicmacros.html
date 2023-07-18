@@ -1,69 +1,97 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>core/PGbasicmacros.pl</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>core/PGbasicmacros.pl</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>core/PGbasicmacros.pl</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
-
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#SYNPOSIS">SYNPOSIS</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a>
-    <ul>
-      <li><a href="#Answer-blank-macros">Answer blank macros:</a></li>
-      <li><a href="#answer_matrix">answer_matrix</a></li>
-      <li><a href="#Hints-solutions-and-statement-macros">Hints, solutions, and statement macros</a></li>
-      <li><a href="#Comments-to-instructors">Comments to instructors</a></li>
-      <li><a href="#Pseudo-random-number-generator">Pseudo-random number generator</a></li>
-      <li><a href="#Display-Macros">Display Macros</a></li>
-      <li><a href="#Display-constants">Display constants</a></li>
-      <li><a href="#SPAN-and-DIV-macros-These-are-functions-primarly-meant-to-add-HTML-block-level-DIV-or-inline-SPAN-tags-and-the-relevant-closing-tags-for-HTML-output">SPAN and DIV macros These are functions primarly meant to add HTML block level DIV or inline SPAN tags and the relevant closing tags for HTML output.</a></li>
-      <li><a href="#TEXT-macros">TEXT macros</a></li>
-      <li><a href="#Evaluation-macros">Evaluation macros</a>
-        <ul>
-          <li><a href="#EV3">EV3</a></li>
-          <li><a href="#refreshEquations">refreshEquations</a></li>
-          <li><a href="#addToTeXPreamble">addToTeXPreamble</a></li>
-          <li><a href="#FEQ">FEQ</a></li>
-          <li><a href="#EV2">EV2</a></li>
-          <li><a href="#EV3P">EV3P</a></li>
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">core/PGbasicmacros.pl</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#Answer-blank-macros">Answer blank macros:</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#answer_matrix">answer_matrix</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Hints-solutions-and-statement-macros">Hints, solutions, and statement macros</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Comments-to-instructors">Comments to instructors</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Pseudo-random-number-generator">Pseudo-random number generator</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Display-Macros">Display Macros</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Display-constants">Display constants</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#SPAN-and-DIV-macros-These-are-functions-primarly-meant-to-add-HTML-block-level-DIV-or-inline-SPAN-tags-and-the-relevant-closing-tags-for-HTML-output">SPAN and DIV macros These are functions primarly meant to add HTML block level DIV or inline SPAN tags and the relevant closing tags for HTML output.</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#TEXT-macros">TEXT macros</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Evaluation-macros">Evaluation macros</a>
+        <ul class="nav flex-column w-100">
+          <li class="nav-item"><a class="nav-link p-0" href="#EV3">EV3</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#refreshEquations">refreshEquations</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#addToTeXPreamble">addToTeXPreamble</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#FEQ">FEQ</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#EV2">EV2</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#EV3P">EV3P</a></li>
         </ul>
       </li>
-      <li><a href="#Formatting-macros">Formatting macros</a></li>
-      <li><a href="#helpLink-type-display_text-helpurl">helpLink($type, $display_text, $helpurl)</a></li>
-      <li><a href="#PGsort">PGsort</a></li>
-      <li><a href="#Sorting-and-other-list-macros">Sorting and other list macros</a></li>
-      <li><a href="#Macros-for-handling-tables">Macros for handling tables</a></li>
-      <li><a href="#Macros-for-displaying-images">Macros for displaying images</a></li>
-      <li><a href="#Tag-helper-method">Tag helper method:</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Formatting-macros">Formatting macros</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#helpLink-type-display_text-helpurl">helpLink($type, $display_text, $helpurl)</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#PGsort">PGsort</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Sorting-and-other-list-macros">Sorting and other list macros</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Macros-for-handling-tables">Macros for handling tables</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Macros-for-displaying-images">Macros for displaying images</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Tag-helper-method">Tag helper method:</a></li>
     </ul>
-  </li>
-</ul>
+  </li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
+
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<pre><code>    PGbasicmacros.pl --- located in the courseScripts directory</code></pre>
-
-<a href="#_podtop_"><h1 id="SYNPOSIS">SYNPOSIS</h1></a>
+<p>PGbasicmacros.pl --- located in the courseScripts directory</p>
 
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
+
+<p>This includes constants and basic functions for PG.</p>
 
 <h2 id="Answer-blank-macros">Answer blank macros:</h2>
 
 <p>These produce answer blanks of various sizes or pop up lists or radio answer buttons. The names for the answer blanks are generated implicitly.</p>
 
-<pre><code>    ans_rule( width )
-    tex_ans_rule( width )
-    ans_radio_buttons(value1 =&gt; label1, value2, label2 =&gt; value3, label3 =&gt; ...)
-    pop_up_list(@list)   # list consists of (value =&gt; label,  PR =&gt; &quot;Product rule&quot;, ...)
-    pop_up_list([@list]) # list consists of values</code></pre>
+<pre><code>ans_rule( width )
+tex_ans_rule( width )
+ans_radio_buttons(value1 =&gt; label1, value2, label2 =&gt; value3, label3 =&gt; ...)
+pop_up_list(@list)   # list consists of (value =&gt; label,  PR =&gt; &quot;Product rule&quot;, ...)
+pop_up_list([@list]) # list consists of values</code></pre>
 
 <p>In the last case, one can use <code>pop_up_list([&#39;?&#39;, &#39;yes&#39;, &#39;no&#39;])</code> to produce a pop-up list containing the three strings listed, and then use str_cmp to check the answer.</p>
 
@@ -71,20 +99,20 @@
 
 <p>The following method is defined in <i>PG.pl</i> for entering the answer evaluators corresponding to answer rules with automatically generated names. The answer evaluators are matched with the answer rules in the order in which they appear on the page.</p>
 
-<pre><code>    ANS(ans_evaluator1, ans_evaluator2, ...);</code></pre>
+<pre><code>ANS(ans_evaluator1, ans_evaluator2, ...);</code></pre>
 
 <p>These are more primitive macros which produce answer blanks for specialized cases when complete control over the matching of answers blanks and answer evaluators is desired. The names of the answer blanks must be generated manually, and it is best if they do NOT begin with the default answer prefix (currently AnSwEr).</p>
 
-<pre><code>    labeled_ans_rule(name, width)  # an alias for NAMED_ANS_RULE where width defaults to 20 if omitted.
+<pre><code>labeled_ans_rule(name, width)  # an alias for NAMED_ANS_RULE where width defaults to 20 if omitted.
 
-    NAMED_ANS_RULE(name, width)
-    NAMED_ANS_BOX(name, rows, cols)
-    NAMED_ANS_RADIO(name, value, label)
-    NAMED_ANS_RADIO_EXTENSION(name, value, label)
-    NAMED_ANS_RADIO_BUTTONS(name, value1, label1, value2, label2, ...)
-    check_box(&#39;-name&#39; =&gt; answer5, &#39;-value&#39; =&gt; &#39;statement3&#39;, &#39;-label&#39; =&gt; &#39;I loved this course!&#39;)
-    NAMED_POP_UP_LIST($name, @list) # list consists of (value =&gt; tag,  PR =&gt; &quot;Product rule&quot;, ...)
-    NAMED_POP_UP_LIST($name, [@list]) # list consists of a list of values (and each tag will be set to the corresponding value)</code></pre>
+NAMED_ANS_RULE(name, width)
+NAMED_ANS_BOX(name, rows, cols)
+NAMED_ANS_RADIO(name, value, label)
+NAMED_ANS_RADIO_EXTENSION(name, value, label)
+NAMED_ANS_RADIO_BUTTONS(name, value1, label1, value2, label2, ...)
+check_box(&#39;-name&#39; =&gt; answer5, &#39;-value&#39; =&gt; &#39;statement3&#39;, &#39;-label&#39; =&gt; &#39;I loved this course!&#39;)
+NAMED_POP_UP_LIST($name, @list) # list consists of (value =&gt; tag,  PR =&gt; &quot;Product rule&quot;, ...)
+NAMED_POP_UP_LIST($name, [@list]) # list consists of a list of values (and each tag will be set to the corresponding value)</code></pre>
 
 <p>(Name is the name of the variable, value is the value given to the variable when this option is selected, and label is the text printed next to the button or check box. Check box variables can have multiple values.)</p>
 
@@ -94,54 +122,54 @@
 
 <p>The following method is defined in <i>PG.pl</i> for entering the answer evaluators corresponding to answer rules with automatically generated names. The answer evaluators are matched with the answer rules in the order in which they appear on the page.</p>
 
-<pre><code>    NAMED_ANS(name1 =&gt; ans_evaluator1, name2 =&gt; ans_evaluator2, ...);</code></pre>
+<pre><code>NAMED_ANS(name1 =&gt; ans_evaluator1, name2 =&gt; ans_evaluator2, ...);</code></pre>
 
 <p>These auxiliary macros are defined in PG.pl</p>
 
-<pre><code>    NEW_ANS_NAME(        );   # produces a new anonymous answer blank name  by appending a number to the prefix (AnSwEr)
-                              # and registers this name as an implicitly labeled answer
-                              # Its use is paired with each answer evaluator being entered using ANS()
+<pre><code>NEW_ANS_NAME(        );   # produces a new anonymous answer blank name  by appending a number to the prefix (AnSwEr)
+                          # and registers this name as an implicitly labeled answer
+                          # Its use is paired with each answer evaluator being entered using ANS()
 
-    ANS_NUM_TO_NAME(number);  # prepends the prefix (AnSwEr) to the number, but does nothing else.
+ANS_NUM_TO_NAME(number);  # prepends the prefix (AnSwEr) to the number, but does nothing else.
 
-    RECORD_ANS_NAME( name );  # records the order in which the answer blank  is rendered
-                              # This is called by all of the constructs above, but must
-                              # be called explicitly if an input blank is constructed explictly
-                              # using HTML code.</code></pre>
+RECORD_ANS_NAME( name );  # records the order in which the answer blank  is rendered
+                          # This is called by all of the constructs above, but must
+                          # be called explicitly if an input blank is constructed explictly
+                          # using HTML code.</code></pre>
 
 <p>These are legacy macros:</p>
 
-<pre><code>    ANS_RULE( number, width );                       # equivalent to NAMED_ANS_RULE( NEW_ANS_NAME(  ), width)
-    ANS_BOX( question_number, height, width );       # equivalent to NAMED_ANS_BOX( NEW_ANS_NAME(  ), height, width)
-    ANS_RADIO( question_number, value, tag );        # equivalent to NAMED_ANS_RADIO( NEW_ANS_NAME( ), value, tag)
-    ANS_RADIO_OPTION( question_number, value, tag ); # equivalent to NAMED_ANS_RADIO_EXTENSION( ANS_NUM_TO_NAME(number), value, tag)</code></pre>
+<pre><code>ANS_RULE( number, width );                       # equivalent to NAMED_ANS_RULE( NEW_ANS_NAME(  ), width)
+ANS_BOX( question_number, height, width );       # equivalent to NAMED_ANS_BOX( NEW_ANS_NAME(  ), height, width)
+ANS_RADIO( question_number, value, tag );        # equivalent to NAMED_ANS_RADIO( NEW_ANS_NAME( ), value, tag)
+ANS_RADIO_OPTION( question_number, value, tag ); # equivalent to NAMED_ANS_RADIO_EXTENSION( ANS_NUM_TO_NAME(number), value, tag)</code></pre>
 
 <h2 id="answer_matrix">answer_matrix</h2>
 
-<pre><code>    Usage   \[ \{ answer_matrix(rows, columns, width_of_ans_rule, @options) \} \]
+<pre><code>Usage   \[ \{ answer_matrix(rows, columns, width_of_ans_rule, @options) \} \]
 
-    Creates an array of answer blanks and passes it to display_matrix which returns
-    text which represents the matrix in TeX format used in math display mode. Answers
-    are then passed back to whatever answer evaluators you write at the end of the problem.
-    (note, if you have an m x n matrix, you will need mn answer evaluators, and they will be
-    returned to the evaluaters starting in the top left hand corner and proceed to the left
-    and then at the end moving down one row, just as you would read them.)
+Creates an array of answer blanks and passes it to display_matrix which returns
+text which represents the matrix in TeX format used in math display mode. Answers
+are then passed back to whatever answer evaluators you write at the end of the problem.
+(note, if you have an m x n matrix, you will need mn answer evaluators, and they will be
+returned to the evaluaters starting in the top left hand corner and proceed to the left
+and then at the end moving down one row, just as you would read them.)
 
-    The options are passed on to display_matrix.
+The options are passed on to display_matrix.
 
-    Note (7/21/2017) The above usage does not work. Omitting the \[ \] works, but also must
-    load PGmatrixmacros.pl to get display_matrix used below</code></pre>
+Note (7/21/2017) The above usage does not work. Omitting the \[ \] works, but also must
+load PGmatrixmacros.pl to get display_matrix used below</code></pre>
 
 <h2 id="Hints-solutions-and-statement-macros">Hints, solutions, and statement macros</h2>
 
-<pre><code>    solution(&#39;text&#39;, &#39;text2&#39;, ...);
-    SOLUTION(&#39;text&#39;, &#39;text2&#39;, ...); # equivalent to TEXT(solution(...));
+<pre><code>solution(&#39;text&#39;, &#39;text2&#39;, ...);
+SOLUTION(&#39;text&#39;, &#39;text2&#39;, ...); # equivalent to TEXT(solution(...));
 
-    hint(&#39;text&#39;, &#39;text2&#39;, ...);
-    HINT(&#39;text&#39;, &#39;text2&#39;, ...);    # equivalent to TEXT(&quot;$BR$HINT&quot; . hint(@_) . &quot;$BR&quot;) if hint(@_);
+hint(&#39;text&#39;, &#39;text2&#39;, ...);
+HINT(&#39;text&#39;, &#39;text2&#39;, ...);    # equivalent to TEXT(&quot;$BR$HINT&quot; . hint(@_) . &quot;$BR&quot;) if hint(@_);
 
-    statement(&#39;text&#39;);
-    STATEMENT(&#39;text&#39;);            # equivalent to TEXT(statement(...));</code></pre>
+statement(&#39;text&#39;);
+STATEMENT(&#39;text&#39;);            # equivalent to TEXT(statement(...));</code></pre>
 
 <p>statement takes a string, probably from EV3P, and possibly wraps opening and closing content, paralleling one feature of solution and hint.</p>
 
@@ -151,7 +179,7 @@
 
 <h2 id="Comments-to-instructors">Comments to instructors</h2>
 
-<pre><code>        COMMENT(&#39;text&#39;, &#39;text2&#39;, ...);</code></pre>
+<pre><code>COMMENT(&#39;text&#39;, &#39;text2&#39;, ...);</code></pre>
 
 <p>Takes the text to be lines of a comment to be shown only in the Library Browser below the rendered problem.</p>
 
@@ -159,14 +187,14 @@
 
 <h2 id="Pseudo-random-number-generator">Pseudo-random number generator</h2>
 
-<pre><code>    Usage:
-    random(0, 5, .1)          # produces a random number between 0 and 5 in increments of .1
-    non_zero_random(0, 5, .1) # gives a non-zero random number
+<pre><code>Usage:
+random(0, 5, .1)          # produces a random number between 0 and 5 in increments of .1
+non_zero_random(0, 5, .1) # gives a non-zero random number
 
-    list_random(2, 3, 5, 6, 7, 8, 10) # produces random value from the list
-    list_random(2, 3, (5..8), 10) # does the same thing
+list_random(2, 3, 5, 6, 7, 8, 10) # produces random value from the list
+list_random(2, 3, (5..8), 10) # does the same thing
 
-    SRAND(seed)     # resets the main random generator -- use very cautiously</code></pre>
+SRAND(seed)     # resets the main random generator -- use very cautiously</code></pre>
 
 <p>SRAND(time) will create a different problem everytime it is called. This makes it difficult to check the answers :-).</p>
 
@@ -176,119 +204,119 @@
 
 <p>These macros produce different output depending on the display mode being used to show the problem on the screen, or whether the problem is being converted to TeX to produce a hard copy output.</p>
 
-<pre><code>    MODES   ( TeX        =&gt; &quot;Output this in TeX mode&quot;,
-              HTML       =&gt; &quot;output this in HTML mode&quot;,
-              HTML_tth   =&gt; &quot;output this in HTML_tth mode&quot;,
-              HTML_dpng  =&gt; &quot;output this in HTML_dpng mode&quot;,
-              Latex2HTML =&gt; &quot;output this in Latex2HTML mode&quot;,
-             )
+<pre><code>MODES   ( TeX        =&gt; &quot;Output this in TeX mode&quot;,
+          HTML       =&gt; &quot;output this in HTML mode&quot;,
+          HTML_tth   =&gt; &quot;output this in HTML_tth mode&quot;,
+          HTML_dpng  =&gt; &quot;output this in HTML_dpng mode&quot;,
+          Latex2HTML =&gt; &quot;output this in Latex2HTML mode&quot;,
+         )
 
-    M3      (tex_version, latex2html_version, html_version) #obsolete</code></pre>
+M3      (tex_version, latex2html_version, html_version) #obsolete</code></pre>
 
 <h2 id="Display-constants">Display constants</h2>
 
-<pre><code>        @ALPHABET           ALPHABET()           capital letter alphabet -- ALPHABET[0] = &#39;A&#39;
-        $PAR                PAR()                paragraph character (\par or &lt;p&gt;)
-        $BR                 BR()                 line break character
-        $BRBR               BRBR()               line break character
-        $LQ                 LQ()                 left double quote
-        $RQ                 RQ()                 right double quote
-        $BM                 BM()                 begin math
-        $EM                 EM()                 end math
-        $BDM                BDM()                begin display math
-        $EDM                EDM()                end display math
-        $LTS                LTS()                strictly less than
-        $GTS                GTS()                strictly greater than
-        $LTE                LTE()                less than or equal
-        $GTE                GTE()                greater than or equal
-        $BEGIN_ONE_COLUMN   BEGIN_ONE_COLUMN()   begin one-column mode
-        $END_ONE_COLUMN     END_ONE_COLUMN()     end one-column mode
-        $SOL                SOLUTION_HEADING()   solution headline
-        $SOLUTION           SOLUTION_HEADING()   solution headline
-        $HINT               HINT_HEADING()       hint headline
-        $US                 US()                 underscore character
-        $SPACE              SPACE()              space character (tex and latex only)
-        $NBSP               NBSP()               non breaking space character
-        $NDASH              NDASH()              en dash character
-        $MDASH              MDASH()              em dash character
-        $BLABEL             BLABEL()             begin label (for input)
-        $ELABEL             ELABEL()             end label (for input)
-        $BBOLD              BBOLD()              begin bold typeface
-        $EBOLD              EBOLD()              end bold typeface
-        $BITALIC            BITALIC()            begin italic typeface
-        $EITALIC            EITALIC()            end italic typeface
-        $BUL                BUL()                begin underlined type
-        $EUL                EUL()                end underlined type
-        $BCENTER            BCENTER()            begin centered environment
-        $ECENTER            ECENTER()            end centered environment
-        $BLTR               BLTR()               begin left to right environment
-        $ELTR               ELTR()               end left to right environment
-        $BKBD               BKBD()               begin &quot;keyboard&quot; input text
-        $EKBD               EKBD()               end &quot;keyboard&quot; input text
-        $HR                 HR()                 horizontal rule
-        $LBRACE             LBRACE()             left brace
-        $LB                 LB ()                left brace
-        $RBRACE             RBRACE()             right brace
-        $RB                 RB ()                right brace
-        $DOLLAR             DOLLAR()             a dollar sign
-        $PERCENT            PERCENT()            a percent sign
-        $CARET              CARET()              a caret sign
-        $PI                 PI()                 the number pi
-        $E                  E()                  the number e
-        $LATEX              LATEX()              the LaTeX logo
-        $TEX                TEX()                the TeX logo
-        $APOS               APOS()               an apostrophe</code></pre>
+<pre><code>@ALPHABET           ALPHABET()           capital letter alphabet -- ALPHABET[0] = &#39;A&#39;
+$PAR                PAR()                paragraph character (\par or &lt;p&gt;)
+$BR                 BR()                 line break character
+$BRBR               BRBR()               line break character
+$LQ                 LQ()                 left double quote
+$RQ                 RQ()                 right double quote
+$BM                 BM()                 begin math
+$EM                 EM()                 end math
+$BDM                BDM()                begin display math
+$EDM                EDM()                end display math
+$LTS                LTS()                strictly less than
+$GTS                GTS()                strictly greater than
+$LTE                LTE()                less than or equal
+$GTE                GTE()                greater than or equal
+$BEGIN_ONE_COLUMN   BEGIN_ONE_COLUMN()   begin one-column mode
+$END_ONE_COLUMN     END_ONE_COLUMN()     end one-column mode
+$SOL                SOLUTION_HEADING()   solution headline
+$SOLUTION           SOLUTION_HEADING()   solution headline
+$HINT               HINT_HEADING()       hint headline
+$US                 US()                 underscore character
+$SPACE              SPACE()              space character (tex and latex only)
+$NBSP               NBSP()               non breaking space character
+$NDASH              NDASH()              en dash character
+$MDASH              MDASH()              em dash character
+$BLABEL             BLABEL()             begin label (for input)
+$ELABEL             ELABEL()             end label (for input)
+$BBOLD              BBOLD()              begin bold typeface
+$EBOLD              EBOLD()              end bold typeface
+$BITALIC            BITALIC()            begin italic typeface
+$EITALIC            EITALIC()            end italic typeface
+$BUL                BUL()                begin underlined type
+$EUL                EUL()                end underlined type
+$BCENTER            BCENTER()            begin centered environment
+$ECENTER            ECENTER()            end centered environment
+$BLTR               BLTR()               begin left to right environment
+$ELTR               ELTR()               end left to right environment
+$BKBD               BKBD()               begin &quot;keyboard&quot; input text
+$EKBD               EKBD()               end &quot;keyboard&quot; input text
+$HR                 HR()                 horizontal rule
+$LBRACE             LBRACE()             left brace
+$LB                 LB ()                left brace
+$RBRACE             RBRACE()             right brace
+$RB                 RB ()                right brace
+$DOLLAR             DOLLAR()             a dollar sign
+$PERCENT            PERCENT()            a percent sign
+$CARET              CARET()              a caret sign
+$PI                 PI()                 the number pi
+$E                  E()                  the number e
+$LATEX              LATEX()              the LaTeX logo
+$TEX                TEX()                the TeX logo
+$APOS               APOS()               an apostrophe</code></pre>
 
 <h2 id="SPAN-and-DIV-macros-These-are-functions-primarly-meant-to-add-HTML-block-level-DIV-or-inline-SPAN-tags-and-the-relevant-closing-tags-for-HTML-output">SPAN and DIV macros These are functions primarly meant to add HTML block level DIV or inline SPAN tags and the relevant closing tags for HTML output.</h2>
 
-<pre><code>        At present, these macros require the user to provide TeX and
-        preTeXt strings which will be used in those modes instead of the
-        HTML block level DIV or inline SPAN tag.
+<pre><code>At present, these macros require the user to provide TeX and
+preTeXt strings which will be used in those modes instead of the
+HTML block level DIV or inline SPAN tag.
 
-        If they are missing, they will default to the empty string.
-        If only one string is given, it will be assumed to be the TeX string.
+If they are missing, they will default to the empty string.
+If only one string is given, it will be assumed to be the TeX string.
 
-        At present only the following 4 HTML attributes can be set:
-                         lang, dir, class, style.
-        Using the style option requires creating valid CSS text.
-        For safety some parsing/cleanup is done and various sorts of
-        (apparently) invalid values may be dropped. See the code for
-        details of what input sanitation is done.
+At present only the following 4 HTML attributes can be set:
+                 lang, dir, class, style.
+Using the style option requires creating valid CSS text.
+For safety some parsing/cleanup is done and various sorts of
+(apparently) invalid values may be dropped. See the code for
+details of what input sanitation is done.
 
-        Since the use of style is particularly dangerous, in order to
-        enable its use you must set allowStyle to 1 in the hash. It is
-        possible to prevent the use of some of the other options by
-        setting certain control like allowLang to 0.
+Since the use of style is particularly dangerous, in order to
+enable its use you must set allowStyle to 1 in the hash. It is
+possible to prevent the use of some of the other options by
+setting certain control like allowLang to 0.
 
-    Usage:
-          openSpan( options_hash,  &quot;tex code&quot;, &quot;ptx code&quot; );
-          closeSpan(&quot;tex code&quot;, &quot;ptx code&quot;);
+Usage:
+  openSpan( options_hash,  &quot;tex code&quot;, &quot;ptx code&quot; );
+  closeSpan(&quot;tex code&quot;, &quot;ptx code&quot;);
 
-        Usage where TeX and PTX output will be empty by default.
-          openSpan( options_hash );
-          closeSpan();
+Usage where TeX and PTX output will be empty by default.
+  openSpan( options_hash );
+  closeSpan();
 
-        Sample options hashes
+Sample options hashes
 
-            { &quot;lang&quot; =&gt; &quot;he&quot;,
-              &quot;dir&quot; =&gt; &quot;rtl&quot;,
-              &quot;class&quot; =&gt; &quot;largeText class123&quot; }
+    { &quot;lang&quot; =&gt; &quot;he&quot;,
+      &quot;dir&quot; =&gt; &quot;rtl&quot;,
+      &quot;class&quot; =&gt; &quot;largeText class123&quot; }
 
-            { &quot;lang&quot; =&gt; &quot;he&quot;,
-              &quot;allowStyle&quot; =&gt; 1,
-               &quot;style&quot; =&gt; &quot;background-color: \&quot;#afafaf; float: left;\t height: 12px;&quot; }</code></pre>
+    { &quot;lang&quot; =&gt; &quot;he&quot;,
+      &quot;allowStyle&quot; =&gt; 1,
+       &quot;style&quot; =&gt; &quot;background-color: \&quot;#afafaf; float: left;\t height: 12px;&quot; }</code></pre>
 
 <h2 id="TEXT-macros">TEXT macros</h2>
 
-<pre><code>    Usage:
-        TEXT(@text);</code></pre>
+<pre><code>Usage:
+    TEXT(@text);</code></pre>
 
 <p>This is the simplest way to print text from a problem. The strings in the array <code>@text</code> are concatenated with spaces between them and printed out in the text of the problem. The text is not processed in any other way. <code>TEXT</code> is defined in PG.pl.</p>
 
-<pre><code>    Usage:
-        BEGIN_TEXT
-            text.....
-        END_TEXT</code></pre>
+<pre><code>Usage:
+    BEGIN_TEXT
+        text.....
+    END_TEXT</code></pre>
 
 <p>This is the most common way to enter text into the problem. All of the text between BEGIN_TEXT and END_TEXT is processed by the <code>EV3</code> macro described below and then printed using the <code>TEXT</code> command. The two key words must appear on lines by themselves. The preprocessing that makes this construction work is done in <i>PGtranslator.pm</i>. See <code>EV3</code> below for details on the processing.</p>
 
@@ -296,12 +324,12 @@
 
 <h3 id="EV3">EV3</h3>
 
-<pre><code>        TEXT(EV3(&quot;This is a formulat \( \int_0^5 x^2 \, dx \) &quot;);
-        TEXT(EV3(@text));
+<pre><code>TEXT(EV3(&quot;This is a formulat \( \int_0^5 x^2 \, dx \) &quot;);
+TEXT(EV3(@text));
 
-        TEXT(EV3(&lt;&lt;&#39;END_TEXT&#39;));
-            text stuff...
-        END_TEXT</code></pre>
+TEXT(EV3(&lt;&lt;&#39;END_TEXT&#39;));
+    text stuff...
+END_TEXT</code></pre>
 
 <p>The BEGIN_TEXT/END_TEXT construction is translated into the construction above by PGtranslator.pm. END_TEXT must appear on a line by itself and be left justified. (The &lt;&lt; construction is known as a &quot;here document&quot; in UNIX and in PERL.)</p>
 
@@ -315,13 +343,13 @@
 
 <h3 id="refreshEquations">refreshEquations</h3>
 
-<pre><code>    refreshEquations(1);</code></pre>
+<pre><code>refreshEquations(1);</code></pre>
 
 <p>Prevents equations generated in &quot;image mode&quot; from being cached. This can be useful for debugging. It has no effect in the other modes.</p>
 
 <h3 id="addToTeXPreamble">addToTeXPreamble</h3>
 
-<pre><code>    addToTeXPreamble(&quot;\newcommand{\myVec}[1]{\vec{#1}} &quot;);</code></pre>
+<pre><code>addToTeXPreamble(&quot;\newcommand{\myVec}[1]{\vec{#1}} &quot;);</code></pre>
 
 <p>Defines <code>\myVec </code> for all the equations in the file. You can change the vector notation for an entire PG question by changing just this line.</p>
 
@@ -331,7 +359,7 @@
 
 <p>Adding this command</p>
 
-<pre><code>    \newcommand{\myVec}[1]{\vec{#1}}</code></pre>
+<pre><code>\newcommand{\myVec}[1]{\vec{#1}}</code></pre>
 
 <p>to TeX(hardcopy) portion of the setHeaderCombinedFile.pg ( or to the setHeaderHardcopyFile.pg for each homework set will take care of the TeX hardcopy version</p>
 
@@ -341,27 +369,27 @@
 
 <h3 id="FEQ">FEQ</h3>
 
-<pre><code>    FEQ($string);   # processes and outputs the string</code></pre>
+<pre><code>FEQ($string);   # processes and outputs the string</code></pre>
 
 <p>The mathematical formulas are run through the macro <code>FEQ</code> (Format EQuations) which performs several substitutions (see below). In <code>HTML_tth</code> mode the resulting code is processed by tth to obtain an HTML version of the formula. (In the future processing by WebEQ may be added here as another option.) The Latex2HTML mode does nothing at this stage; it creates the entire problem before running it through TeX and creating the GIF images of the equations.</p>
 
 <p>The resulting string is output (and usually fed into TEXT to be printed in the problem).</p>
 
-<pre><code>    Usage:
+<pre><code>Usage:
 
-        $string2 = FEQ($string1);</code></pre>
+    $string2 = FEQ($string1);</code></pre>
 
 <p>This is a filter which is used to format equations by <code>EV2</code> and <code>EV3</code>, but can also be used on its own. It is best understood with an example.</p>
 
-<pre><code>        $string1 = &quot;${a}x^2 + ${b}x + {$c:%.1f}&quot;; $a = 3;, $b = -2; $c = -7.345;</code></pre>
+<pre><code>$string1 = &quot;${a}x^2 + ${b}x + {$c:%.1f}&quot;; $a = 3;, $b = -2; $c = -7.345;</code></pre>
 
 <p>when interpolated becomes:</p>
 
-<pre><code>        $string1 = &#39;3x^2 + -2x + {-7.345:%0.1f}</code></pre>
+<pre><code>$string1 = &#39;3x^2 + -2x + {-7.345:%0.1f}</code></pre>
 
 <p>FEQ first changes the number of decimal places displayed, so that the last term becomes -7.3 Then it removes the extraneous plus and minus signs, so that the final result is what you want:</p>
 
-<pre><code>        $string2 = &#39;3x^2 - 2x -7.3&#39;;</code></pre>
+<pre><code>$string2 = &#39;3x^2 - 2x -7.3&#39;;</code></pre>
 
 <p>(The %0.1f construction is the same formatting convention used by Perl and nearly identical to the one used by the C printf statement. Some common usage: %0.3f 3 decimal places, fixed notation; %0.3e 3 significant figures exponential notation; %0.3g uses either fixed or exponential notation depending on the size of the number.)</p>
 
@@ -373,11 +401,11 @@
 
 <h3 id="EV2">EV2</h3>
 
-<pre><code>        TEXT(EV2(@text));
+<pre><code>TEXT(EV2(@text));
 
-        TEXT(EV2(&lt;&lt;END_OF_TEXT));
-            text stuff...
-        END_OF_TEXT</code></pre>
+TEXT(EV2(&lt;&lt;END_OF_TEXT));
+    text stuff...
+END_OF_TEXT</code></pre>
 
 <p>This is a precursor to EV3. In this case the constants are interpolated first, before the evaluation of the \{ ...code...\} construct. This can lead to unexpected results. For example <code>\{ join(&quot; &quot;, @text) \}</code> with <code>@text = (&quot;Hello&quot;, &quot;World&quot;);</code> becomes, after interpolation, <code>\{ join(&quot; &quot;, Hello World) \}</code> which then causes an error when evaluated because Hello is a bare word. <code>EV2</code> can still be useful if you allow for this, and in particular it works on double quoted strings, which lead to unexpected results with <code>EV3</code>. Using single quoted strings with <code>EV2</code> may lead to unexpected results.</p>
 
@@ -385,105 +413,105 @@
 
 <h3 id="EV3P">EV3P</h3>
 
-<pre><code>        ######################################################################
-        #
-        #  New version of EV3 that allows `...` and ``...`` to insert TeX produced
-        #  by the new Parser (in math and display modes).
-        #
-        #  Format:  EV3P(string, ...);
-        #           EV3P({options}, string, ...);
-        #
-        #           `x^2/5` will become \(\frac{x^2}{5}\) and then rendered for hardcopy or screen output
-        #
-        #  where options can include:
-        #
-        #    processCommands =&gt; 0 or 1     Indicates if the student&#39;s answer will
-        #                                  be allowed to process \{...\}.
-        #                                    Default: 1
-        #
-        #    processVariables =&gt; 0 1       Indicates whether variable substitution
-        #                                  should be performed on the student&#39;s
-        #                                  answer.
-        #                                    Default: 1
-        #
-        #    processMath =&gt; 0 or 1         Indicates whether \(...\), \[...\],
-        #                                  `...` and ``...`` will be processed
-        #                                  in the student&#39;s answer.
-        #                                    Default: 1
-        #
-        #    processParser =&gt; 0 or 1       Indicates if `...` and ``...`` should
-        #                                  be processed when math is being
-        #                                  processed.
-        #                                    Default: 1
-        #
-        #    fixDollars =&gt; 0 or 1          Specifies whether dollar signs not followed
-        #                                  by a letter should be replaced by ${DOLLAR}
-        #                                  prior to variable substitution (to prevent
-        #                                  accidental substitution of strange Perl
-        #                                  values).
-        #                                    Default: 1
-        #</code></pre>
+<pre><code>######################################################################
+#
+#  New version of EV3 that allows `...` and ``...`` to insert TeX produced
+#  by the new Parser (in math and display modes).
+#
+#  Format:  EV3P(string, ...);
+#           EV3P({options}, string, ...);
+#
+#           `x^2/5` will become \(\frac{x^2}{5}\) and then rendered for hardcopy or screen output
+#
+#  where options can include:
+#
+#    processCommands =&gt; 0 or 1     Indicates if the student&#39;s answer will
+#                                  be allowed to process \{...\}.
+#                                    Default: 1
+#
+#    processVariables =&gt; 0 1       Indicates whether variable substitution
+#                                  should be performed on the student&#39;s
+#                                  answer.
+#                                    Default: 1
+#
+#    processMath =&gt; 0 or 1         Indicates whether \(...\), \[...\],
+#                                  `...` and ``...`` will be processed
+#                                  in the student&#39;s answer.
+#                                    Default: 1
+#
+#    processParser =&gt; 0 or 1       Indicates if `...` and ``...`` should
+#                                  be processed when math is being
+#                                  processed.
+#                                    Default: 1
+#
+#    fixDollars =&gt; 0 or 1          Specifies whether dollar signs not followed
+#                                  by a letter should be replaced by ${DOLLAR}
+#                                  prior to variable substitution (to prevent
+#                                  accidental substitution of strange Perl
+#                                  values).
+#                                    Default: 1
+#</code></pre>
 
 <h2 id="Formatting-macros">Formatting macros</h2>
 
-<pre><code>    beginproblem()  # Adds a custom TeX preamble.  This is deprecated and should not be used in newly written problems.
-    OL(@array)      # formats the array as an Ordered List ( &lt;OL&gt; &lt;/OL&gt; ) enumerated by letters.
-                    # See BeginList()  and EndList in unionLists.pl for a more powerful version
-                    # of this macro.
-    knowlLink($display_text, url =&gt; $url, value =&gt;&#39;&#39;, type =&gt;&#39;&#39; )
-                    # Places a reference to a knowl for the URL with the specified text in the problem.
-                    # A common usage is \{ &#39;for help&#39;, url =&gt;knowlLink(alias(&#39;prob1_help.html&#39;)) \} )
-                    # where alias finds the full address of the prob1_help.html file in the same directory
-                    # as the problem file
-    knowlLink($display_text,  url =&gt; &#39;&#39;, type =&gt;&#39;&#39;, value = &lt;&lt;EOF );  # this starts a here document that ends at EOF (left justified)
-                    help text goes here .....
-    EOF
-                    # This version of the knowl reference facilitates immediate reference to a HERE document
-                    # The function should be called either with value specified (immediate reference) or
-                    # with url specified in which case the revealed text is taken from the URL $url.
-                    # The $display_text is always visible and is clicked to see the contents of the knowl.
-    htmlLink($url, $text)
-                    # Places a reference to the URL with the specified text in the problem.
-                    # A common usage is \{ htmlLink(alias(&#39;prob1_help.html&#39;) \}, &#39;for help&#39;)
-                    # where alias finds the full address of the prob1_help.html file in the same directory
-                    # as the problem file
-    iframe($url, height=&gt;&#39;&#39;, width=&gt;&#39;&#39;, id=&gt;&#39;&#39;, name=&gt;&#39;&#39; )
-                    # insert the web page referenced by $url in a space defined by height and width
-                    # if the webpage contains a form then this must be inserted between
-                    # BEGIN_POST_HEADER_TEXT/END_POST_HEADER_TEXT  to avoid having one
-                    # form(from the webpage) inside another (the defining form for the problem
+<pre><code>beginproblem()  # Adds a custom TeX preamble.  This is deprecated and should not be used in newly written problems.
+OL(@array)      # formats the array as an Ordered List ( &lt;OL&gt; &lt;/OL&gt; ) enumerated by letters.
+                # See BeginList()  and EndList in unionLists.pl for a more powerful version
+                # of this macro.
+knowlLink($display_text, url =&gt; $url, value =&gt;&#39;&#39;, type =&gt;&#39;&#39; )
+                # Places a reference to a knowl for the URL with the specified text in the problem.
+                # A common usage is \{ &#39;for help&#39;, url =&gt;knowlLink(alias(&#39;prob1_help.html&#39;)) \} )
+                # where alias finds the full address of the prob1_help.html file in the same directory
+                # as the problem file
+knowlLink($display_text,  url =&gt; &#39;&#39;, type =&gt;&#39;&#39;, value = &lt;&lt;EOF );  # this starts a here document that ends at EOF (left justified)
+                help text goes here .....
+EOF
+                # This version of the knowl reference facilitates immediate reference to a HERE document
+                # The function should be called either with value specified (immediate reference) or
+                # with url specified in which case the revealed text is taken from the URL $url.
+                # The $display_text is always visible and is clicked to see the contents of the knowl.
+htmlLink($url, $text)
+                # Places a reference to the URL with the specified text in the problem.
+                # A common usage is \{ htmlLink(alias(&#39;prob1_help.html&#39;) \}, &#39;for help&#39;)
+                # where alias finds the full address of the prob1_help.html file in the same directory
+                # as the problem file
+iframe($url, height=&gt;&#39;&#39;, width=&gt;&#39;&#39;, id=&gt;&#39;&#39;, name=&gt;&#39;&#39; )
+                # insert the web page referenced by $url in a space defined by height and width
+                # if the webpage contains a form then this must be inserted between
+                # BEGIN_POST_HEADER_TEXT/END_POST_HEADER_TEXT  to avoid having one
+                # form(from the webpage) inside another (the defining form for the problem
 A wide variety of google widgets, youtube videos, and other online resources can be imbedded using this macro. In HTML mode it creates an iframe, in TeX mode it prints the url.
 
-    helpLink($type)     allows site specific help. specified in global.conf or course.conf
-                   The parameter localHelpURL  must be defined in the environment
-                   and is set by default to webwork2/htdocs/helpFiles
-                   Standard helpFile types
-                        &#39;angle&#39;
-                        &#39;decimal&#39;
-                        &#39;equation&#39;
-                        &#39;exponent&#39;
-                        &#39;formula&#39;
-                        &#39;fraction&#39;
-                        &#39;inequalit&#39;
-                        &#39;limit&#39;
-                        &#39;log&#39;
-                        &#39;number&#39;
-                        &#39;point&#39;
-                        &#39;vector&#39;
-                        &#39;interval&#39;
-                        &#39;unit&#39;
-                        &#39;syntax&#39;
+helpLink($type)     allows site specific help. specified in global.conf or course.conf
+               The parameter localHelpURL  must be defined in the environment
+               and is set by default to webwork2/htdocs/helpFiles
+               Standard helpFile types
+                    &#39;angle&#39;
+                    &#39;decimal&#39;
+                    &#39;equation&#39;
+                    &#39;exponent&#39;
+                    &#39;formula&#39;
+                    &#39;fraction&#39;
+                    &#39;inequalit&#39;
+                    &#39;limit&#39;
+                    &#39;log&#39;
+                    &#39;number&#39;
+                    &#39;point&#39;
+                    &#39;vector&#39;
+                    &#39;interval&#39;
+                    &#39;unit&#39;
+                    &#39;syntax&#39;
 
-    low level:
+low level:
 
-    spf($number, $format)   # prints the number with the given format
-    sspf($number, $format)  # prints the number with the given format, always including a sign.
-    nicestring($coefficients, $terms) # print a linear combinations of terms using coefficients
-    nicestring($coefficients) # uses the coefficients to make a polynomial
-            # For example
-            # nicestring([1, -2, 0]) produces &#39;x^2-2x&#39;
-            # nicestring([2, 0, -1], [&#39;&#39;, &#39;t&#39;, &#39;t^2&#39;]) produces &#39;2-t^2&#39;
-    protect_underbar($string) # protects the underbar (class_name) in strings which may have to pass through TeX.</code></pre>
+spf($number, $format)   # prints the number with the given format
+sspf($number, $format)  # prints the number with the given format, always including a sign.
+nicestring($coefficients, $terms) # print a linear combinations of terms using coefficients
+nicestring($coefficients) # uses the coefficients to make a polynomial
+        # For example
+        # nicestring([1, -2, 0]) produces &#39;x^2-2x&#39;
+        # nicestring([2, 0, -1], [&#39;&#39;, &#39;t&#39;, &#39;t^2&#39;]) produces &#39;2-t^2&#39;
+protect_underbar($string) # protects the underbar (class_name) in strings which may have to pass through TeX.</code></pre>
 
 <h2 id="helpLink-type-display_text-helpurl">helpLink($type, $display_text, $helpurl)</h2>
 
@@ -493,17 +521,17 @@ A wide variety of google widgets, youtube videos, and other online resources can
 
 <p>Usage:</p>
 
-<pre><code>     DOCUMENT();
-     loadMacros(&quot;PGstandard.pl&quot;);
-     BEGIN_TEXT
-     \{ ans_rule(20) \} \{ helpLink(&quot;formulas&quot;) \}
-     $PAR
-     \{ ans_rule(20) \} \{ helpLink(&quot;equations&quot;, &quot;help entering equations&quot;) \}
-     $PAR
-     \{ ans_rule(20) \}
-     \{ helpLink(&quot;my custom help&quot;, undef, &quot;custom_help.html&quot;) \}
-     END_TEXT
-     ENDDOCUMENT();</code></pre>
+<pre><code>DOCUMENT();
+loadMacros(&quot;PGstandard.pl&quot;);
+BEGIN_TEXT
+\{ ans_rule(20) \} \{ helpLink(&quot;formulas&quot;) \}
+$PAR
+\{ ans_rule(20) \} \{ helpLink(&quot;equations&quot;, &quot;help entering equations&quot;) \}
+$PAR
+\{ ans_rule(20) \}
+\{ helpLink(&quot;my custom help&quot;, undef, &quot;custom_help.html&quot;) \}
+END_TEXT
+ENDDOCUMENT();</code></pre>
 
 <p>The first example uses the default link text and displays the help link next to the answer blank which is recommended.</p>
 
@@ -521,79 +549,72 @@ A wide variety of google widgets, youtube videos, and other online resources can
 
 <p>If <code>my $a;</code> is used in a problem, before the sort routine is defined in a macro, then things get badly confused. To correct this the macro PGsort is defined below. It is evaluated before the problem template is read. In PGbasicmacros.pl, the two subroutines</p>
 
-<pre><code>    PGsort sub { $_[0] &lt; $_[1] }, @list;
-    PGsort sub { $_[0] lt $_[1] }, @list;</code></pre>
+<pre><code>PGsort sub { $_[0] &lt; $_[1] }, @list;
+PGsort sub { $_[0] lt $_[1] }, @list;</code></pre>
 
 <p>(called num_sort and lex_sort) provide slightly slower, but safer, routines for the PG language. (The subroutines for ordering are <b>required</b>. Note the commas!)</p>
 
 <h2 id="Sorting-and-other-list-macros">Sorting and other list macros</h2>
 
-<pre><code>    Usage:
-    lex_sort(@list);   # outputs list in lexigraphic (alphabetical) order
-    num_sort(@list);   # outputs list in numerical order
-    uniq( @list);      # outputs a list with no duplicates.  Order is unspecified.
+<pre><code>Usage:
+lex_sort(@list);   # outputs list in lexigraphic (alphabetical) order
+num_sort(@list);   # outputs list in numerical order
+uniq( @list);      # outputs a list with no duplicates.  Order is unspecified.
 
-    PGsort( \&amp;sort_subroutine, @list);
-    # &amp;sort_subroutine defines order. It&#39;s output must be 1 or 0 (true or false)</code></pre>
+PGsort( \&amp;sort_subroutine, @list);
+# &amp;sort_subroutine defines order. It&#39;s output must be 1 or 0 (true or false)</code></pre>
 
 <h2 id="Macros-for-handling-tables">Macros for handling tables</h2>
 
-<pre><code>    Usage:
-    begintable( number_of_columns_in_table)
-    row(@dataelements)
-    endtable()</code></pre>
+<pre><code>Usage:
+begintable( number_of_columns_in_table)
+row(@dataelements)
+endtable()</code></pre>
 
 <p>Example of useage:</p>
 
-<pre><code>    BEGIN_TEXT
-        This problem tests calculating new functions from old ones:$BR
-        From the table below calculate the quantities asked for:$BR
-        \{begintable(scalar(@firstrow)+1)\}
-        \{row(&quot; \(x\) &quot;, @firstrow)\}
-        \{row(&quot; \(f(x)\) &quot;, @secondrow)\}
-        \{row(&quot; \(g(x)\) &quot;, @thirdrow)\}
-        \{row(&quot; \(f&#39;(x)\) &quot;, @fourthrow)\}
-        \{row(&quot; \(g&#39;(x)\) &quot;, @fifthrow)\}
-        \{endtable()\}
+<pre><code>BEGIN_TEXT
+    This problem tests calculating new functions from old ones:$BR
+    From the table below calculate the quantities asked for:$BR
+    \{begintable(scalar(@firstrow)+1)\}
+    \{row(&quot; \(x\) &quot;, @firstrow)\}
+    \{row(&quot; \(f(x)\) &quot;, @secondrow)\}
+    \{row(&quot; \(g(x)\) &quot;, @thirdrow)\}
+    \{row(&quot; \(f&#39;(x)\) &quot;, @fourthrow)\}
+    \{row(&quot; \(g&#39;(x)\) &quot;, @fifthrow)\}
+    \{endtable()\}
 
-     (The arrays contain numbers which are placed in the table.)
+ (The arrays contain numbers which are placed in the table.)
 
-    END_TEXT</code></pre>
+END_TEXT</code></pre>
 
 <h2 id="Macros-for-displaying-images">Macros for displaying images</h2>
 
 <p>Usage:</p>
 
-<pre><code>    image($image, width =&gt; 100, height =&gt; 100, tex_size =&gt; 800, alt =&gt; &#39;alt text&#39;, extra_html_tags =&gt; &#39;style=&quot;border:solid black 1pt&quot;&#39;);</code></pre>
+<pre><code>image($image, width =&gt; 200, height =&gt; 200, tex_size =&gt; 800, alt =&gt; &#39;alt text&#39;, extra_html_tags =&gt; &#39;style=&quot;border:solid black 1pt&quot;&#39;);</code></pre>
 
-<p>where <code>$image</code> can be a local file path, URL, WWPlot object, PGlateximage object, or PGtikz object, <code>width</code> and <code>height</code> are pixel counts for HTML display, while <code>tex_size</code> is per 1000 applied to linewidth (for example 800 leads to 0.8\linewidth)</p>
+<p>where <code>$image</code> can be a local file path, URL, WWPlot object, PGlateximage object, PGtikz object, or parser::GraphTool object.</p>
 
-<pre><code>    image([$image1,$image2], width =&gt; 100, height =&gt; 100, tex_size =&gt; 800, alt =&gt; [&#39;alt text 1&#39;,&#39;alt text 2&#39;], extra_html_tags =&gt; &#39;style=&quot;border:solid black 1pt&quot;&#39;);
-    image([$image1,$image2], width =&gt; 100, height =&gt; 100, tex_size =&gt; 800, alt =&gt; &#39;common alt text&#39;, extra_html_tags =&gt; &#39;style=&quot;border:solid black 1pt&quot;&#39;);</code></pre>
+<p><code>width</code> and <code>height</code> are positive integer pixel counts for HTML display. If both are missing, <code>width</code> will default to 200 and <code>height</code> will remain undeclared, letting the browser display the image with its natural aspect ratio. Except with a parser::GraphTool object, if both are missing then nothing will be passed along to the GraphTool method for display, and that macro&#39;s defaults will be used.</p>
+
+<p><code>tex_size</code> is also a positive integer, per 1000 applied to the line width in TeX. For example 800 leads to 0.8\linewidth. If over 1000, then 1000 will be used. If missing, this defaults to <code>int(width/0.6)</code> so the image is proportional to its HTML version with a 600 pixel wide reading area. If <code>width</code> is missing and <code>height</code> is declared, we presume this is a wide image and then <code>tex_size</code> defaults to 800.</p>
+
+<pre><code>image([$image1,$image2], width =&gt; 200, height =&gt; 200, tex_size =&gt; 800, alt =&gt; [&#39;alt text 1&#39;,&#39;alt text 2&#39;], extra_html_tags =&gt; &#39;style=&quot;border:solid black 1pt&quot;&#39;);
+image([$image1,$image2], width =&gt; 200, height =&gt; 200, tex_size =&gt; 800, alt =&gt; &#39;common alt text&#39;, extra_html_tags =&gt; &#39;style=&quot;border:solid black 1pt&quot;&#39;);</code></pre>
 
 <p>this produces an array in array context and joins the elements with <code>&#39; &#39;</code> in scalar context</p>
 
 <h2 id="Tag-helper-method">Tag helper method:</h2>
 
-<pre><code>        tag(&#39;input&#39;, name =&gt; &#39;AnSwEr0001&#39;, id =&gt; &#39;answer_id&#39;)
-        tag(&#39;div&#39;, class =&gt; &#39;style-class&#39;, &#39;This is my content&#39;)</code></pre>
+<pre><code>tag(&#39;input&#39;, name =&gt; &#39;AnSwEr0001&#39;, id =&gt; &#39;answer_id&#39;)
+tag(&#39;div&#39;, class =&gt; &#39;style-class&#39;, &#39;This is my content&#39;)</code></pre>
 
 <p>This produces an html tag with attributes. This is designed to be similar to the Mojolicious::Plugin::TagHelpers tag method (although much simpler and not nearly as versatile). The first argument is the tag name and is required. This is followed by attribute <code>name =&gt; value</code> pairs. Note that all underscores in attribute names are converted into hyphens. The final argument is the content of the tag. If not given the tag will have no content. This is ignored for a self closing tag if given.</p>
 
 <p>Currently this is only designed to be used for HTML output, but perhaps could be extended for XML (PTX) output.</p>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

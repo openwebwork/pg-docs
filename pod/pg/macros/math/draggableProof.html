@@ -1,25 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>math/draggableProof.pl</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>math/draggableProof.pl</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>math/draggableProof.pl</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">math/draggableProof.pl</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#TERMINOLOGY">TERMINOLOGY</a></li><li class="nav-item"><a class="nav-link p-0" href="#USAGE">USAGE</a></li><li class="nav-item"><a class="nav-link p-0" href="#EXAMPLE">EXAMPLE</a></li><li class="nav-item"><a class="nav-link p-0" href="#CUSTOM-CHECKERS">CUSTOM CHECKERS</a></li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
 
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-  <li><a href="#TERMINOLOGY">TERMINOLOGY</a></li>
-  <li><a href="#USAGE">USAGE</a></li>
-  <li><a href="#EXAMPLE">EXAMPLE</a></li>
-  <li><a href="#CUSTOM-CHECKERS">CUSTOM CHECKERS</a></li>
-</ul>
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
@@ -39,33 +64,33 @@
 
 <p>To initialize a <code>DraggableProof</code> bucket pool in a .pg problem, insert the line:</p>
 
-<pre><code>    $draggable = DraggableProof(
-        $statements,
-        $extra_statements,
-        option1 =&gt; $value1,
-        option2 =&gt; $value2,
-        ...
-    );</code></pre>
+<pre><code>$draggable = DraggableProof(
+    $statements,
+    $extra_statements,
+    option1 =&gt; $value1,
+    option2 =&gt; $value2,
+    ...
+);</code></pre>
 
 <p>Then insert the draggable proof bucket pool into the problem text with</p>
 
-<pre><code>    BEGIN_TEXT
-    \{$draggable-&gt;ans_rule\}
-    END_TEXT</code></pre>
+<pre><code>BEGIN_TEXT
+\{$draggable-&gt;ans_rule\}
+END_TEXT</code></pre>
 
 <p>for basic PG, or</p>
 
-<pre><code>    BEGIN_PGML
-    [_]{$draggable}
-    END_PGML</code></pre>
+<pre><code>BEGIN_PGML
+[_]{$draggable}
+END_PGML</code></pre>
 
 <p>for PGLM. Note the following also works, but is deprecated. However, if you want your problem to be compatible with previous versions of PG this must be used. Call</p>
 
-<pre><code>    \{$draggable-&gt;Print\} (or [@ $draggable-&gt;Print @]* )</code></pre>
+<pre><code>\{$draggable-&gt;Print\} (or [@ $draggable-&gt;Print @]* )</code></pre>
 
 <p>within the BEGIN_TEXT / END_TEXT (or BEGIN_PGML / END_PGML ) environment. Then call</p>
 
-<pre><code>    ANS($draggable-&gt;cmp)</code></pre>
+<pre><code>ANS($draggable-&gt;cmp)</code></pre>
 
 <p>after END_TEXT (or END_PGML).</p>
 
@@ -77,102 +102,102 @@
 
 <p>Available Options:</p>
 
-<pre><code>    NumBuckets         =&gt; 1 or 2
-    SourceLabel        =&gt; &lt;string&gt;
-    TargetLabel        =&gt; &lt;string&gt;
-    Levenshtein        =&gt; 0 or 1
-    DamerauLevenshtein =&gt; 0 or 1
-    InferenceMatrix    =&gt; &lt;array reference&gt;
-    IrrelevancePenalty =&gt; &lt;float&gt;
-    ResetButtonText    =&gt; &lt;string&gt;</code></pre>
+<pre><code>NumBuckets         =&gt; 1 or 2
+SourceLabel        =&gt; &lt;string&gt;
+TargetLabel        =&gt; &lt;string&gt;
+Levenshtein        =&gt; 0 or 1
+DamerauLevenshtein =&gt; 0 or 1
+InferenceMatrix    =&gt; &lt;array reference&gt;
+IrrelevancePenalty =&gt; &lt;float&gt;
+ResetButtonText    =&gt; &lt;string&gt;</code></pre>
 
 <p>Their usage is explained in the example below.</p>
 
 <a href="#_podtop_"><h1 id="EXAMPLE">EXAMPLE</h1></a>
 
-<pre><code>    DOCUMENT();
-    loadMacros(
-        &#39;PGstandard.pl&#39;,
-        &#39;PGML.pl&#39;,
-        &#39;MathObjects.pl&#39;,
-        &#39;draggableProof.pl&#39;
-    );
+<pre><code>DOCUMENT();
+loadMacros(
+    &#39;PGstandard.pl&#39;,
+    &#39;PGML.pl&#39;,
+    &#39;MathObjects.pl&#39;,
+    &#39;draggableProof.pl&#39;
+);
 
-    $draggable = DraggableProof(
-        # The proof given in the correct order.
-        [
-            &#39;All men are mortal.&#39;, # index 0
-            &#39;Socrates is a man.&#39;,  # index 1
-            &#39;Socrates is mortal.&#39;  # index 2
-        ],
+$draggable = DraggableProof(
+    # The proof given in the correct order.
+    [
+        &#39;All men are mortal.&#39;, # index 0
+        &#39;Socrates is a man.&#39;,  # index 1
+        &#39;Socrates is mortal.&#39;  # index 2
+    ],
 
-        # Extra statements that are not part of the correct answer.
-        [
-            &#39;Some animals are men.&#39;,
-            &#39;Beauty is immortal.&#39;,
-            &#39;Not all animals are men.&#39;
-        ],
+    # Extra statements that are not part of the correct answer.
+    [
+        &#39;Some animals are men.&#39;,
+        &#39;Beauty is immortal.&#39;,
+        &#39;Not all animals are men.&#39;
+    ],
 
-        # Number of drag and drop buckets.  Must be either 1 or 2.
-        # The default value if not given is 2.
-        NumBuckets =&gt; 2,
+    # Number of drag and drop buckets.  Must be either 1 or 2.
+    # The default value if not given is 2.
+    NumBuckets =&gt; 2,
 
-        # Label of first bucket if NumBuckets = 2.
-        # The default value if not given is &#39;Choose from these sentences:&#39;
-        SourceLabel =&gt; &quot;${BBOLD}Axioms${EBOLD}&quot;,
+    # Label of first bucket if NumBuckets = 2.
+    # The default value if not given is &#39;Choose from these sentences:&#39;
+    SourceLabel =&gt; &quot;${BBOLD}Axioms${EBOLD}&quot;,
 
-        # Label of second bucket if NumBuckets = 2,
-        # or of the only bucket if NumBuckets = 1.
-        # The default value if not given is &#39;Your Proof:&#39;.
-        TargetLabel =&gt; &quot;${BBOLD}Reasoning${EBOLD}&quot;,
+    # Label of second bucket if NumBuckets = 2,
+    # or of the only bucket if NumBuckets = 1.
+    # The default value if not given is &#39;Your Proof:&#39;.
+    TargetLabel =&gt; &quot;${BBOLD}Reasoning${EBOLD}&quot;,
 
-        # If equal to 1, scoring is determined by the Levenshtein edit distance
-        # between student answer and correct answer.
-        # The default value if not given is 0.
-        Levenshtein =&gt; 1,
+    # If equal to 1, scoring is determined by the Levenshtein edit distance
+    # between student answer and correct answer.
+    # The default value if not given is 0.
+    Levenshtein =&gt; 1,
 
-        # If equal to 1, scoring is determined by the Damerau-Levenshtein
-        # distance between student answer and correct answer.  A pair of
-        # transposed adjacent statements is counted as two mistakes under
-        # Levenshtein scoring, but as one mistake under Damerau-Levenshtein
-        # scoring.
-        # The default value if not given is 0.
-        DamerauLevenshtein =&gt; 1,
+    # If equal to 1, scoring is determined by the Damerau-Levenshtein
+    # distance between student answer and correct answer.  A pair of
+    # transposed adjacent statements is counted as two mistakes under
+    # Levenshtein scoring, but as one mistake under Damerau-Levenshtein
+    # scoring.
+    # The default value if not given is 0.
+    DamerauLevenshtein =&gt; 1,
 
-        # (i, j)-entry is nonzero &lt;=&gt; statement i implies statement j.  The
-        # score of each corresponding inference is weighted according to the
-        # value of the matrix entry.
-        # The default value if not given is [].
-        InferenceMatrix =&gt; [
-            [0, 0, 1],
-            [0, 0, 1],
-            [0, 0, 0]
-        ],
+    # (i, j)-entry is nonzero &lt;=&gt; statement i implies statement j.  The
+    # score of each corresponding inference is weighted according to the
+    # value of the matrix entry.
+    # The default value if not given is [].
+    InferenceMatrix =&gt; [
+        [0, 0, 1],
+        [0, 0, 1],
+        [0, 0, 0]
+    ],
 
-        # This option is processed only if the InferenceMatrix option is set.
-        # Penalty for each extraneous statement in the student answer is
-        # &lt;IrrelevancePenalty&gt; divided by the total number of inference points
-        # (i.e. sum of all entries in the InferenceMatrix).
-        # The default value if not given is 1.
-        IrrelevancePenalty =&gt; 1
+    # This option is processed only if the InferenceMatrix option is set.
+    # Penalty for each extraneous statement in the student answer is
+    # &lt;IrrelevancePenalty&gt; divided by the total number of inference points
+    # (i.e. sum of all entries in the InferenceMatrix).
+    # The default value if not given is 1.
+    IrrelevancePenalty =&gt; 1
 
-        # This is the text label for the button shown that resets the drag and
-        # drop element to its default state.  The default value if not given is
-        # &quot;Reset&quot;.
-        ResetButtonText =&gt; &#39;zur&uuml;cksetzen&#39;
+    # This is the text label for the button shown that resets the drag and
+    # drop element to its default state.  The default value if not given is
+    # &quot;Reset&quot;.
+    ResetButtonText =&gt; &#39;zurücksetzen&#39;
 
-        # These are options that will be passed to the $draggable-&gt;cmp method.
-        cmpOptions =&gt; { checker =&gt; sub { ... } }
-    );
+    # These are options that will be passed to the $draggable-&gt;cmp method.
+    cmpOptions =&gt; { checker =&gt; sub { ... } }
+);
 
-    BEGIN_PGML
-    Show that Socrates is mortal by dragging the relevant *Axioms* into the
-    *Reasoning* box in an appropriate order.
+BEGIN_PGML
+Show that Socrates is mortal by dragging the relevant *Axioms* into the
+*Reasoning* box in an appropriate order.
 
-    [_]{$draggable}
-    END_PGML
+[_]{$draggable}
+END_PGML
 
-    ENDDOCUMENT();</code></pre>
+ENDDOCUMENT();</code></pre>
 
 <a href="#_podtop_"><h1 id="CUSTOM-CHECKERS">CUSTOM CHECKERS</h1></a>
 
@@ -182,18 +207,7 @@
 
 <p>For a <code>list_checker</code> the correct and student answers will be perl arrays containing MathObject Lists for all buckets. So if <code>NumBuckets</code> is 1, the arrays will only contain one list corresponding to the only bucket, and if <code>NumBuckets</code> is 2, the arrays will contain two lists corresponding to the two buckets. Usually the first (source) list is ignored for grading if <code>NumBuckets</code> is 2. So if you want to determine the score using both buckets this is the only option. Note that the checker should return a number between 0 and 1 inclusive regardless of the number of buckets.</p>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

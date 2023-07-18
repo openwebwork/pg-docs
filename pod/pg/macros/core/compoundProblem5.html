@@ -1,21 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>core/compoundProblem5.pl</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>core/compoundProblem5.pl</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>core/compoundProblem5.pl</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">core/compoundProblem5.pl</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
 
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-</ul>
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
@@ -27,48 +56,48 @@
 
 <p>Here is a sample:</p>
 
-<pre><code>        loadMacros(&quot;compoundProblem5.pl&quot;);
+<pre><code>loadMacros(&quot;compoundProblem5.pl&quot;);
 
-        $scaffold = Scaffold();   # create the scaffold
-        Context(&quot;Numeric&quot;);
+$scaffold = Scaffold();   # create the scaffold
+Context(&quot;Numeric&quot;);
 
-        ##########################################
-        #  Section 1
-        ##########################################
+##########################################
+#  Section 1
+##########################################
 
-        $f = Compute(&quot;x^2-1&quot;);
+$f = Compute(&quot;x^2-1&quot;);
 
-        Context()-&gt;texStrings;
-        DISPLAY_SECTION(&quot;Section 1: The equation&quot;,&lt;&lt;&#39;END_SECTION&#39;);
-          Enter the function \($f\): \{ SECTION_ANS($f-&gt;cmp); $f-&gt;ans_rule(10) \}
-        END_SECTION
-        Context()-&gt;normalStrings;
+Context()-&gt;texStrings;
+DISPLAY_SECTION(&quot;Section 1: The equation&quot;,&lt;&lt;&#39;END_SECTION&#39;);
+  Enter the function \($f\): \{ SECTION_ANS($f-&gt;cmp); $f-&gt;ans_rule(10) \}
+END_SECTION
+Context()-&gt;normalStrings;
 
-        ##########################################
-        #  Section 2
-        ##########################################
+##########################################
+#  Section 2
+##########################################
 
-        $x = Compute(&quot;sqrt(3)/2&quot;);
+$x = Compute(&quot;sqrt(3)/2&quot;);
 
-        DISPLAY_SECTION(&quot;Section 2: The number&quot;,&lt;&lt;&#39;END_SECTION&#39;);
-          What is \(\sin(\pi/3)\)? \{ SECTION_ANS($x-&gt;cmp); $x-&gt;ans_rule \}
-        END_SECTION
+DISPLAY_SECTION(&quot;Section 2: The number&quot;,&lt;&lt;&#39;END_SECTION&#39;);
+  What is \(\sin(\pi/3)\)? \{ SECTION_ANS($x-&gt;cmp); $x-&gt;ans_rule \}
+END_SECTION
 
-        ##########################################
+##########################################
 
-        PROCESS_SCAFFOLD();</code></pre>
+PROCESS_SCAFFOLD();</code></pre>
 
 <p>The <code>DISPLAY_SECTION()</code> and <code>DISPLAY_PGML_SECTION()</code> macros can accept optional arguments by replacing the title with an array reference that consists of the title followed by the options. For example, to force a section to always be displayed, you could use</p>
 
-<pre><code>    DISPLAY_SECTION([&quot;Part 2: Always Open&quot;, canshow =&gt; &quot;1&quot;],&lt;&lt;&#39;END_SECTION&#39;);
-    ...
-    END_SECTION</code></pre>
+<pre><code>DISPLAY_SECTION([&quot;Part 2: Always Open&quot;, canshow =&gt; &quot;1&quot;],&lt;&lt;&#39;END_SECTION&#39;);
+...
+END_SECTION</code></pre>
 
 <p>It is also possible to pass a HASH reference as the first argument:</p>
 
-<pre><code>    DISPLAY_SECTION({name =&gt; &quot;Part 2: Always Open&quot;, canshow =&gt; &quot;1&quot;},&lt;&lt;&#39;END_SECTION&#39;);
-    ...
-    END_SECTION</code></pre>
+<pre><code>DISPLAY_SECTION({name =&gt; &quot;Part 2: Always Open&quot;, canshow =&gt; &quot;1&quot;},&lt;&lt;&#39;END_SECTION&#39;);
+...
+END_SECTION</code></pre>
 
 <p>Here you must specify the <code>name</code> option in order to give the section its title.</p>
 
@@ -112,68 +141,57 @@
 
 <p>Within the text of the section, you can use <code>ANS()</code> as you would normally to obtain answer checkers. E.g.,</p>
 
-<pre><code>    $r = Real(2);
-    DISPLAY_SECTION(&quot;Part 1&quot;,&lt;&lt;&#39;END_SECTION&#39;);
-    \(1 + 1\) = \{ANS($r-&gt;cmp); $r-&gt;ans_rule(5)\}
-    END_SECTION</code></pre>
+<pre><code>$r = Real(2);
+DISPLAY_SECTION(&quot;Part 1&quot;,&lt;&lt;&#39;END_SECTION&#39;);
+\(1 + 1\) = \{ANS($r-&gt;cmp); $r-&gt;ans_rule(5)\}
+END_SECTION</code></pre>
 
 <p>If you want to assign answer checkers after the section is created, you must use <code>SECTION_ANS()</code> or <code>SECTION_NAMED_ANS()</code> to do so. E.g.,</p>
 
-<pre><code>    $r = Real(2);
-    DISPLAY_SECTION(&quot;Part 1&quot;,&lt;&lt;&#39;END_SECTION&#39;);
-    \(1 + 1\) = \{$r-&gt;ans_rule(5)\}
-    END_SECTION
-    SECTION_ANS($r-&gt;cmp);</code></pre>
+<pre><code>$r = Real(2);
+DISPLAY_SECTION(&quot;Part 1&quot;,&lt;&lt;&#39;END_SECTION&#39;);
+\(1 + 1\) = \{$r-&gt;ans_rule(5)\}
+END_SECTION
+SECTION_ANS($r-&gt;cmp);</code></pre>
 
 <p>If you want a solution for a section, use <code>SECTION_SOLUTION()</code> or <code>SECTION_PGML_SOLUTION()</code> to create it. E.g.,</p>
 
-<pre><code>    $r = Real(2);
-    DISPLAY_SECTION(&quot;Part 1&quot;,&lt;&lt;&#39;END_SECTION&#39;);
-    \(1 + 1\) = \{ANS($r-&gt;cmp); $r-&gt;ans_rule(5)\}
-    END_SECTION
+<pre><code>$r = Real(2);
+DISPLAY_SECTION(&quot;Part 1&quot;,&lt;&lt;&#39;END_SECTION&#39;);
+\(1 + 1\) = \{ANS($r-&gt;cmp); $r-&gt;ans_rule(5)\}
+END_SECTION
 
-    SECTION_SOLUTION(&lt;&lt;&#39;END_SOLUTION&#39;);
-    When you add 1 to 1 you get 2.
-    END_SOLUTION</code></pre>
+SECTION_SOLUTION(&lt;&lt;&#39;END_SOLUTION&#39;);
+When you add 1 to 1 you get 2.
+END_SOLUTION</code></pre>
 
 <p>Normally, a solution will be tied to the section that preceeded it, but if you want to put all your solutions at the end, for example, you can pass options the solution macros that tell it the section to attach to:</p>
 
-<pre><code>    $r1 = Real(2);
-    DISPLAY_SECTION(&quot;Part 1&quot;,&lt;&lt;&#39;END_SECTION&#39;);
-    \(1 + 1\) = \{ANS($r1-&gt;cmp); $r1-&gt;ans_rule(5)\}
-    END_SECTION
+<pre><code>$r1 = Real(2);
+DISPLAY_SECTION(&quot;Part 1&quot;,&lt;&lt;&#39;END_SECTION&#39;);
+\(1 + 1\) = \{ANS($r1-&gt;cmp); $r1-&gt;ans_rule(5)\}
+END_SECTION
 
-    $r2 = Real(4);
-    DISPLAY_SECTION(&quot;Part 1&quot;,&lt;&lt;&#39;END_SECTION&#39;);
-    \(2\times 2\) = \{ANS($r2-&gt;cmp); $r2-&gt;ans_rule(5)\}
-    END_SECTION
+$r2 = Real(4);
+DISPLAY_SECTION(&quot;Part 1&quot;,&lt;&lt;&#39;END_SECTION&#39;);
+\(2\times 2\) = \{ANS($r2-&gt;cmp); $r2-&gt;ans_rule(5)\}
+END_SECTION
 
-    SECTION_SOLUTION({section =&gt; 1},&lt;&lt;&#39;END_SOLUTION&#39;)
-    When you add 1 to 1 you get 2.
-    END_SOLUTION
+SECTION_SOLUTION({section =&gt; 1},&lt;&lt;&#39;END_SOLUTION&#39;)
+When you add 1 to 1 you get 2.
+END_SOLUTION
 
-    SECTION_SOLUTION({section =&gt; 2},&lt;&lt;&#39;END_SOLUTION&#39;)
-    When you multiply 2 by 2 you get 4.
-    END_SOLUTION</code></pre>
+SECTION_SOLUTION({section =&gt; 2},&lt;&lt;&#39;END_SOLUTION&#39;)
+When you multiply 2 by 2 you get 4.
+END_SOLUTION</code></pre>
 
 <p>At the bottom of your problem file you should use the command</p>
 
-<pre><code>    PROCESS_SCAFFOLD();</code></pre>
+<pre><code>PROCESS_SCAFFOLD();</code></pre>
 
 <p>so that the contents of the scaffold will be properly displayed.</p>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

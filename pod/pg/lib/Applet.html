@@ -1,37 +1,65 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>Applet</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Applet</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>Applet</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
-
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#SYNPOSIS">SYNPOSIS</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a>
-    <ul>
-      <li><a href="#Default-JavaScript-functions-placed-in-header">Default JavaScript functions placed in header</a></li>
-      <li><a href="#List-of-options-for-the-Applet-class">List of options for the Applet class:</a></li>
-      <li><a href="#List-of-methods-made-available-by-the-Applet-class">List of methods made available by the Applet class:</a></li>
-      <li><a href="#More-details">More details</a>
-        <ul>
-          <li><a href="#Instance-variables-in-the-JavaScript-applet-ww_applet_list-appletName">Instance variables in the JavaScript applet ww_applet_list[appletName]</a></li>
-          <li><a href="#Methods-defined-for-the-JavaScript-applet-ww_applet_list-appletName">Methods defined for the JavaScript applet ww_applet_list[appletName]</a></li>
-          <li><a href="#Requirements-for-applets">Requirements for applets</a></li>
-          <li><a href="#Initialization-sequence">Initialization sequence</a></li>
-          <li><a href="#Submit-sequence">Submit sequence</a></li>
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">Applet</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNPOSIS">SYNPOSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#Default-JavaScript-functions-placed-in-header">Default JavaScript functions placed in header</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#List-of-options-for-the-Applet-class">List of options for the Applet class:</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#List-of-methods-made-available-by-the-Applet-class">List of methods made available by the Applet class:</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#More-details">More details</a>
+        <ul class="nav flex-column w-100">
+          <li class="nav-item"><a class="nav-link p-0" href="#Instance-variables-in-the-JavaScript-applet-ww_applet_list-appletName">Instance variables in the JavaScript applet ww_applet_list[appletName]</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#Methods-defined-for-the-JavaScript-applet-ww_applet_list-appletName">Methods defined for the JavaScript applet ww_applet_list[appletName]</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#Requirements-for-applets">Requirements for applets</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#Initialization-sequence">Initialization sequence</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#Submit-sequence">Submit sequence</a></li>
         </ul>
       </li>
     </ul>
-  </li>
-</ul>
+  </li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
+
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
@@ -39,22 +67,22 @@
 
 <a href="#_podtop_"><h1 id="SYNPOSIS">SYNPOSIS</h1></a>
 
-<pre><code>    ###################################
-    # Create the applet object
-    ###################################
-    $appletName = &quot;PointGraph&quot;;
-    $applet = GeogebraWebApplet(
-        appletName         =&gt; $appletName,
-        ...
-    );
+<pre><code>###################################
+# Create the applet object
+###################################
+$appletName = &quot;PointGraph&quot;;
+$applet = GeogebraWebApplet(
+    appletName         =&gt; $appletName,
+    ...
+);
 
-    ###################################
-    # Insert applet into body
-    ###################################
+###################################
+# Insert applet into body
+###################################
 
-    BEGIN_TEXT
-    \{ $applet-&gt;insertAll(includeAnswerBox =&gt; 1, reinitialize_button =&gt; 1) \}
-    END_TEXT</code></pre>
+BEGIN_TEXT
+\{ $applet-&gt;insertAll(includeAnswerBox =&gt; 1, reinitialize_button =&gt; 1) \}
+END_TEXT</code></pre>
 
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
@@ -68,113 +96,113 @@
 
 <p>These JavaScript functions are defined for use by any JavaScript placed in the text of a PG question.</p>
 
-<pre><code>    getApplet(appletName)    -- finds the applet path in the DOM
+<pre><code>getApplet(appletName)    -- finds the applet path in the DOM
 
-    getQE(name)              -- gets an HTML element of the question by name or by id.  Be sure
-                                to keep all names and ids unique within a given PG question.
+getQE(name)              -- gets an HTML element of the question by name or by id.  Be sure
+                            to keep all names and ids unique within a given PG question.
 
-    getQuestionElement(name) -- long form of getQE(name)</code></pre>
+getQuestionElement(name) -- long form of getQE(name)</code></pre>
 
 <h2 id="List-of-options-for-the-Applet-class">List of options for the Applet class:</h2>
 
-<pre><code>    These options can be set using the accessor methods defined in the class.
+<pre><code>These options can be set using the accessor methods defined in the class.
 
-    Usage:  $current_value = $applet-&gt;method(new_value or empty)
+Usage:  $current_value = $applet-&gt;method(new_value or empty)
 
-    These can also be set when creating the class.  For example:
-        $applet = GeogebraWebApplet(
-            appletName =&gt; $appletName,
-            width      =&gt; 400,
-            height     =&gt; 250
-        );
+These can also be set when creating the class.  For example:
+    $applet = GeogebraWebApplet(
+        appletName =&gt; $appletName,
+        width      =&gt; 400,
+        height     =&gt; 250
+    );
 
-    The AppletObjects.pl macro file must be used to load the derived packages of the Applet package.
+The AppletObjects.pl macro file must be used to load the derived packages of the Applet package.
 
-    appletName   The name of the applet
+appletName   The name of the applet
 
-    params       A reference to a hash containing name/value pairs to configure the applet.
-                 For example: { name =&gt; &#39;value&#39;, ... }
+params       A reference to a hash containing name/value pairs to configure the applet.
+             For example: { name =&gt; &#39;value&#39;, ... }
 
-    width        (default: 550) Width of the html element that will contain the applet.
-    height       (default: 400) Height of the html element that will contain the applet.
+width        (default: 550) Width of the html element that will contain the applet.
+height       (default: 400) Height of the html element that will contain the applet.
 
-    type         The type of the applet (must be &#39;geogebraweb&#39;)
+type         The type of the applet (must be &#39;geogebraweb&#39;)
 
-    header       Stores the text to be added to the header section of the html page.  Calling
-                 $applet-&gt;header(&#39;reset&#39;) sets the header to &#39;&#39;, and calling
-                 $applet-&gt;header(&#39;text to add&#39;, &#39;more text&#39;, ...) appends the arguments to the
-                 current value of header.
+header       Stores the text to be added to the header section of the html page.  Calling
+             $applet-&gt;header(&#39;reset&#39;) sets the header to &#39;&#39;, and calling
+             $applet-&gt;header(&#39;text to add&#39;, &#39;more text&#39;, ...) appends the arguments to the
+             current value of header.
 
-    objectText   Stores the text which places the applet on the html page.  The accessor function
-                 is named &#39;object&#39;.  Calling $applet-&gt;object(&#39;reset&#39;) sets the objectText to &#39;&#39;,
-                 and calling $applet-&gt;object(&#39;text to add&#39;, &#39;more text&#39;, ...) appends the
-                 arguments to the current value of objectText.
+objectText   Stores the text which places the applet on the html page.  The accessor function
+             is named &#39;object&#39;.  Calling $applet-&gt;object(&#39;reset&#39;) sets the objectText to &#39;&#39;,
+             and calling $applet-&gt;object(&#39;text to add&#39;, &#39;more text&#39;, ...) appends the
+             arguments to the current value of objectText.
 
-    configuration  Configuration contains those customizable attributes of the applet which
-                   don&#39;t change as it is used.  When stored in hidden answer fields it is
-                   usually stored in base64 encoded format.
+configuration  Configuration contains those customizable attributes of the applet which
+               don&#39;t change as it is used.  When stored in hidden answer fields it is
+               usually stored in base64 encoded format.
 
-    initialState   The state consists of those customizable attributes of the applet which
-                   change as the applet is used by the student.  It is stored by the calling
-                   pg question so that when revisiting the question the applet will be
-                   restored to the same state it was left in when the question was last
-                   viewed.
+initialState   The state consists of those customizable attributes of the applet which
+               change as the applet is used by the student.  It is stored by the calling
+               pg question so that when revisiting the question the applet will be
+               restored to the same state it was left in when the question was last
+               viewed.
 
-    getStateAlias  (default: &#39;getXML&#39;) Alias for command called to read the current state of
-                   the applet.  The state is passed in plain text xml format with outer
-                   tags: &lt;xml&gt;...&lt;/xml&gt;
+getStateAlias  (default: &#39;getXML&#39;) Alias for command called to read the current state of
+               the applet.  The state is passed in plain text xml format with outer
+               tags: &lt;xml&gt;...&lt;/xml&gt;
 
-    setStateAlias  (default: &#39;setXML&#39;) Alias for the command called to reset the state of
-                   the applet.  The state is passed in plain text in xml format with outer
-                   tags: &lt;xml&gt;...&lt;/xml&gt;
+setStateAlias  (default: &#39;setXML&#39;) Alias for the command called to reset the state of
+               the applet.  The state is passed in plain text in xml format with outer
+               tags: &lt;xml&gt;...&lt;/xml&gt;
 
-    getConfigAlias (default: &#39;getConfig&#39;) Retrieves the configuration from the applet.
-                   This is used mainly for debugging.  In principal the configuration
-                   remains the same for a given instance of the applet -- i.e. for the
-                   homework question for a single student.  The state however will change
-                   depending on the interactions between the student and the applet.
+getConfigAlias (default: &#39;getConfig&#39;) Retrieves the configuration from the applet.
+               This is used mainly for debugging.  In principal the configuration
+               remains the same for a given instance of the applet -- i.e. for the
+               homework question for a single student.  The state however will change
+               depending on the interactions between the student and the applet.
 
-    setConfigAlias (default: &#39;setConfig&#39;) Names the applet command called with the contents
-                   of $self-&gt;setConfig to configure the applet.  The parameters are passed
-                   to the applet in plain text using &lt;xml&gt;.  The outer tags must be
-                   &lt;xml&gt;...&lt;/xml&gt;.
+setConfigAlias (default: &#39;setConfig&#39;) Names the applet command called with the contents
+               of $self-&gt;setConfig to configure the applet.  The parameters are passed
+               to the applet in plain text using &lt;xml&gt;.  The outer tags must be
+               &lt;xml&gt;...&lt;/xml&gt;.
 
-    initializeActionAlias  (default: &#39;setXML&#39;) The name of the JavaScript subroutine
-                           called to initialize the applet (some overlap with config/ and
-                           setState).
+initializeActionAlias  (default: &#39;setXML&#39;) The name of the JavaScript subroutine
+                       called to initialize the applet (some overlap with config/ and
+                       setState).
 
-    submitActionAlias  (default: &#39;getXML&#39;) Applet subroutine called when the submit button of
-                       the pg question is pressed.
+submitActionAlias  (default: &#39;getXML&#39;) Applet subroutine called when the submit button of
+                   the pg question is pressed.
 
-    submitActionScript (default: &#39;&#39;) Javascript code to be execute when problem answers are
-                       submitted.  For example:
-                           qq{ getQE(&#39;answerBox&#39;).value = getApplet(&quot;$appletName&quot;).getAnswer() }
+submitActionScript (default: &#39;&#39;) Javascript code to be execute when problem answers are
+                   submitted.  For example:
+                       qq{ getQE(&#39;answerBox&#39;).value = getApplet(&quot;$appletName&quot;).getAnswer() }
 
-    answerBoxAlias    (default: &#39;answerBox&#39;) Name of answer box to return answer to.
+answerBoxAlias    (default: &#39;answerBox&#39;) Name of answer box to return answer to.
 
-    onInit            (default: &#39;&#39;) This can either be the name of a global JavaScript function
-                      that will be called to initialize the applet, or JavaScript code that will
-                      be executed to initialize the applet.  For Geogebra web applets if this is
-                      the name of a global JavaScript function defined in the problem, it should
-                      NOT be named ggbOnInit.  (For WeBWorK versions 2.15 and before the global
-                      JavaScript function had to be named ggbOnInit, and this parameter was
-                      boolean in usage.)
+onInit            (default: &#39;&#39;) This can either be the name of a global JavaScript function
+                  that will be called to initialize the applet, or JavaScript code that will
+                  be executed to initialize the applet.  For Geogebra web applets if this is
+                  the name of a global JavaScript function defined in the problem, it should
+                  NOT be named ggbOnInit.  (For WeBWorK versions 2.15 and before the global
+                  JavaScript function had to be named ggbOnInit, and this parameter was
+                  boolean in usage.)
 
-    debugMode         (default: 0)
-                      Set to 1 to enable javascript console debugging messages.
-                      Set to 2 to enable more verbose javascript console debugging messages.</code></pre>
+debugMode         (default: 0)
+                  Set to 1 to enable javascript console debugging messages.
+                  Set to 2 to enable more verbose javascript console debugging messages.</code></pre>
 
 <h2 id="List-of-methods-made-available-by-the-Applet-class">List of methods made available by the Applet class:</h2>
 
-<pre><code>    insertHeader    Inserts text in header section of HTML page
-    insertObject    Inserts &lt;article&gt;&lt;/article&gt; tag in body of the HTML page
-    insertAll       (defined in AppletObject.pl) Installs applet by inserting both header
-                    text and the object text
+<pre><code>insertHeader    Inserts text in header section of HTML page
+insertObject    Inserts &lt;article&gt;&lt;/article&gt; tag in body of the HTML page
+insertAll       (defined in AppletObject.pl) Installs applet by inserting both header
+                text and the object text
 
-        Usage:    $applet-&gt;insertAll(
-                          includeAnswerBox     =&gt; 0,
-                          reinitialize_button  =&gt; 0
-                  );</code></pre>
+    Usage:    $applet-&gt;insertAll(
+                      includeAnswerBox     =&gt; 0,
+                      reinitialize_button  =&gt; 0
+              );</code></pre>
 
 <h2 id="More-details">More details</h2>
 
@@ -190,66 +218,66 @@
 
 <h3 id="Instance-variables-in-the-JavaScript-applet-ww_applet_list-appletName">Instance variables in the JavaScript applet ww_applet_list[appletName]</h3>
 
-<pre><code>    Most of the instance variables in the perl version of the applet are transferred to the
-    JavaScript applet</code></pre>
+<pre><code>Most of the instance variables in the perl version of the applet are transferred to the
+JavaScript applet</code></pre>
 
 <h3 id="Methods-defined-for-the-JavaScript-applet-ww_applet_list-appletName">Methods defined for the JavaScript applet ww_applet_list[appletName]</h3>
 
 <p>This is not a comprehensive list</p>
 
-<pre><code>    setConfig  -- Transmits the information for configuring the applet.
+<pre><code>setConfig  -- Transmits the information for configuring the applet.
 
-    getConfig  -- Retrieves the configuration information -- this is used mainly for debugging
-                  and may not be defined in most applets.
+getConfig  -- Retrieves the configuration information -- this is used mainly for debugging
+              and may not be defined in most applets.
 
-    setState   -- Sets the current state (1) from the appletName_state HTML element if this
-                  contains an &lt;xml&gt;...&lt;/xml&gt; string.
-               -- If the value contains &lt;xml&gt;restart_applet&lt;/xml&gt; then set the current state to
-                  ww_applet_list[appletName].initialState
-               -- If the value is a blank string set the current state to
-                  ww_applet_list[appletName].initialState
+setState   -- Sets the current state (1) from the appletName_state HTML element if this
+              contains an &lt;xml&gt;...&lt;/xml&gt; string.
+           -- If the value contains &lt;xml&gt;restart_applet&lt;/xml&gt; then set the current state to
+              ww_applet_list[appletName].initialState
+           -- If the value is a blank string set the current state to
+              ww_applet_list[appletName].initialState
 
-    getState   -- Retrieves the current state and stores in the appletName_state HTML element.</code></pre>
+getState   -- Retrieves the current state and stores in the appletName_state HTML element.</code></pre>
 
 <h3 id="Requirements-for-applets">Requirements for applets</h3>
 
 <p>The following methods are desirable in an applet that preserves state in a WW question. None of them are required.</p>
 
-<pre><code>    setState(str)   (default: setXML)
-                    -- Set the current state of the applet from an xml string.
-                    -- Should be able to accept an empty string or a string of the form
-                       &lt;XML&gt;...&lt;/XML&gt; without creating errors.
-                    -- Can be designed to receive other forms of input if it is coordinated with
-                       the WW question.
+<pre><code>setState(str)   (default: setXML)
+                -- Set the current state of the applet from an xml string.
+                -- Should be able to accept an empty string or a string of the form
+                   &lt;XML&gt;...&lt;/XML&gt; without creating errors.
+                -- Can be designed to receive other forms of input if it is coordinated with
+                   the WW question.
 
-    getState()      (default: getXML)
-                    -- Return the current state of the applet in an xml string.
-                    -- An empty string or a string of the form &lt;XML&gt;...&lt;/XML&gt; are the standard
-                       responses.
-                    -- Can be designed to return other strings if it is coordinated with the WW
-                       question.
+getState()      (default: getXML)
+                -- Return the current state of the applet in an xml string.
+                -- An empty string or a string of the form &lt;XML&gt;...&lt;/XML&gt; are the standard
+                   responses.
+                -- Can be designed to return other strings if it is coordinated with the WW
+                   question.
 
-    setConfig(str)  (default: setConfig)
-                    -- If the applet allows configuration this configures the applet from an xml
-                       string.
-                    -- Should be able to accept an empty string or a string of the form
-                       &lt;xml&gt;...&lt;/xml&gt; without creating errors.
-                    -- Can be designed to receive other forms of input if it is coordinated with
-                       the WW question.
+setConfig(str)  (default: setConfig)
+                -- If the applet allows configuration this configures the applet from an xml
+                   string.
+                -- Should be able to accept an empty string or a string of the form
+                   &lt;xml&gt;...&lt;/xml&gt; without creating errors.
+                -- Can be designed to receive other forms of input if it is coordinated with
+                   the WW question.
 
-    getConfig       (default: getConfig)
-                    -- This returns a string defining the configuration of the applet in an xml
-                       string.
-                    -- An empty string or a string of the form &lt;XML&gt;...&lt;/XML&gt; are the standard
-                       responses.
-                    -- Can be designed to return other strings if it is coordinated with the WW
-                       question.
-                    -- This method is used for debugging to ensure that the configuration was
-                       set as expected.
+getConfig       (default: getConfig)
+                -- This returns a string defining the configuration of the applet in an xml
+                   string.
+                -- An empty string or a string of the form &lt;XML&gt;...&lt;/XML&gt; are the standard
+                   responses.
+                -- Can be designed to return other strings if it is coordinated with the WW
+                   question.
+                -- This method is used for debugging to ensure that the configuration was
+                   set as expected.
 
-    getAnswer       (default: getAnswer)
-                    -- Returns a string (usually NOT xml) which is the response that the student
-                    is effectvely submitting to answer the WW question.</code></pre>
+getAnswer       (default: getAnswer)
+                -- Returns a string (usually NOT xml) which is the response that the student
+                is effectvely submitting to answer the WW question.</code></pre>
 
 <h3 id="Initialization-sequence">Initialization sequence</h3>
 
@@ -257,38 +285,27 @@
 
 <p>The applets initialization method is as follows:</p>
 
-<pre><code>    -- Wait until the applet is loaded and the applet has loaded all of its auxiliary files.
-    -- Call the setConfig method in the JavaScript applet
-       (configuration parameters are &quot;permanent&quot; for the life of the applet).
-    -- Call the setInitialization method in the JavaScript applet.  This often calls the
-       setState method in the applet</code></pre>
+<pre><code>-- Wait until the applet is loaded and the applet has loaded all of its auxiliary files.
+-- Call the setConfig method in the JavaScript applet
+   (configuration parameters are &quot;permanent&quot; for the life of the applet).
+-- Call the setInitialization method in the JavaScript applet.  This often calls the
+   setState method in the applet</code></pre>
 
 <h3 id="Submit-sequence">Submit sequence</h3>
 
 <p>When the WW question submit button is pressed the form containing the WW question calles the JavaScript &quot;submitAction()&quot; which then asks each of the applets on the page to perform its submit action which consists of</p>
 
-<pre><code>    -- If the applet is to be reinitialized (appletName_state contains
-       &lt;xml&gt;restart_applet&lt;/xml&gt;) then the HTML elements appletName_state and
-       previous_appletName_state are set to &lt;xml&gt;restart_applet&lt;/xml&gt; to be interpreted by the
-       next setState command.
-    -- Otherwise getState() from the applet and save it to the HTML input element
-       appletName_state.
-    -- Perform the JavaScript commands in submitActionScript (default: &#39;&#39;).
-       A typical submitActionScript looks like:
-           getQE(this.answerBox).value = getApplet(appletName).getAnswer()</code></pre>
+<pre><code>-- If the applet is to be reinitialized (appletName_state contains
+   &lt;xml&gt;restart_applet&lt;/xml&gt;) then the HTML elements appletName_state and
+   previous_appletName_state are set to &lt;xml&gt;restart_applet&lt;/xml&gt; to be interpreted by the
+   next setState command.
+-- Otherwise getState() from the applet and save it to the HTML input element
+   appletName_state.
+-- Perform the JavaScript commands in submitActionScript (default: &#39;&#39;).
+   A typical submitActionScript looks like:
+       getQE(this.answerBox).value = getApplet(appletName).getAnswer()</code></pre>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

@@ -1,199 +1,240 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>math/PGnumericalmacros.pl</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>math/PGnumericalmacros.pl</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>math/PGnumericalmacros.pl</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
-
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#SYNPOSIS">SYNPOSIS</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a>
-    <ul>
-      <li><a href="#Interpolation-methods">Interpolation methods</a>
-        <ul>
-          <li><a href="#Plotting-a-list-of-points-piecewise-linear-interpolation">Plotting a list of points (piecewise linear interpolation)</a></li>
-          <li><a href="#Horner-polynomial-Newton-polynomial">Horner polynomial/ Newton polynomial</a></li>
-          <li><a href="#Hermite-polynomials">Hermite polynomials</a></li>
-          <li><a href="#Hermite-splines">Hermite splines</a></li>
-          <li><a href="#Cubic-spline-approximation">Cubic spline approximation</a></li>
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">math/PGnumericalmacros.pl</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#Interpolation-methods">Interpolation methods</a>
+        <ul class="nav flex-column w-100">
+          <li class="nav-item"><a class="nav-link p-0" href="#Plotting-a-list-of-points-piecewise-linear-interpolation">Plotting a list of points (piecewise linear interpolation)</a></li>
         </ul>
       </li>
-      <li><a href="#Numerical-Integration-methods">Numerical Integration methods</a>
-        <ul>
-          <li><a href="#Integration-by-Left-Hand-Sum">Integration by Left Hand Sum</a></li>
-          <li><a href="#Integration-by-Right-Hand-Sum">Integration by Right Hand Sum</a></li>
-          <li><a href="#Integration-by-Midpoint-rule">Integration by Midpoint rule</a></li>
-          <li><a href="#Integration-by-Simpsons-rule">Integration by Simpson&#39;s rule</a></li>
-          <li><a href="#Integration-by-trapezoid-rule">Integration by trapezoid rule</a></li>
-          <li><a href="#Romberg-method-of-integration">Romberg method of integration</a></li>
-          <li><a href="#Inverse-Romberg">Inverse Romberg</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Horner-polynomial-Newton-polynomial">Horner polynomial/ Newton polynomial</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Hermite-polynomials">Hermite polynomials</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Hermite-splines">Hermite splines</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Cubic-spline-approximation">Cubic spline approximation</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Numerical-Integration-methods">Numerical Integration methods</a>
+        <ul class="nav flex-column w-100">
+          <li class="nav-item"><a class="nav-link p-0" href="#Integration-by-Left-Hand-Sum">Integration by Left Hand Sum</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#Integration-by-Right-Hand-Sum">Integration by Right Hand Sum</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#Integration-by-Midpoint-rule">Integration by Midpoint rule</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#Integration-by-Simpsons-rule">Integration by Simpson&#39;s rule</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#Integration-by-trapezoid-rule">Integration by trapezoid rule</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#Romberg-method-of-integration">Romberg method of integration</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#Inverse-Romberg">Inverse Romberg</a></li>
+        </ul>
+      </li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Differential-Equation-Methods">Differential Equation Methods</a>
+        <ul class="nav flex-column w-100">
+          <li class="nav-item"><a class="nav-link p-0" href="#rungeKutta4">rungeKutta4</a></li>
         </ul>
       </li>
     </ul>
-  </li>
-</ul>
+  </li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
+
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<pre><code>        Numerical methods for the PG language</code></pre>
-
-<a href="#_podtop_"><h1 id="SYNPOSIS">SYNPOSIS</h1></a>
-
-<a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
+<p>Numerical methods for the PG language</p>
 
 <h2 id="Interpolation-methods">Interpolation methods</h2>
 
 <h3 id="Plotting-a-list-of-points-piecewise-linear-interpolation">Plotting a list of points (piecewise linear interpolation)</h3>
 
-<pre><code>    Usage:  plot_list([x0,y0,x1,y1,...]);
-                plot_list([(x0,y0),(x1,y1),...]);
-                plot_list(\x_y_array);
+<p>Usage:</p>
 
-            plot_list([x0,x1,x2...], [y0,y1,y2,...]);
-            plot_list(\@xarray,\@yarray);</code></pre>
+<pre><code>plot_list([x0,y0,x1,y1,...]);
+plot_list([(x0,y0),(x1,y1),...]);
+plot_list(\x_y_array);
 
-<h3 id="Horner-polynomial-Newton-polynomial">Horner polynomial/ Newton polynomial</h3>
+plot_list([x0,x1,x2...], [y0,y1,y2,...]);
+plot_list(\@xarray,\@yarray);</code></pre>
 
-<pre><code>        Usege:  $fn = horner([x0,x1,x2],[q0,q1,q2]);
-                Produces the newton polynomial
-                &amp;$fn(x) = q0 + q1*(x-x0) +q2*(x-x1)*(x-x0);</code></pre>
+<h2 id="Horner-polynomial-Newton-polynomial">Horner polynomial/ Newton polynomial</h2>
+
+<p>Usage:</p>
+
+<pre><code>$fn = horner([x0,x1,x2],[q0,q1,q2]);</code></pre>
+
+<p>Produces the newton polynomial</p>
+
+<pre><code>&amp;$fn(x) = q0 + q1*(x-x0) +q2*(x-x1)*(x-x0);</code></pre>
 
 <p>Generates a subroutine which evaluates a polynomial passing through the points <code>(x0,q0), (x1,q1), ... </code> using Horner&#39;s method.</p>
 
-<h3 id="Hermite-polynomials">Hermite polynomials</h3>
+<h2 id="Hermite-polynomials">Hermite polynomials</h2>
 
-<pre><code>        Usage:  $poly = hermit([x0,x1...],[y0,y1...],[yp0,yp1,...]);
-                Produces a reference to polynomial function
-                with the specified values and first derivatives
-                at (x0,x1,...).
-                &amp;$poly(34) gives a number</code></pre>
+<p>Usage:</p>
+
+<pre><code>$poly = hermit([x0,x1...],[y0,y1...],[yp0,yp1,...]);</code></pre>
+
+<p>Produces a reference to polynomial function with the specified values and first derivatives at (x0,x1,...). <code>&amp;$poly(34)</code> gives a number</p>
 
 <p>Generates a subroutine which evaluates a polynomial passing through the specified points with the specified derivatives: (x0,y0,yp0) ... The polynomial will be of high degree and may wobble unexpectedly. Use the Hermite splines described below and in Hermite.pm for most graphing purposes.</p>
 
-<h3 id="Hermite-splines">Hermite splines</h3>
+<h2 id="Hermite-splines">Hermite splines</h2>
 
-<pre><code>        Usage:  $spline = hermit_spline([x0,x1...],[y0,y1...],[yp0,yp1,...]);
-                Produces a reference to a piecewise cubic hermit spline
-                with the specified values and first derivatives
-                at (x0,x1,...).
+<p>Usage</p>
 
-                &amp;$spline(45) evaluates to a number.</code></pre>
+<pre><code>$spline = hermit_spline([x0,x1...],[y0,y1...],[yp0,yp1,...]);</code></pre>
+
+<p>Produces a reference to a piecewise cubic hermit spline with the specified values and first derivatives at (x0,x1,...).</p>
+
+<p><code>&amp;$spline(45)</code> evaluates to a number.</p>
 
 <p>Generates a subroutine which evaluates a piecewise cubic polynomial passing through the specified points with the specified derivatives: (x0,y0,yp0) ...</p>
 
 <p>An object oriented version of this is defined in Hermite.pm</p>
 
-<h3 id="Cubic-spline-approximation">Cubic spline approximation</h3>
+<h2 id="Cubic-spline-approximation">Cubic spline approximation</h2>
 
-<pre><code>    Usage:
-                     $fun_ref = cubic_spline(~~@x_values, ~~@y_values);</code></pre>
+<p>Usage:</p>
+
+<pre><code>$fun_ref = cubic_spline(~~@x_values, ~~@y_values);</code></pre>
 
 <p>Where the x and y value arrays come from the function to be approximated. The function reference will take a single value x and produce value y.</p>
 
-<pre><code>        $y = &amp;$fun_ref($x);</code></pre>
+<pre><code>$y = &amp;$fun_ref($x);</code></pre>
 
 <p>You can also generate javaScript which defines a cubic spline:</p>
 
-<pre><code>                $function_string = javaScript_cubic_spline(~~@_x_values, ~~@y_values,
-                          name =&gt;  &#39;myfunction1&#39;,
-                          llimit =&gt; -3,
-                          rlimit =&gt; 3,
-                          );</code></pre>
+<pre><code>$function_string = javaScript_cubic_spline(~~@_x_values, ~~@y_values,
+    name =&gt;  &#39;myfunction1&#39;,
+    llimit =&gt; -3,
+    rlimit =&gt; 3,
+);</code></pre>
 
-<p>The string contains</p>
+<p>This will return</p>
 
-<pre><code>        &lt;SCRIPT LANGUAGE=&quot;JavaScript&quot;&gt;
-        &lt;!-- Begin
-        function myfunction1(x) {
-        ...etc...
-        }
-        &lt;/SCRIPT&gt;</code></pre>
+<pre><code>&lt;SCRIPT LANGUAGE=&quot;JavaScript&quot;&gt;
+&lt;!-- Begin
+function myfunction1(x) {
+...etc...
+}
+&lt;/SCRIPT&gt;</code></pre>
 
 <p>and can be placed in the header of the HTML output using</p>
 
-<pre><code>        HEADER_TEXT($function_string);</code></pre>
+<pre><code>HEADER_TEXT($function_string);</code></pre>
 
 <h2 id="Numerical-Integration-methods">Numerical Integration methods</h2>
 
 <h3 id="Integration-by-Left-Hand-Sum">Integration by Left Hand Sum</h3>
 
-<pre><code>        Usage:  lefthandsum(function_reference, start, end, steps=&gt;30 );</code></pre>
+<p>Usage:</p>
+
+<pre><code>lefthandsum(function_reference, start, end, steps=&gt;30 );</code></pre>
 
 <p>Implements the Left Hand sum using 30 intervals between &#39;start&#39; and &#39;end&#39;. The first three arguments are required. The final argument (number of steps) is optional and defaults to 30.</p>
 
 <h3 id="Integration-by-Right-Hand-Sum">Integration by Right Hand Sum</h3>
 
-<pre><code>        Usage:  righthandsum(function_reference, start, end, steps=&gt;30 );</code></pre>
+<p>Usage:</p>
+
+<pre><code>righthandsum(function_reference, start, end, steps=&gt;30 );</code></pre>
 
 <p>Implements the right hand sum using 30 intervals between &#39;start&#39; and &#39;end&#39;. The first three arguments are required. The final argument (number of steps) is optional and defaults to 30.</p>
 
 <h3 id="Integration-by-Midpoint-rule">Integration by Midpoint rule</h3>
 
-<pre><code>        Usage:  midpoint(function_reference, start, end, steps=&gt;30 );</code></pre>
+<p>Usage:</p>
+
+<pre><code>midpoint(function_reference, start, end, steps=&gt;30 );</code></pre>
 
 <p>Implements the Midpoint rule using 30 intervals between &#39;start&#39; and &#39;end&#39;. The first three arguments are required. The final argument (number of steps) is optional and defaults to 30.</p>
 
 <h3 id="Integration-by-Simpsons-rule">Integration by Simpson&#39;s rule</h3>
 
-<pre><code>        Usage:  simpson(function_reference, start, end, steps=&gt;30 );</code></pre>
+<pre><code>Usage:  simpson(function_reference, start, end, steps=&gt;30 );</code></pre>
 
 <p>Implements Simpson&#39;s rule using 30 intervals between &#39;start&#39; and &#39;end&#39;. The first three arguments are required. The final argument (number of steps) is optional and defaults to 30, but must be even.</p>
 
 <h3 id="Integration-by-trapezoid-rule">Integration by trapezoid rule</h3>
 
-<pre><code>        Usage:  trapezoid(function_reference, start, end, steps=&gt;30 );</code></pre>
+<p>Usage:</p>
+
+<pre><code>trapezoid(function_reference, start, end, steps=&gt;30 );</code></pre>
 
 <p>Implements the trapezoid rule using 30 intervals between &#39;start&#39; and &#39;end&#39;. The first three arguments are required. The final argument (number of steps) is optional and defaults to 30.</p>
 
 <h3 id="Romberg-method-of-integration">Romberg method of integration</h3>
 
-<pre><code>        Usage:  romberg(function_reference, x0, x1, level);</code></pre>
+<p>Usage:</p>
+
+<pre><code>romberg(function_reference, x0, x1, level);</code></pre>
 
 <p>Implements the Romberg integration routine through &#39;level&#39; recursive steps. Level defaults to 6.</p>
 
 <h3 id="Inverse-Romberg">Inverse Romberg</h3>
 
-<pre><code>        Usage: inv_romberg(function_reference, a, value);</code></pre>
+<p>Usage:</p>
+
+<pre><code>inv_romberg(function_reference, a, value);</code></pre>
 
 <p>Finds b such that the integral of the function from a to b is equal to value. Assumes that the function is continuous and doesn&#39;t take on the zero value. Uses Newton&#39;s method of approximating roots of equations, and Romberg to evaluate definite integrals.</p>
 
-<pre><code>    rungeKutta4
-    
-    Finds integral curve of a vector field using the 4th order Runge Kutta method.
-    
-        Useage:  rungeKutta4( &amp;vectorField(t,x),%options);
-        
-    Returns:  \@array of points [t,y})  
-    
-    Default %options:
-                        &#39;initial_t&#39;                                     =&gt;      1,
-                            &#39;initial_y&#39;                                 =&gt;      1,
-                            &#39;dt&#39;                                                =&gt;  .01,
-                            &#39;num_of_points&#39;                             =&gt;  10,     #number of reported points
-                            &#39;interior_points&#39;                   =&gt;  5,      # number of &#39;interior&#39; steps between reported points
-                            &#39;debug&#39;                     
-    </code></pre>
+<h2 id="Differential-Equation-Methods">Differential Equation Methods</h2>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+<h3 id="rungeKutta4">rungeKutta4</h3>
+
+<p>Finds integral curve of a vector field using the 4th order Runge Kutta method.</p>
+
+<p>Usage:</p>
+
+<pre><code>rungeKutta4( &amp;vectorField(t,x),%options);
+
+Returns:  \@array of points [t,y})
+
+Default %options:
+                    &#39;initial_t&#39;                                     =&gt;      1,
+                        &#39;initial_y&#39;                                 =&gt;      1,
+                        &#39;dt&#39;                                                =&gt;  .01,
+                        &#39;num_of_points&#39;                             =&gt;  10,     #number of reported points
+                        &#39;interior_points&#39;                   =&gt;  5,      # number of &#39;interior&#39; steps between reported points
+                        &#39;debug&#39;</code></pre>
+
+		</div>
+	</div>
 </body>
 </html>
-
-

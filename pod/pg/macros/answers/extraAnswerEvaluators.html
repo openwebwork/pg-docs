@@ -1,29 +1,56 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>answers/extraAnswerEvaluators.pl</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>answers/extraAnswerEvaluators.pl</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>answers/extraAnswerEvaluators.pl</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
-
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#SYNPOSIS">SYNPOSIS</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-  <li><a href="#MACROS">MACROS</a>
-    <ul>
-      <li><a href="#interval_cmp">interval_cmp</a></li>
-      <li><a href="#number_list_cmp">number_list_cmp</a></li>
-      <li><a href="#equation_cmp">equation_cmp</a></li>
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">answers/extraAnswerEvaluators.pl</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNPOSIS">SYNPOSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#MACROS">MACROS</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#interval_cmp">interval_cmp</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#number_list_cmp">number_list_cmp</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#equation_cmp">equation_cmp</a></li>
     </ul>
-  </li>
-</ul>
+  </li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
+
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
@@ -31,21 +58,21 @@
 
 <a href="#_podtop_"><h1 id="SYNPOSIS">SYNPOSIS</h1></a>
 
-<pre><code>        interval_cmp() -- checks answers which are unions of intervals. It can also
-                                          be used for checking an ordered pair or list of ordered
-                                          pairs.
+<pre><code>interval_cmp() -- checks answers which are unions of intervals. It can also
+                                  be used for checking an ordered pair or list of ordered
+                                  pairs.
 
-        number_list_cmp() -- checks a comma separated list of numbers.  By use of
-                             optional arguments, you can request that order be
-                             important, that complex numbers be allowed, and specify
-                             extra arguments to be sent to num_cmp (or cplx_cmp) for
-                             checking individual entries.
+number_list_cmp() -- checks a comma separated list of numbers.  By use of
+                     optional arguments, you can request that order be
+                     important, that complex numbers be allowed, and specify
+                     extra arguments to be sent to num_cmp (or cplx_cmp) for
+                     checking individual entries.
 
-        equation_cmp() -- provides a limited facility for checking equations. It
-                          makes no pretense of checking to see if the real locus of
-                          the student&#39;s equation matches the real locus of the
-                          instructor&#39;s equation.  The student&#39;s equation must be of
-                          the same general type as the instructors to get credit.</code></pre>
+equation_cmp() -- provides a limited facility for checking equations. It
+                  makes no pretense of checking to see if the real locus of
+                  the student&#39;s equation matches the real locus of the
+                  instructor&#39;s equation.  The student&#39;s equation must be of
+                  the same general type as the instructors to get credit.</code></pre>
 
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
@@ -57,43 +84,43 @@
 
 <p>Compares an interval or union of intervals. Typical invocations are</p>
 
-<pre><code>        interval_cmp(&quot;(2, 3] U(7, 11)&quot;)</code></pre>
+<pre><code>interval_cmp(&quot;(2, 3] U(7, 11)&quot;)</code></pre>
 
 <p>The U is used for union symbol. In fact, any garbage (or nothing at all) can go between intervals. It makes sure open/closed parts of intervals are correct, unless you don&#39;t like that. To have it ignore the difference between open and closed endpoints, use</p>
 
-<pre><code>        interval_cmp(&quot;(2, 3] U(7, 11)&quot;, sloppy=&gt;&#39;yes&#39;)</code></pre>
+<pre><code>interval_cmp(&quot;(2, 3] U(7, 11)&quot;, sloppy=&gt;&#39;yes&#39;)</code></pre>
 
 <p>interval_cmp uses num_cmp on the endpoints. You can pass optional arguments for num_cmp, so to change the tolerance, you can use</p>
 
-<pre><code>        interval_cmp(&quot;(2, 3] U(3+4, 11)&quot;, relTol=&gt;3)</code></pre>
+<pre><code>interval_cmp(&quot;(2, 3] U(3+4, 11)&quot;, relTol=&gt;3)</code></pre>
 
 <p>The intervals can be listed in any order, unless you want to force a particular order, which is signaled as</p>
 
-<pre><code>        interval_cmp(&quot;(2, 3] U(3+4, 11)&quot;, ordered=&gt;&#39;strict&#39;)</code></pre>
+<pre><code>interval_cmp(&quot;(2, 3] U(3+4, 11)&quot;, ordered=&gt;&#39;strict&#39;)</code></pre>
 
 <p>You can specify infinity as an endpoint. It will do a case-insensitive string match looking for I, Infinity, Infty, or Inf. You can prepend a + or -, as in</p>
 
-<pre><code>        interval_cmp(&quot;(-inf, 3] U [e^10, infinity)&quot;)</code></pre>
+<pre><code>interval_cmp(&quot;(-inf, 3] U [e^10, infinity)&quot;)</code></pre>
 
 <p>or</p>
 
-<pre><code>        interval_cmp(&quot;(-INF, 3] U [e^10, +I)&quot;)</code></pre>
+<pre><code>interval_cmp(&quot;(-INF, 3] U [e^10, +I)&quot;)</code></pre>
 
 <p>If the question might have an empty set as the answer, you can use the strings option to allow for it. So</p>
 
-<pre><code>        interval_cmp(&quot;$ans&quot;, strings=&gt;[&#39;empty&#39;])</code></pre>
+<pre><code>interval_cmp(&quot;$ans&quot;, strings=&gt;[&#39;empty&#39;])</code></pre>
 
 <p>will not generate an error message if the student enters the string empty. Better still, it will mark a student answer of &quot;empty&quot; as correct iff this matches $ans.</p>
 
 <p>You can use interval_cmp for ordered pairs, or lists of ordered pairs. Internally, this is just a distinction of whether to put nice union symbols between intervals, or commas. To get commas, use</p>
 
-<pre><code>        interval_cmp(&quot;(1,2), (2,3), (4,-1)&quot;, unions=&gt;&#39;no&#39;)</code></pre>
+<pre><code>interval_cmp(&quot;(1,2), (2,3), (4,-1)&quot;, unions=&gt;&#39;no&#39;)</code></pre>
 
 <p>Note that interval_cmp makes no attempt at simplifying overlapping intervals. This becomes an important feature when you are really checking lists of ordered pairs.</p>
 
 <p>Now we use the Parser package for checking intervals (or lists of points if unions=&gt;&#39;no&#39;). So, one can specify the Parser options showCoordinateHints, showHints, partialCredit, and/or showLengthHints as optional arguments:</p>
 
-<pre><code>        interval_cmp(&quot;(1,2), (2,3), (4,-1)&quot;, unions=&gt;&#39;no&#39;, partialCredit=&gt;1)</code></pre>
+<pre><code>interval_cmp(&quot;(1,2), (2,3), (4,-1)&quot;, unions=&gt;&#39;no&#39;, partialCredit=&gt;1)</code></pre>
 
 <p>Also, set differences and &#39;R&#39; for all real numbers now work too since they work for Parser Intervals and Unions.</p>
 
@@ -101,37 +128,37 @@
 
 <p>Checks an answer which is a comma-separated list of numbers. The actual numbers are fed to num_cmp, so all of the flexibilty of num_cmp carries over (values can be expressions to be evaluated). For example,</p>
 
-<pre><code>        number_list_cmp(&quot;1, -2&quot;)</code></pre>
+<pre><code>number_list_cmp(&quot;1, -2&quot;)</code></pre>
 
 <p>will accept &quot;1, -2&quot;, &quot;-2, 1&quot;, or &quot;-1-1,sqrt(1)&quot;.</p>
 
-<pre><code>        number_list_cmp(&quot;1^2 + 1, 2^2 + 1, 3^2 + 1&quot;, ordered=&gt;&#39;strict&#39;)</code></pre>
+<pre><code>number_list_cmp(&quot;1^2 + 1, 2^2 + 1, 3^2 + 1&quot;, ordered=&gt;&#39;strict&#39;)</code></pre>
 
 <p>will accept &quot;2, 5, 10&quot;, but not &quot;5, 2, 10&quot;.</p>
 
 <p>If you want to allow complex number entries, complex=&gt;&#39;ok&#39; will cause it to use cplx_cmp instead:</p>
 
-<pre><code>        number_list_cmp(&quot;2, -2, 2i, -2i&quot;, complex=&gt;&#39;ok&#39;)</code></pre>
+<pre><code>number_list_cmp(&quot;2, -2, 2i, -2i&quot;, complex=&gt;&#39;ok&#39;)</code></pre>
 
 <p>In cases where you set complex=&gt;&#39;ok&#39;, be sure the problem file loads PGcomplexmacros.pl.</p>
 
 <p>Optional arguements for num_cmp (resp. cplx_cmp) can be used as well, such as</p>
 
-<pre><code>        number_list_cmp(&quot;cos(3), sqrt(111)&quot;, relTol =&gt; 3)</code></pre>
+<pre><code>number_list_cmp(&quot;cos(3), sqrt(111)&quot;, relTol =&gt; 3)</code></pre>
 
 <p>The strings=&gt;[&#39;hello&#39;] argument is treated specially. It can be used to replace the entire answer. So</p>
 
-<pre><code>        number_list_cmp(&quot;cos(3), sqrt(111)&quot;, strings=&gt;[&#39;none&#39;])</code></pre>
+<pre><code>number_list_cmp(&quot;cos(3), sqrt(111)&quot;, strings=&gt;[&#39;none&#39;])</code></pre>
 
 <p>will mark &quot;none&quot; wrong, but not generate an error. On the other hand,</p>
 
-<pre><code>        number_list_cmp(&quot;none&quot;, strings=&gt;[&#39;none&#39;])</code></pre>
+<pre><code>number_list_cmp(&quot;none&quot;, strings=&gt;[&#39;none&#39;])</code></pre>
 
 <p>will mark &quot;none&quot; as correct.</p>
 
 <p>One can also specify optionnal arguments for Parser&#39;s List checker: showHints, partialCredit, and showLengthHints, as in:</p>
 
-<pre><code>        number_list_cmp(&quot;cos(3), sqrt(111)&quot;, partialCredit=&gt;1)</code></pre>
+<pre><code>number_list_cmp(&quot;cos(3), sqrt(111)&quot;, partialCredit=&gt;1)</code></pre>
 
 <h2 id="equation_cmp">equation_cmp</h2>
 
@@ -139,20 +166,9 @@
 
 <p>Typical invocation would be:</p>
 
-<pre><code>        equation_com(&quot;x^2+(y-1)^2 = 11&quot;, vars=&gt;[&#39;x&#39;,&#39;y&#39;])</code></pre>
+<pre><code>equation_com(&quot;x^2+(y-1)^2 = 11&quot;, vars=&gt;[&#39;x&#39;,&#39;y&#39;])</code></pre>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

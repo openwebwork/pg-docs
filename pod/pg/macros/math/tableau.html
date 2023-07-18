@@ -1,99 +1,102 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>math/tableau.pl</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>math/tableau.pl</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>math/tableau.pl</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
-
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a>
-    <ul>
-      <li><a href="#TODO">TODO</a></li>
-      <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-      <li><a href="#Package-main">Package main</a>
-        <ul>
-          <li><a href="#References">References:</a></li>
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">math/tableau.pl</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#TODO">TODO</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Package-main">Package main</a>
+        <ul class="nav flex-column w-100">
+          <li class="nav-item"><a class="nav-link p-0" href="#References">References:</a></li>
         </ul>
       </li>
-      <li><a href="#Package-tableau">Package tableau</a></li>
-      <li><a href="#Accessors-and-mutators">Accessors and mutators</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Package-tableau">Package tableau</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Accessors-and-mutators">Accessors and mutators</a></li>
     </ul>
-  </li>
-</ul>
+  </li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
+
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<pre><code>        macros/tableau.pl
-        </code></pre>
+<p>macros/tableau.pl</p>
 
 <h2 id="TODO">TODO</h2>
 
-<pre><code>        DONE: change find_next_basis_from_pivot  to next_basis_from_pivot
-        DONE: add phase2  to some match phase1 for some of the pivots -- added as main:: subroutine
-        DONE: add a generic _solve  that solves tableau once it has a filled basis  -- needs to be tested
-        add something that will fill the basis.
-        
-        regularize the use of m and n -- should they be the number of 
-        constraints and the number of decision(problem) variables or should
-        they be the size of the complete tableau. 
-        we probably need both -- need names for everything
-        
-        current tableau returns the complete tableau minus the objective function
-        row. 
-        (do we need a second objective function row? -- think we can skip this for now.)
-        </code></pre>
+<p>DONE: change find_next_basis_from_pivot to next_basis_from_pivot DONE: add phase2 to some match phase1 for some of the pivots -- added as main:: subroutine DONE: add a generic _solve that solves tableau once it has a filled basis -- needs to be tested add something that will fill the basis.</p>
+
+<p>regularize the use of m and n -- should they be the number of constraints and the number of decision(problem) variables or should they be the size of the complete tableau. we probably need both -- need names for everything</p>
+
+<p>current tableau returns the complete tableau minus the objective function row. (do we need a second objective function row? -- think we can skip this for now.)</p>
 
 <h2 id="DESCRIPTION">DESCRIPTION</h2>
 
-<pre><code> # We&#39;re going to have several types
- # MathObject Matrices  Value::Matrix
- # tableaus form John Jones macros
- # MathObject tableaus
- #   Containing   an  matrix $A  coefficients for constraint
- #   A vertical vector $b for constants for constraints
- #   A horizontal vector $c for coefficients for objective function
- #   A vertical vector corresponding to the  value  $z of the objective function
- #   dimensions $n problem vectors, $m constraints = $m slack variables
- #   A basis Value::Set -- positions for columns which are independent and 
- #      whose associated variables can be determined
- #      uniquely from the parameter variables.  
- #      The non-basis (parameter) variables are set to zero. 
- #
- # state variables (assuming parameter variables are zero or when given parameter variables)
- # create the methods for updating the various containers
- # create the method for printing the tableau with all its decorations 
- # possibly with switches to turn the decorations on and off. </code></pre>
+<p>We&#39;re going to have several types MathObject Matrices Value::Matrix tableaus form John Jones macros MathObject tableaus Containing an matrix $A coefficients for constraint A vertical vector $b for constants for constraints A horizontal vector $c for coefficients for objective function A vertical vector corresponding to the value $z of the objective function dimensions $n problem vectors, $m constraints = $m slack variables A basis Value::Set -- positions for columns which are independent and whose associated variables can be determined uniquely from the parameter variables. The non-basis (parameter) variables are set to zero. state variables (assuming parameter variables are zero or when given parameter variables) create the methods for updating the various containers create the method for printing the tableau with all its decorations possibly with switches to turn the decorations on and off.</p>
 
 <p>The structure of the tableau is:</p>
 
-<pre><code>        -----------------------------------------------------------
-        |                    |             |    |    |
-        |          A         |    S        | 0  | b  |
-        |                    |             |    |    |
-        ----------------------------------------------
-        |        -c          |     0       | 1  | 0  |
-        ----------------------------------------------
-        Matrix A, the initial constraint matrix is n=num_problem_vars by m=num_slack_vars
-        Matrix S, the initial slack variables is m by m
-        Matrix b, the initial constraint constants is n by 1 (Matrix or ColumnVector)
-        Matrix c, the objective function coefficients matrix is 1 by n
-        
-        Matrix which changes with state:
-        Matrix upper_tableau: m by n+2 (A|S|0|b)
-        Matrix tableau   m+1 by n+2  (A/(-c)) | S/0 | 0/1 |b/z 
-        Matrix current_obj_coeff = 1 by n+m matrix (negative of current coeff for obj_function)
-        Matrix current_last_row  = 1 by n+m+2 matrix  tableau is upper_tableau over current_last_row
-        
-        The next to the last column holds z or objective value
-        z(...x^i...) = c_i* x^i  (Einstein summation convention)
-        FIXME: ?? allow c to be a 2 by n matrix so that you can do phase1 calculations easily </code></pre>
+<pre><code>-----------------------------------------------------------
+|                    |             |    |    |
+|          A         |    S        | 0  | b  |
+|                    |             |    |    |
+----------------------------------------------
+|        -c          |     0       | 1  | 0  |
+----------------------------------------------
+Matrix A, the initial constraint matrix is n=num_problem_vars by m=num_slack_vars
+Matrix S, the initial slack variables is m by m
+Matrix b, the initial constraint constants is n by 1 (Matrix or ColumnVector)
+Matrix c, the objective function coefficients matrix is 1 by n
+
+Matrix which changes with state:
+Matrix upper_tableau: m by n+2 (A|S|0|b)
+Matrix tableau   m+1 by n+2  (A/(-c)) | S/0 | 0/1 |b/z
+Matrix current_obj_coeff = 1 by n+m matrix (negative of current coeff for obj_function)
+Matrix current_last_row  = 1 by n+m+2 matrix  tableau is upper_tableau over current_last_row
+
+The next to the last column holds z or objective value
+z(...x^i...) = c_i* x^i  (Einstein summation convention)
+FIXME: ?? allow c to be a 2 by n matrix so that you can do phase1 calculations easily</code></pre>
 
 <h2 id="Package-main">Package main</h2>
 
@@ -102,40 +105,39 @@
 <dt>tableauEquivalence</dt>
 <dd>
 
-<pre><code>        ANS( $tableau-&gt;cmp(checker=&gt;tableauEquivalence()) ); 
-        
- # Note: it is important to include the () at the end of tableauEquivalence
- 
- # tableauEquivalence compares two matrices up to
- # reshuffling the rows and multiplying each row by a constant.
- # It is equivalent up to multiplying on the left by a permuation matrix 
- # or a (non-uniformly constant) diagonal matrix.
- # It is appropriate for comparing augmented matrices representing a system of equations
- # since the order of the equations is unimportant.  This applies to tableaus for 
- # Linear Optimization Problems being solved using the simplex method.
- </code></pre>
+<pre><code>ANS( $tableau-&gt;cmp(checker=&gt;tableauEquivalence()) );</code></pre>
+
+<p>Note: it is important to include the () at the end of tableauEquivalence</p>
+
+<p>tableauEquivalence compares two matrices up to reshuffling the rows and multiplying each row by a constant. It is equivalent up to multiplying on the left by a permuation matrix or a (non-uniformly constant) diagonal matrix. It is appropriate for comparing augmented matrices representing a system of equations since the order of the equations is unimportant. This applies to tableaus for Linear Optimization Problems being solved using the simplex method.</p>
 
 </dd>
-<dt>get_tableau_variable_values (DEPRECATED -- use Tableau-&gt;statevars method ) Parameters: ($MathObjectMatrix_tableau, $MathObjectSet_basis) Returns: ARRAY or ARRAY_ref</dt>
+<dt>get_tableau_variable_values</dt>
 <dd>
+
+<p>(DEPRECATED -- use Tableau-&gt;statevars method )</p>
+
+<p>Parameters: <code>($MathObjectMatrix_tableau, $MathObjectSet_basis)</code> Returns: ARRAY or ARRAY_ref</p>
 
 <p>Returns the solution variables to the tableau assuming that the parameter (non-basis) variables have been set to zero. It returns a list in array context and a reference to an array in scalar context.</p>
 
 </dd>
-<dt>lp_basis_pivot (DEPRECATED -- preserved for legacy problems. Use Tableau-&gt;basis method) Parameters: ($old_tableau,$old_basis,$pivot) Returns: ($new_tableau, Set($new_basis),\@statevars)</dt>
+<dt>lp_basis_pivot</dt>
 <dd>
+
+<p>(DEPRECATED -- preserved for legacy problems. Use Tableau-&gt;basis method) Parameters: ($old_tableau,$old_basis,$pivot) Returns: ($new_tableau, Set($new_basis),\@statevars)</p>
 
 </dd>
 <dt>linebreak_at_commas</dt>
 <dd>
 
-<pre><code>        Parameters: ()
-        Return:
-        
-        Useage: 
-        ANS($constraints-&gt;cmp()-&gt;withPostFilter(
-                linebreak_at_commas()
-    ));</code></pre>
+<p>Parameters: () Return:</p>
+
+<p>Usage:</p>
+
+<pre><code>ANS($constraints-&gt;cmp()-&gt;withPostFilter(
+    linebreak_at_commas()
+));</code></pre>
 
 <p>Replaces commas with line breaks in the latex presentations of the answer checker. Used most often when $constraints is a LinearInequality math object.</p>
 
@@ -146,7 +148,7 @@
 
 <p>MathObject Matrix methods: <a href="http://webwork.maa.org/wiki/Matrix_(MathObject_Class)">http://webwork.maa.org/wiki/Matrix_(MathObject_Class)</a> MathObject Contexts: <a href="http://webwork.maa.org/wiki/Common_Contexts">http://webwork.maa.org/wiki/Common_Contexts</a> CPAN RealMatrix docs: <a href="http://search.cpan.org/~leto/Math-MatrixReal-2.09/lib/Math/MatrixReal.pm">http://search.cpan.org/~leto/Math-MatrixReal-2.09/lib/Math/MatrixReal.pm</a></p>
 
-<p>More references: <a href="//pg/lib/Matrix.html">&quot;Matrix.pm&quot; in lib</a></p>
+<p>More references: <a href="//pg/lib/Matrix.html">Matrix</a></p>
 
 <h2 id="Package-tableau">Package tableau</h2>
 
@@ -155,46 +157,49 @@
 <dt>new</dt>
 <dd>
 
-<pre><code>  Tableau-&gt;new(A=&gt;Matrix, b=&gt;Vector or Matrix, c=&gt;Vector or Matrix)
+<pre><code>Tableau-&gt;new(A=&gt;Matrix, b=&gt;Vector or Matrix, c=&gt;Vector or Matrix)
 
-        A =&gt; undef, # original constraint matrix  MathObjectMatrix
-        b =&gt; undef, # constraint constants ColumnVector or MathObjectMatrix n by 1
-        c =&gt; undef, # coefficients for objective function Vector or MathObjectMatrix 1 by n
-        obj_row =&gt; undef, # contains the negative of the coefficients of the objective function.
-        z =&gt; undef, # value for objective function Real
-        n =&gt; undef, # dimension of problem variables (columns in A) 
-        m =&gt; undef, # dimension of slack variables (rows in A)
-        S =&gt; undef, # square m by m MathObjectMatrix for slack variables. default is the identity
-        M =&gt; undef,  # matrix (m by m+n+1+1) consisting of all original columns and all 
-                rows except for the objective function row. The m+n+1 column and 
-                is the objective_value column. It is all zero with a pivot in the objective row. 
-                The current version of this accessed by Tableau-&gt;upper_tableau (A | S |0 | b)
-        #FIXME  
-        obj_col_num =&gt; undef,  # have obj_col on the left or on the right? FIXME? obj_column_position
-                               # perhaps not store this column at all and add it when items are printed?
-        
-        basis =&gt; List | Set, # unordered list describing the current basis columns corresponding 
-                to determined variables.  With a basis argument this sets a new state defined by that basis.  
-        current_constraint_matrix=&gt;(m by n matrix),  # the current version of [A | S]
-        current_b=&gt; (1 by m matrix or Column vector) # the current version of the constraint constants b
-        current_basis_matrix  =&gt; (m by m invertible matrix) a square invertible matrix 
-             # corresponding to the current basis columns
- 
- # flag indicating the column (1 or n+m+1) for the objective value
-        constraint_labels =&gt; undef,   (not sure if this remains relevant after pivots)
-        problem_var_labels =&gt; undef, 
-        slack_var_labels =&gt; undef,
-        
-        Notes:  (1 by m MathObjectMatrix) &lt;= Value::Matrix-&gt;new($self-&gt;b-&gt;transpose-&gt;value )</code></pre>
+A =&gt; undef, # original constraint matrix  MathObjectMatrix
+b =&gt; undef, # constraint constants ColumnVector or MathObjectMatrix n by 1
+c =&gt; undef, # coefficients for objective function Vector or MathObjectMatrix 1 by n
+obj_row =&gt; undef, # contains the negative of the coefficients of the objective function.
+z =&gt; undef, # value for objective function Real
+n =&gt; undef, # dimension of problem variables (columns in A)
+m =&gt; undef, # dimension of slack variables (rows in A)
+S =&gt; undef, # square m by m MathObjectMatrix for slack variables. default is the identity
+M =&gt; undef,  # matrix (m by m+n+1+1) consisting of all original columns and all
+    rows except for the objective function row. The m+n+1 column and
+    is the objective_value column. It is all zero with a pivot in the objective row.
+    The current version of this accessed by Tableau-&gt;upper_tableau (A | S |0 | b)
+#FIXME
+obj_col_num =&gt; undef,  # have obj_col on the left or on the right? FIXME? obj_column_position
+                       # perhaps not store this column at all and add it when items are printed?
+
+basis =&gt; List | Set, # unordered list describing the current basis columns corresponding
+    to determined variables.  With a basis argument this sets a new state defined by that basis.
+current_constraint_matrix=&gt;(m by n matrix),  # the current version of [A | S]
+current_b=&gt; (1 by m matrix or Column vector) # the current version of the constraint constants b
+ current_basis_matrix  =&gt; (m by m invertible matrix) a square invertible matrix
+      # corresponding to the current basis columns</code></pre>
+
+<p>flag indicating the column (1 or n+m+1) for the objective value</p>
+
+<pre><code>constraint_labels =&gt; undef,   (not sure if this remains relevant after pivots)
+problem_var_labels =&gt; undef,
+slack_var_labels =&gt; undef,
+
+Notes:  (1 by m MathObjectMatrix) &lt;= Value::Matrix-&gt;new($self-&gt;b-&gt;transpose-&gt;value )
+
+
+ANS( $tableau-&gt;cmp(checker=&gt;tableauEquivalence()) );</code></pre>
 
 </dd>
 <dt>lop_display</dt>
 <dd>
 
-<pre><code>        Useage: 
-        
-        lop_display($tableau, align=&gt;&#39;cccc|cc|c|c&#39;, toplevel=&gt;[qw(x1,x2,x3,x4,s1,s2,P,b)])
-        </code></pre>
+<pre><code>Useage:
+
+lop_display($tableau, align=&gt;&#39;cccc|cc|c|c&#39;, toplevel=&gt;[qw(x1,x2,x3,x4,s1,s2,P,b)])</code></pre>
 
 <p>Pretty prints the output of a matrix as a LOP with separating labels and variable labels.</p>
 
@@ -202,8 +207,8 @@
 <dt>primal_basis_to_dual dual_basis_to_primal</dt>
 <dd>
 
-<pre><code>        [complementary_basis_set] = $self-&gt;primal_basis_to_dual(primal_basis_set)
-        [complementary_basis_set] = $self-&gt;dual_basis_to_primal(dual_basis_set)</code></pre>
+<pre><code>[complementary_basis_set] = $self-&gt;primal_basis_to_dual(primal_basis_set)
+[complementary_basis_set] = $self-&gt;dual_basis_to_primal(dual_basis_set)</code></pre>
 
 </dd>
 </dl>
@@ -215,32 +220,30 @@
 <dt>basis_columns</dt>
 <dd>
 
-<pre><code>        ARRAY reference = $self-&gt;basis_columns()
-        [3,4]           = $self-&gt;basis_columns([3,4])
-        
-        Sets or returns the basis_columns as an ARRAY reference
-        </code></pre>
+<pre><code>ARRAY reference = $self-&gt;basis_columns()
+[3,4]           = $self-&gt;basis_columns([3,4])
+
+Sets or returns the basis_columns as an ARRAY reference</code></pre>
 
 </dd>
 <dt>objective_row</dt>
 <dd>
 
-<pre><code>                $self-&gt;objective_row
-                Parameters: ()
-                Returns: </code></pre>
+<pre><code>$self-&gt;objective_row
+Parameters: ()
+Returns:</code></pre>
 
 </dd>
 <dt>current_tableau</dt>
 <dd>
 
-<pre><code>                $self-&gt;current_tableau
-                Parameters: () or (list)
-                Returns:  A MathObjectMatrix
+<pre><code>$self-&gt;current_tableau
+Parameters: () or (list)
+Returns:  A MathObjectMatrix
 
-        Useage:
-                $MathObjectmatrix = $self-&gt;current_tableau
-                $MathObjectmatrix = $self-&gt;current_tableau(3,4) #updates basis to (3,4)
-                </code></pre>
+Useage:
+$MathObjectmatrix = $self-&gt;current_tableau
+$MathObjectmatrix = $self-&gt;current_tableau(3,4) #updates basis to (3,4)</code></pre>
 
 <p>Returns the current constraint matrix as a MathObjectMatrix, including the constraint constants, problem variable coefficients, slack variable coefficients AND the row containing the objective function coefficients. ------------- |A | S |0| b| ------------- | -c |z|z*| -------------</p>
 
@@ -250,20 +253,20 @@
 <dt>statevars</dt>
 <dd>
 
-<pre><code>        [x1,.....xn,]= $self-&gt;statevars()</code></pre>
+<pre><code>[x1,.....xn,]= $self-&gt;statevars()</code></pre>
 
 </dd>
 <dt>basis</dt>
 <dd>
 
-<pre><code>        MathObjectList = $self-&gt;basis
-        MathObjectList = $self-&gt;basis(3,4)
-        MathObjectList = $self-&gt;basis([3,4])
-        MathObjectList = $self-&gt;basis(Set(3,4))
-        MathObjectList = $self-&gt;basis(List(3,4))
-        
-        to obtain ARRAY reference use
-        [3,4]== $self-&gt;basis(Set3,4)-&gt;value</code></pre>
+<pre><code>MathObjectList = $self-&gt;basis
+MathObjectList = $self-&gt;basis(3,4)
+MathObjectList = $self-&gt;basis([3,4])
+MathObjectList = $self-&gt;basis(Set(3,4))
+MathObjectList = $self-&gt;basis(List(3,4))
+
+to obtain ARRAY reference use
+[3,4]== $self-&gt;basis(Set3,4)-&gt;value</code></pre>
 
 <p>Returns a MathObjectList containing the current basis columns. If basis columns are provided as arguments it updates all elements of the tableau to present the view corresponding to the new choice of basis columns.</p>
 
@@ -271,8 +274,7 @@
 <dt>find_next_basis</dt>
 <dd>
 
-<pre><code>        ($col1,$col2,..,$flag) = $self-&gt;find_next_basis (max/min, obj_row_number)
-        </code></pre>
+<pre><code>($col1,$col2,..,$flag) = $self-&gt;find_next_basis (max/min, obj_row_number)</code></pre>
 
 <p>In phase 2 of the simplex method calculates the next basis. $optimum or $unbounded is set if the process has found on the optimum value, or the column $col gives a certificate of unboundedness.</p>
 
@@ -284,8 +286,7 @@
 <dt>find_next_pivot</dt>
 <dd>
 
-<pre><code>        ($row, $col,$optimum,$unbounded) = $self-&gt;find_next_pivot (max/minm obj_row_number)
-        </code></pre>
+<pre><code>($row, $col,$optimum,$unbounded) = $self-&gt;find_next_pivot (max/minm obj_row_number)</code></pre>
 
 <p>This is used in phase2 so the possible outcomes are only $optimum and $unbounded. $infeasible is not possible. Use the lowest index strategy to find the next pivot point. This calls find_pivot_row and find_pivot_column. $row and $col are undefined if either $optimum or $unbounded is set.</p>
 
@@ -293,7 +294,7 @@
 <dt>find_next_basis_from_pivot</dt>
 <dd>
 
-<pre><code>        List(basis) = $self-&gt;find_next_basis_from_pivot (pivot_row, pivot_column) </code></pre>
+<pre><code>List(basis) = $self-&gt;find_next_basis_from_pivot (pivot_row, pivot_column)</code></pre>
 
 <p>Calculate the next basis from the current basis given the pivot position.</p>
 
@@ -301,8 +302,7 @@
 <dt>find_pivot_column</dt>
 <dd>
 
-<pre><code>        ($index, $value, $optimum) = $self-&gt;find_pivot_column (max/min, obj_row_number)
-        </code></pre>
+<pre><code>($index, $value, $optimum) = $self-&gt;find_pivot_column (max/min, obj_row_number)</code></pre>
 
 <p>This finds the left most obj function coefficient that is negative (for maximizing) or positive (for minimizing) and returns the value and the index. Only the index is really needed for this method. The row number is included because there might be more than one objective function in the table (for example when using the Auxiliary method in phase1 of the simplex method.) If there is no coefficient of the appropriate sign then the $optimum flag is set and $index and $value are undefined.</p>
 
@@ -310,7 +310,7 @@
 <dt>find_pivot_row</dt>
 <dd>
 
-<pre><code>        ($index, $value, $unbounded) = $self-&gt;find_pivot_row(col_number)</code></pre>
+<pre><code>($index, $value, $unbounded) = $self-&gt;find_pivot_row(col_number)</code></pre>
 
 <p>Compares the ratio $b[$j]/a[$j, $col_number] and chooses the smallest non-negative entry. It assumes that we are in phase2 of simplex methods so that $b[j]&gt;0; If all entries are negative (or infinity) then the $unbounded flag is set and returned and the $index and $value quantities are undefined.</p>
 
@@ -318,7 +318,7 @@
 <dt>find_leaving_column</dt>
 <dd>
 
-<pre><code>        ($index, $value) = $self-&gt;find_leaving_column(obj_row_number)</code></pre>
+<pre><code>($index, $value) = $self-&gt;find_leaving_column(obj_row_number)</code></pre>
 
 <p>Finds the non-basis column with a non-zero entry in the given row. When called with the pivot row number this index gives the column which will be removed from the basis while the pivot col number gives the basis column which will become a parameter column.</p>
 
@@ -326,9 +326,7 @@
 <dt>next_short_cut_pivot</dt>
 <dd>
 
-<pre><code>        ($row, $col, $feasible, $infeasible) = $self-&gt;next_short_cut_pivot
-        
-        </code></pre>
+<pre><code>($row, $col, $feasible, $infeasible) = $self-&gt;next_short_cut_pivot</code></pre>
 
 <p>Following the short-cut algorithm this chooses the next pivot by choosing the row with the most negative constraint constant entry (top most first in case of tie) and then the left most negative entry in that row.</p>
 
@@ -338,8 +336,7 @@
 <dt>next_short_cut_basis</dt>
 <dd>
 
-<pre><code>        ($basis-&gt;value, $flag) = $self-&gt;next_short_cut_basis()
-        </code></pre>
+<pre><code>($basis-&gt;value, $flag) = $self-&gt;next_short_cut_basis()</code></pre>
 
 <p>In phase 1 of the simplex method calculates the next basis for the short cut method. $flag is set to &#39;feasible_point&#39; if the basis and its corresponding tableau is associated with a basic feasible point (a point on a corner of the domain of the LOP). The tableau is ready for phase 2 processing. $flag is set to &#39;infeasible_lop&#39; which means that the tableau has a row which demonstrates that the LOP constraints are inconsistent and the domain is empty. In these cases the basis returned is the current basis of the tableau object.</p>
 
@@ -349,8 +346,7 @@
 <dt>find_short_cut_row</dt>
 <dd>
 
-<pre><code>        ($index, $value, $feasible)=$self-&gt;find_short_cut_row
-        </code></pre>
+<pre><code>($index, $value, $feasible)=$self-&gt;find_short_cut_row</code></pre>
 
 <p>Find the most negative entry in the constraint column vector $b. If all entries are positive then the tableau represents a feasible point, $feasible is set to 1 and $index and $value are undefined.</p>
 
@@ -358,7 +354,7 @@
 <dt>find_short_cut_column</dt>
 <dd>
 
-<pre><code>        ($index, $value, $infeasible) = $self-&gt;find_short_cut_column(row_index)</code></pre>
+<pre><code>($index, $value, $infeasible) = $self-&gt;find_short_cut_column(row_index)</code></pre>
 
 <p>Find the left most negative entry in the specified row. If all coefficients are positive then the tableau represents an infeasible LOP, the $infeasible flag is set, and the $index and $value are undefined.</p>
 
@@ -368,10 +364,8 @@
 
 <p>(or tableau pivot???)</p>
 
-<pre><code>        Tableau = $self-&gt;row_reduce(3,4)
-        MathObjectMatrix = $self-&gt;row_reduce(3,4)-&gt;current_tableau
-
-        </code></pre>
+<pre><code>Tableau = $self-&gt;row_reduce(3,4)
+MathObjectMatrix = $self-&gt;row_reduce(3,4)-&gt;current_tableau</code></pre>
 
 <p>Row reduce matrix so that column 4 is a basis column. Used in pivoting for simplex method. Returns tableau object.</p>
 
@@ -379,7 +373,7 @@
 <dt>dual_problem</dt>
 <dd>
 
-<pre><code>        TableauObject = $self-&gt;dual_lop</code></pre>
+<pre><code>TableauObject = $self-&gt;dual_lop</code></pre>
 
 <p>Creates the tableau of the LOP which is dual to the linear optimization problem represented by the current tableau.</p>
 
@@ -389,8 +383,7 @@
 <dt>primal2dual</dt>
 <dd>
 
-<pre><code>                @array = $self-&gt;primal2dual(2,3,4)
-                </code></pre>
+<pre><code>@array = $self-&gt;primal2dual(2,3,4)</code></pre>
 
 <p>Maps LOP column indices to dual LOP indicies (basis of complementary slack property)</p>
 
@@ -398,8 +391,7 @@
 <dt>dual2primal</dt>
 <dd>
 
-<pre><code>                @array = $self-&gt;dual2primal(2,3,4)
-                </code></pre>
+<pre><code>@array = $self-&gt;dual2primal(2,3,4)</code></pre>
 
 <p>Maps dual LOP column indices to primal LOP indicies (basis of complementary slack property). Inverse of primal2dual method.</p>
 
@@ -407,8 +399,8 @@
 <dt>isOptimal</dt>
 <dd>
 
-<pre><code>                $self-&gt;isOptimal(&#39;min&#39;| &#39;max&#39;)
-                Returns  1 or 0</code></pre>
+<pre><code>$self-&gt;isOptimal(&#39;min&#39;| &#39;max&#39;)
+Returns  1 or 0</code></pre>
 
 <p>This checks to see if the state is a local minimum or maximum for the objective function -- it does not check whether the stateis feasible.</p>
 
@@ -424,13 +416,13 @@
 <dt>row_slice</dt>
 <dd>
 
-<pre><code>        $self-&gt;row_slice
+<pre><code>$self-&gt;row_slice
 
-        Parameter: @slice or \@slice 
-        Return: MathObject matrix
-                
-        MathObjectMatrix = $self-&gt;row_slice(3,4)
-        MathObjectMatrix = $self-&gt;row_slice([3,4])</code></pre>
+Parameter: @slice or \@slice
+Return: MathObject matrix
+
+MathObjectMatrix = $self-&gt;row_slice(3,4)
+MathObjectMatrix = $self-&gt;row_slice([3,4])</code></pre>
 
 <p>Similar to $self-&gt;extract_rows (or $self-&gt;rows) but returns a MathObjectmatrix</p>
 
@@ -438,71 +430,70 @@
 <dt>extract_rows</dt>
 <dd>
 
-<pre><code>        $self-&gt;extract_rows
+<pre><code>$self-&gt;extract_rows
 
-        Parameter: @slice or \@slice 
-        Return: two dimensional array ref 
+Parameter: @slice or \@slice
+Return: two dimensional array ref
 
-        ARRAY reference = $self-&gt;extract_rows(@slice)
-        ARRAY reference = $self-&gt;extract_rows([@slice])</code></pre>
+ARRAY reference = $self-&gt;extract_rows(@slice)
+ARRAY reference = $self-&gt;extract_rows([@slice])</code></pre>
 
 </dd>
 <dt>column_slice</dt>
 <dd>
 
-<pre><code>        $self-&gt;column_slice()
+<pre><code>$self-&gt;column_slice()
 
-        Parameter: @slice or \@slice 
-        Return: two dimensional array ref 
+Parameter: @slice or \@slice
+Return: two dimensional array ref
 
-        ARRAY reference = $self-&gt;extract_rows(@slice)
-        ARRAY reference = $self-&gt;extract_rows([@slice])</code></pre>
+ARRAY reference = $self-&gt;extract_rows(@slice)
+ARRAY reference = $self-&gt;extract_rows([@slice])</code></pre>
 
 </dd>
 <dt>extract_columns</dt>
 <dd>
 
-<pre><code>        $self-&gt;extract_columns
+<pre><code>$self-&gt;extract_columns
 
-        Parameter: @slice or \@slice 
-        Return: two dimensional array ref 
+Parameter: @slice or \@slice
+Return: two dimensional array ref
 
-        ARRAY reference = $self-&gt;extract_columns(@slice)
-        ARRAY reference = $self-&gt;extract_columns([@slice])</code></pre>
+ARRAY reference = $self-&gt;extract_columns(@slice)
+ARRAY reference = $self-&gt;extract_columns([@slice])</code></pre>
 
 </dd>
 <dt>extract_rows_to_list</dt>
 <dd>
 
-<pre><code>        Parameter: @slice or \@slice 
-        Return: MathObject List of row references
+<pre><code>Parameter: @slice or \@slice
+Return: MathObject List of row references
 
-        MathObjectList = $self-&gt;extract_rows_to_list(@slice)
-        MathObjectList = $self-&gt;extract_rows_to_list([@slice])</code></pre>
+MathObjectList = $self-&gt;extract_rows_to_list(@slice)
+MathObjectList = $self-&gt;extract_rows_to_list([@slice])</code></pre>
 
 </dd>
 <dt>extract_columns_to_list</dt>
 <dd>
 
-<pre><code>        $self-&gt;extract_columns_to_list
+<pre><code>$self-&gt;extract_columns_to_list
 
-        Parameter: @slice or \@slice 
-        Return: MathObject List of Matrix references ?
+Parameter: @slice or \@slice
+Return: MathObject List of Matrix references ?
 
-        ARRAY reference = $self-&gt;extract_columns_to_list(@slice)
-        ARRAY reference = $self-&gt;extract_columns_to_list([@slice])</code></pre>
+ARRAY reference = $self-&gt;extract_columns_to_list(@slice)
+ARRAY reference = $self-&gt;extract_columns_to_list([@slice])</code></pre>
 
 </dd>
 <dt>submatrix</dt>
 <dd>
 
-<pre><code>        $self-&gt;submatrix
+<pre><code>$self-&gt;submatrix
 
-        Parameter:(rows=&gt;\@row_slice,columns=&gt;\@column_slice)
-        Return: MathObject matrix
+Parameter:(rows=&gt;\@row_slice,columns=&gt;\@column_slice)
+Return: MathObject matrix
 
-        MathObjectMatrix = $self-&gt;submatrix([[1,2,3],[2,4,5]])
-        </code></pre>
+MathObjectMatrix = $self-&gt;submatrix([[1,2,3],[2,4,5]])</code></pre>
 
 <p>Extracts a submatrix from a Matrix and returns it as MathObjectMatrix.</p>
 
@@ -512,28 +503,16 @@
 <dt>change_matrix_entry</dt>
 <dd>
 
-<pre><code>        $Matrix-&gt;change_matrix_entry([i,j,k],$value)
+<pre><code>$Matrix-&gt;change_matrix_entry([i,j,k],$value)
 
-        Taken from MatrixReduce.pl.  Written by Davide Cervone.
-        
-        perhaps &quot;assign&quot; would be a better name for this?
-        </code></pre>
+Taken from MatrixReduce.pl.  Written by Davide Cervone.
+
+perhaps &quot;assign&quot; would be a better name for this?</code></pre>
 
 </dd>
 </dl>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

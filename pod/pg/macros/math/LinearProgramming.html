@@ -1,32 +1,59 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>math/LinearProgramming.pl</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>math/LinearProgramming.pl</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>math/LinearProgramming.pl</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
-
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#SYNPOSIS">SYNPOSIS</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-  <li><a href="#MACROS">MACROS</a>
-    <ul>
-      <li><a href="#lp_pivot">lp_pivot</a></li>
-      <li><a href="#lp_pivot_element">lp_pivot_element</a></li>
-      <li><a href="#lp_solve">lp_solve</a></li>
-      <li><a href="#lp_current_value">lp_current_value</a></li>
-      <li><a href="#lp_display_mm">lp_display_mm</a></li>
-      <li><a href="#lp_display">lp_display</a></li>
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">math/LinearProgramming.pl</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNPOSIS">SYNPOSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#MACROS">MACROS</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#lp_pivot">lp_pivot</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#lp_pivot_element">lp_pivot_element</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#lp_solve">lp_solve</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#lp_current_value">lp_current_value</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#lp_display_mm">lp_display_mm</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#lp_display">lp_display</a></li>
     </ul>
-  </li>
-</ul>
+  </li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
+
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
@@ -36,12 +63,12 @@
 
 <p>Macros related to the simplex method for Linear Programming.</p>
 
-<pre><code>        lp_pivot_element(...); # find the pivot element from a tableau
-        lp_solve(...);         # pivot until done
-        lp_current_value(...); # given a tableau, find the value of a requested variable
-        lp_display(...);       # display a tableau
-        lp_display_mm(...);    # display a tableau while in math mode
-        lp_pivot(...);         # perform one pivot on a tableau</code></pre>
+<pre><code>lp_pivot_element(...); # find the pivot element from a tableau
+lp_solve(...);         # pivot until done
+lp_current_value(...); # given a tableau, find the value of a requested variable
+lp_display(...);       # display a tableau
+lp_display_mm(...);    # display a tableau while in math mode
+lp_pivot(...);         # perform one pivot on a tableau</code></pre>
 
 <p>Matrix display makes use of macros from PGmatrixmacros.pl, so it must be included too.</p>
 
@@ -51,10 +78,10 @@
 
 <p>Tableaus are expected to be legal for the simplex method, such as</p>
 
-<pre><code>        [[0,  3, -4,  5, 1, 0, 0, 28],
-         [0,  2,  0,  1, 0, 1, 0, 11],
-         [0,  1,  2,  3, 0, 0, 1,  3],
-         [1, -1,  2, -3, 0, 0, 0,  0]]</code></pre>
+<pre><code>[[0,  3, -4,  5, 1, 0, 0, 28],
+ [0,  2,  0,  1, 0, 1, 0, 11],
+ [0,  1,  2,  3, 0, 0, 1,  3],
+ [1, -1,  2, -3, 0, 0, 0,  0]]</code></pre>
 
 <p>or something similar which arises after pivoting.</p>
 
@@ -64,12 +91,12 @@
 
 <p>Take a tableau, the row and column number, and perform one pivot operation. The tableau can be any matrix in the form reference to array of arrays, such as [[1,2,3],[4,5,6]]. Row and column numbers start at 0. An optional 4th argument can be specified to indicate that the matrix has entries of type Fraction (and then all entries should be of type Fraction).</p>
 
-<pre><code>        $m = [[1,2,3],[4,5,6]];
-        lp_pivot($m, 0,2);</code></pre>
+<pre><code>$m = [[1,2,3],[4,5,6]];
+lp_pivot($m, 0,2);</code></pre>
 
 <p>This function is destructive - it changes the values of its matrix rather than making a copy, and also returns the matrix, so</p>
 
-<pre><code>        $m = lp_pivot([[1,2,3],[4,5,6]], 0, 2);</code></pre>
+<pre><code>$m = lp_pivot([[1,2,3],[4,5,6]], 0, 2);</code></pre>
 
 <p>will have the same result as the example above.</p>
 
@@ -100,12 +127,12 @@
 
 <p>Example:</p>
 
-<pre><code>        $m = [[0,  3, -4,  5, 1, 0, 0, 28],
-              [0,  2,  0,  1, 0, 1, 0, 11],
-              [0,  1,  2,  3, 0, 0, 1,  3],
-              [1, -1,  2, -3, 0, 0, 0,  0]];
+<pre><code>$m = [[0,  3, -4,  5, 1, 0, 0, 28],
+      [0,  2,  0,  1, 0, 1, 0, 11],
+      [0,  1,  2,  3, 0, 0, 1,  3],
+      [1, -1,  2, -3, 0, 0, 0,  0]];
 
-        ($m, $endcode, $pivcount) = lp_solve($m, pivot_limit=&gt;200);</code></pre>
+($m, $endcode, $pivcount) = lp_solve($m, pivot_limit=&gt;200);</code></pre>
 
 </dd>
 </dl>
@@ -118,23 +145,22 @@
 
 <p>Display a simplex tableau while in math mode.</p>
 
-<pre><code>        $m = [[0,  3, -4,  5, 1, 0, 0, 28],
-              [0,  2,  0,  1, 0, 1, 0, 11],
-              [0,  1,  2,  3, 0, 0, 1,  3],
-              [1, -1,  2, -3, 0, 0, 0,  0]];
-        
-        BEGIN_TEXT
-        \[ \{ lp_display_mm($m) \} \]
-        END_TEXT</code></pre>
+<pre><code>$m = [[0,  3, -4,  5, 1, 0, 0, 28],
+      [0,  2,  0,  1, 0, 1, 0, 11],
+      [0,  1,  2,  3, 0, 0, 1,  3],
+      [1, -1,  2, -3, 0, 0, 0,  0]];
+
+BEGIN_TEXT
+\[ \{ lp_display_mm($m) \} \]
+END_TEXT</code></pre>
 
 <p>Accepts the same optional arguments as lp_display (see below), and produces nicer looking results. However, it cannot have answer rules in the tableau (lp_display can have them for fill in the blank tableaus).</p>
 
 <p>To use with a MathObject matrix use</p>
 
-<pre><code>    \[ \{lp_display_mm([$matrix-&gt;value]) \} \]
-    
-    FIXME?  I&#39;ve added an adaptor that allows you to use $matrix directly -- MEG 
-    </code></pre>
+<pre><code>\[ \{lp_display_mm([$matrix-&gt;value]) \} \]
+
+FIXME?  I&#39;ve added an adaptor that allows you to use $matrix directly -- MEG</code></pre>
 
 <p>$matrix-&gt;value outputs an array (usually an array of array references) so placing it inside square bracket produces and array reference (of array references) which is what lp_display_mm() is seeking.</p>
 
@@ -144,29 +170,18 @@
 
 <p>Display a simplex tableau while not in math mode.</p>
 
-<pre><code>        $m = [[0,  3, -4,  5, 1, 0, 0, 28],
-              [0,  2,  0,  1, 0, 1, 0, 11],
-              [0,  1,  2,  3, 0, 0, 1,  3],
-              [1, -1,  2, -3, 0, 0, 0,  0]];
-        
-        BEGIN_TEXT
-        \{ lp_display($m)\}
-        END_TEXT</code></pre>
+<pre><code>$m = [[0,  3, -4,  5, 1, 0, 0, 28],
+      [0,  2,  0,  1, 0, 1, 0, 11],
+      [0,  1,  2,  3, 0, 0, 1,  3],
+      [1, -1,  2, -3, 0, 0, 0,  0]];
+
+BEGIN_TEXT
+\{ lp_display($m)\}
+END_TEXT</code></pre>
 
 <p>Takes the same optional arguments as display_matrix. The default for column alignment as &quot;augmentation line&quot; before the last column. It also adds a horizontal line before the last row if it is not already specified.</p>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

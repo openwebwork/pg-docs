@@ -1,43 +1,74 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>graph/PGgraphmacros.pl</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>graph/PGgraphmacros.pl</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>graph/PGgraphmacros.pl</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
-
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#SYNPOSIS">SYNPOSIS</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a>
-    <ul>
-      <li><a href="#Other-constructs">Other constructs</a></li>
-      <li><a href="#init_graph">init_graph</a></li>
-      <li><a href="#plot_functions">plot_functions</a></li>
-      <li><a href="#insertGraph">insertGraph</a></li>
-      <li><a href="#Circle-lables">&#39;Circle&#39; lables</a></li>
-      <li><a href="#Auxiliary-macros">Auxiliary macros</a>
-        <ul>
-          <li><a href="#string_to_sub-and-my_math_constants">string_to_sub and my_math_constants</a></li>
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">graph/PGgraphmacros.pl</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNPOSIS">SYNPOSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#Other-constructs">Other constructs</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#init_graph">init_graph</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#plot_functions">plot_functions</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#insertGraph">insertGraph</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Circle-lables">&#39;Circle&#39; lables</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Auxiliary-macros">Auxiliary macros</a>
+        <ul class="nav flex-column w-100">
+          <li class="nav-item"><a class="nav-link p-0" href="#string_to_sub-and-my_math_constants">string_to_sub and my_math_constants</a></li>
         </ul>
       </li>
     </ul>
-  </li>
-</ul>
+  </li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
+
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<pre><code>        PGgraphmacros -- in courseScripts directory</code></pre>
+<p>PGgraphmacros -- in courseScripts directory</p>
 
 <a href="#_podtop_"><h1 id="SYNPOSIS">SYNPOSIS</h1></a>
 
-<p># use Fun; # use Label; # use Circle; # use WWPlot;</p>
+<pre><code>use Fun;
+use Label;
+use Circle;
+use WWPlot;</code></pre>
 
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
@@ -51,28 +82,28 @@
 
 <h2 id="init_graph">init_graph</h2>
 
-<pre><code>                $graphObject = init_graph(xmin,ymin,xmax,ymax,&#39;ticks&#39;=&gt;[4,4],&#39;axes&#39;=&gt;[0,0])
-                options are
-                        &#39;grid&#39; =&gt;[8,8] or
-                        # there are 8 evenly spaced lines intersecting the horizontal axis
-                        &#39;ticks&#39;=&gt;[8,8] and/or
-                        # there are 8 ticks on the horizontal axis, 8 on the vertical
-                        &#39;axes&#39; =&gt; [0,0]
-                        # axes pass through the point (0,0) in real coordinates
-                        &#39;size&#39; =&gt; [200,200]
-                        # dimensions of the graph in pixels.
-                        &#39;pixels&#39; =&gt;[200,200]  # synonym for size</code></pre>
+<pre><code>$graphObject = init_graph(xmin,ymin,xmax,ymax,&#39;ticks&#39;=&gt;[4,4],&#39;axes&#39;=&gt;[0,0])
+options are
+        &#39;grid&#39; =&gt;[8,8] or
+        # there are 8 evenly spaced lines intersecting the horizontal axis
+        &#39;ticks&#39;=&gt;[8,8] and/or
+        # there are 8 ticks on the horizontal axis, 8 on the vertical
+        &#39;axes&#39; =&gt; [0,0]
+        # axes pass through the point (0,0) in real coordinates
+        &#39;size&#39; =&gt; [200,200]
+        # dimensions of the graph in pixels.
+        &#39;pixels&#39; =&gt;[200,200]  # synonym for size</code></pre>
 
 <p>Creates a graph object with the default size 200 by 200 pixels. If you want axes or grids you need to specify them in options. But the default values can be selected for you.</p>
 
 <h2 id="plot_functions">plot_functions</h2>
 
-<pre><code>        Usage:  ($f1, $f2, $f3) = plot_functions($graph, $f1, $f2, $f3);
-        Synonym: add_functions($graph,$f1,$f2,$f3);</code></pre>
+<pre><code>Usage:  ($f1, $f2, $f3) = plot_functions($graph, $f1, $f2, $f3);
+Synonym: add_functions($graph,$f1,$f2,$f3);</code></pre>
 
 <p>Where $f1 is a string of the form</p>
 
-<pre><code>        $f1 = qq! x^2 - 3*x + 45 for x in [0, 45) using color:red and weight:2!</code></pre>
+<pre><code>$f1 = qq! x^2 - 3*x + 45 for x in [0, 45) using color:red and weight:2!</code></pre>
 
 <p>The phrase translates as: formula <b>for</b> variable <b>in</b> interval <b>using</b> option-list. The option-list contains pairs of the form attribute:value. The default for color is &quot;default_color&quot; which is usually black. The default for the weight (pixel width) of the pen is 2 pixels.</p>
 
@@ -82,8 +113,8 @@
 
 <h2 id="insertGraph">insertGraph</h2>
 
-<pre><code>        $filePath = insertGraph(graphObject);
-                  returns a path to the file containing the graph image.</code></pre>
+<pre><code>$filePath = insertGraph(graphObject);
+          returns a path to the file containing the graph image.</code></pre>
 
 <p><b>Note:</b> insertGraph is defined in PGcore.pl, because it involves writing to the disk.</p>
 
@@ -97,13 +128,13 @@
 
 <p>The most common use of C,insertGraph&gt; is</p>
 
-<pre><code>        TEXT(image(insertGraph($graph)) );</code></pre>
+<pre><code>TEXT(image(insertGraph($graph)) );</code></pre>
 
 <p>where <code>image</code> takes care of creating the proper URL for accessing the graph and for creating the HTML code to display the image.</p>
 
 <p>Another common usage is:</p>
 
-<pre><code>        TEXT(htmlLink( alias(insertGraph($graph), &quot;picture&quot; ) ) );</code></pre>
+<pre><code>TEXT(htmlLink( alias(insertGraph($graph), &quot;picture&quot; ) ) );</code></pre>
 
 <p>which inserts the URL pointing to the picture.</p>
 
@@ -113,12 +144,12 @@
 
 <h2 id="Circle-lables">&#39;Circle&#39; lables</h2>
 
-<pre><code>        Usage: $circle_object = open_circle( $x_position, $y_position, $color );
-                $circle_object2 = closed_circle( $x_position, $y_position, $color );</code></pre>
+<pre><code>Usage: $circle_object = open_circle( $x_position, $y_position, $color );
+        $circle_object2 = closed_circle( $x_position, $y_position, $color );</code></pre>
 
 <p>Creates a small open (resp. filled in or closed) circle for use as a stamp in marking graphs. For example</p>
 
-<pre><code>        $graph -&gt; stamps($circle_object2); # puts a filled dot at $x_position, $y_position</code></pre>
+<pre><code>$graph -&gt; stamps($circle_object2); # puts a filled dot at $x_position, $y_position</code></pre>
 
 <h2 id="Auxiliary-macros">Auxiliary macros</h2>
 
@@ -126,25 +157,14 @@
 
 <p>These are internal macros which govern the interpretation of equations.</p>
 
-<pre><code>        Usage: $string = my_math_constants($string)
-               $subroutine_reference = my_string_to_sub($string)</code></pre>
+<pre><code>Usage: $string = my_math_constants($string)
+       $subroutine_reference = my_string_to_sub($string)</code></pre>
 
 <p><code>my_math_constants</code> interprets pi, e as mathematical constants 3.1415926... and 2.71828... respectively. (Case is important). The power operator ^ is replaced by ** to conform with perl constructs</p>
 
 <p><code>string_to_sub</code> converts a string defining a single perl arithmetic expression with independent variable $XVAR into a subroutine. The string is first filtered through <code>my_math_macros</code>. The resulting subroutine takes a single real number as input and produces a single output value.</p>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

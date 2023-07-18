@@ -1,60 +1,90 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>Value::AnswerChecker</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Value::AnswerChecker</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>Value::AnswerChecker</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
-
-
-<ul id="index">
-  <li><a href="#DESCRIPTION">DESCRIPTION</a>
-    <ul>
-      <li>
-        <ul>
-          <li>
-            <ul>
-              <li><a href="#mathObject-cmp_defaults">$mathObject-&gt;cmp_defaults()</a></li>
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">Value::AnswerChecker</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item">
+        <ul class="nav flex-column w-100">
+          <li class="nav-item">
+            <ul class="nav flex-column w-100">
+              <li class="nav-item"><a class="nav-link p-0" href="#mathObject-cmp_defaults">$mathObject-&gt;cmp_defaults()</a></li>
             </ul>
           </li>
-          <li><a href="#Value::Real">Value::Real</a></li>
-          <li><a href="#Value::String">Value::String</a></li>
-          <li><a href="#Value::Point">Value::Point</a></li>
-          <li><a href="#Value::Vector">Value::Vector</a></li>
-          <li><a href="#Value::Matrix">Value::Matrix</a></li>
-          <li><a href="#Value::Interval">Value::Interval</a></li>
-          <li><a href="#Value::Set">Value::Set</a></li>
-          <li><a href="#Value::Union">Value::Union</a></li>
-          <li><a href="#Value::List">Value::List</a></li>
-          <li><a href="#Value::Formula">Value::Formula</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#Value::Real">Value::Real</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#Value::String">Value::String</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#Value::Point">Value::Point</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#Value::Vector">Value::Vector</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#Value::Matrix">Value::Matrix</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#Value::Interval">Value::Interval</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#Value::Set">Value::Set</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#Value::Union">Value::Union</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#Value::List">Value::List</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#Value::Formula">Value::Formula</a></li>
         </ul>
       </li>
     </ul>
-  </li>
-</ul>
+  </li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
+
 
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
-<pre><code> #############################################################
- #
- #  Implements the -&gt;cmp method for Value objects.
- #  Otherwise known as MathObjects.  This produces
- #  an answer checker appropriate for the type of object.
- #  Additional options can be passed to the cmp method to
- #  modify its action.
- #
- #   Usage:  $num = Real(3.45); # Real can be replaced by any other MathObject
- #                       ANS($num-&gt;cmp(compareOptionName =&gt; compareOptionValue, ... ))
- #
- #  The individual Value packages are modified below to add the
- #  needed methods.
- #
- #############################################################</code></pre>
+<pre><code>#############################################################
+#
+#  Implements the -&gt;cmp method for Value objects.
+#  Otherwise known as MathObjects.  This produces
+#  an answer checker appropriate for the type of object.
+#  Additional options can be passed to the cmp method to
+#  modify its action.
+#
+#   Usage:  $num = Real(3.45); # Real can be replaced by any other MathObject
+#                       ANS($num-&gt;cmp(compareOptionName =&gt; compareOptionValue, ... ))
+#
+#  The individual Value packages are modified below to add the
+#  needed methods.
+#
+#############################################################</code></pre>
 
 <h4 id="mathObject-cmp_defaults">$mathObject-&gt;cmp_defaults()</h4>
 
@@ -62,149 +92,138 @@
 
 <h3 id="Value::Real">Value::Real</h3>
 
-<pre><code>        Usage ANS( Real(3.56)-&gt;cmp() )
-                Compares response to a real value using &#39;fuzzy&#39; comparison
-                compareOptions and default values:
-                          showTypeWarnings =&gt; 1,
-                          showEqualErrors  =&gt; 1,
-                          ignoreStrings    =&gt; 1,</code></pre>
+<pre><code>Usage ANS( Real(3.56)-&gt;cmp() )
+        Compares response to a real value using &#39;fuzzy&#39; comparison
+        compareOptions and default values:
+                  showTypeWarnings =&gt; 1,
+                  showEqualErrors  =&gt; 1,
+                  ignoreStrings    =&gt; 1,</code></pre>
 
 <h3 id="Value::String">Value::String</h3>
 
-<pre><code>        Usage:  $s = String(&quot;pole&quot;);
-                ANS($s-&gt;cmp(typeMatch =&gt; Complex(&quot;4+i&quot;)));
-                    # compare to response &#39;pole&#39;, don&#39;t complain about complex number responses.
+<pre><code>Usage:  $s = String(&quot;pole&quot;);
+        ANS($s-&gt;cmp(typeMatch =&gt; Complex(&quot;4+i&quot;)));
+            # compare to response &#39;pole&#39;, don&#39;t complain about complex number responses.
 
-                compareOptions and default values:
-                  showTypeWarnings =&gt; 1,
-                  showEqualErrors  =&gt; 1,
-                  ignoreStrings    =&gt; 1,  # don&#39;t complain about string-valued responses
-                  typeMatch        =&gt; &#39;Value::Real&#39;
+        compareOptions and default values:
+          showTypeWarnings =&gt; 1,
+          showEqualErrors  =&gt; 1,
+          ignoreStrings    =&gt; 1,  # don&#39;t complain about string-valued responses
+          typeMatch        =&gt; &#39;Value::Real&#39;
 
-        Initial and final spaces are ignored when comparing strings.</code></pre>
+Initial and final spaces are ignored when comparing strings.</code></pre>
 
 <h3 id="Value::Point">Value::Point</h3>
 
-<pre><code>        Usage: $pt = Point(&quot;(3,6)&quot;); # preferred
-               or $pt = Point(3,6);
-               or $pt = Point([3,6]);
-               ANS($pt-&gt;cmp());
+<pre><code>Usage: $pt = Point(&quot;(3,6)&quot;); # preferred
+       or $pt = Point(3,6);
+       or $pt = Point([3,6]);
+       ANS($pt-&gt;cmp());
 
-                compareOptions:
-                  showTypeWarnings =&gt; 1,   # warns if student response is of incorrect type
-                  showEqualErrors  =&gt; 1,
-                  ignoreStrings    =&gt; 1,
-                  showDimensionHints =&gt; 1, # reports incorrect number of coordinates
-                  showCoordinateHints =&gt;1, # flags individual coordinates that are incorrect</code></pre>
+        compareOptions:
+          showTypeWarnings =&gt; 1,   # warns if student response is of incorrect type
+          showEqualErrors  =&gt; 1,
+          ignoreStrings    =&gt; 1,
+          showDimensionHints =&gt; 1, # reports incorrect number of coordinates
+          showCoordinateHints =&gt;1, # flags individual coordinates that are incorrect</code></pre>
 
 <h3 id="Value::Vector">Value::Vector</h3>
 
-<pre><code>        Usage:  $vec = Vector(&quot;&lt;3,6,7&gt;&quot;);
-                or $vec = Vector(3,6,7);
-                or $vec = Vector([3,6,7]);
-                ANS($vec-&gt;cmp());
+<pre><code>Usage:  $vec = Vector(&quot;&lt;3,6,7&gt;&quot;);
+        or $vec = Vector(3,6,7);
+        or $vec = Vector([3,6,7]);
+        ANS($vec-&gt;cmp());
 
-                compareOptions:
-                  showTypeWarnings    =&gt; 1,   # warns if student response is of incorrect type
-                  showEqualErrors     =&gt; 1,
-                  ignoreStrings       =&gt; 1,
-                  showDimensionHints  =&gt; 1, # reports incorrect number of coordinates
-                  showCoordinateHints =&gt; 1, # flags individual coordinates which are incorrect
-                  promotePoints       =&gt; 0, # allow students to enter vectors as points (3,5,6)
-                  parallel            =&gt; 1, # response is correct if it is parallel to correct answer
-                  sameDirection       =&gt; 1, # response is correct if it has same orientation as correct answer
-                                            #  (only has an effect when parallel =&gt; 1 is specified)</code></pre>
+        compareOptions:
+          showTypeWarnings    =&gt; 1,   # warns if student response is of incorrect type
+          showEqualErrors     =&gt; 1,
+          ignoreStrings       =&gt; 1,
+          showDimensionHints  =&gt; 1, # reports incorrect number of coordinates
+          showCoordinateHints =&gt; 1, # flags individual coordinates which are incorrect
+          promotePoints       =&gt; 0, # allow students to enter vectors as points (3,5,6)
+          parallel            =&gt; 1, # response is correct if it is parallel to correct answer
+          sameDirection       =&gt; 1, # response is correct if it has same orientation as correct answer
+                                    #  (only has an effect when parallel =&gt; 1 is specified)</code></pre>
 
 <h3 id="Value::Matrix">Value::Matrix</h3>
 
-<pre><code>        Usage   $ma = Matrix([[3,6],[2,5]]) or $ma =Matrix([3,6],[2,5])
-                ANS($ma-&gt;cmp());
+<pre><code>Usage   $ma = Matrix([[3,6],[2,5]]) or $ma =Matrix([3,6],[2,5])
+        ANS($ma-&gt;cmp());
 
-                compareOptions:
+        compareOptions:
 
-                  showTypeWarnings    =&gt; 1, # warns if student response is of incorrect type
-                  showEqualErrors     =&gt; 1, # reports messages that occur during element comparisons
-                  ignoreStrings       =&gt; 1,
-                  showDimensionHints  =&gt; 1, # reports incorrect number of coordinates
-                  showCoordinateHints =&gt; 1, # flags individual coordinates which are incorrect</code></pre>
+          showTypeWarnings    =&gt; 1, # warns if student response is of incorrect type
+          showEqualErrors     =&gt; 1, # reports messages that occur during element comparisons
+          ignoreStrings       =&gt; 1,
+          showDimensionHints  =&gt; 1, # reports incorrect number of coordinates
+          showCoordinateHints =&gt; 1, # flags individual coordinates which are incorrect</code></pre>
 
 <h3 id="Value::Interval">Value::Interval</h3>
 
-<pre><code>        Usage:    $interval = Interval(&quot;(1,2]&quot;);
-                  or $interval = Interval(&#39;(&#39;,1,2,&#39;]&#39;);
-                  ANS($inteval-&gt;cmp);
+<pre><code>Usage:    $interval = Interval(&quot;(1,2]&quot;);
+          or $interval = Interval(&#39;(&#39;,1,2,&#39;]&#39;);
+          ANS($inteval-&gt;cmp);
 
-                  compareOptions and defaults:
-                        showTypeWarnings  =&gt; 1,
-                        showEqualErrors   =&gt; 1,
-                        ignoreStrings     =&gt; 1,
-                        showEndpointHints =&gt; 1, # show hints about which end point values are correct
-                        showEndTypeHints  =&gt; 1, # show hints about endpoint types
-                        requireParenMatch =&gt; 1,</code></pre>
+          compareOptions and defaults:
+                showTypeWarnings  =&gt; 1,
+                showEqualErrors   =&gt; 1,
+                ignoreStrings     =&gt; 1,
+                showEndpointHints =&gt; 1, # show hints about which end point values are correct
+                showEndTypeHints  =&gt; 1, # show hints about endpoint types
+                requireParenMatch =&gt; 1,</code></pre>
 
 <h3 id="Value::Set">Value::Set</h3>
 
-<pre><code>        Usage:   $set = Set(5,6,&#39;a&#39;, &#39;b&#39;)
-              or $set = Set(&quot;{5, 6, a, b}&quot;)
+<pre><code>Usage:   $set = Set(5,6,&#39;a&#39;, &#39;b&#39;)
+      or $set = Set(&quot;{5, 6, a, b}&quot;)
 
-              The object is a finite set of real numbers. It can be used with Union and
-              Interval.
+      The object is a finite set of real numbers. It can be used with Union and
+      Interval.
 
-        Examples:  Interval(&quot;(-inf,inf)&quot;) - Set(0)
-                   Compute(&quot;R-{0}&quot;)   # in Interval context: Context(&quot;Interval&quot;);</code></pre>
+Examples:  Interval(&quot;(-inf,inf)&quot;) - Set(0)
+           Compute(&quot;R-{0}&quot;)   # in Interval context: Context(&quot;Interval&quot;);</code></pre>
 
 <h3 id="Value::Union">Value::Union</h3>
 
-<pre><code>        Usage: $union = Union(&quot;[4,5] U [6,7]&quot;);
-               or $union = Union(Interval(&quot;[4,5]&quot;,Interval(&quot;[6,7]&quot;));
-               ANS($union-&gt;cmp());</code></pre>
+<pre><code>Usage: $union = Union(&quot;[4,5] U [6,7]&quot;);
+       or $union = Union(Interval(&quot;[4,5]&quot;,Interval(&quot;[6,7]&quot;));
+       ANS($union-&gt;cmp());</code></pre>
 
 <h3 id="Value::List">Value::List</h3>
 
-<pre><code>        Usage:  $lst = List(&quot;1, x, &lt;4,5,6&gt;&quot;); # list of a real, a formula and a vector.
-                or $lst = List(Real(1), Formula(&quot;x&quot;), Vector(4,5,6));
-                ANS($lst-&gt;cmp(showHints=&gt;1));
+<pre><code>Usage:  $lst = List(&quot;1, x, &lt;4,5,6&gt;&quot;); # list of a real, a formula and a vector.
+        or $lst = List(Real(1), Formula(&quot;x&quot;), Vector(4,5,6));
+        ANS($lst-&gt;cmp(showHints=&gt;1));
 
-                compareOptions and defaults:
-                        showTypeWarnings =&gt; 1,
-                        showEqualErrors  =&gt; 1,         # show errors produced when checking equality of entries
-                        ignoreStrings    =&gt; 1,         # don&#39;t show type warnings for strings
-                        studentsMustReduceUnions =&gt; 1,
-                        showUnionReduceWarnings =&gt; 1,
-                        showHints =&gt; undef,            # automatically set to 1 if $showPartialCorrectAnswers == 1
-                        showLengthHints =&gt; undef,      # automatically set to 1 if $showPartialCorrectAnswers == 1
-                        showParenHints =&gt; undef,       # automatically set to 1 if $showPartialCorrectAnswers == 1
-                        partialCredit =&gt; undef,        # automatically set to 1 if $showPartialCorrectAnswers == 1
-                        ordered =&gt; 0,                  # 1 = must be in same order as correct answer
-                        entry_type =&gt; undef,           # determined from first entry
-                        list_type =&gt; undef,            # determined automatically
-                        typeMatch =&gt; $element,         # used for type checking the entries
-                        firstElement =&gt; $element,
-                        extra =&gt; undef,                # used to check syntax of incorrect answers
-                        requireParenMatch =&gt; 1,        # student parens must match correct parens
-                        removeParens =&gt; 1,             # remove outermost parens, if any
-                        implicitList =&gt; 1,             # force single answers to be lists (even if they ARE lists)</code></pre>
+        compareOptions and defaults:
+                showTypeWarnings =&gt; 1,
+                showEqualErrors  =&gt; 1,         # show errors produced when checking equality of entries
+                ignoreStrings    =&gt; 1,         # don&#39;t show type warnings for strings
+                studentsMustReduceUnions =&gt; 1,
+                showUnionReduceWarnings =&gt; 1,
+                showHints =&gt; undef,            # automatically set to 1 if $showPartialCorrectAnswers == 1
+                showLengthHints =&gt; undef,      # automatically set to 1 if $showPartialCorrectAnswers == 1
+                showParenHints =&gt; undef,       # automatically set to 1 if $showPartialCorrectAnswers == 1
+                partialCredit =&gt; undef,        # automatically set to 1 if $showPartialCorrectAnswers == 1
+                ordered =&gt; 0,                  # 1 = must be in same order as correct answer
+                entry_type =&gt; undef,           # determined from first entry
+                list_type =&gt; undef,            # determined automatically
+                typeMatch =&gt; $element,         # used for type checking the entries
+                firstElement =&gt; $element,
+                extra =&gt; undef,                # used to check syntax of incorrect answers
+                requireParenMatch =&gt; 1,        # student parens must match correct parens
+                removeParens =&gt; 1,             # remove outermost parens, if any
+                implicitList =&gt; 1,             # force single answers to be lists (even if they ARE lists)</code></pre>
 
 <h3 id="Value::Formula">Value::Formula</h3>
 
-<pre><code>        Usage: $fun = Formula(&quot;x^2-x+1&quot;);
-               $set = Formula(&quot;[-1, x) U (x, 2]&quot;);
+<pre><code>Usage: $fun = Formula(&quot;x^2-x+1&quot;);
+       $set = Formula(&quot;[-1, x) U (x, 2]&quot;);
 
-        A formula can have any of the other math object types as its range.
-                Union, List, Number (Complex or Real),</code></pre>
+A formula can have any of the other math object types as its range.
+        Union, List, Number (Complex or Real),</code></pre>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

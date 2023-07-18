@@ -1,21 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>contexts/contextReaction.pl</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>contexts/contextReaction.pl</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>contexts/contextReaction.pl</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">contexts/contextReaction.pl</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
 
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-</ul>
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
@@ -27,18 +56,18 @@
 
 <p>To use the context include</p>
 
-<pre><code>        loadMacros(&quot;contextReaction.pl&quot;);
-        Context(&quot;Reaction&quot;);</code></pre>
+<pre><code>loadMacros(&quot;contextReaction.pl&quot;);
+Context(&quot;Reaction&quot;);</code></pre>
 
 <p>at the top of your PG file, then create Formula() objects for your reactions. For example:</p>
 
-<pre><code>        $R = Formula(&quot;4P + 5O_2 --&gt; 2P_2O_5&quot;);</code></pre>
+<pre><code>$R = Formula(&quot;4P + 5O_2 --&gt; 2P_2O_5&quot;);</code></pre>
 
 <p>Ions can be specified using ^ to produce superscripts, as in Na^+1 or Na^{+1}. Note that the charge must be listed with prefix notation (+1), not postfix notation (1+), and that a number is required (so you can&#39;t use just Na^+).</p>
 
 <p>States can be appended to compounds, as in AgCl(s). So you can make reactions like the following:</p>
 
-<pre><code>        Ag^{+1}(aq) + Cl^{-1}(aq) --&gt; AgCl(s)</code></pre>
+<pre><code>Ag^{+1}(aq) + Cl^{-1}(aq) --&gt; AgCl(s)</code></pre>
 
 <p>Note that a state can be given by itself, e.g., (l), so you can ask for a student to supply just a state.</p>
 
@@ -46,54 +75,43 @@
 
 <p>The Reaction Context also allows you to create parts of reactions. E.g., you could create</p>
 
-<pre><code>        $products = Formula(&quot;4CO_2 + 6H_2O&quot;);</code></pre>
+<pre><code>$products = Formula(&quot;4CO_2 + 6H_2O&quot;);</code></pre>
 
 <p>which you could use in a problem as follows:</p>
 
-<pre><code>        loadMacros(&quot;contextReaction.pl&quot;);
-        Context(&quot;Reaction&quot;);
-        
-        $reactants = Formula(&quot;2C_2H_6 + 7O_2&quot;);
-        $products  = Formula(&quot;4CO_2 + 6H_2O&quot;);
-        
-        Context()-&gt;texStrings;
-        BEGIN_TEXT
-        \($reactants \longrightarrow\) \{ans_rule(30)\}.
-        END_TEXT
-        Context()-&gt;normalStrings;
-        
-        ANS($products-&gt;cmp);</code></pre>
+<pre><code>loadMacros(&quot;contextReaction.pl&quot;);
+Context(&quot;Reaction&quot;);
+
+$reactants = Formula(&quot;2C_2H_6 + 7O_2&quot;);
+$products  = Formula(&quot;4CO_2 + 6H_2O&quot;);
+
+Context()-&gt;texStrings;
+BEGIN_TEXT
+\($reactants \longrightarrow\) \{ans_rule(30)\}.
+END_TEXT
+Context()-&gt;normalStrings;
+
+ANS($products-&gt;cmp);</code></pre>
 
 <p>Note that sums and products are not simplified in any way, so that Formula(&quot;O + O&quot;) and Formula(&quot;2O&quot;) and Formula(&quot;O_2&quot;) are all different and unequal in this context.</p>
 
 <p>All the elements of the periodic table are available within the Reaction Context, as are the states (aq), (s), (l), (g), and (ppt). If you need additional terms, like &quot;Heat&quot; for example, you can add them as variables:</p>
 
-<pre><code>        Context()-&gt;variables-&gt;add(Heat =&gt; $context::Reaction::CONSTANT);</code></pre>
+<pre><code>Context()-&gt;variables-&gt;add(Heat =&gt; $context::Reaction::CONSTANT);</code></pre>
 
 <p>Then you can make formulas that include Heat as a term. These &quot;constants&quot; are not allowed to have coefficients or sub- or superscripts, and can not be combined with compounds except by addition. If you want a term that can be combined in those ways, use $context::Reaction::ELEMENT instead, as in</p>
 
-<pre><code>        Context()-&gt;variables-&gt;add(e =&gt; $context::Reaction::ELEMENT);</code></pre>
+<pre><code>Context()-&gt;variables-&gt;add(e =&gt; $context::Reaction::ELEMENT);</code></pre>
 
 <p>to allow &quot;e&quot; for electrons, for example.</p>
 
 <p>If you need to add more states, use $context::Reaction::STATE, as in</p>
 
-<pre><code>        Context()-&gt;variables-&gt;add(&#39;(x)&#39; =&gt; $context::Reaction::STATE);</code></pre>
+<pre><code>Context()-&gt;variables-&gt;add(&#39;(x)&#39; =&gt; $context::Reaction::STATE);</code></pre>
 
 <p>to allow a state of (x) for a compound.</p>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

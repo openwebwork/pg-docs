@@ -1,21 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>parsers/parserFormulaUpToConstant.pl</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>parsers/parserFormulaUpToConstant.pl</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>parsers/parserFormulaUpToConstant.pl</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">parsers/parserFormulaUpToConstant.pl</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
 
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-</ul>
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
@@ -23,63 +52,52 @@
 
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
-<p>This file implements the FormulaUpToConstant object, which is a formula that is only unique up to a constant (i.e., this is an anti-derivative). Students must include the &quot;+C&quot; as part of their answers, but they can use any (single-letter) constant that they want, and it doesn&#39;t have to be the one the professor used.</p>
+<p>This file implements the <code>FormulaUpToConstant</code> object, which is a formula that is only unique up to a constant (i.e., this is an anti-derivative). Students must include the &quot;+C&quot; as part of their answers, but they can use any (single-letter) constant that they want, and it doesn&#39;t have to be the one the professor used.</p>
 
-<p>To use FormulaUpToConstant objects, load this macro file at the top of your problem:</p>
+<p>To use <code>FormulaUpToConstant</code> objects, load this macro file at the top of your problem:</p>
 
-<pre><code>        loadMacros(&quot;parserFormulaUpToConstant.pl&quot;);</code></pre>
+<pre><code>loadMacros(&quot;parserFormulaUpToConstant.pl&quot;);</code></pre>
 
 <p>then create a formula with constant as follows:</p>
 
-<pre><code>        $f = FormulaUpToConstant(&quot;sin(x)+C&quot;);</code></pre>
+<pre><code>$f = FormulaUpToConstant(&quot;sin(x)+C&quot;);</code></pre>
 
-<p>Note that the C should NOT already be a variable in the Context; the FormulaUpToConstant object will handle adding it in for you. If you don&#39;t include a constant in your formula (i.e., if all the variables that you used are already in your Context, then the FormulaUpToConstant object will add &quot;+C&quot; for you.</p>
+<p>Note that the C should NOT already be a variable in the Context; the <code>FormulaUpToConstant</code> object will handle adding it in for you. If you don&#39;t include a constant in your formula (i.e., if all the variables that you used are already in your Context, then the FormulaUpToConstant object will add &quot;+C&quot; for you.</p>
 
-<p>The FormulaUpToConstant should work like any normal Formula, and in particular, you use $f-&gt;cmp to get its answer checker.</p>
+<p>The <code>FormulaUpToConstant</code> should work like any normal Formula, and in particular, you use $f-&gt;cmp to get its answer checker.</p>
 
-<pre><code>        ANS($f-&gt;cmp);</code></pre>
+<pre><code>ANS($f-&gt;cmp);</code></pre>
 
-<p>Note that the FormulaUpToConstant object creates its own private copy of the current Context (so that it can add variables without affecting the rest of the problem). You should not notice this in general, but if you need to access that context, use $f-&gt;{context}. E.g.</p>
+<p>Note that the <code>FormulaUpToConstant</code> object creates its own private copy of the current Context (so that it can add variables without affecting the rest of the problem). You should not notice this in general, but if you need to access that context, use $f-&gt;{context}. E.g.</p>
 
-<pre><code>        Context($f-&gt;{context});</code></pre>
+<pre><code>Context($f-&gt;{context});</code></pre>
 
-<p>would make the current context the one being used by the FormulaUpToConstant, while</p>
+<p>would make the current context the one being used by the <code>FormulaUpToConstant</code>, while</p>
 
-<pre><code>        $f-&gt;{context}-&gt;variables-&gt;names</code></pre>
+<pre><code>$f-&gt;{context}-&gt;variables-&gt;names</code></pre>
 
 <p>would return a list of the variables in the private context.</p>
 
 <p>To get the name of the constant in use in the formula, use</p>
 
-<pre><code>        $f-&gt;constant</code></pre>
+<pre><code>$f-&gt;constant</code></pre>
 
-<p>If you combine a FormulaUpToConstant with other formulas, the result will be a new FormulaUpToConstant object, with a new Context, and potentially a new + C added to it. This is likely not what you want. Instead, you should convert back to a Formula first, then combine with other objects, then convert back to a FormulaUpToConstant, if necessary. To do this, use the removeConstant() method:</p>
+<p>If you combine a <code>FormulaUpToConstant</code> with other formulas, the result will be a new <code>FormulaUpToConstant</code> object, with a new Context, and potentially a new + C added to it. This is likely not what you want. Instead, you should convert back to a Formula first, then combine with other objects, then convert back to a <code>FormulaUpToConstant</code>, if necessary. To do this, use the removeConstant() method:</p>
 
-<pre><code>        $f = FormulaUpToConstant(&quot;sin(x)+C&quot;);
-        $g = Formula(&quot;cos(x)&quot;);
-        $h = $f-&gt;removeConstant + $g;  # $h will be &quot;sin(x)+cos(x)&quot;
-        $h = FormulaUpToConstant($h);  # $h will be &quot;sin(x)+cos(x)+C&quot;</code></pre>
+<pre><code>$f = FormulaUpToConstant(&quot;sin(x)+C&quot;);
+$g = Formula(&quot;cos(x)&quot;);
+$h = $f-&gt;removeConstant + $g;  # $h will be &quot;sin(x)+cos(x)&quot;
+$h = FormulaUpToConstant($h);  # $h will be &quot;sin(x)+cos(x)+C&quot;</code></pre>
 
 <p>The answer evaluator by default will give &quot;helpful&quot; messages to the student when the &quot;+ C&quot; is left out. You can turn off these messages using the showHints option to the cmp() method:</p>
 
-<pre><code>        ANS($f-&gt;cmp(showHints =&gt; 0));</code></pre>
+<pre><code>ANS($f-&gt;cmp(showHints =&gt; 0));</code></pre>
 
 <p>One of the hints is about whether the student&#39;s answer is linear in the arbitrary constant. This test requires differentiating the student answer. Since there are times when that could be problematic, you can disable that test via the showLinearityHints flag. (Note: setting showHints to 0 also disables these hints.)</p>
 
-<pre><code>        ANS($f-&gt;cmp(showLinearityHints =&gt; 0));</code></pre>
+<pre><code>ANS($f-&gt;cmp(showLinearityHints =&gt; 0));</code></pre>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

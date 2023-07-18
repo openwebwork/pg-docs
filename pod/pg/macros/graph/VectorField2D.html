@@ -1,22 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>graph/VectorField2D.pl</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>graph/VectorField2D.pl</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>graph/VectorField2D.pl</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">graph/VectorField2D.pl</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#OPTIONS">OPTIONS</a></li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
 
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-  <li><a href="#OPTIONS">OPTIONS</a></li>
-</ul>
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
@@ -26,36 +54,36 @@
 
 <p>This is a single macro which creates a vector field and adds it to a graphobject created using <code>init_graph</code> from PGgraphmacros.pl. Create a vector field by first creating a graphobject.</p>
 
-<pre><code>    loadMacros(&#39;PGML.pl&#39;, &#39;PGgraphmacros.pl&#39;, &#39;VectorField2D.pl&#39;);
-    $gr = init_graph($xmin, $ymin, $xmax, $ymax, axes =&gt; [0, 0], pixels =&gt; [500, 500]);</code></pre>
+<pre><code>loadMacros(&#39;PGML.pl&#39;, &#39;PGgraphmacros.pl&#39;, &#39;VectorField2D.pl&#39;);
+$gr = init_graph($xmin, $ymin, $xmax, $ymax, axes =&gt; [0, 0], pixels =&gt; [500, 500]);</code></pre>
 
 <p>Then use the <code>VectorField2D(options)</code> macro to add the vector field <code>F = Fx i + Fy j</code> to the graph, where <code>Fx</code> and <code>Fy</code> are MathObject formulas in two variables (you may need to add the variables to the Context):</p>
 
-<pre><code>    Context()-&gt;variables-&gt;add(x =&gt; &#39;Real&#39;, y =&gt; &#39;Real&#39;);
-    VectorField2D(
-        graphobject     =&gt; $gr,
-        Fx              =&gt; Formula(&#39;2xy&#39;),
-        Fy              =&gt; Formula(&#39;y^2 - x^2&#39;),
-        xvar            =&gt; &#39;x&#39;,
-        yvar            =&gt; &#39;y&#39;,
-        xmin            =&gt; -5,
-        xmax            =&gt; 5,
-        ymin            =&gt; -5,
-        ymax            =&gt; 5,
-        xsamples        =&gt; 10,
-        ysamples        =&gt; 10,
-        vectorcolor     =&gt; &#39;blue&#39;,
-        vectorscale     =&gt; 0.25,
-        vectorthickness =&gt; 2,
-        vectortiplength =&gt; 0.65,
-        vectortipwidth  =&gt; 0.08,
-        xavoid          =&gt; 0,
-        yavoid          =&gt; 0,
-    );</code></pre>
+<pre><code>Context()-&gt;variables-&gt;add(x =&gt; &#39;Real&#39;, y =&gt; &#39;Real&#39;);
+VectorField2D(
+    graphobject     =&gt; $gr,
+    Fx              =&gt; Formula(&#39;2xy&#39;),
+    Fy              =&gt; Formula(&#39;y^2 - x^2&#39;),
+    xvar            =&gt; &#39;x&#39;,
+    yvar            =&gt; &#39;y&#39;,
+    xmin            =&gt; -5,
+    xmax            =&gt; 5,
+    ymin            =&gt; -5,
+    ymax            =&gt; 5,
+    xsamples        =&gt; 10,
+    ysamples        =&gt; 10,
+    vectorcolor     =&gt; &#39;blue&#39;,
+    vectorscale     =&gt; 0.25,
+    vectorthickness =&gt; 2,
+    vectortiplength =&gt; 0.65,
+    vectortipwidth  =&gt; 0.08,
+    xavoid          =&gt; 0,
+    yavoid          =&gt; 0,
+);</code></pre>
 
 <p>Add the following PGML to insert the image into the problem:</p>
 
-<pre><code>    [@ image(insertGraph($gr)) @]*</code></pre>
+<pre><code>[@ image(insertGraph($gr)) @]*</code></pre>
 
 <a href="#_podtop_"><h1 id="OPTIONS">OPTIONS</h1></a>
 
@@ -107,18 +135,7 @@
 </dd>
 </dl>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

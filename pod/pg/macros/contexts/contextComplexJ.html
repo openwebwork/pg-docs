@@ -1,23 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>contexts/contextComplexJ.pl</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>contexts/contextComplexJ.pl</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>contexts/contextComplexJ.pl</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">contexts/contextComplexJ.pl</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#USAGE">USAGE</a></li><li class="nav-item"><a class="nav-link p-0" href="#SETTING-THE-ALTERNATE-FORM-AS-THE-DEFAULT">SETTING THE ALTERNATE FORM AS THE DEFAULT</a></li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
 
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-  <li><a href="#USAGE">USAGE</a></li>
-  <li><a href="#SETTING-THE-ALTERNATE-FORM-AS-THE-DEFAULT">SETTING THE ALTERNATE FORM AS THE DEFAULT</a></li>
-</ul>
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
@@ -31,14 +58,14 @@
 
 <p>To use this file, first load it into your problem, then use the Complex context as usual. Both i and j notation will be allowed, and numbers will display in whichever format they were originally entered.</p>
 
-<pre><code>        loadMacros(&quot;contextComplexJ.pl&quot;);
-        
-        Context(&quot;Complex&quot;);
-        
-        $z1 = Compute(&quot;1+3i&quot;);
-        $z2 = Compute(&quot;1+3j&quot;);    # equivalent to $z1;
-        
-        $z1 == $z2;               # true</code></pre>
+<pre><code>loadMacros(&quot;contextComplexJ.pl&quot;);
+
+Context(&quot;Complex&quot;);
+
+$z1 = Compute(&quot;1+3i&quot;);
+$z2 = Compute(&quot;1+3j&quot;);    # equivalent to $z1;
+
+$z1 == $z2;               # true</code></pre>
 
 <p>There are two context flags that control the input and output of complex numbers.</p>
 
@@ -62,10 +89,10 @@
 
 <p>It is possible to set <code>enterComplex</code> and <code>displayComplex</code> to different values. For example.</p>
 
-<pre><code>        Context()-&gt;flags-&gt;set(
-          enterComplex =&gt; &quot;either&quot;,
-          displayComplex =&gt; &quot;i&quot;,
-        );</code></pre>
+<pre><code>Context()-&gt;flags-&gt;set(
+    enterComplex =&gt; &quot;either&quot;,
+    displayComplex =&gt; &quot;i&quot;,
+);</code></pre>
 
 <p>would allow students to enter complex numbers in either format, but all numebrs would be displayed in standard form.</p>
 
@@ -73,37 +100,26 @@
 
 <p>If you want to force existing problems to allow (or force, or warn about) the j notation, then create a file named <code>parserCustomization.pl</code> in your course&#39;s <code>templates/macros</code> directory, and enter the following in it:</p>
 
-<pre><code>        loadMacros(&quot;contextComplexJ.pl&quot;);
-        context::ComplexJ-&gt;Default(&quot;either&quot;,&quot;either&quot;);</code></pre>
+<pre><code>loadMacros(&quot;contextComplexJ.pl&quot;);
+context::ComplexJ-&gt;Default(&quot;either&quot;,&quot;either&quot;);</code></pre>
 
 <p>This will alter all the standard Complex contexts to allow students to enter complex numbers in either format, and will display them using the form that was used to enter them.</p>
 
 <p>You could also do</p>
 
-<pre><code>        loadMacros(&quot;contextComplexJ.pl&quot;);
-        context::ComplexJ-&gt;Default(&quot;i&quot;,&quot;i&quot;);</code></pre>
+<pre><code>loadMacros(&quot;contextComplexJ.pl&quot;);
+context::ComplexJ-&gt;Default(&quot;i&quot;,&quot;i&quot;);</code></pre>
 
 <p>to cause a warning message to appear when students enter the j format.</p>
 
 <p>If you want to force students to enter the alternate format, use</p>
 
-<pre><code>        loadMacros(&quot;contextComplexJ.pl&quot;);
-        context::ComplexJ-&gt;Default(&quot;j&quot;,&quot;j&quot;);</code></pre>
+<pre><code>loadMacros(&quot;contextComplexJ.pl&quot;);
+context::ComplexJ-&gt;Default(&quot;j&quot;,&quot;j&quot;);</code></pre>
 
 <p>This will force the display of all complex numbers to use j notation (so even the ones created in the problem using standard form will show using j&#39;s), and will force students to enter their results using j&#39;s, though professors answers will still be allowed to be entered in either format (the <code>Default()</code> function converts the first <code>&quot;j&quot;</code> to <code>&quot;either&quot;</code>, but arranges that the default flags for the answer checker are set to only allow students to enter complex numbers with j&#39;s). This allows you to force j notation in problems without having to rewrite them.</p>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

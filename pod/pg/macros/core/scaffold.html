@@ -1,21 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>core/scaffold.pl</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>core/scaffold.pl</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>core/scaffold.pl</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">core/scaffold.pl</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
 
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-</ul>
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
@@ -27,33 +56,33 @@
 
 <p>To use the scaffolding macros, include the macros into your problem</p>
 
-<pre><code>    loadMacros(&quot;scaffold.pl&quot;);</code></pre>
+<pre><code>loadMacros(&quot;scaffold.pl&quot;);</code></pre>
 
 <p>and then use <code>Scaffold::Begin()</code> to start a scaffold problem and <code>Scaffold::End()</code> to end it. In between, use <code>Section::Begin(title)</code> and <code>Section::End()</code> around the sections of your problem. Within a section, use <code>BEGIN_TEXT/END_TEXT</code> or <code>BEGIN_PGML/END_PGML</code> to create the text of the section as usual, and <code>ANS()</code> to assign answer checkers to the blanks that appear within the section. For example:</p>
 
-<pre><code>    Scaffold::Begin();
+<pre><code>Scaffold::Begin();
 
-    Section::Begin(&quot;Part 1: The first part&quot;);
-    BEGIN_TEXT
-    This is the text for part 1.  \(1+1\) = \{ans_rule\}
-    END_TEXT
-    ANS(Real(2)-&gt;cmp);
-    Section::End();
+Section::Begin(&quot;Part 1: The first part&quot;);
+BEGIN_TEXT
+This is the text for part 1.  \(1+1\) = \{ans_rule\}
+END_TEXT
+ANS(Real(2)-&gt;cmp);
+Section::End();
 
-    Section::Begin(&quot;Part 2: The second part&quot;);
-    BEGIN_TEXT
-    This is text for the second part.  \(2*2\) = \{ans_rule\}
-    END_TEXT
-    ANS(Real(4)-&gt;cmp);
-    Section::End();
+Section::Begin(&quot;Part 2: The second part&quot;);
+BEGIN_TEXT
+This is text for the second part.  \(2*2\) = \{ans_rule\}
+END_TEXT
+ANS(Real(4)-&gt;cmp);
+Section::End();
 
-    Scaffold::End();</code></pre>
+Scaffold::End();</code></pre>
 
 <p>You can include whatever code you need to between the <code>Section::Begin()</code> and <code>Section::End()</code> calls, so you can create variables, set the Context, perform computations, generate text sections, and so on. Whatever answer checkers are assigned within a section are the ones that are used to decide when that section can be opened by the student. Any solutions created within a section become part of that section, and will be made available from within that section, when applicable.</p>
 
 <p>A section is considered to be &quot;correct&quot; when all the answers contained in it are correct. Note that essay answers are treated specially, and are always considered correct (when non-empty) for purposes of determining when a section is correct. You can also force a non-empty answer blank to be considered correct by using the <code>scaffold_force</code> option on the answer checker. For example:</p>
 
-<pre><code>    ANS(Real(123)-&gt;cmp(scaffold_force =&gt; 1));</code></pre>
+<pre><code>ANS(Real(123)-&gt;cmp(scaffold_force =&gt; 1));</code></pre>
 
 <p>would mean that this answer would not have to be correct for the section to be considered correct.</p>
 
@@ -84,7 +113,7 @@
 
 <p>This provides the condition for when an instructor (as opposed to a student) can open a section. By default, this is set to <code>&quot;always&quot;</code>, so that instructors can look at any section of the problem, but you can set it to any value for <code>can_open</code> above. If you are an instructor and want to test how a problem looks for a student, you can set</p>
 
-<pre><code>    $Scaffold::isInstructor = 0;</code></pre>
+<pre><code>$Scaffold::isInstructor = 0;</code></pre>
 
 <p>temporarily while testing the problem. Remember to remove that when you are done, however.</p>
 
@@ -117,79 +146,53 @@
 
 <p>Some useful configurations are:</p>
 
-<pre><code>    #
-    #  The defaults:
-    #    only the active section is open, but students can open
-    #    previous correct sections if they want.
-    #
-    Scaffold::Begin(
-      can_open =&gt; &quot;when_previous_correct&quot;,
-      is_open  =&gt; &quot;first_incorrect&quot;
-    );
+<p>The defaults: only the active section is open, but students can open previous correct sections if they want.</p>
 
-    #
-    #  Sections stay open as the student works through
-    #  the problem.
-    #
-    Scaffold::Begin(
-      can_open =&gt; &quot;when_previous_correct&quot;,
-      is_open  =&gt; &quot;correct_or_first_incorrect&quot;
-    );
+<pre><code>Scaffold::Begin(
+    can_open =&gt; &quot;when_previous_correct&quot;,
+    is_open  =&gt; &quot;first_incorrect&quot;
+);</code></pre>
 
-    #
-    #  Students work through the problem seeing only
-    #  one section at a time, and can&#39;t go back to
-    #  previous sections.
-    #
-    Scaffold::Begin(
-      can_open =&gt; &quot;first_incorrect&quot;,
-      is_open  =&gt; &quot;first_incorrect&quot;
-    );
+<p>Sections stay open as the student works through the problem.</p>
 
-    #
-    #  Students can view and work on any section,
-    #  but only the first incorrect one is shown initially.
-    #
-    Scaffold::Begin(
-      can_open =&gt; &quot;always&quot;,
-      is_open  =&gt; &quot;first_incorrect&quot;
-    );
+<pre><code>Scaffold::Begin(
+    can_open =&gt; &quot;when_previous_correct&quot;,
+    is_open  =&gt; &quot;correct_or_first_incorrect&quot;
+);</code></pre>
 
-    #
-    #  Students see all the parts initially, but the
-    #  sections close as the student gets them correct.
-    #
-    Scaffold::Begin(
-      can_open =&gt; &quot;always&quot;,
-      is_open  =&gt; &quot;incorrect&quot;
-    );
+<p>Students work through the problem seeing only one section at a time, and can&#39;t go back to previous sections.</p>
 
-    #
-    #  Students see all the parts initially, but the
-    #  sections close as the student gets them correct,
-    #  and can&#39;t be reopened.
-    #
-    Scaffold::Begin(
-      can_open =&gt; &quot;incorrect&quot;,
-      is_open  =&gt; &quot;incorrect&quot;
-    );</code></pre>
+<pre><code>Scaffold::Begin(
+    can_open =&gt; &quot;first_incorrect&quot;,
+    is_open  =&gt; &quot;first_incorrect&quot;
+);</code></pre>
+
+<p>Students can view and work on any section, but only the first incorrect one is shown initially.</p>
+
+<pre><code>Scaffold::Begin(
+    can_open =&gt; &quot;always&quot;,
+    is_open  =&gt; &quot;first_incorrect&quot;
+);</code></pre>
+
+<p>Students see all the parts initially, but the sections close as the student gets them correct.</p>
+
+<pre><code>Scaffold::Begin(
+    can_open =&gt; &quot;always&quot;,
+    is_open  =&gt; &quot;incorrect&quot;
+);</code></pre>
+
+<p>Students see all the parts initially, but the sections close as the student gets them correct, and can&#39;t be reopened.</p>
+
+<pre><code>Scaffold::Begin(
+    can_open =&gt; &quot;incorrect&quot;,
+    is_open  =&gt; &quot;incorrect&quot;
+);</code></pre>
 
 <p>The <code>Section::Begin()</code> macro also accepts the options <code>can_open</code>, <code>is_open</code>, and <code>instructor_can_open</code> described above. This allows you to override the defaults for a particular section. In particular, you can provide a subroutine that determines when the section can or should be open.</p>
 
 <p>Note that values like <code>$showPartialCorrectAnswers</code> and the isntalled grader are global to the whole problem, so can&#39;t be set individually on a per section basis. Also note that the answers aren&#39;t checked until the end of the problem, so any changes you make to the <code>Context()</code> after a section is ended will still affect the context within that section.</p>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

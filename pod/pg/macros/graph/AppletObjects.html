@@ -1,39 +1,62 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>graph/AppletObjects.pl</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>graph/AppletObjects.pl</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>graph/AppletObjects.pl</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
-
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a>
-    <ul>
-      <li>
-        <ul>
-          <li><a href="#GeogebraWebApplet">GeogebraWebApplet</a></li>
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">graph/AppletObjects.pl</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#GeogebraWebApplet">GeogebraWebApplet</a></li>
+    </ul>
+  </li><li class="nav-item"><a class="nav-link p-0" href="#Methods">Methods</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#insertAll">insertAll</a>
+        <ul class="nav flex-column w-100">
+          <li class="nav-item"><a class="nav-link p-0" href="#Example-problem">Example problem</a></li>
         </ul>
       </li>
     </ul>
-  </li>
-  <li><a href="#Methods">Methods</a>
-    <ul>
-      <li>
-        <ul>
-          <li><a href="#insertAll">insertAll</a></li>
-          <li><a href="#Example-problem">Example problem</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
+  </li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
+
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
@@ -45,137 +68,127 @@
 
 <p>See also <a href="//pg/lib/Applet.html">Applet.pm</a>.</p>
 
-<h3 id="GeogebraWebApplet">GeogebraWebApplet</h3>
+<h2 id="GeogebraWebApplet">GeogebraWebApplet</h2>
 
-<pre><code>    Useage:    $applet = GeogebraWebApplet(...);</code></pre>
+<p>Usage: <code>$applet = GeogebraWebApplet(...);</code></p>
 
 <a href="#_podtop_"><h1 id="Methods">Methods</h1></a>
 
 <p>This method is defined in this file because it uses methods in PG.pl and PGbasicmacros.pl that are not available to Applet.pm when it is compiled (at the time the apache child process is first initialized).</p>
 
-<h3 id="insertAll">insertAll</h3>
+<h2 id="insertAll">insertAll</h2>
 
-<pre><code>    Useage:  TEXT($applet-&gt;insertAll());
-             \{ $applet-&gt;insertAll() \}  (used within BEGIN_TEXT/END_TEXT blocks)</code></pre>
+<p>Usage: <code><span style="white-space: nowrap;">TEXT($applet-&gt;insertAll());</span></code></p>
+
+<pre><code>\{ $applet-&gt;insertAll() \}  (used within BEGIN_TEXT/END_TEXT blocks)</code></pre>
 
 <p>Inserts applet at this point in the HTML code. (In TeX mode a message &quot;Applet&quot; is written.) This method also adds the applets header material into the header portion of the HTML page. It effectively inserts the outputs of both <code>$applet-&gt;insertHeader</code> and <code>$applet-&gt;insertObject</code> (defined in <a href="//pg/lib/Applet.html">Applet.pm</a>) in the appropriate places. In addition it creates a hidden answer blank for storing the state of the applet.</p>
 
 <h3 id="Example-problem">Example problem</h3>
 
-<pre><code>    DOCUMENT();
+<pre><code>DOCUMENT();
 
-    # Load macros
-    loadMacros(
-        &quot;PGstandard.pl&quot;,
-        &quot;MathObjects.pl&quot;,
-                &quot;AppletObjects.pl&quot;,
-        &quot;PGcourse.pl&quot;,
-    );
+# Load macros
+loadMacros(
+    &quot;PGstandard.pl&quot;,
+    &quot;MathObjects.pl&quot;,
+            &quot;AppletObjects.pl&quot;,
+    &quot;PGcourse.pl&quot;,
+);
 
-    TEXT(beginproblem());
+TEXT(beginproblem());
 
-    ###################################
-    # Standard PG problem setup. Random parameters, answers, and such.
-    ###################################
+###################################
+# Standard PG problem setup. Random parameters, answers, and such.
+###################################
 
-    $ans = Compute(&quot;0&quot;);
+$ans = Compute(&quot;0&quot;);
 
-    ###################################
-    # $appletName can be anything reasonable, but should try to choose a name that will not be
-    # used by other problems.  If multiple problems appear on the same page in a gateway quiz
-    # that use the same name, one of the applets will not work.  So to ensure uniqueness the
-        # applet name should be prefixed with the quiz prefix.
-    ###################################
+###################################
+# $appletName can be anything reasonable, but should try to choose a name that will not be
+# used by other problems.  If multiple problems appear on the same page in a gateway quiz
+# that use the same name, one of the applets will not work.  So to ensure uniqueness the
+    # applet name should be prefixed with the quiz prefix.
+###################################
 
-    $appletName = $PG-&gt;{QUIZ_PREFIX} . &quot;myUniqueAppletName&quot;;
+$appletName = $PG-&gt;{QUIZ_PREFIX} . &quot;myUniqueAppletName&quot;;
 
-    ###################################
-    # Generate the answer box name to use.  This is only needed if the applet returns an answer
-    # that will be checked by WeBWorK.  The approach of using NEW_ANS_NAME guarantees that you
-    # will get an answer name that will work in any problem, including a gateway quiz.  If there
-    # are other answers in the problem, this may cause issues with the order of the answers in
-    # the results table as NEW_ANS_NAME records the answer now.  If that is the case you may use
-    # any name you want, but make sure that you prefix it with $PG-&gt;{QUIZ_PREFIX}.
-    # (Eg: $answerBox = $PG-&gt;{QUIZ_PREFIX} . &#39;answerBox&#39;;)
-    ###################################
+###################################
+# Generate the answer box name to use.  This is only needed if the applet returns an answer
+# that will be checked by WeBWorK.  The approach of using NEW_ANS_NAME guarantees that you
+# will get an answer name that will work in any problem, including a gateway quiz.  If there
+# are other answers in the problem, this may cause issues with the order of the answers in
+# the results table as NEW_ANS_NAME records the answer now.  If that is the case you may use
+# any name you want, but make sure that you prefix it with $PG-&gt;{QUIZ_PREFIX}.
+# (Eg: $answerBox = $PG-&gt;{QUIZ_PREFIX} . &#39;answerBox&#39;;)
+###################################
 
-    $answerBox = NEW_ANS_NAME();
+$answerBox = NEW_ANS_NAME();
 
-    ###################################
-    # Create the perlApplet object
-    ###################################
+###################################
+# Create the perlApplet object
+###################################
 
-    $applet = GeogebraWebApplet(
-        appletName =&gt; $appletName,
-        onInit =&gt; &#39;myUniqueAppletOnInit&#39;,
-        answerBoxAlias =&gt; $answerBox,
-        submitActionScript =&gt; qq{ getQE(&#39;$answerBox&#39;).value = getAppletValues() },
-        params =&gt; {
-            ggbBase64 =&gt; &quot;...&quot;, // The long base 64 encoded string for your applet.
-            enableShiftDragZoom =&gt; &quot;false&quot;,
-            enableRightClick =&gt; &quot;false&quot; ,
-            enableLabelDrags =&gt; &quot;false&quot;,
-            showMenuBar =&gt; &quot;false&quot; ,
-            showToolBar =&gt; &quot;false&quot;,
-            showAlgebraInput =&gt; &quot;false&quot;,
-            useBrowserForJS =&gt; &quot;true&quot;, // Required or the onInit handler will not be called.
-        },
-    );
+$applet = GeogebraWebApplet(
+    appletName =&gt; $appletName,
+    onInit =&gt; &#39;myUniqueAppletOnInit&#39;,
+    answerBoxAlias =&gt; $answerBox,
+    submitActionScript =&gt; qq{ getQE(&#39;$answerBox&#39;).value = getAppletValues() },
+    params =&gt; {
+        ggbBase64 =&gt; &quot;...&quot;, // The long base 64 encoded string for your applet.
+        enableShiftDragZoom =&gt; &quot;false&quot;,
+        enableRightClick =&gt; &quot;false&quot; ,
+        enableLabelDrags =&gt; &quot;false&quot;,
+        showMenuBar =&gt; &quot;false&quot; ,
+        showToolBar =&gt; &quot;false&quot;,
+        showAlgebraInput =&gt; &quot;false&quot;,
+        useBrowserForJS =&gt; &quot;true&quot;, // Required or the onInit handler will not be called.
+    },
+);
 
-    ###################################
-    # Add additional JavaScript functions to header section of HTML.
-    ###################################
+###################################
+# Add additional JavaScript functions to header section of HTML.
+###################################
 
-    $applet-&gt;header(&lt;&lt;END_HEADER);
-    &lt;script&gt;
-        // The applet name is passed to this function, although it is not really neccessary to
-        // check it, as the method will only be called for this applet.  The applet name is only
-        // provided for backwards compatibility.
-        function myUniqueAppletOnInit(appletName) {
-            ww_applet_list[param].safe_applet_initialize();
-        }
-        function getAppletValues() {
-            var applet = getApplet(&quot;$appletName&quot;);
-            ...
-            JavaScript code to extract answer from applet
-            ...
-            return answer;
-        }
-    &lt;/script&gt;
-    END_HEADER
+$applet-&gt;header(&lt;&lt;END_HEADER);
+&lt;script&gt;
+    // The applet name is passed to this function, although it is not really neccessary to
+    // check it, as the method will only be called for this applet.  The applet name is only
+    // provided for backwards compatibility.
+    function myUniqueAppletOnInit(appletName) {
+        ww_applet_list[param].safe_applet_initialize();
+    }
+    function getAppletValues() {
+        var applet = getApplet(&quot;$appletName&quot;);
+        ...
+        JavaScript code to extract answer from applet
+        ...
+        return answer;
+    }
+&lt;/script&gt;
+END_HEADER
 
-    ###################################
-    # Write the text for the problem
-    ###################################
+###################################
+# Write the text for the problem
+###################################
 
-    BEGIN_TEXT
+BEGIN_TEXT
 
-    The applet will appear below.  You can put other problem text here.
+The applet will appear below.  You can put other problem text here.
 
-    $PAR
-    \{ $applet-&gt;insertAll(reinitialize_button =&gt; 0, includeAnswerBox =&gt; 1) \}
-    $PAR
+$PAR
+\{ $applet-&gt;insertAll(reinitialize_button =&gt; 0, includeAnswerBox =&gt; 1) \}
+$PAR
 
-    More problem text.
+More problem text.
 
-    END_TEXT
+END_TEXT
 
-    LABELED_ANS($answerBox, $ans-&gt;cmp);
+LABELED_ANS($answerBox, $ans-&gt;cmp);
 
-    ENDDOCUMENT();</code></pre>
+ENDDOCUMENT();</code></pre>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

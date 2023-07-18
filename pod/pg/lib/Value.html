@@ -1,41 +1,71 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>Value</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Value</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>Value</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
-
-
-<ul id="index">
-  <li><a href="#DESCRIPTION">DESCRIPTION</a>
-    <ul>
-      <li>
-        <ul>
-          <li><a href="#Value-context">Value context</a></li>
-          <li><a href="#Implemented-MathObject-types-and-their-precedence">Implemented MathObject types and their precedence</a></li>
-          <li><a href="#getFlag">getFlag</a></li>
-          <li><a href="#makeValue">makeValue</a></li>
-          <li><a href="#showClass">showClass</a></li>
-          <li><a href="#showType">showType</a></li>
-          <li><a href="#output-methods-for-MathObjects">output methods for MathObjects</a>
-            <ul>
-              <li><a href="#stringify">stringify</a></li>
-              <li><a href="#string">-&gt;string</a></li>
-              <li><a href="#TeX">-&gt;TeX</a></li>
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">Value</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item">
+        <ul class="nav flex-column w-100">
+          <li class="nav-item"><a class="nav-link p-0" href="#Value-context">Value context</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#Implemented-MathObject-types-and-their-precedence">Implemented MathObject types and their precedence</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#getFlag">getFlag</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#makeValue">makeValue</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#showClass">showClass</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#showType">showType</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#output-methods-for-MathObjects">output methods for MathObjects</a>
+            <ul class="nav flex-column w-100">
+              <li class="nav-item"><a class="nav-link p-0" href="#stringify">stringify</a></li>
+              <li class="nav-item"><a class="nav-link p-0" href="#string">-&gt;string</a></li>
+              <li class="nav-item"><a class="nav-link p-0" href="#TeX">-&gt;TeX</a></li>
             </ul>
           </li>
-          <li><a href="#Error">Error</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#Error">Error</a></li>
         </ul>
       </li>
     </ul>
-  </li>
-</ul>
+  </li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
+
 
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
@@ -43,175 +73,164 @@
 
 <h3 id="Value-context">Value context</h3>
 
-<pre><code> #############################################################
- #
- #  Initialize the context-- flags set
- #
-        The following are list objects, meaning that they involve delimiters (parentheses)
-        of some type.  They get overridden in lib/Parser/Context.pm
+<pre><code>#############################################################
+#
+#  Initialize the context-- flags set
+#
+       The following are list objects, meaning that they involve delimiters (parentheses)
+       of some type.  They get overridden in lib/Parser/Context.pm
 
-        lists =&gt; {
-                &#39;Point&#39;  =&gt; {open =&gt; &#39;(&#39;, close =&gt; &#39;)&#39;},
-                &#39;Vector&#39; =&gt; {open =&gt; &#39;&lt;&#39;, close =&gt; &#39;&gt;&#39;},
-                &#39;Matrix&#39; =&gt; {open =&gt; &#39;[&#39;, close =&gt; &#39;]&#39;},
-                &#39;List&#39;   =&gt; {open =&gt; &#39;(&#39;, close =&gt; &#39;)&#39;},
-                &#39;Set&#39;    =&gt; {open =&gt; &#39;{&#39;, close =&gt; &#39;}&#39;},
-        },
+       lists =&gt; {
+               &#39;Point&#39;  =&gt; {open =&gt; &#39;(&#39;, close =&gt; &#39;)&#39;},
+               &#39;Vector&#39; =&gt; {open =&gt; &#39;&lt;&#39;, close =&gt; &#39;&gt;&#39;},
+               &#39;Matrix&#39; =&gt; {open =&gt; &#39;[&#39;, close =&gt; &#39;]&#39;},
+               &#39;List&#39;   =&gt; {open =&gt; &#39;(&#39;, close =&gt; &#39;)&#39;},
+               &#39;Set&#39;    =&gt; {open =&gt; &#39;{&#39;, close =&gt; &#39;}&#39;},
+       },
 
-        The following context flags are set:
+       The following context flags are set:
 
-    #  For vectors:
-    #
-    ijk =&gt; 0,  # print vectors as &lt;...&gt;
-    #
-    #  For strings:
-    #
-    allowEmptyStrings =&gt; 1,
-    infiniteWord =&gt; &#39;infinity&#39;,
-    #
-    #  For intervals and unions:
-    #
-    ignoreEndpointTypes =&gt; 0,
-    reduceSets =&gt; 1,
-    reduceSetsForComparison =&gt; 1,
-    reduceUnions =&gt; 1,
-    reduceUnionsForComparison =&gt; 1,
-    #
-    #  For fuzzy reals:
-    #
-    useFuzzyReals =&gt; 1,
-    tolerance    =&gt; 1E-4,
-    tolType      =&gt; &#39;relative&#39;,
-    zeroLevel    =&gt; 1E-14,
-    zeroLevelTol =&gt; 1E-12,
-    tolTruncation =&gt; 1,
-    tolExtraDigits =&gt; 1,
-    #
-    #  For Formulas:
-    #
-    limits       =&gt; [-2,2],
-    num_points   =&gt; 5,
-    granularity  =&gt; 1000,
-    resolution   =&gt; undef,
-    max_adapt    =&gt; 1E8,
-    checkUndefinedPoints =&gt; 0,
-    max_undefined =&gt; undef,
-  },</code></pre>
+   #  For vectors:
+   #
+   ijk =&gt; 0,  # print vectors as &lt;...&gt;
+   #
+   #  For strings:
+   #
+   allowEmptyStrings =&gt; 1,
+   infiniteWord =&gt; &#39;infinity&#39;,
+   #
+   #  For intervals and unions:
+   #
+   ignoreEndpointTypes =&gt; 0,
+   reduceSets =&gt; 1,
+   reduceSetsForComparison =&gt; 1,
+   reduceUnions =&gt; 1,
+   reduceUnionsForComparison =&gt; 1,
+   #
+   #  For fuzzy reals:
+   #
+   useFuzzyReals =&gt; 1,
+   tolerance    =&gt; 1E-4,
+   tolType      =&gt; &#39;relative&#39;,
+   zeroLevel    =&gt; 1E-14,
+   zeroLevelTol =&gt; 1E-12,
+   tolTruncation =&gt; 1,
+   tolExtraDigits =&gt; 1,
+   #
+   #  For Formulas:
+   #
+   limits       =&gt; [-2,2],
+   num_points   =&gt; 5,
+   granularity  =&gt; 1000,
+   resolution   =&gt; undef,
+   max_adapt    =&gt; 1E8,
+   checkUndefinedPoints =&gt; 0,
+   max_undefined =&gt; undef,
+ },</code></pre>
 
 <h3 id="Implemented-MathObject-types-and-their-precedence">Implemented MathObject types and their precedence</h3>
 
-<pre><code> #
- #  Precedence of the various types
- #    (They will be promoted upward automatically when needed)
- #
+<pre><code>#
+#  Precedence of the various types
+#    (They will be promoted upward automatically when needed)
+#
 
-  &#39;Number&#39;   =&gt;  0,
-   &#39;Real&#39;     =&gt;  1,
-   &#39;Infinity&#39; =&gt;  2,
-   &#39;Complex&#39;  =&gt;  3,
-   &#39;Point&#39;    =&gt;  4,
-   &#39;Vector&#39;   =&gt;  5,
-   &#39;Matrix&#39;   =&gt;  6,
-   &#39;List&#39;     =&gt;  7,
-   &#39;Interval&#39; =&gt;  8,
-   &#39;Set&#39;      =&gt;  9,
-   &#39;Union&#39;    =&gt; 10,
-   &#39;String&#39;   =&gt; 11,
-   &#39;Formula&#39;  =&gt; 12,
-   &#39;special&#39;  =&gt; 20,</code></pre>
+ &#39;Number&#39;   =&gt;  0,
+  &#39;Real&#39;     =&gt;  1,
+  &#39;Infinity&#39; =&gt;  2,
+  &#39;Complex&#39;  =&gt;  3,
+  &#39;Point&#39;    =&gt;  4,
+  &#39;Vector&#39;   =&gt;  5,
+  &#39;Matrix&#39;   =&gt;  6,
+  &#39;List&#39;     =&gt;  7,
+  &#39;Interval&#39; =&gt;  8,
+  &#39;Set&#39;      =&gt;  9,
+  &#39;Union&#39;    =&gt; 10,
+  &#39;String&#39;   =&gt; 11,
+  &#39;Formula&#39;  =&gt; 12,
+  &#39;special&#39;  =&gt; 20,</code></pre>
 
 <h3 id="getFlag">getFlag</h3>
 
 <p># # Get the value of a flag from the object itself, or from the # equation that created the object (if any), or from the AnswerHash # for the object (if it is being used as the source for an answer # checker), or from the object&#39;s context, or from the current # context, or use the given default, whichever is found first. #</p>
 
-<pre><code>        Usage:   $mathObj-&gt;getFlag(&quot;showTypeWarnings&quot;);
-                 $mathObj-&gt;getFlag(&quot;showTypeWarnings&quot;,1); # default is second parameter</code></pre>
+<pre><code>Usage:   $mathObj-&gt;getFlag(&quot;showTypeWarnings&quot;);
+         $mathObj-&gt;getFlag(&quot;showTypeWarnings&quot;,1); # default is second parameter</code></pre>
 
 <h3 id="makeValue">makeValue</h3>
 
-<pre><code>        Usage:  Value::makeValue(45);
+<pre><code>Usage:  Value::makeValue(45);
 
-        Will create a Real mathObject.
- #
- #  Convert non-Value objects to Values, if possible
- #</code></pre>
+Will create a Real mathObject.
+#
+#  Convert non-Value objects to Values, if possible
+#</code></pre>
 
 <h3 id="showClass">showClass</h3>
 
-<pre><code>        Usage:   TEXT( $mathObj -&gt; showClass() );
+<pre><code>Usage:   TEXT( $mathObj -&gt; showClass() );
 
-                Will print the class of the MathObject
+        Will print the class of the MathObject
 
- #
- #  Get a printable version of the class of an object
- #  (used primarily in error messages)
- #</code></pre>
+#
+#  Get a printable version of the class of an object
+#  (used primarily in error messages)
+#</code></pre>
 
 <h3 id="showType">showType</h3>
 
-<pre><code>        Usage:   TEXT( $mathObj -&gt; showType() );
+<pre><code>Usage:   TEXT( $mathObj -&gt; showType() );
 
-                Will print the class of the MathObject
+        Will print the class of the MathObject
 
- #
- #  Get a printable version of the type of an object
- #  (the class and type are not the same.  For example
- #  a Formula-class object can be of type Number)
- #</code></pre>
+#
+#  Get a printable version of the type of an object
+#  (the class and type are not the same.  For example
+#  a Formula-class object can be of type Number)
+#</code></pre>
 
 <h3 id="output-methods-for-MathObjects">output methods for MathObjects</h3>
 
-<pre><code> #
- #  Generate the various output formats
- #  (can be replaced by sub-classes)
- #</code></pre>
+<pre><code>#
+#  Generate the various output formats
+#  (can be replaced by sub-classes)
+#</code></pre>
 
 <h4 id="stringify">stringify</h4>
 
-<pre><code>        Usage:   TEXT($mathObj); or TEXT( $mathObj-&gt;stringify() ) ;
+<pre><code>Usage:   TEXT($mathObj); or TEXT( $mathObj-&gt;stringify() ) ;
 
-                Produces text string or TeX output depending on context
-                        Context()-&gt;texStrings;
-                        Context()-&gt;normalStrings;
+        Produces text string or TeX output depending on context
+                Context()-&gt;texStrings;
+                Context()-&gt;normalStrings;
 
-                called automatically when object is called in a string context.</code></pre>
+        called automatically when object is called in a string context.</code></pre>
 
 <h4 id="string">-&gt;string</h4>
 
-<pre><code>        Usage: $mathObj-&gt;string()
+<pre><code>Usage: $mathObj-&gt;string()
 
-        ---produce a string representation of the object
-           (as opposed to stringify, which can produce TeX or string versions)</code></pre>
+---produce a string representation of the object
+   (as opposed to stringify, which can produce TeX or string versions)</code></pre>
 
 <h4 id="TeX">-&gt;TeX</h4>
 
-<pre><code>        Usage: $mathObj-&gt;TeX()
+<pre><code>Usage: $mathObj-&gt;TeX()
 
-        ---produce TeX prepresentation of the object</code></pre>
+---produce TeX prepresentation of the object</code></pre>
 
 <h3 id="Error">Error</h3>
 
-<pre><code>        Usage: Value-&gt;Error(&quot;We&#39;re sorry...&quot;);
-           or  $mathObject-&gt;Error(&quot;We&#39;re still sorry...&quot;);
+<pre><code>Usage: Value-&gt;Error(&quot;We&#39;re sorry...&quot;);
+   or  $mathObject-&gt;Error(&quot;We&#39;re still sorry...&quot;);
 
- #
- #  Report an error and die.  This can be used within custom answer checkers
- #  to report errors during the check, or when sub-classing a MathObject to
- #  report error conditions.
- #</code></pre>
+#
+#  Report an error and die.  This can be used within custom answer checkers
+#  to report errors during the check, or when sub-classing a MathObject to
+#  report error conditions.
+#</code></pre>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

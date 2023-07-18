@@ -1,27 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>graph/plotly3D.pl</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>graph/plotly3D.pl</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>graph/plotly3D.pl</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">graph/plotly3D.pl</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#PARAMETRIC-CURVES">PARAMETRIC CURVES</a></li><li class="nav-item"><a class="nav-link p-0" href="#PARAMETRIC-SURFACES">PARAMETRIC SURFACES</a></li><li class="nav-item"><a class="nav-link p-0" href="#FUNCTIONS">FUNCTIONS</a></li><li class="nav-item"><a class="nav-link p-0" href="#COLORSCALES">COLORSCALES</a></li><li class="nav-item"><a class="nav-link p-0" href="#FUNCTION-TYPES">FUNCTION TYPES</a></li><li class="nav-item"><a class="nav-link p-0" href="#Graph3D-OPTIONS">Graph3D OPTIONS</a></li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
 
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-  <li><a href="#PARAMETRIC-CURVES">PARAMETRIC CURVES</a></li>
-  <li><a href="#PARAMETRIC-SURFACES">PARAMETRIC SURFACES</a></li>
-  <li><a href="#FUNCTIONS">FUNCTIONS</a></li>
-  <li><a href="#COLORSCALES">COLORSCALES</a></li>
-  <li><a href="#FUNCTION-TYPES">FUNCTION TYPES</a></li>
-  <li><a href="#Graph3D-OPTIONS">Graph3D OPTIONS</a></li>
-</ul>
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
@@ -31,28 +54,28 @@
 
 <p>Loading this macro adds the Graph3D method which creates a 3D graph object. The graph object can be configured by a list of options of the form &quot;option =&gt; value&quot; (see below).</p>
 
-<pre><code>    loadMacros(&#39;plotly3D.pl&#39;);
-    $graph = Graph3D(options =&gt; value);</code></pre>
+<pre><code>loadMacros(&#39;plotly3D.pl&#39;);
+$graph = Graph3D(options =&gt; value);</code></pre>
 
 <p>Use the addCurve method to add a parametric curve to the graph. The following adds a helix to the graph. The first array is the parametric functions x(t), y(t), and z(t), and the second array is the bounds with the optional number of points to plot.</p>
 
-<pre><code>    $graph-&gt;addCurve([&#39;3*cos(t)&#39;, &#39;3*sin(t)&#39;, &#39;t&#39;], [0, 6*pi, 150]);</code></pre>
+<pre><code>$graph-&gt;addCurve([&#39;3*cos(t)&#39;, &#39;3*sin(t)&#39;, &#39;t&#39;], [0, 6*pi, 150]);</code></pre>
 
 <p>Use the addFunction method to add a two variable function surface to the graph. The following adds the function f(x,y) = x^2 + y^2. The first input is the function in terms of x and y, followed by the x-bounds and y-bounds with the optional number of points to plot. Note the total points computed is the product of the two numbers given.</p>
 
-<pre><code>    $graph-&gt;addFunction(&#39;x^2 + y^2&#39;, [-4, 4], [-4, 4]);</code></pre>
+<pre><code>$graph-&gt;addFunction(&#39;x^2 + y^2&#39;, [-4, 4], [-4, 4]);</code></pre>
 
 <p>Use the addSurface method to add a parametric surface to the graph. The following adds a sphere of radius 3. The first array is the parametric functions x(u,v), y(u,v), and z(u,v), followed by the u-bounds and v-bounds with optional number of points to plot. Note the total points computed is the product of the two numbers given.</p>
 
-<pre><code>    $graph-&gt;addSurface(
-        [&#39;3*sin(v)*cos(u)&#39;, &#39;3*sin(v)*sin(u)&#39;, &#39;3*cos(v)&#39;],
-        [0, 2*pi, 30],
-        [0, pi, 30]
-    );</code></pre>
+<pre><code>$graph-&gt;addSurface(
+    [&#39;3*sin(v)*cos(u)&#39;, &#39;3*sin(v)*sin(u)&#39;, &#39;3*cos(v)&#39;],
+    [0, 2*pi, 30],
+    [0, pi, 30]
+);</code></pre>
 
 <p>Output the graph in PGML using the Print method.</p>
 
-<pre><code>    [@ $graph-&gt;Print @]*</code></pre>
+<pre><code>[@ $graph-&gt;Print @]*</code></pre>
 
 <p>Multiple curves surfaces can be added with the appropriate methods.</p>
 
@@ -60,11 +83,11 @@
 
 <p>The addCurve method takes two arrays as input followed by a list of options. The first array is three parametric functions, followed by the minimum, maximum, and optional number of points to plot. If the number of points is not given, it defaults to 100.</p>
 
-<pre><code>    $graph-&gt;addCurve(
-        [xFunction, yFunction, zFunction],
-        [tMin, tMax, tCount],
-        options
-    );</code></pre>
+<pre><code>$graph-&gt;addCurve(
+    [xFunction, yFunction, zFunction],
+    [tMin, tMax, tCount],
+    options
+);</code></pre>
 
 <p>The additional options are given in a &#39;option =&gt; value&#39; format. The current available options (and defaults) are:</p>
 
@@ -106,12 +129,12 @@
 
 <p>The addSurface method takes three arrays as input followed by a list of options. The first array is three parametric functions, followed by the minimum, maximum, and optional number of points for each of the two variables. If the number of points is not given, it defaults to 20.</p>
 
-<pre><code>    $graph-&gt;addSurface(
-        [xFunction, yFunction, zFunction],
-        [uMin, uMax, uCount],
-        [vMin, vMax, vCount],
-        options
-    );</code></pre>
+<pre><code>$graph-&gt;addSurface(
+    [xFunction, yFunction, zFunction],
+    [uMin, uMax, uCount],
+    [vMin, vMax, vCount],
+    options
+);</code></pre>
 
 <p>The additional options are given in a &#39;option =&gt; value&#39; format. The current available options (and defaults) are:</p>
 
@@ -147,29 +170,29 @@
 
 <p>The addFunction method takes a string, which is a function f(x,y), followed by two arrays which give the x-bounds and y-bounds, with optional number of points to plot. This is a wrapper for addSurface in which the variables are x and y. See addSurface for the list of options. funcType =&gt; &#39;data&#39; cannot be used with functions, use addSurface directly to plot data.</p>
 
-<pre><code>    $graph-&gt;addFunction(
-        &#39;zFunction&#39;,
-        [xMin, xMax, xCount],
-        [yMin, yMax, yCount],
-        options
-    );</code></pre>
+<pre><code>$graph-&gt;addFunction(
+    &#39;zFunction&#39;,
+    [xMin, xMax, xCount],
+    [yMin, yMax, yCount],
+    options
+);</code></pre>
 
 <a href="#_podtop_"><h1 id="COLORSCALES">COLORSCALES</h1></a>
 
 <p>The colorscale colors the points of the curve/surface based on the z-value of the points. The colorscale can be one of the following predefined names:</p>
 
-<pre><code>    &#39;BdBu&#39;, &#39;YlOrRd&#39;, &#39;YlGnBu&#39;, &#39;Portland&#39;, &#39;Picnic&#39;, &#39;Jet&#39;, &#39;Hot&#39;
-    &#39;Greys&#39;, &#39;Greens&#39;, &#39;Electric&#39;, &#39;Earth&#39;, &#39;Bluered&#39;, or &#39;Blackbody&#39;</code></pre>
+<pre><code>&#39;BdBu&#39;, &#39;YlOrRd&#39;, &#39;YlGnBu&#39;, &#39;Portland&#39;, &#39;Picnic&#39;, &#39;Jet&#39;, &#39;Hot&#39;
+&#39;Greys&#39;, &#39;Greens&#39;, &#39;Electric&#39;, &#39;Earth&#39;, &#39;Bluered&#39;, or &#39;Blackbody&#39;</code></pre>
 
 <p>You can also define a custom colorscale as a list of colors for values ranging from 0 to 1. For example the default RdBu is the following colorscale (note this must be a string since the array is passed to JavaScript):</p>
 
-<pre><code>    &quot;[[0, &#39;rgb(5,10,172)&#39;], [0.35, &#39;rgb(106,137,247)&#39;],
-      [0.5, &#39;rgb(190,190,190)&#39;], [0.6, &#39;rgb(220,170,132)&#39;],
-      [0.7, &#39;rgb(230,145,90)&#39;], [1, &#39;rgb(178,10,28)&#39;]]&quot;</code></pre>
+<pre><code>&quot;[[0, &#39;rgb(5,10,172)&#39;], [0.35, &#39;rgb(106,137,247)&#39;],
+  [0.5, &#39;rgb(190,190,190)&#39;], [0.6, &#39;rgb(220,170,132)&#39;],
+  [0.7, &#39;rgb(230,145,90)&#39;], [1, &#39;rgb(178,10,28)&#39;]]&quot;</code></pre>
 
 <p>A colorscale can have any number of color points between 0 and 1. To make the plot a single color, set the color for 0 and 1 to be the same:</p>
 
-<pre><code>    &quot;[[0, &#39;rgb(0,200,0)&#39;], [1, &#39;rgb(0,200,0)&#39;]]&quot;</code></pre>
+<pre><code>&quot;[[0, &#39;rgb(0,200,0)&#39;], [1, &#39;rgb(0,200,0)&#39;]]&quot;</code></pre>
 
 <a href="#_podtop_"><h1 id="FUNCTION-TYPES">FUNCTION TYPES</h1></a>
 
@@ -188,19 +211,19 @@
 
 <p>The functions are interpreted as raw JavaScript functions. The functions will be passed the defined variables and return a single value. This function type is useful to plot more complicated functions, such as piecewise functions with if/then statements. For example, this graphs the surface of the plane in the first octant that passes through the points ($a,0,0), (0,$b,0), (0,0,$c):</p>
 
-<pre><code>    ($a, $b, $c) = (5, 3, 7);
-    $graph-&gt;addSurface(
-        [
-            &quot;return ($b*u &lt; $a*v ? 0.5*u : u - 0.5*$a/$b*v);&quot;,
-            &quot;return ($b*u &gt; $a*v ? 0.5*v : v - 0.5*$b/$a*u);&quot;,
-            &quot;const x = ($b*u &lt; $a*v ? 0.5*u : u - 0.5*$a/$b*v);&quot;
-                . &quot;const y = ($b*u &gt; $a*v ? 0.5*v : v - 0.5*$b/$a*u);&quot;
-                . &quot;return $c - $c/$a*x - $c/$b*y;&quot;,
-        ],
-        [0, $a],
-        [0, $b],
-        funcType =&gt; &#39;js&#39;,
-    );</code></pre>
+<pre><code>($a, $b, $c) = (5, 3, 7);
+$graph-&gt;addSurface(
+    [
+        &quot;return ($b*u &lt; $a*v ? 0.5*u : u - 0.5*$a/$b*v);&quot;,
+        &quot;return ($b*u &gt; $a*v ? 0.5*v : v - 0.5*$b/$a*u);&quot;,
+        &quot;const x = ($b*u &lt; $a*v ? 0.5*u : u - 0.5*$a/$b*v);&quot;
+            . &quot;const y = ($b*u &gt; $a*v ? 0.5*v : v - 0.5*$b/$a*u);&quot;
+            . &quot;return $c - $c/$a*x - $c/$b*y;&quot;,
+    ],
+    [0, $a],
+    [0, $b],
+    funcType =&gt; &#39;js&#39;,
+);</code></pre>
 
 </dd>
 <dt>perl</dt>
@@ -208,17 +231,17 @@
 
 <p>The functions are interpreted as Perl subroutines. The functions will be passed the appropriate number of inputs, and return a single value. This uses the WeBWorK server to generate the points for the plot, and can slow down the rendering of the problem. Using the JavaScript methods are preferred for this reason. Here is an example of plotting a sphere of radius $R.</p>
 
-<pre><code>    $R = 5;
-    $graph-&gt;addSurface(
-        [
-            sub { return $R*cos($_[0])*sin($_[1]); },
-            sub { return $R*sin($_[0])*sin($_[1]); },
-            sub { return $R*cos($_[1]); }
-        ],
-        [0, 2*pi],
-        [0, pi],
-        funcType =&gt; &#39;perl&#39;,
-    );</code></pre>
+<pre><code>$R = 5;
+$graph-&gt;addSurface(
+    [
+        sub { return $R*cos($_[0])*sin($_[1]); },
+        sub { return $R*sin($_[0])*sin($_[1]); },
+        sub { return $R*cos($_[1]); }
+    ],
+    [0, 2*pi],
+    [0, pi],
+    funcType =&gt; &#39;perl&#39;,
+);</code></pre>
 
 </dd>
 <dt>data</dt>
@@ -226,16 +249,16 @@
 
 <p>The functions are interpreted as a nested array of data points to be sent directly to plotly to plot. The nested array needs to be a string, since it is passed to JavaScript to plot. This array lists all of the points which are used to create the surface. For example to plot a surface with 9 points, use something like:</p>
 
-<pre><code>    $graph-&gt;addSurface(
-        [
-            &quot;[[x1, x2, x3], [x4, x5, x6], [x7, x8, x9]]&quot;,
-            &quot;[[y1, y2, y3], [y4, y5, y6], [y7, y8, y9]]&quot;,
-            &quot;[[z1, z2, z3], [z4, z5, z6], [z7, z8, z9]]&quot;
-        ],
-        [0,0],
-        [0,0],
-        funcType =&gt; &#39;data&#39;
-    );</code></pre>
+<pre><code>$graph-&gt;addSurface(
+    [
+        &quot;[[x1, x2, x3], [x4, x5, x6], [x7, x8, x9]]&quot;,
+        &quot;[[y1, y2, y3], [y4, y5, y6], [y7, y8, y9]]&quot;,
+        &quot;[[z1, z2, z3], [z4, z5, z6], [z7, z8, z9]]&quot;
+    ],
+    [0,0],
+    [0,0],
+    funcType =&gt; &#39;data&#39;
+);</code></pre>
 
 <p>This plots a surfacing using the points (x1,y1,z1), (x2,y2,z2), ..., and (x9,y9,z9). The addSurface method requires bounds, but they are not used, so [0,0] needs to be included, but is ignored. Using the perl method to first generate the arrays, then copying the result and using the data method can be useful to speed up rendering of nonrandomized plots.</p>
 
@@ -301,29 +324,18 @@
 
 <p>Add a JavaScript scene configuration dictionary to the plotly layout. This can be used to configure various aspects of the plot, such as the aspect ratio, and view range of the 3D axes. The scene is a string which contains a JavaScript dictonary to pass to plotly. Example:</p>
 
-<pre><code>  scene =&gt; &#39;aspectmode: &quot;manual&quot;,&#39;
-         . &#39;aspectratio: {x: 1, y: 1, z: 1},&#39;
-         . &#39;xaxis: { range: [0,2] },&#39;
-         . &#39;yaxis: { range: [0,3] },&#39;
-         . &#39;zaxis: { range: [1,4] }&#39;</code></pre>
+<pre><code>scene =&gt; &#39;aspectmode: &quot;manual&quot;,&#39;
+       . &#39;aspectratio: {x: 1, y: 1, z: 1},&#39;
+       . &#39;xaxis: { range: [0,2] },&#39;
+       . &#39;yaxis: { range: [0,3] },&#39;
+       . &#39;zaxis: { range: [1,4] }&#39;</code></pre>
 
 <p>See <a href="https://plotly.com/javascript/3d-axes/">https://plotly.com/javascript/3d-axes/</a> for more examples or <a href="https://plotly.com/javascript/reference/layout/scene/#layout-scene">https://plotly.com/javascript/reference/layout/scene/#layout-scene</a> for the API reference.</p>
 
 </dd>
 </dl>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

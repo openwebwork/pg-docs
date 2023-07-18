@@ -1,21 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>contexts/contextPercent.pl</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>contexts/contextPercent.pl</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>contexts/contextPercent.pl</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">contexts/contextPercent.pl</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
 
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-</ul>
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
@@ -27,36 +56,36 @@
 
 <p>To use the context, put</p>
 
-<pre><code>        loadMacros(&quot;contextPercent.pl&quot;);</code></pre>
+<pre><code>loadMacros(&quot;contextPercent.pl&quot;);</code></pre>
 
 <p>at the top of your problem file, and then issue the</p>
 
-<pre><code>        Context(&quot;Percent&quot;);</code></pre>
+<pre><code>Context(&quot;Percent&quot;);</code></pre>
 
 <p>command to select the context. To create a Percent value, use</p>
 
-<pre><code>        $m = Compute(&quot;10%&quot;);</code></pre>
+<pre><code>$m = Compute(&quot;10%&quot;);</code></pre>
 
 <p>or</p>
 
-<pre><code>        $m = Percent(.1);</code></pre>
+<pre><code>$m = Percent(.1);</code></pre>
 
 <p>and so on. Both of these produce equivalent values (10%).</p>
 
 <p>There are also three limited contexts that can be obtained using one of the following:</p>
 
-<pre><code>        Context(&quot;LimitedPercent&quot;);
-        Context(&quot;LimitedPercent-strict&quot;);
-        Context(&quot;Percent-strict&quot;);</code></pre>
+<pre><code>Context(&quot;LimitedPercent&quot;);
+Context(&quot;LimitedPercent-strict&quot;);
+Context(&quot;Percent-strict&quot;);</code></pre>
 
 <p>The <code>Percent</code> context allows you to use percentages rather freely within an expression. For example</p>
 
-<pre><code>        Compute(&quot;10% + 20%&quot;);</code></pre>
+<pre><code>Compute(&quot;10% + 20%&quot;);</code></pre>
 
 <p>would produce the same result as <code>Compute(&quot;30%&quot;)</code>, and so would either of</p>
 
-<pre><code>        Compute(&quot;10% + .2&quot;);
-        Compute(&quot;(5+5)% + (2^2*ln(e**5))%&quot;);</code></pre>
+<pre><code>Compute(&quot;10% + .2&quot;);
+Compute(&quot;(5+5)% + (2^2*ln(e**5))%&quot;);</code></pre>
 
 <p>In this way, <code>n%</code> is treated essentially as <code>(n/100)</code>.</p>
 
@@ -68,16 +97,16 @@
 
 <p>As with all MathObjects, you obtain an answer checker for a Percent object via the <code>cmp</code> method, e.g.,</p>
 
-<pre><code>        ANS($m-&gt;cmp);</code></pre>
+<pre><code>ANS($m-&gt;cmp);</code></pre>
 
 <p>There are a number of options that you can supply to control the details of the answer checker, listed below. These can also be set as flags within the Context so that they affect all Percent objects that you create. For example,</p>
 
-<pre><code>        ANS($m-&gt;cmp(forceDecimals=&gt;1));</code></pre>
+<pre><code>ANS($m-&gt;cmp(forceDecimals=&gt;1));</code></pre>
 
 <p>or</p>
 
-<pre><code>        Context()-&gt;flags-&gt;set(forceDecimals =&gt; 1);
-        ANS($m-&gt;cmp)</code></pre>
+<pre><code>Context()-&gt;flags-&gt;set(forceDecimals =&gt; 1);
+ANS($m-&gt;cmp)</code></pre>
 
 <p>would both produce answer checkers for <code>$m</code> where the student would have to enter decimals that include any trailing zeros.</p>
 
@@ -88,10 +117,10 @@
 
 <p>This controls the number of decimal places to use in output of Percent objects, and the number that a student will be required to enter (when the appropriate flags are given, as described below). The <code>tolerance</code> is set by default to be <code>.0005</code>, so if you change the number of decimal places, you should change the <code>tolerance</code> to correspond to it (two more zeros than <code>decimalPlaces</code>). For example</p>
 
-<pre><code>        Context()-&gt;flags-&gt;set(
-          decimalPlaces =&gt; 2,
-          tolerance =&gt; .00005,
-        );</code></pre>
+<pre><code>Context()-&gt;flags-&gt;set(
+    decimalPlaces =&gt; 2,
+    tolerance =&gt; .00005,
+);</code></pre>
 
 <p>The default value is 1 decimal place.</p>
 
@@ -130,27 +159,16 @@
 
 <p>The default <code>tolerance</code> of .0005 works properly only if your original percent values have no more than 1 decimal place. If you were to do</p>
 
-<pre><code>        $m = Compute(&quot;10.15%&quot;);</code></pre>
+<pre><code>$m = Compute(&quot;10.15%&quot;);</code></pre>
 
 <p>for example, then $m would print as <code>10.2%</code>, but neither a student answer of <code>10.1%</code> nor of <code>10.2%</code> would be marked correct. That is because neither of these are less than .0005 away from the correct answer of <code>10.15%</code> (remember that <code>10.15%</code> is .1015). If you create percentages that have more decimal places than the usual one place, you may want to round or truncate them. Percent objects have two methods for accomplishing this: <code>round()</code> and <code>truncate()</code>, which produce rounded or truncated copies of the original Percent object:</p>
 
-<pre><code>        $m = Compute(&quot;34.127%&quot;)-&gt;round;    # produces 34.13%
-        $m = Compute(&quot;34.127%&quot;)-&gt;truncate; # produces 34.12%</code></pre>
+<pre><code>$m = Compute(&quot;34.127%&quot;)-&gt;round;    # produces 34.13%
+$m = Compute(&quot;34.127%&quot;)-&gt;truncate; # produces 34.12%</code></pre>
 
 <p>These are particularly helpful if you are producing percentages via computations.</p>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

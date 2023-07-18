@@ -1,48 +1,72 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>math/PGnumericevaluators.pl</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>math/PGnumericevaluators.pl</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>math/PGnumericevaluators.pl</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">math/PGnumericevaluators.pl</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#MathObjects-and-answer-evaluators">MathObjects and answer evaluators</a></li>
+    </ul>
+  </li><li class="nav-item"><a class="nav-link p-0" href="#num_cmp">num_cmp</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#Options">Options</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Examples">Examples</a></li>
+    </ul>
+  </li><li class="nav-item"><a class="nav-link p-0" href="#mode_num_cmp-functions">&quot;mode&quot;_num_cmp() functions</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#The-normal-group">The normal group</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#The-list-group">The list group</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#The-abs-group">The abs group</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#The-abs_list-group">The abs_list group</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Examples1">Examples</a></li>
+    </ul>
+  </li><li class="nav-item"><a class="nav-link p-0" href="#Miscellaneous-functions">Miscellaneous functions</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#DEPRECATED-numerical_compare_with_units">[DEPRECATED] numerical_compare_with_units</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#DEPRECATED-std_num_str_cmp">[DEPRECATED] std_num_str_cmp()</a></li>
+    </ul>
+  </li><li class="nav-item"><a class="nav-link p-0" href="#SEE-ALSO">SEE ALSO</a></li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
 
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a>
-    <ul>
-      <li><a href="#MathObjects-and-answer-evaluators">MathObjects and answer evaluators</a></li>
-    </ul>
-  </li>
-  <li><a href="#num_cmp">num_cmp</a>
-    <ul>
-      <li><a href="#Options">Options</a></li>
-      <li><a href="#Examples">Examples</a></li>
-    </ul>
-  </li>
-  <li><a href="#mode_num_cmp-functions">&quot;mode&quot;_num_cmp() functions</a>
-    <ul>
-      <li><a href="#The-normal-group">The normal group</a></li>
-      <li><a href="#The-list-group">The list group</a></li>
-      <li><a href="#The-abs-group">The abs group</a></li>
-      <li><a href="#The-abs_list-group">The abs_list group</a></li>
-      <li><a href="#Examples1">Examples</a></li>
-    </ul>
-  </li>
-  <li><a href="#Miscellaneous-functions">Miscellaneous functions</a>
-    <ul>
-      <li><a href="#DEPRECATED-numerical_compare_with_units">[DEPRECATED] numerical_compare_with_units</a></li>
-      <li><a href="#DEPRECATED-std_num_str_cmp">[DEPRECATED] std_num_str_cmp()</a></li>
-    </ul>
-  </li>
-  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
-</ul>
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
@@ -50,27 +74,27 @@
 
 <a href="#_podtop_"><h1 id="SYNOPSIS">SYNOPSIS</h1></a>
 
-<pre><code>        ANS(num_cmp($answer_or_answer_array_ref, %options_hash));
-        
-        ANS(std_num_cmp($correctAnswer, $relTol, $format, $zeroLevel, $zeroLevelTol));
-        ANS(std_num_cmp_abs($correctAnswer, $absTol, $format));
-        ANS(std_num_cmp_list($relTol, $format, @answerList));
-        ANS(std_num_cmp_abs_list($absTol, $format, @answerList));
-        
-        ANS(arith_num_cmp($correctAnswer, $relTol, $format, $zeroLevel, $zeroLevelTol));
-        ANS(arith_num_cmp_abs($correctAnswer, $absTol, $format));
-        ANS(arith_num_cmp_list($relTol, $format, @answerList));
-        ANS(arith_num_cmp_abs_list($absTol, $format, @answerList));
-        
-        ANS(strict_num_cmp($correctAnswer, $relTol, $format, $zeroLevel, $zeroLevelTol));
-        ANS(strict_num_cmp_abs($correctAnswer, $absTol, $format));
-        ANS(strict_num_cmp_list($relTol, $format, @answerList));
-        ANS(strict_num_cmp_abs_list($absTol, $format, @answerList));
-        
-        ANS(frac_num_cmp($correctAnswer, $relTol, $format, $zeroLevel, $zeroLevelTol));
-        ANS(frac_num_cmp_abs($correctAnswer, $absTol, $format));
-        ANS(frac_num_cmp_list($relTol, $format, @answerList));
-        ANS(frac_num_cmp_abs_list($absTol, $format, @answerList));</code></pre>
+<pre><code>ANS(num_cmp($answer_or_answer_array_ref, %options_hash));
+
+ANS(std_num_cmp($correctAnswer, $relTol, $format, $zeroLevel, $zeroLevelTol));
+ANS(std_num_cmp_abs($correctAnswer, $absTol, $format));
+ANS(std_num_cmp_list($relTol, $format, @answerList));
+ANS(std_num_cmp_abs_list($absTol, $format, @answerList));
+
+ANS(arith_num_cmp($correctAnswer, $relTol, $format, $zeroLevel, $zeroLevelTol));
+ANS(arith_num_cmp_abs($correctAnswer, $absTol, $format));
+ANS(arith_num_cmp_list($relTol, $format, @answerList));
+ANS(arith_num_cmp_abs_list($absTol, $format, @answerList));
+
+ANS(strict_num_cmp($correctAnswer, $relTol, $format, $zeroLevel, $zeroLevelTol));
+ANS(strict_num_cmp_abs($correctAnswer, $absTol, $format));
+ANS(strict_num_cmp_list($relTol, $format, @answerList));
+ANS(strict_num_cmp_abs_list($absTol, $format, @answerList));
+
+ANS(frac_num_cmp($correctAnswer, $relTol, $format, $zeroLevel, $zeroLevelTol));
+ANS(frac_num_cmp_abs($correctAnswer, $absTol, $format));
+ANS(frac_num_cmp_list($relTol, $format, @answerList));
+ANS(frac_num_cmp_abs_list($absTol, $format, @answerList));</code></pre>
 
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
@@ -84,7 +108,7 @@
 
 <a href="#_podtop_"><h1 id="num_cmp">num_cmp</h1></a>
 
-<pre><code>        ANS(num_cmp($answer_or_answer_array_ref, %options));</code></pre>
+<pre><code>ANS(num_cmp($answer_or_answer_array_ref, %options));</code></pre>
 
 <p>num_cmp() returns one or more answer evaluators (subroutine references) that compare the student&#39;s answer to a numeric value. Evaluation options are specified as items in the %options hash. This can make for more readable code than using the &quot;mode&quot;_num_cmp() style, but some people find one or the other easier to remember.</p>
 
@@ -141,15 +165,15 @@
 
 <p>The full list of formatters can be found in the manpage for printf(3), or by typing &quot;perldoc -f sprintf&quot; at a terminal prompt. The following is a brief summary of the most frequent formatters:</p>
 
-<pre><code>        %d     decimal number
-        %ld    long decimal number
-        %u     unsigned decimal number
-        %lu    long unsigned decimal number
-        %x     hexadecimal number
-        %o     octal number
-        %e     floating point number in scientific notation
-        %f     floating point number
-        %g     either %e or %f, whichever takes less space</code></pre>
+<pre><code>%d     decimal number
+%ld    long decimal number
+%u     unsigned decimal number
+%lu    long unsigned decimal number
+%x     hexadecimal number
+%o     octal number
+%e     floating point number in scientific notation
+%f     floating point number
+%g     either %e or %f, whichever takes less space</code></pre>
 
 <p>Technically, %g will use %e if the exponent is less than -4 or greater than or equal to the precision. Trailing zeros are removed in this mode.</p>
 
@@ -167,7 +191,7 @@
 
 <p>A relative tolerance. Relative tolerances are given in percentages. A relative tolerance of 1 indicates that the student answer must be within 1% of the correct answer to qualify as correct. In other words, a student answer is correct when</p>
 
-<pre><code>        abs(studentAnswer - correctAnswer) &lt;= abs(.01*relTol*correctAnswer)</code></pre>
+<pre><code>abs(studentAnswer - correctAnswer) &lt;= abs(.01*relTol*correctAnswer)</code></pre>
 
 <p>tol and relTol are mutually exclusive. reltol is also accpeted as a synonym for relTol.</p>
 
@@ -179,7 +203,7 @@
 
 <p>If the correct answer has an absolute value less than or equal to zeroLevel, then the student answer must be, in absolute terms, within zeroLevelTol of correctAnswer, i.e.,</p>
 
-<pre><code>        abs(studentAnswer - correctAnswer) &lt;= zeroLevelTol</code></pre>
+<pre><code>abs(studentAnswer - correctAnswer) &lt;= zeroLevelTol</code></pre>
 
 <p>In other words, if the correct answer is very near zero, an absolute tolerance will be used. One must do this to handle floating point answers very near zero, because of the inaccuracy of floating point arithmetic. However, the default values are almost always adequate.</p>
 
@@ -206,134 +230,123 @@
 
 <h2 id="Examples">Examples</h2>
 
-<pre><code>        # correct answer is 5, using defaults for all options
-        num_cmp(5);
+<pre><code># correct answer is 5, using defaults for all options
+num_cmp(5);
 
-        # correct answers are 5, 6, and 7, using defaults for all options
-        num_cmp([5,6,7]);
+# correct answers are 5, 6, and 7, using defaults for all options
+num_cmp([5,6,7]);
 
-        # correct answer is 5, mode is strict
-        num_cmp(5, mode=&gt;&#39;strict&#39;);
+# correct answer is 5, mode is strict
+num_cmp(5, mode=&gt;&#39;strict&#39;);
 
-        # correct answers are 5 and 6, both with 5% relative tolerance
-        num_cmp([5,6], relTol=&gt;5);
+# correct answers are 5 and 6, both with 5% relative tolerance
+num_cmp([5,6], relTol=&gt;5);
 
-        # correct answer is 6, &quot;Inf&quot;, &quot;Minf&quot;, and &quot;NaN&quot; recognized as valid, but
-        # incorrect answers.
-        num_cmp(6, strings=&gt;[&quot;Inf&quot;, &quot;Minf&quot;, &quot;NaN&quot;]);
+# correct answer is 6, &quot;Inf&quot;, &quot;Minf&quot;, and &quot;NaN&quot; recognized as valid, but
+# incorrect answers.
+num_cmp(6, strings=&gt;[&quot;Inf&quot;, &quot;Minf&quot;, &quot;NaN&quot;]);
 
-        # correct answer is &quot;-INF&quot;, &quot;INF&quot; and numerical expressions recognized as
-        # valid, but incorrect answers.
-        num_cmp(&quot;-INF&quot;, strings =&gt; [&quot;INF&quot;, &quot;-INF&quot;]);</code></pre>
+# correct answer is &quot;-INF&quot;, &quot;INF&quot; and numerical expressions recognized as
+# valid, but incorrect answers.
+num_cmp(&quot;-INF&quot;, strings =&gt; [&quot;INF&quot;, &quot;-INF&quot;]);</code></pre>
 
 <a href="#_podtop_"><h1 id="mode_num_cmp-functions">&quot;mode&quot;_num_cmp() functions</h1></a>
 
 <p>There are 16 functions that provide simplified interfaces to num_cmp(). They are organized into four groups, based on the number of answers accpeted (single or list) and whether relative or absolute tolerances are used. Each group contains four functions, one for each evaluation mode. See the mode option to num_cmp() above for details about each mode.</p>
 
-<pre><code>         GROUP:|    &quot;normal&quot;    |       &quot;list&quot;        |       &quot;abs&quot;        |        &quot;abs_list&quot;       |
-               | single answer  |   list of answers   |   single answer    |     list of answers     |
-        MODE:  | relative tol.  | relative tolerance  | absolute tolerance |    absolute tolerance   |
-        -------+----------------+---------------------+--------------------+-------------------------+
-           std |    std_num_cmp |    std_num_cmp_list |    std_num_cmp_abs |    std_num_cmp_abs_list |
-          frac |   frac_num_cmp |   frac_num_cmp_list |   frac_num_cmp_abs |   frac_num_cmp_abs_list |
-        strict | strict_num_cmp | strict_num_cmp_list | strict_num_cmp_abs | strict_num_cmp_abs_list |
-         arith |  arith_num_cmp |  arith_num_cmp_list |  arith_num_cmp_abs |  arith_num_cmp_abs_list |</code></pre>
+<pre><code>GROUP:|    &quot;normal&quot;    |       &quot;list&quot;        |       &quot;abs&quot;        |        &quot;abs_list&quot;       |
+      | single answer  |   list of answers   |   single answer    |     list of answers     |
+MODE:  | relative tol.  | relative tolerance  | absolute tolerance |    absolute tolerance   |
+-------+----------------+---------------------+--------------------+-------------------------+
+  std |    std_num_cmp |    std_num_cmp_list |    std_num_cmp_abs |    std_num_cmp_abs_list |
+ frac |   frac_num_cmp |   frac_num_cmp_list |   frac_num_cmp_abs |   frac_num_cmp_abs_list |
+strict | strict_num_cmp | strict_num_cmp_list | strict_num_cmp_abs | strict_num_cmp_abs_list |
+arith |  arith_num_cmp |  arith_num_cmp_list |  arith_num_cmp_abs |  arith_num_cmp_abs_list |</code></pre>
 
 <p>The functions in each group take the same arguments.</p>
 
 <h2 id="The-normal-group">The normal group</h2>
 
-<pre><code>        ANS(std_num_cmp($correctAnswer, $relTol, $format, $zeroLevel, $zeroLevelTol));
-        ANS(arith_num_cmp($correctAnswer, $relTol, $format, $zeroLevel, $zeroLevelTol));
-        ANS(strict_num_cmp($correctAnswer, $relTol, $format, $zeroLevel, $zeroLevelTol));
-        ANS(frac_num_cmp($correctAnswer, $relTol, $format, $zeroLevel, $zeroLevelTol));</code></pre>
+<pre><code>ANS(std_num_cmp($correctAnswer, $relTol, $format, $zeroLevel, $zeroLevelTol));
+ANS(arith_num_cmp($correctAnswer, $relTol, $format, $zeroLevel, $zeroLevelTol));
+ANS(strict_num_cmp($correctAnswer, $relTol, $format, $zeroLevel, $zeroLevelTol));
+ANS(frac_num_cmp($correctAnswer, $relTol, $format, $zeroLevel, $zeroLevelTol));</code></pre>
 
 <p>This group of functions produces answer evaluators for a single correct answer using relative tolerances. The first argument, $correctAnswer, is required. The rest are optional. The arguments are equivalent to the identically-named options to num_cmp(), above.</p>
 
 <h2 id="The-list-group">The list group</h2>
 
-<pre><code>        ANS(std_num_cmp_list($relTol, $format, @answerList));
-        ANS(arith_num_cmp_list($relTol, $format, @answerList));
-        ANS(strict_num_cmp_list($relTol, $format, @answerList));
-        ANS(frac_num_cmp_list($relTol, $format, @answerList));</code></pre>
+<pre><code>ANS(std_num_cmp_list($relTol, $format, @answerList));
+ANS(arith_num_cmp_list($relTol, $format, @answerList));
+ANS(strict_num_cmp_list($relTol, $format, @answerList));
+ANS(frac_num_cmp_list($relTol, $format, @answerList));</code></pre>
 
 <p>This group of functions produces answer evaluators for a list of correct answers using relative tolerances. $relTol and $format are equivelent to the identically-named options to num_cmp() above. @answerList must contain one or more correct answers. A list of answer evaluators is returned, one for each answer provided in @answerList. All answer returned evaluators will use the relative tolerance and format specified.</p>
 
 <h2 id="The-abs-group">The abs group</h2>
 
-<pre><code>        ANS(std_num_cmp_abs($correctAnswer, $absTol, $format));
-        ANS(arith_num_cmp_abs($correctAnswer, $absTol, $format));
-        ANS(strict_num_cmp_abs($correctAnswer, $absTol, $format));
-        ANS(frac_num_cmp_abs($correctAnswer, $absTol, $format));</code></pre>
+<pre><code>ANS(std_num_cmp_abs($correctAnswer, $absTol, $format));
+ANS(arith_num_cmp_abs($correctAnswer, $absTol, $format));
+ANS(strict_num_cmp_abs($correctAnswer, $absTol, $format));
+ANS(frac_num_cmp_abs($correctAnswer, $absTol, $format));</code></pre>
 
 <p>This group of functions produces answer evaluators for a single correct answer using absolute tolerances. The first argument, $correctAnswer, is required. The rest are optional. The arguments are equivalent to the identically-named options to num_cmp(), above.</p>
 
 <h2 id="The-abs_list-group">The abs_list group</h2>
 
-<pre><code>        ANS(std_num_cmp_abs_list($absTol, $format, @answerList));
-        ANS(arith_num_cmp_abs_list($absTol, $format, @answerList));
-        ANS(strict_num_cmp_abs_list($absTol, $format, @answerList));
-        ANS(frac_num_cmp_abs_list($absTol, $format, @answerList));</code></pre>
+<pre><code>ANS(std_num_cmp_abs_list($absTol, $format, @answerList));
+ANS(arith_num_cmp_abs_list($absTol, $format, @answerList));
+ANS(strict_num_cmp_abs_list($absTol, $format, @answerList));
+ANS(frac_num_cmp_abs_list($absTol, $format, @answerList));</code></pre>
 
 <p>This group of functions produces answer evaluators for a list of correct answers using absolute tolerances. $absTol and $format are equivelent to the identically-named options to num_cmp() above. @answerList must contain one or more correct answers. A list of answer evaluators is returned, one for each answer provided in @answerList. All answer returned evaluators will use the absolute tolerance and format specified.</p>
 
 <h2 id="Examples1">Examples</h2>
 
-<pre><code>        # The student answer must be a number in decimal or scientific notation
-        # which is within .1 percent of 3.14159. This assumes
-        # $numRelPercentTolDefault has been set to .1.
-        ANS(strict_num_cmp(3.14159));
+<pre><code># The student answer must be a number in decimal or scientific notation
+# which is within .1 percent of 3.14159. This assumes
+# $numRelPercentTolDefault has been set to .1.
+ANS(strict_num_cmp(3.14159));
 
-        # The student answer must be a number within .01 percent of $answer (e.g. #
-        3.14159 if $answer is 3.14159 or $answer is &quot;pi&quot; or $answer is 4*atan(1)).
-        ANS(strict_num_cmp($answer, .01));
+# The student answer must be a number within .01 percent of $answer (e.g. #
+3.14159 if $answer is 3.14159 or $answer is &quot;pi&quot; or $answer is 4*atan(1)).
+ANS(strict_num_cmp($answer, .01));
 
-        # The student answer can be a number or fraction, e.g. 2/3.
-        ANS(frac_num_cmp($answer)); # or
-        ANS(frac_num_cmp($answer, .01));
+# The student answer can be a number or fraction, e.g. 2/3.
+ANS(frac_num_cmp($answer)); # or
+ANS(frac_num_cmp($answer, .01));
 
-        # The student answer can be an arithmetic expression, e.g. (2+3)/7-2^.5 .
-        ANS(arith_num_cmp($answer)); # or
-        ANS(arith_num_cmp($answer, .01));
+# The student answer can be an arithmetic expression, e.g. (2+3)/7-2^.5 .
+ANS(arith_num_cmp($answer)); # or
+ANS(arith_num_cmp($answer, .01));
 
-        # The student answer can contain elementary functions, e.g. sin(.3+pi/2)
-        ANS(std_num_cmp($answer)); # or
-        ANS(std_num_cmp( $answer, .01));</code></pre>
+# The student answer can contain elementary functions, e.g. sin(.3+pi/2)
+ANS(std_num_cmp($answer)); # or
+ANS(std_num_cmp( $answer, .01));</code></pre>
 
 <a href="#_podtop_"><h1 id="Miscellaneous-functions">Miscellaneous functions</h1></a>
 
 <h2 id="DEPRECATED-numerical_compare_with_units">[DEPRECATED] numerical_compare_with_units</h2>
 
-<pre><code>        ANS(numerical_compare_with_units($correct_ans_with_units, %options))    </code></pre>
+<pre><code>ANS(numerical_compare_with_units($correct_ans_with_units, %options))</code></pre>
 
 <p>This function is deprecated. Use num_cmp with the units option instead:</p>
 
-<pre><code>        ANS(num_cmp($correct_ans, units=&gt;$units));</code></pre>
+<pre><code>ANS(num_cmp($correct_ans, units=&gt;$units));</code></pre>
 
 <h2 id="DEPRECATED-std_num_str_cmp">[DEPRECATED] std_num_str_cmp()</h2>
 
-<pre><code>        ANS(std_num_str_cmp($correctAnswer, $ra_legalStrings, $relTol, $format, $zeroLevel, $zeroLevelTol))</code></pre>
+<pre><code>ANS(std_num_str_cmp($correctAnswer, $ra_legalStrings, $relTol, $format, $zeroLevel, $zeroLevelTol))</code></pre>
 
 <p>This function is deprecated. Use num_cmp() with the strings option instead:</p>
 
-<pre><code>        ANS(num_cmp($correctAnswer, strings=&gt;$ra_legalStrings, ...));</code></pre>
+<pre><code>ANS(num_cmp($correctAnswer, strings=&gt;$ra_legalStrings, ...));</code></pre>
 
 <a href="#_podtop_"><h1 id="SEE-ALSO">SEE ALSO</h1></a>
 
-<p><a href="//pg/macros/core/PGanswermacros.html">PGanswermacros.pl</a>, <a href="//pg/doc/MathObjects">MathObjects</a>.</p>
+<p><a href="//pg/macros/core/PGanswermacros.html">PGanswermacros.pl</a>, <a href="//pg/doc/MathObjects/UsingMathObjects.html">UsingMathObjects</a>.</p>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

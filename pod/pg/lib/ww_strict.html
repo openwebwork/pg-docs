@@ -1,22 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>ww_strict</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ww_strict</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>ww_strict</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">ww_strict</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
 
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-</ul>
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
@@ -24,14 +52,14 @@
 
 <a href="#_podtop_"><h1 id="SYNOPSIS">SYNOPSIS</h1></a>
 
-<pre><code>    use strict;
+<pre><code>use strict;
 
-    use strict &quot;vars&quot;;
-    use strict &quot;refs&quot;;
-    use strict &quot;subs&quot;;
+use strict &quot;vars&quot;;
+use strict &quot;refs&quot;;
+use strict &quot;subs&quot;;
 
-    use strict;
-    no strict &quot;vars&quot;;</code></pre>
+use strict;
+no strict &quot;vars&quot;;</code></pre>
 
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
@@ -44,13 +72,13 @@
 
 <p>This generates a runtime error if you use symbolic references (see <a href="https://metacpan.org/pod/perlref">perlref</a>).</p>
 
-<pre><code>    use strict &#39;refs&#39;;
-    $ref = \$foo;
-    print $$ref;        # ok
-    $ref = &quot;foo&quot;;
-    print $$ref;        # runtime error; normally ok
-    $file = &quot;STDOUT&quot;;
-    print $file &quot;Hi!&quot;;  # error; note: no comma after $file</code></pre>
+<pre><code>use strict &#39;refs&#39;;
+$ref = \$foo;
+print $$ref;        # ok
+$ref = &quot;foo&quot;;
+print $$ref;        # runtime error; normally ok
+$file = &quot;STDOUT&quot;;
+print $file &quot;Hi!&quot;;  # error; note: no comma after $file</code></pre>
 
 </dd>
 <dt><code>strict vars</code></dt>
@@ -58,14 +86,14 @@
 
 <p>This generates a compile-time error if you access a variable that wasn&#39;t declared via &quot;our&quot; or <code>use vars</code>, localized via <code>my()</code>, or wasn&#39;t fully qualified. Because this is to avoid variable suicide problems and subtle dynamic scoping issues, a merely local() variable isn&#39;t good enough. See <a href="https://metacpan.org/pod/perlfunc#my">&quot;my&quot; in perlfunc</a> and <a href="https://metacpan.org/pod/perlfunc#local">&quot;local&quot; in perlfunc</a>.</p>
 
-<pre><code>    use strict &#39;vars&#39;;
-    $X::foo = 1;         # ok, fully qualified
-    my $foo = 10;        # ok, my() var
-    local $foo = 9;      # blows up
+<pre><code>use strict &#39;vars&#39;;
+$X::foo = 1;         # ok, fully qualified
+my $foo = 10;        # ok, my() var
+local $foo = 9;      # blows up
 
-    package Cinna;
-    our $bar;                   # Declares $bar in current package
-    $bar = &#39;HgS&#39;;               # ok, global declared via pragma</code></pre>
+package Cinna;
+our $bar;                   # Declares $bar in current package
+$bar = &#39;HgS&#39;;               # ok, global declared via pragma</code></pre>
 
 <p>The local() generated a compile-time error because you just touched a global name without fully qualifying it.</p>
 
@@ -77,28 +105,17 @@
 
 <p>This disables the poetry optimization, generating a compile-time error if you try to use a bareword identifier that&#39;s not a subroutine, unless it appears in curly braces or on the left hand side of the &quot;=&gt;&quot; symbol.</p>
 
-<pre><code>    use strict &#39;subs&#39;;
-    $SIG{PIPE} = Plumber;       # blows up
-    $SIG{PIPE} = &quot;Plumber&quot;;     # just fine: bareword in curlies always ok
-    $SIG{PIPE} = \&amp;Plumber;     # preferred form</code></pre>
+<pre><code>use strict &#39;subs&#39;;
+$SIG{PIPE} = Plumber;       # blows up
+$SIG{PIPE} = &quot;Plumber&quot;;     # just fine: bareword in curlies always ok
+$SIG{PIPE} = \&amp;Plumber;     # preferred form</code></pre>
 
 </dd>
 </dl>
 
 <p>See <a href="https://metacpan.org/pod/perlmodlib#Pragmatic-Modules">&quot;Pragmatic Modules&quot; in perlmodlib</a>.</p>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

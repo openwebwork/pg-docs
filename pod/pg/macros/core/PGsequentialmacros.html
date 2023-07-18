@@ -1,128 +1,144 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>core/PGsequentialmacros.pl</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>core/PGsequentialmacros.pl</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>core/PGsequentialmacros.pl</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
-
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#SYNPOSIS">SYNPOSIS</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a>
-    <ul>
-      <li><a href="#listFormVariables">listFormVariables</a></li>
-      <li><a href="#checkAnswer">checkAnswer</a></li>
-      <li><a href="#listQueuedAnswers">listQueuedAnswers</a></li>
-      <li><a href="#checkQueuedAnswers">checkQueuedAnswers</a></li>
-      <li><a href="#all_answers_are_correct">all_answers_are_correct</a></li>
-      <li><a href="#get_incorrect_answers">get_incorrect_answers</a></li>
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">core/PGsequentialmacros.pl</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNPOSIS">SYNPOSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#listFormVariables">listFormVariables</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#checkAnswer">checkAnswer</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#listQueuedAnswers">listQueuedAnswers</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#checkQueuedAnswers">checkQueuedAnswers</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#all_answers_are_correct">all_answers_are_correct</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#get_incorrect_answers">get_incorrect_answers</a></li>
     </ul>
-  </li>
-</ul>
+  </li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
+
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<pre><code>        PGsequentialmacros.pl 
-        </code></pre>
+<p>PGsequentialmacros.pl</p>
 
 <p>Provides support for writing sequential problems, where certain parts of the problem are hidden until earlier questions are answered correctly.</p>
 
 <a href="#_podtop_"><h1 id="SYNPOSIS">SYNPOSIS</h1></a>
 
-<pre><code>        The basic sequential problem structure:
+<p>The basic sequential problem structure:</p>
 
-        DOCUMENT();          
-        loadMacros(.....);   
-        ## first segment ##                 
-    BEGIN_TEXT
-        The first question: Enter \(sin(0) = \) \{ans_rule\}.
-    END_TEXT
-        ANS(num_cmp(0));
-        if (@incorrect_answers = get_incorrect_answers( ) ) {
-          TEXT( &quot;These answers are not correct  &quot;, join(&quot; &quot;,@incorrect_answers),$BR); 
-          foreach my $label (@incorrect_answers) {
-              checkAnswer($label,debug=&gt;1);
-          }
-    }
-    if (all_answers_are_correct() ) {
-              TEXT(&quot;$PAR Right! Now for the next part of the problem&quot;);
-    } else {
-             STOP_RENDERING();
-    }
-        ## second segment ##    
-             ....
-        if (@incorrect_answers = get_incorrect_answers( ) ) {
-          TEXT( &quot;These answers are not correct  &quot;, join(&quot; &quot;,@incorrect_answers),$BR); 
-          foreach my $label (@incorrect_answers) {
-              checkAnswer($label,debug=&gt;1);
-          }
-    }
-    if (all_answers_are_correct() ) {
-              TEXT(&quot;$PAR Right! Now for the next part of the problem&quot;);
-    } else {
-             STOP_RENDERING();
-    }
-    ## third segment ## 
-        ENDDOCUMENT()        # must be the last statement in the problem</code></pre>
+<pre><code>DOCUMENT();
+loadMacros(.....);
+## first segment ##
+BEGIN_TEXT
+The first question: Enter \(sin(0) = \) \{ans_rule\}.
+END_TEXT
+ANS(num_cmp(0));
+if (@incorrect_answers = get_incorrect_answers( ) ) {
+  TEXT( &quot;These answers are not correct  &quot;, join(&quot; &quot;,@incorrect_answers),$BR);
+  foreach my $label (@incorrect_answers) {
+      checkAnswer($label,debug=&gt;1);
+  }
+}
+if (all_answers_are_correct() ) {
+      TEXT(&quot;$PAR Right! Now for the next part of the problem&quot;);
+} else {
+     STOP_RENDERING();
+}
+## second segment ##
+     ....
+if (@incorrect_answers = get_incorrect_answers( ) ) {
+  TEXT( &quot;These answers are not correct  &quot;, join(&quot; &quot;,@incorrect_answers),$BR);
+  foreach my $label (@incorrect_answers) {
+      checkAnswer($label,debug=&gt;1);
+  }
+}
+if (all_answers_are_correct() ) {
+      TEXT(&quot;$PAR Right! Now for the next part of the problem&quot;);
+} else {
+     STOP_RENDERING();
+}
+## third segment ##
+ENDDOCUMENT()        # must be the last statement in the problem</code></pre>
 
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
 <h2 id="listFormVariables">listFormVariables</h2>
 
-<pre><code>        listFormVariables();
-        listVariables();</code></pre>
+<pre><code>listFormVariables();
+listVariables();</code></pre>
 
 <p>Lists all variables submitted in the problem form and all variables in the the Problem environment. This is used for debugging.</p>
 
 <h2 id="checkAnswer">checkAnswer</h2>
 
-<pre><code>        checkAnswer($label);</code></pre>
+<pre><code>checkAnswer($label);</code></pre>
 
 <p>Checks the answer to the question labeled <code>$label</code>. The result is 1 if the answer is completely correct. 0 if the answer is wrong or partially wrong and undefined if that question has not yet been answered. (Specifically if no answer hash is produced when the answer is evaluated by the corresponding answer evaluator.)</p>
 
 <h2 id="listQueuedAnswers">listQueuedAnswers</h2>
 
-<pre><code>        listQueuedAnswers();</code></pre>
+<pre><code>listQueuedAnswers();</code></pre>
 
 <p>Lists the labels of the answer blanks which have been printed so far. The return value is a string which can be printed. This is mainly used for debugging.</p>
 
 <h2 id="checkQueuedAnswers">checkQueuedAnswers</h2>
 
-<pre><code>        checkQueuedAnswers();</code></pre>
+<pre><code>checkQueuedAnswers();</code></pre>
 
 <p>Returns a hash whose key/value pairs are the labels of the questions have been printed so far and the scores obtained by evaluating the answers to these questions.</p>
 
 <h2 id="all_answers_are_correct">all_answers_are_correct</h2>
 
-<pre><code>        all_answers_are_correct();</code></pre>
+<pre><code>all_answers_are_correct();</code></pre>
 
 <p>Returns 1 if there is at least one answer and all of the questions printed so far have been answered correctly.</p>
 
 <h2 id="get_incorrect_answers">get_incorrect_answers</h2>
 
-<pre><code>        get_incorrect_answers();</code></pre>
+<pre><code>get_incorrect_answers();</code></pre>
 
 <p>Returns a list of labels of questions which have been printed and have been answered incorrectly. This list does NOT include blank or undefined answers. It&#39;s possible for the returned list to be empty AND for all_answers_are_correct() to return false.</p>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

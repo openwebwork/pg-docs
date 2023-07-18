@@ -1,21 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>contexts/contextCongruence.pl</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>contexts/contextCongruence.pl</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>contexts/contextCongruence.pl</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">contexts/contextCongruence.pl</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#USAGE">USAGE</a></li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
 
-
-<ul id="index">
-  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-  <li><a href="#USAGE">USAGE</a></li>
-</ul>
 
 <p><code>Context(&quot;Congruence&quot;)</code> - Provides contexts that allow the entry of congruence solutions</p>
 
@@ -25,62 +54,53 @@
 
 <p>There are three contexts included here: <code>Context(&quot;Congruence&quot;)</code>, which allows both types of solutions, <code>Context(&quot;Congruence-General-Solution&quot;)</code>, which requires the general solution, and <code>Context(&quot;Congruence-All-Solutions&quot;)</code>, which requires all solutions to be entered.</p>
 
-<p>Congruences must be created with three paramters (a, b, m) from ax &equiv; b (mod m).</p>
+<p>Congruences must be created with three paramters (a, b, m) from ax ≡ b (mod m).</p>
 
 <a href="#_podtop_"><h1 id="USAGE">USAGE</h1></a>
 
-<pre><code>        loadMacros(&quot;contextCongruence.pl&quot;);
-        
-        Context(&quot;Congruence&quot;);
+<pre><code>loadMacros(&quot;contextCongruence.pl&quot;);
 
-  ax &equiv; b (mod m)
-  can initialize with Congruence(a, b, m);
+Context(&quot;Congruence&quot;);</code></pre>
 
-  #ex: 15x &equiv; 10 (mod 25)
-        $C1 = Congruence(15, 10, 25); 
-  $general_answer = Compute(&quot;4+5k&quot;);
-  $all_answers = Compute(&quot;4+25k,9+25k,14+25k,19+25k,24+25k&quot;);
-  $all_answers_diff_order = Compute(&quot;9+25k,4+25k,14+25k,19+25k,24+25k&quot;);
+<p>ax ≡ b (mod m)</p>
 
-  $C1-&gt;compare($general_answer); # is true
-  $C1-&gt;compare($all_answers); # is true
-  $C1-&gt;compare($all_answers_diff_order); # is true
+<p>Can initialize with Congruence(a, b, m);</p>
 
-  Can an force general solution only with
+<pre><code>#ex: 15x ≡ 10 (mod 25)
+$C1 = Congruence(15, 10, 25);
+$general_answer = Compute(&quot;4+5k&quot;);
+$all_answers = Compute(&quot;4+25k,9+25k,14+25k,19+25k,24+25k&quot;);
+$all_answers_diff_order = Compute(&quot;9+25k,4+25k,14+25k,19+25k,24+25k&quot;);
 
-        Context()-&gt;flags-&gt;set(requireGeneralSolution =&gt; 1);
-  $C1-&gt;compare($general_answer); # is true
-  $C1-&gt;compare($all_answers); # is false
+$C1-&gt;compare($general_answer); # is true
+$C1-&gt;compare($all_answers); # is true
+$C1-&gt;compare($all_answers_diff_order); # is true</code></pre>
 
+<p>Can an force general solution only with</p>
 
-  Can an force all solutions only with
+<pre><code>Context()-&gt;flags-&gt;set(requireGeneralSolution =&gt; 1);
+$C1-&gt;compare($general_answer); # is true
+$C1-&gt;compare($all_answers); # is false</code></pre>
 
-        Context()-&gt;flags-&gt;set(requireAllSolutions =&gt; 1);
-  $C1-&gt;compare($general_answer); # is false
-  $C1-&gt;compare($all_answers); # is true
+<p>Can an force all solutions only with</p>
 
-  Students can enter &#39;none&#39; when there is no solution
-  #ex: 15x &equiv; 10 (mod 24)
-        $C2 = Congruence(15, 10, 24); 
-  $none = Compute(&quot;None&quot;);
-  $n = Compute(&quot;n&quot;);
+<pre><code>Context()-&gt;flags-&gt;set(requireAllSolutions =&gt; 1);
+$C1-&gt;compare($general_answer); # is false
+$C1-&gt;compare($all_answers); # is true</code></pre>
 
-  $C2-&gt;compare($none); # is true
-  $C2-&gt;compare($n); # is true
-  $C1-&gt;compare($none); # is false</code></pre>
+<p>Students can enter &#39;none&#39; when there is no solution</p>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+<p>ex: 15x ≡ 10 (mod 24)</p>
+
+<pre><code>$C2 = Congruence(15, 10, 24);
+$none = Compute(&quot;None&quot;);
+$n = Compute(&quot;n&quot;);
+
+$C2-&gt;compare($none); # is true
+$C2-&gt;compare($n); # is true
+$C1-&gt;compare($none); # is false</code></pre>
+
+		</div>
+	</div>
 </body>
 </html>
-
-

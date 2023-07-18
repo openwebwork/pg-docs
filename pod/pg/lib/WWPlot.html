@@ -1,37 +1,65 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>WWPlot</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>WWPlot</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>WWPlot</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
-
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#SYNPOSIS">SYNPOSIS</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a>
-    <ul>
-      <li><a href="#new">new</a></li>
-      <li><a href="#Methods-and-properties">Methods and properties</a></li>
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">WWPlot</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNPOSIS">SYNPOSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#new">new</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Methods-and-properties">Methods and properties</a></li>
     </ul>
-  </li>
-</ul>
+  </li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
+
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<pre><code>        WWPlot</code></pre>
+<pre><code>WWPlot</code></pre>
 
 <a href="#_podtop_"><h1 id="SYNPOSIS">SYNPOSIS</h1></a>
 
-<pre><code>        $graph = new WWPlot(400,400); # creates a graph 400 pixels by 400 pixels
-        $graph-&gt;fn($fun1, $fun2);     # installs functions $fun1 and $fun2 in $graph
-        $image_binary = $graph-&gt;draw();  # creates the gif/png image of the functions installed in the graph</code></pre>
+<pre><code>$graph = new WWPlot(400,400); # creates a graph 400 pixels by 400 pixels
+$graph-&gt;fn($fun1, $fun2);     # installs functions $fun1 and $fun2 in $graph
+$image_binary = $graph-&gt;draw();  # creates the gif/png image of the functions installed in the graph</code></pre>
 
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
@@ -39,7 +67,7 @@
 
 <h2 id="new">new</h2>
 
-<pre><code>        $graph = new WWPlot(400,400);</code></pre>
+<pre><code>$graph = new WWPlot(400,400);</code></pre>
 
 <p>Creates a graph object 400 pixels by 400 pixels. The size is required.</p>
 
@@ -52,9 +80,9 @@
 
 <p>These determine the world co-ordinates of the graph. The constructions</p>
 
-<pre><code>        $new_xmin = $graph-&gt;xmin($new_xmin);
+<pre><code>$new_xmin = $graph-&gt;xmin($new_xmin);
 and
-        $current_xmin = $graph-&gt;xmin();</code></pre>
+$current_xmin = $graph-&gt;xmin();</code></pre>
 
 <p>set and read the values.</p>
 
@@ -66,24 +94,24 @@ and
 
 <p>You can add a function with either of the commands</p>
 
-<pre><code>        @fn = $graph-&gt;fn($new_fun_ref1, $new_fun_ref2);
-        @fn = $graph-&gt;install($new_fun_ref1, $new_fun_ref2);</code></pre>
+<pre><code>@fn = $graph-&gt;fn($new_fun_ref1, $new_fun_ref2);
+@fn = $graph-&gt;install($new_fun_ref1, $new_fun_ref2);</code></pre>
 
 <p>the constructions for labels and stamps are respectively:</p>
 
-<pre><code>        @labels = $graph-&gt;lb($new_label);
-        @stamps = $graph-&gt;stamps($new_stamp);</code></pre>
+<pre><code>@labels = $graph-&gt;lb($new_label);
+@stamps = $graph-&gt;stamps($new_stamp);</code></pre>
 
 <p>while</p>
 
-<pre><code>        @functions = $graph-&gt;fn();</code></pre>
+<pre><code>@functions = $graph-&gt;fn();</code></pre>
 
 <p>will give a list of the current functions (similary for labels and stamps).</p>
 
 <p>Either of the commands</p>
 
-<pre><code>        $graph-&gt;fn(&#39;reset&#39;);
-        $graph-&gt;fn(&#39;erase&#39;);</code></pre>
+<pre><code>$graph-&gt;fn(&#39;reset&#39;);
+$graph-&gt;fn(&#39;erase&#39;);</code></pre>
 
 <p>will erase the array containing the functions and similary for the label and stamps arrays.</p>
 
@@ -91,8 +119,8 @@ and
 <dt>h_axis, v_axis</dt>
 <dd>
 
-<pre><code>        $h_axis_coordinate = $graph -&gt; h_axis();
-        $new_axis    =       $grpah -&gt; h_axis($new_axis);</code></pre>
+<pre><code>$h_axis_coordinate = $graph -&gt; h_axis();
+$new_axis    =       $grpah -&gt; h_axis($new_axis);</code></pre>
 
 <p>Respectively read and set the vertical coordinate value in real world coordinates where the horizontal axis intersects the vertical one. The same construction reads and sets the coordinate value for the vertical axis. The axis is drawn more darkly than the grids.</p>
 
@@ -100,8 +128,8 @@ and
 <dt>h_ticks, v_ticks</dt>
 <dd>
 
-<pre><code>        @h_ticks = $graph -&gt; h_ticks();
-        @h_ticks = $graph -&gt; h_ticks( $tick1, $tick2, $tick3, $tick4   );</code></pre>
+<pre><code>@h_ticks = $graph -&gt; h_ticks();
+@h_ticks = $graph -&gt; h_ticks( $tick1, $tick2, $tick3, $tick4   );</code></pre>
 
 <p>reads and sets the coordinates for the tick marks along the horizontal axis. The values $tick1, etc are the real world coordinate values for each of the tick marks.</p>
 
@@ -109,8 +137,8 @@ and
 <dt>h_grid, v_grid</dt>
 <dd>
 
-<pre><code>        @h_grid = $graph -&gt; h_grid();
-        @h_grid = $graph -&gt; h_grid( $grid1, $grid2, $grid3, $grid4   );</code></pre>
+<pre><code>@h_grid = $graph -&gt; h_grid();
+@h_grid = $graph -&gt; h_grid( $grid1, $grid2, $grid3, $grid4   );</code></pre>
 
 <p>reads and sets the verical coordinates for the horizontal grid lines. The values $grid1, etc are the real world coordinate values where the horizontal grid meets the vertical axis.</p>
 
@@ -118,7 +146,7 @@ and
 <dt>draw</dt>
 <dd>
 
-<pre><code>        $image = $graph -&gt;draw();</code></pre>
+<pre><code>$image = $graph -&gt;draw();</code></pre>
 
 <p>Draws the image of the graph.</p>
 
@@ -126,7 +154,7 @@ and
 <dt>size</dt>
 <dd>
 
-<pre><code>        ($horizontal_pixels, $vertical_pixels)  = @{$graph -&gt;size()};</code></pre>
+<pre><code>($horizontal_pixels, $vertical_pixels)  = @{$graph -&gt;size()};</code></pre>
 
 <p>Reads the size of the graph image in pixels. This cannot be reset. It is defined by the new constructor and cannot be changed.</p>
 
@@ -134,7 +162,7 @@ and
 <dt>colors</dt>
 <dd>
 
-<pre><code>        %colors =$graph-&gt;colors();</code></pre>
+<pre><code>%colors =$graph-&gt;colors();</code></pre>
 
 <p>Returns the hash containing the colors known to the graph. The keys are the names of the colors and the values are the color indices used by the graph.</p>
 
@@ -142,7 +170,7 @@ and
 <dt>new_color</dt>
 <dd>
 
-<pre><code>        $graph-&gt;new_color(&#39;white&#39;, 255,255,255);</code></pre>
+<pre><code>$graph-&gt;new_color(&#39;white&#39;, 255,255,255);</code></pre>
 
 <p>defines a new color named white with red, green and blue densities 255.</p>
 
@@ -150,7 +178,7 @@ and
 <dt>im</dt>
 <dd>
 
-<pre><code>        $GD_image = $graph-&gt;im();</code></pre>
+<pre><code>$GD_image = $graph-&gt;im();</code></pre>
 
 <p>Allows access to the GD image object contained in the graph object. You can use this to access methods defined in GD but not supported directly by WWPlot. (See the documentation for GD.)</p>
 
@@ -158,13 +186,13 @@ and
 <dt>moveTo, lineTo, arrowTo</dt>
 <dd>
 
-<pre><code>        $graph-&gt;moveTo($x,$y);
-        $graph-&gt;lineTo($x,$y,$color);
-        $graph-&gt;lineTo($x,$y,$color,$thickness);
-        $graph-&gt;lineTo($x,$y,$color,$thickness,&#39;dashed&#39;);
-        $graph-&gt;arrowTo($x,$y,$color);
-        $graph-&gt;arrowTo($x,$y,$color,$thickness);
-        $graph-&gt;arrowTo($x,$y,$color,$thickness,&#39;dashed&#39;);</code></pre>
+<pre><code>$graph-&gt;moveTo($x,$y);
+$graph-&gt;lineTo($x,$y,$color);
+$graph-&gt;lineTo($x,$y,$color,$thickness);
+$graph-&gt;lineTo($x,$y,$color,$thickness,&#39;dashed&#39;);
+$graph-&gt;arrowTo($x,$y,$color);
+$graph-&gt;arrowTo($x,$y,$color,$thickness);
+$graph-&gt;arrowTo($x,$y,$color,$thickness,&#39;dashed&#39;);</code></pre>
 
 <p>Moves to the point ($x, $y) (defined in real world coordinates) or draws a line or arrow from the current position to the specified point ($x, $y) using the color $color. $color is the name, e.g. &#39;white&#39;, of the color, not an index value or RGB specification. $thickness gives the thickness of the line or arrow to draw. If &#39;dashed&#39; is specified, the line or arrow is rendered with a dashed line. These are low level call back routines used by the function, label and stamp objects to draw themselves.</p>
 
@@ -174,23 +202,12 @@ and
 
 <p>These functions translate from real world to pixel coordinates.</p>
 
-<pre><code>        $pixels_down_from_top = $graph -&gt; jj($y);</code></pre>
+<pre><code>$pixels_down_from_top = $graph -&gt; jj($y);</code></pre>
 
 </dd>
 </dl>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-

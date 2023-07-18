@@ -1,47 +1,71 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset='UTF-8'>
-<link rel="icon" href="/favicon.ico">
-<title>answers/PGfunctionevaluators.pl</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>answers/PGfunctionevaluators.pl</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="//assets/podviewer.js" defer></script>
 </head>
 <body>
-<h1>answers/PGfunctionevaluators.pl</h1>
-<div style="margin-left:20px">Jump to: <a href="#column-one">Site Navigation</a></div>
-<hr>
-<div id="_podtop_">
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">answers/PGfunctionevaluators.pl</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="/" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#MathObjects-and-answer-evaluators">MathObjects and answer evaluators</a></li>
+    </ul>
+  </li><li class="nav-item"><a class="nav-link p-0" href="#fun_cmp">fun_cmp</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#Options">Options</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Examples">Examples</a></li>
+    </ul>
+  </li><li class="nav-item"><a class="nav-link p-0" href="#Single-variable-Function-Comparisons">Single-variable Function Comparisons</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#function_cmp">function_cmp</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#function_cmp_up_to_constant">function_cmp_up_to_constant</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#function_cmp_abs">function_cmp_abs</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#function_cmp_up_to_constant_abs">function_cmp_up_to_constant_abs</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#adaptive_function_cmp">adaptive_function_cmp</a></li>
+    </ul>
+  </li><li class="nav-item"><a class="nav-link p-0" href="#Multi-variable-Function-Comparisons">Multi-variable Function Comparisons</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#DEPRECATED-multivar_function_cmp">[DEPRECATED] multivar_function_cmp</a></li>
+    </ul>
+  </li><li class="nav-item"><a class="nav-link p-0" href="#SEE-ALSO">SEE ALSO</a></li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
 
-
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a>
-    <ul>
-      <li><a href="#MathObjects-and-answer-evaluators">MathObjects and answer evaluators</a></li>
-    </ul>
-  </li>
-  <li><a href="#fun_cmp">fun_cmp</a>
-    <ul>
-      <li><a href="#Options">Options</a></li>
-      <li><a href="#Examples">Examples</a></li>
-    </ul>
-  </li>
-  <li><a href="#Single-variable-Function-Comparisons">Single-variable Function Comparisons</a>
-    <ul>
-      <li><a href="#function_cmp">function_cmp</a></li>
-      <li><a href="#function_cmp_up_to_constant">function_cmp_up_to_constant</a></li>
-      <li><a href="#function_cmp_abs">function_cmp_abs</a></li>
-      <li><a href="#function_cmp_up_to_constant_abs">function_cmp_up_to_constant_abs</a></li>
-      <li><a href="#adaptive_function_cmp">adaptive_function_cmp</a></li>
-    </ul>
-  </li>
-  <li><a href="#Multi-variable-Function-Comparisons">Multi-variable Function Comparisons</a>
-    <ul>
-      <li><a href="#DEPRECATED-multivar_function_cmp">[DEPRECATED] multivar_function_cmp</a></li>
-    </ul>
-  </li>
-  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
-</ul>
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
@@ -49,16 +73,16 @@
 
 <a href="#_podtop_"><h1 id="SYNOPSIS">SYNOPSIS</h1></a>
 
-<pre><code>        ANS(fun_cmp($answer_or_answer_array_ref, %options));
+<pre><code>ANS(fun_cmp($answer_or_answer_array_ref, %options));
 
-        ANS(function_cmp($correctEqn, $var, $llimit, $ulimit, $relTol, $numPoints, $zeroLevel,
-                         $zeroLevelTol));
-        ANS(function_cmp_up_to_constant($correctEqn, $var, $llimit, $ulimit, $relpercentTol, 
-                                        $numOfPoints, $maxConstantOfIntegration, $zeroLevel, 
-                                        $zeroLevelTol));
-        ANS(function_cmp_abs($correctFunction, $var, $llimit, $ulimit, $absTol, $numOfPoints));
-        ANS(function_cmp_up_to_constant_abs($correctFunction, $var, $llimit, $ulimit,
-                                            $absTol, $numOfPoints, $maxConstantOfIntegration));</code></pre>
+ANS(function_cmp($correctEqn, $var, $llimit, $ulimit, $relTol, $numPoints, $zeroLevel,
+                 $zeroLevelTol));
+ANS(function_cmp_up_to_constant($correctEqn, $var, $llimit, $ulimit, $relpercentTol,
+                                $numOfPoints, $maxConstantOfIntegration, $zeroLevel,
+                                $zeroLevelTol));
+ANS(function_cmp_abs($correctFunction, $var, $llimit, $ulimit, $absTol, $numOfPoints));
+ANS(function_cmp_up_to_constant_abs($correctFunction, $var, $llimit, $ulimit,
+                                    $absTol, $numOfPoints, $maxConstantOfIntegration));</code></pre>
 
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
@@ -72,7 +96,7 @@
 
 <a href="#_podtop_"><h1 id="fun_cmp">fun_cmp</h1></a>
 
-<pre><code>        ANS(fun_cmp($answer_or_answer_array_ref, %options));</code></pre>
+<pre><code>ANS(fun_cmp($answer_or_answer_array_ref, %options));</code></pre>
 
 <p>Compares a function or a list of functions, using a named hash of options to set parameters. This can make for more readable code than using the function_cmp() style, but some people find one or the other easier to remember.</p>
 
@@ -117,7 +141,7 @@
 
 <p>A relative tolerance. Relative tolerances are given in percentages. A relative tolerance of 1 indicates that when the student&#39;s function are evaluated, the result of evaluation at each point must be within within 1% of the correct answer to qualify as correct. In other words, a student answer is correct when</p>
 
-<pre><code>        abs(studentAnswer - correctAnswer) &lt;= abs(.01*relTol*correctAnswer)</code></pre>
+<pre><code>abs(studentAnswer - correctAnswer) &lt;= abs(.01*relTol*correctAnswer)</code></pre>
 
 <p>tol and relTol are mutually exclusive. reltol is also accpeted as a synonym for relTol.</p>
 
@@ -129,7 +153,7 @@
 
 <p>If the correct answer has an absolute value less than or equal to zeroLevel, then the student answer must be, in absolute terms, within zeroLevelTol of correctAnswer, i.e.,</p>
 
-<pre><code>        abs(studentAnswer - correctAnswer) &lt;= zeroLevelTol</code></pre>
+<pre><code>abs(studentAnswer - correctAnswer) &lt;= zeroLevelTol</code></pre>
 
 <p>In other words, if the correct answer is very near zero, an absolute tolerance will be used. One must do this to handle floating point answers very near zero, because of the inaccuracy of floating point arithmetic. However, the default values are almost always adequate.</p>
 
@@ -139,21 +163,21 @@
 
 <p>The var parameter can contain a number, a string, or a reference to an array of variable names. If it contains a number, the variables are named automatically as follows:</p>
 
-<pre><code>         var | variables used     
-        -----+--------------------
-         1   | x                  
-         2   | x, y               
-         3   | x, y, z            
-         4+  | x_1, x_2, x_3, ... </code></pre>
+<pre><code>var | variables used
+-----+--------------------
+1   | x
+2   | x, y
+3   | x, y, z
+4+  | x_1, x_2, x_3, ...</code></pre>
 
 <p>If the var parameter contains a reference to an array of variable names, then the number of variables is determined by the number of items in the array. For example:</p>
 
-<pre><code>        var=&gt;[&#39;r&#39;,&#39;s&#39;,&#39;t&#39;]</code></pre>
+<pre><code>var=&gt;[&#39;r&#39;,&#39;s&#39;,&#39;t&#39;]</code></pre>
 
 <p>If the var parameter contains a string, the string is used as the name of a single variable. Hence, the following are equivalent:</p>
 
-<pre><code>        var=&gt;[&#39;t&#39;]
-        var=&gt;&#39;t&#39;</code></pre>
+<pre><code>var=&gt;[&#39;t&#39;]
+var=&gt;&#39;t&#39;</code></pre>
 
 <p>vars is recognied as a synonym for var. The default is a single variable, x.</p>
 
@@ -163,12 +187,12 @@
 
 <p>Limits are specified with the limits parameter. If you specify limits for one variable, you must specify them for all variables. The limit parameter must be a reference to an array of arrays of the form <code>[$lower_limit. $upper_limit]</code>, each array corresponding to the lower and upper endpoints of the (half-open) domain of one variable. For example,</p>
 
-<pre><code>        vars=&gt;2, limits=&gt;[[0,2], [-3,8]]</code></pre>
+<pre><code>vars=&gt;2, limits=&gt;[[0,2], [-3,8]]</code></pre>
 
 <p>would cause x to be evaluated in [0,2) and y to be evaluated in [-3,8). If only one variable is being used, you can write either:</p>
 
-<pre><code>        limits =&gt; [[0,3]]
-        limits =&gt; [0,3]</code></pre>
+<pre><code>limits =&gt; [[0,3]]
+limits =&gt; [0,3]</code></pre>
 
 <p>domain is recognized as a synonym for limits.</p>
 
@@ -178,16 +202,16 @@
 
 <p>In some cases, the problem writer may want to specify the points used to check a particular function. For example, if you want to use only integer values, they can be specified. With one variable, either of these two forms work:</p>
 
-<pre><code>        test_points=&gt;[1,4,5,6]
-        test_points=&gt;[[1,4,5,6]]</code></pre>
+<pre><code>test_points=&gt;[1,4,5,6]
+test_points=&gt;[[1,4,5,6]]</code></pre>
 
 <p>With more variables, specify the list for the first variable, then the second, and so on:</p>
 
-<pre><code>        vars=&gt;[&#39;x&#39;,&#39;y&#39;], test_points=&gt;[[1,4,5],[7,14,29]]&quot;.</code></pre>
+<pre><code>vars=&gt;[&#39;x&#39;,&#39;y&#39;], test_points=&gt;[[1,4,5],[7,14,29]]&quot;.</code></pre>
 
 <p>If the problem writer wants random values which need to meet some special restrictions (such as being integers), they can be generated in the problem:</p>
 
-<pre><code>        test_points=&gt;[random(1,50), random(1,50), random(1,50), random(1,50)]</code></pre>
+<pre><code>test_points=&gt;[random(1,50), random(1,50), random(1,50), random(1,50)]</code></pre>
 
 <p>Note that test_points should not be used for function checks which involve parameters (either explicitly given by &quot;params&quot;, or as antiderivatives).</p>
 
@@ -220,23 +244,23 @@
 
 <h2 id="Examples">Examples</h2>
 
-<pre><code>        # standard compare, variable is x
-        fun_cmp(&quot;3*x&quot;);
+<pre><code># standard compare, variable is x
+fun_cmp(&quot;3*x&quot;);
 
-        # standard compare, defaults used for all three functions
-        fun_cmp([&quot;3*x&quot;, &quot;4*x+3&quot;, &quot;3*x**2&quot;]);
+# standard compare, defaults used for all three functions
+fun_cmp([&quot;3*x&quot;, &quot;4*x+3&quot;, &quot;3*x**2&quot;]);
 
-        # standard compare, variable is t
-        fun_cmp(&quot;3*t&quot;, var=&gt;&#39;t&#39;);
+# standard compare, variable is t
+fun_cmp(&quot;3*t&quot;, var=&gt;&#39;t&#39;);
 
-        # x, y and z are the variables
-        fun_cmp(&quot;5*x*y*z&quot;, var=&gt;3);
+# x, y and z are the variables
+fun_cmp(&quot;5*x*y*z&quot;, var=&gt;3);
 
-        # student answer must match up to constant (i.e., 5x+C)
-        fun_cmp(&quot;5*x&quot;, mode=&gt;&#39;antider&#39;);
+# student answer must match up to constant (i.e., 5x+C)
+fun_cmp(&quot;5*x&quot;, mode=&gt;&#39;antider&#39;);
 
-        # x is evaluated in [0,2), y in [5,7)
-        fun_cmp([&quot;3*x*y&quot;, &quot;4*x*y&quot;], limits=&gt;[[0,2], [5,7]]);</code></pre>
+# x is evaluated in [0,2), y in [5,7)
+fun_cmp([&quot;3*x*y&quot;, &quot;4*x*y&quot;], limits=&gt;[[0,2], [5,7]]);</code></pre>
 
 <a href="#_podtop_"><h1 id="Single-variable-Function-Comparisons">Single-variable Function Comparisons</h1></a>
 
@@ -244,35 +268,35 @@
 
 <h2 id="function_cmp">function_cmp</h2>
 
-<pre><code>        ANS(function_cmp($correctEqn, $var, $llimit, $ulimit, $relTol, $numPoints,
-                         $zeroLevel, $zeroLevelTol));</code></pre>
+<pre><code>ANS(function_cmp($correctEqn, $var, $llimit, $ulimit, $relTol, $numPoints,
+                 $zeroLevel, $zeroLevelTol));</code></pre>
 
 <p>function_cmp() uses standard comparison and relative tolerance. It takes a string representing a single-variable function and compares the student answer to that function numerically. $var, $relTol, $numPoints, $zeroLevel, and $zeroLevelTol are equivalent to the identically-named options to fun_cmp(), above. $llimit and $ulimit are combined to form the value of limits above.</p>
 
 <h2 id="function_cmp_up_to_constant">function_cmp_up_to_constant</h2>
 
-<pre><code>        ANS(function_cmp_up_to_constant($correctEqn, $var, $llimit, $ulimit,
-                                        $relpercentTol, $numOfPoints,
-                                        $maxConstantOfIntegration, $zeroLevel,
-                                        $zeroLevelTol));</code></pre>
+<pre><code>ANS(function_cmp_up_to_constant($correctEqn, $var, $llimit, $ulimit,
+                                $relpercentTol, $numOfPoints,
+                                $maxConstantOfIntegration, $zeroLevel,
+                                $zeroLevelTol));</code></pre>
 
 <p>function_cmp_up_to_constant() uses antiderivative compare and relative tolerance. All but the first argument are optional. All options work exactly like function_cmp(), except of course $maxConstantOfIntegration. It will accept as correct any function which differs from $correctEqn by at most a constant; that is, if</p>
 
-<pre><code>        $studentEqn = $correctEqn + C, where C &lt;= $maxConstantOfIntegration</code></pre>
+<pre><code>$studentEqn = $correctEqn + C, where C &lt;= $maxConstantOfIntegration</code></pre>
 
 <p>the answer is correct.</p>
 
 <h2 id="function_cmp_abs">function_cmp_abs</h2>
 
-<pre><code>        ANS(function_cmp_abs($correctFunction, $var, $llimit, $ulimit, $absTol, $numOfPoints));</code></pre>
+<pre><code>ANS(function_cmp_abs($correctFunction, $var, $llimit, $ulimit, $absTol, $numOfPoints));</code></pre>
 
 <p>function_cmp_abs() uses standard compare and absolute tolerance. All but the first argument are optional. $absTol defines the absolute tolerance value. See the corresponding option to fun_cmp(), above. All other options work exactly as for function_cmp().</p>
 
 <h2 id="function_cmp_up_to_constant_abs">function_cmp_up_to_constant_abs</h2>
 
-<pre><code>        ANS(function_cmp_up_to_constant_abs($correctFunction, $var, $llimit,
-                                            $ulimit, $absTol, $numOfPoints,
-                                            $maxConstantOfIntegration));</code></pre>
+<pre><code>ANS(function_cmp_up_to_constant_abs($correctFunction, $var, $llimit,
+                                    $ulimit, $absTol, $numOfPoints,
+                                    $maxConstantOfIntegration));</code></pre>
 
 <p>function_cmp_up_to_constant_abs() uses antiderivative compare and absolute tolerance. All but the first argument are optional. $absTol defines the absolute tolerance value. See the corresponding option to fun_cmp(), above. All other options work exactly as with function_cmp_up_to_constant().</p>
 
@@ -284,28 +308,17 @@
 
 <h2 id="DEPRECATED-multivar_function_cmp">[DEPRECATED] multivar_function_cmp</h2>
 
-<pre><code>        ANS(multivar_function_cmp($correctFunction, $var, $limits, $relTol, $numPoints, $zeroLevel, $zeroLevelTol));</code></pre>
+<pre><code>ANS(multivar_function_cmp($correctFunction, $var, $limits, $relTol, $numPoints, $zeroLevel, $zeroLevelTol));</code></pre>
 
 <p>This function is deprecated. Use fun_cmp instead:</p>
 
-<pre><code>        ANS(fun_cmp($correctFunction, var=&gt;$var, limits=&gt;$limits, ...));</code></pre>
+<pre><code>ANS(fun_cmp($correctFunction, var=&gt;$var, limits=&gt;$limits, ...));</code></pre>
 
 <a href="#_podtop_"><h1 id="SEE-ALSO">SEE ALSO</h1></a>
 
-<p><a href="//pg/macros/core/PGanswermacros.html">PGanswermacros.pl</a>, <a href="//pg/doc/MathObjects">MathObjects</a>.</p>
+<p><a href="//pg/macros/core/PGanswermacros.html">PGanswermacros.pl</a>, <a href="//pg/doc/MathObjects/UsingMathObjects.html">UsingMathObjects</a>.</p>
 
-</div>
-<hr>
-<div id="column-one">
-<h5>Site Navigation</h5>
-<div>
-<ul>
-<li><a href="/pod">WeBWorK POD Home</a></li>
-<li><a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page">WeBWorK Wiki</a></li>
-</ul>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>
-
-
