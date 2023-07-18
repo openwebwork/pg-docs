@@ -20,7 +20,8 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends --no-install-suggests \
-            libpod-parser-perl
+            libpod-parser-perl \
+            libmojolicious-perl
       - name: Checkout pg-docs code
         uses: actions/checkout@v3
         with:
