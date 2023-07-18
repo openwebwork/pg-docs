@@ -46,13 +46,9 @@ jobs:
       # Run the generate pod script
       - name: create POD
         run: |
-          ls -l webwork2
-          ls -l /home/runner/work/pg-docs/pg-docs/webwork2
-          ls -l pg
           perl webwork2/bin/dev_scripts/generate-ww-pg-pod.pl -v \
-            --webwork-root=/home/runner/work/pg-docs/pg-docs/webwork2 \
             --pg-root=/home/runner/work/pg-docs/pg-docs/pg \
-            --output-dir=pod
+            --output-dir=/home/runner/work/pg-docs/pg-docs/pod
       - name: remove pg and webwork code
         run: |
           rm -rf pg
