@@ -3,58 +3,52 @@
 
 name: Create Sample Problems Docs
 
-# Controls when the workflow will run
 on:
-   # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+    # Allows you to run this workflow manually from the Actions tab
+    workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  create-sample-problems:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-24.04
+    create-sample-problems:
+        runs-on: ubuntu-24.04
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      - name: Install Ubuntu dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends --no-install-suggests \
-            cpanminus \
-            pandoc \
-            libmojolicious-perl \
-            libyaml-libyaml-perl \
-            libpandoc-wrapper-perl
-      - name: Checkout pg-docs code
-        uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Checkout PG code
-        uses: actions/checkout@v4
-        with:
-          repository: openwebwork/pg
-          ref: PG-2.20
-          path: pg
-          persist-credentials: false
+        steps:
+            - name: Install Ubuntu dependencies
+              run: |
+                  sudo apt-get update
+                  sudo apt-get install -y --no-install-recommends --no-install-suggests \
+                    cpanminus \
+                    pandoc \
+                    libmojolicious-perl \
+                    libyaml-libyaml-perl \
+                    libpandoc-wrapper-perl
 
-      # Runs a set of commands using the runners shell
-      - name: parse sample problems
-        run: |
-          perl pg/bin/parse-problem-doc.pl  \
-            --problem_dir=/home/runner/work/pg-docs/pg-docs/pg/doc/sample-problems \
-            --out_dir=/home/runner/work/pg-docs/pg-docs/sample-problems \
-            --pod_root=https://openwebwork.github.io/pg-docs/pod \
-            --pg_doc_home=https://openwebwork.github.io/pg-docs/sample-problems
-      - name: remove pg code
-        run: |
-          rm -rf pg
-          ls -l
-          git status
-      - name: Commit and push changes
-        uses: devops-infra/action-commit-push@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          commit_message: Updated sample problem docs
-          force: true
+            - name: Checkout pg-docs code
+              uses: actions/checkout@v4
+              with:
+                  persist-credentials: false
 
+            - name: Checkout PG code
+              uses: actions/checkout@v4
+              with:
+                  repository: openwebwork/pg
+                  ref: main
+                  path: pg
+                  persist-credentials: false
+
+            - name: Parse sample problems
+              run: |
+                  perl pg/bin/parse-problem-doc.pl  \
+                    --problem_dir=/home/runner/work/pg-docs/pg-docs/pg/doc/sample-problems \
+                    --out_dir=/home/runner/work/pg-docs/pg-docs/sample-problems \
+                    --pod_root=https://openwebwork.github.io/pg-docs/pod \
+                    --pg_doc_home=https://openwebwork.github.io/pg-docs/sample-problems
+
+            - name: Remove pg code
+              run: rm -rf pg
+
+            - name: Commit and push changes
+              uses: devops-infra/action-commit-push@master
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  commit_message: Updated sample problem docs
+                  force: true

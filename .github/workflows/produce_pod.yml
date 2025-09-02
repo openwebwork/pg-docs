@@ -1,68 +1,60 @@
-# This workflow checks out the webwork2 and pg code, then runs the
-# generate-ww-pg-pod.pl script and commits the results.
+# This workflow checks out the webwork2 and pg code, runs the
+# generate-ww-pg-pod.pl script, and commits the results.
 
 name: Build POD pages
 
-# Controls when the workflow will run
 on:
-   # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+    # Allows you to run this workflow manually from the Actions tab
+    workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  create-pod:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-24.04
+    create-pod:
+        runs-on: ubuntu-24.04
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      - name: Install Ubuntu dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends --no-install-suggests \
-            libpod-parser-perl libmojolicious-perl
-      - name: Checkout pg-docs code
-        uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Checkout PG code
-        uses: actions/checkout@v4
-        with:
-          repository: openwebwork/pg
-          ref: PG-2.20
-          path: pg
-          persist-credentials: false
+        steps:
+            - name: Install Ubuntu dependencies
+              run: |
+                  sudo apt-get update
+                  sudo apt-get install -y --no-install-recommends --no-install-suggests \
+                    libpod-parser-perl libmojolicious-perl
 
-      - name: Checkout WW code
-        uses: actions/checkout@v4
-        with:
-          repository: openwebwork/webwork2
-          ref: WeBWorK-2.20
-          path: webwork2
-          persist-credentials: false
+            - name: Checkout pg-docs code
+              uses: actions/checkout@v4
+              with:
+                  persist-credentials: false
 
-      # Run the generate pod script
-      - name: create POD
-        run: |
-          ls -l webwork2
-          ls -l /home/runner/work/pg-docs/pg-docs/webwork2
-          ls -l pg
-          perl webwork2/bin/dev_scripts/generate-ww-pg-pod.pl -v \
-            --webwork-root=/home/runner/work/pg-docs/pg-docs/webwork2 \
-            --pg-root=/home/runner/work/pg-docs/pg-docs/pg \
-            --output-dir=pod \
-            --base-url=https://openwebwork.github.io/pg-docs/pod/
-      - name: remove pg and webwork code
-        run: |
-          rm -rf pg
-          rm -rf webwork2
-          ls -l
-          git status
-      - name: Commit and push changes
-        uses: devops-infra/action-commit-push@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          commit_message:  Updated POD
-          force: true
+            - name: Checkout PG code
+              uses: actions/checkout@v4
+              with:
+                  repository: openwebwork/pg
+                  ref: main
+                  path: pg
+                  persist-credentials: false
 
+            - name: Checkout WW code
+              uses: actions/checkout@v4
+              with:
+                  repository: openwebwork/webwork2
+                  ref: main
+                  path: webwork2
+                  persist-credentials: false
+
+            # Run the generate pod script
+            - name: Create POD
+              run: |
+                  perl webwork2/bin/dev_scripts/generate-ww-pg-pod.pl \
+                    --pg-root=/home/runner/work/pg-docs/pg-docs/pg \
+                    --output-dir=pod \
+                    --base-url=https://openwebwork.github.io/pg-docs/pod/
+
+            - name: Remove pg and webwork code
+              run: |
+                  rm -rf pg
+                  rm -rf webwork2
+
+            - name: Commit and push changes
+              uses: devops-infra/action-commit-push@master
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  commit_message: Updated POD
+                  force: true
