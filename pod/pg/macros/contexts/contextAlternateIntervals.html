@@ -38,7 +38,11 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#USAGE">USAGE</a></li><li class="nav-item"><a class="nav-link p-0" href="#Setting-the-alternate-form-as-the-default">Setting the alternate form as the default</a></li>				</ul>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#Setting-the-alternate-form-as-the-default">Setting the alternate form as the default</a></li>
+    </ul>
+  </li>				</ul>
 			</nav>
 		</div>
 	</aside>
@@ -48,13 +52,11 @@
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<p><code>Context(&quot;AlternateIntervals&quot;)</code> - Provides a context that allows the entry of intervals using reversed bracket notation for open endpoints (e.g., <code>]a,b[</code> rather than <code>(a,b)</code> for an open interval).</p>
+<p>contextAlternateIntervals.pl - Provides a context that allows the entry of intervals using reversed bracket notation for open endpoints (e.g., <code>]a,b[</code> rather than <code>(a,b)</code> for an open interval).</p>
 
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
 <p>This macro file defines contexts in which open intervals can be specified using reversed brackets rather than parentheses. Both forms are always recognized, but you can determine whether one or the other form produces an error message when used. You can also force the display of intervals to use one or the other form.</p>
-
-<a href="#_podtop_"><h1 id="USAGE">USAGE</h1></a>
 
 <p>To use this file, first load it into your problem, then select the context that you wish to use. There are three pre-defined contexts, <code>AlternateIntervals</code>, <code>AlternateIntervals-Only</code>, and <code>AlternateIntervals-Warning</code>. The first allows both the standard and alternate forms to be used, the second allows only the alternate form, and the third allows only the standard form, but recognizes the alternate form and gives an error message when it is used.</p>
 
@@ -104,7 +106,7 @@ $I2 = Compute(&quot;(2,5)&quot;);</code></pre>
 
 <p>would allow students to enter intervals in either format, but all intervals would be displayed in standard form.</p>
 
-<a href="#_podtop_"><h1 id="Setting-the-alternate-form-as-the-default">Setting the alternate form as the default</h1></a>
+<h2 id="Setting-the-alternate-form-as-the-default">Setting the alternate form as the default</h2>
 
 <p>If you want to force existing problems that use the Interval context to use one of the alternate contexts instead, then create a file named <code>parserCustomization.pl</code> in your course&#39;s <code>templates/macros</code> directory, and enter the following in it:</p>
 

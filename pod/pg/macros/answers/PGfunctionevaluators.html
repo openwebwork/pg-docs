@@ -38,14 +38,14 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#FUNCTIONS">FUNCTIONS</a>
     <ul class="nav flex-column w-100">
-      <li class="nav-item"><a class="nav-link p-0" href="#MathObjects-and-answer-evaluators">MathObjects and answer evaluators</a></li>
-    </ul>
-  </li><li class="nav-item"><a class="nav-link p-0" href="#fun_cmp">fun_cmp</a>
-    <ul class="nav flex-column w-100">
-      <li class="nav-item"><a class="nav-link p-0" href="#Options">Options</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#Examples">Examples</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#fun_cmp">fun_cmp</a>
+        <ul class="nav flex-column w-100">
+          <li class="nav-item"><a class="nav-link p-0" href="#Options">Options</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#Examples">Examples</a></li>
+        </ul>
+      </li>
     </ul>
   </li><li class="nav-item"><a class="nav-link p-0" href="#Single-variable-Function-Comparisons">Single-variable Function Comparisons</a>
     <ul class="nav flex-column w-100">
@@ -54,9 +54,6 @@
       <li class="nav-item"><a class="nav-link p-0" href="#function_cmp_abs">function_cmp_abs</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#function_cmp_up_to_constant_abs">function_cmp_up_to_constant_abs</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#adaptive_function_cmp">adaptive_function_cmp</a></li>
-    </ul>
-  </li><li class="nav-item"><a class="nav-link p-0" href="#Multi-variable-Function-Comparisons">Multi-variable Function Comparisons</a>
-    <ul class="nav flex-column w-100">
       <li class="nav-item"><a class="nav-link p-0" href="#DEPRECATED-multivar_function_cmp">[DEPRECATED] multivar_function_cmp</a></li>
     </ul>
   </li><li class="nav-item"><a class="nav-link p-0" href="#SEE-ALSO">SEE ALSO</a></li>				</ul>
@@ -71,10 +68,15 @@
 
 <p>PGfunctionevaluators.pl - Macros that generate function answer evaluators.</p>
 
+<a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
+
+<p>Function answer evaluators take in a function, compare it numerically to a correct function, and return a score. They can require an exactly equivalent function, or one that is equal up to a constant. They can accept or reject an answer based on specified tolerances for numerical deviation.</p>
+
+<p>The general function answer evaluator is fun_cmp(). It takes a hash of named options as parameters. There are also several specific function_cmp_*() answer evaluators for use in common situations which feature a simplified syntax.</p>
+
 <a href="#_podtop_"><h1 id="SYNOPSIS">SYNOPSIS</h1></a>
 
 <pre><code>ANS(fun_cmp($answer_or_answer_array_ref, %options));
-
 ANS(function_cmp($correctEqn, $var, $llimit, $ulimit, $relTol, $numPoints, $zeroLevel,
                  $zeroLevelTol));
 ANS(function_cmp_up_to_constant($correctEqn, $var, $llimit, $ulimit, $relpercentTol,
@@ -84,23 +86,15 @@ ANS(function_cmp_abs($correctFunction, $var, $llimit, $ulimit, $absTol, $numOfPo
 ANS(function_cmp_up_to_constant_abs($correctFunction, $var, $llimit, $ulimit,
                                     $absTol, $numOfPoints, $maxConstantOfIntegration));</code></pre>
 
-<a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
+<a href="#_podtop_"><h1 id="FUNCTIONS">FUNCTIONS</h1></a>
 
-<p>Function answer evaluators take in a function, compare it numerically to a correct function, and return a score. They can require an exactly equivalent function, or one that is equal up to a constant. They can accept or reject an answer based on specified tolerances for numerical deviation.</p>
-
-<p>The general function answer evaluator is fun_cmp(). It takes a hash of named options as parameters. There are also several specific function_cmp_*() answer evaluators for use in common situations which feature a simplified syntax.</p>
-
-<h2 id="MathObjects-and-answer-evaluators">MathObjects and answer evaluators</h2>
-
-<p>The MathObjects system provides a Formula-&gt;cmp() method that produce answer evaluators for function comparisons. fun_cmp() has been rewritten to use Formula-&gt;cmp() to produce the answer evaluator. It is recommended that you use the Formula object&#39;s cmp() method directly if possible.</p>
-
-<a href="#_podtop_"><h1 id="fun_cmp">fun_cmp</h1></a>
+<h2 id="fun_cmp">fun_cmp</h2>
 
 <pre><code>ANS(fun_cmp($answer_or_answer_array_ref, %options));</code></pre>
 
 <p>Compares a function or a list of functions, using a named hash of options to set parameters. This can make for more readable code than using the function_cmp() style, but some people find one or the other easier to remember.</p>
 
-<h2 id="Options">Options</h2>
+<h3 id="Options">Options</h3>
 
 <p>$answer_or_answer_array_ref can either be a string scalar representing the correct formula or a reference to an array of string scalars. If multiple formulas are provided, fun_cmp() will return a list of answer evaluators, one for each answer specified. The answer can contain functions, pi, e, and arithmetic operations. However, the correct answer string follows a slightly stricter syntax than student answers; specifically, there is no implicit multiplication. So the correct answer must be &quot;3*x&quot; rather than &quot;3 x&quot;. Students can still enter &quot;3 x&quot;.</p>
 
@@ -242,7 +236,7 @@ test_points=&gt;[[1,4,5,6]]</code></pre>
 </dd>
 </dl>
 
-<h2 id="Examples">Examples</h2>
+<h3 id="Examples">Examples</h3>
 
 <pre><code># standard compare, variable is x
 fun_cmp(&quot;3*x&quot;);
@@ -303,8 +297,6 @@ fun_cmp([&quot;3*x*y&quot;, &quot;4*x*y&quot;], limits=&gt;[[0,2], [5,7]]);</cod
 <h2 id="adaptive_function_cmp">adaptive_function_cmp</h2>
 
 <p>FIXME undocumented.</p>
-
-<a href="#_podtop_"><h1 id="Multi-variable-Function-Comparisons">Multi-variable Function Comparisons</h1></a>
 
 <h2 id="DEPRECATED-multivar_function_cmp">[DEPRECATED] multivar_function_cmp</h2>
 

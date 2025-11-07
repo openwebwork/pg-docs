@@ -38,23 +38,20 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#FUNCTIONS">FUNCTIONS</a>
     <ul class="nav flex-column w-100">
-      <li class="nav-item"><a class="nav-link p-0" href="#NAME1">NAME</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#random_inv_matrix">random_inv_matrix</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#random_diag_matrix">random_diag_matrix</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#swap_rows-matrix-row1-row2">swap_rows ($matrix, $row1, $row2)</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#row_mult-matrix-scaler-row">row_mult ($matrix, $scaler, $row)</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#linear_combo-matrix-scalar-row1-row2">linear_combo($matrix, $scalar, $row1, $row2)</a>
-        <ul class="nav flex-column w-100">
-          <li class="nav-item"><a class="nav-link p-0" href="#basis_cmp">basis_cmp()</a></li>
-        </ul>
-      </li>
+      <li class="nav-item"><a class="nav-link p-0" href="#swap_rows-DEPRECATED">swap_rows [DEPRECATED]</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#row_mult-DEPRECATED">row_mult [DEPRECATED]</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#linear_combo-DEPRECATED">linear_combo [DEPRECATED]</a></li>
     </ul>
-  </li><li class="nav-item"><a class="nav-link p-0" href="#BASIS_CMP">BASIS_CMP</a>
+  </li><li class="nav-item"><a class="nav-link p-0" href="#COMARISON-FUNCTIONS">COMARISON FUNCTIONS</a>
     <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#basis_cmp">basis_cmp</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#BASIS_CMP">BASIS_CMP</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#compare_basis">compare_basis</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#vec_list_string">vec_list_string</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#vec_list_string-DEPRECATED">vec_list_string [DEPRECATED]</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#ans_array_filter">ans_array_filter</a></li>
     </ul>
   </li>				</ul>
@@ -67,47 +64,57 @@
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<p>More matrix macros for the PG language</p>
+<p>PGmorematrixmacros.pl - More matrix macros for the PG language</p>
 
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
 <p>Generate random matrices with some features.</p>
 
-<h2 id="NAME1">NAME</h2>
-
-<pre><code>macros/PGmorematrixmacros.pl</code></pre>
+<a href="#_podtop_"><h1 id="FUNCTIONS">FUNCTIONS</h1></a>
 
 <h2 id="random_inv_matrix">random_inv_matrix</h2>
 
-<p>## Builds and returns a random invertible \$row by \$col matrix.</p>
+<p>Builds and returns a random invertible $row by \$col matrix.</p>
 
 <h2 id="random_diag_matrix">random_diag_matrix</h2>
 
 <p>This method returns a random nxn diagonal matrix.</p>
 
-<h2 id="swap_rows-matrix-row1-row2">swap_rows ($matrix, $row1, $row2)</h2>
+<h2 id="swap_rows-DEPRECATED">swap_rows [DEPRECATED]</h2>
 
-<pre><code>(deprecated use MathObject Matrix instead)</code></pre>
+<p>(use MathObjects matrices and vectors)</p>
+
+<p>Usage:</p>
+
+<pre><code>swap_rows($matrix, $row1, $row2)</code></pre>
+
+<p>$matrix is assumed to be a RealMatrix1 object. It is better to use MathObject Matrices and row swap mechanisms from <a href="https://openwebwork.github.io/pg-docs/pod//pg/macros/math/MatrixReduce.html">MatrixReduce.pl</a> instead.</p>
+
+<h2 id="row_mult-DEPRECATED">row_mult [DEPRECATED]</h2>
+
+<p>(use MathObjects matrices and vectors)</p>
+
+<p>Usage:</p>
+
+<pre><code>row_mult($matrix, $scaler, $row)</code></pre>
 
 <p>$matrix is assumed to be a RealMatrix1 object. It is better to use MathObject Matrices and row swap mechanisms from MatrixReduce.pl instead.</p>
 
-<h2 id="row_mult-matrix-scaler-row">row_mult ($matrix, $scaler, $row)</h2>
+<h2 id="linear_combo-DEPRECATED">linear_combo [DEPRECATED]</h2>
 
-<pre><code>(deprecated use MathObject Matrix instead)</code></pre>
+<p>(use MathObjects matrices and vectors)</p>
 
-<p>$matrix is assumed to be a RealMatrix1 object. It is better to use MathObject Matrices and row swap mechanisms from MatrixReduce.pl instead.</p>
+<p>Usage:</p>
 
-<h2 id="linear_combo-matrix-scalar-row1-row2">linear_combo($matrix, $scalar, $row1, $row2)</h2>
-
-<pre><code>(deprecated use MathObject Matrix instead)</code></pre>
+<pre><code>linear_combo($matrix, $scalar, $row1, $row2)</code></pre>
 
 <p>Adds a multiple of row1 to row2.</p>
 
 <p>$matrix is assumed to be a RealMatrix1 object. It is better to use MathObject Matrices and subroutines from MatrixReduce.pl instead.</p>
 
-<p>These should be compared to similar subroutines made later in MatrixCheckers.pl</p>
+<a href="#_podtop_"><h1 id="COMARISON-FUNCTIONS">COMARISON FUNCTIONS</h1></a>
 
-<h3 id="basis_cmp">basis_cmp()</h3>
+<h2 id="basis_cmp">basis_cmp</h2>
 
 <p>Compares a list of vectors by finding the change of coordinate matrix from the Prof&#39;s vectors to the students, and then taking the determinant of that to determine the existence of the change of coordinate matrix going the other way.</p>
 
@@ -147,7 +154,7 @@ basis_cmp([1,0,2,0],[0,1,0,0], &#39;mode&#39;=&gt;orthonormal )
                                     for this space such as:
                                     [1/sqrt(3),0,2/sqrt(3),0],[0,1,0,0]</code></pre>
 
-<a href="#_podtop_"><h1 id="BASIS_CMP">BASIS_CMP</h1></a>
+<h2 id="BASIS_CMP">BASIS_CMP</h2>
 
 <p>Made to keep the same format as num_cmp and fun_cmp.</p>
 
@@ -160,9 +167,9 @@ basis_cmp([1,0,2,0],[0,1,0,0], &#39;mode&#39;=&gt;orthonormal )
     %options
 )</code></pre>
 
-<h2 id="vec_list_string">vec_list_string</h2>
+<h2 id="vec_list_string-DEPRECATED">vec_list_string [DEPRECATED]</h2>
 
-<p>(this is mostly obsolete. One should use MathObject Vectors instead. )</p>
+<p>(use MathObjects matrices and vectors)</p>
 
 <p>This is a check_syntax type method (in fact I borrowed some of that method&#39;s code) for vector input. The student needs to enter vectors like: [1,0,0],[1,2,3],[0,9/sqrt(10),1/sqrt(10)] Each entry can contain functions and operations and the usual math constants (pi and e). The vectors, however cannot be added or multiplied or scalar multiplied by the student. Most errors are handled well. Any error in an entry is caught by the PG_answer_eval like it is in num_cmp or fun_cmp. Right now the method basically ignores every thing outside the vectors. Also, an unmatched open parenthesis is caught, but a unmatched close parenthesis ends the vector, and since everything outside is ignored, no error is sent (other than the later when the length of the vectors is checked. In the end, the method returns an array of Matrix objects.</p>
 
@@ -178,15 +185,6 @@ as a string. For evaluation purposes an array of arrays of arrays is created cal
 and placed in the hash. The entries are [array_number][row_number][column_number]. The latex strings
 for each entry are taken from the parser and put, as a matrix, into the previewer. The preview text
 string is also created, but this display method becomes confusing when large matrices are used.</code></pre>
-
-<p>The following subroutines, meant to be used with MatrixReal1 type matrices, are deprecated. In general you should use the MathObject Matrix type and the checking methods in MatrixCheckers.pl</p>
-
-<pre><code>are_orthogonal_vecs($vec_ref, %opts)
-is_diagonal($matrix, %opts)
-are_unit_vecs($vec_ref, %opts)
-display_correct_vecs($vec_ref, %opts)
-vec_solution_cmp($vec,%opts)
-        filter: compare_vec_solution($rh_ans,%opts);</code></pre>
 
 		</div>
 	</div>

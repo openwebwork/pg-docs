@@ -134,6 +134,18 @@ PG_restricted_eval(&#39;sub DraggableSubsets {draggableSubsets-&gt;new(@_)}&#39;
 <p>This sets the size for which the TeX output for hardcopy uses two columns or not. If the current <code>\linewidth</code> is greater than or equal to this size then two columns will be used, otherwise only single column is used.</p>
 
 </dd>
+<dt>showUniversalSet (Default: <code>0</code>)</dt>
+<dd>
+
+<p>If 1 then the set of all elements passed in the <code>$itemList</code> will be shown in a separate bucket. Elements can be dragged from this set and into other buckets, but not into it.</p>
+
+</dd>
+<dt>universalSetLabel (Default: <code>&#39;Universal Set&#39;</code>)</dt>
+<dd>
+
+<p>Label shown for the universal set bucket if <code>showUniversalSet</code> is 1.</p>
+
+</dd>
 </dl>
 
 <h2 id="METHODS">METHODS</h2>

@@ -38,7 +38,7 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#USAGE">USAGE</a></li>				</ul>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li>				</ul>
 			</nav>
 		</div>
 	</aside>
@@ -48,13 +48,9 @@
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<p><code>Context(&quot;InequalitySetBuilder&quot;)</code>, <code>Context(&quot;InequalitySetBuilder-Only&quot;)</code> - Provides contexts that allow sets to be specified using set-builder notation and inequalities.</p>
+<p>contextInequalitySetBuilder.pl - Provides contexts that allow sets to be specified using set-builder notation and inequalities.</p>
 
-<a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
-
-<p>Implements contexts that provides for sets described using set-builder notation with inequalities. (This actually is a special way of creating Intervals, Sets, and Unions, and they can be used together with standard interval notation.) There are two such contexts: <code>Context(&quot;InequalitySetBuilder&quot;)</code>, in which both intervals and sets formed by inequalities are defined, and <code>Context(&quot;InequalitySetBuilder-Only&quot;)</code>, which allows only set-builder notation (not intervals or point sets).</p>
-
-<a href="#_podtop_"><h1 id="USAGE">USAGE</h1></a>
+<a href="#_podtop_"><h1 id="SYNOPSIS">SYNOPSIS</h1></a>
 
 <pre><code>loadMacros(&quot;contextInequalitySetBuilder.pl&quot;);
 
@@ -70,6 +66,10 @@ $S3 = Compute(&quot;{ x : x &lt; -2 or x &gt; 2 }&quot;);  # forms the Union (-i
 $S4 = Compute(&quot;{ x : x &gt; 2 and x &lt;= 4 }&quot;); # forms the Interval (2,4]
 $S5 = Compute(&quot;{ x : x = 1 }&quot;);            # forms the Set {1}
 $S6 = Compute(&quot;{ x : x != 1 }&quot;);           # forms the Union (-inf,1) U (1,inf)</code></pre>
+
+<a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
+
+<p>Implements contexts that provides for sets described using set-builder notation with inequalities. (This actually is a special way of creating Intervals, Sets, and Unions, and they can be used together with standard interval notation.) There are two such contexts: <code>Context(&quot;InequalitySetBuilder&quot;)</code>, in which both intervals and sets formed by inequalities are defined, and <code>Context(&quot;InequalitySetBuilder-Only&quot;)</code>, which allows only set-builder notation (not intervals or point sets).</p>
 
 <p>The <code>InequalitySetBuilder</code> contexts accept the flags for the Inequalities contexts from the <code>contextInequalities.pl</code> file (see its documentation for details).</p>
 

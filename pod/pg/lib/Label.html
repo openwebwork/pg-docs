@@ -38,7 +38,7 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNPOSIS">SYNPOSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a>
     <ul class="nav flex-column w-100">
       <li class="nav-item"><a class="nav-link p-0" href="#Usage">Usage</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#Example">Example:</a></li>
@@ -53,9 +53,9 @@
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<pre><code>Label</code></pre>
+<p>Label</p>
 
-<a href="#_podtop_"><h1 id="SYNPOSIS">SYNPOSIS</h1></a>
+<a href="#_podtop_"><h1 id="SYNOPSIS">SYNOPSIS</h1></a>
 
 <pre><code>use Carp;
 use GD;
@@ -70,10 +70,10 @@ use Fun;</code></pre>
 
 <pre><code>$label1 = new Label($x_value, $y_value, $label_string, $label_color, @options)
 $options is an array with (*&#39;d defaults)
-- one of &#39;left&#39;*, &#39;center&#39;, &#39;right&#39; (horizontal alignment)
-- one of &#39;bottom&#39;, &#39;center&#39;, &#39;top&#39;* (verical alignment)
-- one of &#39;horizontal&#39;*, &#39;vertical&#39; (orientation)
-- one of &#39;small&#39;, &#39;large&#39;, &#39;mediumbold&#39;*, &#39;tiny&#39;, &#39;giant&#39; (which gd font to use)
+    - one of &#39;left&#39;*, &#39;center&#39;, &#39;right&#39; (horizontal alignment)
+    - one of &#39;bottom&#39;, &#39;center&#39;, &#39;top&#39;* (verical alignment)
+    - one of &#39;horizontal&#39;*, &#39;vertical&#39; (orientation)
+    - one of &#39;small&#39;, &#39;large&#39;, &#39;mediumbold&#39;*, &#39;tiny&#39;, &#39;giant&#39; (which gd font to use)
 Note the alignment specifications are relative to the English reading of the string,
 even when the orientation is vertical.</code></pre>
 

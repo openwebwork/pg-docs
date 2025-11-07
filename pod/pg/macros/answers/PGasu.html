@@ -38,22 +38,23 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNPOSIS">SYNPOSIS</a>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#FUNCTIONS">FUNCTIONS</a>
     <ul class="nav flex-column w-100">
-      <li class="nav-item"><a class="nav-link p-0" href="#auto_right">auto_right()</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#no_decs">no_decs()</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#must_include">must_include()</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#no_trig_fun">no_trig_fun()</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#no_trig">no_trig()</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#exact_no_trig">exact_no_trig()</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#must_have_filter">must_have_filter()</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#auto_right">auto_right</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#auto_right_checker">auto_right_checker</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#no_decs">no_decs</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#must_include">must_include</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#no_trig_fun">no_trig_fun</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#no_trig">no_trig</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#exact_no_trig">exact_no_trig</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#must_have_filter">must_have_filter</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#catch_errors_filter">catch_errors_filter()</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#raw_student_answer_filter">raw_student_answer_filter()</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#no_decimal_list">no_decimal_list()</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#no_decimals">no_decimals()</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#with_comments">with_comments()</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#pc_evaluator">pc_evaluator()</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#weighted_partial_grader">weighted_partial_grader</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#raw_student_answer_filter">raw_student_answer_filter</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#no_decimal_list">no_decimal_list</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#no_decimals">no_decimals</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#with_comments">with_comments</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#pc_evaluator">pc_evaluator</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#weighted_partial_grader-DEPRECATED">weighted_partial_grader [DEPRECATED]</a></li>
     </ul>
   </li>				</ul>
 			</nav>
@@ -65,15 +66,19 @@
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<p>PGasu.pl -- located in the pg/macros directory</p>
+<p>PGasu.pl - A set of macros for old school answer checkers.</p>
 
-<a href="#_podtop_"><h1 id="SYNPOSIS">SYNPOSIS</h1></a>
+<a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
-<p>Macros contributed by John Jones</p>
+<p>A set of macros for old school answer checkers.</p>
 
-<h2 id="auto_right">auto_right()</h2>
+<a href="#_podtop_"><h1 id="FUNCTIONS">FUNCTIONS</h1></a>
 
-<p>Usage: <code>ANS(auto_right());</code></p>
+<h2 id="auto_right">auto_right</h2>
+
+<p>Usage:</p>
+
+<pre><code>ANS(auto_right());</code></pre>
 
 <p>or</p>
 
@@ -81,7 +86,9 @@
 
 <p>This answer checker marks any answer correct. It is useful when you want to leave multiple answer blanks, only some of which will be used. If you turn off showing partial correct answers and partial credit, the effect is not visible to the students. The comment in the second case is what will be displayed as the correct answer. This helps avoid confusion.</p>
 
-<h2 id="no_decs"><code>no_decs()</code></h2>
+<h2 id="auto_right_checker">auto_right_checker</h2>
+
+<h2 id="no_decs">no_decs</h2>
 
 <p>Can be wrapped around an numerical evaluation. It marks the answer wrong if it contains a decimal point. Usage:</p>
 
@@ -89,11 +96,11 @@
 
 <p>This will accept &quot;sqrt(3)&quot; or &quot;3^(1/2)&quot; as answers, but not 1.7320508</p>
 
-<h2 id="must_include"><code>must_include()</code></h2>
+<h2 id="must_include">must_include</h2>
 
 <p>Wrapper for other answer evaluators. It insists that a string is part of the answer to be marked right.</p>
 
-<h2 id="no_trig_fun">no_trig_fun()</h2>
+<h2 id="no_trig_fun">no_trig_fun</h2>
 
 <p>Wrapper for other answer evaluators. It marks the answer wrong if it contains one of the six basic trig functions.</p>
 
@@ -101,11 +108,11 @@
 
 <p>A similar effect can be accomplished with Contexts() by undefining the trig functions. See http://webwork.maa.org/wiki/Modifying_contexts_%28advanced%29#.282.29_Functions</p>
 
-<h2 id="no_trig">no_trig()</h2>
+<h2 id="no_trig">no_trig</h2>
 
-<h2 id="exact_no_trig">exact_no_trig()</h2>
+<h2 id="exact_no_trig">exact_no_trig</h2>
 
-<h2 id="must_have_filter">must_have_filter()</h2>
+<h2 id="must_have_filter">must_have_filter</h2>
 
 <p>Filter for checking that an answer has (or doesn&#39;t have) a certain string in it. This can be used to screen answers where you want them in a particular form (e.g., if you allow most functions, but not trig functions in the answer, or if the answer must include some string).</p>
 
@@ -117,24 +124,21 @@
 
 <h2 id="catch_errors_filter">catch_errors_filter()</h2>
 
-<h2 id="raw_student_answer_filter">raw_student_answer_filter()</h2>
+<h2 id="raw_student_answer_filter">raw_student_answer_filter</h2>
 
-<h2 id="no_decimal_list">no_decimal_list()</h2>
+<h2 id="no_decimal_list">no_decimal_list</h2>
 
-<h2 id="no_decimals">no_decimals()</h2>
+<h2 id="no_decimals">no_decimals</h2>
 
-<h2 id="with_comments">with_comments()</h2>
+<h2 id="with_comments">with_comments</h2>
 
-<pre><code># Wrapper for an answer evaluator which can also supply comments</code></pre>
+<p>Wrapper for an answer evaluator which can also supply comments</p>
 
-<h2 id="pc_evaluator">pc_evaluator()</h2>
+<h2 id="pc_evaluator">pc_evaluator</h2>
 
-<pre><code># Wrapper for multiple answer evaluators, it takes a list of the following as inputs
-# [answer_evaluator, partial credit factor, comment]
-# it applies evaluators from the list until it hits one with positive credit,
-# weights it by the partial credit factor, and throws in its comment</code></pre>
+<p>Wrapper for multiple answer evaluators, it takes a list of the following as inputs [answer_evaluator, partial credit factor, comment] it applies evaluators from the list until it hits one with positive credit, weights it by the partial credit factor, and throws in its comment</p>
 
-<h2 id="weighted_partial_grader">weighted_partial_grader</h2>
+<h2 id="weighted_partial_grader-DEPRECATED">weighted_partial_grader [DEPRECATED]</h2>
 
 <p>This is a grader which weights the different parts of the problem differently. The weights passed to it through the environment. In the problem:</p>
 

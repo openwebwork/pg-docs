@@ -38,14 +38,10 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item">
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a>
     <ul class="nav flex-column w-100">
-      <li class="nav-item"><a class="nav-link p-0" href="#loadMacros">loadMacros</a>
-        <ul class="nav flex-column w-100">
-          <li class="nav-item"><a class="nav-link p-0" href="#Overloading-macro-files">Overloading macro files</a></li>
-          <li class="nav-item"><a class="nav-link p-0" href="#Modifying-existing-macros">Modifying existing macros</a></li>
-        </ul>
-      </li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Overloading-macro-files">Overloading macro files</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Modifying-existing-macros">Modifying existing macros</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#sourceAlias">sourceAlias</a></li>
     </ul>
   </li>				</ul>
@@ -56,7 +52,13 @@
 		<div class="container-fluid p-3 h-100" id="_podtop_">
 
 
-<h2 id="loadMacros">loadMacros</h2>
+<a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
+
+<p>loadMacros - load macros within a PG problem.</p>
+
+<a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
+
+<p>Usage:</p>
 
 <pre><code>loadMacros(@macroFiles)</code></pre>
 
@@ -64,13 +66,13 @@
 
 <p>Macro files named PG.pl or IO.pl will be loaded with no opcode restrictions, hence any code in those files will be able to execute privileged operations. This is true no matter which macro directory the file is in. For example, if $macrosPath contains the path to a problem library macros directory which contains a PG.pl file, this file will be loaded and allowed to engage in privileged behavior.</p>
 
-<h3 id="Overloading-macro-files">Overloading macro files</h3>
+<h2 id="Overloading-macro-files">Overloading macro files</h2>
 
 <p>An individual course can modify the PG language, for that course only, by duplicating one of the macro files in the system-wide macros directory and placing this file in the macros directory for the course. The new file in the course&#39;s macros directory will now be used instead of the file in the system-wide macros directory.</p>
 
 <p>The new file in the course macros directory can by modified by adding macros or modifying existing macros.</p>
 
-<h3 id="Modifying-existing-macros">Modifying existing macros</h3>
+<h2 id="Modifying-existing-macros">Modifying existing macros</h2>
 
 <p><i>Modifying macros is for users with some experience.</i></p>
 

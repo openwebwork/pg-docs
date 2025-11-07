@@ -38,20 +38,20 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#FUNCTIONS">FUNCTIONS</a>
     <ul class="nav flex-column w-100">
       <li class="nav-item"><a class="nav-link p-0" href="#display_matrix">display_matrix</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#side_labels">side_labels</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#mbox">mbox</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#ra_flatten_matrix">ra_flatten_matrix</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#apl_matrix_mult">apl_matrix_mult()</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#apl_matrix_mult">apl_matrix_mult</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#create2d_matrix">create2d_matrix</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#convert_to_array_ref">convert_to_array_ref {</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#convert_to_array_ref">convert_to_array_ref</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#check_matrix_from_ans_box_cmp">check_matrix_from_ans_box_cmp</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#zero_check-deprecated----use-MathObjects-matrices-and-vectors">zero_check (deprecated -- use MathObjects matrices and vectors)</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#vec_dot-deprecated----use-MathObjects-vectors-and-matrices">vec_dot() (deprecated -- use MathObjects vectors and matrices)</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#proj_vect-deprecated----use-MathObjects-vectors-and-matrices">proj_vect (deprecated -- use MathObjects vectors and matrices)</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#vec_cmp-deprecated----use-MathObjects-vectors-and-matrices">vec_cmp (deprecated -- use MathObjects vectors and matrices)</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#zero_check-DEPRECATED">zero_check [DEPRECATED]</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#vec_dot-DEPRECATED">vec_dot [DEPRECATED]</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#proj_vect-DEPRECATED">proj_vect [DEPRECATED]</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#vec_cmp-DEPRECATED">vec_cmp [DEPRECATED]</a></li>
     </ul>
   </li>				</ul>
 			</nav>
@@ -63,7 +63,7 @@
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<p>Matrix macros for the PG language</p>
+<p>PGmatrixmacros.pl - Matrix macros for the PG language</p>
 
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
@@ -73,13 +73,16 @@
 
 <p>There are also Matrix objects defined in RealMatrix.pm and Matrix.pm but in almost all cases the MathObjects Matrix types are preferable.</p>
 
+<a href="#_podtop_"><h1 id="FUNCTIONS">FUNCTIONS</h1></a>
+
 <h2 id="display_matrix">display_matrix</h2>
 
-<pre><code>Usage
-       \{ display_matrix( [ [1, &#39;\(\sin x\)&#39;], [ans_rule(5), 6] ]) \}
-       \{ display_matrix($A, align=&gt;&#39;crvl&#39;) \}
-       \[ \{   display_matrix_mm($A)  \} \]
-       \[ \{ display_matrix_mm([ [1, 3], [4, 6] ])  \} \]</code></pre>
+<p>Usage:</p>
+
+<pre><code>\{ display_matrix( [ [1, &#39;\(\sin x\)&#39;], [ans_rule(5), 6] ]) \}
+\{ display_matrix($A, align=&gt;&#39;crvl&#39;) \}
+\[ \{   display_matrix_mm($A)  \} \]
+\[ \{ display_matrix_mm([ [1, 3], [4, 6] ])  \} \]</code></pre>
 
 <p>display_matrix produces a matrix for display purposes. It checks whether it is producing LaTeX output, or if it is displaying on a web page in one of the various modes. The input can either be of type Matrix, Value::Matrix (mathobject) or a reference to an array.</p>
 
@@ -112,55 +115,55 @@
 
 <h2 id="mbox">mbox</h2>
 
-<pre><code>Usage        \{ mbox(thing1, thing2, thing3) \}
-\{ mbox([thing1, thing2, thing3], valign=&gt;&#39;top&#39;) \}
+<p>Usage:</p>
 
-mbox takes a list of constructs, such as strings, or outputs of
-display_matrix, and puts them together on a line.  Without mbox, the
-output of display_matrix would always start a new line.
+<pre><code>\{ mbox(thing1, thing2, thing3) \}
+\{ mbox([thing1, thing2, thing3], valign=&gt;&#39;top&#39;) \}</code></pre>
 
-The inputs can be just listed, or given as a reference to an array.
-With the latter, optional arguments can be given.
+<p>mbox takes a list of constructs, such as strings, or outputs of display_matrix, and puts them together on a line. Without mbox, the output of display_matrix would always start a new line.</p>
 
-Optional arguments are allowbreaks=&gt;&#39;yes&#39; to allow line breaks in TeX
-output; and valign which sets vertical alignment on web page output.</code></pre>
+<p>The inputs can be just listed, or given as a reference to an array. With the latter, optional arguments can be given.</p>
+
+<p>Optional arguments are allowbreaks=&gt;&#39;yes&#39; to allow line breaks in TeX output; and valign which sets vertical alignment on web page output.</p>
 
 <h2 id="ra_flatten_matrix">ra_flatten_matrix</h2>
 
-<pre><code>Usage:   ra_flatten_matrix($A)
-        returns:  [a11, a12,a21,a22]
+<p>Usage:</p>
 
-        where $A is a matrix object
-        The output is a reference to an array.  The matrix is placed in the array by iterating
-        over  columns on the inside
-        loop, then over the rows. (e.g right to left and then down, as one reads text)</code></pre>
+<pre><code>ra_flatten_matrix($A)</code></pre>
 
-<h2 id="apl_matrix_mult">apl_matrix_mult()</h2>
+<p>returns:</p>
 
-<pre><code># This subroutine is probably obsolete and not generally useful.
-# It was patterned after the APL
-# constructs for multiplying matrices. It might come in handy
-# for non-standard multiplication of
-# of matrices (e.g. mod 2) for indice matrices.</code></pre>
+<pre><code>[a11, a12,a21,a22]</code></pre>
+
+<p>where <code>$A</code> is a matrix object. The output is a reference to an array. The matrix is placed in the array by iterating over columns on the inside loop, then over the rows. (e.g right to left and then down, as one reads text)</p>
+
+<h2 id="apl_matrix_mult">apl_matrix_mult</h2>
+
+<p>This subroutine is probably obsolete and not generally useful. It was patterned after the APL constructs for multiplying matrices. It might come in handy for non-standard multiplication of of matrices (e.g. mod 2) for indice matrices.</p>
 
 <h2 id="create2d_matrix">create2d_matrix</h2>
 
 <p>This can be a useful method for quickly entering small matrices by hand. --MEG</p>
 
-<pre><code>create2d_matrix(&quot;1 2 4, 5 6 8&quot;); or
-create2d_matrix(&quot;1 2 4; 5 6 8&quot;);
-produces the anonymous array
-[[1,2,4],[5,6,8] ]
+<pre><code>create2d_matrix(&quot;1 2 4, 5 6 8&quot;);
+create2d_matrix(&quot;1 2 4; 5 6 8&quot;);</code></pre>
 
-Matrix(create2d_matrix($string));</code></pre>
+<p>produces the anonymous array</p>
 
-<h2 id="convert_to_array_ref">convert_to_array_ref {</h2>
+<pre><code>[[1,2,4],[5,6,8] ]
+
+ Matrix(create2d_matrix($string));</code></pre>
+
+<h2 id="convert_to_array_ref">convert_to_array_ref</h2>
+
+<p>Usage:</p>
 
 <pre><code>$output_matrix = convert_to_array_ref($input_matrix)</code></pre>
 
 <p>Converts a MathObject matrix (ref($input_matrix) eq &#39;Value::Matrix&#39;) or a MatrixReal1 matrix (ref($input_matrix) eq &#39;Matrix&#39;) to a reference to an array (e.g [[4,6],[3,2]]). This adaptor allows all of the LinearProgramming.pl subroutines to be used with MathObject arrays.</p>
 
-<p>$mathobject_matrix-&gt;value outputs an array (usually an array of array references) so placing it inside square bracket produces and array reference (of array references) which is what lp_display_mm() is seeking.</p>
+<p><code>$mathobject_matrix-&gt;value</code> outputs an array (usually an array of array references) so placing it inside square bracket produces and array reference (of array references) which is what lp_display_mm() is seeking.</p>
 
 <h2 id="check_matrix_from_ans_box_cmp">check_matrix_from_ans_box_cmp</h2>
 
@@ -169,17 +172,23 @@ Matrix(create2d_matrix($string));</code></pre>
 <pre><code>$matrix = Matrix(&quot;[[1,4],[2,3]&quot;);
 ANS( check_matrix_from_ans_box($matrix) );</code></pre>
 
-<h2 id="zero_check-deprecated----use-MathObjects-matrices-and-vectors">zero_check (deprecated -- use MathObjects matrices and vectors)</h2>
+<h2 id="zero_check-DEPRECATED">zero_check [DEPRECATED]</h2>
 
-<pre><code># this subroutine zero_check is not very well designed below -- if it is used much it should receive
-# more work -- particularly for checking relative tolerance.  More work needs to be done if this is
-# actually used.</code></pre>
+<p>(use MathObjects matrices and vectors)</p>
 
-<h2 id="vec_dot-deprecated----use-MathObjects-vectors-and-matrices">vec_dot() (deprecated -- use MathObjects vectors and matrices)</h2>
+<p>this subroutine zero_check is not very well designed below -- if it is used much it should receive more work -- particularly for checking relative tolerance. More work needs to be done if this is actually used.</p>
 
-<h2 id="proj_vect-deprecated----use-MathObjects-vectors-and-matrices">proj_vect (deprecated -- use MathObjects vectors and matrices)</h2>
+<h2 id="vec_dot-DEPRECATED">vec_dot [DEPRECATED]</h2>
 
-<h2 id="vec_cmp-deprecated----use-MathObjects-vectors-and-matrices">vec_cmp (deprecated -- use MathObjects vectors and matrices)</h2>
+<p>(use MathObjects matrices and vectors)</p>
+
+<h2 id="proj_vect-DEPRECATED">proj_vect [DEPRECATED]</h2>
+
+<p>(use MathObjects matrices and vectors)</p>
+
+<h2 id="vec_cmp-DEPRECATED">vec_cmp [DEPRECATED]</h2>
+
+<p>(use MathObjects matrices and vectors)</p>
 
 		</div>
 	</div>

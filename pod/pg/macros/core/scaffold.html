@@ -38,7 +38,7 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#POD-ERRORS">POD ERRORS</a></li>				</ul>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li>				</ul>
 			</nav>
 		</div>
 	</aside>
@@ -134,7 +134,7 @@ Scaffold::End();</code></pre>
 <p>This determines whether the initial section is open (when it can be). With the default <code>can_open</code> and <code>is_open</code> settings, the first section will be open automatically when the problem is first viewed, but if you have material to read (or even answers to give) prior to the first section, you might want the first section to be closed, and have the student open it by hand before anwering the questions. In this case, set this value to 0 (it is 1 by default).</p>
 
 </dd>
-<dt><code><span style="white-space: nowrap;">preview_can_change_state =&gt; 0 or 1</span></code></dt>
+<dt><code>preview_can_change_state =&gt; 0 or 1</code></dt>
 <dd>
 
 <p>This determines if scaffold state can be changed when a preview occurs (i.e., when the &quot;Preview My Answers&quot; button is used). If this is 0, then when a preview occurs any scaffold sections that were open before the preview will remain open, and any scaffold sections that were closed before the preview will remain closed. If this is 1, then the rules described above will be applied using the scores of the answers in the parts. This is 1 by default.</p>
@@ -195,20 +195,6 @@ Scaffold::End();</code></pre>
 <p>The <code>Section::Begin()</code> macro also accepts the options <code>can_open</code>, <code>is_open</code>, and <code>instructor_can_open</code> described above. This allows you to override the defaults for a particular section. In particular, you can provide a subroutine that determines when the section can or should be open.</p>
 
 <p>Note that values like <code>$showPartialCorrectAnswers</code> and the isntalled grader are global to the whole problem, so can&#39;t be set individually on a per section basis. Also note that the answers aren&#39;t checked until the end of the problem, so any changes you make to the <code>Context()</code> after a section is ended will still affect the context within that section.</p>
-
-<a href="#_podtop_"><h1 id="POD-ERRORS">POD ERRORS</h1></a>
-
-<p>Hey! <b>The above document had some coding errors, which are explained below:</b></p>
-
-<dl>
-
-<dt>Around line 173:</dt>
-<dd>
-
-<p>Unterminated C&lt;...&gt; sequence</p>
-
-</dd>
-</dl>
 
 		</div>
 	</div>

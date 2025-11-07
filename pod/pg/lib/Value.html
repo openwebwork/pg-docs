@@ -38,26 +38,41 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a>
+<li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#Value-context">Value context</a></li><li class="nav-item"><a class="nav-link p-0" href="#MathObject-types-and-their-precedence">MathObject types and their precedence</a>
     <ul class="nav flex-column w-100">
-      <li class="nav-item">
-        <ul class="nav flex-column w-100">
-          <li class="nav-item"><a class="nav-link p-0" href="#Value-context">Value context</a></li>
-          <li class="nav-item"><a class="nav-link p-0" href="#Implemented-MathObject-types-and-their-precedence">Implemented MathObject types and their precedence</a></li>
-          <li class="nav-item"><a class="nav-link p-0" href="#getFlag">getFlag</a></li>
-          <li class="nav-item"><a class="nav-link p-0" href="#makeValue">makeValue</a></li>
-          <li class="nav-item"><a class="nav-link p-0" href="#showClass">showClass</a></li>
-          <li class="nav-item"><a class="nav-link p-0" href="#showType">showType</a></li>
-          <li class="nav-item"><a class="nav-link p-0" href="#output-methods-for-MathObjects">output methods for MathObjects</a>
-            <ul class="nav flex-column w-100">
-              <li class="nav-item"><a class="nav-link p-0" href="#stringify">stringify</a></li>
-              <li class="nav-item"><a class="nav-link p-0" href="#string">-&gt;string</a></li>
-              <li class="nav-item"><a class="nav-link p-0" href="#TeX">-&gt;TeX</a></li>
-            </ul>
-          </li>
-          <li class="nav-item"><a class="nav-link p-0" href="#Error">Error</a></li>
-        </ul>
-      </li>
+      <li class="nav-item"><a class="nav-link p-0" href="#getFlag">getFlag</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#subclassed">subclassed</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Package">Package</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#makeValue">makeValue</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#showClass">showClass</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#showType">showType</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#getType">getType</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#getValueType">getValueType</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#toFormula">toFormula</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#formula">formula</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#make">make</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#with">with</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#without">without</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#hash">hash</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#inherit">inherit</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#noinherit">noinherit</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Type">Type</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#extract">extract</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#promotePrecedence">promotePrecedence</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#checkOpOrder">checkOpOrder</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#checkOpOrderWithPromote">checkOpOrderWithPromote</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#binOp">binOp</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#compare">compare</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#compare_string">compare_string</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#transferFlags">transferFlags</a></li>
+    </ul>
+  </li><li class="nav-item"><a class="nav-link p-0" href="#MathObjects-output-methods">MathObjects output methods</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#stringify">stringify</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#string">string</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#TeX">TeX</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Error">Error</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#getCaller">getCaller</a></li>
     </ul>
   </li>				</ul>
 			</nav>
@@ -71,164 +86,237 @@
 
 <p>Value (also called MathObjects) are intelligent versions of standard mathematical objects. They &#39;know&#39; how to produce string or TeX or perl representations of themselves. They also &#39;know&#39; how to compare themselves to student responses -- in other words they contain their own answer evaluators (response evaluators). The standard operators like +, -, *, &lt;, ==, &gt;, etc, all work with them (when they make sense), so that you can use these MathObjects in a natural way. The comparisons like equality are &quot;fuzzy&quot;, meaning that two items are equal when they are &quot;close enough&quot; (by tolerances that are set in the current Context).</p>
 
-<h3 id="Value-context">Value context</h3>
+<a href="#_podtop_"><h1 id="Value-context">Value context</h1></a>
 
-<pre><code>#############################################################
-#
-#  Initialize the context-- flags set
-#
-       The following are list objects, meaning that they involve delimiters (parentheses)
-       of some type.  They get overridden in lib/Parser/Context.pm
+<p>The following are list objects, meaning that they involve delimiters (parentheses) of some type. They get overridden in lib/Parser/Context.pm</p>
 
-       lists =&gt; {
-               &#39;Point&#39;  =&gt; {open =&gt; &#39;(&#39;, close =&gt; &#39;)&#39;},
-               &#39;Vector&#39; =&gt; {open =&gt; &#39;&lt;&#39;, close =&gt; &#39;&gt;&#39;},
-               &#39;Matrix&#39; =&gt; {open =&gt; &#39;[&#39;, close =&gt; &#39;]&#39;},
-               &#39;List&#39;   =&gt; {open =&gt; &#39;(&#39;, close =&gt; &#39;)&#39;},
-               &#39;Set&#39;    =&gt; {open =&gt; &#39;{&#39;, close =&gt; &#39;}&#39;},
-       },
+<pre><code>lists =&gt; {
+    &#39;Point&#39;  =&gt; {open =&gt; &#39;(&#39;, close =&gt; &#39;)&#39;},
+    &#39;Vector&#39; =&gt; {open =&gt; &#39;&lt;&#39;, close =&gt; &#39;&gt;&#39;},
+    &#39;Matrix&#39; =&gt; {open =&gt; &#39;[&#39;, close =&gt; &#39;]&#39;},
+    &#39;List&#39;   =&gt; {open =&gt; &#39;(&#39;, close =&gt; &#39;)&#39;},
+    &#39;Set&#39;    =&gt; {open =&gt; &#39;{&#39;, close =&gt; &#39;}&#39;},
+};</code></pre>
 
-       The following context flags are set:
+<p>The following context flags are set:</p>
 
-   #  For vectors:
-   #
-   ijk =&gt; 0,  # print vectors as &lt;...&gt;
-   #
-   #  For strings:
-   #
-   allowEmptyStrings =&gt; 1,
-   infiniteWord =&gt; &#39;infinity&#39;,
-   #
-   #  For intervals and unions:
-   #
-   ignoreEndpointTypes =&gt; 0,
-   reduceSets =&gt; 1,
-   reduceSetsForComparison =&gt; 1,
-   reduceUnions =&gt; 1,
-   reduceUnionsForComparison =&gt; 1,
-   #
-   #  For fuzzy reals:
-   #
-   useFuzzyReals =&gt; 1,
-   tolerance    =&gt; 1E-4,
-   tolType      =&gt; &#39;relative&#39;,
-   zeroLevel    =&gt; 1E-14,
-   zeroLevelTol =&gt; 1E-12,
-   tolTruncation =&gt; 1,
-   tolExtraDigits =&gt; 1,
-   #
-   #  For Formulas:
-   #
-   limits       =&gt; [-2,2],
-   num_points   =&gt; 5,
-   granularity  =&gt; 1000,
-   resolution   =&gt; undef,
-   max_adapt    =&gt; 1E8,
-   checkUndefinedPoints =&gt; 0,
-   max_undefined =&gt; undef,
- },</code></pre>
+<p>For vectors:</p>
 
-<h3 id="Implemented-MathObject-types-and-their-precedence">Implemented MathObject types and their precedence</h3>
+<pre><code>ijk =&gt; 0,  # print vectors as &lt;...&gt;</code></pre>
 
-<pre><code>#
-#  Precedence of the various types
-#    (They will be promoted upward automatically when needed)
-#
+<p>For strings:</p>
 
- &#39;Number&#39;   =&gt;  0,
-  &#39;Real&#39;     =&gt;  1,
-  &#39;Infinity&#39; =&gt;  2,
-  &#39;Complex&#39;  =&gt;  3,
-  &#39;Point&#39;    =&gt;  4,
-  &#39;Vector&#39;   =&gt;  5,
-  &#39;Matrix&#39;   =&gt;  6,
-  &#39;List&#39;     =&gt;  7,
-  &#39;Interval&#39; =&gt;  8,
-  &#39;Set&#39;      =&gt;  9,
-  &#39;Union&#39;    =&gt; 10,
-  &#39;String&#39;   =&gt; 11,
-  &#39;Formula&#39;  =&gt; 12,
-  &#39;special&#39;  =&gt; 20,</code></pre>
+<pre><code>allowEmptyStrings =&gt; 1,
+infiniteWord =&gt; &#39;infinity&#39;,</code></pre>
 
-<h3 id="getFlag">getFlag</h3>
+<p>For intervals and unions:</p>
 
-<p># # Get the value of a flag from the object itself, or from the # equation that created the object (if any), or from the AnswerHash # for the object (if it is being used as the source for an answer # checker), or from the object&#39;s context, or from the current # context, or use the given default, whichever is found first. #</p>
+<pre><code>ignoreEndpointTypes =&gt; 0,
+reduceSets =&gt; 1,
+reduceSetsForComparison =&gt; 1,
+reduceUnions =&gt; 1,
+reduceUnionsForComparison =&gt; 1,
 
-<pre><code>Usage:   $mathObj-&gt;getFlag(&quot;showTypeWarnings&quot;);
-         $mathObj-&gt;getFlag(&quot;showTypeWarnings&quot;,1); # default is second parameter</code></pre>
+For fuzzy reals:
 
-<h3 id="makeValue">makeValue</h3>
+useFuzzyReals =&gt; 1,
+tolerance    =&gt; 1E-4,
+tolType      =&gt; &#39;relative&#39;,
+zeroLevel    =&gt; 1E-14,
+zeroLevelTol =&gt; 1E-12,
+tolTruncation =&gt; 1,
+tolExtraDigits =&gt; 1,</code></pre>
 
-<pre><code>Usage:  Value::makeValue(45);
+<p>For Formulas:</p>
 
-Will create a Real mathObject.
-#
-#  Convert non-Value objects to Values, if possible
-#</code></pre>
+<pre><code>limits       =&gt; [-2,2],
+num_points   =&gt; 5,
+granularity  =&gt; 1000,
+resolution   =&gt; undef,
+max_adapt    =&gt; 1E8,
+checkUndefinedPoints =&gt; 0,
+max_undefined =&gt; undef,</code></pre>
 
-<h3 id="showClass">showClass</h3>
+<a href="#_podtop_"><h1 id="MathObject-types-and-their-precedence">MathObject types and their precedence</h1></a>
 
-<pre><code>Usage:   TEXT( $mathObj -&gt; showClass() );
+<p>Precedence of the various types (They will be promoted upward automatically when needed)</p>
 
-        Will print the class of the MathObject
+<pre><code>&#39;Number&#39;   =&gt;  0,
+&#39;Real&#39;     =&gt;  1,
+&#39;Infinity&#39; =&gt;  2,
+&#39;Complex&#39;  =&gt;  3,
+&#39;Point&#39;    =&gt;  4,
+&#39;Vector&#39;   =&gt;  5,
+&#39;Matrix&#39;   =&gt;  6,
+&#39;List&#39;     =&gt;  7,
+&#39;Interval&#39; =&gt;  8,
+&#39;Set&#39;      =&gt;  9,
+&#39;Union&#39;    =&gt; 10,
+&#39;String&#39;   =&gt; 11,
+&#39;Formula&#39;  =&gt; 12,
+&#39;special&#39;  =&gt; 20,</code></pre>
 
-#
-#  Get a printable version of the class of an object
-#  (used primarily in error messages)
-#</code></pre>
+<h2 id="getFlag">getFlag</h2>
 
-<h3 id="showType">showType</h3>
+<p>Get the value of a flag from the object itself, or from the equation that created the object (if any), or from the AnswerHash for the object (if it is being used as the source for an answer checker), or from the object&#39;s context, or from the current context, or use the given default, whichever is found first.</p>
 
-<pre><code>Usage:   TEXT( $mathObj -&gt; showType() );
+<p>Usage: $mathObj-&gt;getFlag(&quot;showTypeWarnings&quot;); $mathObj-&gt;getFlag(&quot;showTypeWarnings&quot;,1); # default is second parameter</p>
 
-        Will print the class of the MathObject
+<h2 id="subclassed">subclassed</h2>
 
-#
-#  Get a printable version of the type of an object
-#  (the class and type are not the same.  For example
-#  a Formula-class object can be of type Number)
-#</code></pre>
+<p>Usage: Value-&gt;subclassed($self,&quot;classMatch&quot;)</p>
 
-<h3 id="output-methods-for-MathObjects">output methods for MathObjects</h3>
+<p>if $self has the method &#39;classMath&#39; and &#39;Value&#39; has the method &#39;classMatch&#39; and the reference to these methods don&#39;t agree then the method &#39;classMatch&#39; has been subclassed.</p>
 
-<pre><code>#
-#  Generate the various output formats
-#  (can be replaced by sub-classes)
-#</code></pre>
+<h2 id="Package">Package</h2>
 
-<h4 id="stringify">stringify</h4>
+<p>Usage:</p>
 
-<pre><code>Usage:   TEXT($mathObj); or TEXT( $mathObj-&gt;stringify() ) ;
+<pre><code>Value-&gt;Package(name[,noerror]])</code></pre>
 
-        Produces text string or TeX output depending on context
-                Context()-&gt;texStrings;
-                Context()-&gt;normalStrings;
+<p>Returns the package name for the specificied Value object class (as specified by the context&#39;s {value} hash, or &quot;Value::name&quot;).</p>
 
-        called automatically when object is called in a string context.</code></pre>
+<h2 id="makeValue">makeValue</h2>
 
-<h4 id="string">-&gt;string</h4>
+<p>Usage:</p>
 
-<pre><code>Usage: $mathObj-&gt;string()
+<pre><code>Value::makeValue(45);</code></pre>
 
----produce a string representation of the object
-   (as opposed to stringify, which can produce TeX or string versions)</code></pre>
+<p>This will create a Real mathObject and convert non-Value objects to Values, if possible</p>
 
-<h4 id="TeX">-&gt;TeX</h4>
+<h2 id="showClass">showClass</h2>
 
-<pre><code>Usage: $mathObj-&gt;TeX()
+<p>Usage:</p>
 
----produce TeX prepresentation of the object</code></pre>
+<pre><code>$mathObj-&gt;showClass();</code></pre>
 
-<h3 id="Error">Error</h3>
+<p>This returns a printable version of the class of an object (used primarily in error messages)</p>
 
-<pre><code>Usage: Value-&gt;Error(&quot;We&#39;re sorry...&quot;);
-   or  $mathObject-&gt;Error(&quot;We&#39;re still sorry...&quot;);
+<h2 id="showType">showType</h2>
 
-#
-#  Report an error and die.  This can be used within custom answer checkers
-#  to report errors during the check, or when sub-classing a MathObject to
-#  report error conditions.
-#</code></pre>
+<p>Usage:</p>
+
+<pre><code>$mathObj-&gt;showType();</code></pre>
+
+<p>This will return a printable version of the type of an object (the class and type are not the same. For example a Formula-class object can be of type Number)</p>
+
+<h2 id="getType">getType</h2>
+
+<p>Return a string describing a value&#39;s type</p>
+
+<h2 id="getValueType">getValueType</h2>
+
+<p>Get a string describing a value&#39;s type, and convert the value to a Value object (if needed)</p>
+
+<h2 id="toFormula">toFormula</h2>
+
+<p>Convert a list of values to a list of formulas (called by Parser::Value)</p>
+
+<h2 id="formula">formula</h2>
+
+<p>Convert a list of values (and open and close parens) to a formula whose type is the list type associated with the parens.</p>
+
+<h2 id="make">make</h2>
+
+<p>A shortcut for <code>new()</code> that creates an instance of the object, but doesn&#39;t do the error checking. We assume the data are already known to be good.</p>
+
+<h2 id="with">with</h2>
+
+<p>Easy method for setting parameters of an object (returns a copy with the new values set, but the copy is not a deep copy.)</p>
+
+<h2 id="without">without</h2>
+
+<p>Return a copy with the specified fields removed</p>
+
+<h2 id="hash">hash</h2>
+
+<p>Return the hash data as an array of key=&gt;value pairs</p>
+
+<h2 id="inherit">inherit</h2>
+
+<p>Copy attributes that are not already in the current object from the given objects. (Used by binary operators to make sure the result inherits the values from the two terms.)</p>
+
+<h2 id="noinherit">noinherit</h2>
+
+<p>The list of fields NOT to inherit. Use the default list plus any specified explicitly in the object itself. Subclasses can override and return additional fields, if necessary.</p>
+
+<h2 id="Type">Type</h2>
+
+<p>Return a type structure for the item (includes name, length of vectors, and so on)</p>
+
+<h2 id="extract">extract</h2>
+
+<p>Get an element from a point, vector, matrix, or list</p>
+
+<h2 id="promotePrecedence">promotePrecedence</h2>
+
+<p>Promote an operand to the same precedence as the current object</p>
+
+<h2 id="checkOpOrder">checkOpOrder</h2>
+
+<p>Return the operators in the correct order</p>
+
+<h2 id="checkOpOrderWithPromote">checkOpOrderWithPromote</h2>
+
+<p>Return the operators in the correct order, and promote the other value, if needed.</p>
+
+<h2 id="binOp">binOp</h2>
+
+<p>Handle a binary operator, promoting the object types as needed, and then calling the main method</p>
+
+<h2 id="compare">compare</h2>
+
+<p>Compare the values of the objects</p>
+
+<h2 id="compare_string">compare_string</h2>
+
+<p>Compare the values as strings</p>
+
+<h2 id="transferFlags">transferFlags</h2>
+
+<p>Copy flags from the parent object to its children (recursively).</p>
+
+<a href="#_podtop_"><h1 id="MathObjects-output-methods">MathObjects output methods</h1></a>
+
+<h2 id="stringify">stringify</h2>
+
+<p>Usage:</p>
+
+<pre><code>$mathObj-&gt;stringify();</code></pre>
+
+<p>Produces text string or TeX output depending on context.</p>
+
+<h2 id="string">string</h2>
+
+<p>Usage:</p>
+
+<pre><code>$mathObj-&gt;string()</code></pre>
+
+<p>produce a string representation of the object (as opposed to stringify, which can produce TeX or string versions)</p>
+
+<h2 id="TeX">TeX</h2>
+
+<p>Usage:</p>
+
+<pre><code>$mathObj-&gt;TeX()</code></pre>
+
+<p>produce TeX prepresentation of the object</p>
+
+<h2 id="Error">Error</h2>
+
+<p>Usage:</p>
+
+<pre><code>Value-&gt;Error(&quot;We&#39;re sorry...&quot;);</code></pre>
+
+<p>OR</p>
+
+<pre><code>$mathObject-&gt;Error(&quot;We&#39;re still sorry...&quot;);</code></pre>
+
+<p>Report an error and die. This can be used within custom answer checkers to report errors during the check, or when sub-classing a MathObject to report error conditions.</p>
+
+<h2 id="getCaller">getCaller</h2>
+
+<p>Try to locate the line and file where the error occurred</p>
 
 		</div>
 	</div>

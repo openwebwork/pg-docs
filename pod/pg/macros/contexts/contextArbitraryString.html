@@ -38,7 +38,7 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li>				</ul>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li>				</ul>
 			</nav>
 		</div>
 	</aside>
@@ -50,9 +50,7 @@
 
 <p>contextArbitraryString.pl - Implements a context in which the student&#39;s answer is treated as a literal string, and not parsed further.</p>
 
-<a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
-
-<p>Implements a context in which the student&#39;s answer is treated as a literal string, and not parsed further. The real answer checking should be performed in a custom checker passed to the answer string&#39;s <code>cmp()</code> method. E.g.,</p>
+<a href="#_podtop_"><h1 id="SYNOPSIS">SYNOPSIS</h1></a>
 
 <pre><code>loadMacros(&quot;contextArbitraryString.pl&quot;);
 Context(&quot;ArbitraryString&quot;);
@@ -68,6 +66,10 @@ ANS(Compute(&quot;The string I want&quot;)-&gt;cmp(checker =&gt; sub {
 
     return $score;
 }));</code></pre>
+
+<a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
+
+<p>Implements a context in which the student&#39;s answer is treated as a literal string, and not parsed further. The real answer checking should be performed in a custom checker passed to the answer string&#39;s <code>cmp()</code> method.</p>
 
 <p>The default checker is essentially that given above, so if you want the student answer to match the correct one exactly (spacing and case are significant), then you don&#39;t have to use a custom checker. But if you want, for example, to collapse multiple white-space, or trim leading and trailing blanks, or treat upper- and lower-case letters as quivalent, then you will need to provide your own checker that does that.</p>
 

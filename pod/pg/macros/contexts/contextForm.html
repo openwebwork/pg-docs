@@ -48,9 +48,11 @@
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<p>This context distinguishes between &quot;forms&quot; of an expression by using bizarro arithmetic.</p>
+<p>contextForm.pl - This context distinguishes between &quot;forms&quot; of an expression by using bizarro arithmetic.</p>
 
-<p>For example, the answer could be &quot;(x+1)(x+2)&quot;. Bizarro arithmetic always has commutative and associative addidition and multiplication, so it would be OK to anwer with &quot;(2+x)(x+1)&quot;.</p>
+<a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
+
+<p>This context distinguishes between &quot;forms&quot; of an expression by using bizarro arithmetic. For example, the answer could be &quot;(x+1)(x+2)&quot;. Bizarro arithmetic always has commutative and associative addidition and multiplication, so it would be OK to answer with &quot;(2+x)(x+1)&quot;.</p>
 
 <p>But this context initally only uses bizarro with multiplication and division. So &quot;x^2+3x+2&quot; will not evaluate to the same as &quot;(x+1)(x+2)&quot;.</p>
 
@@ -59,8 +61,6 @@
 <p>In general if you have a problem where &quot;form&quot; matters, try this context. It may not always work for you out of the box. But even then you may be able to adjust the bizarro details to make it work.</p>
 
 <p>For example if you wanted to factor x^2+2x+1 and you declare &quot;(x+1)^2&quot; to be the answer, at first it will not accept &quot;(x+1)(x+1)&quot;. Because bizarro exponents are not activated. But you could activate them (or deactivate bizarro multiplication and division while activating bizarro addition and subtraction) and then &quot;(x+1)^2&quot; and &quot;(x+1)(x+1)&quot; would be equivalent, yet distinct from &quot;x^2+2x+1&quot;.</p>
-
-<a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
 		</div>
 	</div>

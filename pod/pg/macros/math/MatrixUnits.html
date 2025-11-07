@@ -38,7 +38,7 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#AUTHORS">AUTHORS</a></li>				</ul>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li>				</ul>
 			</nav>
 		</div>
 	</aside>
@@ -48,11 +48,7 @@
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<p>MatrixUnits.pl</p>
-
-<a href="#_podtop_"><h1 id="SYNOPSIS">SYNOPSIS</h1></a>
-
-<p>Generates unimodular n x n (n=2,3,4) MathObject matrices with real entries.</p>
+<p>MatrixUnits.pl - Generates unimodular n x n (n=2,3,4) MathObject matrices with real entries.</p>
 
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
@@ -81,10 +77,6 @@
 <p>Note that the indexing on MathObject matrices starts at 1, while the indexing on perl arrays starts at 0, so that <code>$A-&lt;gt</code>element(1,1);&gt; corresponds to <code>$a[0][0];</code>. The perl arrays can be made into MathObject matrices by <code>$A = Matrix(\@a);</code>, and this is, in fact, what the <code>GLnZ()</code> and <code>SLnZ()</code> subroutines do for you. The perl versions <code>@a = GLnZ_perl()</code> and <code>@a = SLnZ_perl()</code> are useful if you want to have quick access to the matrix values (as perl reals stored in <code>@a</code>) without having to pull them out of a MathObject matrix via <code>@b = $A-&lt;gt</code>value;&gt; (in which case <code>@b</code> is an array of MathObject reals).</p>
 
 <p>Note: There is overlap between MatrixUnits.pl (written after MathObject matrices were created) and MatrixUnimodular.pl (written before MathObject matrices were created). MatrixUnimodular.pl was left unchanged to provide legacy support for existing PG files.</p>
-
-<a href="#_podtop_"><h1 id="AUTHORS">AUTHORS</h1></a>
-
-<p>Paul Pearson, Hope College, Department of Mathematics</p>
 
 		</div>
 	</div>

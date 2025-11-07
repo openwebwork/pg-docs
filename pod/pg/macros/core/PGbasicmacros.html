@@ -47,7 +47,7 @@
       <li class="nav-item"><a class="nav-link p-0" href="#Pseudo-random-number-generator">Pseudo-random number generator</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#Display-Macros">Display Macros</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#Display-constants">Display constants</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#SPAN-and-DIV-macros-These-are-functions-primarly-meant-to-add-HTML-block-level-DIV-or-inline-SPAN-tags-and-the-relevant-closing-tags-for-HTML-output">SPAN and DIV macros These are functions primarly meant to add HTML block level DIV or inline SPAN tags and the relevant closing tags for HTML output.</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#SPAN-and-DIV-macros">SPAN and DIV macros</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#TEXT-macros">TEXT macros</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#Evaluation-macros">Evaluation macros</a>
         <ul class="nav flex-column w-100">
@@ -79,7 +79,7 @@
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<p>PGbasicmacros.pl --- located in the courseScripts directory</p>
+<p>PGbasicmacros.pl - A set of basic functions and constants for PG problems.</p>
 
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
@@ -160,19 +160,15 @@ NAMED_POP_UP_LIST($name, [@list])   # list consists of a list of values
 
 <h2 id="answer_matrix">answer_matrix</h2>
 
-<pre><code>Usage   \[ \{ answer_matrix(rows, columns, width_of_ans_rule, @options) \} \]
+<p>Usage:</p>
 
-Creates an array of answer blanks and passes it to display_matrix which returns
-text which represents the matrix in TeX format used in math display mode. Answers
-are then passed back to whatever answer evaluators you write at the end of the problem.
-(note, if you have an m x n matrix, you will need mn answer evaluators, and they will be
-returned to the evaluaters starting in the top left hand corner and proceed to the left
-and then at the end moving down one row, just as you would read them.)
+<pre><code>\[ \{ answer_matrix(rows, columns, width_of_ans_rule, @options) \} \]</code></pre>
 
-The options are passed on to display_matrix.
+<p>Creates an array of answer blanks and passes it to display_matrix which returns text which represents the matrix in TeX format used in math display mode. Answers are then passed back to whatever answer evaluators you write at the end of the problem. (note, if you have an m x n matrix, you will need mn answer evaluators, and they will be returned to the evaluaters starting in the top left hand corner and proceed to the left and then at the end moving down one row, just as you would read them.)</p>
 
-Note (7/21/2017) The above usage does not work. Omitting the \[ \] works, but also must
-load PGmatrixmacros.pl to get display_matrix used below</code></pre>
+<p>The options are passed on to display_matrix.</p>
+
+<p>Note (7/21/2017) The above usage does not work. Omitting the \[ \] works, but also must load PGmatrixmacros.pl to get display_matrix used below</p>
 
 <h2 id="Hints-solutions-and-statement-macros">Hints, solutions, and statement macros</h2>
 
@@ -201,8 +197,9 @@ STATEMENT(&#39;text&#39;);            # equivalent to TEXT(statement(...));</cod
 
 <h2 id="Pseudo-random-number-generator">Pseudo-random number generator</h2>
 
-<pre><code>Usage:
-random(0, 5, .1)          # produces a random number between 0 and 5 in increments of .1
+<p>Usage:</p>
+
+<pre><code>random(0, 5, .1)          # produces a random number between 0 and 5 in increments of .1
 non_zero_random(0, 5, .1) # gives a non-zero random number
 
 list_random(2, 3, 5, 6, 7, 8, 10) # produces random value from the list
@@ -281,56 +278,51 @@ $LATEX              LATEX()              the LaTeX logo
 $TEX                TEX()                the TeX logo
 $APOS               APOS()               an apostrophe</code></pre>
 
-<h2 id="SPAN-and-DIV-macros-These-are-functions-primarly-meant-to-add-HTML-block-level-DIV-or-inline-SPAN-tags-and-the-relevant-closing-tags-for-HTML-output">SPAN and DIV macros These are functions primarly meant to add HTML block level DIV or inline SPAN tags and the relevant closing tags for HTML output.</h2>
+<h2 id="SPAN-and-DIV-macros">SPAN and DIV macros</h2>
 
-<pre><code>At present, these macros require the user to provide TeX and
-preTeXt strings which will be used in those modes instead of the
-HTML block level DIV or inline SPAN tag.
+<p>These are functions primarly meant to add HTML block level DIV or inline SPAN tags and the relevant closing tags for HTML output.</p>
 
-If they are missing, they will default to the empty string.
-If only one string is given, it will be assumed to be the TeX string.
+<p>At present, these macros require the user to provide TeX and preTeXt strings which will be used in those modes instead of the HTML block level DIV or inline SPAN tag.</p>
 
-At present only the following 4 HTML attributes can be set:
-                 lang, dir, class, style.
-Using the style option requires creating valid CSS text.
-For safety some parsing/cleanup is done and various sorts of
-(apparently) invalid values may be dropped. See the code for
-details of what input sanitation is done.
+<p>If they are missing, they will default to the empty string. If only one string is given, it will be assumed to be the TeX string.</p>
 
-Since the use of style is particularly dangerous, in order to
-enable its use you must set allowStyle to 1 in the hash. It is
-possible to prevent the use of some of the other options by
-setting certain control like allowLang to 0.
+<p>At present only the following 4 HTML attributes can be set: lang, dir, class, style. Using the style option requires creating valid CSS text. For safety some parsing/cleanup is done and various sorts of (apparently) invalid values may be dropped. See the code for details of what input sanitation is done.</p>
 
-Usage:
-  openSpan( options_hash,  &quot;tex code&quot;, &quot;ptx code&quot; );
-  closeSpan(&quot;tex code&quot;, &quot;ptx code&quot;);
+<p>Since the use of style is particularly dangerous, in order to enable its use you must set allowStyle to 1 in the hash. It is possible to prevent the use of some of the other options by setting certain control like allowLang to 0.</p>
 
-Usage where TeX and PTX output will be empty by default.
-  openSpan( options_hash );
-  closeSpan();
+<p>Usage:</p>
 
-Sample options hashes
+<pre><code>openSpan( options_hash,  &quot;tex code&quot;, &quot;ptx code&quot; );
+closeSpan(&quot;tex code&quot;, &quot;ptx code&quot;);</code></pre>
 
-    { &quot;lang&quot; =&gt; &quot;he&quot;,
-      &quot;dir&quot; =&gt; &quot;rtl&quot;,
-      &quot;class&quot; =&gt; &quot;largeText class123&quot; }
+<p>Usage where TeX and PTX output will be empty by default:</p>
 
-    { &quot;lang&quot; =&gt; &quot;he&quot;,
-      &quot;allowStyle&quot; =&gt; 1,
-       &quot;style&quot; =&gt; &quot;background-color: \&quot;#afafaf; float: left;\t height: 12px;&quot; }</code></pre>
+<pre><code>openSpan( options_hash );
+closeSpan();</code></pre>
+
+<p>Sample options hashes</p>
+
+<pre><code>{ &quot;lang&quot; =&gt; &quot;he&quot;,
+  &quot;dir&quot; =&gt; &quot;rtl&quot;,
+  &quot;class&quot; =&gt; &quot;largeText class123&quot; }
+
+{ &quot;lang&quot; =&gt; &quot;he&quot;,
+  &quot;allowStyle&quot; =&gt; 1,
+   &quot;style&quot; =&gt; &quot;background-color: \&quot;#afafaf; float: left;\t height: 12px;&quot; }</code></pre>
 
 <h2 id="TEXT-macros">TEXT macros</h2>
 
-<pre><code>Usage:
-    TEXT(@text);</code></pre>
+<p>Usage:</p>
+
+<pre><code>TEXT(@text);</code></pre>
 
 <p>This is the simplest way to print text from a problem. The strings in the array <code>@text</code> are concatenated with spaces between them and printed out in the text of the problem. The text is not processed in any other way. <code>TEXT</code> is defined in PG.pl.</p>
 
-<pre><code>Usage:
-    BEGIN_TEXT
-        text.....
-    END_TEXT</code></pre>
+<p>Usage:</p>
+
+<pre><code>BEGIN_TEXT
+    text.....
+END_TEXT</code></pre>
 
 <p>This is the most common way to enter text into the problem. All of the text between BEGIN_TEXT and END_TEXT is processed by the <code>EV3</code> macro described below and then printed using the <code>TEXT</code> command. The two key words must appear on lines by themselves. The preprocessing that makes this construction work is done in <i>PGtranslator.pm</i>. See <code>EV3</code> below for details on the processing.</p>
 
@@ -389,9 +381,9 @@ END_TEXT</code></pre>
 
 <p>The resulting string is output (and usually fed into TEXT to be printed in the problem).</p>
 
-<pre><code>Usage:
+<p>Usage:</p>
 
-    $string2 = FEQ($string1);</code></pre>
+<pre><code>$string2 = FEQ($string1);</code></pre>
 
 <p>This is a filter which is used to format equations by <code>EV2</code> and <code>EV3</code>, but can also be used on its own. It is best understood with an example.</p>
 
@@ -526,7 +518,9 @@ protect_underbar($string) # protects the underbar (class_name) in strings which 
 
 <h2 id="htmlLink">htmlLink</h2>
 
-<p>Usage: <code>htmlLink($url, $text, @attributes)</code></p>
+<p>Usage:</p>
+
+<pre><code>htmlLink($url, $text, @attributes)</code></pre>
 
 <p>Places an HTML link to <code>$url</code> with the specified <code>$text</code> in the problem. The <code>@attributes</code> are optional. They should be provided as attribute/value pairs, but a single text string argument can be given (although calling <code>htmlLink</code> in that way is deprecated and should not be done in new problems). For example,</p>
 
@@ -538,7 +532,9 @@ for this problem.</code></pre>
 
 <p>Inserts a knowl link into the problem. Usually you should not call this method directly. Instead use <code>helpLink</code> below.</p>
 
-<p>Usage: <code>knowlLink($displayText, %options)</code></p>
+<p>Usage:</p>
+
+<pre><code>knowlLink($displayText, %options)</code></pre>
 
 <p><code>$display_text</code> is the text that will be shown for the link.</p>
 
@@ -579,7 +575,9 @@ knowlLink(&#39;Help Me&#39;, title =&gt; &#39;Help Contents&#39;, url =&gt; &#39
 
 <h2 id="helpLink">helpLink</h2>
 
-<p>Usage: <code>helpLink($type, $display_text, $helpurl)</code></p>
+<p>Usage:</p>
+
+<pre><code>helpLink($type, $display_text, $helpurl)</code></pre>
 
 <p>Creates links for students to help documentation on formatting answers and allows for custom help links.</p>
 
@@ -609,7 +607,8 @@ ENDDOCUMENT();</code></pre>
 
 <p>Because of the way sort is optimized in Perl, the symbols $a and $b have special significance.</p>
 
-<p><code>sort {$a&lt;=</code>$b} @list&gt; <code>sort {$a cmp $b} @list</code></p>
+<pre><code>sort {$a&lt;=&gt;$b} @list
+sort {$a cmp $b} @list</code></pre>
 
 <p>sorts the list numerically and lexically respectively.</p>
 
@@ -622,8 +621,9 @@ PGsort sub { $_[0] lt $_[1] }, @list;</code></pre>
 
 <h2 id="Sorting-and-other-list-macros">Sorting and other list macros</h2>
 
-<pre><code>Usage:
-lex_sort(@list);   # outputs list in lexigraphic (alphabetical) order
+<p>Usage:</p>
+
+<pre><code>lex_sort(@list);   # outputs list in lexigraphic (alphabetical) order
 num_sort(@list);   # outputs list in numerical order
 uniq( @list);      # outputs a list with no duplicates.  Order is unspecified.
 
@@ -632,8 +632,11 @@ PGsort( \&amp;sort_subroutine, @list);
 
 <h2 id="Macros-for-handling-tables">Macros for handling tables</h2>
 
-<pre><code>Usage:
-begintable( number_of_columns_in_table)
+<p><b>Note: that these are deprecated. See <a href="https://metacpan.org/pod/nicetables.pl">nicetables.pl</a> for a replacement.</b></p>
+
+<p>Usage:</p>
+
+<pre><code>begintable( number_of_columns_in_table)
 row(@dataelements)
 endtable()</code></pre>
 
@@ -658,9 +661,9 @@ END_TEXT</code></pre>
 
 <p>Usage:</p>
 
-<pre><code>image($image, width =&gt; 200, height =&gt; 200, tex_size =&gt; 800, valign =&gt; &#39;middle&#39;, alt =&gt; &#39;alt text&#39;, extra_html_tags =&gt; &#39;style=&quot;border:solid black 1pt&quot;&#39;);</code></pre>
+<pre><code>image($image, width =&gt; ..., height =&gt; ..., tex_size =&gt; ..., valign =&gt; ..., alt =&gt; ..., long_description =&gt; ... );</code></pre>
 
-<p>where <code>$image</code> can be a local file path, URL, WWPlot object, PGlateximage object, PGtikz object, or parser::GraphTool object.</p>
+<p>where <code>$image</code> can be a local file path, URL, WWPlot object, PGlateximage object, PGtikz object, Plots::Plot object, or parser::GraphTool object.</p>
 
 <p><code>width</code> and <code>height</code> are positive integer pixel counts for HTML display. If both are missing, <code>width</code> will default to 200 and <code>height</code> will remain undeclared, letting the browser display the image with its natural aspect ratio. Except with a parser::GraphTool object, if both are missing then nothing will be passed along to the GraphTool method for display, and that macro&#39;s defaults will be used.</p>
 
@@ -668,10 +671,21 @@ END_TEXT</code></pre>
 
 <p><code>valign</code> can be &#39;top&#39;, &#39;middle&#39;, or &#39;bottom&#39;. This aligns the image relative to the surrounding line of text.</p>
 
-<pre><code>image([$image1,$image2], width =&gt; 200, height =&gt; 200, tex_size =&gt; 800, alt =&gt; [&#39;alt text 1&#39;,&#39;alt text 2&#39;], extra_html_tags =&gt; &#39;style=&quot;border:solid black 1pt&quot;&#39;);
-image([$image1,$image2], width =&gt; 200, height =&gt; 200, tex_size =&gt; 800, alt =&gt; &#39;common alt text&#39;, extra_html_tags =&gt; &#39;style=&quot;border:solid black 1pt&quot;&#39;);</code></pre>
+<p><code>alt</code> should be a string, ideally with fewer than 125 characters, that describes the most important features of the image. This should always be used. If the image is decorative, <code>alt =&gt; &#39;&#39;</code> should be used.</p>
 
-<p>this produces an array in array context and joins the elements with <code>&#39; &#39;</code> in scalar context</p>
+<p><code>long_description</code> provides an optional way to give a more complete description of an image. This may include a table (for example to describe complex data in a graph). It may be helpful to generate blocks of text and tables and store them in a variable, and pass that variable to <code>long_description</code>.</p>
+
+<p><code>long_description_width</code> defaults to 1. This should be a positive number at most 1. In hardcopy output, this portion of the line width will be used to cap the width of the long description (if there is one). This is useful for example when the image is inside a table.</p>
+
+<p><code>extra_html_tags</code> [DEPRECATED] can be a string will directly be placed into the HTML img element. For example, <code>extra_html_tags =&gt; &#39;style=&quot;border:solid black 1pt&quot;&#39;</code>.</p>
+
+<p>The first argument to <code>image()</code> can alternatively be an array of images:</p>
+
+<pre><code>image([$image1, $image2], ...);</code></pre>
+
+<p>If so then if <code>alt</code> or <code>long_description</code> are not arrays, they will be used repeatedly for each image. Each of <code>alt</code> and <code>long_description</code> can instead be arrays of the same length and their entries will be used with the corresponding image.</p>
+
+<p>In array context, using <code>image()</code> this way will produces an array in array context and join the elements with <code>&#39; &#39;</code> in scalar context.</p>
 
 <h2 id="Tag-helper-method">Tag helper method:</h2>
 

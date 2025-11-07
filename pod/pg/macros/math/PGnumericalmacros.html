@@ -38,33 +38,27 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#Interpolation-methods">Interpolation methods</a>
     <ul class="nav flex-column w-100">
-      <li class="nav-item"><a class="nav-link p-0" href="#Interpolation-methods">Interpolation methods</a>
-        <ul class="nav flex-column w-100">
-          <li class="nav-item"><a class="nav-link p-0" href="#plot_list">plot_list</a></li>
-          <li class="nav-item"><a class="nav-link p-0" href="#horner">horner</a></li>
-          <li class="nav-item"><a class="nav-link p-0" href="#hermite">hermite</a></li>
-          <li class="nav-item"><a class="nav-link p-0" href="#hermite_spline">hermite_spline</a></li>
-          <li class="nav-item"><a class="nav-link p-0" href="#cubic_spline">cubic_spline</a></li>
-        </ul>
-      </li>
-      <li class="nav-item"><a class="nav-link p-0" href="#Numerical-Integration-methods">Numerical Integration methods</a>
-        <ul class="nav flex-column w-100">
-          <li class="nav-item"><a class="nav-link p-0" href="#lefthandsum">lefthandsum</a></li>
-          <li class="nav-item"><a class="nav-link p-0" href="#righthandsum">righthandsum</a></li>
-          <li class="nav-item"><a class="nav-link p-0" href="#midpoint">midpoint</a></li>
-          <li class="nav-item"><a class="nav-link p-0" href="#simpson">simpson</a></li>
-          <li class="nav-item"><a class="nav-link p-0" href="#trapezoid">trapezoid</a></li>
-          <li class="nav-item"><a class="nav-link p-0" href="#romberg">romberg</a></li>
-          <li class="nav-item"><a class="nav-link p-0" href="#inv_romberg">inv_romberg</a></li>
-        </ul>
-      </li>
-      <li class="nav-item"><a class="nav-link p-0" href="#Differential-Equation-Methods">Differential Equation Methods</a>
-        <ul class="nav flex-column w-100">
-          <li class="nav-item"><a class="nav-link p-0" href="#rungeKutta4">rungeKutta4</a></li>
-        </ul>
-      </li>
+      <li class="nav-item"><a class="nav-link p-0" href="#plot_list">plot_list</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#horner">horner</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#hermite">hermite</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#hermite_spline">hermite_spline</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#cubic_spline">cubic_spline</a></li>
+    </ul>
+  </li><li class="nav-item"><a class="nav-link p-0" href="#Numerical-Integration-methods">Numerical Integration methods</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#lefthandsum">lefthandsum</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#righthandsum">righthandsum</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#midpoint">midpoint</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#simpson">simpson</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#trapezoid">trapezoid</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#romberg">romberg</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#inv_romberg">inv_romberg</a></li>
+    </ul>
+  </li><li class="nav-item"><a class="nav-link p-0" href="#Differential-Equation-Methods">Differential Equation Methods</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#rungeKutta4">rungeKutta4</a></li>
     </ul>
   </li>				</ul>
 			</nav>
@@ -76,11 +70,11 @@
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<p>Numerical methods for the PG language</p>
+<p>PGnumericalmacros.pl - Numerical methods for the PG language</p>
 
-<h2 id="Interpolation-methods">Interpolation methods</h2>
+<a href="#_podtop_"><h1 id="Interpolation-methods">Interpolation methods</h1></a>
 
-<h3 id="plot_list">plot_list</h3>
+<h2 id="plot_list">plot_list</h2>
 
 <p>Usage:</p>
 
@@ -93,7 +87,7 @@ plot_list(\@xarray,\@yarray);</code></pre>
 
 <p>It is important that the x values in any form are unique or this method fails. There is no check for this however.</p>
 
-<h3 id="horner">horner</h3>
+<h2 id="horner">horner</h2>
 
 <p>Usage:</p>
 
@@ -113,7 +107,7 @@ plot_list(\@xarray,\@yarray);</code></pre>
 
 <p>Then <code>&amp;$h(num)</code> returns the polynomial at the value <code>num</code>. For example, <code>&amp;$h(1.5)=1</code>.</p>
 
-<h3 id="hermite">hermite</h3>
+<h2 id="hermite">hermite</h2>
 
 <p>Usage:</p>
 
@@ -129,7 +123,7 @@ plot_list(\@xarray,\@yarray);</code></pre>
 
 <p><code>&amp;$h(num)</code> will evaluate the hermite polynomial at <code>num</code>. For example, <code>&amp;$h(0.5)</code> returns <code>0.25</code>.</p>
 
-<h3 id="hermite_spline">hermite_spline</h3>
+<h2 id="hermite_spline">hermite_spline</h2>
 
 <p>Usage</p>
 
@@ -143,7 +137,7 @@ plot_list(\@xarray,\@yarray);</code></pre>
 
 <p>An object oriented version of this is defined in Hermite.pm</p>
 
-<h3 id="cubic_spline">cubic_spline</h3>
+<h2 id="cubic_spline">cubic_spline</h2>
 
 <p>Usage:</p>
 
@@ -174,9 +168,9 @@ function myfunction1(x) {
 
 <pre><code>HEADER_TEXT($function_string);</code></pre>
 
-<h2 id="Numerical-Integration-methods">Numerical Integration methods</h2>
+<a href="#_podtop_"><h1 id="Numerical-Integration-methods">Numerical Integration methods</h1></a>
 
-<h3 id="lefthandsum">lefthandsum</h3>
+<h2 id="lefthandsum">lefthandsum</h2>
 
 <p>Left Hand Riemann Sum</p>
 
@@ -186,7 +180,7 @@ function myfunction1(x) {
 
 <p>Implements the Left Hand sum using 30 intervals between &#39;start&#39; and &#39;end&#39;. The first three arguments are required. The final argument (number of steps) is optional and defaults to 30.</p>
 
-<h3 id="righthandsum">righthandsum</h3>
+<h2 id="righthandsum">righthandsum</h2>
 
 <p>Right Hand Riemann Sum</p>
 
@@ -196,7 +190,7 @@ function myfunction1(x) {
 
 <p>Implements the right hand sum using 30 intervals between &#39;start&#39; and &#39;end&#39;. The first three arguments are required. The final argument (number of steps) is optional and defaults to 30.</p>
 
-<h3 id="midpoint">midpoint</h3>
+<h2 id="midpoint">midpoint</h2>
 
 <p>Usage:</p>
 
@@ -204,7 +198,7 @@ function myfunction1(x) {
 
 <p>Implements the Midpoint rule between &#39;start&#39; and &#39;end&#39;. The first three arguments are required. The final argument (number of steps) is optional and defaults to 30.</p>
 
-<h3 id="simpson">simpson</h3>
+<h2 id="simpson">simpson</h2>
 
 <p>Usage:</p>
 
@@ -212,7 +206,7 @@ function myfunction1(x) {
 
 <p>Implements Simpson&#39;s rule between &#39;start&#39; and &#39;end&#39;. The first three arguments are required. The final argument (number of steps) is optional and defaults to 30, but must be even.</p>
 
-<h3 id="trapezoid">trapezoid</h3>
+<h2 id="trapezoid">trapezoid</h2>
 
 <p>Usage:</p>
 
@@ -220,7 +214,7 @@ function myfunction1(x) {
 
 <p>Implements the trapezoid rule using 30 intervals between &#39;start&#39; and &#39;end&#39;. The first three arguments are required. The final argument (number of steps) is optional and defaults to 30.</p>
 
-<h3 id="romberg">romberg</h3>
+<h2 id="romberg">romberg</h2>
 
 <p>Usage:</p>
 
@@ -228,7 +222,7 @@ function myfunction1(x) {
 
 <p>Implements the Romberg integration routine through &#39;level&#39; recursive steps. Level defaults to 6.</p>
 
-<h3 id="inv_romberg">inv_romberg</h3>
+<h2 id="inv_romberg">inv_romberg</h2>
 
 <p>Inverse Romberg</p>
 
@@ -247,9 +241,9 @@ $b = inv_romberg($f,0,0.45);</code></pre>
 
 <p>this returns <code>1.64485362695934</code>. This is the standard normal curve and this value is the z value for the 90th percentile.</p>
 
-<h2 id="Differential-Equation-Methods">Differential Equation Methods</h2>
+<a href="#_podtop_"><h1 id="Differential-Equation-Methods">Differential Equation Methods</h1></a>
 
-<h3 id="rungeKutta4">rungeKutta4</h3>
+<h2 id="rungeKutta4">rungeKutta4</h2>
 
 <p>Finds integral curve of a vector field using the 4th order Runge Kutta method by providing the function <code>rungeKutta4</code></p>
 

@@ -38,18 +38,14 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNPOSIS">SYNPOSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#FUNCTIONS">FUNCTIONS</a>
     <ul class="nav flex-column w-100">
-      <li class="nav-item"><a class="nav-link p-0" href="#Other-constructs">Other constructs</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#init_graph">init_graph</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#plot_functions">plot_functions</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#insertGraph">insertGraph</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#Circle-lables">&#39;Circle&#39; lables</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#Auxiliary-macros">Auxiliary macros</a>
-        <ul class="nav flex-column w-100">
-          <li class="nav-item"><a class="nav-link p-0" href="#string_to_sub-and-my_math_constants">string_to_sub and my_math_constants</a></li>
-        </ul>
-      </li>
+      <li class="nav-item"><a class="nav-link p-0" href="#string_to_sub">string_to_sub</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#my_math_constants">my_math_constants</a></li>
     </ul>
   </li>				</ul>
 			</nav>
@@ -61,9 +57,9 @@
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<p>PGgraphmacros -- in courseScripts directory</p>
+<p>PGgraphmacros.pl - Provides functionality for plotting functions, points and adding labels.</p>
 
-<a href="#_podtop_"><h1 id="SYNPOSIS">SYNPOSIS</h1></a>
+<a href="#_podtop_"><h1 id="SYNOPSIS">SYNOPSIS</h1></a>
 
 <pre><code>use Fun;
 use Label;
@@ -76,30 +72,37 @@ use WWPlot;</code></pre>
 
 <p>These macros provide an easy ability to graph simple functions. More complicated projects may require direct access to the underlying modules. If these complicated projects are common then it may be desirable to create additional macros. (See numericalmacros.pl for one example.)</p>
 
-<h2 id="Other-constructs">Other constructs</h2>
-
 <p>See <i>PGbasicmacros</i> for definitions of <code>image</code> and <code>caption</code></p>
+
+<a href="#_podtop_"><h1 id="FUNCTIONS">FUNCTIONS</h1></a>
 
 <h2 id="init_graph">init_graph</h2>
 
-<pre><code>$graphObject = init_graph(xmin,ymin,xmax,ymax,&#39;ticks&#39;=&gt;[4,4],&#39;axes&#39;=&gt;[0,0])
-options are
-        &#39;grid&#39; =&gt;[8,8] or
-        # there are 8 evenly spaced lines intersecting the horizontal axis
-        &#39;ticks&#39;=&gt;[8,8] and/or
-        # there are 8 ticks on the horizontal axis, 8 on the vertical
-        &#39;axes&#39; =&gt; [0,0]
-        # axes pass through the point (0,0) in real coordinates
-        &#39;size&#39; =&gt; [200,200]
-        # dimensions of the graph in pixels.
-        &#39;pixels&#39; =&gt;[200,200]  # synonym for size</code></pre>
+<pre><code>$graphObject = init_graph(xmin,ymin,xmax,ymax,&#39;ticks&#39;=&gt;[4,4],&#39;axes&#39;=&gt;[0,0])</code></pre>
+
+<p>options are</p>
+
+<pre><code>&#39;grid&#39; =&gt;[8,8] or
+# there are 8 evenly spaced lines intersecting the horizontal axis
+&#39;ticks&#39;=&gt;[8,8] and/or
+# there are 8 ticks on the horizontal axis, 8 on the vertical
+&#39;axes&#39; =&gt; [0,0]
+# axes pass through the point (0,0) in real coordinates
+&#39;size&#39; =&gt; [200,200]
+# dimensions of the graph in pixels.
+&#39;pixels&#39; =&gt;[200,200]  # synonym for size</code></pre>
 
 <p>Creates a graph object with the default size 200 by 200 pixels. If you want axes or grids you need to specify them in options. But the default values can be selected for you.</p>
 
 <h2 id="plot_functions">plot_functions</h2>
 
-<pre><code>Usage:  ($f1, $f2, $f3) = plot_functions($graph, $f1, $f2, $f3);
-Synonym: add_functions($graph,$f1,$f2,$f3);</code></pre>
+<p>Usage:</p>
+
+<pre><code>($f1, $f2, $f3) = plot_functions($graph, $f1, $f2, $f3);</code></pre>
+
+<p>Synonym:</p>
+
+<pre><code>($f1, $f2, $f3) = add_functions($graph, $f1, $f2, $f3);</code></pre>
 
 <p>Where $f1 is a string of the form</p>
 
@@ -144,21 +147,25 @@ Synonym: add_functions($graph,$f1,$f2,$f3);</code></pre>
 
 <h2 id="Circle-lables">&#39;Circle&#39; lables</h2>
 
-<pre><code>Usage: $circle_object = open_circle( $x_position, $y_position, $color );
-        $circle_object2 = closed_circle( $x_position, $y_position, $color );</code></pre>
+<p>Usage:</p>
+
+<pre><code>$circle_object = open_circle( $x_position, $y_position, $color );
+$circle_object2 = closed_circle( $x_position, $y_position, $color );</code></pre>
 
 <p>Creates a small open (resp. filled in or closed) circle for use as a stamp in marking graphs. For example</p>
 
 <pre><code>$graph -&gt; stamps($circle_object2); # puts a filled dot at $x_position, $y_position</code></pre>
 
-<h2 id="Auxiliary-macros">Auxiliary macros</h2>
+<h2 id="string_to_sub">string_to_sub</h2>
 
-<h3 id="string_to_sub-and-my_math_constants">string_to_sub and my_math_constants</h3>
+<h2 id="my_math_constants">my_math_constants</h2>
 
 <p>These are internal macros which govern the interpretation of equations.</p>
 
-<pre><code>Usage: $string = my_math_constants($string)
-       $subroutine_reference = my_string_to_sub($string)</code></pre>
+<p>Usage:</p>
+
+<pre><code>$string = my_math_constants($string)
+$subroutine_reference = string_to_sub($string)</code></pre>
 
 <p><code>my_math_constants</code> interprets pi, e as mathematical constants 3.1415926... and 2.71828... respectively. (Case is important). The power operator ^ is replaced by ** to conform with perl constructs</p>
 

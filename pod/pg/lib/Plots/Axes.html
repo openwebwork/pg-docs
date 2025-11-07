@@ -80,7 +80,7 @@
 
 <pre><code>$plot-&gt;axes-&gt;xaxis(min =&gt; -10, max =&gt; 10,  tick_delta =&gt; 4);
 $plot-&gt;axes-&gt;yaxis(min =&gt; 0,   max =&gt; 100, tick_delta =&gt; 20);
-$plot-&gt;axes-&gt;style(ariaLabel =&gt; &#39;Graph of function y = f(x).&#39;, show_grid =&gt; 0);</code></pre>
+$plot-&gt;axes-&gt;style(aria_label =&gt; &#39;Graph of function y = f(x).&#39;, show_grid =&gt; 0);</code></pre>
 
 <p>This can be combined using the set method by prepending either <code>x</code> or <code>y</code> in front of each key of the axes to configure (note keys that do not start with <code>x</code> or <code>y</code> sent to <code>$plot-&gt;axes-&gt;style</code>):</p>
 
@@ -91,7 +91,7 @@ $plot-&gt;axes-&gt;style(ariaLabel =&gt; &#39;Graph of function y = f(x).&#39;, 
     ymin        =&gt; 0,
     ymax        =&gt; 100,
     ytick_delta =&gt; 20,
-    ariaLabel   =&gt; &#39;Graph of function y = f(x).&#39;,
+    aria_label  =&gt; &#39;Graph of function y = f(x).&#39;,
     show_grid   =&gt; 0,
 );</code></pre>
 
@@ -217,13 +217,13 @@ yaxis  =&gt;  &#39;left&#39;, &#39;center&#39;, &#39;right&#39;</code></pre>
 <p>If this style is set, then the height of the graph will be computed using this aspect_ratio for the size of the image unless explicitly set. Default: &#39;&#39;</p>
 
 </dd>
-<dt>ariaLabel</dt>
+<dt>aria_label</dt>
 <dd>
 
 <p>The ARIA label in JSX graph output. Default is &#39;Graph&#39;.</p>
 
 </dd>
-<dt>ariaDescription</dt>
+<dt>aria_description</dt>
 <dd>
 
 <p>The ARIA description in JSX graph output. This will be set to the images alt tag. Default is &#39;Generated graph&#39;.</p>

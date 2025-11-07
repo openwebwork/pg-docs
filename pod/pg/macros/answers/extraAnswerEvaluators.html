@@ -38,7 +38,7 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNPOSIS">SYNPOSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#MACROS">MACROS</a>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#FUNCTIONS">FUNCTIONS</a>
     <ul class="nav flex-column w-100">
       <li class="nav-item"><a class="nav-link p-0" href="#interval_cmp">interval_cmp</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#number_list_cmp">number_list_cmp</a></li>
@@ -56,7 +56,11 @@
 
 <p>extraAnswerEvaluators.pl - Answer evaluators for intervals, lists of numbers, and lists of points.</p>
 
-<a href="#_podtop_"><h1 id="SYNPOSIS">SYNPOSIS</h1></a>
+<a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
+
+<p>This is a list of functions that create &quot;answer evaluators&quot; for checking student answers of various &quot;exotic&quot; types.</p>
+
+<a href="#_podtop_"><h1 id="SYNOPSIS">SYNOPSIS</h1></a>
 
 <pre><code>interval_cmp() -- checks answers which are unions of intervals. It can also
                                   be used for checking an ordered pair or list of ordered
@@ -74,11 +78,7 @@ equation_cmp() -- provides a limited facility for checking equations. It
                   instructor&#39;s equation.  The student&#39;s equation must be of
                   the same general type as the instructors to get credit.</code></pre>
 
-<a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
-
-<p>This file adds subroutines which create &quot;answer evaluators&quot; for checking student answers of various &quot;exotic&quot; types.</p>
-
-<a href="#_podtop_"><h1 id="MACROS">MACROS</h1></a>
+<a href="#_podtop_"><h1 id="FUNCTIONS">FUNCTIONS</h1></a>
 
 <h2 id="interval_cmp">interval_cmp</h2>
 

@@ -42,15 +42,30 @@
     <ul class="nav flex-column w-100">
       <li class="nav-item"><a class="nav-link p-0" href="#MathObjects-and-answer-evaluators">MathObjects and answer evaluators</a></li>
     </ul>
-  </li><li class="nav-item"><a class="nav-link p-0" href="#String-Filters">String Filters</a></li><li class="nav-item"><a class="nav-link p-0" href="#str_cmp">str_cmp</a>
+  </li><li class="nav-item"><a class="nav-link p-0" href="#FUNCTIONS">FUNCTIONS</a>
     <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#str_filters">str_filters</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#remove_whitespace">remove_whitespace</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#compress_whitespace">compress_whitespace</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#trim_whitespace">trim_whitespace</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#nullify">nullify</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#ignore_case">ignore_case</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#ignore_order">ignore_order</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#str_cmp">str_cmp</a>
+        <ul class="nav flex-column w-100">
+          <li class="nav-item"><a class="nav-link p-0" href="#options">options</a></li>
+        </ul>
+      </li>
       <li class="nav-item"><a class="nav-link p-0" href="#Examples">Examples</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#std_str_cmp">std_str_cmp</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#std_cs_str_cmp">std_cs_str_cmp</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#strict_str_cmp">strict_str_cmp</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#unordered_str_cmp">unordered_str_cmp</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#unordered_cs_str_cmp">unordered_cs_str_cmp</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#ordered_str_cmp-ordered_str_cmp_list">ordered_str_cmp, ordered_str_cmp_list</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#ordered_cs_str_cmp-ordered_cs_str_cmp_list">ordered_cs_str_cmp, ordered_cs_str_cmp_list</a></li>
     </ul>
-  </li><li class="nav-item"><a class="nav-link p-0" href="#mode_str_cmp-functions">&quot;mode&quot;_str_cmp functions</a>
-    <ul class="nav flex-column w-100">
-      <li class="nav-item"><a class="nav-link p-0" href="#Examples1">Examples</a></li>
-    </ul>
-  </li><li class="nav-item"><a class="nav-link p-0" href="#SEE-ALSO">SEE ALSO</a></li>				</ul>
+  </li><li class="nav-item"><a class="nav-link p-0" href="#Examples1">Examples</a></li><li class="nav-item"><a class="nav-link p-0" href="#SEE-ALSO">SEE ALSO</a></li>				</ul>
 			</nav>
 		</div>
 	</aside>
@@ -76,22 +91,19 @@ ANS(unordered_str_cmp(&quot;A C E&quot;));</code></pre>
 
 <p>The MathObjects system provides a String-&gt;cmp() method that produce answer evaluators for string comparisons. It is recommended that you use the String object&#39;s cmp() method directly if possible.</p>
 
-<a href="#_podtop_"><h1 id="String-Filters">String Filters</h1></a>
+<a href="#_podtop_"><h1 id="FUNCTIONS">FUNCTIONS</h1></a>
+
+<h2 id="str_filters">str_filters</h2>
 
 <p>Different filters can be applied to allow various degrees of variation. Both the student and correct answers are subject to the same filters, to ensure that there are no unexpected matches or rejections.</p>
 
-<dl>
-
-<dt>remove_whitespace</dt>
-<dd>
+<h2 id="remove_whitespace">remove_whitespace</h2>
 
 <p>Removes all whitespace from the string. It applies the following substitution to the string:</p>
 
 <pre><code>$filteredAnswer =~ s/\s+//g;</code></pre>
 
-</dd>
-<dt>compress_whitespace</dt>
-<dd>
+<h2 id="compress_whitespace">compress_whitespace</h2>
 
 <p>Removes leading and trailing whitespace, and replaces all other blocks of whitespace by a single space. Applies the following substitutions:</p>
 
@@ -99,41 +111,30 @@ ANS(unordered_str_cmp(&quot;A C E&quot;));</code></pre>
 $filteredAnswer =~ s/\s*$//;
 $filteredAnswer =~ s/\s+/ /g;</code></pre>
 
-</dd>
-<dt>trim_whitespace</dt>
-<dd>
+<h2 id="trim_whitespace">trim_whitespace</h2>
 
 <p>Removes leading and trailing whitespace. Applies the following substitutions:</p>
 
 <pre><code>$filteredAnswer =~ s/^\s*//;
 $filteredAnswer =~ s/\s*$//;</code></pre>
 
-</dd>
-<dt>nullify</dt>
-<dd>
+<h2 id="nullify">nullify</h2>
 
 <p>Returns the null string.</p>
 
-</dd>
-<dt>ignore_case</dt>
-<dd>
+<h2 id="ignore_case">ignore_case</h2>
 
 <p>Ignores the case of the string. More accurately, it converts the string to uppercase (by convention). Applies the following function:</p>
 
 <pre><code>$filteredAnswer = uc($filteredAnswer);</code></pre>
 
-</dd>
-<dt>ignore_order</dt>
-<dd>
+<h2 id="ignore_order">ignore_order</h2>
 
 <p>Ignores the order of the letters in the string. This is used for problems of the form &quot;Choose all that apply.&quot; Specifically, it removes all whitespace and lexically sorts the letters in ascending alphabetical order. Applies the following functions:</p>
 
 <pre><code>$filteredAnswer = join(&quot;&quot;, lex_sort(split(/\s*/, $filteredAnswer)));</code></pre>
 
-</dd>
-</dl>
-
-<a href="#_podtop_"><h1 id="str_cmp">str_cmp</h1></a>
+<h2 id="str_cmp">str_cmp</h2>
 
 <pre><code>ANS(str_cmp($answer_or_answer_array_ref, @filters));
 ANS(str_cmp($answer_or_answer_array_ref, %options));</code></pre>
@@ -144,7 +145,7 @@ ANS(str_cmp($answer_or_answer_array_ref, %options));</code></pre>
 
 <p>num_cmp() differentiates %options from @filters by checking for the names of supported options in the list. Currently &quot;filter&quot;, &quot;filters&quot;, and &quot;debug&quot; are checked for. If these strings are found in the argument list, it is assumed that %options is present rather than @filters.</p>
 
-<p>%options can contain the following items:</p>
+<h3 id="options">options</h3>
 
 <dl>
 
@@ -184,78 +185,60 @@ str_cmp(&#39;ABC&#39;, filters=&gt;&#39;ignore_order&#39;);
 # matches &quot;def&quot; and &quot;d e f&quot; but not &quot;fed&quot;
 str_cmp(&#39;D E F&#39;, &#39;remove_whitespace&#39;, &#39;ignore_case&#39;);</code></pre>
 
-<a href="#_podtop_"><h1 id="mode_str_cmp-functions">&quot;mode&quot;_str_cmp functions</h1></a>
+<h2 id="std_str_cmp">std_str_cmp</h2>
 
 <p>The functions of the form &quot;mode&quot;_str_cmp() use different functions to specify which filters to apply. They take no options except the correct string. There are also versions which accept a list of strings.</p>
-
-<dl>
-
-<dt>standard</dt>
-<dd>
 
 <pre><code>std_str_cmp($correctString)
 std_str_cmp_list(@correctStringList)</code></pre>
 
 <p>Filters: compress_whitespace, ignore_case</p>
 
-</dd>
-<dt>standard, case sensitive</dt>
-<dd>
+<h2 id="std_cs_str_cmp">std_cs_str_cmp</h2>
+
+<p>standard, case sensitive</p>
 
 <pre><code>std_cs_str_cmp($correctString)
 std_cs_str_cmp_list(@correctStringList)</code></pre>
 
 <p>Filters: compress_whitespace</p>
 
-</dd>
-<dt>strict</dt>
-<dd>
+<h2 id="strict_str_cmp">strict_str_cmp</h2>
 
 <pre><code>strict_str_cmp($correctString)
 strict_str_cmp_list(@correctStringList)</code></pre>
 
 <p>Filters: trim_whitespace</p>
 
-</dd>
-<dt>unordered</dt>
-<dd>
+<h2 id="unordered_str_cmp">unordered_str_cmp</h2>
 
 <pre><code>unordered_str_cmp( $correctString )
 unordered_str_cmp_list( @correctStringList )</code></pre>
 
 <p>Filters: ignore_order, ignore_case</p>
 
-</dd>
-<dt>unordered, case sensitive</dt>
-<dd>
+<h2 id="unordered_cs_str_cmp">unordered_cs_str_cmp</h2>
 
 <pre><code>unordered_cs_str_cmp( $correctString )
 unordered_cs_str_cmp_list( @correctStringList )</code></pre>
 
 <p>Filters: ignore_order</p>
 
-</dd>
-<dt>ordered</dt>
-<dd>
+<h2 id="ordered_str_cmp-ordered_str_cmp_list">ordered_str_cmp, ordered_str_cmp_list</h2>
 
 <pre><code>ordered_str_cmp( $correctString )
 ordered_str_cmp_list( @correctStringList )</code></pre>
 
 <p>Filters: remove_whitespace, ignore_case</p>
 
-</dd>
-<dt>ordered, case sensitive</dt>
-<dd>
+<h2 id="ordered_cs_str_cmp-ordered_cs_str_cmp_list">ordered_cs_str_cmp, ordered_cs_str_cmp_list</h2>
 
 <pre><code>ordered_cs_str_cmp( $correctString )
 ordered_cs_str_cmp_list( @correctStringList )</code></pre>
 
 <p>Filters: remove_whitespace</p>
 
-</dd>
-</dl>
-
-<h2 id="Examples1">Examples</h2>
+<a href="#_podtop_"><h1 id="Examples1">Examples</h1></a>
 
 <pre><code># Accepts &quot;W. Mozart&quot;, &quot;W. MOZarT&quot;, and so forth. Case insensitive. All
 # internal spaces treated as single spaces.

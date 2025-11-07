@@ -38,38 +38,46 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a>
     <ul class="nav flex-column w-100">
-      <li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#USAGE">USAGE</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Usage">Usage</a></li>
+    </ul>
+  </li><li class="nav-item"><a class="nav-link p-0" href="#FUNCTIONS">FUNCTIONS</a>
+    <ul class="nav flex-column w-100">
       <li class="nav-item"><a class="nav-link p-0" href="#randomPerson">randomPerson</a>
         <ul class="nav flex-column w-100">
-          <li class="nav-item"><a class="nav-link p-0" href="#Examples-and-options">Examples and options</a></li>
-          <li class="nav-item"><a class="nav-link p-0" href="#randomLastName">randomLastName</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#Examples-and-Options">Examples and Options</a></li>
         </ul>
       </li>
-      <li class="nav-item"><a class="nav-link p-0" href="#CONSTRUCTOR-Person">CONSTRUCTOR Person</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#randomLastName">randomLastName</a></li>
+    </ul>
+  </li><li class="nav-item"><a class="nav-link p-0" href="#CONSTRUCTOR-Person-object">CONSTRUCTOR (Person object)</a></li><li class="nav-item"><a class="nav-link p-0" href="#METHODS-Person-object">METHODS (Person object)</a>
+    <ul class="nav flex-column w-100">
       <li class="nav-item"><a class="nav-link p-0" href="#name">name</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#subject">subject</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#they">they</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#Subject">Subject</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#They">They</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#possessive">possessive</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#their">their</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#Possessive">Possessive</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Their">Their</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#possession">possession</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#theirs">theirs</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#Possession">Possession</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Theirs">Theirs</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#object">object</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#one-of-Object">one of Object</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#verb-or-Verb">verb or Verb</a>
-        <ul class="nav flex-column w-100">
-          <li class="nav-item"><a class="nav-link p-0" href="#do-or-Do">do or Do</a></li>
-          <li class="nav-item"><a class="nav-link p-0" href="#are-or-Are">are or Are</a></li>
-          <li class="nav-item"><a class="nav-link p-0" href="#go-or-Go">go or Go</a></li>
-          <li class="nav-item"><a class="nav-link p-0" href="#have-or-Have">have or Have</a></li>
-          <li class="nav-item"><a class="nav-link p-0" href="#were-or-Were">were or Were</a></li>
-          <li class="nav-item"><a class="nav-link p-0" href="#theyre-or-Theyre">theyre or Theyre</a></li>
-          <li class="nav-item"><a class="nav-link p-0" href="#theyve-or-Theyve">theyve or Theyve</a></li>
-        </ul>
-      </li>
+      <li class="nav-item"><a class="nav-link p-0" href="#them">them</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Object">Object</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Them">Them</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#verb-Verb">verb/Verb</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#do-Do">do/Do</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#are-Are">are/Are</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#go-Go">go/Go</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#have-Have">have/Have</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#were-Were">were/Were</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#theyre-Theyre">theyre/Theyre</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#theyve-Theyve">theyve/Theyve</a></li>
     </ul>
   </li>				</ul>
 			</nav>
@@ -83,11 +91,11 @@
 
 <p>randomPerson.pl - Load macros for getting a random person with corresponding pronouns.</p>
 
-<h2 id="SYNOPSIS">SYNOPSIS</h2>
+<a href="#_podtop_"><h1 id="SYNOPSIS">SYNOPSIS</h1></a>
 
 <pre><code>loadMacros(&#39;randomPerson.pl&#39;);</code></pre>
 
-<h2 id="DESCRIPTION">DESCRIPTION</h2>
+<a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
 <p><code>randomPerson.pl</code> provides a <code>randomPerson</code> function that generates a random name that comes with corresponding pronouns and verb conjugation. The default subject pronouns are &#39;he&#39;, &#39;she&#39;, and &#39;they&#39;.</p>
 
@@ -95,7 +103,7 @@
 
 <p>The first names (aka given names) were generated by randomly selecting 200 names from the United States Social Security Administration&#39;s top 1000 list (actually 1000 per gender) from 2005. The additional names associated with they/them pronouns were taken from a <a href="https://en.wikipedia.org/wiki/List_of_transgender_people">wikipedia list of public trans people</a> who use they pronouns. The last names (aka surnames) were generated by randomly selecting 100 names from a list of top 1000 surnames in the United States in 2020, according to babynames.com, which used the 2020 US Census. That list was still lacking in representation of Asian, South Asian, and African surnames, so 12 popular names from these regions were added.</p>
 
-<h2 id="USAGE">USAGE</h2>
+<h2 id="Usage">Usage</h2>
 
 <p>First load the <code>randomPerson</code> macro with</p>
 
@@ -136,11 +144,13 @@ END_PGML</code></pre>
 
 <p>If a new pronoun is added, verb conjugation for that pronoun will match &#39;he&#39;/&#39;she&#39; verb conjugation, not &#39;they&#39; verb conjugation.</p>
 
+<a href="#_podtop_"><h1 id="FUNCTIONS">FUNCTIONS</h1></a>
+
 <h2 id="randomPerson">randomPerson</h2>
 
 <p>Returns a person as a Person object from a list in the macro.</p>
 
-<h3 id="Examples-and-options">Examples and options</h3>
+<h3 id="Examples-and-Options">Examples and Options</h3>
 
 <ul>
 
@@ -190,7 +200,7 @@ $p4 = randomPerson( names =&gt; [{ name =&gt; &#39;Larry&#39;}, { name =&gt; &#3
 </li>
 </ul>
 
-<h3 id="randomLastName">randomLastName</h3>
+<h2 id="randomLastName">randomLastName</h2>
 
 <p>This returns a random last name based on popular last names in the United States. Example</p>
 
@@ -204,7 +214,7 @@ $p4 = randomPerson( names =&gt; [{ name =&gt; &#39;Larry&#39;}, { name =&gt; &#3
 
 <p>generates 4 unique last names.</p>
 
-<h2 id="CONSTRUCTOR-Person">CONSTRUCTOR Person</h2>
+<a href="#_podtop_"><h1 id="CONSTRUCTOR-Person-object">CONSTRUCTOR (Person object)</h1></a>
 
 <p>This makes a Person object to handle name and pronouns of a Person.</p>
 
@@ -213,6 +223,8 @@ $p4 = randomPerson( names =&gt; [{ name =&gt; &#39;Larry&#39;}, { name =&gt; &#3
 <pre><code>Person-&gt;new(name =&gt; &#39;Roger&#39;, pronoun =&gt; &#39;he&#39;)</code></pre>
 
 <p>for example. This is used by the <code>randomPerson</code> method which returns a blessed Person object which can be used to write a problem with a random name with pronouns and verb conjugation.</p>
+
+<a href="#_podtop_"><h1 id="METHODS-Person-object">METHODS (Person object)</h1></a>
 
 <h2 id="name">name</h2>
 
@@ -225,6 +237,8 @@ $p-&gt;name;</code></pre>
 
 <h2 id="subject">subject</h2>
 
+<h2 id="they">they</h2>
+
 <p>These return the subject pronoun in lowercase. The second option is syntactic sugar.</p>
 
 <pre><code>$p-&gt;subject
@@ -233,6 +247,8 @@ $p-&gt;they</code></pre>
 <p>returns one of (he, she, they)</p>
 
 <h2 id="Subject">Subject</h2>
+
+<h2 id="They">They</h2>
 
 <p>These return the subject pronoun, capitalized. The second option is syntactic sugar.</p>
 
@@ -243,6 +259,8 @@ $p-&gt;They</code></pre>
 
 <h2 id="possessive">possessive</h2>
 
+<h2 id="their">their</h2>
+
 <p>These return the possessive adjective in lowercase. The second option is syntactic sugar.</p>
 
 <pre><code>$p-&gt;possessive
@@ -251,6 +269,8 @@ $p-&gt;their</code></pre>
 <p>returns one of (his, her, their)</p>
 
 <h2 id="Possessive">Possessive</h2>
+
+<h2 id="Their">Their</h2>
 
 <p>These return the possessive adjective, capitalized. The second option is syntactic sugar.</p>
 
@@ -261,6 +281,8 @@ $p-&gt;Their</code></pre>
 
 <h2 id="possession">possession</h2>
 
+<h2 id="theirs">theirs</h2>
+
 <p>These return the possessive pronoun in lowercase. The second option is syntactic sugar.</p>
 
 <pre><code>$p-&gt;possession
@@ -269,6 +291,8 @@ $p-&gt;theirs</code></pre>
 <p>returns one of (his, hers, theirs)</p>
 
 <h2 id="Possession">Possession</h2>
+
+<h2 id="Theirs">Theirs</h2>
 
 <p>These return the possessive pronoun, capitalized. The second option is syntactic sugar.</p>
 
@@ -279,6 +303,8 @@ $p-&gt;theirs</code></pre>
 
 <h2 id="object">object</h2>
 
+<h2 id="them">them</h2>
+
 <p>These return the object pronoun in lowercase. The second option is syntactic sugar.</p>
 
 <pre><code>$p-&gt;object
@@ -286,7 +312,9 @@ $p-&gt;them</code></pre>
 
 <p>returns one of (him, her, them)</p>
 
-<h2 id="one-of-Object">one of Object</h2>
+<h2 id="Object">Object</h2>
+
+<h2 id="Them">Them</h2>
 
 <p>These return the object pronoun, capitalized. The second option is syntactic sugar.</p>
 
@@ -295,7 +323,7 @@ $p-&gt;Them</code></pre>
 
 <p>returns (Him, Her, Them)</p>
 
-<h2 id="verb-or-Verb"><code>verb</code> or <code>Verb</code></h2>
+<h2 id="verb-Verb">verb/Verb</h2>
 
 <p>Returns the correct conjugation of the verb. If only one argument is passed in, it should be a regular verb in the third person plural conjugation (the &quot;they&quot; version). For example:</p>
 
@@ -328,7 +356,7 @@ $p2-&gt;Verb(&#39;Say&#39;);</code></pre>
 
 <p>returns &#39;Say&#39;.</p>
 
-<h3 id="do-or-Do"><code>do</code> or <code>Do</code></h3>
+<h2 id="do-Do">do/Do</h2>
 
 <p>Returns the correct conjugation of to do with captilization. For example</p>
 
@@ -338,7 +366,7 @@ $p2-&gt;Verb(&#39;Say&#39;);</code></pre>
 
 <pre><code>$p-&gt;Do;</code></pre>
 
-<h3 id="are-or-Are"><code>are</code> or <code>Are</code></h3>
+<h2 id="are-Are">are/Are</h2>
 
 <p>Returns the correct conjugation of to be with captilization. For example</p>
 
@@ -348,7 +376,7 @@ $p2-&gt;Verb(&#39;Say&#39;);</code></pre>
 
 <pre><code>$p-&gt;Are;</code></pre>
 
-<h3 id="go-or-Go"><code>go</code> or <code>Go</code></h3>
+<h2 id="go-Go">go/Go</h2>
 
 <p>Returns the correct conjugation of to go with captilization. For example</p>
 
@@ -358,7 +386,7 @@ $p2-&gt;Verb(&#39;Say&#39;);</code></pre>
 
 <pre><code>$p-&gt;Go;</code></pre>
 
-<h3 id="have-or-Have"><code>have</code> or <code>Have</code></h3>
+<h2 id="have-Have">have/Have</h2>
 
 <p>Returns the correct conjugation of to have with captilization. For example</p>
 
@@ -368,7 +396,7 @@ $p2-&gt;Verb(&#39;Say&#39;);</code></pre>
 
 <pre><code>$p-&gt;Have;</code></pre>
 
-<h3 id="were-or-Were"><code>were</code> or <code>Were</code></h3>
+<h2 id="were-Were">were/Were</h2>
 
 <p>Returns the correct conjugation of past tense of to be with captilization. For example</p>
 
@@ -378,7 +406,7 @@ $p2-&gt;Verb(&#39;Say&#39;);</code></pre>
 
 <pre><code>$p-&gt;Were;</code></pre>
 
-<h3 id="theyre-or-Theyre"><code>theyre</code> or <code>Theyre</code></h3>
+<h2 id="theyre-Theyre">theyre/Theyre</h2>
 
 <p>Returns the correct contraction for the pronoun with to be, with captilization. For example</p>
 
@@ -388,7 +416,7 @@ $p2-&gt;Verb(&#39;Say&#39;);</code></pre>
 
 <pre><code>$p-&gt;Theyre;</code></pre>
 
-<h3 id="theyve-or-Theyve"><code>theyve</code> or <code>Theyve</code></h3>
+<h2 id="theyve-Theyve">theyve/Theyve</h2>
 
 <p>Returns the correct contraction for the pronoun with to have, with captilization. For example</p>
 

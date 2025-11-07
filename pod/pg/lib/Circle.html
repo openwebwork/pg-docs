@@ -38,7 +38,7 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNPOSIS">SYNPOSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a>
     <ul class="nav flex-column w-100">
       <li class="nav-item"><a class="nav-link p-0" href="#Command">Command:</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#Examples">Examples:</a></li>
@@ -53,14 +53,14 @@
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<pre><code>Circle</code></pre>
+<p>Circle</p>
 
-<a href="#_podtop_"><h1 id="SYNPOSIS">SYNPOSIS</h1></a>
+<a href="#_podtop_"><h1 id="SYNOPSIS">SYNOPSIS</h1></a>
 
 <pre><code>use Carp;
-    use GD;
-    use WWPlot;
-    use Fun;</code></pre>
+use GD;
+use WWPlot;
+use Fun;</code></pre>
 
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
@@ -72,19 +72,18 @@
 
 <h2 id="Examples">Examples:</h2>
 
-<pre><code>Here is the code used to define the subroutines open_circle
-and closed_circle in PGgraphmacros.pl
+<p>Here is the code used to define the subroutines open_circle and closed_circle in PGgraphmacros.pl</p>
 
-        sub open_circle {
-            my ($cx,$cy,$color) = @_;
-                new Circle ($cx, $cy, 4,$color,&#39;nearwhite&#39;);
-        }
+<pre><code>sub open_circle {
+    my ($cx,$cy,$color) = @_;
+    new Circle ($cx, $cy, 4,$color,&#39;nearwhite&#39;);
+}
 
-        sub closed_circle {
-            my ($cx,$cy, $color) = @_;
-            $color = &#39;black&#39; unless defined $color;
-                new Circle ($cx, $cy, 4,$color, $color);
-        }
+sub closed_circle {
+    my ($cx,$cy, $color) = @_;
+    $color = &#39;black&#39; unless defined $color;
+    new Circle ($cx, $cy, 4,$color, $color);
+}
 
 $circle_object2 = closed_circle( $x_position, $y_position, $color );
 

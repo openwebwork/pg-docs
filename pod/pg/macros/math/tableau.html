@@ -38,16 +38,21 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#TODO">TODO</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#FUNCTIONS">FUNCTIONS</a>
     <ul class="nav flex-column w-100">
-      <li class="nav-item"><a class="nav-link p-0" href="#TODO">TODO</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#Package-main">Package main</a>
-        <ul class="nav flex-column w-100">
-          <li class="nav-item"><a class="nav-link p-0" href="#References">References:</a></li>
-        </ul>
-      </li>
-      <li class="nav-item"><a class="nav-link p-0" href="#Package-tableau">Package tableau</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#tableauEquivalence">tableauEquivalence</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#get_tableau_variable_values-DEPRECATED">get_tableau_variable_values [DEPRECATED]</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#lp_basis_pivot">lp_basis_pivot</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#linebreak_at_commas">linebreak_at_commas</a></li>
+    </ul>
+  </li><li class="nav-item"><a class="nav-link p-0" href="#CONSTRUCTOR">CONSTRUCTOR</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#new">new</a></li>
+    </ul>
+  </li><li class="nav-item"><a class="nav-link p-0" href="#REFERENCES">REFERENCES</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#lop_display">lop_display</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#primal_basis_to_dual-dual_basis_to_primal">primal_basis_to_dual dual_basis_to_primal</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#Accessors-and-mutators">Accessors and mutators</a></li>
     </ul>
   </li>				</ul>
@@ -60,9 +65,9 @@
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<p>macros/tableau.pl</p>
+<p>tableau.pl - Some functions used to solve Linear Programing/Simplex tableau problems.</p>
 
-<h2 id="TODO">TODO</h2>
+<a href="#_podtop_"><h1 id="TODO">TODO</h1></a>
 
 <p>DONE: change find_next_basis_from_pivot to next_basis_from_pivot DONE: add phase2 to some match phase1 for some of the pivots -- added as main:: subroutine DONE: add a generic _solve that solves tableau once it has a filled basis -- needs to be tested add something that will fill the basis.</p>
 
@@ -70,7 +75,7 @@
 
 <p>current tableau returns the complete tableau minus the objective function row. (do we need a second objective function row? -- think we can skip this for now.)</p>
 
-<h2 id="DESCRIPTION">DESCRIPTION</h2>
+<a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
 <p>We&#39;re going to have several types MathObject Matrices Value::Matrix tableaus form John Jones macros MathObject tableaus Containing an matrix $A coefficients for constraint A vertical vector $b for constants for constraints A horizontal vector $c for coefficients for objective function A vertical vector corresponding to the value $z of the objective function dimensions $n problem vectors, $m constraints = $m slack variables A basis Value::Set -- positions for columns which are independent and whose associated variables can be determined uniquely from the parameter variables. The non-basis (parameter) variables are set to zero. state variables (assuming parameter variables are zero or when given parameter variables) create the methods for updating the various containers create the method for printing the tableau with all its decorations possibly with switches to turn the decorations on and off.</p>
 
@@ -98,12 +103,9 @@ The next to the last column holds z or objective value
 z(...x^i...) = c_i* x^i  (Einstein summation convention)
 FIXME: ?? allow c to be a 2 by n matrix so that you can do phase1 calculations easily</code></pre>
 
-<h2 id="Package-main">Package main</h2>
+<a href="#_podtop_"><h1 id="FUNCTIONS">FUNCTIONS</h1></a>
 
-<dl>
-
-<dt>tableauEquivalence</dt>
-<dd>
+<h2 id="tableauEquivalence">tableauEquivalence</h2>
 
 <pre><code>ANS( $tableau-&gt;cmp(checker=&gt;tableauEquivalence()) );</code></pre>
 
@@ -111,9 +113,7 @@ FIXME: ?? allow c to be a 2 by n matrix so that you can do phase1 calculations e
 
 <p>tableauEquivalence compares two matrices up to reshuffling the rows and multiplying each row by a constant. It is equivalent up to multiplying on the left by a permuation matrix or a (non-uniformly constant) diagonal matrix. It is appropriate for comparing augmented matrices representing a system of equations since the order of the equations is unimportant. This applies to tableaus for Linear Optimization Problems being solved using the simplex method.</p>
 
-</dd>
-<dt>get_tableau_variable_values</dt>
-<dd>
+<h2 id="get_tableau_variable_values-DEPRECATED">get_tableau_variable_values [DEPRECATED]</h2>
 
 <p>(DEPRECATED -- use Tableau-&gt;statevars method )</p>
 
@@ -121,15 +121,11 @@ FIXME: ?? allow c to be a 2 by n matrix so that you can do phase1 calculations e
 
 <p>Returns the solution variables to the tableau assuming that the parameter (non-basis) variables have been set to zero. It returns a list in array context and a reference to an array in scalar context.</p>
 
-</dd>
-<dt>lp_basis_pivot</dt>
-<dd>
+<h2 id="lp_basis_pivot">lp_basis_pivot</h2>
 
 <p>(DEPRECATED -- preserved for legacy problems. Use Tableau-&gt;basis method) Parameters: ($old_tableau,$old_basis,$pivot) Returns: ($new_tableau, Set($new_basis),\@statevars)</p>
 
-</dd>
-<dt>linebreak_at_commas</dt>
-<dd>
+<h2 id="linebreak_at_commas">linebreak_at_commas</h2>
 
 <p>Parameters: () Return:</p>
 
@@ -141,21 +137,9 @@ FIXME: ?? allow c to be a 2 by n matrix so that you can do phase1 calculations e
 
 <p>Replaces commas with line breaks in the latex presentations of the answer checker. Used most often when $constraints is a LinearInequality math object.</p>
 
-</dd>
-</dl>
+<a href="#_podtop_"><h1 id="CONSTRUCTOR">CONSTRUCTOR</h1></a>
 
-<h3 id="References">References:</h3>
-
-<p>MathObject Matrix methods: <a href="http://webwork.maa.org/wiki/Matrix_(MathObject_Class)">http://webwork.maa.org/wiki/Matrix_(MathObject_Class)</a> MathObject Contexts: <a href="http://webwork.maa.org/wiki/Common_Contexts">http://webwork.maa.org/wiki/Common_Contexts</a> CPAN RealMatrix docs: <a href="http://search.cpan.org/~leto/Math-MatrixReal-2.09/lib/Math/MatrixReal.pm">http://search.cpan.org/~leto/Math-MatrixReal-2.09/lib/Math/MatrixReal.pm</a></p>
-
-<p>More references: <a href="https://openwebwork.github.io/pg-docs/pod//pg/lib/Matrix.html">Matrix</a></p>
-
-<h2 id="Package-tableau">Package tableau</h2>
-
-<dl>
-
-<dt>new</dt>
-<dd>
+<h2 id="new">new</h2>
 
 <pre><code>Tableau-&gt;new(A=&gt;Matrix, b=&gt;Vector or Matrix, c=&gt;Vector or Matrix)
 
@@ -193,25 +177,24 @@ Notes:  (1 by m MathObjectMatrix) &lt;= Value::Matrix-&gt;new($self-&gt;b-&gt;tr
 
 ANS( $tableau-&gt;cmp(checker=&gt;tableauEquivalence()) );</code></pre>
 
-</dd>
-<dt>lop_display</dt>
-<dd>
+<a href="#_podtop_"><h1 id="REFERENCES">REFERENCES</h1></a>
 
-<pre><code>Useage:
+<p>MathObject Matrix methods: <a href="http://webwork.maa.org/wiki/Matrix_(MathObject_Class)">http://webwork.maa.org/wiki/Matrix_(MathObject_Class)</a> MathObject Contexts: <a href="http://webwork.maa.org/wiki/Common_Contexts">http://webwork.maa.org/wiki/Common_Contexts</a> CPAN RealMatrix docs: <a href="http://search.cpan.org/~leto/Math-MatrixReal-2.09/lib/Math/MatrixReal.pm">http://search.cpan.org/~leto/Math-MatrixReal-2.09/lib/Math/MatrixReal.pm</a></p>
 
-lop_display($tableau, align=&gt;&#39;cccc|cc|c|c&#39;, toplevel=&gt;[qw(x1,x2,x3,x4,s1,s2,P,b)])</code></pre>
+<p>More references: <a href="https://openwebwork.github.io/pg-docs/pod//pg/lib/Matrix.html">Matrix</a></p>
+
+<h2 id="lop_display">lop_display</h2>
+
+<p>Usage:</p>
+
+<pre><code>lop_display($tableau, align=&gt;&#39;cccc|cc|c|c&#39;, toplevel=&gt;[qw(x1,x2,x3,x4,s1,s2,P,b)])</code></pre>
 
 <p>Pretty prints the output of a matrix as a LOP with separating labels and variable labels.</p>
 
-</dd>
-<dt>primal_basis_to_dual dual_basis_to_primal</dt>
-<dd>
+<h2 id="primal_basis_to_dual-dual_basis_to_primal">primal_basis_to_dual dual_basis_to_primal</h2>
 
 <pre><code>[complementary_basis_set] = $self-&gt;primal_basis_to_dual(primal_basis_set)
 [complementary_basis_set] = $self-&gt;dual_basis_to_primal(dual_basis_set)</code></pre>
-
-</dd>
-</dl>
 
 <h2 id="Accessors-and-mutators">Accessors and mutators</h2>
 

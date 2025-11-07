@@ -38,7 +38,7 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#USAGE">USAGE</a></li>				</ul>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#SEE-ALSO">SEE ALSO</a></li>				</ul>
 			</nav>
 		</div>
 	</aside>
@@ -56,7 +56,7 @@
 
 <p>Use FormulaWithUnits(&quot;num units&quot;) or FormulaWithUnits(formula,&quot;units&quot;) to generate a FormulaWithUnits object, and then call its cmp() method to get an answer checker for your formula with units.</p>
 
-<a href="#_podtop_"><h1 id="USAGE">USAGE</h1></a>
+<a href="#_podtop_"><h1 id="SYNOPSIS">SYNOPSIS</h1></a>
 
 <pre><code>ANS(FormulaWithUnits(&quot;3x+1 ft&quot;)-&gt;cmp);
 ANS(FormulaWithUnits(&quot;$a*x+1 ft&quot;)-&gt;cmp);
@@ -85,6 +85,10 @@ $a = FormulaWithUnits(&quot;3x apples&quot;,{newUnit=&gt;$newUnits});</code></pr
 <p>In this case both 3x apple and 3x apples would be accepted as answers.</p>
 
 <p>Note: English pluralization is suprisingly hard, so WeBWorK will make no attempt to display a grammerically correct result.</p>
+
+<a href="#_podtop_"><h1 id="SEE-ALSO">SEE ALSO</h1></a>
+
+<p>There is now a context for handling units: <a href="https://openwebwork.github.io/pg-docs/pod//pg/macros/contexts/contextUnits.html">contextUnits.pl</a></p>
 
 		</div>
 	</div>

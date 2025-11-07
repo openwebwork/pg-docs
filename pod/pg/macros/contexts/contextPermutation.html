@@ -38,7 +38,7 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#USAGE">USAGE</a></li>				</ul>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li>				</ul>
 			</nav>
 		</div>
 	</aside>
@@ -48,15 +48,9 @@
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<p><code>Context(&quot;Permutation&quot;)</code> - Provides contexts that allow the entry of cycles and permutations.</p>
+<p>contextPermutation.pl - Provides contexts that allow the entry of cycles and permutations.</p>
 
-<a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
-
-<p>These contexts allow you to enter permutations using cycle notation. The entries in a cycle are separated by spaces and enclosed in parentheses. Cycles are multiplied by juxtaposition. A permutation can be multiplied on the left by a number in order to obtain the result of that number under the action of the permutation. Exponentiation is also allowed (as described below).</p>
-
-<p>There are three contexts included here: <code>Context(&quot;Permutation&quot;)</code>, which allows permutations in any form, <code>Context(&quot;Permutation-Strict&quot;)</code>, which only allows permutations that use disjoint cycles, and <code>Context(&quot;Permutation-Canonical&quot;)</code>, which only allows permutations that are written in canonical form (as described below).</p>
-
-<a href="#_podtop_"><h1 id="USAGE">USAGE</h1></a>
+<a href="#_podtop_"><h1 id="SYNOPSIS">SYNOPSIS</h1></a>
 
 <pre><code>loadMacros(&quot;contextPermutation.pl&quot;);
 
@@ -82,6 +76,12 @@ $P = $P1-&gt;canonical;               # canonical representation
 $P1 = Compute(&quot;(1 2 3)(4 5)&quot;);
 $P2 = Compute(&quot;(5 4)(3 1 2)&quot;);
 $P1 == $P2;                        # is true</code></pre>
+
+<a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
+
+<p>These contexts allow you to enter permutations using cycle notation. The entries in a cycle are separated by spaces and enclosed in parentheses. Cycles are multiplied by juxtaposition. A permutation can be multiplied on the left by a number in order to obtain the result of that number under the action of the permutation. Exponentiation is also allowed (as described below).</p>
+
+<p>There are three contexts included here: <code>Context(&quot;Permutation&quot;)</code>, which allows permutations in any form, <code>Context(&quot;Permutation-Strict&quot;)</code>, which only allows permutations that use disjoint cycles, and <code>Context(&quot;Permutation-Canonical&quot;)</code>, which only allows permutations that are written in canonical form (as described below).</p>
 
 <p>Cycles and permutations can be multiplied to obtain the permutation that consists of one followed by the other, or multiplied on the left by a number to obtain the image of the number under the permutation. A permutation raised to a positive integer is the permutation multiplied by itself that many times. A power of -1 is the inverse of the permutation, while a larger negative number is the inverse multiplied by itself that many times (the absolute value of the power).</p>
 

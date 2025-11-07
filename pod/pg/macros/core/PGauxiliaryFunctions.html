@@ -38,25 +38,25 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#FUNCTIONS">FUNCTIONS</a>
     <ul class="nav flex-column w-100">
-      <li class="nav-item"><a class="nav-link p-0" href="#step-function">step function</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#ceil-Function">ceil Function</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#floor-Function">floor Function</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#max-function">max function</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#min-function">min function</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#round-function">round function</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#Round-function">Round function</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#lcm-function">lcm function</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#gcf-function">gcf function</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#gcd-function">gcd function</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#random_coprime-function">random_coprime function</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#random_pairwise_coprime-function">random_pairwise_coprime function</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#isPrime-function">isPrime function</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#reduce-function">reduce function</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#preFormat-function">preFormat function</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#step">step</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#ceil">ceil</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#floor">floor</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#max">max</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#min">min</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#round">round</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Round">Round</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#lcm">lcm</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#gcf">gcf</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#gcd">gcd</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#random_coprime">random_coprime</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#random_pairwise_coprime">random_pairwise_coprime</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#isPrime">isPrime</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#reduce">reduce</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#preFormat">preFormat</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#random_subset-function">random_subset function</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#repeated-function">repeated function</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#repeated">repeated</a></li>
     </ul>
   </li>				</ul>
 			</nav>
@@ -68,7 +68,7 @@
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<p>A set of auxiliary functions that are often used in PG problems.</p>
+<p>PGauxialliaryFunctions.pl - A set of auxiliary functions that are often used in PG problems.</p>
 
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
@@ -91,7 +91,9 @@ random_coprime($ar1, $ar2, ... )
 random_subset($n, @set)
 repeated(@list)</code></pre>
 
-<h2 id="step-function">step function</h2>
+<a href="#_podtop_"><h1 id="FUNCTIONS">FUNCTIONS</h1></a>
+
+<h2 id="step">step</h2>
 
 <p>Usage: <code>step(x);</code></p>
 
@@ -101,7 +103,7 @@ repeated(@list)</code></pre>
 
 <pre><code>step(3.14159) returns 1</code></pre>
 
-<h2 id="ceil-Function">ceil Function</h2>
+<h2 id="ceil">ceil</h2>
 
 <p>Usage: <code>ceil(x);</code></p>
 
@@ -112,7 +114,7 @@ repeated(@list)</code></pre>
 <pre><code>ceil(3.14159) returns 4
 ceil(-9.75) return -9</code></pre>
 
-<h2 id="floor-Function">floor Function</h2>
+<h2 id="floor">floor</h2>
 
 <p>Usage: <code>floor(x);</code></p>
 
@@ -123,7 +125,7 @@ ceil(-9.75) return -9</code></pre>
 <pre><code>floor(3.14159) returns 3
 floor(-9.75) return -10</code></pre>
 
-<h2 id="max-function">max function</h2>
+<h2 id="max">max</h2>
 
 <p>Usage: <code>max(@arr);</code></p>
 
@@ -133,7 +135,7 @@ floor(-9.75) return -10</code></pre>
 
 <pre><code>max(1,2,3,4,5,6,7) returns 7</code></pre>
 
-<h2 id="min-function">min function</h2>
+<h2 id="min">min</h2>
 
 <p>Usage: <code>min(@arr);</code></p>
 
@@ -143,7 +145,7 @@ floor(-9.75) return -10</code></pre>
 
 <pre><code>min(1,2,3,4,5,6,7) returns 1</code></pre>
 
-<h2 id="round-function">round function</h2>
+<h2 id="round">round</h2>
 
 <p>Usage: <code>round(x);</code></p>
 
@@ -153,7 +155,7 @@ floor(-9.75) return -10</code></pre>
 
 <pre><code>round(3.14159) returns 3</code></pre>
 
-<h2 id="Round-function">Round function</h2>
+<h2 id="Round">Round</h2>
 
 <p>Usage: <code>Round(x);</code></p>
 
@@ -167,7 +169,7 @@ floor(-9.75) return -10</code></pre>
 
 <pre><code>Round(1.789,2) returns 1.79</code></pre>
 
-<h2 id="lcm-function">lcm function</h2>
+<h2 id="lcm">lcm</h2>
 
 <p>Usage: <code>lcm(@arr);</code></p>
 
@@ -179,7 +181,7 @@ floor(-9.75) return -10</code></pre>
 
 <p>Note: it checks for an empty array, however doesn&#39;t check if the inputs are integers.</p>
 
-<h2 id="gcf-function">gcf function</h2>
+<h2 id="gcf">gcf</h2>
 
 <p>Usage: <code>gcf(@arr);</code></p>
 
@@ -191,7 +193,7 @@ floor(-9.75) return -10</code></pre>
 
 <p>Note: it checks for an empty array, however doesn&#39;t check if the inputs are integers.</p>
 
-<h2 id="gcd-function">gcd function</h2>
+<h2 id="gcd">gcd</h2>
 
 <p><code>Usage: gcd(@arr);</code></p>
 
@@ -203,7 +205,7 @@ floor(-9.75) return -10</code></pre>
 
 <p>Note: this is just an alias for gcf.</p>
 
-<h2 id="random_coprime-function">random_coprime function</h2>
+<h2 id="random_coprime">random_coprime</h2>
 
 <p>Usage: <code>random_coprime(array of array_refs);</code></p>
 
@@ -226,7 +228,7 @@ random_coprime([-9..-1,1..9],[1..9],[1..9]) may return (-3,7,4), (-1,1,1), or (-
 
 <p>Note for Problem Authors: one reason for developing this function is to be able to create polynomials that don&#39;t have a constant factor. For example, if random_coprime([-9..-1,1..9],[1..9],[1..9]) returns (-5,5,3) then building the quadratic 3x^2+5x-5 doesn&#39;t lead to a constant multiple to be factored.</p>
 
-<h2 id="random_pairwise_coprime-function">random_pairwise_coprime function</h2>
+<h2 id="random_pairwise_coprime">random_pairwise_coprime</h2>
 
 <p>Usage: <code>random_pairwise_coprime($arr);</code></p>
 
@@ -237,7 +239,7 @@ random_coprime([-9..-1,1..9],[1..9],[1..9]) may return (-3,7,4), (-1,1,1), or (-
 <pre><code>random_coprime([-9..-1,1..9],[1..9],[1..9]) may return (-3,7,4), (-1,1,1), or (-2,2,3) but not (-2,2,4)
 random_pairwise_coprime([-9..-1,1..9],[1..9],[1..9]) may return (-3,7,4) or (-1,1,1) but not (-2,2,3) or (3,5,6)</code></pre>
 
-<h2 id="isPrime-function">isPrime function</h2>
+<h2 id="isPrime">isPrime</h2>
 
 <p>Usage: <code>isPrime(n);</code></p>
 
@@ -250,7 +252,7 @@ isPrime(8) returns 0</code></pre>
 
 <p>Note: this doesn&#39;t check if n is negative.</p>
 
-<h2 id="reduce-function">reduce function</h2>
+<h2 id="reduce">reduce</h2>
 
 <p>Usage: <code>reduce(num,den);</code></p>
 
@@ -260,7 +262,7 @@ isPrime(8) returns 0</code></pre>
 
 <pre><code>reduce(15,20) returns (3,4)</code></pre>
 
-<h2 id="preFormat-function">preFormat function</h2>
+<h2 id="preFormat">preFormat</h2>
 
 <p>Usage: <code>preFormat($scalar, &quot;quoted string&quot;);</code></p>
 
@@ -281,7 +283,7 @@ isPrime(8) returns 0</code></pre>
 <pre><code>random_subset(3, &#39;first&#39;, &#39;second&#39;, &#39;third&#39;, &#39;fourth&#39;, &#39;fifth&#39;)
 random_subset(3, [&#39;first&#39;, &#39;second&#39;, &#39;third&#39;, &#39;fourth&#39;, &#39;fifth&#39;])</code></pre>
 
-<h2 id="repeated-function">repeated function</h2>
+<h2 id="repeated">repeated</h2>
 
 <p>Usage: <code>repeated(@list)</code></p>
 

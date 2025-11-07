@@ -38,15 +38,7 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#Synposis-macros-by-R-Cruz----The-College-of-Idaho">Synposis macros by R Cruz -- The College of Idaho</a>
-    <ul class="nav flex-column w-100">
-      <li class="nav-item">
-        <ul class="nav flex-column w-100">
-          <li class="nav-item"><a class="nav-link p-0" href="#Format-the-instuctor-answer">Format the instuctor answer</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>				</ul>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#Format-the-instuctor-answer">Format the instuctor answer</a></li>				</ul>
 			</nav>
 		</div>
 	</aside>
@@ -56,11 +48,13 @@
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<pre><code>extra macros for Intermediate Algebra problems at The College of Idaho</code></pre>
+<p>CofIdaho_macros.pl - Extra macros for Intermediate Algebra problems at The College of Idaho.</p>
 
-<a href="#_podtop_"><h1 id="Synposis-macros-by-R-Cruz----The-College-of-Idaho">Synposis macros by R Cruz -- The College of Idaho</h1></a>
+<a href="#_podtop_"><h1 id="SYNOPSIS">SYNOPSIS</h1></a>
 
-<h3 id="Format-the-instuctor-answer">Format the instuctor answer</h3>
+<p>macros by R Cruz -- The College of Idaho</p>
+
+<a href="#_podtop_"><h1 id="Format-the-instuctor-answer">Format the instuctor answer</h1></a>
 
 <p>1) SimplifyExponents: Formats an expression without negative exponents To use: SimplifyExponents(num, den,~~@var,@exp); where num = numerator&#39;s constant den = denominator&#39;s constant ~~@var = pointer to an array with the list of variables @exp = array with the exponents for the variables</p>
 
@@ -79,7 +73,7 @@
 <pre><code>Note: Answers must be in the form: monomial(poly)...(poly) with
   or without parentheses about the monomial.  The polynomial factors must
   not contain any other grouping symbols and, in any case, only parenthesis
-  may be used.  This needs to be in the instructions for any set that uses 
+  may be used.  This needs to be in the instructions for any set that uses
   this macro (in the screenHeader.pg file).
 
 Note: &quot;StrictFactoringEvaluator&quot; requires leading negatives to be factored out.
@@ -88,7 +82,7 @@ Note: &quot;StrictFactoringEvaluator&quot; requires leading negatives to be fact
 
 <p>8) RationalExpEvaluator: Checks for simplified rational expressions. To use: ANS(RationalExpEvaluation($answer,[variable array])); or something like: ANS(RationalExpEvaluator($answer,[&quot;x&quot;,&quot;y&quot;]));</p>
 
-<pre><code>Note: Answers must be of the form: (poly)/(poly) </code></pre>
+<pre><code>Note: Answers must be of the form: (poly)/(poly)</code></pre>
 
 <p>9) ReduceFraction: Returns a string that represents a reduced fraction. To use: $a = SimplifyFraction(numerator expression,denominator espression);</p>
 

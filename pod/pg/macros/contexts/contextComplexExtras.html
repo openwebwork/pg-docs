@@ -38,7 +38,7 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li>				</ul>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li>				</ul>
 			</nav>
 		</div>
 	</aside>
@@ -48,11 +48,13 @@
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<p><i>contextCopmlesExtras.pl</i> - Add conjugation to Complex contexts, and transpose, conjugate transpose, trace, and determinant to Complex-Matrix context.</p>
+<p>contextComplexExtras.pl - Add conjugation to Complex contexts, and transpose, conjugate transpose, trace, and determinant to Complex-Matrix context.</p>
 
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
 <p>The <i>contextComplexExtras.pl</i> file adds the ability to include matrix transpose, conjugate transpose, trace, and determinants in student answers in the Complex-Matrix context, and adds conjugation to all Complex contexts.</p>
+
+<a href="#_podtop_"><h1 id="SYNOPSIS">SYNOPSIS</h1></a>
 
 <p>Conjugation is represented by <code>~</code>, as in <code>~z</code> or <code>~M</code> to conjugate a complex number or complex matrix. This can be used in both PG code as well as student answers. The transpose is represented by <code>^T</code>, as in <code>M^T</code>, in student answers or parsed strings. The conjugate transpose is <code>^*</code>, as in <code>M^*</code>, and is equivalent to <code>~M^T</code>. The trace is given as <code>tr(M)</code>, and the determinant by <code>det(M)</code>. Thus you can do things like:</p>
 

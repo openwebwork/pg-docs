@@ -38,20 +38,7 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item">
-    <ul class="nav flex-column w-100">
-      <li class="nav-item">
-        <ul class="nav flex-column w-100">
-          <li class="nav-item"><a class="nav-link p-0" href="#Fraction">Fraction</a>
-            <ul class="nav flex-column w-100">
-              <li class="nav-item"><a class="nav-link p-0" href="#Variables-and-Methods">Variables and Methods</a></li>
-              <li class="nav-item"><a class="nav-link p-0" href="#Synopsis">Synopsis</a></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </li>				</ul>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#VARIABLES">VARIABLES</a></li><li class="nav-item"><a class="nav-link p-0" href="#METHODS">METHODS</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li>				</ul>
 			</nav>
 		</div>
 	</aside>
@@ -59,44 +46,40 @@
 		<div class="container-fluid p-3 h-100" id="_podtop_">
 
 
-<h3 id="Fraction">Fraction</h3>
+<a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<pre><code>This object is designed to ease the use of fractions</code></pre>
+<p>Fraction - This object is designed to ease the use of fractions</p>
 
-<h4 id="Variables-and-Methods">Variables and Methods</h4>
+<a href="#_podtop_"><h1 id="VARIABLES">VARIABLES</h1></a>
 
-<pre><code>Variables
+<pre><code>numerator   # numerator of fraction
+denominator # denominator of fraction</code></pre>
 
-        numerator       #numerator of fraction
-        denominator     #denominator of fraction
+<a href="#_podtop_"><h1 id="METHODS">METHODS</h1></a>
 
-Arithmetic Methods      #these will all accept a scalar value or
-                        #another fraction as an argument
+<p>Arithmetic Methods #these will all accept a scalar value or #another fraction as an argument</p>
 
-        plus            #returns the sum of the fraction and argument
-        minus           #returns fraction minus argument
-        subtractFrom    #returns argument minus fraction
-        divBy           #returns fraction divided by argument
-        divInto         #returns argument divided by fraction
-        times           #returns fraction times argument
-        compare         #returns &lt;, =, or &gt; for the relation of fraction to argument
+<pre><code>plus            #returns the sum of the fraction and argument
+minus           #returns fraction minus argument
+subtractFrom    #returns argument minus fraction
+divBy           #returns fraction divided by argument
+divInto         #returns argument divided by fraction
+times           #returns fraction times argument
+compare         #returns &lt;, =, or &gt; for the relation of fraction to argument
 
-                pow             #returns fraction raised to argument, a given integer power
+pow             #returns fraction raised to argument, a given integer power</code></pre>
 
+<p>Other methods</p>
 
-Other methods
+<pre><code>reduce          #reduces to lowest terms, and makes sure denominator is positive
+scalar          #returns the scalar value numerator/denominator
+print           #prints the fraction
+print_mixed     #prints the fractionas a mixed number
+print_inline    #prints the fraction like this 2/3</code></pre>
 
-        reduce          #reduces to lowest terms, and makes sure denominator is positive
-        scalar          #returns the scalar value numerator/denominator
-        print           #prints the fraction
-        print_mixed     #prints the fractionas a mixed number
-        print_inline    #prints the fraction like this 2/3</code></pre>
+<a href="#_podtop_"><h1 id="SYNOPSIS">SYNOPSIS</h1></a>
 
-<h4 id="Synopsis">Synopsis</h4>
-
-<pre><code>The fraction object stores two variables, numerator and denominator.  The basic
-arithmatic methods listed above can be performed on a fraction, and it can return its own
-scalar value for use with functions expecting a scalar (ie, sqrt($frac-&gt;scalar) ).</code></pre>
+<p>The fraction object stores two variables, numerator and denominator. The basic arithmatic methods listed above can be performed on a fraction, and it can return its own scalar value for use with functions expecting a scalar (ie, sqrt($frac-&gt;scalar) ).</p>
 
 		</div>
 	</div>

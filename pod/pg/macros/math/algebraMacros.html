@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>math/algebraMacros.pl</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://openwebwork.github.io/pg-docs/pod/assets/podviewer.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="https://openwebwork.github.io/pg-docs/pod/assets/podviewer.js" defer></script>
+</head>
+<body>
+	<div class="pod-header navbar navbar-dark bg-primary px-3 position-fixed border-bottom border-dark">
+		<div class="container-fluid d-flex flex-column d-md-block">
+			<h1 class="navbar-brand fw-bold fs-5 me-auto me-md-0 mb-2 mb-md-0">math/algebraMacros.pl</h1>
+			<button class="navbar-toggler d-md-none me-auto" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Toggle Sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+	<aside class="offcanvas-md offcanvas-start border-end border-dark position-fixed" tabindex="-1"
+		id="sidebar" aria-labelledby="sidebar-label">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="sidebar-label">Index</h2>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"
+			   	aria-label="Close">
+			</button>
+		</div>
+		<div class="offcanvas-body p-md-3 w-100">
+			<nav>
+				<ul class="nav flex-column w-100">
+					<li class="nav-item">
+						<a href="https://openwebwork.github.io/pg-docs/pod" class="nav-link p-0">WeBWorK POD Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
+					</li>
+					<li><hr></li>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#FUNCTIONS">FUNCTIONS</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#fyshuffle">fyshuffle</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#xgcd">xgcd</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#disjointCycles">disjointCycles</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#cyclesToTranspositions">cyclesToTranspositions</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#cycleOrder">cycleOrder</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#isEven">isEven</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#modChecker">modChecker</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#checkCycles">checkCycles</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#checkListOfTranspositions">checkListOfTranspositions</a></li>
+    </ul>
+  </li>				</ul>
+			</nav>
+		</div>
+	</aside>
+	<div class="pod-page-container d-flex">
+		<div class="container-fluid p-3 h-100" id="_podtop_">
+
+
+<a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
+
+<p>algebraMacros.pl - a set of functions that are useful in an algebra/number theory problems</p>
+
+<a href="#_podtop_"><h1 id="FUNCTIONS">FUNCTIONS</h1></a>
+
+<h2 id="fyshuffle">fyshuffle</h2>
+
+<p>fisher-yates shuffle</p>
+
+<p>argument: reference to a list shuffles list in-place</p>
+
+<p>returns: nothing</p>
+
+<h2 id="xgcd">xgcd</h2>
+
+<p>extended euclidean algorithm</p>
+
+<p>arguments: a, b</p>
+
+<p>returns: d, x, y, s, t where gcd( a, b ) = d = a( x + sk ) + b( y + tk ) for all k</p>
+
+<h2 id="disjointCycles">disjointCycles</h2>
+
+<p>subroutine to decompose a permutation into a product of disjoint cycles.</p>
+
+<p>argument: reference to a list containing the permutation data that is, element 0 of the list is f(0), element 1 is f(1), etc</p>
+
+<p>returns: mathObject list of lists representing the cycle decomposition of the permutation</p>
+
+<h2 id="cyclesToTranspositions">cyclesToTranspositions</h2>
+
+<p>subroutine to decompose a permutation into a product of transpositions ( 2-cycles ).</p>
+
+<p>argument: mathObject list of lists representing the cycle decomposition of the permutation (i.e., the output of disjointCycles() )</p>
+
+<p>returns: mathObject list of lists representing the permutation as a list of transpositions</p>
+
+<h2 id="cycleOrder">cycleOrder</h2>
+
+<p>subroutine to determine the order of a permutation</p>
+
+<p>argument: a list of lists representing a permutation in the form of a product of disjoint cycles ( i.e., the output of disjointCycles() )</p>
+
+<p>returns: mathObject integer representing the order of the permutation</p>
+
+<h2 id="isEven">isEven</h2>
+
+<p>subroutine to determine the parity of a permutation</p>
+
+<p>argument: a list of lists representing a permutation in the form of a product of disjoint cycles (i.e., the output of disjointCycles() )</p>
+
+<p>returns: TRUE if the permutation is even, FALSE if the permutation is odd</p>
+
+<h2 id="modChecker">modChecker</h2>
+
+<h2 id="checkCycles">checkCycles</h2>
+
+<h2 id="checkListOfTranspositions">checkListOfTranspositions</h2>
+
+		</div>
+	</div>
+</body>
+</html>

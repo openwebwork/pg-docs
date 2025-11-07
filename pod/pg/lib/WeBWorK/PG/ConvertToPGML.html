@@ -38,7 +38,11 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#OPTIONS">OPTIONS</a></li><li class="nav-item"><a class="nav-link p-0" href="#POD-ERRORS">POD ERRORS</a></li>				</ul>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#FUNCTIONS">FUNCTIONS</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#convertToPGML">convertToPGML</a></li>
+    </ul>
+  </li>				</ul>
 			</nav>
 		</div>
 	</aside>
@@ -48,7 +52,7 @@
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<p>WeBWorK::PG::ConvertToPGML</p>
+<p>WeBWorK::PG::ConvertToPGML - convert a file in original PG format to PGML</p>
 
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
@@ -58,29 +62,39 @@
 
 <ul>
 
+<li><p>Update the loadMacros call to include <code>PGML.pl</code>, eliminate <code>MathObject.pl</code> (since it is loaded by <code>PGML.pl</code>) and adds <code>PGcourse.pl</code> to the end of the list.</p>
+
+</li>
+<li><p>Coverts <code>BEGIN_TEXT</code>/<code>END_TEXT</code> (and older versions of this), <code>BEGIN_SOLUTION</code>/<code>END_SOLUTION</code>, <code>BEGIN_HINT</code>/<code>END_HINT</code> to their newer <code>BEGIN_PGML</code> blocks.</p>
+
+</li>
+<li><p>Convert math mode in these blocks to PGML style math mode.</p>
+
+</li>
+<li><p>Convert other styling (bold, italics) to PGML style.</p>
+
+</li>
+<li><p>Convert variables to the interpolated <code>[$var]</code> PGML style.</p>
+
+</li>
+<li><p>Convert some of the answer rules to newer PGML style.</p>
+
+</li>
+<li><p>Remove some outdated code.</p>
+
+</li>
+<li><p>A few other minor things.</p>
+
+</li>
 </ul>
 
-<a href="#_podtop_"><h1 id="OPTIONS">OPTIONS</h1></a>
+<a href="#_podtop_"><h1 id="FUNCTIONS">FUNCTIONS</h1></a>
 
-<a href="#_podtop_"><h1 id="POD-ERRORS">POD ERRORS</h1></a>
+<h2 id="convertToPGML">convertToPGML</h2>
 
-<p>Hey! <b>The above document had some coding errors, which are explained below:</b></p>
+<p>This subroutine converts the file that is passed in as a multi-line string and assumed to be an older-style PG file with BEGIN_TEXT/END_TEXT, BEGIN_SOLUTION/END_SOLUTION, and BEGIN_HINT/END_HINT blocks.</p>
 
-<dl>
-
-<dt>Around line 12:</dt>
-<dd>
-
-<p>=over should be: &#39;=over&#39; or &#39;=over positive_number&#39;</p>
-
-</dd>
-<dt>Around line 25:</dt>
-<dd>
-
-<p>You forgot a &#39;=back&#39; before &#39;=head1&#39;</p>
-
-</dd>
-</dl>
+<p>The input is expected to be a string containing the source of the pg file to be converted. This returns a string that is the converted input string.</p>
 
 		</div>
 	</div>

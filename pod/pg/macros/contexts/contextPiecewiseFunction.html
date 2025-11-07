@@ -38,7 +38,7 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li>				</ul>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li>				</ul>
 			</nav>
 		</div>
 	</aside>
@@ -50,25 +50,22 @@
 
 <p>contextPiecewiseFunction.pl - Allow usage of piecewise functions.</p>
 
-<a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
+<a href="#_podtop_"><h1 id="SYNOPSIS">SYNOPSIS</h1></a>
 
-<p>This file implements a context in which piecewise-defined functions can be specified by students and problem authors. To use it, add</p>
+<pre><code>loadMacros(&quot;contextPiecewiseFunction.pl&quot;);
+Context(&quot;PiecewiseFunction&quot;);
 
-<pre><code>loadMacros(&quot;contextPiecewiseFunction.pl&quot;);</code></pre>
-
-<p>and then use</p>
-
-<pre><code>Context(&quot;PiecewiseFunction&quot;);</code></pre>
-
-<p>to select the context for piecewise functions. There are several ways to produce a piecewise function. For example:</p>
-
-<pre><code>$f = Compute(&quot;x if x &gt;= 0 else -x&quot;);
+$f = Compute(&quot;x if x &gt;= 0 else -x&quot;);
 $f = Compute(&quot;x if x &gt;= 0 else -x if x &lt; 0&quot;);
 $f = Formula(&quot;x+1 if x &gt; 2 else 4 if x = 2 else 1-x&quot;);
 $f = PiecewiseFunction(&quot;x^2 if 1 &lt; x &lt;= 2 else 2x+1&quot;);
 $f = PiecewiseFunction(&quot;1 &lt; x &lt;= 2&quot; =&gt; &quot;x^2&quot;, &quot;2x+1&quot;);
 $f = PiecewiseFunction(&quot;(1,2]&quot; =&gt; &quot;x^2&quot;, &quot;2x+1&quot;);
 $f = PiecewiseFunction(Interval(&quot;(1,2]&quot;) =&gt; &quot;x^2&quot;, &quot;2x+1&quot;);</code></pre>
+
+<a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
+
+<p>This file implements a context in which piecewise-defined functions can be specified by students and problem authors.</p>
 
 <p>You can use either Compute() or Formula() interchangeably to convert a string containing &quot;if&quot; and &quot;else&quot; to the corresponding PiecewiseFunction. The PiecewiseFunction() constructor can also do this, or you can pass it a list of interval=&gt;formula pairs that specify the various branches. If there is an unpaired final formula, it represents the &quot;otherwise&quot; portion of the function (the formula to use of the input is not in any of the given intervals).</p>
 
@@ -81,21 +78,17 @@ $f = PiecewiseFunction(Interval(&quot;(1,2]&quot;) =&gt; &quot;x^2&quot;, &quot;
 $f = Formula(&quot;1-x if x &gt; 0 else 4 if x = 0 else 1+x if x &lt; 0&quot;);
 $a = random(-2,2,.1);
 
-Context()-&gt;texStrings;
-BEGIN_TEXT
-If \[f(x)=$f\] then \(f($a)\) = \{ans_rule(20)\}.
-END_TEXT
-Context()-&gt;normalStrings;
-
-ANS($f-&gt;eval(x=&gt;$a)-&gt;cmp);</code></pre>
+BEGIN_PGML
+If [`f(x) = [$f]`] then [`f($a)`] = [_]{$f-&gt;eval(x =&gt; $a)}
+END_PGML</code></pre>
 
 <p>Normally when you use a piecewise function at the end of a sentence, the period is placed at the end of the last case. Since</p>
 
-<pre><code>\[ f(x) = $f \].</code></pre>
+<pre><code>[`f(x) = $f`].</code></pre>
 
 <p>would put the period centered at the right-hand side of the function, this is not what is desired. To get a period at the end of the last case, use</p>
 
-<pre><code>\[ f(x) = \{$f-&gt;with(final_period=&gt;1)\} \]</code></pre>
+<pre><code>[`f(x) = [@ $f-&gt;with(final_period =&gt; 1) @]`]</code></pre>
 
 <p>instead.</p>
 

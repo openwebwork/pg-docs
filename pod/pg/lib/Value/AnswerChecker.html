@@ -38,15 +38,11 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#METHODS">METHODS</a>
     <ul class="nav flex-column w-100">
-      <li class="nav-item">
+      <li class="nav-item"><a class="nav-link p-0" href="#cmp_defaults">cmp_defaults</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Compare-Details-for-Default-MathObjects">Compare Details for Default MathObjects</a>
         <ul class="nav flex-column w-100">
-          <li class="nav-item">
-            <ul class="nav flex-column w-100">
-              <li class="nav-item"><a class="nav-link p-0" href="#mathObject-cmp_defaults">$mathObject-&gt;cmp_defaults()</a></li>
-            </ul>
-          </li>
           <li class="nav-item"><a class="nav-link p-0" href="#Value::Real">Value::Real</a></li>
           <li class="nav-item"><a class="nav-link p-0" href="#Value::String">Value::String</a></li>
           <li class="nav-item"><a class="nav-link p-0" href="#Value::Point">Value::Point</a></li>
@@ -68,160 +64,213 @@
 		<div class="container-fluid p-3 h-100" id="_podtop_">
 
 
+<a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
+
+<p>AnswerChecker - Implements the compare method for Value objects.</p>
+
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
-<pre><code>#############################################################
-#
-#  Implements the -&gt;cmp method for Value objects.
-#  Otherwise known as MathObjects.  This produces
-#  an answer checker appropriate for the type of object.
-#  Additional options can be passed to the cmp method to
-#  modify its action.
-#
-#   Usage:  $num = Real(3.45); # Real can be replaced by any other MathObject
-#                       ANS($num-&gt;cmp(compareOptionName =&gt; compareOptionValue, ... ))
-#
-#  The individual Value packages are modified below to add the
-#  needed methods.
-#
-#############################################################</code></pre>
+<p>Implements the -&gt;cmp method for Value objects. Otherwise known as MathObjects. This produces an answer checker appropriate for the type of object. Additional options can be passed to the cmp method to modify its action.</p>
 
-<h4 id="mathObject-cmp_defaults">$mathObject-&gt;cmp_defaults()</h4>
+<p>Usage:</p>
 
-<p># Internal use. # Set default flags for the answer checker in this object # showTypeWarnings =&gt; 1 # showEqualErrors =&gt; 1 # ignoreStrings =&gt; 1 # studentsMustReduceUnions =&gt; 1 # showUnionReduceWarnings =&gt; 1 #</p>
+<pre><code>$num = Real(3.45); # Real can be replaced by any other MathObject
+ANS($num-&gt;cmp(compareOptionName =&gt; compareOptionValue, ... ))</code></pre>
+
+<p>The individual Value packages are modified below to add the needed methods.</p>
+
+<a href="#_podtop_"><h1 id="METHODS">METHODS</h1></a>
+
+<h2 id="cmp_defaults">cmp_defaults</h2>
+
+<p>Internal use. Set default flags for the answer checker in this object</p>
+
+<pre><code>showTypeWarnings         =&gt; 1
+showEqualErrors          =&gt; 1
+ignoreStrings            =&gt; 1
+studentsMustReduceUnions =&gt; 1
+showUnionReduceWarnings  =&gt; 1</code></pre>
+
+<h2 id="Compare-Details-for-Default-MathObjects">Compare Details for Default MathObjects</h2>
 
 <h3 id="Value::Real">Value::Real</h3>
 
-<pre><code>Usage ANS( Real(3.56)-&gt;cmp() )
-        Compares response to a real value using &#39;fuzzy&#39; comparison
-        compareOptions and default values:
-                  showTypeWarnings =&gt; 1,
-                  showEqualErrors  =&gt; 1,
-                  ignoreStrings    =&gt; 1,</code></pre>
+<p>Options for <code>cmp</code> for <code>Value::Real</code>:</p>
+
+<p>Usage:</p>
+
+<pre><code>ANS( Real(3.56)-&gt;cmp() )</code></pre>
+
+<p>Compares response to a real value using &#39;fuzzy&#39; comparison compareOptions and default values:</p>
+
+<pre><code>showTypeWarnings =&gt; 1,
+showEqualErrors  =&gt; 1,
+ignoreStrings    =&gt; 1,</code></pre>
 
 <h3 id="Value::String">Value::String</h3>
 
-<pre><code>Usage:  $s = String(&quot;pole&quot;);
-        ANS($s-&gt;cmp(typeMatch =&gt; Complex(&quot;4+i&quot;)));
-            # compare to response &#39;pole&#39;, don&#39;t complain about complex number responses.
+<p>Options for <code>cmp</code> for <code>Value::String</code>:</p>
 
-        compareOptions and default values:
-          showTypeWarnings =&gt; 1,
-          showEqualErrors  =&gt; 1,
-          ignoreStrings    =&gt; 1,  # don&#39;t complain about string-valued responses
-          typeMatch        =&gt; &#39;Value::Real&#39;
+<p>Usage:</p>
 
-Initial and final spaces are ignored when comparing strings.</code></pre>
+<pre><code>$s = String(&quot;pole&quot;);
+ANS($s-&gt;cmp(typeMatch =&gt; Complex(&quot;4+i&quot;)));</code></pre>
+
+<p>compare to response &#39;pole&#39;, don&#39;t complain about complex number responses.</p>
+
+<p>compareOptions and default values:</p>
+
+<pre><code>showTypeWarnings =&gt; 1,
+showEqualErrors  =&gt; 1,
+ignoreStrings    =&gt; 1,  # don&#39;t complain about string-valued responses
+typeMatch        =&gt; &#39;Value::Real&#39;</code></pre>
+
+<p>Leading and trailing spaces are ignored when comparing strings.</p>
 
 <h3 id="Value::Point">Value::Point</h3>
 
-<pre><code>Usage: $pt = Point(&quot;(3,6)&quot;); # preferred
-       or $pt = Point(3,6);
-       or $pt = Point([3,6]);
-       ANS($pt-&gt;cmp());
+<p>Options for <code>cmp</code> for <code>Value::Point</code>:</p>
 
-        compareOptions:
-          showTypeWarnings =&gt; 1,   # warns if student response is of incorrect type
-          showEqualErrors  =&gt; 1,
-          ignoreStrings    =&gt; 1,
-          showDimensionHints =&gt; 1, # reports incorrect number of coordinates
-          showCoordinateHints =&gt;1, # flags individual coordinates that are incorrect</code></pre>
+<p>Usage:</p>
+
+<pre><code>$pt = Point(&quot;(3,6)&quot;); # preferred
+$pt = Point(3,6);
+$pt = Point([3,6]);
+
+    ANS($pt-&gt;cmp());</code></pre>
+
+<p>compareOptions and default values:</p>
+
+<pre><code>showTypeWarnings =&gt; 1,   # warns if student response is of incorrect type
+showEqualErrors  =&gt; 1,
+ignoreStrings    =&gt; 1,
+showDimensionHints =&gt; 1, # reports incorrect number of coordinates
+showCoordinateHints =&gt;1, # flags individual coordinates that are incorrect</code></pre>
 
 <h3 id="Value::Vector">Value::Vector</h3>
 
-<pre><code>Usage:  $vec = Vector(&quot;&lt;3,6,7&gt;&quot;);
-        or $vec = Vector(3,6,7);
-        or $vec = Vector([3,6,7]);
-        ANS($vec-&gt;cmp());
+<p>Options for <code>cmp</code> for <code>Value::Vector</code>:</p>
 
-        compareOptions:
-          showTypeWarnings    =&gt; 1,   # warns if student response is of incorrect type
-          showEqualErrors     =&gt; 1,
-          ignoreStrings       =&gt; 1,
-          showDimensionHints  =&gt; 1, # reports incorrect number of coordinates
-          showCoordinateHints =&gt; 1, # flags individual coordinates which are incorrect
-          promotePoints       =&gt; 0, # allow students to enter vectors as points (3,5,6)
-          parallel            =&gt; 1, # response is correct if it is parallel to correct answer
-          sameDirection       =&gt; 1, # response is correct if it has same orientation as correct answer
-                                    #  (only has an effect when parallel =&gt; 1 is specified)</code></pre>
+<p>Usage:</p>
+
+<pre><code>$vec = Vector(&quot;&lt;3,6,7&gt;&quot;);
+$vec = Vector(3,6,7);
+$vec = Vector([3,6,7]);
+
+ANS($vec-&gt;cmp());</code></pre>
+
+<p>compareOptions and default values:</p>
+
+<pre><code>showTypeWarnings    =&gt; 1,   # warns if student response is of incorrect type
+showEqualErrors     =&gt; 1,
+ignoreStrings       =&gt; 1,
+showDimensionHints  =&gt; 1, # reports incorrect number of coordinates
+showCoordinateHints =&gt; 1, # flags individual coordinates which are incorrect
+promotePoints       =&gt; 0, # allow students to enter vectors as points (3,5,6)
+parallel            =&gt; 1, # response is correct if it is parallel to correct answer
+sameDirection       =&gt; 1, # response is correct if it has same orientation as correct answer
+                          #  (only has an effect when parallel =&gt; 1 is specified)</code></pre>
 
 <h3 id="Value::Matrix">Value::Matrix</h3>
 
-<pre><code>Usage   $ma = Matrix([[3,6],[2,5]]) or $ma =Matrix([3,6],[2,5])
-        ANS($ma-&gt;cmp());
+<p>Options for <code>cmp</code> for <code>Value::Matrix</code>:</p>
 
-        compareOptions:
+<p>Usage:</p>
 
-          showTypeWarnings    =&gt; 1, # warns if student response is of incorrect type
-          showEqualErrors     =&gt; 1, # reports messages that occur during element comparisons
-          ignoreStrings       =&gt; 1,
-          showDimensionHints  =&gt; 1, # reports incorrect number of coordinates
-          showCoordinateHints =&gt; 1, # flags individual coordinates which are incorrect</code></pre>
+<pre><code>$ma = Matrix([[3,6],[2,5]])
+$ma = Matrix([3,6],[2,5])
+
+ANS($ma-&gt;cmp());</code></pre>
+
+<p>compareOptions and default values:</p>
+
+<pre><code>showTypeWarnings    =&gt; 1, # warns if student response is of incorrect type
+showEqualErrors     =&gt; 1, # reports messages that occur during element comparisons
+ignoreStrings       =&gt; 1,
+showDimensionHints  =&gt; 1, # reports incorrect number of coordinates
+showCoordinateHints =&gt; 1, # flags individual coordinates which are incorrect</code></pre>
 
 <h3 id="Value::Interval">Value::Interval</h3>
 
-<pre><code>Usage:    $interval = Interval(&quot;(1,2]&quot;);
-          or $interval = Interval(&#39;(&#39;,1,2,&#39;]&#39;);
-          ANS($inteval-&gt;cmp);
+<p>Usage:</p>
 
-          compareOptions and defaults:
-                showTypeWarnings  =&gt; 1,
-                showEqualErrors   =&gt; 1,
-                ignoreStrings     =&gt; 1,
-                showEndpointHints =&gt; 1, # show hints about which end point values are correct
-                showEndTypeHints  =&gt; 1, # show hints about endpoint types
-                requireParenMatch =&gt; 1,</code></pre>
+<pre><code>$interval = Interval(&quot;(1,2]&quot;);
+$interval = Interval(&#39;(&#39;,1,2,&#39;]&#39;);
+
+ANS($inteval-&gt;cmp);</code></pre>
+
+<p>compareOptions and default values:</p>
+
+<pre><code>showTypeWarnings  =&gt; 1,
+showEqualErrors   =&gt; 1,
+ignoreStrings     =&gt; 1,
+showEndpointHints =&gt; 1, # show hints about which end point values are correct
+showEndTypeHints  =&gt; 1, # show hints about endpoint types
+requireParenMatch =&gt; 1,</code></pre>
 
 <h3 id="Value::Set">Value::Set</h3>
 
-<pre><code>Usage:   $set = Set(5,6,&#39;a&#39;, &#39;b&#39;)
-      or $set = Set(&quot;{5, 6, a, b}&quot;)
+<p>Options for <code>cmp</code> for <code>Value::Set</code>:</p>
 
-      The object is a finite set of real numbers. It can be used with Union and
-      Interval.
+<p>Usage:</p>
 
-Examples:  Interval(&quot;(-inf,inf)&quot;) - Set(0)
-           Compute(&quot;R-{0}&quot;)   # in Interval context: Context(&quot;Interval&quot;);</code></pre>
+<pre><code>$set = Set(5,6,&#39;a&#39;, &#39;b&#39;)
+$set = Set(&quot;{5, 6, a, b}&quot;)</code></pre>
+
+<p>The object is a finite set of real numbers. It can be used with Union and Interval.</p>
+
+<p>Examples:</p>
+
+<pre><code>Interval(&quot;(-inf,inf)&quot;) - Set(0)
+Compute(&quot;R-{0}&quot;)   # in Interval context: Context(&quot;Interval&quot;);</code></pre>
 
 <h3 id="Value::Union">Value::Union</h3>
 
-<pre><code>Usage: $union = Union(&quot;[4,5] U [6,7]&quot;);
-       or $union = Union(Interval(&quot;[4,5]&quot;,Interval(&quot;[6,7]&quot;));
-       ANS($union-&gt;cmp());</code></pre>
+<p>Usage:</p>
+
+<pre><code>$union = Union(&quot;[4,5] U [6,7]&quot;);
+$union = Union(Interval(&quot;[4,5]&quot;,Interval(&quot;[6,7]&quot;));
+ANS($union-&gt;cmp());</code></pre>
 
 <h3 id="Value::List">Value::List</h3>
 
-<pre><code>Usage:  $lst = List(&quot;1, x, &lt;4,5,6&gt;&quot;); # list of a real, a formula and a vector.
-        or $lst = List(Real(1), Formula(&quot;x&quot;), Vector(4,5,6));
-        ANS($lst-&gt;cmp(showHints=&gt;1));
+<p>Options for <code>cmp</code> for <code>Value::List</code>:</p>
 
-        compareOptions and defaults:
-                showTypeWarnings =&gt; 1,
-                showEqualErrors  =&gt; 1,         # show errors produced when checking equality of entries
-                ignoreStrings    =&gt; 1,         # don&#39;t show type warnings for strings
-                studentsMustReduceUnions =&gt; 1,
-                showUnionReduceWarnings =&gt; 1,
-                showHints =&gt; undef,            # automatically set to 1 if $showPartialCorrectAnswers == 1
-                showLengthHints =&gt; undef,      # automatically set to 1 if $showPartialCorrectAnswers == 1
-                showParenHints =&gt; undef,       # automatically set to 1 if $showPartialCorrectAnswers == 1
-                partialCredit =&gt; undef,        # automatically set to 1 if $showPartialCorrectAnswers == 1
-                ordered =&gt; 0,                  # 1 = must be in same order as correct answer
-                entry_type =&gt; undef,           # determined from first entry
-                list_type =&gt; undef,            # determined automatically
-                typeMatch =&gt; $element,         # used for type checking the entries
-                firstElement =&gt; $element,
-                extra =&gt; undef,                # used to check syntax of incorrect answers
-                requireParenMatch =&gt; 1,        # student parens must match correct parens
-                removeParens =&gt; 1,             # remove outermost parens, if any
-                implicitList =&gt; 1,             # force single answers to be lists (even if they ARE lists)</code></pre>
+<p>Usage:</p>
+
+<pre><code>$lst = List(&quot;1, x, &lt;4,5,6&gt;&quot;); # list of a real, a formula and a vector.
+$lst = List(Real(1), Formula(&quot;x&quot;), Vector(4,5,6));
+ANS($lst-&gt;cmp(showHints=&gt;1));</code></pre>
+
+<p>compareOptions and default values:</p>
+
+<pre><code>showTypeWarnings =&gt; 1,
+showEqualErrors  =&gt; 1,         # show errors produced when checking equality of entries
+ignoreStrings    =&gt; 1,         # don&#39;t show type warnings for strings
+studentsMustReduceUnions =&gt; 1,
+showUnionReduceWarnings =&gt; 1,
+showHints =&gt; undef,            # automatically set to 1 if $showPartialCorrectAnswers == 1
+showLengthHints =&gt; undef,      # automatically set to 1 if $showPartialCorrectAnswers == 1
+showParenHints =&gt; undef,       # automatically set to 1 if $showPartialCorrectAnswers == 1
+partialCredit =&gt; undef,        # automatically set to 1 if $showPartialCorrectAnswers == 1
+ordered =&gt; 0,                  # 1 = must be in same order as correct answer
+entry_type =&gt; undef,           # determined from first entry
+list_type =&gt; undef,            # determined automatically
+typeMatch =&gt; $element,         # used for type checking the entries
+firstElement =&gt; $element,
+extra =&gt; undef,                # used to check syntax of incorrect answers
+requireParenMatch =&gt; 1,        # student parens must match correct parens
+removeParens =&gt; 1,             # remove outermost parens, if any
+implicitList =&gt; 1,             # force single answers to be lists (even if they ARE lists)</code></pre>
 
 <h3 id="Value::Formula">Value::Formula</h3>
 
-<pre><code>Usage: $fun = Formula(&quot;x^2-x+1&quot;);
-       $set = Formula(&quot;[-1, x) U (x, 2]&quot;);
+<p>Usage:</p>
 
-A formula can have any of the other math object types as its range.
-        Union, List, Number (Complex or Real),</code></pre>
+<pre><code>$fun = Formula(&quot;x^2-x+1&quot;);
+ $set = Formula(&quot;[-1, x) U (x, 2]&quot;);</code></pre>
+
+<p>A formula can have any of the other math object types as its range. Union, List, Number (Complex or Real),</p>
 
 		</div>
 	</div>

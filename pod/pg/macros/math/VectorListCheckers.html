@@ -38,7 +38,11 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#AUTHORS">AUTHORS</a></li>				</ul>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#Example">Example</a></li>
+    </ul>
+  </li><li class="nav-item"><a class="nav-link p-0" href="#AUTHORS">AUTHORS</a></li>				</ul>
 			</nav>
 		</div>
 	</aside>
@@ -48,67 +52,44 @@
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<p>VectorListCheckers.pl</p>
-
-<a href="#_podtop_"><h1 id="SYNOPSIS">SYNOPSIS</h1></a>
-
-<p>Provides subroutines for answer checking lists MathObjects vectors with real entries.</p>
+<p>VectorListCheckers.pl - Provides subroutines for answer checking lists MathObjects vectors with real entries.</p>
 
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
 <p>First, load the <code>VectorListCheckers.pl</code> macro file.</p>
 
-<dl>
+<pre><code>loadMacros(&quot;PGstandard.pl&quot;,&quot;MathObjects.pl&quot;,&quot;VectorListCheckers.pl&quot;);</code></pre>
 
-<dt><code>loadMacros(&quot;PGstandard.pl&quot;,&quot;MathObjects.pl&quot;,&quot;VectorListCheckers.pl&quot;);</code></dt>
-<dd>
+<p>For a MathObject list of MathObject vectors, the way to use the answer checkers is the same as using a custom answer checker inside of <code>cmp(checker =&gt; ~~&amp;name_of_answer_checker_subroutine)</code> such as</p>
 
-</dd>
-</dl>
-
-<p>For a MathObject list of MathObject vectors, the way to use the answer checkers is the same as using a custom answer checker inside of <code>cmp(checker=&lt;gt</code>~~&amp;name_of_answer_checker_subroutine)&gt; such as</p>
-
-<dl>
-
-<dt><code>ANS( List(ColumnVector(1,0,0),ColumnVector(0,1,0))-&lt;gt</code>cmp( checker=&lt;gt&gt;~~&amp;basis_checker_list_of_vectors ) );&gt;</dt>
-<dd>
-
-</dd>
-<dt><code>ANS( Vector(&quot;&lt;1,0,0</code> + s * &lt;0,1,0&gt; + t * &lt;0,0,1&gt;&quot;)-&lt;gt&gt;cmp( checker=&lt;gt&gt;~~&amp;affine_subspace_checker_vectors ) );&gt;</dt>
-<dd>
-
-</dd>
-</dl>
+<pre><code>ANS( List(ColumnVector(1,0,0),ColumnVector(0,1,0))-&gt;cmp( checker =&gt; ~~&amp;basis_checker_list_of_vectors ) );
+ANS( Vector(&quot;&lt;1,0,0&gt; + s * &lt;0,1,0&gt; + t * &lt;0,0,1&gt;&quot;)-&gt;cmp( checker =&gt; ~~&amp;affine_subspace_checker_vectors ) );</code></pre>
 
 <p>The &quot;list of vectors&quot; at the end of the checker name refers to the fact that the student answer is a list of vectors.</p>
 
+<h2 id="Example">Example</h2>
+
 <p>Here is an example of how to use these answer checkers.</p>
 
-<ul>
+<pre><code>DOCUMENT();
+loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;VectorListCheckers.pl&#39;, &#39;PGcourse.pl&#39;);
 
-<p>DOCUMENT(); loadMacros( &quot;PGstandard.pl&quot;, &quot;MathObjects.pl&quot;, &quot;VectorListCheckers.pl&quot;, &quot;PGcourse.pl&quot;, ); $showPartialCorrectAnswers = 1; TEXT(beginproblem());</p>
+Context(&#39;Vector&#39;);
 
-<p>Context(&#39;Vector&#39;);</p>
+$B   = Matrix([ [ 1, 0, 0 ], [ 0, 1, 0 ], [ 0, 0, 0 ] ]);
+$ans = List(ColumnVector(1, 0, 0), ColumnVector(0, 1, 0));
+$cmp = $ans-&gt;cmp(list_checker =&gt; ~~&amp;basis_checker_list_of_vectors);
 
-<p>$B = Matrix([[1,0,0],[0,1,0],[0,0,0]]);</p>
+BEGIN_PGML
+A basis for the column space of [` B = [$B] `] is
 
-<p>$answer = List(ColumnVector(1,0,0),ColumnVector(0,1,0));</p>
+[_]{$cmp}{60}
 
-<p>Context()-&gt;texStrings; BEGIN_TEXT A basis for the column space of \( B = $B \) is $BR $BR \{ $answer-&gt;ans_rule(60) \} $BR $BR Enter your answer as a comma separated list of vectors, such as \( \verb+&lt;1,2,3&gt;,&lt;4,5,6&gt;+ \). END_TEXT Context()-&gt;normalStrings;</p>
+Enter your answer as a comma separated list of vectors, such as
+[` \verb+&lt;1,2,3&gt;,&lt;4,5,6&gt;+ `].
+END_PGML
 
-<p>ANS( $answer-&gt;cmp(list_checker=&gt;~~&amp;basis_checker_list_of_vectors) );</p>
-
-<p>ENDDOCUMENT();</p>
-
-</ul>
-
-<p>The answer evaluation section of the PG file is totally standard.</p>
-
-<ul>
-
-<p>ANS( $multians-&gt;cmp );</p>
-
-</ul>
+ENDDOCUMENT();</code></pre>
 
 <p>The <code>parametric_plane_checker_columns</code> should be used for solutions to non-homogeneous systems of linear equations for which the solution is essentially a point plus the span of several linearly independent vectors. When using the parametric plane checker, the first vector input always serves as a point on the hyperplane (i.e., the first vector input is always a particular solution), while the remaining vectors are a basis for the hyperplane (i.e., they span the homogeneous solution set).</p>
 

@@ -41,7 +41,9 @@
 <li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a>
     <ul class="nav flex-column w-100">
       <li class="nav-item"><a class="nav-link p-0" href="#checkCourseDirectories">checkCourseDirectories</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#checkCourseLinks">checkCourseLinks</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#updateCourseDirectories">updateCourseDirectories</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#updateCourseLinks">updateCourseLinks</a></li>
     </ul>
   </li>				</ul>
 			</nav>
@@ -61,6 +63,12 @@
 
 <p>Checks the course directories to make sure they exist and have the correct permissions.</p>
 
+<h2 id="checkCourseLinks">checkCourseLinks</h2>
+
+<p>Usage: <code>checkCourseLinks($ce)</code></p>
+
+<p>Checks the course links to make sure they exist, and point to the correct path. Note that there are no checks for permissions. Permissions of symbolic links themselves don&#39;t matter and can&#39;t actually be changed, and the link targets are system directories that do not belong to the course. It is the responsibility of the system administrator to ensure that the system directories the links point to have the correct permissions. That should be done when webwork2 is installed, and not when upgrading a course.</p>
+
 <h2 id="updateCourseDirectories">updateCourseDirectories</h2>
 
 <p>Usage: <code>updateCourseDirectories($ce)</code></p>
@@ -70,6 +78,16 @@
 <p>If a directory does not exist, then it is copied from the model course if the corresponding directory exists in the model course, and is created otherwise.</p>
 
 <p>If the permissions are not correct, then an attempt is made to correct the permissions. The permissions are expected to match the course root directory. If the permissions of the course root directory are not correct, then that will need to be manually fixed. This method does not check that.</p>
+
+<h2 id="updateCourseLinks">updateCourseLinks</h2>
+
+<p>Usage: <code>updateCourseLinks($ce)</code></p>
+
+<p>Check to see if all course links exist and have the correct permissions.</p>
+
+<p>If a link does not exist, then it is created according to the link specifications defined in the course environment.</p>
+
+<p>Note that no attempt to fix permissions is made. Even the linux command line <code>chmod</code> utility cannot change symbolic link permissions.</p>
 
 		</div>
 	</div>

@@ -38,28 +38,28 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#Statistics-Macros">Statistics Macros</a>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#FUNCTIONS">FUNCTIONS</a>
     <ul class="nav flex-column w-100">
-      <li class="nav-item"><a class="nav-link p-0" href="#Normal-distribution">Normal distribution</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#Inverse-of-normal-distribution">&quot;Inverse&quot; of normal distribution</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#Mean-function">Mean function</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#Standard-Deviation-function">Standard Deviation function</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#Sum-and-Sum-of-Squares">Sum and Sum of Squares</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#Function-to-trim-the-decimal-numbers-in-a-floating-point-number">Function to trim the decimal numbers in a floating point number.</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#Function-to-generate-normally-distributed-random-numbers">Function to generate normally distributed random numbers</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#Function-to-generate-exponentially-distributed-random-numbers">Function to generate exponentially distributed random numbers</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#Function-to-generate-Poisson-distributed-random-numbers">Function to generate Poisson distributed random numbers</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#Function-to-generate-Binomial-distributed-random-numbers">Function to generate Binomial distributed random numbers</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#Function-to-generate-Bernoulli-distributed-random-numbers">Function to generate Bernoulli distributed random numbers</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#Generate-random-values-from-a-discrete-distribution">Generate random values from a discrete distribution.</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#Chi-Squared-statistic-for-a-two-way-table">Chi Squared statistic for a two way table</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#Calc-the-results-of-a-t-test">Calc the results of a t-test.</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#Calc-the-results-of-a-two-sample-t-test">Calc the results of a two sample t-test.</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#normal_prob">normal_prob</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#normal_distr">normal_distr</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#stats_mean">stats_mean</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#stats_sd">stats_sd</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#stats_SX_SXX">stats_SX_SXX</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#significant_decimals">significant_decimals</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#urand">urand</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#exprand">exprand</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#poissonrand">poissonrand</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#binomrand">binomrand</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#bernoullirand">bernoullirand</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#discreterand">discreterand</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#chisqrTable">chisqrTable</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#t_test">t_test</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#two_sample_t_test">two_sample_t_test</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#insertDataLink">insertDataLink</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#Five-Point-Summary-function">Five Point Summary function</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#Function-to-calculate-the-Pearsons-sample-correlation">Function to calculate the Pearson&#39;s sample correlation</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#Function-to-calculate-the-linear-least-squares-estimate-for-the-linear-relationship-between-two-data-sets">Function to calculate the linear least squares estimate for the linear relationship between two data sets</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#Function-to-calculate-the-frequencies-for-the-factors-in-a-given-data-set">Function to calculate the frequencies for the factors in a given data set.</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#five_point_summary">five_point_summary</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#sample_correlation">sample_correlation</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#linear_regression">linear_regression</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#frequencies">frequencies</a></li>
     </ul>
   </li>				</ul>
 			</nav>
@@ -69,93 +69,156 @@
 		<div class="container-fluid p-3 h-100" id="_podtop_">
 
 
-<a href="#_podtop_"><h1 id="Statistics-Macros">Statistics Macros</h1></a>
+<a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<h2 id="Normal-distribution">Normal distribution</h2>
+<p>PGstatisticsmacros.pl - Functions for calculating statistics measures.</p>
 
-<pre><code>Usage: normal_prob(a, b, mean=&gt;0, deviation=&gt;1);</code></pre>
+<a href="#_podtop_"><h1 id="FUNCTIONS">FUNCTIONS</h1></a>
+
+<h2 id="normal_prob">normal_prob</h2>
+
+<p>Usage:</p>
+
+<pre><code>normal_prob(a, b, mean=&gt;0, deviation=&gt;1);</code></pre>
 
 <p>Computes the probability of x being in the interval (a,b) for normal distribution. The first two arguments are required. Use &#39;-infty&#39; for negative infinity, and &#39;infty&#39; or &#39;+infty&#39; for positive infinity. The mean and deviation are optional, and are 0 and 1 respectively by default.</p>
 
-<h2 id="Inverse-of-normal-distribution">&quot;Inverse&quot; of normal distribution</h2>
+<h2 id="normal_distr">normal_distr</h2>
 
-<pre><code>Usage: normal_distr(prob, mean=&gt;0, deviation=&gt;1);</code></pre>
+<p>&quot;Inverse&quot; of normal distribution</p>
+
+<p>Usage:</p>
+
+<pre><code>normal_distr(prob, mean=&gt;0, deviation=&gt;1);</code></pre>
 
 <p>Computes the positive number b such that the probability of x being in the interval (0,b) is equal to the given probability (first argument). The mean and deviation are optional, and are 0 and 1 respectively by default. Caution: since students may use tables, they may only be able to provide the answer correct to 2 or 3 decimal places. Use tolerance when evaluating answers.</p>
 
-<h2 id="Mean-function">Mean function</h2>
+<h2 id="stats_mean">stats_mean</h2>
 
-<pre><code>Usage: stats_mean(@data);</code></pre>
+<p>Mean function</p>
+
+<p>Usage:</p>
+
+<pre><code>stats_mean(@data);</code></pre>
 
 <p>Computes the artihmetic mean of a list of numbers, data. You may also pass the numbers individually.</p>
 
-<h2 id="Standard-Deviation-function">Standard Deviation function</h2>
+<h2 id="stats_sd">stats_sd</h2>
 
-<pre><code>Usage: stats_sd(@data);</code></pre>
+<p>Standard Deviation function</p>
+
+<p>Usage:</p>
+
+<pre><code>stats_sd(@data);</code></pre>
 
 <p>Computes the sample standard deviation of a list of numbers, data. You may also pass the numbers individually.</p>
 
-<h2 id="Sum-and-Sum-of-Squares">Sum and Sum of Squares</h2>
+<h2 id="stats_SX_SXX">stats_SX_SXX</h2>
 
-<pre><code>Usage: stats_SX_SXX(@data);</code></pre>
+<p>Sum and Sum of Squares</p>
+
+<p>Usage:</p>
+
+<pre><code>stats_SX_SXX(@data);</code></pre>
 
 <p>Computes the sum of the numbers and the sum of the numbers squared.</p>
 
-<h2 id="Function-to-trim-the-decimal-numbers-in-a-floating-point-number">Function to trim the decimal numbers in a floating point number.</h2>
+<h2 id="significant_decimals">significant_decimals</h2>
 
-<pre><code>Usage: significant_decimals(x,n)</code></pre>
+<p>Function to trim the decimal numbers in a floating point number.</p>
+
+<p>Usage:</p>
+
+<pre><code>significant_decimals(x,n)</code></pre>
 
 <p>Trims the number x to have n decimal digit. ex: significant_decimals(0.12345678,4) = 0.1235</p>
 
-<h2 id="Function-to-generate-normally-distributed-random-numbers">Function to generate normally distributed random numbers</h2>
+<h2 id="urand">urand</h2>
 
-<pre><code>Usage: urand(mean,sd,N,digits)</code></pre>
+<p>Function to generate normally distributed random numbers</p>
+
+<p>Usage:</p>
+
+<pre><code>urand(mean,sd,N,digits)</code></pre>
 
 <p>Generates N normally distributed random numbers with the given mean and standard deviation. The digits is the number of decimal digits to use.</p>
 
-<h2 id="Function-to-generate-exponentially-distributed-random-numbers">Function to generate exponentially distributed random numbers</h2>
+<h2 id="exprand">exprand</h2>
 
-<pre><code>Usage: exprand(lambda,N,digits)</code></pre>
+<p>Function to generate exponentially distributed random numbers</p>
+
+<p>Usage:</p>
+
+<pre><code>exprand(lambda,N,digits)</code></pre>
 
 <p>Generates N exponentially distributed random numbers with the given parameter, lambda. The digits is the number of decimal digits to use.</p>
 
-<h2 id="Function-to-generate-Poisson-distributed-random-numbers">Function to generate Poisson distributed random numbers</h2>
+<h2 id="poissonrand">poissonrand</h2>
 
-<pre><code>Usage: poissonrand(lambda,N)</code></pre>
+<p>Function to generate Poisson distributed random numbers</p>
+
+<p>Usage:</p>
+
+<pre><code>poissonrand(lambda,N)</code></pre>
 
 <p>Generates N Poisson distributed random numbers with the given parameter, lambda.</p>
 
-<h2 id="Function-to-generate-Binomial-distributed-random-numbers">Function to generate Binomial distributed random numbers</h2>
+<h2 id="binomrand">binomrand</h2>
 
-<pre><code>Usage: binomrand(p,N,num)</code></pre>
+<p>Function to generate Binomial distributed random numbers</p>
+
+<p>Usage:</p>
+
+<pre><code>binomrand(p,N,num)</code></pre>
 
 <p>Generates num binomial distributed random numbers with parameters p and N.</p>
 
-<h2 id="Function-to-generate-Bernoulli-distributed-random-numbers">Function to generate Bernoulli distributed random numbers</h2>
+<h2 id="bernoullirand">bernoullirand</h2>
 
-<pre><code>Usage: bernoullirand(p,num,{&quot;success&quot;=&gt;&quot;1&quot;,&quot;failure&quot;=&gt;&quot;0&quot;})</code></pre>
+<p>Function to generate Bernoulli distributed random numbers</p>
+
+<p>Usage:</p>
+
+<pre><code>bernoullirand(p,num,{&quot;success&quot;=&gt;&quot;1&quot;,&quot;failure&quot;=&gt;&quot;0&quot;})</code></pre>
 
 <p>Generates num Bernoulli distributed random numbers with parameter p. The value for a success is given by the optional &quot;success&quot; parameter. The value for a failure is given by the optional &quot;failure&quot; parameter.</p>
 
-<h2 id="Generate-random-values-from-a-discrete-distribution">Generate random values from a discrete distribution.</h2>
+<h2 id="discreterand">discreterand</h2>
 
-<pre><code>Usage: discreterand($n,@tableOfProbabilities)
+<p>Generate random values from a discrete distribution.</p>
 
+<p>Usage:</p>
 
-Example:</code></pre>
+<pre><code>discreterand($n,@tableOfProbabilities)</code></pre>
 
-<p>my $total = 10; my @probabilities = ( [0.1,&quot;A&quot;], [0.4,&quot;B&quot;], [0.3,&quot;C&quot;], [0.2,&quot;D&quot;]);</p>
+<p>Example:</p>
 
-<p>@result = discreterand($total,@probabilities); $data = &#39;&#39;; foreach $lupe (@result) { $data .= $lupe . &quot;, &quot;; } $data =~ s/,$//;</p>
+<pre><code>my $total = 10;
+my @probabilities = ( [0.1,&quot;A&quot;],
+                  [0.4,&quot;B&quot;],
+                  [0.3,&quot;C&quot;],
+                  [0.2,&quot;D&quot;]);
+
+@result = discreterand($total,@probabilities);
+$data = &#39;&#39;;
+for $lupe (@result) {
+    $data .= $lupe . &quot;, &quot;;
+}
+$data =~ s/,$//;</code></pre>
 
 <p>This routine will generate num random results. The distribution is in the given array. Each element in the array is itself an array. The first value in the array is the probability. The second value in the array is the value assocated with the probability.</p>
 
-<h2 id="Chi-Squared-statistic-for-a-two-way-table">Chi Squared statistic for a two way table</h2>
+<h2 id="chisqrTable">chisqrTable</h2>
 
-<pre><code>Usage: chisqrTable(@frequencies)
+<p>Chi Squared statistic for a two way table</p>
 
-Example:
-        @row1 = (1,2,2,2);
+<p>Usage:</p>
+
+<pre><code>chisqrTable(@frequencies)</code></pre>
+
+<p>Example:</p>
+
+<pre><code>@row1 = (1,2,2,2);
 @row2 = (3,1,2,4);
 @row3 = (1,4,2,1);
 @row4 = (3,1,4,3);
@@ -169,21 +232,29 @@ push(@table,~~@row5);
 
 <p>Computes the Chi Squared test statistic for a two way frequency table. Returns the test statistic and the number of degrees of freedom. The array used in the argument is a list of references to arrays that have the frequencies for each row. If one of the rows has a different number of entries than the others the routine will throw an error.</p>
 
-<h2 id="Calc-the-results-of-a-t-test">Calc the results of a t-test.</h2>
+<h2 id="t_test">t_test</h2>
 
-<pre><code>Usage: ($t,$df,$p) = t_test(t_test(mu,@data);                       # Perform a two-sided t-test.
-or:    ($t,$df,$p) = t_test(t_test(mu,@data,{&#39;test&#39;=&gt;&#39;right&#39;});     # Perform a right sided t-test
-or:    ($t,$df,$p) = t_test(t_test(mu,@data,{&#39;test&#39;=&gt;&#39;left&#39;});      # Perform a left sided t-test
-or:    ($t,$df,$p) = t_test(t_test(mu,@data,{&#39;test&#39;=&gt;&#39;two-sided&#39;}); # Perform a left sided t-test</code></pre>
+<p>Calc the results of a t-test.</p>
+
+<p>Usage:</p>
+
+<pre><code>($t,$df,$p) = t_test(t_test(mu,@data);                       # Perform a two-sided t-test.
+($t,$df,$p) = t_test(t_test(mu,@data,{&#39;test&#39;=&gt;&#39;right&#39;});     # Perform a right sided t-test
+($t,$df,$p) = t_test(t_test(mu,@data,{&#39;test&#39;=&gt;&#39;left&#39;});      # Perform a left sided t-test
+($t,$df,$p) = t_test(t_test(mu,@data,{&#39;test&#39;=&gt;&#39;two-sided&#39;}); # Perform a left sided t-test</code></pre>
 
 <p>Computes the t-statistic, the number of degrees of freedom, and the p-value after performing a t-test on the given data. the value of mu is the assumed mean for the null hypothesis. The optional argument can set whether or not a left, right, or two-sided test will be conducted.</p>
 
-<h2 id="Calc-the-results-of-a-two-sample-t-test">Calc the results of a two sample t-test.</h2>
+<h2 id="two_sample_t_test">two_sample_t_test</h2>
 
-<pre><code>Usage: ($t,$df,$p) = two_sample_t_test(\@data1,\@data2);                       # Perform a two-sided t-test.
-or:    ($t,$df,$p) = two_sample_t_test(\@data1,\@data2,{&#39;test&#39;=&gt;&#39;right&#39;});     # Perform a right sided t-test
-or:    ($t,$df,$p) = two_sample_t_test(\@data1,\@data2,{&#39;test&#39;=&gt;&#39;left&#39;});      # Perform a left sided t-test
-or:    ($t,$df,$p) = two_sample_t_test(\@data1,\@data2,{&#39;test&#39;=&gt;&#39;two-sided&#39;}); # Perform a left sided t-test</code></pre>
+<p>Calc the results of a two sample t-test.</p>
+
+<p>Usage:</p>
+
+<pre><code>($t,$df,$p) = two_sample_t_test(\@data1,\@data2);                       # Perform a two-sided t-test.
+($t,$df,$p) = two_sample_t_test(\@data1,\@data2,{&#39;test&#39;=&gt;&#39;right&#39;});     # Perform a right sided t-test
+($t,$df,$p) = two_sample_t_test(\@data1,\@data2,{&#39;test&#39;=&gt;&#39;left&#39;});      # Perform a left sided t-test
+($t,$df,$p) = two_sample_t_test(\@data1,\@data2,{&#39;test&#39;=&gt;&#39;two-sided&#39;}); # Perform a left sided t-test</code></pre>
 
 <p>Computes the t-statistic, the number of degrees of freedom, and the p-value after performing a two sample t-test on the given data. The test is whether or not the means are the same. The optional argument can set whether or not a left, right, or two-sided test will be conducted.</p>
 
@@ -191,7 +262,9 @@ or:    ($t,$df,$p) = two_sample_t_test(\@data1,\@data2,{&#39;test&#39;=&gt;&#39;
 
 <p>Create a CSV data file and make a link to it.</p>
 
-<p>Usage: <code>insertDataLink($linkText, @dataRefs, $linkAttributes)</code></p>
+<p>Usage:</p>
+
+<pre><code>insertDataLink($linkText, @dataRefs, $linkAttributes)</code></pre>
 
 <p>Writes the given data to a CSV file and returns a link to the file.</p>
 
@@ -216,33 +289,49 @@ Data: [@ insertDataLink(
     ) @]*
 END_PGML</code></pre>
 
-<h2 id="Five-Point-Summary-function">Five Point Summary function</h2>
+<h2 id="five_point_summary">five_point_summary</h2>
 
-<pre><code>Usage: five_point_summary(@data);
-or:    five_point_summary(@data,{method=&gt;&#39;includeMedian&#39;});
-or:    five_point_summary(@data,{method=&gt;&#39;proper&#39;});</code></pre>
+<p>Five Point Summary function</p>
+
+<p>Usage:</p>
+
+<pre><code>five_point_summary(@data);
+five_point_summary(@data,{method=&gt;&#39;includeMedian&#39;});
+five_point_summary(@data,{method=&gt;&#39;proper&#39;});</code></pre>
 
 <p>Computes the five point summary of a list of numbers, data. You may also pass the numbers individually. The optional parameter can be used to specify that the median be included in the calculation of the quartiles if it is in the data set or whether proper proportions should be used to calculate the quartiles.</p>
 
-<h2 id="Function-to-calculate-the-Pearsons-sample-correlation">Function to calculate the Pearson&#39;s sample correlation</h2>
+<h2 id="sample_correlation">sample_correlation</h2>
 
-<pre><code>Usage:  $cor = sample_correlation(~~@xData,~~@yData);</code></pre>
+<p>Function to calculate the Pearson&#39;s sample correlation</p>
+
+<p>Usage:</p>
+
+<pre><code>$cor = sample_correlation(~~@xData,~~@yData);</code></pre>
 
 <p>Calculates the Pearson&#39;s sample correlation for the given data. The arguments are references to two arrays where each array contains the associated data.</p>
 
-<h2 id="Function-to-calculate-the-linear-least-squares-estimate-for-the-linear-relationship-between-two-data-sets">Function to calculate the linear least squares estimate for the linear relationship between two data sets</h2>
+<h2 id="linear_regression">linear_regression</h2>
 
-<pre><code>Usage:  ($slope,$intercept,$var,$SXX) = linear_regression(~~@xdata,~~@ydata);</code></pre>
+<p>Function to calculate the linear least squares estimate for the linear relationship between two data sets</p>
+
+<p>Usage:</p>
+
+<pre><code>($slope,$intercept,$var,$SXX) = linear_regression(~~@xdata,~~@ydata);</code></pre>
 
 <p>Give the x data in @xdata and the t data in @ydata the least squares regression line is calculated. It also returns the variance in the residuals as well as SXX, the sum of the squares of the deviations for the x values. This is done to make it easier to perform calculations on the slope parameter such as the confidence interval or perform inference procedures.</p>
 
 <p>Example: @xdata = (-1,2,3,4,5,6,7); @ydata = (6,5,6,7,8,9,11); ($slope,$intercept,$var,$SXX) = linear_regression(~~@xdata,~~@ydata);</p>
 
-<h2 id="Function-to-calculate-the-frequencies-for-the-factors-in-a-given-data-set">Function to calculate the frequencies for the factors in a given data set.</h2>
+<h2 id="frequencies">frequencies</h2>
 
-<pre><code>Usage:  %freq = frequencies(@theData)</code></pre>
+<p>Function to calculate the frequencies for the factors in a given data set.</p>
 
-<p>Finds the factors in the data set and calculates the frequency of occurance for each factor. Returns a hash whose keys ar the factors and the associated values are the frequencies.</p>
+<p>Usage:</p>
+
+<pre><code>%freq = frequencies(@theData)</code></pre>
+
+<p>Finds the factors in the data set and calculates the frequency of occurance for each factor. Returns a hash whose keys are the factors and the associated values are the frequencies.</p>
 
 		</div>
 	</div>

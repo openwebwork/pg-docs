@@ -38,7 +38,7 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNPOSIS">SYNPOSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#MACROS">MACROS</a>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#FUNCTIONS">FUNCTIONS</a>
     <ul class="nav flex-column w-100">
       <li class="nav-item"><a class="nav-link p-0" href="#Answer-evaluator-macros">Answer evaluator macros</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#Filters">Filters</a>
@@ -98,7 +98,7 @@
 
 <p>PGanswermacros.pl - Macros for building answer evaluators.</p>
 
-<a href="#_podtop_"><h1 id="SYNPOSIS">SYNPOSIS</h1></a>
+<a href="#_podtop_"><h1 id="SYNOPSIS">SYNOPSIS</h1></a>
 
 <p>Number Answer Evaluators:</p>
 
@@ -201,13 +201,13 @@ preview_latex_string =&gt; $preview_latex_string, # optional</code></pre>
 </dd>
 </dl>
 
-<a href="#_podtop_"><h1 id="MACROS">MACROS</h1></a>
+<a href="#_podtop_"><h1 id="FUNCTIONS">FUNCTIONS</h1></a>
 
 <h2 id="Answer-evaluator-macros">Answer evaluator macros</h2>
 
 <p>The answer macros have been split up into several separate files, one for each type:</p>
 
-<p><a href="https://openwebwork.github.io/pg-docs/pod//pg/macros/deprecated/PGnumericevaluators.html">PGnumericevaluators.pl</a> - contains answer evaluators for evaluating numeric values, including num_cmp() and related.</p>
+<p><a href="https://openwebwork.github.io/pg-docs/pod//pg/macros/answers/PGnumericevaluators.html">PGnumericevaluators.pl</a> - contains answer evaluators for evaluating numeric values, including num_cmp() and related.</p>
 
 <p><a href="https://openwebwork.github.io/pg-docs/pod//pg/macros/answers/PGfunctionevaluators.html">PGfunctionevaluators.pl</a> - contains answer evaluators for evaluating functions, including fun_cmp() and related.</p>
 
@@ -412,9 +412,10 @@ END_PGML</code></pre>
 
 <h3 id="pretty_print"><code>pretty_print</code></h3>
 
-<p>Usage: <code>warn pretty_print( $rh_hash_input)</code></p>
+<p>Usage:</p>
 
-<pre><code>TEXT(pretty_print($ans_hash));
+<pre><code>warn pretty_print($rh_hash_input);
+TEXT(pretty_print($ans_hash));
 TEXT(~~%envir);</code></pre>
 
 <p>This can be very useful for printing out messages about objects while debugging</p>

@@ -38,7 +38,7 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#TERMINOLOGY">TERMINOLOGY</a></li><li class="nav-item"><a class="nav-link p-0" href="#USAGE">USAGE</a></li><li class="nav-item"><a class="nav-link p-0" href="#EXAMPLE">EXAMPLE</a></li><li class="nav-item"><a class="nav-link p-0" href="#CUSTOM-CHECKERS">CUSTOM CHECKERS</a></li>				</ul>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#CUSTOM-CHECKERS">CUSTOM CHECKERS</a></li>				</ul>
 			</nav>
 		</div>
 	</aside>
@@ -48,19 +48,15 @@
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<p>draggableSubsets.pl</p>
+<p>draggableSubsets.pl - Creates visual items that can be dragged into various buckets.</p>
 
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
 <p>This macro helps the instructor create a drag-and-drop environment in which a pre-specified set of elements may be dragged to different &quot;buckets&quot;, effectively partitioning the original set into subsets.</p>
 
-<a href="#_podtop_"><h1 id="TERMINOLOGY">TERMINOLOGY</h1></a>
-
 <p>An HTML element into or out of which other elements may be dragged will be called a &quot;bucket&quot;.</p>
 
 <p>An HTML element which houses a collection of buckets will be called a &quot;bucket pool&quot;.</p>
-
-<a href="#_podtop_"><h1 id="USAGE">USAGE</h1></a>
 
 <p>To initialize a <code>DraggableSubset</code> bucket pool in a .pg problem, insert the line</p>
 
@@ -106,17 +102,18 @@ AllowNewBuckets   =&gt; 0 or 1
 BucketLabelFormat =&gt; &lt;string&gt;
 ResetButtonText   =&gt; &lt;string&gt;
 AddButtonText     =&gt; &lt;string&gt;
-RemoveButtonText  =&gt; &lt;string&gt;</code></pre>
+RemoveButtonText  =&gt; &lt;string&gt;
+ShowUniversalSet  =&gt; 0 or 1
+UniversalSetLabel =&gt; &lt;string&gt;</code></pre>
 
 <p>Their usage is demonstrated in the example below.</p>
 
-<a href="#_podtop_"><h1 id="EXAMPLE">EXAMPLE</h1></a>
+<a href="#_podtop_"><h1 id="SYNOPSIS">SYNOPSIS</h1></a>
 
 <pre><code>DOCUMENT();
 loadMacros(
     &#39;PGstandard.pl&#39;,
     &#39;PGML.pl&#39;,
-    &#39;MathObjects.pl&#39;,
     &#39;draggableSubsets.pl&#39;
 );
 
@@ -189,6 +186,16 @@ $draggable = DraggableSubsets(
     # This is the text label for the remove button that is added to any
     # removable buckets.  The default value if not given is &quot;Remove&quot;.
     RemoveButtonText =&gt; &#39;Delete&#39;
+
+    # If this is true then a separate bucket containing the full set passed
+    # as the first argument above (the universal set) will be shown, and the
+    # elements of the set can be distributed to the other subsets (or
+    # buckets) that are shown.  The default value if not given is 0.
+    ShowUniversalSet =&gt; 1,
+
+    # Label for the bucket representing the universal set.
+    #  The default value if not given is &quot;Universal Set&quot;.
+    UniversalSetLabel =&gt; &#39;Universal Set&#39;,
 
     # These are options that will be passed to the $draggable-&gt;cmp method.
     cmpOptions =&gt; { checker =&gt; sub { ... } }

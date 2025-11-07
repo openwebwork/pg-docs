@@ -38,7 +38,12 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#USAGE">USAGE</a></li><li class="nav-item"><a class="nav-link p-0" href="#LISTS-IN-ALTERNATE-FORMAT">LISTS IN ALTERNATE FORMAT</a></li><li class="nav-item"><a class="nav-link p-0" href="#SETTING-THE-ALTERNATE-FORM-AS-THE-DEFAULT">SETTING THE ALTERNATE FORM AS THE DEFAULT</a></li>				</ul>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#LISTS-IN-ALTERNATE-FORMAT">LISTS IN ALTERNATE FORMAT</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#SETTING-THE-ALTERNATE-FORM-AS-THE-DEFAULT">SETTING THE ALTERNATE FORM AS THE DEFAULT</a></li>
+    </ul>
+  </li>				</ul>
 			</nav>
 		</div>
 	</aside>
@@ -48,15 +53,13 @@
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<p><code>Context(&quot;AlternateDecimal&quot;)</code> - Provides a context that allows the entry of decimal numbers using a comma for the decimal indicator rather than a dot (e.g., <code>3,14159</code> rather than <code>3.14159</code>).</p>
+<p>contextAlternateDecimal.pl - Provides a context that allows the entry of decimal numbers using a comma for the decimal indicator rather than a dot (e.g., <code>3,14159</code> rather than <code>3.14159</code>).</p>
 
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
 <p>This macro file defines contexts in which decimal numbers can be entered using a comma rather than a period as the decimal separator. Both forms are always recognized, but you can determine whether one or the other form produces an error message when used. You can also force the display of numbers to use one or the other form.</p>
 
-<a href="#_podtop_"><h1 id="USAGE">USAGE</h1></a>
-
-<p>To use this file, first load it into your problem, then select the context that you wish to use. There are three pre-defined contexts, <code>AlternateDecimal</code>, <code>AlternateDecimal-Only</code>, and <code>AlternateDecimal-Warning</code>. The first allows both the standard and alternate forms to be used, the second allows only the alternate form, and the third allows only the standard form, but recognizes the alternate form and gives an error message when it is used.</p>
+<p>There are three pre-defined contexts, <code>AlternateDecimal</code>, <code>AlternateDecimal-Only</code>, and <code>AlternateDecimal-Warning</code>. The first allows both the standard and alternate forms to be used, the second allows only the alternate form, and the third allows only the standard form, but recognizes the alternate form and gives an error message when it is used.</p>
 
 <pre><code>loadMacros(&quot;contextAlternateDecimal.pl&quot;);
 
@@ -104,7 +107,7 @@ $I2 = Compute(&quot;3,14159&quot;);</code></pre>
 
 <p>would allow students to enter decimals in either format, but all numebrs would be displayed in standard form.</p>
 
-<a href="#_podtop_"><h1 id="LISTS-IN-ALTERNATE-FORMAT">LISTS IN ALTERNATE FORMAT</h1></a>
+<h2 id="LISTS-IN-ALTERNATE-FORMAT">LISTS IN ALTERNATE FORMAT</h2>
 
 <p>Because the alternate format allows numbers to be entered using commas rather than periods, this makes the formation of lists harder. For example, <code>3,5</code> is the number 3-and-5-tenths, not the list consisting of 3 followed by 5. Because of this ambiguity, the <code>AlternateDecimal</code> contexts also include the semi-colon as a replacement for the comma as a separator. So <code>3;5</code> is the list consisting of 3 followed by 5, and <code>3,1;5.2</code> is the list consisting of 3.1 and 5.2.</p>
 
@@ -112,29 +115,29 @@ $I2 = Compute(&quot;3,14159&quot;);</code></pre>
 
 <p>With this notation <code>3,2,1</code> means the list consisting of 3.2 followed by 1. If you want the list consisting of 3 followed by 2.1, you could use <code>3, 2,1</code> since the comma in <code>3,</code> is not part of the number, so must be a list separator.</p>
 
-<a href="#_podtop_"><h1 id="SETTING-THE-ALTERNATE-FORM-AS-THE-DEFAULT">SETTING THE ALTERNATE FORM AS THE DEFAULT</h1></a>
+<h2 id="SETTING-THE-ALTERNATE-FORM-AS-THE-DEFAULT">SETTING THE ALTERNATE FORM AS THE DEFAULT</h2>
 
 <p>If you want to force existing problems to allow (or force, or warn about) the alternate format instead, then create a file named <code>parserCustomization.pl</code> in your course&#39;s <code>templates/macros</code> directory, and enter the following in it:</p>
 
 <pre><code>loadMacros(&quot;contextAlternateDecimal.pl&quot;);
-    context::AlternateDecimal-&gt;Default(&quot;either&quot;,&quot;either&quot;);
-    Context(&quot;Numeric&quot;);</code></pre>
+context::AlternateDecimal-&gt;Default(&quot;either&quot;,&quot;either&quot;);
+Context(&quot;Numeric&quot;);</code></pre>
 
 <p>This will alter all the standard contexts to allow students to enter numbers in either format, and will display them using the form that was used to enter them.</p>
 
 <p>You could also do</p>
 
 <pre><code>loadMacros(&quot;contextAlternateDecimal.pl&quot;);
-    context::AlternateDecimal-&gt;Default(&quot;.&quot;,&quot;.&quot;);
-    Context(&quot;Numeric&quot;);</code></pre>
+context::AlternateDecimal-&gt;Default(&quot;.&quot;,&quot;.&quot;);
+Context(&quot;Numeric&quot;);</code></pre>
 
 <p>to cause a warning message to appear when students enter the alternate format.</p>
 
 <p>If you want to force students to enter the alternate format, use</p>
 
 <pre><code>loadMacros(&quot;contextAlternateDecimal.pl&quot;);
-    context::AlternateDecimal-&gt;Default(&quot;,&quot;,&quot;,&quot;);
-    Context(&quot;Numeric&quot;);</code></pre>
+context::AlternateDecimal-&gt;Default(&quot;,&quot;,&quot;,&quot;);
+Context(&quot;Numeric&quot;);</code></pre>
 
 <p>This will force the display of all numbers into the alternate form (so even the ones created in the problem using standard form will show using commas), and will force students to enter their results using commas, though professors answers will still be allowed to be entered in either format (the <code>Default()</code> function converts the first <code>&quot;,&quot;</code> to <code>&quot;either&quot;</code>, but arranges that the default flags for the answer checker are set to only allow students to enter decimals with commas). This allows you to force comma notation in problems without having to rewrite them.</p>
 

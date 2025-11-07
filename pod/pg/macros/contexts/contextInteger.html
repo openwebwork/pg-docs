@@ -38,7 +38,16 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#USAGE">USAGE</a></li>				</ul>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#FUNCTIONS">FUNCTIONS</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#primeFactorization">primeFactorization</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#gcd">gcd</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#lcm">lcm</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#phi">phi</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#tau">tau</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#isPrime">isPrime</a></li>
+    </ul>
+  </li>				</ul>
 			</nav>
 		</div>
 	</aside>
@@ -54,7 +63,7 @@
 
 <p>This is a Parser context that adds integer related functions. This forces students to only enter integers as their answers.</p>
 
-<a href="#_podtop_"><h1 id="USAGE">USAGE</h1></a>
+<a href="#_podtop_"><h1 id="SYNOPSIS">SYNOPSIS</h1></a>
 
 <pre><code>Context(&quot;Integer&quot;)</code></pre>
 
@@ -91,6 +100,32 @@ $h = isPrime(5); #True</code></pre>
 <p>Get a random prime in a range</p>
 
 <pre><code>$randomPrime = randomPrime(100, 1000);</code></pre>
+
+<a href="#_podtop_"><h1 id="FUNCTIONS">FUNCTIONS</h1></a>
+
+<h2 id="primeFactorization">primeFactorization</h2>
+
+<p>Find the prime factorization of an integer.</p>
+
+<h2 id="gcd">gcd</h2>
+
+<p>Find the greatest common divisor</p>
+
+<h2 id="lcm">lcm</h2>
+
+<p>Find the lowest common multiple.</p>
+
+<h2 id="phi">phi</h2>
+
+<p>Find phi.</p>
+
+<h2 id="tau">tau</h2>
+
+<p>Find tau.</p>
+
+<h2 id="isPrime">isPrime</h2>
+
+<p>Determine if the given integer is prime.</p>
 
 		</div>
 	</div>

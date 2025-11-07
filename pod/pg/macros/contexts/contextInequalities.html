@@ -38,7 +38,7 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#USAGE">USAGE</a></li>				</ul>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li>				</ul>
 			</nav>
 		</div>
 	</aside>
@@ -48,13 +48,9 @@
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<p>Context(&quot;Inequalities&quot;), Context(&quot;Inequalities-Only&quot;) - Provides contexts that allow intervals to be specified as inequalities.</p>
+<p>contextInequalities.pl - Provides contexts that allow intervals to be specified as inequalities.</p>
 
-<a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
-
-<p>Implements contexts that provides for inequalities that produce the cooresponding <code>Interval</code>, <code>Set</code> or <code>Union</code> <code>MathObjects</code>. There are two such contexts: <code>Context(&quot;Inequalities&quot;)</code>, in which both intervals and inequalities are defined, and <code>Context(&quot;Inequalities-Only&quot;)</code>, which allows only inequalities as a means of producing intervals.</p>
-
-<a href="#_podtop_"><h1 id="USAGE">USAGE</h1></a>
+<a href="#_podtop_"><h1 id="SYNOPSIS">SYNOPSIS</h1></a>
 
 <pre><code>loadMacros(&quot;contextInequalities.pl&quot;);
 
@@ -70,6 +66,10 @@ $S3 = Compute(&quot;x &lt; -2 or x &gt; 2&quot;);  # forms the Union (-inf,-2) U
 $S4 = Compute(&quot;x &gt; 2 and x &lt;= 4&quot;); # forms the Interval (2,4]
 $S5 = Compute(&quot;x = 1&quot;);            # forms the Set
 $S6 = Compute(&quot;x != 1&quot;);           # forms the Union (-inf,1) U (1,inf)</code></pre>
+
+<a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
+
+<p>Implements contexts that provides for inequalities that produce the cooresponding <code>Interval</code>, <code>Set</code> or <code>Union</code> <code>MathObjects</code>. There are two such contexts: <code>Context(&quot;Inequalities&quot;)</code>, in which both intervals and inequalities are defined, and <code>Context(&quot;Inequalities-Only&quot;)</code>, which allows only inequalities as a means of producing intervals.</p>
 
 <p>You can set the &quot;noneWord&quot; flag to specify the string to use when the inequalities specify the empty set. By default, it is &quot;NONE&quot;, but you can change it to other strings. Be sure that you use a string that is defined in the Context, however, if you expect the student to be able to enter it. For example</p>
 

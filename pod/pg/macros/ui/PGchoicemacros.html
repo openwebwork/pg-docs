@@ -38,14 +38,30 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#MACROS">MACROS</a>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#SEE-ALSO">SEE ALSO</a></li><li class="nav-item"><a class="nav-link p-0" href="#FUNCTIONS">FUNCTIONS</a>
     <ul class="nav flex-column w-100">
-      <li class="nav-item"><a class="nav-link p-0" href="#Match-lists">Match lists</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#Select-lists">Select lists</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#Multiple-choice-questions">Multiple choice questions</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#Question-printing-subroutines">Question printing subroutines</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#Answer-printing-subroutines">Answer printing subroutines</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#Legacy-macros">Legacy macros</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#new_match_list">new_match_list</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#new_select_list">new_select_list</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#new_pop_up_select_list">new_pop_up_select_list</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#new_multiple_choice">new_multiple_choice</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#new_checkbox_multiple_choice">new_checkbox_multiple_choice</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#std_print_q">std_print_q</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#pop_up_list_print_q">pop_up_list_print_q</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#quest_first_pop_up_list_print_q">quest_first_pop_up_list_print_q</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#ans_in_middle_pop_up_list_print_q">ans_in_middle_pop_up_list_print_q</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#units_list_print_q">units_list_print_q</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#std_print_a">std_print_a</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#radio_print_a">radio_print_a</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#checkbox_print_a">checkbox_print_a</a></li>
+    </ul>
+  </li><li class="nav-item"><a class="nav-link p-0" href="#Legacy-macros-DEPRECATED">Legacy macros [DEPRECATED]</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#qa-DEPRECATED">qa [DEPRECATED]</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#invert-DEPRECATED">invert [DEPRECATED]</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#NchooseK-DEPRECATED">NchooseK [DEPRECATED]</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#shuffle-DEPRECATED">shuffle [DEPRECATED]</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#match_questions_list-DEPRECATED">match_questions_list [DEPRECATED]</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#DEPRECATED-match_questions_list_varbox">[DEPRECATED] match_questions_list_varbox</a></li>
     </ul>
   </li>				</ul>
 			</nav>
@@ -117,14 +133,13 @@ END_PGML</code></pre>
 </li>
 </ul>
 
-<a href="#_podtop_"><h1 id="MACROS">MACROS</h1></a>
+<a href="#_podtop_"><h1 id="SEE-ALSO">SEE ALSO</h1></a>
 
-<h2 id="Match-lists">Match lists</h2>
+<p>Much of the functionality can also be recreated with newer macros: <a href="https://openwebwork.github.io/pg-docs/pod//pg/macros/parsers/parserPopUp.html">parserPopUp.pl</a>, <a href="https://openwebwork.github.io/pg-docs/pod//pg/macros/parsers/parserCheckboxList.html">parserCheckboxList.pl</a>, <a href="https://openwebwork.github.io/pg-docs/pod//pg/macros/parsers/parserRadioButtons.html">parserRadioButtons.pl</a></p>
 
-<dl>
+<a href="#_podtop_"><h1 id="FUNCTIONS">FUNCTIONS</h1></a>
 
-<dt>new_match_list</dt>
-<dd>
+<h2 id="new_match_list">new_match_list</h2>
 
 <pre><code>$ml = new_match_list();</code></pre>
 
@@ -134,15 +149,7 @@ END_PGML</code></pre>
 
 <p>The first argument is the seed for the match list (choosen at random between 1 and 2000 in the example above). The next two arguments are references to the print subroutines used to print the questions and the answers. Other printing methods can be used instead of the standard ones. An example of how to do this is demonstrated with pop_up_list_print_q() below.</p>
 
-</dd>
-</dl>
-
-<h2 id="Select-lists">Select lists</h2>
-
-<dl>
-
-<dt>new_select_list</dt>
-<dd>
+<h2 id="new_select_list">new_select_list</h2>
 
 <pre><code>$sl = new_select_list();</code></pre>
 
@@ -156,9 +163,7 @@ END_PGML</code></pre>
 
 <p><code>std_print_a</code> is only intended to be used for debugging with select lists, as there is rarely a reason to print out the answers to a select list.</p>
 
-</dd>
-<dt><code>new_pop_up_select_list()</code></dt>
-<dd>
+<h2 id="new_pop_up_select_list">new_pop_up_select_list</h2>
 
 <pre><code>$sl = new_pop_up_select_list();</code></pre>
 
@@ -166,15 +171,7 @@ END_PGML</code></pre>
 
 <pre><code>$selectlist = new Select(random(1,2000,1), ~~&amp;pop_up_list_print_q, ~~&amp;std_print_a);</code></pre>
 
-</dd>
-</dl>
-
-<h2 id="Multiple-choice-questions">Multiple choice questions</h2>
-
-<dl>
-
-<dt><code>new_multiple_choice()</code></dt>
-<dd>
+<h2 id="new_multiple_choice">new_multiple_choice</h2>
 
 <pre><code>$mc = new_multiple_choice();</code></pre>
 
@@ -184,9 +181,7 @@ END_PGML</code></pre>
 
 <p>The parameters to the <code>Multiple</code> constructor are the same as those for the Match constrcutor described above under <code>new_match_list()</code>.</p>
 
-</dd>
-<dt><code>new_checkbox_multiple_choice()</code></dt>
-<dd>
+<h2 id="new_checkbox_multiple_choice">new_checkbox_multiple_choice</h2>
 
 <pre><code>$mc = new_checkbox_multiple_choice();</code></pre>
 
@@ -194,15 +189,7 @@ END_PGML</code></pre>
 
 <pre><code>$mc = new Multiple(random(1,2000,1), ~~&amp;std_print_q, ~~&amp;checkbox_print_a);</code></pre>
 
-</dd>
-</dl>
-
-<h2 id="Question-printing-subroutines">Question printing subroutines</h2>
-
-<dl>
-
-<dt><code>std_print_q()</code></dt>
-<dd>
+<h2 id="std_print_q">std_print_q</h2>
 
 <p><code>$list</code> can be a matching list, a select list, or a multiple choice list</p>
 
@@ -211,9 +198,7 @@ TEXT($list-&gt;print_q);</code></pre>
 
 <p>This formatting routine is the default method for formatting the way questions are printed for each of the three List sub-classes. It lists the questions vertically, numbering them sequentially and providing an answer blank before each question. std_print_q() checks which mode the user is trying to print the questions from and returns the appropriately formatted string.</p>
 
-</dd>
-<dt><code>pop_up_list_print_q()</code></dt>
-<dd>
+<h2 id="pop_up_list_print_q">pop_up_list_print_q</h2>
 
 <pre><code>$sl-&gt;rf_print_q(~~&amp;pop_up_list_print_q);
 $sl-&gt;ra_pop_up_list([T =&gt; &#39;True&#39;, F =&gt; &#39;False&#39;]);
@@ -223,9 +208,7 @@ TEXT($sl-&gt;print_q);</code></pre>
 
 <p>This printing routine is used to print the questions for a true/false or other select list with a preceding pop up list of possible answers. A list of values and labels need to be given to the pop_up_list so that the intended answer is returned when a student selects an answer form the list. Note the use of =&gt; in the example above to associate the values on the left with the labels on the right, this means that, for instance, the student will see the word True in the pop_up_list but the answer that is returned to the grader is T, so that it corresponds with what the professor typed in as the answer when using <code><span style="white-space: nowrap;">$sl-&gt;qa(&#39;blah blah&#39;, &#39;T&#39;);</span></code></p>
 
-</dd>
-<dt><code>quest_first_pop_up_list_print_q()</code></dt>
-<dd>
+<h2 id="quest_first_pop_up_list_print_q">quest_first_pop_up_list_print_q</h2>
 
 <pre><code>$sl-&gt;rf_print_q(~~&amp;quest_first_pop_up_list_print_q);
 $sl-&gt;ra_pop_up_list([T =&gt; &#39;True&#39;, F =&gt; &#39;False&#39;]);
@@ -233,9 +216,7 @@ TEXT($sl-&gt;print_q);</code></pre>
 
 <p>Similar to <code>pop_up_list_print_q()</code>, but places the popup list after the question text in the output.</p>
 
-</dd>
-<dt><code>ans_in_middle_pop_up_list_print_q()</code></dt>
-<dd>
+<h2 id="ans_in_middle_pop_up_list_print_q">ans_in_middle_pop_up_list_print_q</h2>
 
 <pre><code>$sl-&gt;rf_print_q(~~&amp;ans_in_middle_pop_up_list_print_q);
 $sl-&gt;ra_pop_up_list([T =&gt; &#39;True&#39;, F =&gt; &#39;False&#39;]);
@@ -243,21 +224,11 @@ TEXT($sl-&gt;print_q);</code></pre>
 
 <p>Similar to <code>quest_first_pop_up_list_print_q()</code>, except that no linebreaks are printed between questions, allowing for the popup list to be placed in the middle of the text of a problem.</p>
 
-</dd>
-<dt><code>units_list_print_q()</code></dt>
-<dd>
+<h2 id="units_list_print_q">units_list_print_q</h2>
 
 <p>A simple popup question printer. No question text is printed, instead the pop_up_list contents only are printed as a popup menu.</p>
 
-</dd>
-</dl>
-
-<h2 id="Answer-printing-subroutines">Answer printing subroutines</h2>
-
-<dl>
-
-<dt><code>std_print_a()</code></dt>
-<dd>
+<h2 id="std_print_a">std_print_a</h2>
 
 <pre><code># $list can be a matching list, a select list, or a multiple choice list
 $list-&gt;rf_print_a(~~&amp;std_print_a);
@@ -265,9 +236,7 @@ TEXT($list-&gt;print_a);</code></pre>
 
 <p>This simple formatting routine is the default method for formatting the answers for matching lists. It lists the answers vertically lettered sequentially.</p>
 
-</dd>
-<dt><code>radio_print_a()</code></dt>
-<dd>
+<h2 id="radio_print_a">radio_print_a</h2>
 
 <p><code>$list</code> can be a matching list, a select list, or a multiple choice list</p>
 
@@ -278,9 +247,7 @@ TEXT($list-&gt;print_q);</code></pre>
 
 <p><code>radio_print_a</code> checks which mode the user is trying to print the answers from and returns the appropriately formatted string.</p>
 
-</dd>
-<dt><code>checkbox_print_a()</code></dt>
-<dd>
+<h2 id="checkbox_print_a">checkbox_print_a</h2>
 
 <p><code>$list</code> can be a matching list, a select list, or a multiple choice list</p>
 
@@ -291,56 +258,41 @@ TEXT($list-&gt;print_q);</code></pre>
 
 <p><code>checkbox_print_a</code> checks which mode the user is trying to print the answers from and returns the appropriately formatted string.</p>
 
-</dd>
-</dl>
-
-<h2 id="Legacy-macros">Legacy macros</h2>
+<a href="#_podtop_"><h1 id="Legacy-macros-DEPRECATED">Legacy macros [DEPRECATED]</h1></a>
 
 <p>These are maintained for backward compatibility. They can still be useful in constructing non-standard lists that don&#39;t fit the various list objects. In general the using the list objects is likely to give better results and is preferred.</p>
 
-<dl>
-
-<dt>[DEPRECATED] qa()</dt>
-<dd>
+<h2 id="qa-DEPRECATED">qa [DEPRECATED]</h2>
 
 <pre><code>qa($questions, $answers, @new_qa);</code></pre>
 
 <p>$questions and $answers are references to arrays, and @new_qa is a list of questions and answers to add to the $questions and $answers arrays.</p>
 
-</dd>
-<dt>[DEPRECATED] invert()</dt>
-<dd>
+<h2 id="invert-DEPRECATED">invert [DEPRECATED]</h2>
 
 <pre><code>@b = invert(@a);</code></pre>
 
 <p>Inverts an arrays values and indexes. For example, <code>invert(1,2,4,8)</code> returns <code>undef,0,1,undef,2,undef,undef,undef,4</code>.</p>
 
-</dd>
-<dt>[DEPRECATED] NchooseK()</dt>
-<dd>
+<h2 id="NchooseK-DEPRECATED">NchooseK [DEPRECATED]</h2>
 
 <pre><code>@b = NchooseK($N, $K);</code></pre>
 
 <p>Selects $K random nonrepeating elements in the range 0 to $N-1. This is a wrapper for random_subset($K, 0 .. $N - 1);</p>
 
-</dd>
-<dt>[DEPRECATED] shuffle()</dt>
-<dd>
+<h2 id="shuffle-DEPRECATED">shuffle [DEPRECATED]</h2>
 
 <pre><code>@b = shuffle($i);</code></pre>
 
 <p>Returns the integers from 0 to $i-1 in random order.</p>
 
-</dd>
-<dt>[DEPRECATED] match_questions_list()</dt>
-<dd>
+<p>Note: this can be reproduced with the function</p>
 
-</dd>
-<dt>[DEPRECATED] match_questions_list_varbox()</dt>
-<dd>
+<pre><code>@b = random_subset($n, 0..$n-1);</code></pre>
 
-</dd>
-</dl>
+<h2 id="match_questions_list-DEPRECATED">match_questions_list [DEPRECATED]</h2>
+
+<h2 id="DEPRECATED-match_questions_list_varbox">[DEPRECATED] match_questions_list_varbox</h2>
 
 		</div>
 	</div>

@@ -38,40 +38,30 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#METHODS">METHODS</a>
     <ul class="nav flex-column w-100">
-      <li class="nav-item">
-        <ul class="nav flex-column w-100">
-          <li class="nav-item"><a class="nav-link p-0" href="#Matrix-Methods">Matrix Methods:</a>
-            <ul class="nav flex-column w-100">
-              <li class="nav-item"><a class="nav-link p-0" href="#Method-matrix-_stringify">Method $matrix-&gt;_stringify()</a></li>
-            </ul>
-          </li>
-          <li class="nav-item"><a class="nav-link p-0" href="#Accessor-functions">Accessor functions</a>
-            <ul class="nav flex-column w-100">
-              <li class="nav-item"><a class="nav-link p-0" href="#Method-matrix-rh_options">Method $matrix-&gt;rh_options</a></li>
-              <li class="nav-item"><a class="nav-link p-0" href="#Method-matrix-trace">Method $matrix-&gt;trace</a></li>
-              <li class="nav-item"><a class="nav-link p-0" href="#Method-new_matrix-matrix-new_from_array_ref-a-b-c-d-e-f">Method $new_matrix = $matrix-&gt;new_from_array_ref ([[a,b,c],[d,e,f]])</a></li>
-              <li class="nav-item"><a class="nav-link p-0" href="#Method-matrix-array_ref">Method $matrix-&gt;array_ref</a></li>
-              <li class="nav-item"><a class="nav-link p-0" href="#Method-matrix-list">Method $matrix-&gt;list</a></li>
-              <li class="nav-item"><a class="nav-link p-0" href="#Method-matrix-new_row_matrix">Method $matrix-&gt;new_row_matrix</a></li>
-              <li class="nav-item"><a class="nav-link p-0" href="#Method-matrix-proj">Method $matrix-&gt;proj</a></li>
-              <li class="nav-item"><a class="nav-link p-0" href="#Method-matrix-proj_coeff">Method $matrix-&gt;proj_coeff</a></li>
-              <li class="nav-item"><a class="nav-link p-0" href="#Method-matrix-new_column_matrix">Method $matrix-&gt;new_column_matrix</a></li>
-              <li class="nav-item"><a class="nav-link p-0" href="#Method-matrix-new_from_col_vecs">Method $matrix-&gt;new_from_col_vecs</a></li>
-            </ul>
-          </li>
-          <li class="nav-item"><a class="nav-link p-0" href="#Overrides-of-MatrixReal-which-allow-use-of-complex-entries">Overrides of MatrixReal which allow use of complex entries</a>
-            <ul class="nav flex-column w-100">
-              <li class="nav-item"><a class="nav-link p-0" href="#Function:-cp">Function: cp()</a></li>
-              <li class="nav-item"><a class="nav-link p-0" href="#Method-matrix-copy">Method $matrix-&gt;copy</a></li>
-              <li class="nav-item"><a class="nav-link p-0" href="#Method-matrix-conj">Method $matrix-&gt;conj</a></li>
-              <li class="nav-item"><a class="nav-link p-0" href="#Method-matrix-transpose">Method $matrix-&gt;transpose</a></li>
-              <li class="nav-item"><a class="nav-link p-0" href="#Method-matrix-decompose_LR">Method $matrix-&gt;decompose_LR</a></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
+      <li class="nav-item"><a class="nav-link p-0" href="#stringify">_stringify</a></li>
+    </ul>
+  </li><li class="nav-item"><a class="nav-link p-0" href="#FUNCTIONS">FUNCTIONS</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#rh_options">rh_options</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#trace">trace</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#new_from_array_ref">new_from_array_ref</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#array_ref">array_ref</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#list">list</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#new_row_matrix-DEPRECATED">new_row_matrix [DEPRECATED]</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#proj">proj</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#proj_coeff">proj_coeff</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#new_column_matrix">new_column_matrix</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#new_from_col_vecs">new_from_col_vecs</a></li>
+    </ul>
+  </li><li class="nav-item"><a class="nav-link p-0" href="#Overrides-of-MatrixReal-which-allow-use-of-complex-entries">Overrides of MatrixReal which allow use of complex entries</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#cp">cp</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#copy">copy</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#conj">conj</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#transpose">transpose</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#decompose_LR">decompose_LR</a></li>
     </ul>
   </li>				</ul>
 			</nav>
@@ -87,22 +77,17 @@
 
 <p>Implements overrides for MatrixReal.pm for WeBWorK In general it is better to use MathObjects Matrices (Value::Matrix) in writing PG problem. The answer checking is much superior with better error messages for syntax errors in student entries. Some of the subroutines in this file are still used behind the scenes by Value::Matrix to perform calculations, such as decompose_LR().</p>
 
-<a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
+<a href="#_podtop_"><h1 id="METHODS">METHODS</h1></a>
 
-<a href="#_podtop_"><h1 id="SYNOPSIS">SYNOPSIS</h1></a>
+<h2 id="stringify">_stringify</h2>
 
-<h3 id="Matrix-Methods">Matrix Methods:</h3>
+<p>overrides MatrixReal1 display mode</p>
 
-<h4 id="Method-matrix-_stringify">Method $matrix-&gt;_stringify()</h4>
+<a href="#_podtop_"><h1 id="FUNCTIONS">FUNCTIONS</h1></a>
 
-<pre><code>-- overrides MatrixReal1 display mode</code></pre>
+<p>(these are deprecated for direct use. Use the covering Methods provided by MathObject Matrices instead.)</p>
 
-<h3 id="Accessor-functions">Accessor functions</h3>
-
-<pre><code>(these are deprecated for direct use.  Use the covering Methods
- provided by MathObject Matrices instead.)
-
-L($matrix) - return matrix L of the LR decomposition
+<pre><code>L($matrix) - return matrix L of the LR decomposition
 R($matrix) - return matrix R of the LR decomposition
 PL($matrix) - return permutation matrix
 PR($matrix) - return permutation matrix
@@ -110,73 +95,71 @@ Original matrix is  PL * L * R *PR = M</code></pre>
 
 <p>Obtain the Left Right matrices of the decomposition and the two pivot permutation matrices the original is M = PL*L*R*PR</p>
 
-<h4 id="Method-matrix-rh_options">Method $matrix-&gt;rh_options</h4>
+<h2 id="rh_options">rh_options</h2>
 
 <p>Meant for internal use when dealing with MatrixReal1</p>
 
-<h4 id="Method-matrix-trace">Method $matrix-&gt;trace</h4>
+<h2 id="trace">trace</h2>
 
-<pre><code>Returns: scalar which is the trace of the matrix.
+<p>Returns: scalar which is the trace of the matrix.</p>
 
-Used by MathObject Matrices for calculating the trace.
-Deprecated for direct use in PG questions.</code></pre>
+<p>Used by MathObject Matrices for calculating the trace. Deprecated for direct use in PG questions.</p>
 
-<h4 id="Method-new_matrix-matrix-new_from_array_ref-a-b-c-d-e-f">Method $new_matrix = $matrix-&gt;new_from_array_ref ([[a,b,c],[d,e,f]])</h4>
+<h2 id="new_from_array_ref">new_from_array_ref</h2>
 
-<pre><code>Deprecated in favor of using creation tools for MathObject Matrices</code></pre>
+<p>Usage:</p>
 
-<h4 id="Method-matrix-array_ref">Method $matrix-&gt;array_ref</h4>
+<pre><code>$new_matrix = $matrix-&gt;new_from_array_ref ([[a,b,c],[d,e,f]])</code></pre>
+
+<p>Deprecated in favor of using creation tools for MathObject Matrices</p>
+
+<h2 id="array_ref">array_ref</h2>
 
 <p>Converts Matrix from an ARRAY to an ARRAY reference.</p>
 
-<h4 id="Method-matrix-list">Method $matrix-&gt;list</h4>
+<h2 id="list">list</h2>
 
 <p>Converts a Matrix column vector to an ARRAY (list).</p>
 
-<h4 id="Method-matrix-new_row_matrix">Method $matrix-&gt;new_row_matrix</h4>
+<h2 id="new_row_matrix-DEPRECATED">new_row_matrix [DEPRECATED]</h2>
 
-<pre><code>Deprecated -- there are better tools for MathObject Matrices.</code></pre>
+<p>Deprecated -- there are better tools for MathObject Matrices.</p>
 
 <p>Create a row 1 by n matrix from a list. This subroutine appears to be broken</p>
 
-<h4 id="Method-matrix-proj">Method $matrix-&gt;proj</h4>
+<h2 id="proj">proj</h2>
 
-<pre><code>Provides behind the scenes calculations for MathObject Matrix-&gt;proj
-Deprecated for direct use in favor of methods of MathObject matrix</code></pre>
+<p>Provides behind the scenes calculations for MathObject Matrix-&gt;proj Deprecated for direct use in favor of methods of MathObject matrix</p>
 
-<h4 id="Method-matrix-proj_coeff">Method $matrix-&gt;proj_coeff</h4>
+<h2 id="proj_coeff">proj_coeff</h2>
 
-<pre><code>Provides behind the scenes calculations for MathObject Matrix-&gt;proj_coeff
-Deprecated for direct use in favor of methods of MathObject matrix</code></pre>
+<p>Provides behind the scenes calculations for MathObject Matrix-&gt;proj_coeff Deprecated for direct use in favor of methods of MathObject matrix</p>
 
-<h4 id="Method-matrix-new_column_matrix">Method $matrix-&gt;new_column_matrix</h4>
+<h2 id="new_column_matrix">new_column_matrix</h2>
 
-<pre><code>Create column matrix from an ARRAY reference (list reference)</code></pre>
+<p>Create column matrix from an ARRAY reference (list reference)</p>
 
-<h4 id="Method-matrix-new_from_col_vecs">Method $matrix-&gt;new_from_col_vecs</h4>
+<h2 id="new_from_col_vecs">new_from_col_vecs</h2>
 
-<pre><code>This method takes an array of column vectors, or an array of arrays,
-and converts them to a matrix where each column is one of the previous
-vectors.
+<p>This method takes an array of column vectors, or an array of arrays, and converts them to a matrix where each column is one of the previous vectors.</p>
 
-Deprecated: The tools for creating MathObjects Matrices are simpler</code></pre>
+<p>Deprecated: The tools for creating MathObjects Matrices are simpler</p>
 
-<h3 id="Overrides-of-MatrixReal-which-allow-use-of-complex-entries">Overrides of MatrixReal which allow use of complex entries</h3>
+<a href="#_podtop_"><h1 id="Overrides-of-MatrixReal-which-allow-use-of-complex-entries">Overrides of MatrixReal which allow use of complex entries</h1></a>
 
-<h4 id="Function:-cp">Function: cp()</h4>
+<h2 id="cp">cp</h2>
 
-<pre><code>Provides ability to use complex numbers.</code></pre>
+<p>Provides ability to use complex numbers.</p>
 
-<h4 id="Method-matrix-copy">Method $matrix-&gt;copy</h4>
+<h2 id="copy">copy</h2>
 
-<h4 id="Method-matrix-conj">Method $matrix-&gt;conj</h4>
+<h2 id="conj">conj</h2>
 
-<h4 id="Method-matrix-transpose">Method $matrix-&gt;transpose</h4>
+<h2 id="transpose">transpose</h2>
 
-<h4 id="Method-matrix-decompose_LR">Method $matrix-&gt;decompose_LR</h4>
+<h2 id="decompose_LR">decompose_LR</h2>
 
-<pre><code>Used by MathObjects Matrix for LR decomposition
-Deprecated for direct use in PG problems.</code></pre>
+<p>Used by MathObjects Matrix for LR decomposition Deprecated for direct use in PG problems.</p>
 
 		</div>
 	</div>

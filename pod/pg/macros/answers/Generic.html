@@ -38,7 +38,12 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#Generic-Answer-Checker">Generic Answer Checker</a></li>				</ul>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#FUNCTIONS">FUNCTIONS</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#generic_cmp">generic_cmp</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#generic_cmp_check">generic_cmp_check</a></li>
+    </ul>
+  </li>				</ul>
 			</nav>
 		</div>
 	</aside>
@@ -46,64 +51,76 @@
 		<div class="container-fluid p-3 h-100" id="_podtop_">
 
 
-<a href="#_podtop_"><h1 id="Generic-Answer-Checker">Generic Answer Checker</h1></a>
+<a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<p>(Based on David Cervone&#39;s vector_cmp. See doc/parser/extensions/8-answer.pg under the webwork2 directory.) Place in macros directory and load this file (Generic.pl) using the loadMacros command. (To just copy it into a pg file, replace occurences of &quot;\&amp;&quot; by &quot;~~&amp;&quot;.)</p>
+<p>Generic.pl - Provide some generic answer checkers.</p>
 
-<pre><code>Usage:
+<a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
- ANS(  generic_cmp(&lt;prof_answer&gt;, &lt;optional and mandatory arguments&gt;) );
-where &lt;prof_answer&gt; is a parser object or syntactically correct string
-for a parser object.</code></pre>
+<p>This macro provides a set of functions that provide a generic answer checker.</p>
+
+<p>Usage:</p>
+
+<pre><code>ANS(  generic_cmp(&lt;prof_answer&gt;, &lt;optional and mandatory arguments&gt;) );</code></pre>
+
+<p>where &lt;prof_answer&gt; is a parser object or syntactically correct string for a parser object.</p>
 
 <p>Mandatory arguments:</p>
 
-<pre><code>type =&gt; &lt;type&gt;
-where &lt;type&gt; is a recognized parser type (e.g., Number, Point, Vector,
-Matrix, etc.)
+<pre><code>type =&gt; &lt;type&gt;</code></pre>
 
-checker =&gt; &lt;checker&gt;
-where &lt;checker&gt; is a reference to a subroutine that will be passed (in
-order) the parsed (and, if possible, evaluated) student answer, the
-parsed professor&#39;s answer, and a reference to the answer hash.  (The
-last is so that it can return error messages if desired.) In simple
-evaluators, the last two are typically not used.</code></pre>
+<p>where &lt;type&gt; is a recognized parser type (e.g., Number, Point, Vector, Matrix, etc.)</p>
+
+<pre><code>checker =&gt; &lt;checker&gt;</code></pre>
+
+<p>where &lt;checker&gt; is a reference to a subroutine that will be passed (in order) the parsed (and, if possible, evaluated) student answer, the parsed professor&#39;s answer, and a reference to the answer hash. (The last is so that it can return error messages if desired.) In simple evaluators, the last two are typically not used.</p>
 
 <p>Optional arguments:</p>
 
-<pre><code>correct_ans =&gt; &lt;answer_string&gt;
-where &lt;answer_string&gt; is a string that will show up as the correct
-answer when solutions are available.
+<pre><code>correct_ans =&gt; &lt;answer_string&gt;</code></pre>
 
-variables_allowed =&gt; 0 or 1 
-(default 0 (false).  Determines whether student&#39;s answer is allowed to
-contain variables.  In this case the checker must take care of
-evaluating it.)
+<p>where &lt;answer_string&gt; is a string that will show up as the correct answer when solutions are available.</p>
 
-length =&gt; n
-where n is the number of elements in an expected answer of type list,
-vector, or points.  Returns error message to student if answer of wrong
-length is entered.</code></pre>
+<pre><code>variables_allowed =&gt; 0 or 1</code></pre>
 
-<p>####################Example:########################## DOCUMENT(); # This should be the first executable line in the problem.</p>
+<p>(default 0 (false). Determines whether student&#39;s answer is allowed to contain variables. In this case the checker must take care of evaluating it.)</p>
 
-<p>loadMacros( &quot;PG.pl&quot;, &quot;PGbasicmacros.pl&quot;, &quot;PGanswermacros.pl&quot;, &quot;Parser.pl&quot;, &quot;Generic.pl&quot;, );</p>
+<pre><code>length =&gt; n</code></pre>
 
-<p>TEXT(&amp;beginproblem);</p>
+<p>where n is the number of elements in an expected answer of type list, vector, or points. Returns error message to student if answer of wrong length is entered.</p>
 
-<p>Context(&quot;Vector&quot;); $A=Vector(1,2,1); $B=Vector(1,3,1); $C=Vector(1,4,1);</p>
+<a href="#_podtop_"><h1 id="SYNOPSIS">SYNOPSIS</h1></a>
 
-<p>BEGIN_TEXT Show that the vectors \(\{$A-&gt;TeX\}, \{$B-&gt;TeX\}, \{$C-&gt;TeX\}\) do not span \(R^3\) by giving a vector not in their span: \{ans_rule()\} END_TEXT</p>
+<pre><code>DOCUMENT();
 
-<p>#Easy to get by guessing!</p>
+loadMacros(&quot;PG.pl&quot;, &quot;PGbasicmacros.pl&quot;, &quot;PGanswermacros.pl&quot;, &quot;Parser.pl&quot;, &quot;Generic.pl&quot;);
 
-<p>sub check{ my $stu=shift(); $x1=$stu-&gt;extract(1); $x3=$stu-&gt;extract(3); $x1 != $x3; #any vectors with different 1st and 3rd coordinates }</p>
+Context(&quot;Vector&quot;);
+$A=Vector(1,2,1);
+$B=Vector(1,3,1);
+$C=Vector(1,4,1);
 
-<p>ANS(generic_cmp(&quot;23&quot;,type =&gt; &#39;Vector&#39;, length =&gt; 3, checker =&gt; ~~&amp;check));</p>
+BEGIN_TEXT
+Show that the vectors \(\{$A-&gt;TeX\}, \{$B-&gt;TeX\}, \{$C-&gt;TeX\}\) do
+not span \(R^3\) by giving a vector not in their span:
+\{ans_rule()\}
+END_TEXT
 
-<p>ENDDOCUMENT(); # This should be the last executable line in the problem.</p>
+sub check {
+  my $stu=shift;
+  $x1=$stu-&gt;extract(1); $x3=$stu-&gt;extract(3);
+  $x1 != $x3; #any vectors with different 1st and 3rd coordinates
+}
 
-<p>####################End of Example########################</p>
+ANS(generic_cmp(&quot;23&quot;,type =&gt; &#39;Vector&#39;, length =&gt; 3, checker =&gt; ~~&amp;check));
+
+ENDDOCUMENT();</code></pre>
+
+<a href="#_podtop_"><h1 id="FUNCTIONS">FUNCTIONS</h1></a>
+
+<h2 id="generic_cmp">generic_cmp</h2>
+
+<h2 id="generic_cmp_check">generic_cmp_check</h2>
 
 		</div>
 	</div>

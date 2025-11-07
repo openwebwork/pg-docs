@@ -38,7 +38,7 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#FUNCTIONS">FUNCTIONS</a>
     <ul class="nav flex-column w-100">
       <li class="nav-item"><a class="nav-link p-0" href="#UNORDERED_ANS">UNORDERED_ANS</a></li>
       <li class="nav-item"><a class="nav-link p-0" href="#UNORDERED_NAMED_ANS">UNORDERED_NAMED_ANS</a></li>
@@ -53,7 +53,7 @@
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<p>unorderedAnswer.pl - allow the answers to be checked independent of order.</p>
+<p>unorderedAnswer.pl - Allow the answers to be checked independent of order.</p>
 
 <a href="#_podtop_"><h1 id="SYNOPSIS">SYNOPSIS</h1></a>
 
@@ -65,11 +65,13 @@ UNORDERED_NAMED_ANS(name1 =&gt; checker1, name2 =&gt; checker2, ...);</code></pr
 
 <p>Routines for groups of answer blanks where the user can enter answers in any order in the blanks.</p>
 
+<a href="#_podtop_"><h1 id="FUNCTIONS">FUNCTIONS</h1></a>
+
 <h2 id="UNORDERED_ANS">UNORDERED_ANS</h2>
 
 <p>Collect a group of answer checkers for use with answers that can be given in any order. If <code>N</code> answer checkers are given, then the last <code>N</code> answer rules will be used. It is beter to use named rules and <code>UNORDERED_NAMED_ANS</code> below. Otherwise, be sure to use <code>UNORDERED_ANS</code> right after the answer rules for the answers you want to compare.</p>
 
-<p>Format:</p>
+<p>Usage:</p>
 
 <pre><code>UNORDERED_ANS(checker1, checker2, ...);</code></pre>
 
@@ -88,9 +90,9 @@ UNORDERED_ANS(std_num_cmp(sqrt($a)), std_num_cmp(-sqrt($a)));</code></pre>
 
 <p>Collect a group of answer checkers for use with named answers that can be given in any order.</p>
 
-<p>Format:</p>
+<p>Usage:</p>
 
-<p>UNORDERED_NAMED_ANS(name1 =&gt; checker1, name2 =&gt; checker2, ...);</p>
+<pre><code>UNORDERED_NAMED_ANS(name1 =&gt; checker1, name2 =&gt; checker2, ...);</code></pre>
 
 <p>Example:</p>
 

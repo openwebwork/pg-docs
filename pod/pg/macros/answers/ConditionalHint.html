@@ -38,17 +38,13 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#ConditionalHint.pl">ConditionalHint.pl</a>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#FUNCTIONS">FUNCTIONS</a>
     <ul class="nav flex-column w-100">
-      <li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#USAGE">USAGE</a>
+      <li class="nav-item"><a class="nav-link p-0" href="#ConditionalHint">ConditionalHint</a>
         <ul class="nav flex-column w-100">
-          <li class="nav-item"><a class="nav-link p-0" href="#Synopsis-of-ConditionalHint">Synopsis of ConditionalHint</a></li>
           <li class="nav-item"><a class="nav-link p-0" href="#Complete-Working-Example-of-ConditionalHint">Complete Working Example of ConditionalHint</a></li>
         </ul>
       </li>
-      <li class="nav-item"><a class="nav-link p-0" href="#AUTHOR">AUTHOR</a></li>
     </ul>
   </li>				</ul>
 			</nav>
@@ -58,21 +54,19 @@
 		<div class="container-fluid p-3 h-100" id="_podtop_">
 
 
-<a href="#_podtop_"><h1 id="ConditionalHint.pl">ConditionalHint.pl</h1></a>
+<a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<h2 id="NAME">NAME</h2>
+<p>ConditionalHint.pl - Allows a hint to be revealed after a student has entered an answer correctly.</p>
 
-<p><code>ConditionalHint.pl</code> - Allows a hint to be revealed after a student has entered an answer correctly.</p>
-
-<h2 id="DESCRIPTION">DESCRIPTION</h2>
+<a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
 <p>The subroutine <code>ConditionalHint()</code> allows a hint to be revealed after a student has entered an answer correctly. It is useful for multi-part questions in which a hint for answering one part should not be revealed until a previous part has been answered correctly.</p>
 
 <p>A subroutine <code>IsAnswerCorrect()</code> that returns 0 or 1 is also provided.</p>
 
-<h2 id="USAGE">USAGE</h2>
+<a href="#_podtop_"><h1 id="FUNCTIONS">FUNCTIONS</h1></a>
 
-<h3 id="Synopsis-of-ConditionalHint">Synopsis of ConditionalHint</h3>
+<h2 id="ConditionalHint">ConditionalHint</h2>
 
 <pre><code>loadMacros(&quot;ConditionalHint.pl&quot;);
 
@@ -153,10 +147,6 @@ ANS( $answers[2]-&gt;cmp() );
 COMMENT(&#39;When the first answer is correct, a hint appears with an integral formula (using ConditionalHint.pl).&#39;);
 
 ENDDOCUMENT();</code></pre>
-
-<h2 id="AUTHOR">AUTHOR</h2>
-
-<p>Paul Pearson</p>
 
 		</div>
 	</div>

@@ -38,7 +38,7 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#TERMINOLOGY">TERMINOLOGY</a></li><li class="nav-item"><a class="nav-link p-0" href="#USAGE">USAGE</a></li><li class="nav-item"><a class="nav-link p-0" href="#EXAMPLE">EXAMPLE</a></li><li class="nav-item"><a class="nav-link p-0" href="#CUSTOM-CHECKERS">CUSTOM CHECKERS</a></li>				</ul>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#CUSTOM-CHECKERS">CUSTOM CHECKERS</a></li>				</ul>
 			</nav>
 		</div>
 	</aside>
@@ -48,19 +48,15 @@
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<p>draggableProof.pl</p>
+<p>draggableProof.pl - Allows the contructions of problems with draggable statements for proofs.</p>
 
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
 <p>This macro helps the instructor create a drag-and-drop environment in which students are asked to arrange predefined statements into a correct sequence.</p>
 
-<a href="#_podtop_"><h1 id="TERMINOLOGY">TERMINOLOGY</h1></a>
-
 <p>An HTML element into or out of which other elements may be dragged will be called a &quot;bucket&quot;.</p>
 
 <p>An HTML element which houses a collection of buckets will be called a &quot;bucket pool&quot;.</p>
-
-<a href="#_podtop_"><h1 id="USAGE">USAGE</h1></a>
 
 <p>To initialize a <code>DraggableProof</code> bucket pool in a .pg problem, insert the line:</p>
 
@@ -74,17 +70,11 @@
 
 <p>Then insert the draggable proof bucket pool into the problem text with</p>
 
-<pre><code>BEGIN_TEXT
-\{$draggable-&gt;ans_rule\}
-END_TEXT</code></pre>
-
-<p>for basic PG, or</p>
-
 <pre><code>BEGIN_PGML
 [_]{$draggable}
 END_PGML</code></pre>
 
-<p>for PGLM. Note the following also works, but is deprecated. However, if you want your problem to be compatible with previous versions of PG this must be used. Call</p>
+<p>Note the following also works, but is deprecated. However, if you want your problem to be compatible with previous versions of PG this must be used. Call</p>
 
 <pre><code>\{$draggable-&gt;Print\} (or [@ $draggable-&gt;Print @]* )</code></pre>
 
@@ -113,7 +103,7 @@ ResetButtonText    =&gt; &lt;string&gt;</code></pre>
 
 <p>Their usage is explained in the example below.</p>
 
-<a href="#_podtop_"><h1 id="EXAMPLE">EXAMPLE</h1></a>
+<a href="#_podtop_"><h1 id="SYNOPSIS">SYNOPSIS</h1></a>
 
 <pre><code>DOCUMENT();
 loadMacros(

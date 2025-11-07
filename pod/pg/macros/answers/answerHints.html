@@ -38,7 +38,11 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#AnswerHints">AnswerHints()</a></li>				</ul>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#FUNCTIONS">FUNCTIONS</a>
+    <ul class="nav flex-column w-100">
+      <li class="nav-item"><a class="nav-link p-0" href="#AnswerHints">AnswerHints</a></li>
+    </ul>
+  </li>				</ul>
 			</nav>
 		</div>
 	</aside>
@@ -46,13 +50,19 @@
 		<div class="container-fluid p-3 h-100" id="_podtop_">
 
 
-<a href="#_podtop_"><h1 id="AnswerHints">AnswerHints()</h1></a>
+<a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<p>This is an answer-checker post-filter that allows you to produce additional error messages for incorrect answers. You can trigger a message for a single answer, a collection of answers, or via a subroutine that determines the condition for the message.</p>
+<p>answerHints.pl - Provides methods for answer hints.</p>
 
-<p>Note that this filter only works for MathObjects answer checkers.</p>
+<a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
-<p>The answer hints are given as a pair using =&gt; with the right-hand side being the answer message and the left-hand side being one of three possibilities: 1) the value that triggers the message, 2) a reference to an array of values that trigger the message, or 3) a code reference to a subtroutine that accepts the correct answer, the student&#39;s answer, and the answer hash, and returns 1 or 0 depending on whether the message should or should not be displayed. (See the examples below.)</p>
+<p>This macro provides an answer-checker post-filter that allows you to produce additional error messages for incorrect answers. You can trigger a message for a single answer, a collection of answers, or via a subroutine that determines the condition for the message.</p>
+
+<a href="#_podtop_"><h1 id="FUNCTIONS">FUNCTIONS</h1></a>
+
+<h2 id="AnswerHints">AnswerHints</h2>
+
+<p>The answer hints are given as a pair using <code>=&gt;</code> with the right-hand side being the answer message and the left-hand side being one of three possibilities: 1) the value that triggers the message, 2) a reference to an array of values that trigger the message, or 3) a code reference to a subtroutine that accepts the correct answer, the student&#39;s answer, and the answer hash, and returns 1 or 0 depending on whether the message should or should not be displayed. (See the examples below.)</p>
 
 <p>The right-hand side can be either the message string itself, or a referrence to an array where the first element is the message string, and the remaining elements are name-value pairs that set options for the message. These can include:</p>
 

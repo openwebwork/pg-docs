@@ -38,17 +38,14 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#FUNCTIONS">FUNCTIONS</a>
     <ul class="nav flex-column w-100">
-      <li class="nav-item"><a class="nav-link p-0" href="#listVariables">listVariables</a>
-        <ul class="nav flex-column w-100">
-          <li class="nav-item"><a class="nav-link p-0" href="#listFormVariables">listFormVariables()</a></li>
-          <li class="nav-item"><a class="nav-link p-0" href="#listEnvironmentVariables">listEnvironmentVariables()</a></li>
-          <li class="nav-item"><a class="nav-link p-0" href="#listContextFlags">listContextFlags()</a></li>
-        </ul>
-      </li>
-      <li class="nav-item"><a class="nav-link p-0" href="#listContext">listContext()</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#pp">pp()</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#listVariables">listVariables</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#listFormVariables">listFormVariables</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#listEnvironmentVariables">listEnvironmentVariables</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#listContextFlags">listContextFlags</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#listContext">listContext</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#pp">pp</a></li>
     </ul>
   </li>				</ul>
 			</nav>
@@ -60,9 +57,9 @@
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<p>PGinfo.pl</p>
+<p>PGinfo.pl - Provides macros for determining the values of the current context in which the problem is being written.</p>
 
-<p>Provides macros for determining the values of the current context in which the problem is being written.</p>
+<a href="#_podtop_"><h1 id="FUNCTIONS">FUNCTIONS</h1></a>
 
 <h2 id="listVariables">listVariables</h2>
 
@@ -70,29 +67,28 @@
 
 <p>Prints all variables submitted in the problem form and all variables in the the Problem environment and all of the flag variables in Context(). This is used for debugging and to determine the current context for the problem.</p>
 
-<h3 id="listFormVariables">listFormVariables()</h3>
+<h2 id="listFormVariables">listFormVariables</h2>
 
 <p>Called by <code>listVariables</code> to print out the input form variables.</p>
 
-<h3 id="listEnvironmentVariables">listEnvironmentVariables()</h3>
+<h2 id="listEnvironmentVariables">listEnvironmentVariables</h2>
 
 <pre><code>Called by C&lt;listVariables&gt; to print out the environment variables (in %envir).</code></pre>
 
-<h3 id="listContextFlags">listContextFlags()</h3>
+<h2 id="listContextFlags">listContextFlags</h2>
 
 <pre><code>Called by listVariables to print out context flags for Math Objects.</code></pre>
 
-<h2 id="listContext">listContext()</h2>
+<h2 id="listContext">listContext</h2>
 
 <pre><code>Usage:  listContext(Context())
 
 Prints out the contents of the current context hash -- includes flags and much more</code></pre>
 
-<h2 id="pp">pp()</h2>
+<h2 id="pp">pp</h2>
 
 <pre><code>Usage:  pp(Hash );
         pp(Object);
-
 
 Prints out the contents of Hash or the instance variables of Object</code></pre>
 

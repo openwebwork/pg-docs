@@ -41,9 +41,12 @@
 <li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a>
     <ul class="nav flex-column w-100">
       <li class="nav-item"><a class="nav-link p-0" href="#Sample-PG-problem">Sample PG problem</a></li>
+    </ul>
+  </li><li class="nav-item"><a class="nav-link p-0" href="#FUNCTIONS">FUNCTIONS</a>
+    <ul class="nav flex-column w-100">
       <li class="nav-item"><a class="nav-link p-0" href="#convertBase">convertBase</a>
         <ul class="nav flex-column w-100">
-          <li class="nav-item"><a class="nav-link p-0" href="#options">options</a></li>
+          <li class="nav-item"><a class="nav-link p-0" href="#Options">Options</a></li>
           <li class="nav-item"><a class="nav-link p-0" href="#Examples">Examples</a></li>
         </ul>
       </li>
@@ -64,9 +67,7 @@
 
 <p>This context implements positive integers and some operations on integers in a non-decimal base greater than or equal to 2. The numbers will be stored internally in decimal, though parsed and shown in the chosen base.</p>
 
-<p>In addition, basic integer arithemetic (+,-,*,/,%,^) are available for these numbers. Division is defined in an integer sense.</p>
-
-<p>The original purpose for this is simple conversion and operations in another base, however it is not limited to this.</p>
+<p>The original purpose for this is simple conversion and operations in another base, however it is not limited to this. In addition, basic integer arithemetic (+,-,*,/,%,^) are available for these numbers. Division is defined in an integer sense.</p>
 
 <p>To use a non-decimal base MathObject, first load the contextBaseN.pl file:</p>
 
@@ -142,11 +143,13 @@ ENDDOCUMENT();</code></pre>
 
 <p>The star variant answer blank will print the base in subscript after the answer blank.</p>
 
+<a href="#_podtop_"><h1 id="FUNCTIONS">FUNCTIONS</h1></a>
+
 <h2 id="convertBase">convertBase</h2>
 
 <p>The function <code>convertBase(value, opts)</code> converts the value from or to other bases depending on the options in <code>opts</code>. The input <code>value</code> is a positive number or string version of a positive number in some base.</p>
 
-<h3 id="options">options</h3>
+<h3 id="Options">Options</h3>
 
 <ul>
 

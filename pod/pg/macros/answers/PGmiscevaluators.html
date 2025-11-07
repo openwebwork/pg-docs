@@ -38,11 +38,12 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#FUNCTIONS">FUNCTIONS</a>
     <ul class="nav flex-column w-100">
-      <li class="nav-item"><a class="nav-link p-0" href="#MathObjects-and-answer-evaluators">MathObjects and answer evaluators</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#checkbox_cmp">checkbox_cmp</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#radio_cmp">radio_cmp</a></li>
     </ul>
-  </li><li class="nav-item"><a class="nav-link p-0" href="#checkbox_cmp">checkbox_cmp</a></li><li class="nav-item"><a class="nav-link p-0" href="#radio_cmp">radio_cmp</a></li><li class="nav-item"><a class="nav-link p-0" href="#SEE-ALSO">SEE ALSO</a></li>				</ul>
+  </li><li class="nav-item"><a class="nav-link p-0" href="#SEE-ALSO">SEE ALSO</a></li>				</ul>
 			</nav>
 		</div>
 	</aside>
@@ -58,21 +59,25 @@
 
 <p>Currently contains answer evaluators for radio buttons and checkboxes.</p>
 
-<h2 id="MathObjects-and-answer-evaluators">MathObjects and answer evaluators</h2>
+<p>The <a href="https://openwebwork.github.io/pg-docs/pod//pg/macros/parsers/parserRadioButtons.html">parserRadioButtons.pl</a> and <a href="https://openwebwork.github.io/pg-docs/pod//pg/macros/parsers/parserCheckboxList.html">parserCheckboxList.pl</a> macros that manage display and checking of radio-button and checkbox based answers. It is recommended that you use those, instead of using the methods in this file.</p>
 
-<p>The MathObjects system provides a parserRadioButtons.pl file that manages display and checking of radio-button based answers. It is recommended that you use this method directly if possible.</p>
+<a href="#_podtop_"><h1 id="FUNCTIONS">FUNCTIONS</h1></a>
 
-<a href="#_podtop_"><h1 id="checkbox_cmp">checkbox_cmp</h1></a>
+<h2 id="checkbox_cmp">checkbox_cmp</h2>
 
 <pre><code>ANS(checkbox_cmp($correctAnswer))</code></pre>
 
 <p>$correctAnswer is a string containing the names of the correct boxes, e.g. &quot;ACD&quot;. Note that this means that individual checkbox names can only be one character. Internally, this is largely the same as unordered_cs_str_cmp().</p>
 
-<a href="#_podtop_"><h1 id="radio_cmp">radio_cmp</h1></a>
+<p>Note: See <a href="https://openwebwork.github.io/pg-docs/pod//pg/macros/parsers/parserCheckboxList.html">parserCheckboxList.pl</a> for an alternative to this.</p>
+
+<h2 id="radio_cmp">radio_cmp</h2>
 
 <pre><code>ANS(radio_cmp($correctAnswer))</code></pre>
 
 <p>$correctAnswer is a string containing the name of the correct radio button, e.g. &quot;Choice1&quot;. This is case sensitive and whitespace sensitive, so the correct answer must match the name of the radio button exactly.</p>
+
+<p>Note: See <a href="https://openwebwork.github.io/pg-docs/pod//pg/macros/parsers/parserRadioButtons.html">parserRadioButtons.pl</a> for an alternative to this.</p>
 
 <a href="#_podtop_"><h1 id="SEE-ALSO">SEE ALSO</h1></a>
 

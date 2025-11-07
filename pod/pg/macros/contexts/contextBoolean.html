@@ -38,20 +38,11 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#CONSTANTS">CONSTANTS</a></li><li class="nav-item"><a class="nav-link p-0" href="#VARIABLES">VARIABLES</a></li><li class="nav-item"><a class="nav-link p-0" href="#OPERATORS">OPERATORS</a>
     <ul class="nav flex-column w-100">
-      <li class="nav-item"><a class="nav-link p-0" href="#CONSTANTS">CONSTANTS</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#VARIABLES">VARIABLES</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#OPERATORS">OPERATORS</a>
-        <ul class="nav flex-column w-100">
-          <li class="nav-item"><a class="nav-link p-0" href="#Aliases-and-Alternatives">Aliases and Alternatives</a></li>
-        </ul>
-      </li>
-      <li class="nav-item"><a class="nav-link p-0" href="#OPERATOR-PRECEDENCE">OPERATOR PRECEDENCE</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#REDUCTION">REDUCTION</a></li>
-      <li class="nav-item"><a class="nav-link p-0" href="#COMPARISON">COMPARISON</a></li>
+      <li class="nav-item"><a class="nav-link p-0" href="#Aliases-and-Alternatives">Aliases and Alternatives</a></li>
     </ul>
-  </li>				</ul>
+  </li><li class="nav-item"><a class="nav-link p-0" href="#OPERATOR-PRECEDENCE">OPERATOR PRECEDENCE</a></li><li class="nav-item"><a class="nav-link p-0" href="#REDUCTION-RULES">REDUCTION RULES</a></li><li class="nav-item"><a class="nav-link p-0" href="#COMPARISON">COMPARISON</a></li>				</ul>
 			</nav>
 		</div>
 	</aside>
@@ -65,6 +56,10 @@
 
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
+<p>This macro provides functionality for handling boolean expressions.</p>
+
+<a href="#_podtop_"><h1 id="SYNOPSIS">SYNOPSIS</h1></a>
+
 <p>Load this file:</p>
 
 <pre><code>loadMacros(&#39;contextBoolean.pl&#39;);</code></pre>
@@ -73,7 +68,7 @@
 
 <pre><code>Context(&#39;Boolean&#39;);</code></pre>
 
-<h2 id="CONSTANTS">CONSTANTS</h2>
+<a href="#_podtop_"><h1 id="CONSTANTS">CONSTANTS</h1></a>
 
 <p>This constant recognizes two constants by default, <code>T</code> and <code>F</code>. The following are all equivalent:</p>
 
@@ -82,19 +77,19 @@ $T = Boolean(&#39;T&#39;);
 $T = Context()-&gt;T;
 $T = context::Boolean-&gt;T;</code></pre>
 
-<h2 id="VARIABLES">VARIABLES</h2>
+<a href="#_podtop_"><h1 id="VARIABLES">VARIABLES</h1></a>
 
 <p>By default, this context has two variables, <code>p</code> and <code>q</code>. More variables can be added through the usual means of modifying context:</p>
 
 <pre><code>Context-&gt;variables-&gt;add( r =&gt; &#39;Boolean&#39; );</code></pre>
 
-<h2 id="OPERATORS">OPERATORS</h2>
+<a href="#_podtop_"><h1 id="OPERATORS">OPERATORS</h1></a>
 
 <p>Changing the LaTeX representations of the boolean operators is handled through the operators <code>or</code>, <code>and</code>, <code>xor</code>, and <code>not</code>. Note the extra space following the LaTeX command.</p>
 
 <pre><code>Context-&gt;operators-&gt;set( not =&gt; { TeX =&gt; &#39;\neg &#39; } );</code></pre>
 
-<h3 id="Aliases-and-Alternatives">Aliases and Alternatives</h3>
+<h2 id="Aliases-and-Alternatives">Aliases and Alternatives</h2>
 
 <p>Modifications to the operators should be applied to the string versions of each operator: &#39;or&#39;, &#39;xor&#39;, &#39;and&#39;, and &#39;not&#39;; rather than to any of the following aliases or alternatives.</p>
 
@@ -128,7 +123,7 @@ $T = context::Boolean-&gt;T;</code></pre>
 </dd>
 </dl>
 
-<h2 id="OPERATOR-PRECEDENCE">OPERATOR PRECEDENCE</h2>
+<a href="#_podtop_"><h1 id="OPERATOR-PRECEDENCE">OPERATOR PRECEDENCE</h1></a>
 
 <dl>
 
@@ -149,7 +144,7 @@ $b = Compute(&quot;T or T and F&quot;); # $b == T</code></pre>
 </dd>
 </dl>
 
-<h2 id="REDUCTION">REDUCTION</h2>
+<a href="#_podtop_"><h1 id="REDUCTION-RULES">REDUCTION RULES</h1></a>
 
 <p>The context also handles <code>reduceConstants</code> with the following reduction rules:</p>
 
@@ -187,7 +182,7 @@ $b = Compute(&quot;T or T and F&quot;); # $b == T</code></pre>
 </dd>
 </dl>
 
-<h2 id="COMPARISON">COMPARISON</h2>
+<a href="#_podtop_"><h1 id="COMPARISON">COMPARISON</h1></a>
 
 <p>Boolean Formula objects are considered equal whenever the two expressions generate the same truth table.</p>
 

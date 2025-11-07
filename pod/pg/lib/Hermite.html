@@ -38,7 +38,7 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNPOSIS">SYNPOSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li>				</ul>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#SYNOPSIS">SYNOPSIS</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a></li>				</ul>
 			</nav>
 		</div>
 	</aside>
@@ -48,27 +48,25 @@
 
 <a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
 
-<pre><code>Hermite.pm</code></pre>
+<p>Hermite.pm</p>
 
-<a href="#_podtop_"><h1 id="SYNPOSIS">SYNPOSIS</h1></a>
+<a href="#_podtop_"><h1 id="SYNOPSIS">SYNOPSIS</h1></a>
 
-<pre><code>Usage:
-          $obj = new Hermit(\@x_values, \y_valuses \@yp_values);
+<p>Usage:</p>
 
-          #get and set methods
-          $ra_x_values = $obj -&gt; ra_x(\@x_values);
-          $ra_y_values = $obj -&gt; ra_y;
-          $ra_yp_values = $obj -&gt; ra_yp;
+<pre><code>$obj = new Hermit(\@x_values, \y_valuses \@yp_values);
 
-          $obj -&gt; initialize;           # calculates the approximation
-
-          #get methods
-          $rf_function                  = $obj -&gt; rf_f;
-          $rf_function_derivative       = $obj -&gt; rf_fp;
-          $rf_function_2nd_derivative   = $obj -&gt; rf_fpp;
-
-          $rh_critical_points           =$obj -&gt; rh_critical_points
-          $rh_inflection_points         =$obj -&gt; rh_inflection_points</code></pre>
+#get and set methods
+              $ra_x_values = $obj -&gt; ra_x(\@x_values);
+$ra_y_values = $obj -&gt; ra_y;
+$ra_yp_values = $obj -&gt; ra_yp;
+$obj -&gt; initialize;           # calculates the approximation
+#get methods
+$rf_function                  = $obj -&gt; rf_f;
+$rf_function_derivative       = $obj -&gt; rf_fp;
+$rf_function_2nd_derivative   = $obj -&gt; rf_fpp;
+$rh_critical_points           =$obj -&gt; rh_critical_points
+$rh_inflection_points         =$obj -&gt; rh_inflection_points</code></pre>
 
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 

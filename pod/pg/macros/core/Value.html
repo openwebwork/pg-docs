@@ -38,9 +38,9 @@
 						<a href="http://webwork.maa.org/wiki/WeBWorK_Main_Page" class="nav-link p-0">WeBWorK Wiki</a>
 					</li>
 					<li><hr></li>
-<li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a>
+<li class="nav-item"><a class="nav-link p-0" href="#NAME">NAME</a></li><li class="nav-item"><a class="nav-link p-0" href="#DESCRIPTION">DESCRIPTION</a>
     <ul class="nav flex-column w-100">
-      <li class="nav-item"><a class="nav-link p-0" href="#Constructors-for-the-various-Mathobject-types">Constructors for the various Mathobject types</a>
+      <li class="nav-item">
         <ul class="nav flex-column w-100">
           <li class="nav-item"><a class="nav-link p-0" href="#Closed-point">Closed($point)</a></li>
           <li class="nav-item"><a class="nav-link p-0" href="#NOTE">NOTE:</a></li>
@@ -55,11 +55,13 @@
 		<div class="container-fluid p-3 h-100" id="_podtop_">
 
 
+<a href="#_podtop_"><h1 id="NAME">NAME</h1></a>
+
+<p>Value.pl - Declares constructors for MathObjects</p>
+
 <a href="#_podtop_"><h1 id="DESCRIPTION">DESCRIPTION</h1></a>
 
-<pre><code>Declares constructors for MathObjects</code></pre>
-
-<h2 id="Constructors-for-the-various-Mathobject-types">Constructors for the various Mathobject types</h2>
+<p>Declares constructors for various MathObject types.</p>
 
 <p>MathObjects are objects which behave much like you would expect their true mathematical counterparts to behave.</p>
 
@@ -105,16 +107,12 @@ Formula -- roughly a function with values as defined above.
 
 <h3 id="Closed-point">Closed($point)</h3>
 
-<pre><code>#
-#  Make a point or list a closed interval.
-#  (Obsolete: use $x-&gt;with(open=&gt;&#39;[&#39;,close=&gt;&#39;]&#39;) instead.)
-#</code></pre>
+<pre><code>#  Make a point or list a closed interval.
+#  (Obsolete: use $x-&gt;with(open=&gt;&#39;[&#39;,close=&gt;&#39;]&#39;) instead.)</code></pre>
 
 <h3 id="NOTE">NOTE:</h3>
 
-<pre><code>###########################################################################
-#
-#  Make it possible to use  1+3*i  in perl rather than  1+3*$i or 1+3*i()
+<pre><code>#  Make it possible to use  1+3*i  in perl rather than  1+3*$i or 1+3*i()
 #  as well as 3*pi instead of 3*pi()
 
 #sub i ()  {Value-&gt;Package(&quot;Complex&quot;)-&gt;i};   #  defined in PG.pl
