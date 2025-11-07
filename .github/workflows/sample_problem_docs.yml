@@ -38,7 +38,7 @@ jobs:
             - name: Parse sample problems
               run: |
                   perl pg/bin/parse-problem-doc.pl  \
-                    --problem_dir=/home/runner/work/pg-docs/pg-docs/pg/doc/sample-problems \
+                    --problem_dir=/home/runner/work/pg-docs/pg-docs/pg/tutorial/sample-problems \
                     --out_dir=/home/runner/work/pg-docs/pg-docs/sample-problems \
                     --pod_root=https://openwebwork.github.io/pg-docs/pod \
                     --pg_doc_home=https://openwebwork.github.io/pg-docs/sample-problems
