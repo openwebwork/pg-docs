@@ -1,0 +1,17 @@
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+
+BEGIN_PGML
+* This answer is worth 20%. Enter 1: [___]{1}{ cmp_options => { weight => 20 } }
+
+* This answer is worth 50%. Enter 3: [___]{3}{ cmp_options => { weight => 50 } }
+
+* This answer is worth 30%. Enter 7: [___]{7}{ cmp_options => { weight => 30 } }
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

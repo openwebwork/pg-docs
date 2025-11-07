@@ -1,34 +1,26 @@
 DOCUMENT();
 
-loadMacros('PGstandard.pl', 'PGML.pl', 'niceTables.pl', 'PGcourse.pl');
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
 
 $f = Formula('3^(-x)');
 
-@answer = ();
-for $i (0 .. 2) {
-    $answer[$i] = $f->eval(x => $i);
-}
-
-$table = DataTable(
-    [
-        [ '\(x\)', '\(f(x)\)' ],
-        [ '\(0\)', ans_rule(4) ],
-        [ '\(1\)', ans_rule(4) ],
-        [ '\(2\)', ans_rule(4) ],
-    ],
-    horizontalrules => 1,
-    texalignment    => '|c|c|'
-);
+@answer = map { $f->eval(x => $_) } 0 .. 2;
 
 BEGIN_PGML
 If [`f(x) = [$f]`], fill in the table of values with numbers.
 
-[@ $table @]*
-END_PGML
-
-for $i (0 .. 2) {
-    ANS($answer[$i]->cmp);
+[#
+    [.[`x`].] [.[`f(x)`].]*{ headerrow => 1 }
+    [.[`0`].] [.[_]{$answer[0]}.]*
+    [.[`1`].] [.[_]{$answer[1]}.]*
+    [.[`2`].] [.[_]{$answer[2]}.]*
+#]{
+    horizontalrules => 1,
+       texalignment    => '|c|c|',
+       padding         => [ 0.5, 0.5 ],
+    valign          => 'middle'
 }
+END_PGML
 
 BEGIN_PGML_SOLUTION
 Solution explanation goes here.

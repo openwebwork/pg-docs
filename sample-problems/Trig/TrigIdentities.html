@@ -4,15 +4,13 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>TrigIdentities</title>
+	<title>TrigIdentities.pg</title>
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/lib/codemirror.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/theme/eclipse.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/addon/runmode/runmode-standalone.min.js" defer>
-	</script>
-	<script src="https://openwebwork.github.io/pg-docs/sample-problems/PG.js" defer></script>
-	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css" >
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script
+		src="https://cdn.jsdelivr.net/npm/@openwebwork/pg-codemirror-editor@0.0.5/dist/pg-codemirror-editor.js"
+		defer></script>
+	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css">
 </head>
 
 
@@ -24,22 +22,14 @@
 				<p>Trigonometric identities</p>
 			</div>
 			<div class="col text-end">
-				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../index.html">Return to the PG docs home</a>
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
 </div>
 		</div>
 		<div class="row">
 			<div class="col">
 				<h2>Complete Code</h2>
-				<p>
-				Download file: <a href="TrigIdentities.pg">TrigIdentities.pg</a>
-</p>
-			</div>
-				<div class="col">
-					<h2>POD for Macro Files</h2>
-					<ul>
-								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/answers/answerHints.html">answerHints.pl</a></li>
-					</ul>
-				</div>
+				<p>Download file: <a href="TrigIdentities.pg">TrigIdentities.pg</a></p>
+</div>
 		</div>
 		<div class="row">
 			<div class="col text-center"><h2 class="fw-bold fs-3">PG problem file</h2></div>
@@ -50,19 +40,19 @@
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
 						type="button" data-code="DOCUMENT();
 
-loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;answerHints.pl&#39;, &#39;PGcourse.pl&#39;);
+loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGcourse.pl&#39;);
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
 
-loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;answerHints.pl&#39;, &#39;PGcourse.pl&#39;);
+loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGcourse.pl&#39;);
 </pre>
 				</div>
-				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Preamble</b></p>
 						These standard macros need to be loaded.
 				</div>
@@ -70,65 +60,51 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;answerHints.pl&#39;,
 			<div class="row">
 				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
-						type="button" data-code="Context()-&gt;functions-&gt;remove(&#39;tan&#39;);
-
-package NewFunc;
-# This line makes the function a function from reals to reals.
-our @ISA = qw(Parser::Function::numeric);
-
-sub tan {
-    shift;
-    my $x = shift;
-    return CORE::exp($x * 3.1415926535);
-}
-
-package main;
-
-# Make it work on formulas as well as numbers.
-sub tan { Parser::Function-&gt;call(&#39;tan&#39;, @_) }
-
-# Add the new function to the Context.
-Context()-&gt;functions-&gt;add(tan =&gt; { class =&gt; &#39;NewFunc&#39;, TeX =&gt; &#39;\tan&#39; },);
-
-$answer_cmp = Formula(&#39;sin(x)&#39;)-&gt;cmp()-&gt;withPostFilter(AnswerHints(
-    Compute(&#39;tan(x)*cos(x)&#39;) =&gt;
-        &#39;No credit for entering what you were given.&#39;,
-));
+						type="button" data-code="$ans = Compute(&#39;sin(x)&#39;)-&gt;cmp(
+    checker =&gt; sub {
+        my ($correct, $student, $ansHash) = @_;
+        my $stu_ans = $student-&gt;reduce;
+        Value-&gt;Error(&#39;There is a simpler answer&#39;)
+            if $stu_ans-&gt;string eq &#39;cos(x)*tan(x)&#39;
+            || $stu_ans-&gt;string eq &#39;tan(x)*cos(x)&#39;;
+        return $student == $correct ? 1 : 0;
+    }
+);
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context()-&gt;functions-&gt;remove(&#39;tan&#39;);
-
-package NewFunc;
-# This line makes the function a function from reals to reals.
-our @ISA = qw(Parser::Function::numeric);
-
-sub tan {
-    shift;
-    my $x = shift;
-    return CORE::exp($x * 3.1415926535);
-}
-
-package main;
-
-# Make it work on formulas as well as numbers.
-sub tan { Parser::Function-&gt;call(&#39;tan&#39;, @_) }
-
-# Add the new function to the Context.
-Context()-&gt;functions-&gt;add(tan =&gt; { class =&gt; &#39;NewFunc&#39;, TeX =&gt; &#39;\tan&#39; },);
-
-$answer_cmp = Formula(&#39;sin(x)&#39;)-&gt;cmp()-&gt;withPostFilter(AnswerHints(
-    Compute(&#39;tan(x)*cos(x)&#39;) =&gt;
-        &#39;No credit for entering what you were given.&#39;,
-));
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">$ans = Compute(&#39;sin(x)&#39;)-&gt;cmp(
+    checker =&gt; sub {
+        my ($correct, $student, $ansHash) = @_;
+        my $stu_ans = $student-&gt;reduce;
+        Value-&gt;Error(&#39;There is a simpler answer&#39;)
+            if $stu_ans-&gt;string eq &#39;cos(x)*tan(x)&#39;
+            || $stu_ans-&gt;string eq &#39;tan(x)*cos(x)&#39;;
+        return $student == $correct ? 1 : 0;
+    }
+);
 </pre>
 				</div>
-				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Setup</b></p>
-						<p>Redefine the function tan(x) to be exp(pi * x).</p>
+						<p>To prevent the student from just entering the given expression, a
+custom answer checker is used, which 1) calls <code>reduce</code> on the
+student answer which will do some small simplification, 2) returns an
+error if the original expression is entered and 3) then checks if the
+answer is correct.</p>
+<p>A better method for doing this is demonstrated in <a
+href="https://openwebwork.github.io/pg-docs/sample-problems/Trig/ProvingTrigIdentities.html">Proving
+Identities</a>. Don’t use the method demonstrated in this example as it
+will fail in many cases. A student can enter
+<code>tan(x)*cos(x)*2/2</code> and it will be counted as correct because
+the <code>reduce</code> call does not simplify that to
+<code>tan(x)*cos(x)</code>. Instead it reduces it to
+<code>[2*tan(x)*cos(x)]/2</code>. In general using string comparison is
+not what you should do with MathObjects. It completely subverts what
+MathObjects were designed to do.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -137,7 +113,7 @@ $answer_cmp = Formula(&#39;sin(x)&#39;)-&gt;cmp()-&gt;withPostFilter(AnswerHints
 						type="button" data-code="BEGIN_PGML
 Simplify the expression as much as possible.
 
-[`\tan(x) \cos(x) =`] [_]{$answer_cmp}{15}
+[`\tan(x)\cos(x) =`] [_]{$ans}{15}
 END_PGML
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -145,14 +121,14 @@ END_PGML
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
 Simplify the expression as much as possible.
 
-[`\tan(x) \cos(x) =`] [_]{$answer_cmp}{15}
+[`\tan(x)\cos(x) =`] [_]{$ans}{15}
 END_PGML
 </pre>
 				</div>
-				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Statement</b></p>
 						This is the problem statement in PGML.
 				</div>
@@ -164,29 +140,19 @@ END_PGML
 Solution explanation goes here.
 END_PGML_SOLUTION
 
-COMMENT(
-    &quot;Prevents students from entering trivial identities (entering what they &quot;
-        . &quot;were given).  Redefines &#39;tan(x)&#39; internally as &#39;exp(pi*x)&#39;.  Uses PGML.&quot;
-);
-
 ENDDOCUMENT();" aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
 Solution explanation goes here.
 END_PGML_SOLUTION
 
-COMMENT(
-    &quot;Prevents students from entering trivial identities (entering what they &quot;
-        . &quot;were given).  Redefines &#39;tan(x)&#39; internally as &#39;exp(pi*x)&#39;.  Uses PGML.&quot;
-);
-
 ENDDOCUMENT();</pre>
 				</div>
-				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Solution</b></p>
 						A solution should be provided here.
 				</div>
@@ -194,12 +160,14 @@ ENDDOCUMENT();</pre>
 	</div>
 
 	<script type="module">
-		for (const pre of document.body.querySelectorAll('pre.CodeMirror')) {
-			CodeMirror.runMode(pre.textContent, 'PG', pre);
+		for (const pre of document.body.querySelectorAll('pre.PGCodeMirror')) {
+			PGCodeMirrorEditor.runMode(pre.textContent, pre);
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard)
+				btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

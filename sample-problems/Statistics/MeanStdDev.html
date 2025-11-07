@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MeanStdDev.pg</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script
+		src="https://cdn.jsdelivr.net/npm/@openwebwork/pg-codemirror-editor@0.0.5/dist/pg-codemirror-editor.js"
+		defer></script>
+	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css">
+</head>
+
+
+<body>
+	<div class="container-fluid p-3">
+		<div class="row">
+			<div class="col">
+				<h1>Mean and Standard Deviation</h1>
+				<p>Find the mean and standard deviation of a list of numbers.</p>
+			</div>
+			<div class="col text-end">
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
+</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<h2>Complete Code</h2>
+				<p>Download file: <a href="MeanStdDev.pg">MeanStdDev.pg</a></p>
+</div>
+				<div class="col">
+					<h2>POD for Macro Files</h2>
+					<ul>
+								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/math/PGstatisticsmacros.html">PGstatisticsmacros.pl</a></li>
+					</ul>
+				</div>
+		</div>
+		<div class="row">
+			<div class="col text-center"><h2 class="fw-bold fs-3">PG problem file</h2></div>
+			<div class="col text-center"><h2 class="fw-bold fs-3">Explanation</h2></div>
+		</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="DOCUMENT();
+
+loadMacros(&quot;PGstandard.pl&quot;, &quot;PGML.pl&quot;, &#39;PGstatisticsmacros.pl&#39;, &quot;PGcourse.pl&quot;);
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+
+loadMacros(&quot;PGstandard.pl&quot;, &quot;PGML.pl&quot;, &#39;PGstatisticsmacros.pl&#39;, &quot;PGcourse.pl&quot;);
+</pre>
+				</div>
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Preamble</b></p>
+						<p>The <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/math/PGstatisticsmacros.html">PGstatisticsmacros.pl</a>
+macro provides the <code>stats_mean</code>, <code>stats_sd</code>, and
+<code>stats_SX_SXX</code> methods.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="@x = map { random(1, 10) } 0 .. 7;
+
+$mean = stats_mean(@x);
+$sd   = stats_sd(@x);
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">@x = map { random(1, 10) } 0 .. 7;
+
+$mean = stats_mean(@x);
+$sd   = stats_sd(@x);
+</pre>
+				</div>
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Setup</b></p>
+						<p>Generate random numbers and then calculate the mean and standard
+deviation using the <code>stats_mean</code> and <code>stats_sd</code>
+methods from <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/math/PGstatisticsmacros.html">PGstatisticsmacros.pl</a>.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="BEGIN_PGML
+Find the mean and standard deviation of the following list of numbers:
+[@ join(&#39;, &#39;, @x) @]
+
+a) Mean: [_]{$mean}{8}
+
+b) Standard Deviation: [_]{$sd}{8}
+END_PGML
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
+Find the mean and standard deviation of the following list of numbers:
+[@ join(&#39;, &#39;, @x) @]
+
+a) Mean: [_]{$mean}{8}
+
+b) Standard Deviation: [_]{$sd}{8}
+END_PGML
+</pre>
+				</div>
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Statement</b></p>
+						This is the problem statement in PGML.
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="($sum_x, $sum_sq) = stats_SX_SXX(@x);
+$var = $sum_sq - ($sum_x**2) / 8;
+
+BEGIN_PGML_SOLUTION
+The mean is
+
+[``\bar{x} = \frac{1}{n} \sum_{i = 1}^n x_i = \frac{[$sum_x]}{8} = [$mean]``]
+
+For the standard deviation, first, find the variance.
+
+[``
+    \begin{aligned}
+    s^2 &amp;= \frac{1}{n - 1} \left(
+        \sum_{i = 1}^n x_i^2 - \frac{1}{n}\left(\sum_{i = 1}^n x_i\right)^2
+    \right) \\
+    &amp;= \frac{1}{7} \left( [$sum_sq] - \frac{1}{8} ([$sum_x])^2\right) \\
+    &amp;= \frac{[$var]}{7}
+    \end{aligned}
+``]
+
+Taking the square root gives [`s \approx [$sd]`]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">($sum_x, $sum_sq) = stats_SX_SXX(@x);
+$var = $sum_sq - ($sum_x**2) / 8;
+
+BEGIN_PGML_SOLUTION
+The mean is
+
+[``\bar{x} = \frac{1}{n} \sum_{i = 1}^n x_i = \frac{[$sum_x]}{8} = [$mean]``]
+
+For the standard deviation, first, find the variance.
+
+[``
+    \begin{aligned}
+    s^2 &amp;= \frac{1}{n - 1} \left(
+        \sum_{i = 1}^n x_i^2 - \frac{1}{n}\left(\sum_{i = 1}^n x_i\right)^2
+    \right) \\
+    &amp;= \frac{1}{7} \left( [$sum_sq] - \frac{1}{8} ([$sum_x])^2\right) \\
+    &amp;= \frac{[$var]}{7}
+    \end{aligned}
+``]
+
+Taking the square root gives [`s \approx [$sd]`]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();</pre>
+				</div>
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Solution</b></p>
+						<p>The <code>stats_SX_SXX</code> method from
+<code>PGstatisticsmacros.pl</code> returns the sum and sum of squares
+which are used in the solution.</p>
+<p>Note that when a long list of equalities are strung together in an
+equation it is a good idea to use the <code>aligned</code> environment
+to break the equalities onto separate lines. If left on a single line,
+the equation may extend outside of the solution container and look quite
+bad. Particularly on narrow screens.</p>
+				</div>
+			</div>
+	</div>
+
+	<script type="module">
+		for (const pre of document.body.querySelectorAll('pre.PGCodeMirror')) {
+			PGCodeMirrorEditor.runMode(pre.textContent, pre);
+		}
+
+		for (const btn of document.querySelectorAll('.clipboard-btn')) {
+			if (navigator.clipboard)
+				btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
+		}
+	</script>
+</body>
+
+</html>

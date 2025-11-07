@@ -4,15 +4,13 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>DynamicGraph</title>
+	<title>DynamicGraph.pg</title>
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/lib/codemirror.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/theme/eclipse.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/addon/runmode/runmode-standalone.min.js" defer>
-	</script>
-	<script src="https://openwebwork.github.io/pg-docs/sample-problems/PG.js" defer></script>
-	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css" >
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script
+		src="https://cdn.jsdelivr.net/npm/@openwebwork/pg-codemirror-editor@0.0.5/dist/pg-codemirror-editor.js"
+		defer></script>
+	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css">
 </head>
 
 
@@ -24,16 +22,14 @@
 				<p>Dynamically generated graph of a function</p>
 			</div>
 			<div class="col text-end">
-				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../index.html">Return to the PG docs home</a>
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
 </div>
 		</div>
 		<div class="row">
 			<div class="col">
 				<h2>Complete Code</h2>
-				<p>
-				Download file: <a href="DynamicGraph.pg">DynamicGraph.pg</a>
-</p>
-			</div>
+				<p>Download file: <a href="DynamicGraph.pg">DynamicGraph.pg</a></p>
+</div>
 				<div class="col">
 					<h2>POD for Macro Files</h2>
 					<ul>
@@ -57,86 +53,114 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGtikz.pl&#39;, &#39
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
 
 loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGtikz.pl&#39;, &#39;PGcourse.pl&#39;);
 </pre>
 				</div>
-				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Preamble</b></p>
-						<p>The dynamic graph is generated with <code>PGtikz.pl</code>, so this is needed.</p>
+						<p>The dynamic graph is generated with <code>PGtikz.pl</code>, so this
+is needed.</p>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
-						type="button" data-code="$a = random(2, 3, 1);    # negative of left x-intercept
-$b = random(2, 4, 2);    # right x-intercept
-$c = random(3, 6, 1);    # y-intercept
+						type="button" data-code="$a = random(1, 4);    # negative of left x-intercept
+$b = random(2, 4);    # right x-intercept
+$c = random(2, 6);    # y-intercept
 
 $k = -$c / ($a * $b);
-
-$A = $k;
-$B = $k * ($a - $b);
-$C = -$k * $a * $b;
 
 $graph = createTikZImage();
 $graph-&gt;tikzLibraries(&#39;arrows.meta&#39;);
 $graph-&gt;BEGIN_TIKZ
-\tikzset{&gt;={Stealth[scale=1.5]}}
+\tikzset{&gt;={Stealth[scale = 1.5]}}
 \filldraw[
-    draw=LightBlue,
-    fill=white,
-    rounded corners=10pt,
-    thick,use as bounding box
-] (-6,7) rectangle (6,-1);
-\draw[-&gt;,thick] (-6,0) -- (6,0) node[above left,outer sep=3pt] {\(x\)};
-\foreach \x in {-5,...,-1,1,2,...,5}
-    \draw(\x,5pt) -- (\x,-5pt) node [below] {\(\x\)};
-\draw[-&gt;,thick] (0,-1) -- (0,7) node[below right,outer sep=3pt] {\(y\)};
-\foreach \y in {1,...,6}
-    \draw (5pt,\y) -- (-5pt,\y) node[left] {\(\y\)};
-\draw[blue,ultra thick] plot[domain=-6:6,smooth] (\x,{$A*\x*\x+$B*\x+$C});
+    draw = LightBlue,
+    fill = white,
+    rounded corners = 10pt,
+    thick,
+    use as bounding box
+] (-6, 7) rectangle (6, -1);
+\draw[-&gt;, thick] (-6, 0) -- (6, 0) node[above left, outer sep = 3pt] {\(x\)};
+\foreach \x in {-5, ..., -1, 1, 2, ..., 5}
+    \draw(\x, 5pt) -- (\x, -5pt) node [below] {\(\x\)};
+\draw[-&gt;, thick] (0, -1) -- (0, 7) node[below right, outer sep = 3pt] {\(y\)};
+\foreach \y in {1, ..., 6}
+    \draw (5pt, \y) -- (-5pt, \y) node[left] {\(\y\)};
+\draw[blue, ultra thick]
+    plot[domain = -6:6, smooth] (\x, {$k * (\x + $a) * (\x-$b)});
 END_TIKZ
+
+$altText =
+    &quot;Graph of a downward opening parabola. &quot;
+    . &quot;The graph is at a height of $c when x is 0, &quot;
+    . &quot;and is at a height of 0 when x is -$a or $c.&quot;;
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">$a = random(2, 3, 1);    # negative of left x-intercept
-$b = random(2, 4, 2);    # right x-intercept
-$c = random(3, 6, 1);    # y-intercept
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">$a = random(1, 4);    # negative of left x-intercept
+$b = random(2, 4);    # right x-intercept
+$c = random(2, 6);    # y-intercept
 
 $k = -$c / ($a * $b);
-
-$A = $k;
-$B = $k * ($a - $b);
-$C = -$k * $a * $b;
 
 $graph = createTikZImage();
 $graph-&gt;tikzLibraries(&#39;arrows.meta&#39;);
 $graph-&gt;BEGIN_TIKZ
-\tikzset{&gt;={Stealth[scale=1.5]}}
+\tikzset{&gt;={Stealth[scale = 1.5]}}
 \filldraw[
-    draw=LightBlue,
-    fill=white,
-    rounded corners=10pt,
-    thick,use as bounding box
-] (-6,7) rectangle (6,-1);
-\draw[-&gt;,thick] (-6,0) -- (6,0) node[above left,outer sep=3pt] {\(x\)};
-\foreach \x in {-5,...,-1,1,2,...,5}
-    \draw(\x,5pt) -- (\x,-5pt) node [below] {\(\x\)};
-\draw[-&gt;,thick] (0,-1) -- (0,7) node[below right,outer sep=3pt] {\(y\)};
-\foreach \y in {1,...,6}
-    \draw (5pt,\y) -- (-5pt,\y) node[left] {\(\y\)};
-\draw[blue,ultra thick] plot[domain=-6:6,smooth] (\x,{$A*\x*\x+$B*\x+$C});
+    draw = LightBlue,
+    fill = white,
+    rounded corners = 10pt,
+    thick,
+    use as bounding box
+] (-6, 7) rectangle (6, -1);
+\draw[-&gt;, thick] (-6, 0) -- (6, 0) node[above left, outer sep = 3pt] {\(x\)};
+\foreach \x in {-5, ..., -1, 1, 2, ..., 5}
+    \draw(\x, 5pt) -- (\x, -5pt) node [below] {\(\x\)};
+\draw[-&gt;, thick] (0, -1) -- (0, 7) node[below right, outer sep = 3pt] {\(y\)};
+\foreach \y in {1, ..., 6}
+    \draw (5pt, \y) -- (-5pt, \y) node[left] {\(\y\)};
+\draw[blue, ultra thick]
+    plot[domain = -6:6, smooth] (\x, {$k * (\x + $a) * (\x-$b)});
 END_TIKZ
+
+$altText =
+    &quot;Graph of a downward opening parabola. &quot;
+    . &quot;The graph is at a height of $c when x is 0, &quot;
+    . &quot;and is at a height of 0 when x is -$a or $c.&quot;;
 </pre>
 				</div>
-				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Setup</b></p>
-						<p>The code between <code>$graph-&gt;BEGIN_TIKZ</code> and <code>END_TIKZ</code> are tikz commands. Information on tikz can be found at the <a href="https://tikz.dev">homepage for tikz</a> and details on using tikz within pg problems can be found in <a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/graph/PGtikz.html">PGtikz.pl</a>.</p>
+						<p>The code between <code>$graph-&gt;BEGIN_TIKZ</code> and
+<code>END_TIKZ</code> are TikZ commands. Information on TikZ can be
+found at the <a href="https://tikz.dev">homepage for TikZ</a> and
+details on using TikZ within pg problems can be found in <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/graph/PGtikz.html">PGtikz.pl</a>.</p>
+<p>This problem creates a parabola with random intercepts.</p>
+<p>Some notes about the commands in the <code>BEGIN_TIKZ/END_TIKZ</code>
+block:</p>
+<ul>
+<li>The first <code>\filldraw</code> command produces a frame around the
+plotting region</li>
+<li>The first two <code>\draw</code> commands draw the axes as well as
+the axis labels. The <code>-&gt;</code> gives the lines arrows in that
+direction and the <code>thick</code> makes the lines a bit thicker.</li>
+<li>The two <code>\foreach</code> commands produce the tick marks and
+labels.</li>
+<li>The last <code>\draw</code> command produces the graph of the
+function. The <code>domain</code> option gives the plotting domain and
+the <code>smooth</code> attempts to make the resulting graph smooth.
+Lastly, the function itself needs to be in <code>{}</code> in order for
+the function to be computed correctly.</li>
+</ul>
 				</div>
 			</div>
 			<div class="row">
@@ -147,7 +171,7 @@ Use the graph to find the missing values. There may be more than one correct
 answer, in which case you should enter your answers as a comma separated list.
 If there are no correct answers, enter NONE.
 
-[@ image($graph, width =&gt; 400, tex_size =&gt; 600) @]*
+[![$altText]!]{$graph}{400}
 
 a) [`f(0) =`] [__]{$c}
 
@@ -159,12 +183,12 @@ END_PGML
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
 Use the graph to find the missing values. There may be more than one correct
 answer, in which case you should enter your answers as a comma separated list.
 If there are no correct answers, enter NONE.
 
-[@ image($graph, width =&gt; 400, tex_size =&gt; 600) @]*
+[![$altText]!]{$graph}{400}
 
 a) [`f(0) =`] [__]{$c}
 
@@ -172,9 +196,14 @@ b) [`f\Big(`] [__]{List(-$a, $b)} [`\Big) = 0`]
 END_PGML
 </pre>
 				</div>
-				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Statement</b></p>
-						<p>Note that the tikz graph in <code>$graph</code> to be shown is placed in the <code>image</code> function and since this is a function, it must go in a <code>[@ ... @]*</code> block.</p>
+						<p>Note that the TikZ graph in <code>$graph</code> is inserted into the
+problem text using the PGML image syntax which is
+<code>[!alt text!]{image object}</code>. For accessibility purposes, all
+images inserted into a problem should be provided with alternate text
+that provides screen reader users the information they would need to
+work the problem.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -190,13 +219,13 @@ ENDDOCUMENT();" aria-label="copy to clipboard">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
 Solution explanation goes here.
 END_PGML_SOLUTION
 
 ENDDOCUMENT();</pre>
 				</div>
-				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Solution</b></p>
 						A solution should be provided here.
 				</div>
@@ -204,12 +233,14 @@ ENDDOCUMENT();</pre>
 	</div>
 
 	<script type="module">
-		for (const pre of document.body.querySelectorAll('pre.CodeMirror')) {
-			CodeMirror.runMode(pre.textContent, 'PG', pre);
+		for (const pre of document.body.querySelectorAll('pre.PGCodeMirror')) {
+			PGCodeMirrorEditor.runMode(pre.textContent, pre);
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard)
+				btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

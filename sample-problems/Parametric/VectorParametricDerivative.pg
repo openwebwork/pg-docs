@@ -7,21 +7,23 @@ Context()->variables->are(t => 'Real');
 Context()->variables->set(t => { limits => [ 0, 5 ] });
 Context()->flags->set(ijk => 0, ijkAnyDimension => 1);
 
-$ans = Vector("<2t,(2t)^2>")->cmp(
+$ans = Vector('<2t, 4t^2>')->cmp(
     checker => sub {
         my ($correct, $student, $ansHash) = @_;
-        my $xstu = $student . Vector(1, 0);
-        my $ystu = $student . Vector(0, 1);
-        return (($xstu->D('t') == Formula('2'))
-                && ($ystu->D('t') == Formula('8t'))) ? 1 : 0;
+        return 0 unless $student->length == $correct->length;
+        my $xstu = $student . i;
+        my $ystu = $student . j;
+        return
+            $ystu == $xstu**2
+            && $xstu->D('t') == Formula('2')
+            && $ystu->D('t') == Formula('8t') ? 1 : 0;
     }
 );
 
 BEGIN_PGML
-Find a vector parametric function [`\vec{r}(t)`]
-for a bug that moves along the parabola [`y = x^2`]
-with velocity [`\vec{v}(t) = \langle 2, 8t \rangle`]
-for all [`t`].
+Find a vector parametric function [`\vec{r}(t)`] for a bug that moves along the
+parabola [`y = x^2`] with velocity [`\vec{v}(t) = \langle 2, 8t \rangle`] for
+all [`t`].
 
 [`\vec{r}(t) =`] [_]{$ans}{15}
 END_PGML

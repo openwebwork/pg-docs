@@ -1,4 +1,3 @@
-
 DOCUMENT();
 
 loadMacros('PGstandard.pl', 'PGML.pl', 'randomPerson.pl', 'PGcourse.pl');
@@ -9,12 +8,12 @@ $n = random(20, 30, 2);
 $c = random(4,  8,  2);
 
 BEGIN_PGML
-[$p1] has a ribbon of length [$n] cm.  [$p1->Subject] [$p1->verb('cut')]
-[$c] cm off the ribbon and [$p1->verb('give')] the piece to [$p1->possessive]
+[$p1] has a ribbon of length [$n] cm.  [$p1->They] [$p1->verb('cut')]
+[$c] cm off the ribbon and [$p1->verb('give')] the piece to [$p1->their]
 friend [$p2].
 
 [$p1] then [$p1->verb('divide')] the rest in half and [$p1->verb('give')]
-half to [$p1->possessive] friend [$p3].
+half to [$p1->their] friend [$p3].
 
 How much ribbon [$p1->do] [$p1] have left? [___]{Real(($n-$c)/2)}
 END_PGML

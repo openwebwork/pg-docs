@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>RiemannSumPlot.pg</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script
+		src="https://cdn.jsdelivr.net/npm/@openwebwork/pg-codemirror-editor@0.0.5/dist/pg-codemirror-editor.js"
+		defer></script>
+	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css">
+</head>
+
+
+<body>
+	<div class="container-fluid p-3">
+		<div class="row">
+			<div class="col">
+				<h1>Riemann Sum Plot</h1>
+				<p>Plot of a function with its Rieman Sum rectangles</p>
+			</div>
+			<div class="col text-end">
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
+</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<h2>Complete Code</h2>
+				<p>Download file: <a href="RiemannSumPlot.pg">RiemannSumPlot.pg</a></p>
+</div>
+				<div class="col">
+					<h2>POD for Macro Files</h2>
+					<ul>
+								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/graph/plots.html">plots.pl</a></li>
+					</ul>
+				</div>
+		</div>
+		<div class="row">
+			<div class="col text-center"><h2 class="fw-bold fs-3">PG problem file</h2></div>
+			<div class="col text-center"><h2 class="fw-bold fs-3">Explanation</h2></div>
+		</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="DOCUMENT();
+
+loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;plots.pl&#39;, &#39;PGcourse.pl&#39;);
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+
+loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;plots.pl&#39;, &#39;PGcourse.pl&#39;);
+</pre>
+				</div>
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Preamble</b></p>
+						<p>Make sure that <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/graph/plots.html">plots.pl</a>
+is loaded.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="$plot = Plot(
+    xmin       =&gt; 0,
+    xmax       =&gt; 5,
+    ymin       =&gt; 0,
+    ymax       =&gt; 20,
+    aria_label =&gt; &#39;Riemann Sum plot of y=x^3+3&#39;,
+);
+
+$f = Formula(&#39;x^2 + 3&#39;);
+$plot-&gt;add_function(
+    $f,
+    &#39;x&#39;,
+    0,
+    5,
+    color        =&gt; &#39;blue&#39;,
+    name         =&gt; &#39;A&#39;,
+    fill         =&gt; &#39;xaxis&#39;,
+    fill_min     =&gt; 0,
+    fill_max     =&gt; 4,
+    fill_color   =&gt; &#39;green&#39;,
+    fill_opacity =&gt; 0.2
+);
+
+$dx = 0.5;
+for $i (0 .. 7) {
+    my $x0 = $i * $dx;
+    my $x1 = $x0 + $dx;
+    my $y  = $f-&gt;eval(x =&gt; $x0 + $dx / 2);
+    $plot-&gt;add_dataset(
+        [ $x0, 0 ],
+        [ $x0, $y ],
+        [ $x1, $y ],
+        [ $x1, 0 ],
+        [ $x0, 0 ],
+        fill         =&gt; &#39;self&#39;,
+        fill_color   =&gt; &#39;blue&#39;,
+        fill_opacity =&gt; 0.2,
+    );
+}
+
+$image = image($plot);
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">$plot = Plot(
+    xmin       =&gt; 0,
+    xmax       =&gt; 5,
+    ymin       =&gt; 0,
+    ymax       =&gt; 20,
+    aria_label =&gt; &#39;Riemann Sum plot of y=x^3+3&#39;,
+);
+
+$f = Formula(&#39;x^2 + 3&#39;);
+$plot-&gt;add_function(
+    $f,
+    &#39;x&#39;,
+    0,
+    5,
+    color        =&gt; &#39;blue&#39;,
+    name         =&gt; &#39;A&#39;,
+    fill         =&gt; &#39;xaxis&#39;,
+    fill_min     =&gt; 0,
+    fill_max     =&gt; 4,
+    fill_color   =&gt; &#39;green&#39;,
+    fill_opacity =&gt; 0.2
+);
+
+$dx = 0.5;
+for $i (0 .. 7) {
+    my $x0 = $i * $dx;
+    my $x1 = $x0 + $dx;
+    my $y  = $f-&gt;eval(x =&gt; $x0 + $dx / 2);
+    $plot-&gt;add_dataset(
+        [ $x0, 0 ],
+        [ $x0, $y ],
+        [ $x1, $y ],
+        [ $x1, 0 ],
+        [ $x0, 0 ],
+        fill         =&gt; &#39;self&#39;,
+        fill_color   =&gt; &#39;blue&#39;,
+        fill_opacity =&gt; 0.2,
+    );
+}
+
+$image = image($plot);
+</pre>
+				</div>
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Setup</b></p>
+						<p>For this problem, we make a Riemann Sum plot by plotting the function
+<span class="math inline"><em>y</em> = <em>x</em><sup>3</sup> + 3</span>
+and the midpoint rectangles. Each of these objects is created separately
+and added to the the plot.</p>
+<p>Create a Plot object with the given plotting window and other axis
+properties. The function is made in this case as a MathObject. With
+<code>$plot-&gt;add_function</code>, the function is added and filled
+toward the <span class="math inline"><em>x</em></span>-axis.</p>
+<p>The for loop creates the rectangles and added as the
+<code>add_dataset</code> with the four points (and the first point again
+to make a closed path). The fill color and opacity is also set. Note
+that the height of each rectangle is calculated with
+<code>$f-&gt;eval(x =&gt; $x0 + $dx / 2)</code> which gives the midpoint
+rule. The left and right endpoints could be created with
+<code>$x0</code> and <code>$x1</code> respectively.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="BEGIN_PGML
+The following is a graph of the function [`y=[$f]`] and the midpoint Riemann
+sum rectangles.
+
+&gt;&gt;[! Plot of y=x^2+3 and the Reimann sums !]{$plot}{500} &lt;&lt;
+
+END_PGML
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
+The following is a graph of the function [`y=[$f]`] and the midpoint Riemann
+sum rectangles.
+
+&gt;&gt;[! Plot of y=x^2+3 and the Reimann sums !]{$plot}{500} &lt;&lt;
+
+END_PGML
+</pre>
+				</div>
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Statement</b></p>
+						<p>The <code>[! !]{}{}</code> is a PGML format for inserting an
+image.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();</pre>
+				</div>
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Solution</b></p>
+						A solution should be provided here.
+				</div>
+			</div>
+	</div>
+
+	<script type="module">
+		for (const pre of document.body.querySelectorAll('pre.PGCodeMirror')) {
+			PGCodeMirrorEditor.runMode(pre.textContent, pre);
+		}
+
+		for (const btn of document.querySelectorAll('.clipboard-btn')) {
+			if (navigator.clipboard)
+				btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
+		}
+	</script>
+</body>
+
+</html>

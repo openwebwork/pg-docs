@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Images.pg</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script
+		src="https://cdn.jsdelivr.net/npm/@openwebwork/pg-codemirror-editor@0.0.5/dist/pg-codemirror-editor.js"
+		defer></script>
+	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css">
+</head>
+
+
+<body>
+	<div class="container-fluid p-3">
+		<div class="row">
+			<div class="col">
+				<h1>Inserting Images in PGML</h1>
+				<p>Inserting images in PGML.</p>
+			</div>
+			<div class="col text-end">
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
+</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<h2>Complete Code</h2>
+				<p>Download file: <a href="Images.pg">Images.pg</a></p>
+</div>
+				<div class="col">
+					<h2>POD for Macro Files</h2>
+					<ul>
+								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/graph/PGgraphmacros.html">PGgraphmacros.pl</a></li>
+								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/graph/PGtikz.html">PGtikz.pl</a></li>
+								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/graph/PGlateximage.html">PGlateximage.pl</a></li>
+								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/graph/parserGraphTool.html">parserGraphTool.pl</a></li>
+					</ul>
+				</div>
+		</div>
+		<div class="row">
+			<div class="col text-center"><h2 class="fw-bold fs-3">PG problem file</h2></div>
+			<div class="col text-center"><h2 class="fw-bold fs-3">Explanation</h2></div>
+		</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="DOCUMENT();
+
+loadMacros(
+    &#39;PGstandard.pl&#39;,    &#39;PGML.pl&#39;,
+    &#39;PGgraphmacros.pl&#39;, &#39;PGtikz.pl&#39;,
+    &#39;PGlateximage.pl&#39;,  &#39;parserGraphTool.pl&#39;,
+    &#39;PGcourse.pl&#39;
+);
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+
+loadMacros(
+    &#39;PGstandard.pl&#39;,    &#39;PGML.pl&#39;,
+    &#39;PGgraphmacros.pl&#39;, &#39;PGtikz.pl&#39;,
+    &#39;PGlateximage.pl&#39;,  &#39;parserGraphTool.pl&#39;,
+    &#39;PGcourse.pl&#39;
+);
+</pre>
+				</div>
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Preamble</b></p>
+						<p>The <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/graph/PGgraphmacros.html">PGgraphmacros.pl</a>,
+<a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/graph/PGgraphmacros.html">PGgraphmacros.pl</a>,
+<a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/graph/PGlateximage.html">PGlateximage.pl</a>
+and <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/graph/PGlateximage.html">PGlateximage.pl</a>
+macros are used to create the images.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="$WWPlot = init_graph(-1, -1, 4, 4);
+add_functions($WWPlot, &#39;x^2 / 4 for x in &lt;-1,4&gt; using color:blue and weight:2&#39;);
+
+$TikZ = createTikZImage();
+$TikZ-&gt;BEGIN_TIKZ
+\draw (0,0) circle[radius = 1.5];
+END_TIKZ
+
+$LaTeXImage = createLaTeXImage();
+$LaTeXImage-&gt;texPackages([ [ &#39;xy&#39;, &#39;all&#39; ] ]);
+$LaTeXImage-&gt;BEGIN_LATEX_IMAGE
+\xymatrix{ A \ar[r] &amp; B \ar[d] \\\\
+           D \ar[u] &amp; C \ar[l] }
+END_LATEX_IMAGE
+
+$LaTeXImageAltText =
+    &#39;A graph with four nodes labeled A, B, C, and D. &#39;
+    . &#39;There are directed edges from node A to node B, node B to node C, &#39;
+    . &#39;node C to node D, and node D to node A&#39;;
+
+$gt = GraphTool(&#39;{circle, solid, (1, 1), (2, 2)}&#39;);
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">$WWPlot = init_graph(-1, -1, 4, 4);
+add_functions($WWPlot, &#39;x^2 / 4 for x in &lt;-1,4&gt; using color:blue and weight:2&#39;);
+
+$TikZ = createTikZImage();
+$TikZ-&gt;BEGIN_TIKZ
+\draw (0,0) circle[radius = 1.5];
+END_TIKZ
+
+$LaTeXImage = createLaTeXImage();
+$LaTeXImage-&gt;texPackages([ [ &#39;xy&#39;, &#39;all&#39; ] ]);
+$LaTeXImage-&gt;BEGIN_LATEX_IMAGE
+\xymatrix{ A \ar[r] &amp; B \ar[d] \\\\
+           D \ar[u] &amp; C \ar[l] }
+END_LATEX_IMAGE
+
+$LaTeXImageAltText =
+    &#39;A graph with four nodes labeled A, B, C, and D. &#39;
+    . &#39;There are directed edges from node A to node B, node B to node C, &#39;
+    . &#39;node C to node D, and node D to node A&#39;;
+
+$gt = GraphTool(&#39;{circle, solid, (1, 1), (2, 2)}&#39;);
+</pre>
+				</div>
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Setup</b></p>
+						<p>A WWPlot using <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/graph/PGgraphmacros.html">PGgraphmacros.pl</a>,
+a TikZ plot using <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/graph/PGtikz.html">PGtikz.pl</a>,
+LaTeX image using <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/graph/PGtikz.html">PGtikz.pl</a>,
+and Graphtool using <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/graph/parserGraphTool.html">parserGraphTool.pl</a>
+are made.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="BEGIN_PGML
+* A static image: [!Graph of an exponential!]{&#39;image.png&#39;}{120}
+
+* A static image from an external link (Note: This does not work for hardcopy.)
+[!Runestone Logo!]{&#39;https://runestone.academy/runestone/static/images/RAIcon.png&#39;}{120}
+
+* A WWplot graph [!A simple parabola plot!]{$WWPlot}{120}
+
+* A TikZ graph [!A circle!]{$TikZ}{120}
+
+* A LaTeXImage: [![$LaTeXImageAltText]!]{$LaTeXImage}{120}
+
+* A graphtool plot [!A graphtool plot with a circle!]{$gt}{120}
+END_PGML
+
+ENDDOCUMENT();" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
+* A static image: [!Graph of an exponential!]{&#39;image.png&#39;}{120}
+
+* A static image from an external link (Note: This does not work for hardcopy.)
+[!Runestone Logo!]{&#39;https://runestone.academy/runestone/static/images/RAIcon.png&#39;}{120}
+
+* A WWplot graph [!A simple parabola plot!]{$WWPlot}{120}
+
+* A TikZ graph [!A circle!]{$TikZ}{120}
+
+* A LaTeXImage: [![$LaTeXImageAltText]!]{$LaTeXImage}{120}
+
+* A graphtool plot [!A graphtool plot with a circle!]{$gt}{120}
+END_PGML
+
+ENDDOCUMENT();</pre>
+				</div>
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Statement</b></p>
+						<p>In each of these cases, the PGML syntax for images is used.</p>
+<pre><code>[!alt text!]{image}{width (optional)}{height (optional)}</code></pre>
+<ul>
+<li><p>The image can be a string (either a local image file or a URL), a
+WWPlot, TikZ plot, LaTeXImage, or GraphTool plot. The local file should
+be in the same directory as the problem.</p></li>
+<li><p>An alternate text for accessibility should always be
+included.</p></li>
+<li><p>If the <code>width</code> is not included, the width is 100 (in
+pixels).</p></li>
+<li><p>If the <code>height</code> is not included, the image’s natural
+height relative to the width is used.</p></li>
+<li><p>The <code>tex_size</code> will be computed by
+<code>width * 1000 / 600</code>.</p></li>
+</ul>
+<p>Note that the <code>GraphTool</code> is not generally intended for
+displaying static graphs. It is intended to be used to show an
+interactive graphing tool in which student’s are expected to graph
+requested objects, in this case the circle that has center
+<code>(1, 1)</code> and passes through the point <code>(2, 2)</code>.
+However, static images can be diplayed as is shown in this example. The
+intent for this usage is to show the correct graph in a solution.</p>
+				</div>
+			</div>
+	</div>
+
+	<script type="module">
+		for (const pre of document.body.querySelectorAll('pre.PGCodeMirror')) {
+			PGCodeMirrorEditor.runMode(pre.textContent, pre);
+		}
+
+		for (const btn of document.querySelectorAll('.clipboard-btn')) {
+			if (navigator.clipboard)
+				btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
+		}
+	</script>
+</body>
+
+</html>

@@ -15,16 +15,16 @@ $a2 = 2 * $a;
 
 $f = Compute('sqrt(x)');
 
-$answer = Compute("y = $a + (1/$a2) * (x-$aa)");
+$answer = Compute("y = $a + (1 / $a2) * (x - $aa)");
 $cmp    = $answer->cmp()->withPostFilter(AnswerHints(
-    [ Formula("1/$a2"), Formula("y=1/$a2") ] => [
+    [ Formula("1 / $a2"), Formula("y = 1 / $a2") ] => [
         'Your answer should be an equation for a non-horizontal line.',
         replaceMessage => 1
     ],
 ));
 
 BEGIN_PGML
-Find the linear approximation to [`f(x) = [$f]`] at [`x = [$aa]`].  Your
+Find the linear approximation of [`f(x) = [$f]`] at [`x = [$aa]`].  Your
 answer should be an equation in the variables [`x`] and [`y`].
 
 [_]{$cmp}{10}

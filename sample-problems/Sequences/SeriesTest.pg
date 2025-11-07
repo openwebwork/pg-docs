@@ -1,9 +1,9 @@
 DOCUMENT();
 
 loadMacros(
-    'PGstandard.pl',  'PGML.pl',
-    'unionTables.pl', 'parserPopUp.pl',
-    'PGgraders.pl',   'parserMultiAnswer.pl',
+    'PGstandard.pl',        'PGML.pl',
+    'parserPopUp.pl',       'PGgraders.pl',
+    'parserMultiAnswer.pl', 'parserRadioMultiAnswer.pl',
     'PGcourse.pl'
 );
 
@@ -15,18 +15,12 @@ $c = random(5, 20);
 $d = random(3, 9);
 $e = random(2, 9);
 
-$dm1 = $d - 1;
-$dm2 = $d - 2;
-
-# TeX
-$series   = "\sum_{n=$c}^{\infty} \frac{$a n + $b}{$c n^{$d} + $e}";
-$fraction = "\lim_{n\to\infty} \frac{a_n}{b_n} = \lim_{n\to\infty}";
-
-$num1 = Formula("$a n^$d + $b n^$dm1");
+$num1 = Formula("$a n^$d + $b n^" . ($d - 1));
 $den1 = Formula("$c n^$d + $e");
 
-$num2 = Formula("$a + $b/n");
-$den2 = Formula("$c + $e/(n^$d)");
+# Alternate form of the correct answer
+$num2 = Formula("$a + $b / n");
+$den2 = Formula("$c + $e / (n^$d)");
 
 $multians = MultiAnswer($num1, $den1)->with(
     singleResult => 0,
@@ -54,41 +48,54 @@ $multians = MultiAnswer($num1, $den1)->with(
     }
 );
 
-$limit = Formula("$a/$c");
-$popup =
-    PopUp([ 'Choose', 'Converges', 'Diverges', 'Inconclusive' ], 'Converges');
+$limitRMA = RadioMultiAnswer(
+    [
+        [
+            '\(\displaystyle\lim_{n \to \infty}\frac{a_n}{b_n} =\) %s',
+            Formula("$a / $c")
+        ],
+        ['The limit does not exist, and is not infinite.']
+    ],
+    0
+);
 
-# Display the fraction and answer blanks nicely
-if ($displayMode eq 'TeX') {
-    $showfraction =
-        "\[ $fraction "
-        . $multians->ans_rule(10)
-        . $multians->ans_rule(10) . " \]";
-} else {
-    $showfraction = ColumnTable(
-        "\( \displaystyle $fraction \)",
-        $multians->ans_rule(20) . $BR . $HR . $multians->ans_rule(20),
-        separation => 10
-    );
-}
+$popup = DropDown([ 'Converges', 'Diverges', 'Inconclusive' ], 'Converges');
 
 BEGIN_PGML
 Use the limit comparison test to determine whether
-[``\sum_{n=[$c]}^{\infty} a_n = \sum_{n=[$c]}^{\infty} \frac{[$a] n + [$b]}{[$c] n^{[$d]} + [$e]}``]
+[``\sum_{n = [$c]}^{\infty} a_n
+    = \sum_{n = [$c]}^{\infty} \frac{[$a] n + [$b]}{[$c] n^{[$d]} + [$e]}``]
 converges or diverges.
 
-a. Choose a series [``\sum_{n=[$c]}^\infty b_n``] with terms of the form
-[``b_n = \frac{1}{n^p}``] and apply the limit comparison test.  Write your
-answer as a fully reduced fraction.  For [``n \geq [$c]``],
-[$showfraction]*** [@ ANS($multians->cmp); '' @]*
+Choose a series [``\sum_{n = [$c]}^\infty b_n``] with terms of the form
+[``b_n = \frac{1}{n^p}``] to use in the limit comparison test.
 
-b. Evaluate the limit in the previous part.  Enter [` \infty `] as _infinity_
-and [` -\infty `] as _-infinity_.  If the limit does not exist, enter _DNE_.
-[$BR]*
-[``\lim_{n\to\infty} \frac{a_{n}}{b_{n}} =``] [_]{$limit}{15}
+a. Simplify the fraction [``\frac{a_n}{b_n}``] in the application of the limit
+comparison test shown. Give your answer as a fully reduced fraction.
+[#
+    [.
+        For [`n \geq [$c]`],
+           [``\lim_{n \to \infty}\frac{a_n}{b_n} = \lim_{n \to \infty}``]
+    .]
+    [.
+        [#
+            [.[_]{$multians}{10}.]*{ bottom => 1 }
+            [.[_]{$multians}{10}.]
+        #]*{ padding => [ 0.5, 0 ] }
+    .]
+#]*{
+    center     => 0,
+    valign     => 'middle',
+    allcellcss => { padding => '4pt' }
+}
+
+b. Evaluate the limit in the previous part. Enter [|infinity|]* for [` \infty `]
+and [|-infinity|]* for [`-\infty`].
+
+    [_]{$limitRMA}{10}
 
 c. By the limit comparison test, does the series converge, diverge, or is the
-test inconclusive?  [_]{$popup}
+test inconclusive? [_]{$popup}
 END_PGML
 
 install_problem_grader(~~&custom_problem_grader_fluid);

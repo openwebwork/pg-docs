@@ -1,0 +1,31 @@
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+
+$ans = Compute('(x + 1)(x - 2)')->cmp(
+    checker => sub {
+        my ($correct, $student, $self) = @_;
+        return 0 if $student == 0;
+        my $context = Context()->copy;
+        $context->flags->set(no_parameters => 0);
+        $context->variables->add('C0' => 'Parameter');
+        my $c0 = Formula($context, 'C0');
+        $student = Formula($context, $student);
+        $correct = Formula($context, "$c0 * $correct");
+        return $correct == $student;
+    }
+);
+
+BEGIN_PGML
+Find a quadratic equation in terms of the variable
+[`x`] with roots [`-1`] and [`2`].
+
+[`y =`] [_]{$ans}{15}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

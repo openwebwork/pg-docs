@@ -1,0 +1,29 @@
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+Context('Complex');
+
+$z0 = Complex(non_zero_random(-5, 4), non_zero_random(-5, 5));
+$z1 = Complex(non_zero_random(-5, 4), non_zero_random(-5, 5));
+$z2 = Complex(non_zero_random(-5, 4), non_zero_random(-5, 5));
+
+BEGIN_PGML
+Let [`z_0 = [$z0]`], [`z_1 = [$z1]`], and [`z_2 = [$z2]`]. Find
+
+[`\text{Re}(z_0) =`] [___]{Re($z0)}
+
+[`\text{Im}(z_0) =`] [_____]{Im($z0)}
+
+[`|z_1| =`] [___]{abs($z1)}
+
+[`\text{arg}(z_1) =`] [___]{arg($z1)}
+
+[`\text{conj}(z_2) =`] [___]{conj($z2)}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

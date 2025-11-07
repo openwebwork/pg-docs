@@ -1,9 +1,11 @@
 DOCUMENT();
 
-loadMacros('PGstandard.pl', 'PGML.pl', 'parserGraphTool.pl',
-  'contextFraction.pl','PGcourse.pl');
+loadMacros(
+    'PGstandard.pl',      'PGML.pl',
+    'parserGraphTool.pl', 'contextFraction.pl',
+    'PGcourse.pl'
+);
 
-#  * availableTools: this determines which tools should be shown on the
 
 Context('Fraction');
 
@@ -11,16 +13,20 @@ $x1 = random(-8, -4);
 $x2 = non_zero_random(-3, -3);
 $x3 = random(4, 8);
 
-$y0 = non_zero_random(-3,3);
+$y0 = non_zero_random(-3, 3);
 
-$k = Fraction($y0,-$x1*$x2*$x3);
+$k = Fraction($y0, -$x1 * $x2 * $x3);
 
-
-$gt = GraphTool("{cubic, solid, ($x1, 0), ($x2, 0), ($x3, 0), (0, $y0)}")->with(
-    bBox           => [ -11, 11, 11, -11 ],
-    availableTools =>
-        [ 'PointTool', 'LineTool', 'CircleTool', 'QuadraticTool', 'CubicTool', 'FillTool', 'SolidDashTool' ],
-);
+$gt =
+    GraphTool("{cubic, solid, ($x1, 0), ($x2, 0), ($x3, 0), (0, $y0)}")->with(
+        bBox           => [ -11, 11, 11, -11 ],
+        availableTools => [
+            'PointTool',  'LineTool',
+            'CircleTool', 'QuadraticTool',
+            'CubicTool',  'FillTool',
+            'SolidDashTool'
+        ],
+    );
 
 BEGIN_PGML
 Graph the cubic function [``p(x) = [$k](x-[$x1])(x-[$x2])(x-[$x3])``]
@@ -28,14 +34,17 @@ Graph the cubic function [``p(x) = [$k](x-[$x1])(x-[$x2])(x-[$x3])``]
 [_]{$gt}
 END_PGML
 
+$altText = 'the graph of a cubic function through the points '
+    . "($x1, 0), ($x2, 0), ($x3, 0), and (0, $y0)";
+
 BEGIN_PGML_SOLUTION
-To graph the cubic, you'll need 4 points.  Because of the form, there are
-3 zeros [`([$x1],0), ([$x2],0)`] and [`([$x3],0)`].  Any other point can be
-chosen, but another easy one is the [`y`]-intercept, which by evaluating
-[`p(0)=[$y0]`], then select [`(0,[$y0])`].
+To graph the cubic, you'll need 4 points.  Because of the form, there are 3
+zeros [`([$x1], 0)`], [`([$x2], 0)`] and [`([$x3], 0)`].  Any other point can be
+chosen, but another easy one is the [`y`]-intercept, which can be found by
+evaluating [`p(0) = [$y0]`], then select [`(0, [$y0])`].
 
 The solution is
-[@ $gt->generateAnswerGraph @]*
+[![$altText]!]{$gt}
 END_PGML_SOLUTION
 
 ENDDOCUMENT();

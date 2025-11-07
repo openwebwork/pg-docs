@@ -4,15 +4,13 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>ChemicalReaction</title>
+	<title>ChemicalReaction.pg</title>
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/lib/codemirror.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/theme/eclipse.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/addon/runmode/runmode-standalone.min.js" defer>
-	</script>
-	<script src="https://openwebwork.github.io/pg-docs/sample-problems/PG.js" defer></script>
-	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css" >
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script
+		src="https://cdn.jsdelivr.net/npm/@openwebwork/pg-codemirror-editor@0.0.5/dist/pg-codemirror-editor.js"
+		defer></script>
+	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css">
 </head>
 
 
@@ -24,16 +22,14 @@
 				<p>Chemical reaction template</p>
 			</div>
 			<div class="col text-end">
-				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../index.html">Return to the PG docs home</a>
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
 </div>
 		</div>
 		<div class="row">
 			<div class="col">
 				<h2>Complete Code</h2>
-				<p>
-				Download file: <a href="ChemicalReaction.pg">ChemicalReaction.pg</a>
-</p>
-			</div>
+				<p>Download file: <a href="ChemicalReaction.pg">ChemicalReaction.pg</a></p>
+</div>
 				<div class="col">
 					<h2>POD for Macro Files</h2>
 					<ul>
@@ -57,14 +53,17 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;contextReaction.pl&#
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
 
 loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;contextReaction.pl&#39;, &#39;PGcourse.pl&#39;);
 </pre>
 				</div>
-				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Preamble</b></p>
-						<p>Load <code>contextReaction.pl</code> to put chemical reactions/equations in a <code>Compute</code></p>
+						<p>Load <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/contexts/contextReaction.html">contextReaction.pl</a>
+to be able to use chemical reaction equations in a <code>Compute</code>
+call.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -84,7 +83,7 @@ $products[1]  = Formula(&#39;C_6 H_12 O_6 + 6 O_2&#39;);
 $reactants[2] = Formula(&#39;3 Ca Cl_2 + 2 Na_3 PO_4&#39;);
 $products[2]  = Formula(&#39;Ca_3 (PO_4)_2 + 6 Na Cl&#39;);
 
-# variations on 2NaOH + MgCl_2 --&gt; 2NaCl + Mg(OH)_2
+# Variations on 2NaOH + MgCl_2 --&gt; 2NaCl + Mg(OH)_2
 $a = list_random(&#39;Li&#39;, &#39;Na&#39;, &#39;K&#39;);
 $b = list_random(&#39;F&#39;,  &#39;Cl&#39;, &#39;Br&#39;);
 
@@ -100,7 +99,7 @@ $i = random(0, $#reactants, 1);
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context(&#39;Reaction&#39;);
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context(&#39;Reaction&#39;);
 
 @reactants = ();
 @products  = ();
@@ -114,7 +113,7 @@ $products[1]  = Formula(&#39;C_6 H_12 O_6 + 6 O_2&#39;);
 $reactants[2] = Formula(&#39;3 Ca Cl_2 + 2 Na_3 PO_4&#39;);
 $products[2]  = Formula(&#39;Ca_3 (PO_4)_2 + 6 Na Cl&#39;);
 
-# variations on 2NaOH + MgCl_2 --&gt; 2NaCl + Mg(OH)_2
+# Variations on 2NaOH + MgCl_2 --&gt; 2NaCl + Mg(OH)_2
 $a = list_random(&#39;Li&#39;, &#39;Na&#39;, &#39;K&#39;);
 $b = list_random(&#39;F&#39;,  &#39;Cl&#39;, &#39;Br&#39;);
 
@@ -126,9 +125,16 @@ $products[3]  = Formula(&quot;2 $a $b + Mg (OH)_2&quot;);
 $i = random(0, $#reactants, 1);
 </pre>
 				</div>
-				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Setup</b></p>
-						<p>We create a couple of arrays <code>@reactants</code> and <code>@products</code> and fill them with some examples of balanced chemical equations. The second and third examples show that groupings, such as for <code>(OH)_2</code> are necessary. The third example shows how you could randomize a chemical reaction question. In particular, note that <code>${b}_2</code> is needed instead of <code>$b_2</code> so that Perl interprets the variable as <code>$b</code> with a subscript of 2 instead of a variable named <code>$b_2</code> with no subscript.</p>
+						<p>Create two arrays, <code>@reactants</code> and
+<code>@products</code>, and fill them with examples of balanced chemical
+equations. The third example shows that groupings, such as for
+<code>(PO_4)_2</code> are necessary. The fourth example shows how you
+could randomize a chemical reaction question. In particular, note that
+<code>${b}_2</code> is needed instead of <code>$b_2</code> so that Perl
+interprets the variable as <code>$b</code> with a subscript of 2 instead
+of a variable named <code>$b_2</code> with no subscript.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -136,13 +142,14 @@ $i = random(0, $#reactants, 1);
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
 						type="button" data-code="for $i (0 .. 3) {
 BEGIN_PGML
-[`[$reactants[$i]] \longrightarrow `] [_]{$products[$i]}{10}
+[`[$reactants[$i]] \longrightarrow`] [_]{$products[$i]}{10}
 
 END_PGML
 }
 
 BEGIN_PGML
-Enter a subscript using an underscore, such as [|H_2 O|]* for [`\mathrm{H_2 O}`].
+Enter a subscript using an underscore, such as [|H_2 O|]* for
+[`\mathrm{H_2 O}`].
 END_PGML
 
 ENDDOCUMENT();" aria-label="copy to clipboard">
@@ -151,20 +158,21 @@ ENDDOCUMENT();" aria-label="copy to clipboard">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">for $i (0 .. 3) {
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">for $i (0 .. 3) {
 BEGIN_PGML
-[`[$reactants[$i]] \longrightarrow `] [_]{$products[$i]}{10}
+[`[$reactants[$i]] \longrightarrow`] [_]{$products[$i]}{10}
 
 END_PGML
 }
 
 BEGIN_PGML
-Enter a subscript using an underscore, such as [|H_2 O|]* for [`\mathrm{H_2 O}`].
+Enter a subscript using an underscore, such as [|H_2 O|]* for
+[`\mathrm{H_2 O}`].
 END_PGML
 
 ENDDOCUMENT();</pre>
 				</div>
-				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Statement</b></p>
 						<p>This is a way to print out the four reactions in a for loop.</p>
 				</div>
@@ -172,12 +180,14 @@ ENDDOCUMENT();</pre>
 	</div>
 
 	<script type="module">
-		for (const pre of document.body.querySelectorAll('pre.CodeMirror')) {
-			CodeMirror.runMode(pre.textContent, 'PG', pre);
+		for (const pre of document.body.querySelectorAll('pre.PGCodeMirror')) {
+			PGCodeMirrorEditor.runMode(pre.textContent, pre);
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard)
+				btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

@@ -4,15 +4,13 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>VectorParametricDerivative</title>
+	<title>VectorParametricDerivative.pg</title>
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/lib/codemirror.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/theme/eclipse.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/addon/runmode/runmode-standalone.min.js" defer>
-	</script>
-	<script src="https://openwebwork.github.io/pg-docs/sample-problems/PG.js" defer></script>
-	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css" >
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script
+		src="https://cdn.jsdelivr.net/npm/@openwebwork/pg-codemirror-editor@0.0.5/dist/pg-codemirror-editor.js"
+		defer></script>
+	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css">
 </head>
 
 
@@ -24,22 +22,33 @@
 				<p>Parametric equations: parametric curve in space</p>
 			</div>
 			<div class="col text-end">
-				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../index.html">Return to the PG docs home</a>
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
 </div>
 		</div>
 		<div class="row">
 			<div class="col">
 				<h2>Complete Code</h2>
-				<p>
-				Download file: <a href="VectorParametricDerivative.pg">VectorParametricDerivative.pg</a>
-</p>
-			</div>
+				<p>Download file: <a href="VectorParametricDerivative.pg">VectorParametricDerivative.pg</a></p>
+</div>
 				<div class="col">
 					<h2>POD for Macro Files</h2>
 					<ul>
 								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserVectorUtils.html">parserVectorUtils.pl</a></li>
 					</ul>
 				</div>
+			<div class="col">
+				<h2>See Also</h2>
+				<ul>
+					<li>
+						<a href="https://openwebwork.github.io/pg-docs/sample-problems/Parametric/VectorParametricFunction.html">
+Vector Parametric Function						</a>
+					</li>
+					<li>
+						<a href="https://openwebwork.github.io/pg-docs/sample-problems/Parametric/VectorParametricLines.html">
+Parametric Lines						</a>
+					</li>
+				</ul>
+			</div>
 		</div>
 		<div class="row">
 			<div class="col text-center"><h2 class="fw-bold fs-3">PG problem file</h2></div>
@@ -57,14 +66,17 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;parserVectorUtils.pl
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
 
 loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;parserVectorUtils.pl&#39;, &#39;PGcourse.pl&#39;);
 </pre>
 				</div>
-				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Preamble</b></p>
-						<p>Although not necessary for the code below, we load <code>parserVectorUtils.pl</code> because you may want to use some of its methods when you use this template file.</p>
+						<p>Although not necessary for the code demonstrated in this example, you
+might want to load <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserVectorUtils.html">parserVectorUtils.pl</a>.
+It provides methods that are useful for vector problems.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -75,13 +87,16 @@ Context()-&gt;variables-&gt;are(t =&gt; &#39;Real&#39;);
 Context()-&gt;variables-&gt;set(t =&gt; { limits =&gt; [ 0, 5 ] });
 Context()-&gt;flags-&gt;set(ijk =&gt; 0, ijkAnyDimension =&gt; 1);
 
-$ans = Vector(&quot;&lt;2t,(2t)^2&gt;&quot;)-&gt;cmp(
+$ans = Vector(&#39;&lt;2t, 4t^2&gt;&#39;)-&gt;cmp(
     checker =&gt; sub {
         my ($correct, $student, $ansHash) = @_;
-        my $xstu = $student . Vector(1, 0);
-        my $ystu = $student . Vector(0, 1);
-        return (($xstu-&gt;D(&#39;t&#39;) == Formula(&#39;2&#39;))
-                &amp;&amp; ($ystu-&gt;D(&#39;t&#39;) == Formula(&#39;8t&#39;))) ? 1 : 0;
+        return 0 unless $student-&gt;length == $correct-&gt;length;
+        my $xstu = $student . i;
+        my $ystu = $student . j;
+        return
+            $ystu == $xstu**2
+            &amp;&amp; $xstu-&gt;D(&#39;t&#39;) == Formula(&#39;2&#39;)
+            &amp;&amp; $ystu-&gt;D(&#39;t&#39;) == Formula(&#39;8t&#39;) ? 1 : 0;
     }
 );
 " aria-label="copy to clipboard">
@@ -90,36 +105,63 @@ $ans = Vector(&quot;&lt;2t,(2t)^2&gt;&quot;)-&gt;cmp(
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context(&#39;Vector2D&#39;);
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context(&#39;Vector2D&#39;);
 Context()-&gt;variables-&gt;are(t =&gt; &#39;Real&#39;);
 Context()-&gt;variables-&gt;set(t =&gt; { limits =&gt; [ 0, 5 ] });
 Context()-&gt;flags-&gt;set(ijk =&gt; 0, ijkAnyDimension =&gt; 1);
 
-$ans = Vector(&quot;&lt;2t,(2t)^2&gt;&quot;)-&gt;cmp(
+$ans = Vector(&#39;&lt;2t, 4t^2&gt;&#39;)-&gt;cmp(
     checker =&gt; sub {
         my ($correct, $student, $ansHash) = @_;
-        my $xstu = $student . Vector(1, 0);
-        my $ystu = $student . Vector(0, 1);
-        return (($xstu-&gt;D(&#39;t&#39;) == Formula(&#39;2&#39;))
-                &amp;&amp; ($ystu-&gt;D(&#39;t&#39;) == Formula(&#39;8t&#39;))) ? 1 : 0;
+        return 0 unless $student-&gt;length == $correct-&gt;length;
+        my $xstu = $student . i;
+        my $ystu = $student . j;
+        return
+            $ystu == $xstu**2
+            &amp;&amp; $xstu-&gt;D(&#39;t&#39;) == Formula(&#39;2&#39;)
+            &amp;&amp; $ystu-&gt;D(&#39;t&#39;) == Formula(&#39;8t&#39;) ? 1 : 0;
     }
 );
 </pre>
 				</div>
-				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Setup</b></p>
-						<p>We choose not to display the answer using ijk notation. Also, use <code>ijkAnyDimension =&gt; 1</code> to require a dimension match between i,j,k vectors and either the student or the correct answer when doing vector operations.</p>
-<p>The custom answer checker is used to check if the derivative matching the questioned asked. Use dot products of the student answer with the vectors <code>Vector(1,0)</code> and <code>Vector(0,1)</code> to get the components <code>$xstu</code> and <code>$ystu</code> of the student answer. Then, we can differentiate the components just like any <code>MathObject</code> formula.</p>
+						<p>The context flag <code>ijk =&gt; 0</code> disables the display of
+correct answer vectors using <code>ijk</code> form. Note that it does
+not prevent students from using <code>ijk</code> form in answers, and if
+the student enters an answer in that form it will also still be
+displayed in that form. Furthermore, the vector constants <code>i</code>
+and <code>j</code> are still available in the context for the problem
+author to use (as is done in the checker in this example). The vector
+constant <code>k</code> is also available in the 3 dimensional
+<code>Vector</code> context.</p>
+<p>Setting the context flag <code>ijkAnyDimension =&gt; 1</code> means
+that trailing zero vector entries are added or removed so that vector
+dimensions match when vector comparisons are made. Although, this only
+has any effect if <code>ijk =&gt; 1</code>, and is only here to
+demonstrate the availability of the option.</p>
+<p>Also note that the values of the flags described above are the
+default values for these flags. So there is no need to set the flags in
+this problem at all. This is only done here to demonstrate the flags and
+their meaning.</p>
+<p>The custom answer checker checks that the student answer has the
+correct dimension, satisfies the equation for the curve, and that
+derivatives of the components of the student answer equal the
+derivatives of the components of the correct answer. The dot product of
+the student answer with the vectors <code>i</code> and <code>j</code> is
+used to get the <code>x</code> and <code>y</code> components,
+<code>$xstu</code> and <code>$ystu</code> respectively, of the student
+answer. Then, the components are differentiated and compared to the
+derivatives of the components of the correct answer.</p>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
 						type="button" data-code="BEGIN_PGML
-Find a vector parametric function [`\vec{r}(t)`]
-for a bug that moves along the parabola [`y = x^2`]
-with velocity [`\vec{v}(t) = \langle 2, 8t \rangle`]
-for all [`t`].
+Find a vector parametric function [`\vec{r}(t)`] for a bug that moves along the
+parabola [`y = x^2`] with velocity [`\vec{v}(t) = \langle 2, 8t \rangle`] for
+all [`t`].
 
 [`\vec{r}(t) =`] [_]{$ans}{15}
 END_PGML
@@ -129,17 +171,16 @@ END_PGML
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
-Find a vector parametric function [`\vec{r}(t)`]
-for a bug that moves along the parabola [`y = x^2`]
-with velocity [`\vec{v}(t) = \langle 2, 8t \rangle`]
-for all [`t`].
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
+Find a vector parametric function [`\vec{r}(t)`] for a bug that moves along the
+parabola [`y = x^2`] with velocity [`\vec{v}(t) = \langle 2, 8t \rangle`] for
+all [`t`].
 
 [`\vec{r}(t) =`] [_]{$ans}{15}
 END_PGML
 </pre>
 				</div>
-				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Statement</b></p>
 						This is the problem statement in PGML.
 				</div>
@@ -157,13 +198,13 @@ ENDDOCUMENT();" aria-label="copy to clipboard">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
 Solution explanation goes here.
 END_PGML_SOLUTION
 
 ENDDOCUMENT();</pre>
 				</div>
-				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Solution</b></p>
 						A solution should be provided here.
 				</div>
@@ -171,12 +212,14 @@ ENDDOCUMENT();</pre>
 	</div>
 
 	<script type="module">
-		for (const pre of document.body.querySelectorAll('pre.CodeMirror')) {
-			CodeMirror.runMode(pre.textContent, 'PG', pre);
+		for (const pre of document.body.querySelectorAll('pre.PGCodeMirror')) {
+			PGCodeMirrorEditor.runMode(pre.textContent, pre);
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard)
+				btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

@@ -1,23 +1,28 @@
 DOCUMENT();
 
-loadMacros('PGstandard.pl', 'PGML.pl', 'contextTrigDegrees.pl', 'PGcourse.pl');
+loadMacros(
+    'PGstandard.pl',         'PGML.pl',
+    'contextTrigDegrees.pl', 'contextUnits.pl',
+    'PGcourse.pl'
+);
 
 Context('TrigDegrees');
 
-$ans1 = Compute("sin(30)");
-$ans2 = Compute("arcsin(0.5)");
+$y = Compute('sin(30)');
+
+Context('Units')->withUnitsFor('angles');
+
+$ang = Compute('30 degrees');
 
 BEGIN_PGML
-1. [`\sin(30)=`] [___]{$ans1}
-2. [`\arcsin(1/2)=`] [___]{$ans2}
+Evaluate the following.  Give angles in degrees.
 
-Interpret arguments of the sine and arcsine in terms of degrees.
+1. [`\sin(30^{\circ}) =`] [_]{$y}
+2. [``\sin^{-1}\left(\frac{1}{2}\right) =``] [_]{$ang->with(sameUnits => 1)}
 END_PGML
 
 BEGIN_PGML_SOLUTION
 Solution explanation goes here.
 END_PGML_SOLUTION
-
-COMMENT("Redefines trig functions to be in degrees (not radians).");
 
 ENDDOCUMENT();

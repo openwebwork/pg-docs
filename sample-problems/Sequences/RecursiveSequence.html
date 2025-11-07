@@ -4,15 +4,13 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>RecursiveSequence</title>
+	<title>RecursiveSequence.pg</title>
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/lib/codemirror.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/theme/eclipse.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/addon/runmode/runmode-standalone.min.js" defer>
-	</script>
-	<script src="https://openwebwork.github.io/pg-docs/sample-problems/PG.js" defer></script>
-	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css" >
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script
+		src="https://cdn.jsdelivr.net/npm/@openwebwork/pg-codemirror-editor@0.0.5/dist/pg-codemirror-editor.js"
+		defer></script>
+	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css">
 </head>
 
 
@@ -24,16 +22,14 @@
 				<p>Integral calculus: sequences and recursively defined functions</p>
 			</div>
 			<div class="col text-end">
-				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../index.html">Return to the PG docs home</a>
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
 </div>
 		</div>
 		<div class="row">
 			<div class="col">
 				<h2>Complete Code</h2>
-				<p>
-				Download file: <a href="RecursiveSequence.pg">RecursiveSequence.pg</a>
-</p>
-			</div>
+				<p>Download file: <a href="RecursiveSequence.pg">RecursiveSequence.pg</a></p>
+</div>
 				<div class="col">
 					<h2>POD for Macro Files</h2>
 					<ul>
@@ -57,14 +53,16 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;parserFunction.pl&#3
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
 
 loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;parserFunction.pl&#39;, &#39;PGcourse.pl&#39;);
 </pre>
 				</div>
-				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Preamble</b></p>
-						<p>We will be defining a new named function and adding it to the context, and the easiest way to do this is using parserFunction.pl. There is a more basic way to add functions to the context, which is explained in example 2 at AddingFunctions</p>
+						<p>A new named function will be defined and added to the context. This
+can be done using <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserFunction.html">parserFunction.pl</a>.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -80,23 +78,34 @@ $fn = Formula(&#39;3 f(n - 1) + 2&#39;);
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context()-&gt;variables-&gt;are(n =&gt; &#39;Real&#39;);
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context()-&gt;variables-&gt;are(n =&gt; &#39;Real&#39;);
 parserFunction(f =&gt; &#39;sin(pi^n) + e * n^2&#39;);
 
 $fn = Formula(&#39;3 f(n - 1) + 2&#39;);
 </pre>
 				</div>
-				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Setup</b></p>
-						<p>We define a new named function <code>f</code> as something the student is unlikely to guess. The named function <code>f</code> is, in some sense, just a placeholder since the student will enter expressions involving <code>f(n-1)</code>, WeBWorK will interpret it internally as <code>sin(pi^(n-1))+e</code>, and the only thing the student sees is <code>f(n-1)</code>. If the recursion has an closed-form solution (e.g., the Fibonacci numbers are given by <code>f(n) = (a^n - (1-a)^n)/sqrt(5)</code> where <code>a = (1+sqrt(5))/2)</code> and you want to allows students to enter the closed-form solution, it would be good to define <code>f</code> using that explicit solution in case the student tries to answer the question by writing out the explicit solution <code>(a^n - (1-a)^n)/sqrt(5)</code> instead of using the shorthand <code>f(n)</code>.</p>
+						<p>Define a new named function <code>f</code> as something the student
+is unlikely to guess. The named function <code>f</code> is just a
+placeholder since the student will enter expressions involving
+<code>f(n - 1)</code>. It will be interpreted internally as defined
+here, and the only thing the student sees is <code>f(n - 1)</code>.</p>
+<p>If the recursion has a closed-form solution (e.g., the Fibonacci
+numbers are given by <code>f(n) = (a^n - (1 - a)^n) / sqrt(5)</code>
+where <code>a = (1 + sqrt(5)) / 2</code>) and you want to allow students
+to enter the closed-form solution, it would be good to define
+<code>f</code> using that explicit solution in case the student tries to
+answer the question by entering the explicit solution.</p>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
 						type="button" data-code="BEGIN_PGML
-The current value [`f(n)`] is three times the previous value, plus two.  Find a
-recursive definition for [`f(n)`].  Enter [`f_{n-1}`] as [`f(n-1)`].
+If [`f(n)`] defines a sequence for all integegers [`n \geq 0`] that satisfies
+the property that [`f(n)`] is two more than three times the previous value.
+Find a recursive definition for [`f(n)`].
 
 [`f(n) =`] [_]{$fn}{15}
 END_PGML
@@ -106,17 +115,18 @@ END_PGML
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
-The current value [`f(n)`] is three times the previous value, plus two.  Find a
-recursive definition for [`f(n)`].  Enter [`f_{n-1}`] as [`f(n-1)`].
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
+If [`f(n)`] defines a sequence for all integegers [`n \geq 0`] that satisfies
+the property that [`f(n)`] is two more than three times the previous value.
+Find a recursive definition for [`f(n)`].
 
 [`f(n) =`] [_]{$fn}{15}
 END_PGML
 </pre>
 				</div>
-				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Statement</b></p>
-						<p>We should tell students to use function notation rather than subscript notation so that they aren’t confused about syntax.</p>
+						This is the problem statement in PGML.
 				</div>
 			</div>
 			<div class="row">
@@ -132,13 +142,13 @@ ENDDOCUMENT();" aria-label="copy to clipboard">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
 Solution explanation goes here.
 END_PGML_SOLUTION
 
 ENDDOCUMENT();</pre>
 				</div>
-				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Solution</b></p>
 						A solution should be provided here.
 				</div>
@@ -146,12 +156,14 @@ ENDDOCUMENT();</pre>
 	</div>
 
 	<script type="module">
-		for (const pre of document.body.querySelectorAll('pre.CodeMirror')) {
-			CodeMirror.runMode(pre.textContent, 'PG', pre);
+		for (const pre of document.body.querySelectorAll('pre.PGCodeMirror')) {
+			PGCodeMirrorEditor.runMode(pre.textContent, pre);
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard)
+				btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

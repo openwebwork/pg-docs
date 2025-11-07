@@ -1,0 +1,22 @@
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+Context()->strings->add(none => {});
+
+# If a case-sensitive string is desired, the following could be used instead.
+# Context()->strings->add(none => { caseSensitive => 1 });
+
+BEGIN_PGML
+Enter the positive real value of [`x`] for which [`x^2 = -2`] :
+
+[`x = `] [___]{'none'}
+
+_(Enter *none* if there are no values that satisfy the equation .)_
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

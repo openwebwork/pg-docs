@@ -4,16 +4,16 @@ loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
 
 $a = random(2, 5);
 
-$answer1 = Compute("sqrt(x - $a)");
-$answer1->{limits} = [ $a + 1, $a + 4 ];
+$ans1 = Compute("sqrt(x - $a)");
+$ans1->{limits} = [ $a + 1, $a + 4 ];
 
-$answer2 = Compute("ln(abs(x / (x - $a)))");
-$answer2->{test_points} = [ [-5], [-4], [1], [ $a - 1 ], [7], [8] ];
+$ans2 = Compute("ln(abs(x / (x - $a)))");
+$ans2->{test_points} = [ [-5], [-4], [1], [ $a - 1 ], [7], [8] ];
 
 BEGIN_PGML
-a. Enter the answer [``[$answer1] =``] [_]{$answer1}{15}
+a. Enter the answer [``[$ans1] =``] [_]{$ans1}
 
-b. Enter the answer [``[$answer2] =``] [_]{$answer2}{15}
+b. Enter the answer [``[$ans2] =``] [_]{$ans2}
 END_PGML
 
 BEGIN_PGML_SOLUTION

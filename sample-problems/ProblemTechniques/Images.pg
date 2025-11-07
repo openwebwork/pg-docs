@@ -1,0 +1,47 @@
+DOCUMENT();
+
+loadMacros(
+    'PGstandard.pl',    'PGML.pl',
+    'PGgraphmacros.pl', 'PGtikz.pl',
+    'PGlateximage.pl',  'parserGraphTool.pl',
+    'PGcourse.pl'
+);
+
+$WWPlot = init_graph(-1, -1, 4, 4);
+add_functions($WWPlot, 'x^2 / 4 for x in <-1,4> using color:blue and weight:2');
+
+$TikZ = createTikZImage();
+$TikZ->BEGIN_TIKZ
+\draw (0,0) circle[radius = 1.5];
+END_TIKZ
+
+$LaTeXImage = createLaTeXImage();
+$LaTeXImage->texPackages([ [ 'xy', 'all' ] ]);
+$LaTeXImage->BEGIN_LATEX_IMAGE
+\xymatrix{ A \ar[r] & B \ar[d] \\\\
+           D \ar[u] & C \ar[l] }
+END_LATEX_IMAGE
+
+$LaTeXImageAltText =
+    'A graph with four nodes labeled A, B, C, and D. '
+    . 'There are directed edges from node A to node B, node B to node C, '
+    . 'node C to node D, and node D to node A';
+
+$gt = GraphTool('{circle, solid, (1, 1), (2, 2)}');
+
+BEGIN_PGML
+* A static image: [!Graph of an exponential!]{'image.png'}{120}
+
+* A static image from an external link (Note: This does not work for hardcopy.)
+[!Runestone Logo!]{'https://runestone.academy/runestone/static/images/RAIcon.png'}{120}
+
+* A WWplot graph [!A simple parabola plot!]{$WWPlot}{120}
+
+* A TikZ graph [!A circle!]{$TikZ}{120}
+
+* A LaTeXImage: [![$LaTeXImageAltText]!]{$LaTeXImage}{120}
+
+* A graphtool plot [!A graphtool plot with a circle!]{$gt}{120}
+END_PGML
+
+ENDDOCUMENT();

@@ -4,15 +4,13 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>DifferentiateFunction</title>
+	<title>DifferentiateFunction.pg</title>
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/lib/codemirror.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/theme/eclipse.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/addon/runmode/runmode-standalone.min.js" defer>
-	</script>
-	<script src="https://openwebwork.github.io/pg-docs/sample-problems/PG.js" defer></script>
-	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css" >
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script
+		src="https://cdn.jsdelivr.net/npm/@openwebwork/pg-codemirror-editor@0.0.5/dist/pg-codemirror-editor.js"
+		defer></script>
+	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css">
 </head>
 
 
@@ -24,16 +22,14 @@
 				<p>Difference quotients</p>
 			</div>
 			<div class="col text-end">
-				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../index.html">Return to the PG docs home</a>
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
 </div>
 		</div>
 		<div class="row">
 			<div class="col">
 				<h2>Complete Code</h2>
-				<p>
-				Download file: <a href="DifferentiateFunction.pg">DifferentiateFunction.pg</a>
-</p>
-			</div>
+				<p>Download file: <a href="DifferentiateFunction.pg">DifferentiateFunction.pg</a></p>
+</div>
 		</div>
 		<div class="row">
 			<div class="col text-center"><h2 class="fw-bold fs-3">PG problem file</h2></div>
@@ -51,12 +47,12 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGcourse.pl&#39;);
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
 
 loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGcourse.pl&#39;);
 </pre>
 				</div>
-				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Preamble</b></p>
 						These standard macros need to be loaded.
 				</div>
@@ -66,9 +62,9 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGcourse.pl&#39;);
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
 						type="button" data-code="Context()-&gt;variables-&gt;add(k =&gt; &#39;Real&#39;);
 Context()-&gt;flags-&gt;set(
-    reduceConstants         =&gt; 0,           # no decimals
-    reduceConstantFunctions =&gt; 1,           # simplify 4 + 5 * 2?
-    formatStudentAnswer     =&gt; &#39;parsed&#39;,    # no decimals
+    reduceConstants         =&gt; 0,
+    reduceConstantFunctions =&gt; 0,
+    formatStudentAnswer     =&gt; &#39;parsed&#39;,
 );
 
 $a = random(6, 9);
@@ -78,23 +74,19 @@ $f  = Formula(&#39;k x^2&#39;);
 $fx = $f-&gt;D(&#39;x&#39;);
 
 $ans1 = $fx;
-
-$ans2 = $fx-&gt;substitute(k =&gt; $k);    # formula
-# $ans2 = $fx-&gt;eval(k =&gt; $k); # gives errors, must eval to real
-
-$ans3 = $fx-&gt;substitute(x =&gt; $a * pi, k =&gt; $k);    # formula
-# $ans3 = $fx-&gt;eval(x =&gt; $a * pi, k =&gt; $k); # real
+$ans2 = $fx-&gt;substitute(k =&gt; $k);
+$ans3 = $fx-&gt;substitute(x =&gt; $a * pi, k =&gt; $k);
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context()-&gt;variables-&gt;add(k =&gt; &#39;Real&#39;);
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context()-&gt;variables-&gt;add(k =&gt; &#39;Real&#39;);
 Context()-&gt;flags-&gt;set(
-    reduceConstants         =&gt; 0,           # no decimals
-    reduceConstantFunctions =&gt; 1,           # simplify 4 + 5 * 2?
-    formatStudentAnswer     =&gt; &#39;parsed&#39;,    # no decimals
+    reduceConstants         =&gt; 0,
+    reduceConstantFunctions =&gt; 0,
+    formatStudentAnswer     =&gt; &#39;parsed&#39;,
 );
 
 $a = random(6, 9);
@@ -104,25 +96,54 @@ $f  = Formula(&#39;k x^2&#39;);
 $fx = $f-&gt;D(&#39;x&#39;);
 
 $ans1 = $fx;
-
-$ans2 = $fx-&gt;substitute(k =&gt; $k);    # formula
-# $ans2 = $fx-&gt;eval(k =&gt; $k); # gives errors, must eval to real
-
-$ans3 = $fx-&gt;substitute(x =&gt; $a * pi, k =&gt; $k);    # formula
-# $ans3 = $fx-&gt;eval(x =&gt; $a * pi, k =&gt; $k); # real
+$ans2 = $fx-&gt;substitute(k =&gt; $k);
+$ans3 = $fx-&gt;substitute(x =&gt; $a * pi, k =&gt; $k);
 </pre>
 				</div>
-				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Setup</b></p>
-						<p>The partial differentiation operator is <code>-&gt;D('x')</code>.</p>
-<p>The main difference between <code>eval()</code> and <code>substitute()</code> is</p>
+						<p>The differentiation operator is <code>-&gt;D('x')</code>.</p>
+<p>The main difference between the <code>eval</code> and
+<code>substitute</code> methods is</p>
 <ul>
-<li><code>eval()</code> returns a <code>Real</code> (a number)</li>
-<li><code>substitute()</code> returns a <code>Formula</code></li>
+<li><code>eval</code> returns a <code>Real</code> (a number)</li>
+<li><code>substitute</code> returns a <code>Formula</code></li>
 </ul>
-<p>Since plugging a particular number <code>$k</code> into the Formula <code>$f</code> returns a Formula <code>$k x</code>, if we had used the eval method <code>$ans2 = $fx-&gt;eval(k =&gt; $k);</code> instead of the <code>substitute</code> method, we would get errors because <code>$k x</code> is a Formula, not a Real. Note: You cannot use eval or substitute to perform function composition, i.e., you can only plug in numbers, not formulas.</p>
-<p>When the answer is a constant, we can use either the eval method, in which case the answer would be a Real, or the substitute method, in which case the answer would be a constant Formula. If you use the eval method, <code>$ans3 = $fx-&gt;eval(x =&gt; $a * pi, k =&gt; $k);</code> the answer will be a Real and will display as a single number in decimal format. If you use the substitute method instead, you have more control over how the answer will be displayed. In particular, the context flag reduceConstants controls whether the answer will be reduced to a single number in decimal format, the flag reduceConstantFunctions controls whether or not expressions such as <code>4 + 5 * 2</code> are reduced to 14, and setting the context flag <code>formatStudentAnswer =&gt; 'parsed'</code> will prevent the student’s answer from being reduced to a single number in decimal format and will also display pi instead of 3.14159…</p>
-<p>For more details, see eval versus substitute, formatting correct answers, and constants in problems.</p>
+<p>For a constant answer either the <code>eval</code> method can be used
+in which case the answer would be a <code>Real</code>, or the
+<code>substitute</code> method can be used in which case the answer
+would be a constant <code>Formula</code>.</p>
+<p>For example, the <code>eval</code> method could be used as in
+<code>$ans3 = $fx-&gt;eval(x =&gt; $a * pi, k =&gt; $k)</code> to obtain
+a <code>Real</code> which will display as a single number in decimal
+format. Note that the <code>eval</code> method requires values for all
+variables in the formula. For example, calling
+<code>$fx-&gt;eval(k =&gt; $k)</code> gives errors, because a value is
+not provided for the variable <code>x</code>.</p>
+<p>The substitute method can be used instead which gives more control
+over how the answer will be displayed. In particular, the context flag
+<code>reduceConstants</code> controls whether simple constant
+expressions like <code>2 * 4</code> or <code>5 * pi</code> will be
+reduced to numbers in decimal format, the flag
+<code>reduceConstantFunctions</code> controls whether or not expressions
+such as <code>sqrt(3)</code> or <code>sin(3)</code> are evaluated to
+numbers or left as a function evaluated at a number, and setting the
+context flag <code>formatStudentAnswer =&gt; 'parsed'</code> will
+prevent the student’s “Entered” answer from being reduced to a single
+number in decimal format, and will display constants like
+<code>pi</code> instead of an approximation being displayed.</p>
+<p>It is important to note that the above rules do not apply to the
+numbers passed to the <code>substitute</code> method. So
+<code>$a * pi</code> will be converted into decimal form before it is
+used by the <code>substitute</code> method.</p>
+<p>Note that neither the <code>eval</code> method or
+<code>substitute</code> method can be used to perform function
+composition. Only numbers can be plugged in, not formulas.</p>
+<p>For more details see <a
+href="https://openwebwork.github.io/pg-docs/sample-problems/ProblemTechniques/EvalVersusSubstitute.html">Eval
+Versus Substitute</a> and <a
+href="https://openwebwork.github.io/pg-docs/sample-problems/ProblemTechniques/ConstantsInProblems.html">Constants
+in Problems</a>.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -143,7 +164,7 @@ END_PGML
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
 Suppose [`f(x) = [$f]`] where [`k`] is a constant.
 
 a. [`f&#39;(x) =`] [_____]{$ans1}
@@ -154,7 +175,7 @@ c. If [`k = [$k]`] then [`f&#39;([$a]\pi) =`] [_____]{$ans3}
 END_PGML
 </pre>
 				</div>
-				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Statement</b></p>
 						This is the problem statement in PGML.
 				</div>
@@ -172,13 +193,13 @@ ENDDOCUMENT();" aria-label="copy to clipboard">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
 Solution explanation goes here.
 END_PGML_SOLUTION
 
 ENDDOCUMENT();</pre>
 				</div>
-				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Solution</b></p>
 						A solution should be provided here.
 				</div>
@@ -186,12 +207,14 @@ ENDDOCUMENT();</pre>
 	</div>
 
 	<script type="module">
-		for (const pre of document.body.querySelectorAll('pre.CodeMirror')) {
-			CodeMirror.runMode(pre.textContent, 'PG', pre);
+		for (const pre of document.body.querySelectorAll('pre.PGCodeMirror')) {
+			PGCodeMirrorEditor.runMode(pre.textContent, pre);
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard)
+				btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

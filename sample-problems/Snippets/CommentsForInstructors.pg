@@ -1,0 +1,7 @@
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+COMMENT('This problem is not randomized.');
+
+ENDDOCUMENT();

@@ -1,0 +1,19 @@
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+Context()->constants->add(k => 0.023431412);
+
+Context()->flags->set(formatStudentAnswer => 'parsed');
+
+$ans = Compute('k');
+
+BEGIN_PGML
+Let [`f(x) = x - k`] where [`k`] is a constant. Then [`f(x) = 0`] when
+[`x =`] [___]{$ans}.
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

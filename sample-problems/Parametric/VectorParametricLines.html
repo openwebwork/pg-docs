@@ -4,15 +4,13 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>VectorParametricLines</title>
+	<title>VectorParametricLines.pg</title>
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/lib/codemirror.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/theme/eclipse.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/addon/runmode/runmode-standalone.min.js" defer>
-	</script>
-	<script src="https://openwebwork.github.io/pg-docs/sample-problems/PG.js" defer></script>
-	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css" >
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script
+		src="https://cdn.jsdelivr.net/npm/@openwebwork/pg-codemirror-editor@0.0.5/dist/pg-codemirror-editor.js"
+		defer></script>
+	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css">
 </head>
 
 
@@ -24,16 +22,14 @@
 				<p>Parametric equations: vector parametric lines</p>
 			</div>
 			<div class="col text-end">
-				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../index.html">Return to the PG docs home</a>
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
 </div>
 		</div>
 		<div class="row">
 			<div class="col">
 				<h2>Complete Code</h2>
-				<p>
-				Download file: <a href="VectorParametricLines.pg">VectorParametricLines.pg</a>
-</p>
-			</div>
+				<p>Download file: <a href="VectorParametricLines.pg">VectorParametricLines.pg</a></p>
+</div>
 				<div class="col">
 					<h2>POD for Macro Files</h2>
 					<ul>
@@ -41,6 +37,19 @@
 								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserParametricLine.html">parserParametricLine.pl</a></li>
 					</ul>
 				</div>
+			<div class="col">
+				<h2>See Also</h2>
+				<ul>
+					<li>
+						<a href="https://openwebwork.github.io/pg-docs/sample-problems/Parametric/VectorParametricFunction.html">
+Vector Parametric Function						</a>
+					</li>
+					<li>
+						<a href="https://openwebwork.github.io/pg-docs/sample-problems/Parametric/VectorParametricDerivative.html">
+Parametric Vector Function with Derivative						</a>
+					</li>
+				</ul>
+			</div>
 		</div>
 		<div class="row">
 			<div class="col text-center"><h2 class="fw-bold fs-3">PG problem file</h2></div>
@@ -62,7 +71,7 @@ loadMacros(
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
 
 loadMacros(
     &#39;PGstandard.pl&#39;,        &#39;PGML.pl&#39;,
@@ -71,9 +80,15 @@ loadMacros(
 );
 </pre>
 				</div>
-				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Preamble</b></p>
-						<p>We load parserVectorUtils.pl which provides the <code>Line()</code> subroutine for a particular parametrization of a line, as well as <code>parserParametricLine.pl</code> which provides a subroutine <code>ParametricLine()</code> that allows students to enter any parametrization.</p>
+						<p>The <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserVectorUtils.html">parserVectorUtils.pl</a>
+macro is used which provides the <code>non_zero_point3D</code>,
+<code>non_zero_vector3D</code>, and <code>Line</code> methods. The <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserParametricLine.html">parserParametricLine.pl</a>
+macro is also used which provides the <code>ParametricLine</code> method
+that gives a MathObject form of a parametric line.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -81,50 +96,52 @@ loadMacros(
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
 						type="button" data-code="Context(&#39;Vector&#39;)-&gt;variables-&gt;are(t =&gt; &#39;Real&#39;);
 
-$P = non_zero_point3D(-9, 9, 1);
-$V = non_zero_vector3D(-9, 9, 1);
-
-$Q1 = Point($P + $V);
-$Q2 = Point($P + 2 * $V);
+$P = non_zero_point3D(-9, 9);
+$V = non_zero_vector3D(-9, 9);
 
 $general    = ParametricLine($P, $V);
-$particular = Line($P, $V, &#39;2t&#39;);
+$particular = Line($P, 2 * $V);
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context(&#39;Vector&#39;)-&gt;variables-&gt;are(t =&gt; &#39;Real&#39;);
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context(&#39;Vector&#39;)-&gt;variables-&gt;are(t =&gt; &#39;Real&#39;);
 
-$P = non_zero_point3D(-9, 9, 1);
-$V = non_zero_vector3D(-9, 9, 1);
-
-$Q1 = Point($P + $V);
-$Q2 = Point($P + 2 * $V);
+$P = non_zero_point3D(-9, 9);
+$V = non_zero_vector3D(-9, 9);
 
 $general    = ParametricLine($P, $V);
-$particular = Line($P, $V, &#39;2t&#39;);
+$particular = Line($P, 2 * $V);
 </pre>
 				</div>
-				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Setup</b></p>
-						<p>For the answer which is a particular parametrization through two points at times <code>t=0</code> and <code>t=1</code>, we use <code>Line()</code>. To allow students to enter any equation for a parametric line through two points, we use <code>ParametricLine()</code> The syntax is fairly self-explanatory.</p>
+						<p>The <code>non_zero_point3D</code> method returns a nonzero
+<code>Point</code> in the third dimension with random coordinates that
+are the requested range. The accepted arguments (all of which are
+optional) are the minimum coordinate value (default -5), maximum
+coordinate value (default 5), and step size (default 1) respectively.
+The <code>non_zero_vector3D</code> method is the same but returns a
+<code>Vector</code>.</p>
+<p>The <code>ParametricLine</code> method is used for a general
+parameterization of the line.</p>
+<p>The <code>Line</code> method is used for a particular parametrization
+through the two points at <code>t = 0</code> and <code>t = 1</code>.</p>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
 						type="button" data-code="BEGIN_PGML
-a. Find any vector parametric equation for the
-line that goes through the points [`[$P]`] and
-[`[$Q1]`].
+a. Find any vector parametric equation for the line that goes through the points
+[`[$P]`] and [`[@ Point($P + $V) @]`].
 
     [`\vec{L}(t) =`] [_]{$general}{20}
 
-b. Find a vector parametric equation for the
-line that goes through the point [`[$P]`]
-when [`t = 0`] and the point [`[$Q2]`] when
+b. Find a vector parametric equation for the line that goes through the point
+[`[$P]`] when [`t = 0`] and the point [`[@ Point($P + 2 * $V) @]`] when
 [`t = 1`].
 
     [`\vec{L}(t) =`] [_]{$particular}{20}
@@ -135,23 +152,21 @@ END_PGML
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
-a. Find any vector parametric equation for the
-line that goes through the points [`[$P]`] and
-[`[$Q1]`].
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
+a. Find any vector parametric equation for the line that goes through the points
+[`[$P]`] and [`[@ Point($P + $V) @]`].
 
     [`\vec{L}(t) =`] [_]{$general}{20}
 
-b. Find a vector parametric equation for the
-line that goes through the point [`[$P]`]
-when [`t = 0`] and the point [`[$Q2]`] when
+b. Find a vector parametric equation for the line that goes through the point
+[`[$P]`] when [`t = 0`] and the point [`[@ Point($P + 2 * $V) @]`] when
 [`t = 1`].
 
     [`\vec{L}(t) =`] [_]{$particular}{20}
 END_PGML
 </pre>
 				</div>
-				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Statement</b></p>
 						This is the problem statement in PGML.
 				</div>
@@ -169,13 +184,13 @@ ENDDOCUMENT();" aria-label="copy to clipboard">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
 Solution explanation goes here.
 END_PGML_SOLUTION
 
 ENDDOCUMENT();</pre>
 				</div>
-				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Solution</b></p>
 						A solution should be provided here.
 				</div>
@@ -183,12 +198,14 @@ ENDDOCUMENT();</pre>
 	</div>
 
 	<script type="module">
-		for (const pre of document.body.querySelectorAll('pre.CodeMirror')) {
-			CodeMirror.runMode(pre.textContent, 'PG', pre);
+		for (const pre of document.body.querySelectorAll('pre.PGCodeMirror')) {
+			PGCodeMirrorEditor.runMode(pre.textContent, pre);
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard)
+				btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

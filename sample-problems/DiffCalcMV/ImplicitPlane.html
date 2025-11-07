@@ -4,15 +4,13 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>ImplicitPlane</title>
+	<title>ImplicitPlane.pg</title>
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/lib/codemirror.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/theme/eclipse.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/addon/runmode/runmode-standalone.min.js" defer>
-	</script>
-	<script src="https://openwebwork.github.io/pg-docs/sample-problems/PG.js" defer></script>
-	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css" >
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script
+		src="https://cdn.jsdelivr.net/npm/@openwebwork/pg-codemirror-editor@0.0.5/dist/pg-codemirror-editor.js"
+		defer></script>
+	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css">
 </head>
 
 
@@ -24,21 +22,19 @@
 				<p>Multivariable differential calculus: answer is an equation for a plane</p>
 			</div>
 			<div class="col text-end">
-				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../index.html">Return to the PG docs home</a>
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
 </div>
 		</div>
 		<div class="row">
 			<div class="col">
 				<h2>Complete Code</h2>
-				<p>
-				Download file: <a href="ImplicitPlane.pg">ImplicitPlane.pg</a>
-</p>
-			</div>
+				<p>Download file: <a href="ImplicitPlane.pg">ImplicitPlane.pg</a></p>
+</div>
 				<div class="col">
 					<h2>POD for Macro Files</h2>
 					<ul>
-								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserVectorUtils.html">parserVectorUtils.pl</a></li>
 								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserImplicitPlane.html">parserImplicitPlane.pl</a></li>
+								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserVectorUtils.html">parserVectorUtils.pl</a></li>
 					</ul>
 				</div>
 		</div>
@@ -62,7 +58,7 @@ loadMacros(
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
 
 loadMacros(
     &#39;PGstandard.pl&#39;,          &#39;PGML.pl&#39;,
@@ -71,11 +67,18 @@ loadMacros(
 );
 </pre>
 				</div>
-				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Preamble</b></p>
 						<ul>
-<li>The parserVectorUtils.pl macro is used for the non_zero_point3D function below.</li>
-<li>The parserImplicitPlane.pl macro includes the context and the ImplicitPlane function to parse and create implicit planes.</li>
+<li>The <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserVectorUtils.html">parserVectorUtils.pl</a>
+macro defines the <code>non_zero_point3D</code> and
+<code>non_zero_vector3D</code> functions.</li>
+<li>The <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserImplicitPlane.html">parserImplicitPlane.pl</a>
+macro includes the ‘ImplicitPlane’ context and the
+<code>ImplicitPlane</code> function used to parse and create implicit
+planes.</li>
 </ul>
 				</div>
 			</div>
@@ -97,7 +100,7 @@ $ans3 = ImplicitPlane(&#39;x = 3&#39;);
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context(&#39;ImplicitPlane&#39;);
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context(&#39;ImplicitPlane&#39;);
 Context()-&gt;variables-&gt;are(x =&gt; &#39;Real&#39;, y =&gt; &#39;Real&#39;, z =&gt; &#39;Real&#39;);
 
 $A = non_zero_point3D(-5, 5);
@@ -108,10 +111,21 @@ $ans2 = ImplicitPlane(&#39;4x + 3y = 12&#39;);
 $ans3 = ImplicitPlane(&#39;x = 3&#39;);
 </pre>
 				</div>
-				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Setup</b></p>
-						<p>The first answer is a standard mulitivariable calculus question. There are several different ways to specify the input to <code>ImplicitPlane</code>, which are detailed in the POD documentation. It is also possible to do some more complicated manipulations with the vectors and points, which is detailed in the problem techniques section.</p>
-<p>When the <code>ImplicitPlane</code> context has only two variables, it rephrases error messages in terms of lines. If you want students to be able to enter an equation for a line in the most general form, or if you have a vertical line to check (or just a constant equation such as <code>x = 3</code>), you can use the <code>ImplicitPlane</code> context to reliably check these answers.</p>
+						<p>The first answer is a standard multivariable calculus question. There
+are several different ways to specify the parameters for the
+<code>ImplicitPlane</code>, which are detailed in the <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserImplicitPlane.html">parserImplicitPlane.pl</a>
+documentation. It is also possible to do more complicated manipulations
+with vectors and points, which are detailed in the problem techniques
+section.</p>
+<p>When the <code>ImplicitPlane</code> context has only two variables,
+it rephrases error messages in terms of lines. If you want students to
+be able to enter an equation for a line in the most general form, or if
+you have a vertical line to check (or just a constant equation such as
+<code>x = 3</code>), you can use the <code>ImplicitPlane</code> context
+to check these answers.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -139,7 +153,7 @@ END_PGML
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
 a. Enter an equation for the plane through the point [`[$A]`] and perpendicular
 to [`[$N]`].
 
@@ -157,7 +171,7 @@ point [`(3,1)`].
 END_PGML
 </pre>
 				</div>
-				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Statement</b></p>
 						This is the problem statement in PGML.
 				</div>
@@ -175,13 +189,13 @@ ENDDOCUMENT();" aria-label="copy to clipboard">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
 Solution explanation goes here.
 END_PGML_SOLUTION
 
 ENDDOCUMENT();</pre>
 				</div>
-				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Solution</b></p>
 						A solution should be provided here.
 				</div>
@@ -189,12 +203,14 @@ ENDDOCUMENT();</pre>
 	</div>
 
 	<script type="module">
-		for (const pre of document.body.querySelectorAll('pre.CodeMirror')) {
-			CodeMirror.runMode(pre.textContent, 'PG', pre);
+		for (const pre of document.body.querySelectorAll('pre.PGCodeMirror')) {
+			PGCodeMirrorEditor.runMode(pre.textContent, pre);
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard)
+				btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

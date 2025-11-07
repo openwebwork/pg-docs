@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ComposingFunctions.pg</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script
+		src="https://cdn.jsdelivr.net/npm/@openwebwork/pg-codemirror-editor@0.0.5/dist/pg-codemirror-editor.js"
+		defer></script>
+	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css">
+</head>
+
+
+<body>
+	<div class="container-fluid p-3">
+		<div class="row">
+			<div class="col">
+				<h1>Composing Functions</h1>
+				<p>Shows how to check that the answer is the composition of two functions.</p>
+			</div>
+			<div class="col text-end">
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
+</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<h2>Complete Code</h2>
+				<p>Download file: <a href="ComposingFunctions.pg">ComposingFunctions.pg</a></p>
+</div>
+				<div class="col">
+					<h2>POD for Macro Files</h2>
+					<ul>
+								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/answers/answerComposition.html">answerComposition.pl</a></li>
+					</ul>
+				</div>
+		</div>
+		<div class="row">
+			<div class="col text-center"><h2 class="fw-bold fs-3">PG problem file</h2></div>
+			<div class="col text-center"><h2 class="fw-bold fs-3">Explanation</h2></div>
+		</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="DOCUMENT();
+loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;answerComposition.pl&#39;, &#39;PGcourse.pl&#39;);
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;answerComposition.pl&#39;, &#39;PGcourse.pl&#39;);
+</pre>
+				</div>
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Preamble</b></p>
+						<p>Include the macro <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/answers/answerComposition.html">answerComposition.pl</a>.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="Context()-&gt;variables-&gt;are(x =&gt; &#39;Real&#39;, y =&gt; &#39;Real&#39;, u =&gt; &#39;Real&#39;);
+
+$a = random(2, 9);
+
+$f = Formula(&#39;sqrt(u)&#39;);
+$g = Formula(&quot;x^2 + $a&quot;);
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context()-&gt;variables-&gt;are(x =&gt; &#39;Real&#39;, y =&gt; &#39;Real&#39;, u =&gt; &#39;Real&#39;);
+
+$a = random(2, 9);
+
+$f = Formula(&#39;sqrt(u)&#39;);
+$g = Formula(&quot;x^2 + $a&quot;);
+</pre>
+				</div>
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Setup</b></p>
+						This perl code sets up the problem.
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="BEGIN_PGML
+Express the function [`y = \sqrt{x^2 + [$a]}`] as a composition [`y = f(g(x))`]
+of two simpler functions [`y = f(u)`] and [`u = g(x)`].
+
+    [`f(u) =`] [___]
+
+    [`g(x) =`] [___]
+END_PGML
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
+Express the function [`y = \sqrt{x^2 + [$a]}`] as a composition [`y = f(g(x))`]
+of two simpler functions [`y = f(u)`] and [`u = g(x)`].
+
+    [`f(u) =`] [___]
+
+    [`g(x) =`] [___]
+END_PGML
+</pre>
+				</div>
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Statement</b></p>
+						This is the problem statement in PGML.
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="COMPOSITION_ANS($f, $g);
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">COMPOSITION_ANS($f, $g);
+</pre>
+				</div>
+				<div class="explanation answer col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Answer</b></p>
+						<p>Call the <code>COMPOSITION_ANS</code> method with the arguments
+<code>$f</code> and <code>$g</code> to test that the composition of the
+student answers for <code>f</code> and <code>g</code> is equal to the
+composition of the correct answers. Note that the
+<code>COMPOSITION_ANS</code> checker takes care to not allow certain
+trivial answers like <code>f(u) = u</code> and
+<code>g(x) = sqrt(x^2 + $a)</code>.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();</pre>
+				</div>
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Solution</b></p>
+						A solution should be provided here.
+				</div>
+			</div>
+	</div>
+
+	<script type="module">
+		for (const pre of document.body.querySelectorAll('pre.PGCodeMirror')) {
+			PGCodeMirrorEditor.runMode(pre.textContent, pre);
+		}
+
+		for (const btn of document.querySelectorAll('.clipboard-btn')) {
+			if (navigator.clipboard)
+				btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
+		}
+	</script>
+</body>
+
+</html>

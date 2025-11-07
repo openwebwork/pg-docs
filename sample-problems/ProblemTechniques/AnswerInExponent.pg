@@ -1,0 +1,30 @@
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+Context()->variables->are(a => 'Real', b => 'Real');
+
+$n = random(3, 9);
+
+$ans_rule1 = ans_rule(4);
+$ans_rule2 = ans_rule(4);
+
+BEGIN_PGML
+Rewrite the following using a single exponent.
+
+[@ MODES(
+    TeX => "\\( \\displaystyle a^{$n}b^{$n} = ( $ans_rule1)^{$ans_rule2} \\)",
+    HTML =>"<div><span>\\( \\displaystyle a^{$n}b^{$n} = "
+        . "\\Big(\\) $ans_rule1 \\(\\Big)\\)</span>"
+        . "<span style='vertical-align: 1.4em'> $ans_rule2 </span></div>"
+)@]*
+END_PGML
+
+ANS(Compute('a b')->cmp);
+ANS(Real($n)->cmp);
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

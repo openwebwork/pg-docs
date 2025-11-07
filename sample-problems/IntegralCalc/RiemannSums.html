@@ -4,15 +4,13 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>RiemannSums</title>
+	<title>RiemannSums.pg</title>
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/lib/codemirror.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/theme/eclipse.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/addon/runmode/runmode-standalone.min.js" defer>
-	</script>
-	<script src="https://openwebwork.github.io/pg-docs/sample-problems/PG.js" defer></script>
-	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css" >
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script
+		src="https://cdn.jsdelivr.net/npm/@openwebwork/pg-codemirror-editor@0.0.5/dist/pg-codemirror-editor.js"
+		defer></script>
+	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css">
 </head>
 
 
@@ -24,22 +22,19 @@
 				<p>Integral calculus: Interpreting Riemann sums in terms of area</p>
 			</div>
 			<div class="col text-end">
-				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../index.html">Return to the PG docs home</a>
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
 </div>
 		</div>
 		<div class="row">
 			<div class="col">
 				<h2>Complete Code</h2>
-				<p>
-				Download file: <a href="RiemannSums.pg">RiemannSums.pg</a>
-</p>
-			</div>
+				<p>Download file: <a href="RiemannSums.pg">RiemannSums.pg</a></p>
+</div>
 				<div class="col">
 					<h2>POD for Macro Files</h2>
 					<ul>
-								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/graph/PGtikz.html">PGtikz.pl</a></li>
-								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/core/weightedGrader.html">weightedGrader.pl</a></li>
 								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserPopUp.html">parserPopUp.pl</a></li>
+								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/graph/PGtikz.html">PGtikz.pl</a></li>
 					</ul>
 				</div>
 		</div>
@@ -53,56 +48,52 @@
 						type="button" data-code="DOCUMENT();
 
 loadMacros(
-    &#39;PGstandard.pl&#39;,     &#39;PGML.pl&#39;,
-    &#39;weightedGrader.pl&#39;, &#39;parserPopUp.pl&#39;,
-    &#39;PGtikz.pl&#39;,         &#39;PGcourse.pl&#39;
+    &#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;parserPopUp.pl&#39;, &#39;PGtikz.pl&#39;,
+    &#39;PGcourse.pl&#39;
 );
-
-install_weighted_grader();
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
 
 loadMacros(
-    &#39;PGstandard.pl&#39;,     &#39;PGML.pl&#39;,
-    &#39;weightedGrader.pl&#39;, &#39;parserPopUp.pl&#39;,
-    &#39;PGtikz.pl&#39;,         &#39;PGcourse.pl&#39;
+    &#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;parserPopUp.pl&#39;, &#39;PGtikz.pl&#39;,
+    &#39;PGcourse.pl&#39;
 );
-
-install_weighted_grader();
 </pre>
 				</div>
-				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Preamble</b></p>
-						<p>The <code>weightedGrader.pl</code> macro is used because we want to give different parts of the answer different weights, the <code>parserPopUp.pl</code> macro is used to create drop down menus, and the <code>PGtikz.pl</code> macro is used to produce the graphs.</p>
-<p>To use the weighted grader call <code>install_weighted_grader();</code>.</p>
+						<p>The <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserPopUp.html">parserPopUp.pl</a>
+macro is used to create drop down menus, and the <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/graph/PGtikz.html">PGtikz.pl</a>
+macro is used to produce the graphs.</p>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
-						type="button" data-code="$c = random(9, 13);       # a constant for scaling the function
-$f = Compute(&quot;x^2/$c&quot;);
-$a = random(2, 5);        # left endpoint of interval
-$b = $a + 2;              # right endpoint of interval
-
-# Generate arrays of x and y values for the Riemann sum.
-# There are n + 1 entries in each array so that we can use
-# only one pair of arrays for both the left and the right
-# endpoint Riemann sums.
-$n  = 4;                # number of rectangles
+						type="button" data-code="$c  = random(9, 13);       # a constant for scaling the function
+$f  = Compute(&quot;x^2/$c&quot;);
+$a  = random(2, 5);        # left endpoint of interval
+$b  = $a + 2;              # right endpoint of interval
+$n  = 4;                   # number of rectangles
 $dx = ($b - $a) / $n;
-for $k (0 .. $n) {
+
+# Generate arrays of interval endpoints and function values.
+for my $k (0 .. $n) {
     $x[$k] = $a + $k * $dx;
     $y[$k] = $f-&gt;eval(x =&gt; $x[$k]);
 }
+
+# Compute the Riemann sums.
 $sumLeft  = 0;
 $sumRight = 0;
-for $k (0 .. $n - 1) {
+for my $k (0 .. $n - 1) {
     $sumLeft  += $y[$k] * $dx;
     $sumRight += $y[ $k + 1 ] * $dx;
 }
@@ -111,54 +102,56 @@ for $k (0 .. $n - 1) {
 $graph1 = createTikZImage();
 $graph1-&gt;tikzLibraries(&#39;arrows.meta&#39;);
 $graph1-&gt;BEGIN_TIKZ
-\tikzset{&gt;={Stealth[scale=2]}}
+\tikzset{&gt;={Stealth[scale = 2]}}
 \Large % Make the fonts a little bigger.
 \filldraw[
-    draw=LightBlue,
-    fill=white,
-    rounded corners=10pt,
-    thick,use as bounding box
-] (-1,-1) rectangle (9,9);
-\draw[-&gt;] (-1,0) -- (9,0) node[above left,outer sep=3pt] {\(x\)};
-\foreach \x in {1,...,8} \draw(\x,5pt) -- (\x,-5pt) node [below] {\(\x\)};
-\draw[-&gt;] (0,-1) -- (0,9) node[below right,outer sep=3pt] {\(y\)};
-\foreach \y in {1,...,8} \draw (5pt,\y) -- (-5pt,\y) node[left] {\(\y\)};
-\draw[&lt;-&gt;] plot[domain=-1:9] (\x,{\x*\x/$c});
-\filldraw[draw=blue,fill=blue!50!white, fill opacity = 0.5]
-    ($x[0],0) rectangle ($x[1],$y[0]);
-\filldraw[draw=blue,fill=blue!50!white, fill opacity = 0.5]
-    ($x[1],0) rectangle ($x[2],$y[1]);
-\filldraw[draw=blue,fill=blue!50!white, fill opacity = 0.5]
-    ($x[2],0) rectangle ($x[3],$y[2]);
-\filldraw[draw=blue,fill=blue!50!white, fill opacity = 0.5]
-    ($x[3],0) rectangle ($x[4],$y[3]);
+    draw = LightBlue,
+    fill = white,
+    rounded corners = 10pt,
+    thick,
+    use as bounding box
+] (-1, -1) rectangle (9, 9);
+\draw[-&gt;] (-1, 0) -- (9, 0) node[above left, outer sep = 3pt] {\(x\)};
+\foreach \x in {1, ..., 8} \draw (\x, 5pt) -- (\x, -5pt) node [below] {\(\x\)};
+\draw[-&gt;] (0, -1) -- (0, 9) node[below right, outer sep = 3pt] {\(y\)};
+\foreach \y in {1, ..., 8} \draw (5pt, \y) -- (-5pt, \y) node[left] {\(\y\)};
+\draw[&lt;-&gt;] plot[domain = -1:9] (\x, {\x * \x / $c});
+\filldraw[draw = blue, fill = blue!50!white, fill opacity = 0.5]
+    ($x[0], 0) rectangle ($x[1], $y[0]);
+\filldraw[draw = blue, fill = blue!50!white, fill opacity = 0.5]
+    ($x[1], 0) rectangle ($x[2], $y[1]);
+\filldraw[draw = blue, fill = blue!50!white, fill opacity = 0.5]
+    ($x[2], 0) rectangle ($x[3], $y[2]);
+\filldraw[draw = blue, fill = blue!50!white, fill opacity = 0.5]
+    ($x[3], 0) rectangle ($x[4], $y[3]);
 END_TIKZ
 
 # Graph of the right Riemann sum rectangles
 $graph2 = createTikZImage();
 $graph2-&gt;tikzLibraries(&#39;arrows.meta&#39;);
 $graph2-&gt;BEGIN_TIKZ
-\tikzset{&gt;={Stealth[scale=2]}}
+\tikzset{&gt;={Stealth[scale = 2]}}
 \Large % Make the fonts a little bigger.
 \filldraw[
-    draw=LightBlue,
-    fill=white,
-    rounded corners=10pt,
-    thick,use as bounding box
-] (-1,-1) rectangle (9,9);
-\draw[-&gt;] (-1,0) -- (9,0) node[above left,outer sep=3pt] {\(x\)};
-\foreach \x in {1,...,8} \draw(\x,5pt) -- (\x,-5pt) node [below] {\(\x\)};
-\draw[-&gt;] (0,-1) -- (0,9) node[below right,outer sep=3pt] {\(y\)};
-\foreach \y in {1,...,8} \draw (5pt,\y) -- (-5pt,\y) node[left] {\(\y\)};
-\draw[&lt;-&gt;] plot[domain=-1:9] (\x,{\x*\x/$c});
-\filldraw[draw=blue,fill=blue!50!white, fill opacity = 0.5]
-    ($x[0],0) rectangle ($x[1],$y[1]);
-\filldraw[draw=blue,fill=blue!50!white, fill opacity = 0.5]
-    ($x[1],0) rectangle ($x[2],$y[2]);
-\filldraw[draw=blue,fill=blue!50!white, fill opacity = 0.5]
-    ($x[2],0) rectangle ($x[3],$y[3]);
-\filldraw[draw=blue,fill=blue!50!white, fill opacity = 0.5]
-    ($x[3],0) rectangle ($x[4],$y[4]);
+    draw = LightBlue,
+    fill = white,
+    rounded corners = 10pt,
+    thick,
+    use as bounding box
+] (-1, -1) rectangle (9, 9);
+\draw[-&gt;] (-1, 0) -- (9, 0) node[above left, outer sep = 3pt] {\(x\)};
+\foreach \x in {1, ..., 8} \draw (\x, 5pt) -- (\x, -5pt) node [below] {\(\x\)};
+\draw[-&gt;] (0, -1) -- (0, 9) node[below right, outer sep = 3pt] {\(y\)};
+\foreach \y in {1,...,8} \draw (5pt, \y) -- (-5pt, \y) node[left] {\(\y\)};
+\draw[&lt;-&gt;] plot[domain = -1:9] (\x, {\x * \x / $c});
+\filldraw[draw = blue, fill = blue!50!white, fill opacity = 0.5]
+    ($x[0], 0) rectangle ($x[1], $y[1]);
+\filldraw[draw = blue, fill = blue!50!white, fill opacity = 0.5]
+    ($x[1], 0) rectangle ($x[2], $y[2]);
+\filldraw[draw = blue, fill = blue!50!white, fill opacity = 0.5]
+    ($x[2], 0) rectangle ($x[3], $y[3]);
+\filldraw[draw = blue, fill = blue!50!white, fill opacity = 0.5]
+    ($x[3], 0) rectangle ($x[4], $y[4]);
 END_TIKZ
 
 $leftEstimateDropDown = DropDown(
@@ -180,30 +173,41 @@ $rightEstimateDropDown = DropDown(
     ],
     0
 );
+
+$leftRiemannSumAltText =
+    &quot;The graph of a parabola opening up with vertex at the point (0, 0) is &quot;
+    . &quot;shown. Rectangles above the intervals from $x[0] to $x[1], $x[1] to &quot;
+    . &quot;$x[2], $x[2] to $x[3], and $x[3] to $x[4] with heights $y[0], $y[1], &quot;
+    . &quot;$y[2], and $y[3], respectively are also shown.&quot;;
+
+$rightRiemannSumAltText =
+    &quot;The graph of a parabola opening up with vertex at the point (0, 0) is &quot;
+    . &quot;shown. Rectangles above the intervals from $x[0] to $x[1], $x[1] to &quot;
+    . &quot;$x[2], $x[2] to $x[3], and $x[3] to $x[4] with heights $y[1], $y[2], &quot;
+    . &quot;$y[3], and $y[4], respectively are also shown.&quot;;
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">$c = random(9, 13);       # a constant for scaling the function
-$f = Compute(&quot;x^2/$c&quot;);
-$a = random(2, 5);        # left endpoint of interval
-$b = $a + 2;              # right endpoint of interval
-
-# Generate arrays of x and y values for the Riemann sum.
-# There are n + 1 entries in each array so that we can use
-# only one pair of arrays for both the left and the right
-# endpoint Riemann sums.
-$n  = 4;                # number of rectangles
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">$c  = random(9, 13);       # a constant for scaling the function
+$f  = Compute(&quot;x^2/$c&quot;);
+$a  = random(2, 5);        # left endpoint of interval
+$b  = $a + 2;              # right endpoint of interval
+$n  = 4;                   # number of rectangles
 $dx = ($b - $a) / $n;
-for $k (0 .. $n) {
+
+# Generate arrays of interval endpoints and function values.
+for my $k (0 .. $n) {
     $x[$k] = $a + $k * $dx;
     $y[$k] = $f-&gt;eval(x =&gt; $x[$k]);
 }
+
+# Compute the Riemann sums.
 $sumLeft  = 0;
 $sumRight = 0;
-for $k (0 .. $n - 1) {
+for my $k (0 .. $n - 1) {
     $sumLeft  += $y[$k] * $dx;
     $sumRight += $y[ $k + 1 ] * $dx;
 }
@@ -212,54 +216,56 @@ for $k (0 .. $n - 1) {
 $graph1 = createTikZImage();
 $graph1-&gt;tikzLibraries(&#39;arrows.meta&#39;);
 $graph1-&gt;BEGIN_TIKZ
-\tikzset{&gt;={Stealth[scale=2]}}
+\tikzset{&gt;={Stealth[scale = 2]}}
 \Large % Make the fonts a little bigger.
 \filldraw[
-    draw=LightBlue,
-    fill=white,
-    rounded corners=10pt,
-    thick,use as bounding box
-] (-1,-1) rectangle (9,9);
-\draw[-&gt;] (-1,0) -- (9,0) node[above left,outer sep=3pt] {\(x\)};
-\foreach \x in {1,...,8} \draw(\x,5pt) -- (\x,-5pt) node [below] {\(\x\)};
-\draw[-&gt;] (0,-1) -- (0,9) node[below right,outer sep=3pt] {\(y\)};
-\foreach \y in {1,...,8} \draw (5pt,\y) -- (-5pt,\y) node[left] {\(\y\)};
-\draw[&lt;-&gt;] plot[domain=-1:9] (\x,{\x*\x/$c});
-\filldraw[draw=blue,fill=blue!50!white, fill opacity = 0.5]
-    ($x[0],0) rectangle ($x[1],$y[0]);
-\filldraw[draw=blue,fill=blue!50!white, fill opacity = 0.5]
-    ($x[1],0) rectangle ($x[2],$y[1]);
-\filldraw[draw=blue,fill=blue!50!white, fill opacity = 0.5]
-    ($x[2],0) rectangle ($x[3],$y[2]);
-\filldraw[draw=blue,fill=blue!50!white, fill opacity = 0.5]
-    ($x[3],0) rectangle ($x[4],$y[3]);
+    draw = LightBlue,
+    fill = white,
+    rounded corners = 10pt,
+    thick,
+    use as bounding box
+] (-1, -1) rectangle (9, 9);
+\draw[-&gt;] (-1, 0) -- (9, 0) node[above left, outer sep = 3pt] {\(x\)};
+\foreach \x in {1, ..., 8} \draw (\x, 5pt) -- (\x, -5pt) node [below] {\(\x\)};
+\draw[-&gt;] (0, -1) -- (0, 9) node[below right, outer sep = 3pt] {\(y\)};
+\foreach \y in {1, ..., 8} \draw (5pt, \y) -- (-5pt, \y) node[left] {\(\y\)};
+\draw[&lt;-&gt;] plot[domain = -1:9] (\x, {\x * \x / $c});
+\filldraw[draw = blue, fill = blue!50!white, fill opacity = 0.5]
+    ($x[0], 0) rectangle ($x[1], $y[0]);
+\filldraw[draw = blue, fill = blue!50!white, fill opacity = 0.5]
+    ($x[1], 0) rectangle ($x[2], $y[1]);
+\filldraw[draw = blue, fill = blue!50!white, fill opacity = 0.5]
+    ($x[2], 0) rectangle ($x[3], $y[2]);
+\filldraw[draw = blue, fill = blue!50!white, fill opacity = 0.5]
+    ($x[3], 0) rectangle ($x[4], $y[3]);
 END_TIKZ
 
 # Graph of the right Riemann sum rectangles
 $graph2 = createTikZImage();
 $graph2-&gt;tikzLibraries(&#39;arrows.meta&#39;);
 $graph2-&gt;BEGIN_TIKZ
-\tikzset{&gt;={Stealth[scale=2]}}
+\tikzset{&gt;={Stealth[scale = 2]}}
 \Large % Make the fonts a little bigger.
 \filldraw[
-    draw=LightBlue,
-    fill=white,
-    rounded corners=10pt,
-    thick,use as bounding box
-] (-1,-1) rectangle (9,9);
-\draw[-&gt;] (-1,0) -- (9,0) node[above left,outer sep=3pt] {\(x\)};
-\foreach \x in {1,...,8} \draw(\x,5pt) -- (\x,-5pt) node [below] {\(\x\)};
-\draw[-&gt;] (0,-1) -- (0,9) node[below right,outer sep=3pt] {\(y\)};
-\foreach \y in {1,...,8} \draw (5pt,\y) -- (-5pt,\y) node[left] {\(\y\)};
-\draw[&lt;-&gt;] plot[domain=-1:9] (\x,{\x*\x/$c});
-\filldraw[draw=blue,fill=blue!50!white, fill opacity = 0.5]
-    ($x[0],0) rectangle ($x[1],$y[1]);
-\filldraw[draw=blue,fill=blue!50!white, fill opacity = 0.5]
-    ($x[1],0) rectangle ($x[2],$y[2]);
-\filldraw[draw=blue,fill=blue!50!white, fill opacity = 0.5]
-    ($x[2],0) rectangle ($x[3],$y[3]);
-\filldraw[draw=blue,fill=blue!50!white, fill opacity = 0.5]
-    ($x[3],0) rectangle ($x[4],$y[4]);
+    draw = LightBlue,
+    fill = white,
+    rounded corners = 10pt,
+    thick,
+    use as bounding box
+] (-1, -1) rectangle (9, 9);
+\draw[-&gt;] (-1, 0) -- (9, 0) node[above left, outer sep = 3pt] {\(x\)};
+\foreach \x in {1, ..., 8} \draw (\x, 5pt) -- (\x, -5pt) node [below] {\(\x\)};
+\draw[-&gt;] (0, -1) -- (0, 9) node[below right, outer sep = 3pt] {\(y\)};
+\foreach \y in {1,...,8} \draw (5pt, \y) -- (-5pt, \y) node[left] {\(\y\)};
+\draw[&lt;-&gt;] plot[domain = -1:9] (\x, {\x * \x / $c});
+\filldraw[draw = blue, fill = blue!50!white, fill opacity = 0.5]
+    ($x[0], 0) rectangle ($x[1], $y[1]);
+\filldraw[draw = blue, fill = blue!50!white, fill opacity = 0.5]
+    ($x[1], 0) rectangle ($x[2], $y[2]);
+\filldraw[draw = blue, fill = blue!50!white, fill opacity = 0.5]
+    ($x[2], 0) rectangle ($x[3], $y[3]);
+\filldraw[draw = blue, fill = blue!50!white, fill opacity = 0.5]
+    ($x[3], 0) rectangle ($x[4], $y[4]);
 END_TIKZ
 
 $leftEstimateDropDown = DropDown(
@@ -281,14 +287,36 @@ $rightEstimateDropDown = DropDown(
     ],
     0
 );
+
+$leftRiemannSumAltText =
+    &quot;The graph of a parabola opening up with vertex at the point (0, 0) is &quot;
+    . &quot;shown. Rectangles above the intervals from $x[0] to $x[1], $x[1] to &quot;
+    . &quot;$x[2], $x[2] to $x[3], and $x[3] to $x[4] with heights $y[0], $y[1], &quot;
+    . &quot;$y[2], and $y[3], respectively are also shown.&quot;;
+
+$rightRiemannSumAltText =
+    &quot;The graph of a parabola opening up with vertex at the point (0, 0) is &quot;
+    . &quot;shown. Rectangles above the intervals from $x[0] to $x[1], $x[1] to &quot;
+    . &quot;$x[2], $x[2] to $x[3], and $x[3] to $x[4] with heights $y[1], $y[2], &quot;
+    . &quot;$y[3], and $y[4], respectively are also shown.&quot;;
 </pre>
 				</div>
-				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Setup</b></p>
-						<p>First generate a random constant for the function and the interval endpoints. Note that you should be careful to choose ranges for the parameters such that all possibilities work well in the graphs.</p>
-<p>Then compute the left and right Riemann sums, first by storing the x and y values in arrays and summing over the arrays.</p>
-<p>Next, generate the graphs of the function with the rectangles whose areas are summed in the Riemann sums.</p>
-<p>Finally, construct drop down menu answers that ask the student to relate the Riemann sum estimates to the area of the region specified in the problem.</p>
+						<p>First generate a random constant for the function and the interval
+endpoints. Note that you should be careful to choose ranges for the
+parameters such that all possibilities work well in the graphs.</p>
+<p>Then compute the left and right Riemann sums, first by storing the
+endpoints of the intervals that partition <code>[$a, $b]</code> in the
+array <code>@x</code> and the corresponding function values in the array
+<code>@y</code>, and then summing over the arrays.</p>
+<p>Next, generate the graphs of the function with the rectangles whose
+areas are summed in the Riemann sums.</p>
+<p>Next, construct drop down menu answers that ask the student to relate
+the Riemann sum estimates to the area of the region specified in the
+problem.</p>
+<p>Finally, alternate texts are generated that describe the Riemann sum
+images for unsighted users that are using a screen reader.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -304,8 +332,7 @@ endpoint Riemann sum is [_]{Real($sumLeft)-&gt;cmp(weight =&gt; 45)}{5} and it i
 by [`y = f(x)`], the [`x`]-axis, and the vertical lines [`x = [$a]`] and
 [`x = [$b]`].
 
-&gt;&gt;[@ image($graph1, height =&gt; 250, width =&gt; 250, tex_size =&gt; 450) @]*&lt;&lt;
-
+&gt;&gt;[![$leftRiemannSumAltText]!]{$graph1}{250}&lt;&lt;  
 &gt;&gt;Left endpoint Riemann sum&lt;&lt;
 
 b. The rectangles in the graph below illustrate a right endpoint Riemann sum for
@@ -315,8 +342,7 @@ endpoint Riemann sum is [_]{ Real($sumRight)-&gt;cmp(weight =&gt; 45) }{5} and i
 by [`y = f(x)`], the [`x`]-axis, and the vertical lines [`x = [$a]`] and
 [`x = [$b]`].
 
-&gt;&gt;[@ image($graph2, height =&gt; 250, width =&gt; 250, tex_size =&gt; 450) @]*&lt;&lt;
-
+&gt;&gt;[![$rightRiemannSumAltText]!]{$graph2}{250}&lt;&lt;  
 &gt;&gt;Right endpoint Riemann sum&lt;&lt;
 END_PGML
 " aria-label="copy to clipboard">
@@ -325,7 +351,7 @@ END_PGML
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
 Suppose [``f(x) = \frac{x^2}{[$c]}``].
 
 a. The rectangles in the graph below illustrate a left endpoint Riemann sum for
@@ -335,8 +361,7 @@ endpoint Riemann sum is [_]{Real($sumLeft)-&gt;cmp(weight =&gt; 45)}{5} and it i
 by [`y = f(x)`], the [`x`]-axis, and the vertical lines [`x = [$a]`] and
 [`x = [$b]`].
 
-&gt;&gt;[@ image($graph1, height =&gt; 250, width =&gt; 250, tex_size =&gt; 450) @]*&lt;&lt;
-
+&gt;&gt;[![$leftRiemannSumAltText]!]{$graph1}{250}&lt;&lt;  
 &gt;&gt;Left endpoint Riemann sum&lt;&lt;
 
 b. The rectangles in the graph below illustrate a right endpoint Riemann sum for
@@ -346,15 +371,27 @@ endpoint Riemann sum is [_]{ Real($sumRight)-&gt;cmp(weight =&gt; 45) }{5} and i
 by [`y = f(x)`], the [`x`]-axis, and the vertical lines [`x = [$a]`] and
 [`x = [$b]`].
 
-&gt;&gt;[@ image($graph2, height =&gt; 250, width =&gt; 250, tex_size =&gt; 450) @]*&lt;&lt;
-
+&gt;&gt;[![$rightRiemannSumAltText]!]{$graph2}{250}&lt;&lt;  
 &gt;&gt;Right endpoint Riemann sum&lt;&lt;
 END_PGML
 </pre>
 				</div>
-				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Statement</b></p>
-						<p>The weights for the weighted grader are assigned by passing the <code>weight</code> flag to the <code>cmp</code> method.</p>
+						<p>The default <code>avg_problem_grader</code> used in this problem
+allows answers to be assigned weights, i.e., given precedence in the
+problem score when the problem is graded. The answers are assigned
+weights by passing the <code>weight</code> flag to the <code>cmp</code>
+method.</p>
+<p>Note that there are two spaces at the end of the line
+<code>&gt;&gt;[!left Riemann sum!]{$graph1}{250}&lt;&lt;</code> as well
+as at the end of the equivalent line for the right Riemann sum (these
+may not be visible on this page). Those spaces are a PGML line break,
+and make it so that the image caption is closer to the image than a
+paragraph break (an empty line in PGML) would give.</p>
+<p>It is also important to provide alternate texts for unsighted users
+that are using a screen reader that give detailed information as to what
+is shown in the image.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -381,7 +418,7 @@ ENDDOCUMENT();
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
 a. The left endpoint Riemann sum is
 [```
     f([$x[0]]) \cdot 0.5 + f([$x[1]]) \cdot 0.5 + \cdots + f([$x[ $n - 1]]) \cdot 0.5
@@ -398,7 +435,7 @@ END_PGML_SOLUTION
 ENDDOCUMENT();
 </pre>
 				</div>
-				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Solution</b></p>
 						A solution should be provided here.
 				</div>
@@ -406,12 +443,14 @@ ENDDOCUMENT();
 	</div>
 
 	<script type="module">
-		for (const pre of document.body.querySelectorAll('pre.CodeMirror')) {
-			CodeMirror.runMode(pre.textContent, 'PG', pre);
+		for (const pre of document.body.querySelectorAll('pre.PGCodeMirror')) {
+			PGCodeMirrorEditor.runMode(pre.textContent, pre);
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard)
+				btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

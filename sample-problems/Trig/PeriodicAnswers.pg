@@ -2,7 +2,7 @@ DOCUMENT();
 
 loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
 
-$answer = Real('pi/2')->with(period => pi);
+$answer = Real('pi / 2')->with(period => pi);
 
 BEGIN_PGML
 Enter a solution to [`\cos(\theta) = 0`].
@@ -10,9 +10,13 @@ Enter a solution to [`\cos(\theta) = 0`].
 [`\theta =`] [_]{$answer}{15}
 END_PGML
 
+BEGIN_PGML_HINT
+The cosine of an angle is zero when the angle is [`\frac{2n + 1}{2}\pi`] for
+any integer [`n`].
+END_PGML_HINT
+
 BEGIN_PGML_SOLUTION
-The cosine of an angle is zero when the angle is [`(n + 1 / 2)\pi`] for any
-integer [`n`].
+Solution explanation goes here.
 END_PGML_SOLUTION
 
 ENDDOCUMENT();

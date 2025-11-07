@@ -66,25 +66,27 @@ END_STYLE
 BEGIN_PGML
 Match each question with its answer.
 
-[@ MODES(TeX => '\\parbox{0.4\\linewidth}{',
-    HTML => '<div class="two-column"><div>') @]*
-[@ join(
-    "\n\n",
-    map {
-        '[_]{$answer_dropdowns[' . $_ . ']} '
-            . '*' . ($_ + 1) . '.* '
-            . '[$q_and_a[' . $_ . '][0]]'
-    } 0 .. $#q_and_a
-) @]**
-[@ MODES(TeX => '}\\hfill\\parbox{0.4\\linewidth}{',
-    HTML => '</div><div>') @]*
-[@ join(
-    "\n\n",
-    map {
-        '*' . $ALPHABET[($_)] . '.* [$answers[$shuffle[' . $_ . ']]]'
-    } 0 .. $#answers
-) @]**
-[@ MODES(TeX => '}', HTML => '</div></div>') @]*
+[<
+    [<
+        [@ join(
+            "\n\n",
+            map {
+                '[_]{$answer_dropdowns[' . $_ . ']} '
+                    . '*' . ($_ + 1) . '.* '
+                    . '[$q_and_a[' . $_ . '][0]]'
+            } 0 .. $#q_and_a
+        ) @]**
+    >]{ [ 'div' ] }{ [ '\\parbox{0.55\\linewidth}{', '}' ] }
+    [@ MODES(TeX => '\\hfill', HTML => '') @]*
+    [<
+        [@ join(
+            "\n\n",
+            map {
+                '*' . $ALPHABET[($_)] . '.* [$answers[$shuffle[' . $_ . ']]]'
+            } 0 .. $#answers
+        ) @]**
+    >]{ [ 'div' ] }{ [ '\\parbox{0.25\\linewidth}{', '}' ] }
+>]{ [ 'div', class => 'two-column' ] }
 END_PGML
 
 BEGIN_PGML_SOLUTION

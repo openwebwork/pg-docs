@@ -1,0 +1,38 @@
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+@rows = map { [ $_, random(1, 10) ] } 1 .. 5;
+
+$a = non_zero_random(-4, 4);
+$f = Compute("x / (x - [$a])")->reduce;
+
+BEGIN_PGML
+Here's some data:
+
+[#
+    [.[`x`].] [.[`y`].]*{ headerrow => 1 }
+    [. .]{ rows => \@rows }
+#]
+
+Complete the following table of values for [``f(x) = [$f]``].
+
+[$tab2]*
+[#
+    [.[`x`].]    [.[`f(x)`].]*{ headerrow => 1 }
+    [.[$a - 2].] [.[_]{$f->eval(x => $a - 2)}.]*
+    [.[$a - 1].] [.[_]{$f->eval(x => $a - 1)}.]*
+    [.[$a + 1].] [.[_]{$f->eval(x => $a + 1)}.]*
+    [.[$a + 2].] [.[_]{$f->eval(x => $a + 2)}.]
+#]{
+    align           => '|r|c|',
+    valign          => 'middle',
+    padding         => [ 0.5, 0.5 ],
+    horizontalrules => 1
+}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

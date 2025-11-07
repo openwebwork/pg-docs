@@ -1,0 +1,42 @@
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'plots.pl', 'PGcourse.pl');
+
+$plot = Plot(xlocation => 'bottom', ylocation => 'left');
+
+$plot->add_vectorfield(
+    Fx        => 'sin(y)',
+    Fy        => 'cos(x)',
+    xvar      => 'x',
+    yvar      => 'y',
+    xmin      => -4,
+    xmax      =>  4,
+    ymin      => -4,
+    ymax      =>  4,
+    xsteps    =>  20,
+    ysteps    =>  15,
+    color     => 'blue',
+    scale     => 0.5,
+    normalize => 1,
+);
+
+$altText =
+    'The direction field graph of <sin(x), cos(x)> which look a '
+    . 'clockwise swirl centered at (pi/2,0), and two counterclockwise '
+    . 'swirls at (-pi/2,pi) and (-pi/2,-pi) among others.  The plotting '
+    . 'window is [-4,4] x [-4,4]';
+
+BEGIN_PGML
+
+The following is a vector field plot of [`\langle \sin x, \cos x \rangle`] on
+the domain [`[-4,4] \times [-4,4]`].
+
+>>[![$altText]!]{$plot}{400}<<
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

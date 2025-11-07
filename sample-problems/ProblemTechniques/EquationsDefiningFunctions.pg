@@ -1,0 +1,21 @@
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserAssignment.pl', 'PGcourse.pl');
+
+Context('Numeric')->variables->are(x => 'Real', y => 'Real');
+parser::Assignment->Allow;
+parser::Assignment->Function('f');
+
+$eqn = Formula('y = 5x + 2');
+$f   = Formula('f(x) = 5x + 2');
+
+BEGIN_PGML
+Enter [`y = 5x + 2`]: [___]{$eqn}
+
+Enter [`f(x) = 5x + 2`]: [___]{$f}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

@@ -8,8 +8,9 @@ parserFunction(f => 'sin(pi^n) + e * n^2');
 $fn = Formula('3 f(n - 1) + 2');
 
 BEGIN_PGML
-The current value [`f(n)`] is three times the previous value, plus two.  Find a
-recursive definition for [`f(n)`].  Enter [`f_{n-1}`] as [`f(n-1)`].
+If [`f(n)`] defines a sequence for all integegers [`n \geq 0`] that satisfies
+the property that [`f(n)`] is two more than three times the previous value.
+Find a recursive definition for [`f(n)`].
 
 [`f(n) =`] [_]{$fn}{15}
 END_PGML

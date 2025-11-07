@@ -9,9 +9,9 @@ $graph = Graph3D(
 );
 
 $graph->addSurface(
-    [ '3*sin(v)*cos(u)', '3*sin(v)*sin(u)', '3*cos(v)' ],
-    [ 0,                 2 * pi,            30 ],
-    [ 0,                 pi,                30 ]
+    [ '3 * sin(v) * cos(u)', '3 * sin(v) * sin(u)', '3 * cos(v)' ],
+    [ 0,                     2 * pi,                30 ],
+    [ 0,                     pi,                    30 ]
 );
 
 BEGIN_PGML

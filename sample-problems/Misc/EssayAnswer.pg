@@ -1,30 +1,29 @@
 DOCUMENT();
+
 loadMacros(
     'PGstandard.pl',  'PGML.pl',
     'parserPopUp.pl', 'PGessaymacros.pl',
     'PGcourse.pl'
 );
 
-$showPartialCorrectAnswers = 0;
-
 $popup = PopUp(
     [ 'Choose', 'True', 'False' ],    # choices
-    'False'                           # corect answer
+    'False'                           # correct answer
 );
 
 $a = random(2, 5);
 
-$f1 = Compute("ln(x (x-$a))");
-$f2 = Compute("ln(x) + ln(x-$a)");
+$f1 = Compute("ln(x(x - $a))");
+$f2 = Compute("ln(x) + ln(x - $a)");
 
 BEGIN_PGML
-Answer the following true / false question and then explain your answer.  Your
-answers will be read and graded manually at a later time.
+Determine if the following statement is true or false, and then explain your
+answer.  Your explanation will be graded manually at a later time.
 
-[_]{$popup} For all real numbers [`x`], [`[$f1] = [$f2]`].
+[_]{$popup}: For all real numbers [`x`], [`[$f1] = [$f2]`].
 
 Please explain your reasoning in the answer box below.
-[@ ANS( essay_cmp() ); essay_box(8, 60) @]*
+[@ ANS(essay_cmp()); essay_box(8, 60) @]*
 END_PGML
 
 ENDDOCUMENT();

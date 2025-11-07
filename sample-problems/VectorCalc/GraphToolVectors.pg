@@ -1,0 +1,25 @@
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserGraphTool.pl', 'PGcourse.pl');
+
+$vx1 = random(-8, 8);
+$vy1 = random(-8, 8);
+
+$gt = GraphTool("{vector, solid, (0, 0), ($vx1, $vy1)}")
+    ->with(availableTools => [ 'VectorTool', 'FillTool', 'SolidDashTool' ]);
+
+BEGIN_PGML
+Graph the vector [`\langle[$vx1], [$vy1]\rangle`].
+
+[_]{$gt}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+A correct answer is
+
+[!A graph of the vector from (0,0) to ([$vx1],[$vy1])!]{$gt}
+
+But any vector with the same length and in the same direction would be correct as well.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

@@ -2,26 +2,27 @@ DOCUMENT();
 
 loadMacros('PGstandard.pl', 'PGML.pl', 'plotly3D.pl', 'PGcourse.pl');
 
+$a = random(2, 5);
 
-$a = random(2,5);
+$graph1 = Graph3D();
+$graph1->addSurface(
+    [ 'u * cos(v)', 'u * sin(v)', "$a * cos(u^2 / 4)" ],
+    [ 0,            6,            30 ],
+    [ 0,            2 * pi,       30 ]
+);
 
-$gr1 = Graph3D();
-$gr1->addSurface(
-                ['u*cos(v)', 'u*sin(v)', "$a*cos(u^2/4)"],
-                [0, 6, 30],
-                [0, 2*pi, 30]
-        );
-
-$gr2 = Graph3D();
-$gr2->addSurface(
-    ['r*cos(t)', 'r*sin(t)', 'r*sin(t)^2'],
-    [0, 6, 30],
-    [0, 2*pi, 30],
-    variables => ['r','t']
+$graph2 = Graph3D();
+$graph2->addSurface(
+    [ 'r * cos(t)', 'r * sin(t)', 'r * sin(t)^2' ],
+    [ 0,            6,            30 ],
+    [ 0,            2 * pi,       30 ],
+    variables => [ 'r', 't' ]
 );
 
 BEGIN_PGML
-[@ $gr1->Print @]* [@ $gr2->Print @]*
+[@ $graph1->Print @]*
+
+[@ $graph2->Print @]*
 END_PGML
 
 BEGIN_PGML_SOLUTION

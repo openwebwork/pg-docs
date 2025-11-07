@@ -27,11 +27,11 @@ The equation of the circle of the form:
 
 has a center at [`([$h],[$k])`] and radius [$r].  To enter the graph, click the
 circle tool, then click the center at [`([$h],[$k])`] and then click a second
-point that is [$r] units from the center.  This is easist going left, right, up
+point that is [$r] units from the center.  This is easiest going left, right, up
 or down from the center.
 
 The solution is
-[@ $gt->generateAnswerGraph @]*
+[! the graph of a circle centered at ([$h], [$k]) of radius [$r] !]{$gt}
 END_PGML_SOLUTION
 
 ENDDOCUMENT();

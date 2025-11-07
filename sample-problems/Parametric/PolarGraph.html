@@ -4,15 +4,13 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>PolarGraph</title>
+	<title>PolarGraph.pg</title>
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/lib/codemirror.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/theme/eclipse.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/addon/runmode/runmode-standalone.min.js" defer>
-	</script>
-	<script src="https://openwebwork.github.io/pg-docs/sample-problems/PG.js" defer></script>
-	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css" >
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script
+		src="https://cdn.jsdelivr.net/npm/@openwebwork/pg-codemirror-editor@0.0.5/dist/pg-codemirror-editor.js"
+		defer></script>
+	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css">
 </head>
 
 
@@ -20,20 +18,18 @@
 	<div class="container-fluid p-3">
 		<div class="row">
 			<div class="col">
-				<h1>Polar Graph</h1>
-				<p>Graphing a polar curve given by r=f(theta)</p>
+				<h1>Polar Graph (tikz)</h1>
+				<p>Graphing a polar curve given by r = f(theta)</p>
 			</div>
 			<div class="col text-end">
-				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../index.html">Return to the PG docs home</a>
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
 </div>
 		</div>
 		<div class="row">
 			<div class="col">
 				<h2>Complete Code</h2>
-				<p>
-				Download file: <a href="PolarGraph.pg">PolarGraph.pg</a>
-</p>
-			</div>
+				<p>Download file: <a href="PolarGraph.pg">PolarGraph.pg</a></p>
+</div>
 				<div class="col">
 					<h2>POD for Macro Files</h2>
 					<ul>
@@ -57,14 +53,16 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGtikz.pl&#39;, &#39
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
 
 loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGtikz.pl&#39;, &#39;PGcourse.pl&#39;);
 </pre>
 				</div>
-				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Preamble</b></p>
-						<p>We use <code>PGtikz.pl</code> to generate the graph.</p>
+						<p>The <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/graph/PGtikz.html">PGtikz.pl</a>
+macro is used to generate the graph.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -75,32 +73,69 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGtikz.pl&#39;, &#39
 $graph = createTikZImage();
 $graph-&gt;tikzLibraries(&#39;arrows.meta&#39;);
 $graph-&gt;BEGIN_TIKZ
-\tikzset{&gt;={Stealth[scale=1.5]}}
+\tikzset{&gt;={Stealth[scale = 1.5]}}
 \filldraw[
-    draw=LightBlue,
-    fill=white,
-    rounded corners=10pt,
-    thick,use as bounding box
-] (-3.5,-3.5) rectangle (3.5,3.5);
-\draw[-&gt;] (-3.5,0) -- (3.5,0) node[above left,outer sep=3pt] {\(x\)};
-\draw[-&gt;] (0,-3.5) -- (0,3.5) node[below right,outer sep=3pt] {\(y\)};
-\draw[DarkGreen,very thick]
-    plot [samples=250,domain=0:{2*pi},variable=\t]
-    ({3*cos(5*\t r)*cos(\t r)},{3*cos(5*\t r)*sin(\t r)});
-\fill[opacity=0.5,fill=DarkGreen]
-    (0,0) -- plot[samples=250,domain={-pi/10}:{pi/10},variable=\t]
-    ({3*cos(5*\t r)*cos(\t r)},{3*cos(5*\t r)*sin(\t r)}) -- cycle;
+    draw = LightBlue,
+    fill = white,
+    rounded corners = 10pt,
+    thick,
+    use as bounding box
+] (-3.5, -3.5) rectangle (3.5, 3.5);
+\draw[-&gt;] (-3.5, 0) -- (3.5, 0) node[above left, outer sep = 3pt] {\(x\)};
+\draw[-&gt;] (0, -3.5) -- (0, 3.5) node[below right,outer sep = 3pt] {\(y\)};
+\draw[DarkGreen, very thick]
+    plot [samples = 200, domain = 0:{2 * pi}, variable = \t]
+    ({3 * cos(5 * \t r) * cos(\t r)}, {3 * cos(5 * \t r) * sin(\t r)});
+\fill[opacity = 0.5, fill = DarkGreen]
+    (0, 0) -- plot[samples = 100, domain = {-pi / 10}:{pi / 10}, variable = \t]
+    ({3 * cos(5 * \t r) * cos(\t r)}, {3 * cos(5 * \t r) * sin(\t r)}) -- cycle;
 END_TIKZ
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context()-&gt;variables-&gt;are(t =&gt; &#39;Real&#39;);
 
-BEGIN_PGML
+$graph = createTikZImage();
+$graph-&gt;tikzLibraries(&#39;arrows.meta&#39;);
+$graph-&gt;BEGIN_TIKZ
+\tikzset{&gt;={Stealth[scale = 1.5]}}
+\filldraw[
+    draw = LightBlue,
+    fill = white,
+    rounded corners = 10pt,
+    thick,
+    use as bounding box
+] (-3.5, -3.5) rectangle (3.5, 3.5);
+\draw[-&gt;] (-3.5, 0) -- (3.5, 0) node[above left, outer sep = 3pt] {\(x\)};
+\draw[-&gt;] (0, -3.5) -- (0, 3.5) node[below right,outer sep = 3pt] {\(y\)};
+\draw[DarkGreen, very thick]
+    plot [samples = 200, domain = 0:{2 * pi}, variable = \t]
+    ({3 * cos(5 * \t r) * cos(\t r)}, {3 * cos(5 * \t r) * sin(\t r)});
+\fill[opacity = 0.5, fill = DarkGreen]
+    (0, 0) -- plot[samples = 100, domain = {-pi / 10}:{pi / 10}, variable = \t]
+    ({3 * cos(5 * \t r) * cos(\t r)}, {3 * cos(5 * \t r) * sin(\t r)}) -- cycle;
+END_TIKZ
+</pre>
+				</div>
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Setup</b></p>
+						<p>The polar curve is plotted parametrically.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="BEGIN_PGML
 Find the area enclosed by one petal of the rose curve
 [`r = f(\theta) = \cos(5\theta)`].
 
-&gt;&gt;[@ image($graph, width =&gt; 300) @]*&lt;&lt;
-
+&gt;&gt;[!a rose curve!]{$graph}{300}&lt;&lt;
 &gt;&gt;Graph of [`r = \cos(5\theta)`]&lt;&lt;
 
-Area = [_____]{&#39;pi/20&#39;}
+Area = [_____]{&#39;pi / 20&#39;}
 END_PGML
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -108,43 +143,23 @@ END_PGML
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context()-&gt;variables-&gt;are(t =&gt; &#39;Real&#39;);
-
-$graph = createTikZImage();
-$graph-&gt;tikzLibraries(&#39;arrows.meta&#39;);
-$graph-&gt;BEGIN_TIKZ
-\tikzset{&gt;={Stealth[scale=1.5]}}
-\filldraw[
-    draw=LightBlue,
-    fill=white,
-    rounded corners=10pt,
-    thick,use as bounding box
-] (-3.5,-3.5) rectangle (3.5,3.5);
-\draw[-&gt;] (-3.5,0) -- (3.5,0) node[above left,outer sep=3pt] {\(x\)};
-\draw[-&gt;] (0,-3.5) -- (0,3.5) node[below right,outer sep=3pt] {\(y\)};
-\draw[DarkGreen,very thick]
-    plot [samples=250,domain=0:{2*pi},variable=\t]
-    ({3*cos(5*\t r)*cos(\t r)},{3*cos(5*\t r)*sin(\t r)});
-\fill[opacity=0.5,fill=DarkGreen]
-    (0,0) -- plot[samples=250,domain={-pi/10}:{pi/10},variable=\t]
-    ({3*cos(5*\t r)*cos(\t r)},{3*cos(5*\t r)*sin(\t r)}) -- cycle;
-END_TIKZ
-
-BEGIN_PGML
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
 Find the area enclosed by one petal of the rose curve
 [`r = f(\theta) = \cos(5\theta)`].
 
-&gt;&gt;[@ image($graph, width =&gt; 300) @]*&lt;&lt;
-
+&gt;&gt;[!a rose curve!]{$graph}{300}&lt;&lt;
 &gt;&gt;Graph of [`r = \cos(5\theta)`]&lt;&lt;
 
-Area = [_____]{&#39;pi/20&#39;}
+Area = [_____]{&#39;pi / 20&#39;}
 END_PGML
 </pre>
 				</div>
-				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
-					<p><b>Setup</b></p>
-						<p>The package <code>PGtikz.pl</code> is used to produce the curve. The plotting routine used in this way plots parametrically and we plot the polar curve parametrically.</p>
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Statement</b></p>
+						<p>The alternate text provided in this example is not sufficient. I
+don’t know how one would describe a rose curve to someone who can not
+see it. Perhaps seek assistance from an expert in assistive technologies
+to find a better description.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -160,13 +175,13 @@ ENDDOCUMENT();" aria-label="copy to clipboard">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
 Solution explanation goes here.
 END_PGML_SOLUTION
 
 ENDDOCUMENT();</pre>
 				</div>
-				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Solution</b></p>
 						A solution should be provided here.
 				</div>
@@ -174,12 +189,14 @@ ENDDOCUMENT();</pre>
 	</div>
 
 	<script type="module">
-		for (const pre of document.body.querySelectorAll('pre.CodeMirror')) {
-			CodeMirror.runMode(pre.textContent, 'PG', pre);
+		for (const pre of document.body.querySelectorAll('pre.PGCodeMirror')) {
+			PGCodeMirrorEditor.runMode(pre.textContent, pre);
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard)
+				btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

@@ -44,8 +44,7 @@ $multians = MultiAnswer($f, $id[0], $od[0], $A[0], $B[0], $C[0], $D[0])->with(
     singleResult => 1,
     checker      => sub {
         my ($correct, $student, $self) = @_;
-        my ($fstu, $idstu, $odstu, $Astu, $Bstu, $Cstu, $Dstu) =
-            @{$student};
+        my ($fstu, $idstu, $odstu, $Astu, $Bstu, $Cstu, $Dstu) = @$student;
         if (
             (
                 $f == $fstu
@@ -128,9 +127,10 @@ of the solid under the graph of the function [`f(x,y) = [$f]`] over the region
 [`[$a] \leq x \leq [$b]`] and [`[$c] \leq y \leq [$d]`].
 
 _Instructions:_ Please enter the integrand in the first answer box . Depending
-on the order of integration you choose, enter _dx_ and _dy_ in either order into
-the second and third answer boxes with only one _dx_ or _dy_ in each box . Then,
-enter the limits of integration and evaluate the integral to find the volume.
+on the order of integration you choose, enter [`dx`] and [`dy`] in either order
+into the second and third answer boxes with only one [`dx`] or [`dy`] in each
+box . Then, enter the limits of integration and evaluate the integral to find
+the volume.
 
 [``\int_A^B \int_C^D``] [_]{$multians}{10} [_]{$multians}{5} [_]{$multians}{5}
 

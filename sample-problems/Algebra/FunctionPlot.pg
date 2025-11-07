@@ -1,0 +1,34 @@
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'plots.pl', 'PGcourse.pl');
+
+
+$a = non_zero_random(-3, 3);
+
+$plot = Plot(
+    xmin        => -3.2,
+    xmax        =>  3.2,
+    ymin        => -10,
+    ymax        =>  10,
+    xtick_delta =>  1,
+    ytick_delta =>  2,
+    xlabel      => '\(x\)',
+    ylabel      => '\(y\)',
+);
+
+$plot->add_function("$a x^2 for x in {-3,3} using color:blue, width:3");
+
+BEGIN_PGML
+The following plot is a quadratic:
+
+>>[! Plot of a quadratic function !]{$plot}{500}<<
+
+What is the form of the function?  [`f(x)=`] [_]{Compute("$a x^2")}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

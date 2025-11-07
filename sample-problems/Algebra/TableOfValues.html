@@ -4,15 +4,13 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>TableOfValues</title>
+	<title>TableOfValues.pg</title>
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/lib/codemirror.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/theme/eclipse.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/addon/runmode/runmode-standalone.min.js" defer>
-	</script>
-	<script src="https://openwebwork.github.io/pg-docs/sample-problems/PG.js" defer></script>
-	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css" >
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script
+		src="https://cdn.jsdelivr.net/npm/@openwebwork/pg-codemirror-editor@0.0.5/dist/pg-codemirror-editor.js"
+		defer></script>
+	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css">
 </head>
 
 
@@ -24,22 +22,14 @@
 				<p>Function table of values</p>
 			</div>
 			<div class="col text-end">
-				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../index.html">Return to the PG docs home</a>
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
 </div>
 		</div>
 		<div class="row">
 			<div class="col">
 				<h2>Complete Code</h2>
-				<p>
-				Download file: <a href="TableOfValues.pg">TableOfValues.pg</a>
-</p>
-			</div>
-				<div class="col">
-					<h2>POD for Macro Files</h2>
-					<ul>
-								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/ui/niceTables.html">niceTables.pl</a></li>
-					</ul>
-				</div>
+				<p>Download file: <a href="TableOfValues.pg">TableOfValues.pg</a></p>
+</div>
 		</div>
 		<div class="row">
 			<div class="col text-center"><h2 class="fw-bold fs-3">PG problem file</h2></div>
@@ -50,21 +40,24 @@
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
 						type="button" data-code="DOCUMENT();
 
-loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;niceTables.pl&#39;, &#39;PGcourse.pl&#39;);
+loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGcourse.pl&#39;);
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
 
-loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;niceTables.pl&#39;, &#39;PGcourse.pl&#39;);
+loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGcourse.pl&#39;);
 </pre>
 				</div>
-				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Preamble</b></p>
-						These standard macros need to be loaded.
+						<p>The <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/ui/niceTables.html">niceTables.pl</a>
+macro is implicitly used in this problem, but is automatically loaded by
+the <code>PGML.pl</code> macro.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -72,50 +65,22 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;niceTables.pl&#39;, 
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
 						type="button" data-code="$f = Formula(&#39;3^(-x)&#39;);
 
-@answer = ();
-for $i (0 .. 2) {
-    $answer[$i] = $f-&gt;eval(x =&gt; $i);
-}
-
-$table = DataTable(
-    [
-        [ &#39;\(x\)&#39;, &#39;\(f(x)\)&#39; ],
-        [ &#39;\(0\)&#39;, ans_rule(4) ],
-        [ &#39;\(1\)&#39;, ans_rule(4) ],
-        [ &#39;\(2\)&#39;, ans_rule(4) ],
-    ],
-    horizontalrules =&gt; 1,
-    texalignment    =&gt; &#39;|c|c|&#39;
-);
+@answer = map { $f-&gt;eval(x =&gt; $_) } 0 .. 2;
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">$f = Formula(&#39;3^(-x)&#39;);
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">$f = Formula(&#39;3^(-x)&#39;);
 
-@answer = ();
-for $i (0 .. 2) {
-    $answer[$i] = $f-&gt;eval(x =&gt; $i);
-}
-
-$table = DataTable(
-    [
-        [ &#39;\(x\)&#39;, &#39;\(f(x)\)&#39; ],
-        [ &#39;\(0\)&#39;, ans_rule(4) ],
-        [ &#39;\(1\)&#39;, ans_rule(4) ],
-        [ &#39;\(2\)&#39;, ans_rule(4) ],
-    ],
-    horizontalrules =&gt; 1,
-    texalignment    =&gt; &#39;|c|c|&#39;
-);
+@answer = map { $f-&gt;eval(x =&gt; $_) } 0 .. 2;
 </pre>
 				</div>
-				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Setup</b></p>
-						<p>We create an empty array <code>@answer</code> and use a for loop to simplify filling it with values.</p>
-<p>The <code>DataTable</code> is from <a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/ui/niceTables.html">niceTables.pl</a>. This builds a simple table. The options <code>horizontalrules</code> and <code>texalignment</code> gives the borders around each of the cells.</p>
+						<p>Create the array <code>@answer</code> filled with values via a
+map.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -124,7 +89,17 @@ $table = DataTable(
 						type="button" data-code="BEGIN_PGML
 If [`f(x) = [$f]`], fill in the table of values with numbers.
 
-[@ $table @]*
+[#
+    [.[`x`].] [.[`f(x)`].]*{ headerrow =&gt; 1 }
+    [.[`0`].] [.[_]{$answer[0]}.]*
+    [.[`1`].] [.[_]{$answer[1]}.]*
+    [.[`2`].] [.[_]{$answer[2]}.]*
+#]{
+    horizontalrules =&gt; 1,
+       texalignment    =&gt; &#39;|c|c|&#39;,
+       padding         =&gt; [ 0.5, 0.5 ],
+    valign          =&gt; &#39;middle&#39;
+}
 END_PGML
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -132,38 +107,36 @@ END_PGML
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
 If [`f(x) = [$f]`], fill in the table of values with numbers.
 
-[@ $table @]*
+[#
+    [.[`x`].] [.[`f(x)`].]*{ headerrow =&gt; 1 }
+    [.[`0`].] [.[_]{$answer[0]}.]*
+    [.[`1`].] [.[_]{$answer[1]}.]*
+    [.[`2`].] [.[_]{$answer[2]}.]*
+#]{
+    horizontalrules =&gt; 1,
+       texalignment    =&gt; &#39;|c|c|&#39;,
+       padding         =&gt; [ 0.5, 0.5 ],
+    valign          =&gt; &#39;middle&#39;
+}
 END_PGML
 </pre>
 				</div>
-				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Statement</b></p>
-						This is the problem statement in PGML.
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
-					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
-						type="button" data-code="for $i (0 .. 2) {
-    ANS($answer[$i]-&gt;cmp);
-}
-" aria-label="copy to clipboard">
-						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
-							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
-						</svg>
-					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">for $i (0 .. 2) {
-    ANS($answer[$i]-&gt;cmp);
-}
-</pre>
-				</div>
-				<div class="explanation answer col-sm-12 col-md-6 order-md-last order-first border border-dark">
-					<p><b>Answer</b></p>
-						<p>Because the answer blanks are built with <code>ans_rule</code> inside the table, we need to use the traditional <code>ANS</code> call here.</p>
+						<p>Create a <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/ui/niceTables.html">niceTables.pl</a>
+<code>DataTable</code> via the PGML syntax. The first row is declared to
+be a row of headers by adding the <code>headerrow =&gt; 1</code> option
+to any cell in that row. Note that this option applies to the entire
+row. The <code>horizontalrules</code> and
+<code>texalignment</code>options add borders around each of the cells.
+The option <code>padding =&gt; [0.5, 0.5]</code> adds a bit more
+vertical space in each cell to improve the appearance. The option
+<code>valign =&gt; 'middle'</code> gives better vertical alignment for
+this table.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -179,13 +152,13 @@ ENDDOCUMENT();" aria-label="copy to clipboard">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
 Solution explanation goes here.
 END_PGML_SOLUTION
 
 ENDDOCUMENT();</pre>
 				</div>
-				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Solution</b></p>
 						A solution should be provided here.
 				</div>
@@ -193,12 +166,14 @@ ENDDOCUMENT();</pre>
 	</div>
 
 	<script type="module">
-		for (const pre of document.body.querySelectorAll('pre.CodeMirror')) {
-			CodeMirror.runMode(pre.textContent, 'PG', pre);
+		for (const pre of document.body.querySelectorAll('pre.PGCodeMirror')) {
+			PGCodeMirrorEditor.runMode(pre.textContent, pre);
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard)
+				btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

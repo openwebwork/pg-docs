@@ -2,14 +2,12 @@ DOCUMENT();
 
 loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
 
-@seq    = ();
-$seq[0] = 1;
-$seq[1] = 1;
-for $i (2 .. 6) {
-    $seq[$i] = $seq[ $i - 1 ] + $seq[ $i - 2 ];
+@seq = (1, 1);
+for (2 .. 6) {
+    $seq[$_] = $seq[ $_ - 1 ] + $seq[ $_ - 2 ];
 }
 
-$answer_cmp = Compute(join(', ', @seq))->cmp(ordered => 1);
+$answer_cmp = List(@seq)->cmp(ordered => 1);
 
 BEGIN_PGML
 If [`s_1 = [$seq[0]]`], [`s_2 = [$seq[1]]`], and [`s_n = s_{n-1} + s_{n-2}`],

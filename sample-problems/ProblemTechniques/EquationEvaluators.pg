@@ -1,0 +1,26 @@
+DOCUMENT();
+loadMacros(
+    'PGstandard.pl',             'PGML.pl',
+    'parserImplicitEquation.pl', 'PGcourse.pl'
+);
+
+Context('ImplicitEquation');
+Context()->variables->set(
+    x => { limits => [ -2, 2 ] },
+    y => { limits => [  0, 4 ] }
+);
+
+$ans = ImplicitEquation('y = (x-1)^2');
+
+BEGIN_PGML
+Give the equation of a shift of the parabola [`y = x^2`] that opens upward and
+has its vertex at [`(1, 0)`].
+
+Equation: [___]{$ans}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

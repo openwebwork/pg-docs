@@ -4,15 +4,13 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>ProvingTrigIdentities</title>
+	<title>ProvingTrigIdentities.pg</title>
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/lib/codemirror.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/theme/eclipse.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/addon/runmode/runmode-standalone.min.js" defer>
-	</script>
-	<script src="https://openwebwork.github.io/pg-docs/sample-problems/PG.js" defer></script>
-	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css" >
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script
+		src="https://cdn.jsdelivr.net/npm/@openwebwork/pg-codemirror-editor@0.0.5/dist/pg-codemirror-editor.js"
+		defer></script>
+	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css">
 </head>
 
 
@@ -24,16 +22,14 @@
 				<p>Proving trig identities</p>
 			</div>
 			<div class="col text-end">
-				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../index.html">Return to the PG docs home</a>
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
 </div>
 		</div>
 		<div class="row">
 			<div class="col">
 				<h2>Complete Code</h2>
-				<p>
-				Download file: <a href="ProvingTrigIdentities.pg">ProvingTrigIdentities.pg</a>
-</p>
-			</div>
+				<p>Download file: <a href="ProvingTrigIdentities.pg">ProvingTrigIdentities.pg</a></p>
+</div>
 				<div class="col">
 					<h2>POD for Macro Files</h2>
 					<ul>
@@ -57,14 +53,15 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;scaffold.pl&#39;, &#
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
 
 loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;scaffold.pl&#39;, &#39;PGcourse.pl&#39;);
 </pre>
 				</div>
-				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Preamble</b></p>
-						<p>This is a scaffolded problem, so load <code>scaffold.pl</code>.</p>
+						<p>This is a scaffolded problem, so load <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/core/scaffold.html">scaffold.pl</a>.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -75,100 +72,100 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;scaffold.pl&#39;, &#
 # Redefine sin(x) to be e^(pi x).
 Context()-&gt;functions-&gt;remove(&#39;sin&#39;);
 
-package NewFunc;
+package AltSin;
 # The next line makes the function a function from reals to reals.
 our @ISA = qw(Parser::Function::numeric);
 
 sub sin {
     shift;
     my $x = shift;
-    return CORE::exp($x * 3.1415926535);
+    return CORE::exp($x * $pi);
 }
 
 package main;
-# Make it work on formulas as well as numbers
-# sub cos { Parser::Function-&gt;call(&#39;cos&#39;, @_) } # if uncommented, this line will generate error messages
+
 # Add the new functions to the Context.
-Context()-&gt;functions-&gt;add(sin =&gt; { class =&gt; &#39;NewFunc&#39;, TeX =&gt; &#39;\sin&#39; },);
+Context()-&gt;functions-&gt;add(sin =&gt; { class =&gt; &#39;AltSin&#39;, TeX =&gt; &#39;\sin&#39; });
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context()-&gt;variables-&gt;are(t =&gt; &#39;Real&#39;);
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context()-&gt;variables-&gt;are(t =&gt; &#39;Real&#39;);
 
 # Redefine sin(x) to be e^(pi x).
 Context()-&gt;functions-&gt;remove(&#39;sin&#39;);
 
-package NewFunc;
+package AltSin;
 # The next line makes the function a function from reals to reals.
 our @ISA = qw(Parser::Function::numeric);
 
 sub sin {
     shift;
     my $x = shift;
-    return CORE::exp($x * 3.1415926535);
+    return CORE::exp($x * $pi);
 }
 
 package main;
-# Make it work on formulas as well as numbers
-# sub cos { Parser::Function-&gt;call(&#39;cos&#39;, @_) } # if uncommented, this line will generate error messages
+
 # Add the new functions to the Context.
-Context()-&gt;functions-&gt;add(sin =&gt; { class =&gt; &#39;NewFunc&#39;, TeX =&gt; &#39;\sin&#39; },);
+Context()-&gt;functions-&gt;add(sin =&gt; { class =&gt; &#39;AltSin&#39;, TeX =&gt; &#39;\sin&#39; });
 </pre>
 				</div>
-				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Setup</b></p>
-						<p>We cleverly redefine the sine function so that when the student enters <code>sin(t)</code>, it is interpreted and evaluated internally as <code>exp(pi*t)</code> but displayed to the student as <code>sin(t)</code>.</p>
+						<p>The sine function is cleverly redefined so that when the student
+enters <code>sin(t)</code>, it is interpreted and evaluated internally
+as <code>exp(pi * t)</code> but displayed to the student as
+<code>sin(t)</code>. This prevents the original expression from being
+entered as the answer in the last step of the proof.</p>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
 						type="button" data-code="BEGIN_PGML
-This problem has three parts.  A part may be open if it is correct or if it is
-the first incorrect part.  Clicking on the heading for a part toggles whether it
+This problem has three parts. A part may be open if it is correct or if it is
+the first incorrect part. Clicking on the heading for a part toggles whether it
 is displayed.
+
+In this multi-part problem, we will use algebra to verify the identity
+
+&gt;&gt;[`\displaystyle \frac{\sin(t)}{1 - \cos(t)} = \frac{1 + \cos(t)}{\sin(t)}.`]&lt;&lt;
+
 END_PGML
 
 Scaffold::Begin(is_open =&gt; &#39;correct_or_first_incorrect&#39;);
 
 Section::Begin(&#39;Part 1&#39;);
 BEGIN_PGML
-In this multi-part problem, we will use algebra to verify the identity
-
-&gt;&gt;[`\displaystyle \frac{\sin(t)}{1 - \cos(t)} = \frac{1 + \cos(t)}{\sin(t)}.`]&lt;&lt;
-
-First, using algebra we may rewrite the equation above as
-[`\displaystyle \sin(t) = \left( \frac{1 + \cos(t)}{\sin(t)} \right) \cdot \Big(`] [_]{&#39;1 - cos(t)&#39;}{15} [` \Big) `].
+First, the equation above can be rewritten as
+[`\displaystyle \sin(t)
+    = \left( \frac{1 + \cos(t)}{\sin(t)} \right) \cdot \Big(`]
+[_]{&#39;1 - cos(t)&#39;}{15} [` \Big) `].
 END_PGML
 Section::End();
 
 Section::Begin(&#39;Part 2&#39;);
 BEGIN_PGML
-Using algebra we may rewrite the equation as
-[`\sin(t) \cdot \big(`] [_]{&#39;sin(t)&#39;}{15} [`\big) = \big(1 + \cos(t)\big) \cdot \big(1 - \cos(t)\big)`].
+Next, the equation can be rewritten as
+[`\sin(t) \cdot \big(`] [_]{&#39;sin(t)&#39;}{15}
+[`\big) = \big(1 + \cos(t)\big) \cdot \big(1 - \cos(t)\big)`].
 END_PGML
 Section::End();
 
 Section::Begin(&#39;Part 3&#39;);
 BEGIN_PGML
-Finally, using algebra we may rewrite the equation as
+Finally, the equation can be rewritten as
 [`\sin^2(t) =`] [_]{&#39;1-(cos(t))^2&#39;}{15}, which is true since
-[`\cos^2(t) + \sin^2(t) = 1`]. Thus, the original identity can be derived by
-reversing these steps.
+[`\cos^2(t) + \sin^2(t) = 1`].
+
+Thus, the original identity can be derived by reversing these steps.
 END_PGML
 Section::End();
 
 Scaffold::End();
-
-COMMENT(
-    &#39;This is a multi-part problem
-in which the next part is revealed only after the previous
-part is correct.  Prevents students from entering trivial
-identities (entering what they were given).  Uses PGML.&#39;
-);
 
 ENDDOCUMENT();" aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -176,53 +173,51 @@ ENDDOCUMENT();" aria-label="copy to clipboard">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
-This problem has three parts.  A part may be open if it is correct or if it is
-the first incorrect part.  Clicking on the heading for a part toggles whether it
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
+This problem has three parts. A part may be open if it is correct or if it is
+the first incorrect part. Clicking on the heading for a part toggles whether it
 is displayed.
+
+In this multi-part problem, we will use algebra to verify the identity
+
+&gt;&gt;[`\displaystyle \frac{\sin(t)}{1 - \cos(t)} = \frac{1 + \cos(t)}{\sin(t)}.`]&lt;&lt;
+
 END_PGML
 
 Scaffold::Begin(is_open =&gt; &#39;correct_or_first_incorrect&#39;);
 
 Section::Begin(&#39;Part 1&#39;);
 BEGIN_PGML
-In this multi-part problem, we will use algebra to verify the identity
-
-&gt;&gt;[`\displaystyle \frac{\sin(t)}{1 - \cos(t)} = \frac{1 + \cos(t)}{\sin(t)}.`]&lt;&lt;
-
-First, using algebra we may rewrite the equation above as
-[`\displaystyle \sin(t) = \left( \frac{1 + \cos(t)}{\sin(t)} \right) \cdot \Big(`] [_]{&#39;1 - cos(t)&#39;}{15} [` \Big) `].
+First, the equation above can be rewritten as
+[`\displaystyle \sin(t)
+    = \left( \frac{1 + \cos(t)}{\sin(t)} \right) \cdot \Big(`]
+[_]{&#39;1 - cos(t)&#39;}{15} [` \Big) `].
 END_PGML
 Section::End();
 
 Section::Begin(&#39;Part 2&#39;);
 BEGIN_PGML
-Using algebra we may rewrite the equation as
-[`\sin(t) \cdot \big(`] [_]{&#39;sin(t)&#39;}{15} [`\big) = \big(1 + \cos(t)\big) \cdot \big(1 - \cos(t)\big)`].
+Next, the equation can be rewritten as
+[`\sin(t) \cdot \big(`] [_]{&#39;sin(t)&#39;}{15}
+[`\big) = \big(1 + \cos(t)\big) \cdot \big(1 - \cos(t)\big)`].
 END_PGML
 Section::End();
 
 Section::Begin(&#39;Part 3&#39;);
 BEGIN_PGML
-Finally, using algebra we may rewrite the equation as
+Finally, the equation can be rewritten as
 [`\sin^2(t) =`] [_]{&#39;1-(cos(t))^2&#39;}{15}, which is true since
-[`\cos^2(t) + \sin^2(t) = 1`]. Thus, the original identity can be derived by
-reversing these steps.
+[`\cos^2(t) + \sin^2(t) = 1`].
+
+Thus, the original identity can be derived by reversing these steps.
 END_PGML
 Section::End();
 
 Scaffold::End();
 
-COMMENT(
-    &#39;This is a multi-part problem
-in which the next part is revealed only after the previous
-part is correct.  Prevents students from entering trivial
-identities (entering what they were given).  Uses PGML.&#39;
-);
-
 ENDDOCUMENT();</pre>
 				</div>
-				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Statement</b></p>
 						This is the problem statement in PGML.
 				</div>
@@ -230,12 +225,14 @@ ENDDOCUMENT();</pre>
 	</div>
 
 	<script type="module">
-		for (const pre of document.body.querySelectorAll('pre.CodeMirror')) {
-			CodeMirror.runMode(pre.textContent, 'PG', pre);
+		for (const pre of document.body.querySelectorAll('pre.PGCodeMirror')) {
+			PGCodeMirrorEditor.runMode(pre.textContent, pre);
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard)
+				btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

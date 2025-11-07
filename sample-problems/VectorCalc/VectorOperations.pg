@@ -4,42 +4,42 @@ loadMacros('PGstandard.pl', 'PGML.pl', 'parserVectorUtils.pl', 'PGcourse.pl');
 
 Context('Vector');
 
-$U = non_zero_vector3D(-9,9,1);
-$V = non_zero_vector3D(-9,9,1);
+$U = non_zero_vector3D(-9, 9, 1);
+$V = non_zero_vector3D(-9, 9, 1);
 
 # value works only for vectors of constants
 @Uarray = $U->value;
 $Ucomp2 = $Uarray[1];
 
-$UdotV = $U . $V;
+$UdotV   = $U . $V;
 $UcrossV = $U x $V;
-$Vlength = norm( $V );
-$Vunit = unit($V);
+$Vlength = norm($V);
+$Vunit   = unit($V);
 
 # Prevent students from entering the dot and cross products,
-# and the vector functions norm and unit.
-
-Context()->operators->undefine('.',"><");
+# and using the vector functions such as norm and unit.
+Context()->operators->undefine('.', '><');
 Context()->functions->disable('Vector');
 
-
 BEGIN_PGML
-Suppose [` \vec{u} = [$U] `] and [` \vec{v} = [$V] `].
+Suppose [`\vec{u} = [$U]`] and [`\vec{v} = [$V]`].
 
-a. The second component of [` \vec{u} `] is [___________]{$Ucomp2}
+a. The second component of [`\vec{u}`] is [_]{$Ucomp2}{5}
 
-b. [` \vec{u} \cdot \vec{v} = `] [___________]{$UdotV}
+b. [`\vec{u} \cdot \vec{v} =`] [_]{$UdotV}{5}
 
-c. [` \vec{u} \times \vec{v} = `] [________________]{$UcrossV}
+c. [`\vec{u} \times \vec{v} =`] [_]{$UcrossV}{15}
 
-d. [` \left\| \vec{v} \right\| = `] [___________]{$Vlength}
+d. [`\left\|\vec{v}\right\| =`] [_]{$Vlength}{10}
 
-e. Enter a unit vector in the direction of [` \vec{v} `]. [______________]{$Vunit}
+e. Enter a unit vector in the direction of [`\vec{v}`].  
+   [_]{$Vunit}{15}
 
-f. Enter a vector parallel to [` \vec{v} `]. [________________]{$V->cmp( parallel=>1 )}
+f. Enter a vector parallel to [`\vec{v}`].  
+   [_]{$V->cmp(parallel => 1)}{15}
 
-g. Enter a vector in the same direction as [` \vec{v} `].
-[__________]{$V->cmp( parallel=>1, sameDirection=>1 )}
+g. Enter a vector in the same direction as [`\vec{v}`].  
+   [_]{$V->cmp( parallel => 1, sameDirection => 1 )}{15}
 END_PGML
 
 BEGIN_PGML_SOLUTION

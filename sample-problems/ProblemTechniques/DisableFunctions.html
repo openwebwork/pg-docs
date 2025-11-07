@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>DisableFunctions.pg</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script
+		src="https://cdn.jsdelivr.net/npm/@openwebwork/pg-codemirror-editor@0.0.5/dist/pg-codemirror-editor.js"
+		defer></script>
+	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css">
+</head>
+
+
+<body>
+	<div class="container-fluid p-3">
+		<div class="row">
+			<div class="col">
+				<h1>Disabling Functions in Student Answers</h1>
+				<p>This shows how to disable functions allowed in student answers.</p>
+			</div>
+			<div class="col text-end">
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
+</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<h2>Complete Code</h2>
+				<p>Download file: <a href="DisableFunctions.pg">DisableFunctions.pg</a></p>
+</div>
+		</div>
+		<div class="row">
+			<div class="col text-center"><h2 class="fw-bold fs-3">PG problem file</h2></div>
+			<div class="col text-center"><h2 class="fw-bold fs-3">Explanation</h2></div>
+		</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="DOCUMENT();
+loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGcourse.pl&#39;);
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGcourse.pl&#39;);
+</pre>
+				</div>
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Preamble</b></p>
+						These standard macros need to be loaded.
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="# Disable exponents in the context.
+Context()-&gt;operators-&gt;undefine(&#39;^&#39;, &#39;**&#39;);
+
+# Disable the &#39;sin&#39;, &#39;cos&#39;, &#39;tan&#39;, &#39;abs&#39;, and &#39;sqrt&#39; functions.
+Context()-&gt;functions-&gt;undefine(&#39;sin&#39;, &#39;cos&#39;, &#39;tan&#39;, &#39;abs&#39;, &#39;sqrt&#39;);
+
+# Remove the &#39;|&#39; parenthesis operator which starts and ends an absolute value.
+# This needs to be done in addition to disabling the &#39;abs&#39; function to fully
+# disable absolute values.
+Context()-&gt;parens-&gt;remove(&#39;|&#39;);
+
+# Give consistent error messages if the &#39;|&#39; absolute value parenthesis operator
+# is attempted to be used by the student.
+Context()-&gt;{error}{convert} = sub {
+    my $message = shift;
+    $message =~ s/Unexpected character &#39;~~|&#39;/Absolute value is not allowed/;
+    return $message;
+};
+
+$ans = Compute(&#39;1/2&#39;);
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll"># Disable exponents in the context.
+Context()-&gt;operators-&gt;undefine(&#39;^&#39;, &#39;**&#39;);
+
+# Disable the &#39;sin&#39;, &#39;cos&#39;, &#39;tan&#39;, &#39;abs&#39;, and &#39;sqrt&#39; functions.
+Context()-&gt;functions-&gt;undefine(&#39;sin&#39;, &#39;cos&#39;, &#39;tan&#39;, &#39;abs&#39;, &#39;sqrt&#39;);
+
+# Remove the &#39;|&#39; parenthesis operator which starts and ends an absolute value.
+# This needs to be done in addition to disabling the &#39;abs&#39; function to fully
+# disable absolute values.
+Context()-&gt;parens-&gt;remove(&#39;|&#39;);
+
+# Give consistent error messages if the &#39;|&#39; absolute value parenthesis operator
+# is attempted to be used by the student.
+Context()-&gt;{error}{convert} = sub {
+    my $message = shift;
+    $message =~ s/Unexpected character &#39;~~|&#39;/Absolute value is not allowed/;
+    return $message;
+};
+
+$ans = Compute(&#39;1/2&#39;);
+</pre>
+				</div>
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Setup</b></p>
+						<p>Specific operations in the context can be disabled with
+<code>Context()-&gt;operations-&gt;undefine</code>. The predefined
+operations are <code>*</code> (multiplication), <code>/</code>
+(division), <code>+</code> (addition), <code>-</code> (subtraction),
+<code>!</code> (factorial), <code>&gt;&lt;</code> (cross product),
+<code>U</code> (union), <code>^</code> (exponent), <code>**</code>
+(exponent), <code>.</code> (dot product), and <code>,</code> (list
+creation).</p>
+<p>After disabling an operation, it can be re-enabled with
+<code>Context()-&gt;operators-&gt;redefine</code>, e.g.,
+<code>Context()-&gt;operators-&gt;redefine('^')</code>.</p>
+<p>Operators can be removed from the context with
+<code>Context()-&gt;operators-&gt;remove</code>, but this is not
+recommended as it makes it completely unknown in the context so that
+students will not get helpful error messages if they try to use
+them.</p>
+<p>Specific functions can be disabled in the context with
+<code>Context()-&gt;functions-&gt;undefine</code>. The predefined
+functions are <code>sin</code>, <code>cos</code>, <code>tan</code>,
+<code>sec</code>, <code>csc</code>, <code>cot</code>, <code>asin</code>,
+<code>acos</code>, <code>atan</code>, <code>asec</code>,
+<code>acsc</code>, <code>acot</code>, <code>sinh</code>,
+<code>cosh</code>, <code>tanh</code>, <code>sech</code>,
+<code>csch</code>, <code>coth</code>, <code>asinh</code>,
+<code>acosh</code>, <code>atanh</code>, <code>asech</code>,
+<code>csch</code>, <code>acoth</code>, <code>ln</code>,
+<code>log</code>, <code>log10</code>, <code>exp</code>,
+<code>sqrt</code>, <code>abs</code>, <code>int</code>, <code>sgn</code>,
+<code>atan2</code>, <code>norm</code>, <code>unit</code>,
+<code>arg</code>, <code>mod</code>, <code>Re</code>, <code>Im</code>,
+and <code>conj</code>.</p>
+<p>In addition, classes of functions can be disabled by passing one of
+the following arguments to
+<code>Context()-&gt;functions-&gt;disable</code>:</p>
+<ul>
+<li><code>Trig</code>: disables all trig functions listed in both
+<code>SimpleTrig</code> and <code>InverseTrig</code> functions</li>
+<li><code>SimpleTrig</code>: disables <code>sin</code>,
+<code>cos</code>, <code>tan</code>, <code>sec</code>, <code>csc</code>,
+<code>cot</code></li>
+<li><code>InverseTrig</code>: disables <code>asin</code>,
+<code>acos</code>, <code>atan</code>, <code>asec</code>,
+<code>acsc</code>, <code>acot</code>, <code>atan2</code></li>
+<li><code>Hyperbolic</code>: disables all hyperbolic functions in both
+<code>SimpleHyperbolic</code> and <code>InverseHyperbolic</code>
+functions</li>
+<li><code>SimpleHyperbolic</code>: disables <code>sinh</code>,
+<code>cosh</code>, <code>tanh</code>, <code>sech</code>,
+<code>csch</code>, <code>coth</code></li>
+<li><code>InverseHyperbolic</code>: disables <code>asinh</code>,
+<code>acosh</code>, <code>atanh</code>, <code>asech</code>,
+<code>acsch</code>, <code>acoth</code></li>
+<li><code>Numeric</code>: disables <code>ln</code>, <code>log</code>,
+<code>log10</code>, <code>exp</code>, <code>sqrt</code>,
+<code>abs</code>, <code>int</code>, <code>sgn</code></li>
+<li><code>Vector</code>: disables <code>norm</code>,
+<code>unit</code></li>
+<li><code>Complex</code>: disables <code>arg</code>, <code>mod</code>,
+<code>Re</code>, <code>Im</code>, <code>conj</code></li>
+<li><code>All</code>: diables all predefined functions</li>
+</ul>
+<p>Alternatively, the following syntax can be used.</p>
+<div class="sourceCode" id="disable-functions"><pre
+class="sourceCode perl"><code class="sourceCode perl"><span id="disable-functions-1"><a href="#disable-functions-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Parser::Context</span>::<span class="fu">Functions</span>::<span class="fu">Disable</span>(<span class="ot">&#39;</span><span class="ss">All</span><span class="ot">&#39;</span>);</span></code></pre></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="BEGIN_PGML
+Find the numerical value: [`\sin^2(\pi / 4) =`] [____]{$ans}
+END_PGML
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
+Find the numerical value: [`\sin^2(\pi / 4) =`] [____]{$ans}
+END_PGML
+</pre>
+				</div>
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Statement</b></p>
+						This is the problem statement in PGML.
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();</pre>
+				</div>
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Solution</b></p>
+						A solution should be provided here.
+				</div>
+			</div>
+	</div>
+
+	<script type="module">
+		for (const pre of document.body.querySelectorAll('pre.PGCodeMirror')) {
+			PGCodeMirrorEditor.runMode(pre.textContent, pre);
+		}
+
+		for (const btn of document.querySelectorAll('.clipboard-btn')) {
+			if (navigator.clipboard)
+				btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
+		}
+	</script>
+</body>
+
+</html>

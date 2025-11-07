@@ -1,0 +1,31 @@
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'draggableProof.pl', 'PGcourse.pl');
+
+$proof = DraggableProof(
+    # These are the correct statements of the proof in the correct order.
+    [
+        '\(\sin(\pi - \theta) = \sin(\pi)\cos(\theta) - \cos(\pi)\sin(\theta)\)',
+        '\(\sin(\pi - \theta) = (0)\cos(\theta) - (-1)\sin(\theta)\)',
+        '\(\sin(\pi - \theta) = 0 + (1)\sin(\theta)\)',
+        '\(\sin(\pi - \theta) = \sin(\theta)\)',
+    ],
+    # These are extra statements that are not needed.
+    [
+        '\(\sin(\pi - \theta) = \cos(\pi)\cos(\theta) - \sin(\pi)\sin(\theta)\)',
+        '\(\sin(\pi - \theta) = \sin(\pi)\cos(\theta) + \cos(\pi)\sin(\theta)\)',
+        '\(\sin(\pi - \theta) = (1)\cos(\theta) + (0)\sin(\theta)\)',
+    ]
+);
+
+BEGIN_PGML
+Prove the trigonmetric identity [`\sin(\pi-\theta) = \sin(\theta)`].
+
+[_]{$proof}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

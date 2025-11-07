@@ -8,12 +8,14 @@ $example1 = Matrix([ [ 1, 2, 3 ], [ 4, 5, 6 ] ]);
 $example2 = $example1->column(1);
 $example3 = $example1->row(1);
 
+$example4 = $example1->copy;
+
 BEGIN_PGML
 The purpose of this question is to show you the syntax needed to enter matrices
 in WeBWorK when there is only one answer box for entering a matrix (which is not
 obvious) or when there are multiple answer boxes for entering a matrix (which is
-obvious).  The examples below should be self-explanatory, so you can jump to
-them if you want; however, a detailed explanation follows if you want to read
+obvious).  The examples below should be self explanatory, so you can jump to
+them if you want. However, a detailed explanation follows if you want to read
 more.
 
 Matrices use square brackets to enclose items in lists.  A matrix with one row,
@@ -30,31 +32,19 @@ answers may have spaces and line breaks in them, such as
 >> [| [ [1, 2, 3], |] <<
 >> [| [4, 5, 6] ]  |] <<
 
-+ Enter the matrix [``[$example1]``] as [@ $example1->string @]*
-[@ ans_box(3,30) @]*
++ Enter the matrix [``[$example1]``] as [@ $example1->string @]*:
+[_]{$example1}{20}
 
-+ Enter the column vector [``[$example2]``] as [@ $example2->string @]*
-[@ ans_box(3,30) @]*
++ Enter the column vector [``[$example2]``] as [@ $example2->string @]*:
+[_]{$example2}{10}
 
-+ Enter the row vector [``[$example3]``] as [@ $example3->string @]*
-[@ ans_box(3,30) @]*
-END_PGML
++ Enter the row vector [``[$example3]``] as [@ $example3->string @]*:
+[_]{$example3}{10}
 
-
-ANS($example1->cmp);
-ANS($example2->cmp);
-ANS($example3->cmp);
-
-Context('Matrix');
-
-$example4 = Matrix([ [ 1, 2, 3 ], [ 4, 5, 6 ] ]);
-
-BEGIN_PGML
-[$BR]*
-+ Entering a matrix using multiple answer blanks is straightforward --
-just put each matrix entry into its own answer blank.
-Enter the matrix [`` [$example4] ``] with one matrix entry per answer box.
-[______]*{$example4}
++ Entering a matrix using multiple answer blanks is straightforward.  Just put
+each matrix entry into its own answer blank.  
+Enter the matrix [``[$example4]``] with one matrix entry per answer box.
+[______]*{$example4}{4}
 END_PGML
 
 ENDDOCUMENT();

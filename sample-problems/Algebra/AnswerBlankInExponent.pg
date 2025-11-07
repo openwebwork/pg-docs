@@ -1,6 +1,6 @@
 DOCUMENT();
 
-loadMacros('PGstandard.pl', 'PGML.pl', 'niceTables.pl', 'PGcourse.pl');
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
 
 Context()->variables->are(a => 'Real', b => 'Real');
 
@@ -14,39 +14,28 @@ $base     = Formula("a*b");
 $exponent = Formula("$n");
 
 # Display exponents nicely
-# Context()->texStrings;
-
-$tab = LayoutTable([[
-    ["\(\displaystyle $expression= \Big(\)" . ans_rule(4) . "\(\Big)\)", cellcss => { padding => '20pt 0pt 0pt 4pt'}],
-    [ ans_rule(4), cellcss => {padding => '0pt 0pt 20pt 0pt'}]
-]]);
-
-# if ($displayMode eq 'TeX') {
-#     $showpower =
-#         "\( \displaystyle $expression = ("
-#         . ans_rule(4) . ")^{"
-#         . ans_rule(4) . "}\)";
-# } else {
-#     $showpower = ColumnTable(
-#         "\( \displaystyle $expression = \Big( \)"
-#             . ans_rule(4)
-#             . "\( \Big) \)",
-#         ans_rule(4) . $BR . $BR,
-#         indent     => 0,
-#         separation => 0,
-#         valign     => 'BOTTOM'
-#     );
-# }
-# Context()->normalStrings;
+if ($displayMode eq 'TeX') {
+    $exp =
+        "\( \displaystyle $expression = ("
+        . ans_rule(4) . ")^{"
+        . ans_rule(4) . "}\)";
+} else {
+    $exp =
+        "<span>\(\displaystyle $expression = \Big(\)"
+        . ans_rule(4)
+        . '\(\Big)\)</span><span style="vertical-align: 12pt;">'
+        . ans_rule(4)
+        . '</span>';
+}
 
 BEGIN_PGML
 Rewrite the following using a single exponent.
 
-[$tab]***
+[$exp]*
 END_PGML
 
-ANS($base->cmp());
-ANS($exponent->cmp());
+ANS($base->cmp);
+ANS($exponent->cmp);
 
 BEGIN_PGML_SOLUTION
 Solution explanation goes here.

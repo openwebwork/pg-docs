@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>BarGraph.pg</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script
+		src="https://cdn.jsdelivr.net/npm/@openwebwork/pg-codemirror-editor@0.0.5/dist/pg-codemirror-editor.js"
+		defer></script>
+	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css">
+</head>
+
+
+<body>
+	<div class="container-fluid p-3">
+		<div class="row">
+			<div class="col">
+				<h1>Bar Graph</h1>
+				<p>Find the mean and standard deviation of a list of numbers.</p>
+			</div>
+			<div class="col text-end">
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
+</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<h2>Complete Code</h2>
+				<p>Download file: <a href="BarGraph.pg">BarGraph.pg</a></p>
+</div>
+				<div class="col">
+					<h2>POD for Macro Files</h2>
+					<ul>
+								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/graph/PGtikz.html">PGtikz.pl</a></li>
+								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/contexts/contextPercent.html">contextPercent.pl</a></li>
+					</ul>
+				</div>
+		</div>
+		<div class="row">
+			<div class="col text-center"><h2 class="fw-bold fs-3">PG problem file</h2></div>
+			<div class="col text-center"><h2 class="fw-bold fs-3">Explanation</h2></div>
+		</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="DOCUMENT();
+
+loadMacros(
+    &quot;PGstandard.pl&quot;, &quot;PGML.pl&quot;,
+    &#39;PGtikz.pl&#39;,     &#39;contextPercent.pl&#39;,
+    &quot;PGcourse.pl&quot;
+);
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+
+loadMacros(
+    &quot;PGstandard.pl&quot;, &quot;PGML.pl&quot;,
+    &#39;PGtikz.pl&#39;,     &#39;contextPercent.pl&#39;,
+    &quot;PGcourse.pl&quot;
+);
+</pre>
+				</div>
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Preamble</b></p>
+						<p>The <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/graph/PGtikz.html">PGtikz.pl</a>
+macro provides the graphing methods we will use in this problem and <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/contexts/contextPercent.html">contextPercent.pl</a>
+will be to provide the Percent context.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="
+
+Context(&#39;Percent&#39;);
+
+@grades = map { random(1, 5) } (0 .. 3);
+
+$graph = createTikZImage();
+$graph-&gt;tikzLibraries(&#39;arrows.meta&#39;);
+$graph-&gt;BEGIN_TIKZ
+\tikzset{&gt;={Stealth[scale = 1.5]}}
+\filldraw[
+    draw = LightBlue,
+    fill = white,
+    rounded corners = 10pt,
+    thick,
+    use as bounding box
+] (-1, -1) rectangle (11, 7);
+\draw[-&gt;, thick] (-1, 0) -- (10, 0);
+
+\foreach \x/\label in {2/A,4/B,6/C,8/D}
+    \draw(\x,0.25)--(\x,-0.25) node [below] {\label};
+\draw[-, thick] (0, -1) -- (0, 6);
+\foreach \y in {1, ..., 5}
+    \draw (5pt, \y) -- (-5pt, \y) node[left] {\(\y\)};
+
+\filldraw[fill=LightBlue, draw=black] (1.2,0) rectangle (2.8,$grades[0]);
+\filldraw[fill=LightSalmon, draw=black]  (3.2,0) rectangle (4.8,$grades[1]);
+\filldraw[fill=LightYellow, draw=black]  (5.2,0) rectangle (6.8,$grades[2]);
+\filldraw[fill=LightGreen, draw=black]  (7.2,0) rectangle (8.8,$grades[3]);
+
+END_TIKZ
+
+$alt_text =
+    &quot;A bar graph with vertical bars.  The height of the bar labelled A &quot;
+    . &quot;is $grades[0]. The height of the bar labelled B is $grades[1].  &quot;
+    . &quot; The height of the bar labelled C is $grades[2] and finally the &quot;
+    . &quot;bar labelled D is $grades[3].&quot;;
+
+# This code adds up all the numbers in the @grades array.
+$num_students = 0;
+$num_students += $_ for @grades;
+
+$perA = Real($grades[0] / $num_students);
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">
+
+Context(&#39;Percent&#39;);
+
+@grades = map { random(1, 5) } (0 .. 3);
+
+$graph = createTikZImage();
+$graph-&gt;tikzLibraries(&#39;arrows.meta&#39;);
+$graph-&gt;BEGIN_TIKZ
+\tikzset{&gt;={Stealth[scale = 1.5]}}
+\filldraw[
+    draw = LightBlue,
+    fill = white,
+    rounded corners = 10pt,
+    thick,
+    use as bounding box
+] (-1, -1) rectangle (11, 7);
+\draw[-&gt;, thick] (-1, 0) -- (10, 0);
+
+\foreach \x/\label in {2/A,4/B,6/C,8/D}
+    \draw(\x,0.25)--(\x,-0.25) node [below] {\label};
+\draw[-, thick] (0, -1) -- (0, 6);
+\foreach \y in {1, ..., 5}
+    \draw (5pt, \y) -- (-5pt, \y) node[left] {\(\y\)};
+
+\filldraw[fill=LightBlue, draw=black] (1.2,0) rectangle (2.8,$grades[0]);
+\filldraw[fill=LightSalmon, draw=black]  (3.2,0) rectangle (4.8,$grades[1]);
+\filldraw[fill=LightYellow, draw=black]  (5.2,0) rectangle (6.8,$grades[2]);
+\filldraw[fill=LightGreen, draw=black]  (7.2,0) rectangle (8.8,$grades[3]);
+
+END_TIKZ
+
+$alt_text =
+    &quot;A bar graph with vertical bars.  The height of the bar labelled A &quot;
+    . &quot;is $grades[0]. The height of the bar labelled B is $grades[1].  &quot;
+    . &quot; The height of the bar labelled C is $grades[2] and finally the &quot;
+    . &quot;bar labelled D is $grades[3].&quot;;
+
+# This code adds up all the numbers in the @grades array.
+$num_students = 0;
+$num_students += $_ for @grades;
+
+$perA = Real($grades[0] / $num_students);
+</pre>
+				</div>
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Setup</b></p>
+						<p>The ‘Percent’ context allow students to enter percents. The graph is
+created dynamically. The axes are created with the given labels.
+Extending the number of bars or the height of the bars should be similar
+to this code. The heights of the bars are the grades which are generated
+randomly with the perl <code>map</code> function. If you want a non
+uniform distribution, you can create a different range of random numbers
+for each grade level.</p>
+<p>Make sure that an alternate text is added to all graphs for
+accessibility. Be detailed.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="BEGIN_PGML
+The following is a distribution of grades on a Statistics quiz.
+&gt;&gt;[! [$alt_text] !]{$graph}{400}&lt;&lt;
+
+What percentage of students earned an A? [_]{$perA}
+END_PGML
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
+The following is a distribution of grades on a Statistics quiz.
+&gt;&gt;[! [$alt_text] !]{$graph}{400}&lt;&lt;
+
+What percentage of students earned an A? [_]{$perA}
+END_PGML
+</pre>
+				</div>
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Statement</b></p>
+						<p>In this case, we plot the bar graph and ask a question. Since the
+context is ‘Percent’, the students can answer the question with either a
+fraction, decimal or percent. If only percent answers is desired, see
+the flags for the Percent context in the macro.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="BEGIN_PGML_SOLUTION
+The total number of students that took the quiz is [$total] so the percentage is
+the number of A students or [`[$grades[0]]/[$num_students] = [$perA] `]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
+The total number of students that took the quiz is [$total] so the percentage is
+the number of A students or [`[$grades[0]]/[$num_students] = [$perA] `]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();</pre>
+				</div>
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Solution</b></p>
+						A solution should be provided here.
+				</div>
+			</div>
+	</div>
+
+	<script type="module">
+		for (const pre of document.body.querySelectorAll('pre.PGCodeMirror')) {
+			PGCodeMirrorEditor.runMode(pre.textContent, pre);
+		}
+
+		for (const btn of document.querySelectorAll('.clipboard-btn')) {
+			if (navigator.clipboard)
+				btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
+		}
+	</script>
+</body>
+
+</html>

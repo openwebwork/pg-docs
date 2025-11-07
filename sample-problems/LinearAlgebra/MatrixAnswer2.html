@@ -4,15 +4,13 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>MatrixAnswer2</title>
+	<title>MatrixAnswer2.pg</title>
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/lib/codemirror.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/theme/eclipse.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/addon/runmode/runmode-standalone.min.js" defer>
-	</script>
-	<script src="https://openwebwork.github.io/pg-docs/sample-problems/PG.js" defer></script>
-	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css" >
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script
+		src="https://cdn.jsdelivr.net/npm/@openwebwork/pg-codemirror-editor@0.0.5/dist/pg-codemirror-editor.js"
+		defer></script>
+	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css">
 </head>
 
 
@@ -24,16 +22,14 @@
 				<p>Answer is a matrix</p>
 			</div>
 			<div class="col text-end">
-				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../index.html">Return to the PG docs home</a>
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
 </div>
 		</div>
 		<div class="row">
 			<div class="col">
 				<h2>Complete Code</h2>
-				<p>
-				Download file: <a href="MatrixAnswer2.pg">MatrixAnswer2.pg</a>
-</p>
-			</div>
+				<p>Download file: <a href="MatrixAnswer2.pg">MatrixAnswer2.pg</a></p>
+</div>
 		</div>
 		<div class="row">
 			<div class="col text-center"><h2 class="fw-bold fs-3">PG problem file</h2></div>
@@ -51,12 +47,12 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGcourse.pl&#39;);
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
 
 loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGcourse.pl&#39;);
 </pre>
 				</div>
-				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Preamble</b></p>
 						These standard macros need to be loaded.
 				</div>
@@ -69,22 +65,44 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGcourse.pl&#39;);
 $example1 = Matrix([ [ 1, 2, 3 ], [ 4, 5, 6 ] ]);
 $example2 = $example1-&gt;column(1);
 $example3 = $example1-&gt;row(1);
+
+$example4 = $example1-&gt;copy;
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context(&#39;Matrix&#39;);
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context(&#39;Matrix&#39;);
 
 $example1 = Matrix([ [ 1, 2, 3 ], [ 4, 5, 6 ] ]);
 $example2 = $example1-&gt;column(1);
 $example3 = $example1-&gt;row(1);
+
+$example4 = $example1-&gt;copy;
 </pre>
 				</div>
-				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Setup</b></p>
-						<p>Use <code>Context('Matrix');</code>. We construct a 2 by 3 matrix and extract its first column and first row.</p>
+						<p>Switch to the <code>Matrix</code> context by calling
+<code>Context('Matrix')</code>.</p>
+<p>Then construct a 2 by 3 matrix and extract its first column and first
+row. These matrices will be answers in which the entire matrix will be
+expected to be entered into a single answer rule.</p>
+<p>Finally, construct another 2 by 3 matrix which is a copy of the
+first. This matrix will be an answer in which each entry of the matrix
+will have its own answer rule. These answer rules are inserted via the
+<code>ans_array</code> method. The answer rules are inserted into
+<code>PGML</code> with <code>[_]*</code>, and the asterisk tells
+<code>PGML</code> to use <code>ans_array</code> instead of
+<code>ans_rule</code>.</p>
+<p>Note that it is important to use another matrix for
+<code>$example4</code> or a copy as is done here. Do not attempt to use
+<code>$example1</code> for both a single answer rule question and a
+answer array question (or even for multiple answers in general).
+MathObjects change internal values when used for an answer, and those
+changed internal values will cause conflicts if the matrix is used again
+for another answer.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -94,8 +112,8 @@ $example3 = $example1-&gt;row(1);
 The purpose of this question is to show you the syntax needed to enter matrices
 in WeBWorK when there is only one answer box for entering a matrix (which is not
 obvious) or when there are multiple answer boxes for entering a matrix (which is
-obvious).  The examples below should be self-explanatory, so you can jump to
-them if you want; however, a detailed explanation follows if you want to read
+obvious).  The examples below should be self explanatory, so you can jump to
+them if you want. However, a detailed explanation follows if you want to read
 more.
 
 Matrices use square brackets to enclose items in lists.  A matrix with one row,
@@ -112,114 +130,19 @@ answers may have spaces and line breaks in them, such as
 &gt;&gt; [| [ [1, 2, 3], |] &lt;&lt;
 &gt;&gt; [| [4, 5, 6] ]  |] &lt;&lt;
 
-+ Enter the matrix [``[$example1]``] as [@ $example1-&gt;string @]*
-[@ ans_box(3,30) @]*
++ Enter the matrix [``[$example1]``] as [@ $example1-&gt;string @]*:
+[_]{$example1}{20}
 
-+ Enter the column vector [``[$example2]``] as [@ $example2-&gt;string @]*
-[@ ans_box(3,30) @]*
++ Enter the column vector [``[$example2]``] as [@ $example2-&gt;string @]*:
+[_]{$example2}{10}
 
-+ Enter the row vector [``[$example3]``] as [@ $example3-&gt;string @]*
-[@ ans_box(3,30) @]*
-END_PGML
-" aria-label="copy to clipboard">
-						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
-							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
-						</svg>
-					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
-The purpose of this question is to show you the syntax needed to enter matrices
-in WeBWorK when there is only one answer box for entering a matrix (which is not
-obvious) or when there are multiple answer boxes for entering a matrix (which is
-obvious).  The examples below should be self-explanatory, so you can jump to
-them if you want; however, a detailed explanation follows if you want to read
-more.
++ Enter the row vector [``[$example3]``] as [@ $example3-&gt;string @]*:
+[_]{$example3}{10}
 
-Matrices use square brackets to enclose items in lists.  A matrix with one row,
-such as a row vector, is a comma separated list enclosed by square brackets.  A
-matrix with more than one row or a column vector is a comma separated list of
-lists, where each list uses square brackets to enclose its items.  Your answers
-must use square brackets to enclose each row in a matrix or in a column vector.
-Also, a pair of square brackets is needed to enclose a matrix with more than one
-row (e.g., a [`2 \times 3`] matrix and a [`2 \times 1`] column vector have
-multiple rows so they need extra square brackets, but a [`1 \times 3`] row
-vector has only one row so it does not need extra square brackets).  Your
-answers may have spaces and line breaks in them, such as
-
-&gt;&gt; [| [ [1, 2, 3], |] &lt;&lt;
-&gt;&gt; [| [4, 5, 6] ]  |] &lt;&lt;
-
-+ Enter the matrix [``[$example1]``] as [@ $example1-&gt;string @]*
-[@ ans_box(3,30) @]*
-
-+ Enter the column vector [``[$example2]``] as [@ $example2-&gt;string @]*
-[@ ans_box(3,30) @]*
-
-+ Enter the row vector [``[$example3]``] as [@ $example3-&gt;string @]*
-[@ ans_box(3,30) @]*
-END_PGML
-</pre>
-				</div>
-				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first border border-dark">
-					<p><b>Statement</b></p>
-						This is the problem statement in PGML.
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
-					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
-						type="button" data-code="
-ANS($example1-&gt;cmp);
-ANS($example2-&gt;cmp);
-ANS($example3-&gt;cmp);
-" aria-label="copy to clipboard">
-						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
-							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
-						</svg>
-					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">
-ANS($example1-&gt;cmp);
-ANS($example2-&gt;cmp);
-ANS($example3-&gt;cmp);
-</pre>
-				</div>
-				<div class="explanation answer col-sm-12 col-md-6 order-md-last order-first border border-dark">
-					<p><b>Answer</b></p>
-						<p>Because an <code>ans_box</code> is used, we need to use the older style answer checkers.</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
-					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
-						type="button" data-code="Context(&#39;Matrix&#39;);
-
-$example4 = Matrix([ [ 1, 2, 3 ], [ 4, 5, 6 ] ]);
-" aria-label="copy to clipboard">
-						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
-							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
-						</svg>
-					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context(&#39;Matrix&#39;);
-
-$example4 = Matrix([ [ 1, 2, 3 ], [ 4, 5, 6 ] ]);
-</pre>
-				</div>
-				<div class="explanation setup2 col-sm-12 col-md-6 order-md-last order-first border border-dark">
-					<p><b>Setup2</b></p>
-						<p>Reset the context because the matrix answer checker gets confused when the <code>ans_box</code> and <code>ans_array</code> methods are co-mingled.</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
-					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
-						type="button" data-code="BEGIN_PGML
-[$BR]*
-+ Entering a matrix using multiple answer blanks is straightforward --
-just put each matrix entry into its own answer blank.
-Enter the matrix [`` [$example4] ``] with one matrix entry per answer box.
-[______]*{$example4}
++ Entering a matrix using multiple answer blanks is straightforward.  Just put
+each matrix entry into its own answer blank.  
+Enter the matrix [``[$example4]``] with one matrix entry per answer box.
+[______]*{$example4}{4}
 END_PGML
 
 ENDDOCUMENT();" aria-label="copy to clipboard">
@@ -228,30 +151,61 @@ ENDDOCUMENT();" aria-label="copy to clipboard">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
-[$BR]*
-+ Entering a matrix using multiple answer blanks is straightforward --
-just put each matrix entry into its own answer blank.
-Enter the matrix [`` [$example4] ``] with one matrix entry per answer box.
-[______]*{$example4}
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
+The purpose of this question is to show you the syntax needed to enter matrices
+in WeBWorK when there is only one answer box for entering a matrix (which is not
+obvious) or when there are multiple answer boxes for entering a matrix (which is
+obvious).  The examples below should be self explanatory, so you can jump to
+them if you want. However, a detailed explanation follows if you want to read
+more.
+
+Matrices use square brackets to enclose items in lists.  A matrix with one row,
+such as a row vector, is a comma separated list enclosed by square brackets.  A
+matrix with more than one row or a column vector is a comma separated list of
+lists, where each list uses square brackets to enclose its items.  Your answers
+must use square brackets to enclose each row in a matrix or in a column vector.
+Also, a pair of square brackets is needed to enclose a matrix with more than one
+row (e.g., a [`2 \times 3`] matrix and a [`2 \times 1`] column vector have
+multiple rows so they need extra square brackets, but a [`1 \times 3`] row
+vector has only one row so it does not need extra square brackets).  Your
+answers may have spaces and line breaks in them, such as
+
+&gt;&gt; [| [ [1, 2, 3], |] &lt;&lt;
+&gt;&gt; [| [4, 5, 6] ]  |] &lt;&lt;
+
++ Enter the matrix [``[$example1]``] as [@ $example1-&gt;string @]*:
+[_]{$example1}{20}
+
++ Enter the column vector [``[$example2]``] as [@ $example2-&gt;string @]*:
+[_]{$example2}{10}
+
++ Enter the row vector [``[$example3]``] as [@ $example3-&gt;string @]*:
+[_]{$example3}{10}
+
++ Entering a matrix using multiple answer blanks is straightforward.  Just put
+each matrix entry into its own answer blank.  
+Enter the matrix [``[$example4]``] with one matrix entry per answer box.
+[______]*{$example4}{4}
 END_PGML
 
 ENDDOCUMENT();</pre>
 				</div>
-				<div class="explanation statement2 col-sm-12 col-md-6 order-md-last order-first border border-dark">
-					<p><b>Statement2</b></p>
-						<p>This is the other method to entering matrices.</p>
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Statement</b></p>
+						This is the problem statement in PGML.
 				</div>
 			</div>
 	</div>
 
 	<script type="module">
-		for (const pre of document.body.querySelectorAll('pre.CodeMirror')) {
-			CodeMirror.runMode(pre.textContent, 'PG', pre);
+		for (const pre of document.body.querySelectorAll('pre.PGCodeMirror')) {
+			PGCodeMirrorEditor.runMode(pre.textContent, pre);
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard)
+				btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

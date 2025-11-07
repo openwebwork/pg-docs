@@ -1,0 +1,17 @@
+DOCUMENT();
+
+loadMacros(
+    'PGstandard.pl',                'PGML.pl',
+    'parserFormulaUpToConstant.pl', 'PGcourse.pl'
+);
+
+$func  = Formula('sin(x)');
+$gfunc = FormulaUpToConstant('sin(x) + C');
+
+BEGIN_PGML
+An antiderivative of [`\cos(x)`] is [_]{$func->cmp(upToConstant => 1)}
+
+The most general antiderivative is [_]{$gfunc}
+END_PGML
+
+ENDDOCUMENT();

@@ -1,0 +1,22 @@
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+Context()->variables->set(x => { limits => [ -1, 1 ] });
+
+$f = Compute('sqrt(x + 1)');
+
+$g = Compute('sqrt(x^2 - 4)');
+$g->{test_points} = [ [-3], [-2], [2], [3], [4] ];
+
+BEGIN_PGML
+Enter [`[$f]`]: [___]{$f}
+
+Enter [`[$g]`]: [___]{$g}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

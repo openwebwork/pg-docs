@@ -1,0 +1,26 @@
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserGraphTool.pl', 'PGcourse.pl');
+
+$sx1 = random(-8, 8);
+$sy1 = random(-8, 8);
+do { $sx2 = random(-8, 8); $sy2 = random(-8, 8); }
+    until $sx2 != $sx1 || $sy2 != $sy1;
+
+$gt = GraphTool("{segment, solid, ($sx1, $sy1), ($sx2, $sy2)}",)
+    ->with(availableTools => [ 'SegmentTool', 'FillTool', 'SolidDashTool' ]);
+
+BEGIN_PGML
+Graph the line segment between the points [`([$sx1], [$sy1])`] and
+[`([$sx2], [$sy2])`].
+
+[_]{$gt}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+The correct answer is
+
+[!A graph of the line segment from  ([$sx1], [$sy1]) to ([$sx2],[$sy2])!]{$gt}
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

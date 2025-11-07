@@ -1,0 +1,21 @@
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserFunction.pl', 'PGcourse.pl');
+
+Context()->variables->are(x => 'Real', y => 'Real');
+parserFunction('f(x,y)' => 'sin(x * y) - exp(y)');
+$ans = Compute('f(x - 4, 3)');
+
+BEGIN_PGML
+Given a surface defined by [`z = f(x, y)`], what is the equation for the
+[`z`]-coordinate of the surface along the line [`y = 3`], shifted four units to
+the right?
+
+[`z =`] [_____]{$ans}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

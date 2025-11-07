@@ -1,0 +1,56 @@
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGtikz.pl', 'PGcourse.pl');
+
+$a   = random(0, 3);
+$ans = Compute("x^2 + $a")->reduce;
+
+$graph = createTikZImage();
+$graph->tikzLibraries('arrows.meta');
+$graph->BEGIN_TIKZ
+\tikzset{>={Stealth[scale = 1.5]}}
+\filldraw[
+    draw = LightBlue,
+    fill = white,
+    rounded corners = 10pt,
+    thick,
+    use as bounding box
+] (-6, 7) rectangle (6, -1);
+\draw[->, thick] (-6, 0) -- (6, 0) node[above left, outer sep = 3pt] {\(x\)};
+\foreach \x in {-5, ..., -1, 1, 2, ..., 5}
+    \draw(\x, 5pt) -- (\x, -5pt) node[below] {\(\x\)};
+\draw[->, thick] (0, -1) -- (0, 7) node[below right, outer sep = 3pt] {\(y\)};
+\foreach \y in {1, ..., 6}
+    \draw (5pt, \y) -- (-5pt, \y) node[left] {\(\y\)};
+\draw[blue, ultra thick] plot[domain = -2.5:2.5, smooth] (\x, {\x * \x + $a});
+END_TIKZ
+
+$altText =
+    "graph of a parabola with vertex at (0, $a) and "
+    . 'passing through the point (1, '
+    . ($a + 1) . ')';
+
+BEGIN_PGML
+[#
+    [.
+        A common situation is that there is a problem with a graph and
+        the problem is in the left column and the graph is in the right
+        column.
+
+        This even works with an equation like [`e^{i\pi} + 1 = 0`].
+
+        Answer rules can also be added.
+
+        A formula for the function graphed on the right is
+        [`f(x) =`] [_]{$ans}{10}.
+    .]
+    [.[![$altText]!]{$graph}{400}{ image_options => { tex_size => 600 } }.]
+#]*{ align => 'lc' }
+END_PGML
+
+ANS($ans->cmp);
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

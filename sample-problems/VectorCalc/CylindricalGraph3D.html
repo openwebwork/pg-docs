@@ -4,15 +4,13 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>CylindricalGraph3D</title>
+	<title>CylindricalGraph3D.pg</title>
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/lib/codemirror.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/theme/eclipse.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/addon/runmode/runmode-standalone.min.js" defer>
-	</script>
-	<script src="https://openwebwork.github.io/pg-docs/sample-problems/PG.js" defer></script>
-	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css" >
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script
+		src="https://cdn.jsdelivr.net/npm/@openwebwork/pg-codemirror-editor@0.0.5/dist/pg-codemirror-editor.js"
+		defer></script>
+	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css">
 </head>
 
 
@@ -24,16 +22,14 @@
 				<p>This shows an interactive graph in 3D in cylindrical coordinates.</p>
 			</div>
 			<div class="col text-end">
-				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../index.html">Return to the PG docs home</a>
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
 </div>
 		</div>
 		<div class="row">
 			<div class="col">
 				<h2>Complete Code</h2>
-				<p>
-				Download file: <a href="CylindricalGraph3D.pg">CylindricalGraph3D.pg</a>
-</p>
-			</div>
+				<p>Download file: <a href="CylindricalGraph3D.pg">CylindricalGraph3D.pg</a></p>
+</div>
 				<div class="col">
 					<h2>POD for Macro Files</h2>
 					<ul>
@@ -43,8 +39,14 @@
 			<div class="col">
 				<h2>See Also</h2>
 				<ul>
-						<li><a href="https://openwebwork.github.io/pg-docs/sample-problems/Parametric/SpaceCurveGraph.html">Space Curve Graph</a></li>
-						<li><a href="https://openwebwork.github.io/pg-docs/sample-problems/Parametric/SurfaceGraph.html">Surface Graph</a></li>
+					<li>
+						<a href="https://openwebwork.github.io/pg-docs/sample-problems/Parametric/SpaceCurveGraph.html">
+Space Curve Graph						</a>
+					</li>
+					<li>
+						<a href="https://openwebwork.github.io/pg-docs/sample-problems/Parametric/SurfaceGraph.html">
+Surface Graph						</a>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -58,42 +60,41 @@
 						type="button" data-code="DOCUMENT();
 
 loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;plotly3D.pl&#39;, &#39;PGcourse.pl&#39;);
-
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
 
 loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;plotly3D.pl&#39;, &#39;PGcourse.pl&#39;);
-
 </pre>
 				</div>
-				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Preamble</b></p>
-						<p>The dynamic graph is generated with <code>plotly3D.pl</code>, so this is needed.</p>
+						<p>The dynamic graph is generated with <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/graph/plotly3D.html">plotly3D.pl</a>.</p>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
-						type="button" data-code="$a = random(2,5);
+						type="button" data-code="$a = random(2, 5);
 
-$gr1 = Graph3D();
-$gr1-&gt;addSurface(
-                [&#39;u*cos(v)&#39;, &#39;u*sin(v)&#39;, &quot;$a*cos(u^2/4)&quot;],
-                [0, 6, 30],
-                [0, 2*pi, 30]
-        );
+$graph1 = Graph3D();
+$graph1-&gt;addSurface(
+    [ &#39;u * cos(v)&#39;, &#39;u * sin(v)&#39;, &quot;$a * cos(u^2 / 4)&quot; ],
+    [ 0,            6,            30 ],
+    [ 0,            2 * pi,       30 ]
+);
 
-$gr2 = Graph3D();
-$gr2-&gt;addSurface(
-    [&#39;r*cos(t)&#39;, &#39;r*sin(t)&#39;, &#39;r*sin(t)^2&#39;],
-    [0, 6, 30],
-    [0, 2*pi, 30],
-    variables =&gt; [&#39;r&#39;,&#39;t&#39;]
+$graph2 = Graph3D();
+$graph2-&gt;addSurface(
+    [ &#39;r * cos(t)&#39;, &#39;r * sin(t)&#39;, &#39;r * sin(t)^2&#39; ],
+    [ 0,            6,            30 ],
+    [ 0,            2 * pi,       30 ],
+    variables =&gt; [ &#39;r&#39;, &#39;t&#39; ]
 );
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -101,38 +102,76 @@ $gr2-&gt;addSurface(
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">$a = random(2,5);
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">$a = random(2, 5);
 
-$gr1 = Graph3D();
-$gr1-&gt;addSurface(
-                [&#39;u*cos(v)&#39;, &#39;u*sin(v)&#39;, &quot;$a*cos(u^2/4)&quot;],
-                [0, 6, 30],
-                [0, 2*pi, 30]
-        );
+$graph1 = Graph3D();
+$graph1-&gt;addSurface(
+    [ &#39;u * cos(v)&#39;, &#39;u * sin(v)&#39;, &quot;$a * cos(u^2 / 4)&quot; ],
+    [ 0,            6,            30 ],
+    [ 0,            2 * pi,       30 ]
+);
 
-$gr2 = Graph3D();
-$gr2-&gt;addSurface(
-    [&#39;r*cos(t)&#39;, &#39;r*sin(t)&#39;, &#39;r*sin(t)^2&#39;],
-    [0, 6, 30],
-    [0, 2*pi, 30],
-    variables =&gt; [&#39;r&#39;,&#39;t&#39;]
+$graph2 = Graph3D();
+$graph2-&gt;addSurface(
+    [ &#39;r * cos(t)&#39;, &#39;r * sin(t)&#39;, &#39;r * sin(t)^2&#39; ],
+    [ 0,            6,            30 ],
+    [ 0,            2 * pi,       30 ],
+    variables =&gt; [ &#39;r&#39;, &#39;t&#39; ]
 );
 </pre>
 				</div>
-				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Setup</b></p>
-						<p>We generate the plot parametrically for the radial functions <code>z=cos(r^2/4)</code> and <code>z=r*sin^2(t)</code>.</p>
-<p>This occurs with <code>x=u*cos(v)</code> and <code>y=u*sin(v)</code>, where <code>u</code> and <code>v</code> are used as the radial and angular variables respectively. These are the default variables used.</p>
-<p>The second plot changes the variables to <code>r</code> and <code>t</code> and shows a function with a non-rotational symmetric plot.</p>
-<p>The <code>addSurface</code> is very flexible, but if you are plotting a function in cylindrical coordinates, then the first two functions should remain the same.</p>
-<p>See <a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/graph/plotly3D.html">plotly3D.pl</a> for more information on options.</p>
+						<p>To add a plotly graph to a problem, first create a
+<code>Graph3D</code> object by calling the <code>Graph3D</code> method.
+Note that there are several options that can be passed to the
+<code>Graph3D</code> method that affect the display of the graph. This
+example uses the defaults for all of the options. Then add objects to
+the graph by calling the <code>Graph3D</code> object methods. This
+example demonstrates the usage of the <code>addSurface</code> method.
+Its syntax is</p>
+<div class="sourceCode" id="addsurface-usage"><pre
+class="sourceCode perl"><code class="sourceCode perl"><span id="addsurface-usage-1"><a href="#addsurface-usage-1" aria-hidden="true" tabindex="-1"></a><span class="dt">$graph</span>-&gt;<span class="dt">addSurface</span>(</span>
+<span id="addsurface-usage-2"><a href="#addsurface-usage-2" aria-hidden="true" tabindex="-1"></a>    [xFunction, yFunction, zFunction],</span>
+<span id="addsurface-usage-3"><a href="#addsurface-usage-3" aria-hidden="true" tabindex="-1"></a>    [uMin, uMax, uCount],</span>
+<span id="addsurface-usage-4"><a href="#addsurface-usage-4" aria-hidden="true" tabindex="-1"></a>    [vMin, vMax, vCount],</span>
+<span id="addsurface-usage-5"><a href="#addsurface-usage-5" aria-hidden="true" tabindex="-1"></a>    options</span>
+<span id="addsurface-usage-6"><a href="#addsurface-usage-6" aria-hidden="true" tabindex="-1"></a>);</span></code></pre></div>
+<p>where <code>xFunction</code>, <code>yFunction</code>, and
+<code>zFunction</code> are the parametric functions for the
+<code>x</code>, <code>y</code>, and <code>z</code> coordinates,
+respectively, <code>uMin</code> and <code>uMax</code> are the maximum
+and minimum values for the parameter <code>u</code> and
+<code>uCount</code> is the number of values in that range to use,
+<code>vMin</code> and <code>vMax</code> are the maximum and minimum
+values for the parameter <code>v</code> and <code>vCount</code> is the
+number of values in that range to use, and the <code>options</code> are
+additional options that can be set using the format
+<code>option =&gt; value</code>. Note that <code>uCount</code> and
+<code>vCount</code> are optional and both default to 20 if not
+given.</p>
+<p>First, generate the graph for the function parameterized by
+<code>x = u * cos(v)</code>, <code>y = u * sin(v)</code>, and
+<code>z = $a * cos(u^2 / 4)</code> is generated. This graph uses the
+default variables <code>u</code> and <code>v</code>.</p>
+<p>Second, generate the graph for the function parameterized by
+<code>x = r * cos(t)</code>, <code>y = r * sin(t)</code>, and
+<code>z = r * sin(t)^2</code>. Since the variables <code>r</code> and
+<code>t</code> are used and are not the default variables, those must be
+specified.</p>
+<p>See <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/graph/plotly3D.html">plotly3D.pl</a>
+for more details on the usage of the <code>Graph3D</code> object and its
+<code>addSurface</code> method.</p>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
 						type="button" data-code="BEGIN_PGML
-[@ $gr1-&gt;Print @]* [@ $gr2-&gt;Print @]*
+[@ $graph1-&gt;Print @]*
+
+[@ $graph2-&gt;Print @]*
 END_PGML
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -140,14 +179,18 @@ END_PGML
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
-[@ $gr1-&gt;Print @]* [@ $gr2-&gt;Print @]*
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
+[@ $graph1-&gt;Print @]*
+
+[@ $graph2-&gt;Print @]*
 END_PGML
 </pre>
 				</div>
-				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Statement</b></p>
-						<p>This shows how to add a plot to the problem.</p>
+						<p>If <code>$graph</code> is a <code>Graph3D</code> object, then insert
+its graph into the problem with
+<code>[@ $graph-&gt;Print @]*</code>.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -163,13 +206,13 @@ ENDDOCUMENT();" aria-label="copy to clipboard">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
 Solution explanation goes here.
 END_PGML_SOLUTION
 
 ENDDOCUMENT();</pre>
 				</div>
-				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Solution</b></p>
 						A solution should be provided here.
 				</div>
@@ -177,12 +220,14 @@ ENDDOCUMENT();</pre>
 	</div>
 
 	<script type="module">
-		for (const pre of document.body.querySelectorAll('pre.CodeMirror')) {
-			CodeMirror.runMode(pre.textContent, 'PG', pre);
+		for (const pre of document.body.querySelectorAll('pre.PGCodeMirror')) {
+			PGCodeMirrorEditor.runMode(pre.textContent, pre);
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard)
+				btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

@@ -14,11 +14,11 @@ $dropdown2 =
 BEGIN_PGML
 Select my favorite color [_]{$popup}
 
-**Same thing, but using DropDown**
+*Same thing, but using DropDown*
 
 Select my favorite color [_]{$dropdown1}
 
-**Same thing, but using DropDown with placeholder option**
+*Same thing, but using DropDown with placeholder option*
 
 Select my favorite color [_]{$dropdown2}
 END_PGML

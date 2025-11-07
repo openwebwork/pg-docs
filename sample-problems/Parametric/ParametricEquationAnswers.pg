@@ -1,0 +1,65 @@
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserMultiAnswer.pl', 'PGcourse.pl');
+
+Context("Numeric")->variables->are(t => "Real");
+Context()->variables->set(t => { limits => [ -5, 5 ] });
+
+$x  = Formula("cos(t)");
+$y  = Formula("sin(t)");
+$t0 = Compute("0");
+$t1 = Compute("pi/3");
+
+($x0, $y0) = (1, 0);
+($x1, $y1) = (1 / 2, sqrt(3) / 2);
+
+$multians = MultiAnswer($x, $y, $t0, $t1)->with(
+    singleResult => 0,
+    checker      => sub {
+        my ($correct, $student, $self) = @_;
+        my ($xstu, $ystu, $t0stu, $t1stu) = @{$student};
+        if ((($xstu**2 + $ystu**2) == 1)
+            && (($xstu->eval(t => $t0stu)) == $x0)
+            && (($ystu->eval(t => $t0stu)) == $y0)
+            && (($xstu->eval(t => $t1stu)) == $x1)
+            && (($ystu->eval(t => $t1stu)) == $y1))
+        {
+            return [ 1, 1, 1, 1 ];
+
+        } elsif ((($xstu**2 + $ystu**2) == 1)
+            && (($xstu->eval(t => $t0stu)) == $x0)
+            && (($ystu->eval(t => $t0stu)) == $y0))
+        {
+            return [ 1, 1, 1, 0 ];
+
+        } elsif ((($xstu**2 + $ystu**2) == 1)
+            && (($xstu->eval(t => $t1stu)) == $x1)
+            && (($ystu->eval(t => $t1stu)) == $y1))
+        {
+            return [ 1, 1, 0, 1 ];
+
+        } elsif ((($xstu**2 + $ystu**2) == 1)) {
+            return [ 1, 1, 0, 0 ];
+
+        } else {
+            return [ 0, 0, 0, 0 ];
+        }
+    }
+);
+BEGIN_PGML
+Find a parametrization of the unit circle from the point
+[`\big(1, 0\big)`] to [`\big(\frac{1}{2}, \frac{\sqrt{3}}{2}\big)`].
+Use [`t`] as the parameter for your answers.
+
+[`x(t) =`] [__]{$multians}
+
+[`y(t) =`] [__]{$multians}
+
+from [__]{$multians} to [__]{$multians}.
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

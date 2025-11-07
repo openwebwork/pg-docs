@@ -1,0 +1,34 @@
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserGraphTool.pl', 'PGcourse.pl');
+
+$x1 = random(-8, 8);
+$y1 = random(-8, 8);
+do { $x2 = random(-8, 8); $y2 = random(-8, 8) } until $x2 != $x1 || $y2 != $y1;
+do { $x3 = random(-8, 8); $y3 = random(-8, 8) }
+    until ($y3 - $y1) * ($x2 - $x1) != ($y2 - $y1) * ($x3 - $x1);
+do { $x4 = random(-8, 8); $y4 = random(-8, 8) }
+    until ($y4 - $y1) * ($x2 - $x1) != ($y2 - $y1) * ($x4 - $x1)
+    && ($y4 - $y1) * ($x3 - $x1) != ($y3 - $y1) * ($x4 - $x1)
+    && ($y4 - $y1) * ($x3 - $x2) != ($y3 - $y2) * ($x4 - $x2);
+
+$gt = GraphTool(
+    "{quadrilateral, solid, ($x1, $y1), ($x2, $y2), ($x3, $y3), ($x4, $y4)}")
+    ->with(
+        availableTools => [ 'QuadrilateralTool', 'FillTool', 'SolidDashTool' ]);
+BEGIN_PGML
+Graph the quadrilateral with vertices [`([$x1], [$y1])`], [`([$x2], [$y2])`],
+[`([$x3], [$y3])`], and [`([$x4], [$y4])`] in that order.
+
+[_]{$gt}
+END_PGML
+
+$alt_text = "A graph of the quadrilateral with vertices ($x1, $y1), ($x2,$y2), "
+    . "($x3, $y3),and ($x4, $y4)";
+BEGIN_PGML_SOLUTION
+The correct answer is
+
+[![$alt_text]!]{$gt}
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

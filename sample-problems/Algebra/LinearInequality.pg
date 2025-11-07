@@ -1,27 +1,25 @@
 DOCUMENT();
 
-loadMacros(
-    'PGstandard.pl',  'PGML.pl', 'parserLinearRelation.pl', 'PGcourse.pl'
-);
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserLinearRelation.pl',
+    'PGcourse.pl');
 
 Context("LinearRelation");
 
 do {
-  $a = random(2,6);
-  $b = random(2,6);
+    $a = random(2, 6);
+    $b = random(2, 6);
 } until ($a != $b);
-$ab = $a*$b;
+$ab = $a * $b;
 
 $lr = LinearRelation("$a x + $b y < $ab")->reduce;
 
 BEGIN_PGML
-The line [`L`] that passes through the point [`([$b],0)`] and [`(0,[$a])`] divides
-the [`xy`]-plane.  What is the linear relation that describes the set of
-points in half-plane containing the origin?  Note, do not include the
-points on the line?
+The line [`L`] that passes through the point [`([$b],0)`] and [`(0,[$a])`]
+divides the [`xy`]-plane into two regions.  What is the linear relation that
+describes the half-plane containing the origin?  Note, do not include the points
+on the line?
 
 [__]{$lr}
-
 END_PGML
 
 BEGIN_PGML_SOLUTION

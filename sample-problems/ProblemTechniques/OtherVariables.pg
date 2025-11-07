@@ -1,0 +1,24 @@
+
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+Context()->variables->add(t => 'Real', y => 'Real', z => 'Real');
+$f = Compute('-16 t^2 + 5 t + 4');
+$g = Compute('x^2 + y^2 + z^2');
+
+Context()->variables->add(rho => [ 'Real', TeX => '\rho' ]);
+$h = Compute("sqrt(1 + rho^2)");
+
+BEGIN_PGML
+Enter the following formulas:
+
+* [`[$f] =`] [____]{$f}
+* [`[$g] =`] [____]{$g}
+* [`[$h] =`] [____]{$h}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

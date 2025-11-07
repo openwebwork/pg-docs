@@ -7,7 +7,7 @@ $y = random(0, 4);
 if ($y < 4) {
     $answer = String('none')->cmp(typeMatch => Formula('x'));
 } else {
-    $answer = Formula('2*x')->cmp(typeMatch => Formula('x'));
+    $answer = Formula('2x');
 }
 
 BEGIN_PGML

@@ -1,0 +1,27 @@
+DOCUMENT();
+loadMacros(
+    'PGstandard.pl',            'PGML.pl',
+    'parserNumberWithUnits.pl', 'PGcourse.pl'
+);
+
+$ans = NumberWithUnits('4', 'ft');
+
+BEGIN_PGML
+The answer to all questions is on
+[@ htmlLink('http://www.google.com/', 'this page') @]*.
+
+A link to a
+[@ htmlLink(alias('local.html'), 'local file', 'TARGET="_blank"') @]*.
+
+It helps to [@htmlLink(
+    "${htmlURL}plotter.html",
+    'sketch the graph',
+    'TARGET="plotter"'
+)@]*.
+
+Enter 4 feet: [__]{$ans}
+
+Don't forget to enter [@ helpLink('units') @]*.
+END_PGML
+
+ENDDOCUMENT();

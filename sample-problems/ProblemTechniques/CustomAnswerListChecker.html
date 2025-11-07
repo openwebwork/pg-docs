@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CustomAnswerListChecker.pg</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script
+		src="https://cdn.jsdelivr.net/npm/@openwebwork/pg-codemirror-editor@0.0.5/dist/pg-codemirror-editor.js"
+		defer></script>
+	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css">
+</head>
+
+
+<body>
+	<div class="container-fluid p-3">
+		<div class="row">
+			<div class="col">
+				<h1>Custom Answer List Checker</h1>
+				<p>This shows how to check an arbitrary list of student answers.</p>
+			</div>
+			<div class="col text-end">
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
+</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<h2>Complete Code</h2>
+				<p>Download file: <a href="CustomAnswerListChecker.pg">CustomAnswerListChecker.pg</a></p>
+</div>
+		</div>
+		<div class="row">
+			<div class="col text-center"><h2 class="fw-bold fs-3">PG problem file</h2></div>
+			<div class="col text-center"><h2 class="fw-bold fs-3">Explanation</h2></div>
+		</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="DOCUMENT();
+loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGcourse.pl&#39;);
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGcourse.pl&#39;);
+</pre>
+				</div>
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Preamble</b></p>
+						These standard macros need to be loaded.
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="Context(&#39;Point&#39;);
+
+$c   = random(4, 8);
+$ans = List(&quot;(0, $c), ($c, 0), ($c - 1, 1)&quot;)-&gt;cmp(
+    list_checker =&gt; sub {
+        my ($correct, $student, $ansHash, $value) = @_;
+        return 0 if $ansHash-&gt;{isPreview};
+
+        my $n     = scalar(@$student);    # number of student answers
+        my $score = 0;                    # number of correct student answers
+        my @errors;                       # stores error messages
+
+        # Loop though the student answers.
+    STUDENT_ANS:
+        for my $i (0 .. $n - 1) {
+            my $ith = Value::List-&gt;NameForNumber($i + 1);
+            my $p   = $student-&gt;[$i];                       # ith student answer
+
+            # Check that the student&#39;s answer is a point.
+            if ($p-&gt;type ne &#39;Point&#39;) {
+                push(@errors, &quot;Your $ith entry is not a point.&quot;);
+                next;
+            }
+
+            # Check that the point hasn&#39;t been given before.  If it is the same
+            # as a previous answer, then skip to the next student answer.
+            for (my $j = 0; $j &lt; $i; ++$j) {
+                if ($student-&gt;[$j]-&gt;type eq &#39;Point&#39; &amp;&amp; $student-&gt;[$j] == $p)
+                {
+                    push(@errors,
+                        &quot;Your $ith point is the same as a previous one.&quot;);
+                    next STUDENT_ANS;
+                }
+            }
+
+            # Check that it satisfies the equation and increase the score if so.
+            my ($a, $b) = $p-&gt;value;
+            if ($a + $b == $c) {
+                ++$score;
+            } else {
+                push(@errors, &quot;Your $ith point is not correct.&quot;);
+            }
+        }
+
+        return ($score, @errors);
+    },
+    showLengthHints =&gt; 1,
+    showHints       =&gt; 0
+);
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context(&#39;Point&#39;);
+
+$c   = random(4, 8);
+$ans = List(&quot;(0, $c), ($c, 0), ($c - 1, 1)&quot;)-&gt;cmp(
+    list_checker =&gt; sub {
+        my ($correct, $student, $ansHash, $value) = @_;
+        return 0 if $ansHash-&gt;{isPreview};
+
+        my $n     = scalar(@$student);    # number of student answers
+        my $score = 0;                    # number of correct student answers
+        my @errors;                       # stores error messages
+
+        # Loop though the student answers.
+    STUDENT_ANS:
+        for my $i (0 .. $n - 1) {
+            my $ith = Value::List-&gt;NameForNumber($i + 1);
+            my $p   = $student-&gt;[$i];                       # ith student answer
+
+            # Check that the student&#39;s answer is a point.
+            if ($p-&gt;type ne &#39;Point&#39;) {
+                push(@errors, &quot;Your $ith entry is not a point.&quot;);
+                next;
+            }
+
+            # Check that the point hasn&#39;t been given before.  If it is the same
+            # as a previous answer, then skip to the next student answer.
+            for (my $j = 0; $j &lt; $i; ++$j) {
+                if ($student-&gt;[$j]-&gt;type eq &#39;Point&#39; &amp;&amp; $student-&gt;[$j] == $p)
+                {
+                    push(@errors,
+                        &quot;Your $ith point is the same as a previous one.&quot;);
+                    next STUDENT_ANS;
+                }
+            }
+
+            # Check that it satisfies the equation and increase the score if so.
+            my ($a, $b) = $p-&gt;value;
+            if ($a + $b == $c) {
+                ++$score;
+            } else {
+                push(@errors, &quot;Your $ith point is not correct.&quot;);
+            }
+        }
+
+        return ($score, @errors);
+    },
+    showLengthHints =&gt; 1,
+    showHints       =&gt; 0
+);
+</pre>
+				</div>
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Setup</b></p>
+						<p>The answer to this problem will be a list of points, so select the
+‘Point’ context.</p>
+<p>Then create a list of 3 points that will be shown as the correct
+answer.</p>
+<p>Since the given correct answer is a <code>List</code>, in order to
+check the answers in the list the student enters as a whole (instead of
+a separate check for each entry) a <code>list_checker</code> needs to be
+used instead of a <code>checker</code>. To set up the custom list
+checker pass the custom checker subroutine for the
+<code>list_checker</code> option to the <code>cmp</code> method.</p>
+<p>This custom list checker loops over the list of answers that the
+student has entered, and checks that each answer is a point, is not the
+same as a previous point already checked, and finally that the point
+satisfies the requested constraint. A message is added to the
+<code>@error</code> array if the answer is not correct. Otherwise the
+score is incremented.</p>
+<p>In this example, the <code>showLengthHints =&gt; 1</code> and
+<code>showHints =&gt; 0</code> options are also passed to the
+<code>cmp</code> method. This means that if the correct answer is a
+MathObject <code>List</code> of <code>Point</code>s, and a student does
+not give as many answers as there are in the correct answer, then the
+message “There should be more points in your list” will be shown. Also
+if the correct answer is a MathObject <code>List</code> of
+<code>Point</code>s, and a student gives more answers than are in the
+correct answer that are not all correct, then the message “There should
+be fewer points in your list” will be shown. If it is desired to give
+your own messages for those cases, then add code to the custom checker
+to look for those cases and add appropriate messages, and to prevent the
+default messages from being shown as well as the messages added by the
+custom list checker, pass <code>showLengthHints =&gt; 0</code> to the
+<code>cmp</code> method instead. Note that by default the values for
+both of those options are set to the value of
+<code>$showPartialCorrectAnswers</code>
+(<code>$showPartialCorrectAnswers</code> is 1 by default).</p>
+<p>The return value of a <code>list_checker</code> should be a list
+consisting of the numeric score followed by any messages. Any messages
+returned after the score will be displayed in feedback to the student.
+The score that will be given for the list answer is the numeric score
+returned divided by the maximum of the number of entries in the correct
+answer list and the number of entries in the student answer. So for this
+problem if a student gives four distinct points that satisfy constraint,
+then the score will be 1 even though more entries were given than were
+asked for. However, if <code>partialCredit =&gt; 0</code> is passed to
+the <code>cmp</code> method, then the score for the list answer will be
+1 if the numeric score returned is equal to the maximum of of entries in
+the correct answer list and the number of entries in the student answer,
+and 0 otherwise. Note that the default value for the
+<code>partialCredit</code> option is the value of
+<code>$showPartialCorrectAnswers</code>.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="BEGIN_PGML
+Enter three distinct points [`(x, y)`] that satisfy the equation
+[`x + y = [$c]`].
+
+[_]{$ans}{15}
+END_PGML
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
+Enter three distinct points [`(x, y)`] that satisfy the equation
+[`x + y = [$c]`].
+
+[_]{$ans}{15}
+END_PGML
+</pre>
+				</div>
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Statement</b></p>
+						This is the problem statement in PGML.
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="BEGIN_PGML_SOLUTION
+Any three points who&#39;s coordinates sum to [`[$c]`] are valid.  For example,
+[`([$c], 0), (0, [$c]), (1, [$c - 1])`].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
+Any three points who&#39;s coordinates sum to [`[$c]`] are valid.  For example,
+[`([$c], 0), (0, [$c]), (1, [$c - 1])`].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();</pre>
+				</div>
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Solution</b></p>
+						A solution should be provided here.
+				</div>
+			</div>
+	</div>
+
+	<script type="module">
+		for (const pre of document.body.querySelectorAll('pre.PGCodeMirror')) {
+			PGCodeMirrorEditor.runMode(pre.textContent, pre);
+		}
+
+		for (const btn of document.querySelectorAll('.clipboard-btn')) {
+			if (navigator.clipboard)
+				btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
+		}
+	</script>
+</body>
+
+</html>

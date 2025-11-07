@@ -4,15 +4,13 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>GeneralSolutionODE</title>
+	<title>GeneralSolutionODE.pg</title>
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/lib/codemirror.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/theme/eclipse.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/addon/runmode/runmode-standalone.min.js" defer>
-	</script>
-	<script src="https://openwebwork.github.io/pg-docs/sample-problems/PG.js" defer></script>
-	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css" >
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script
+		src="https://cdn.jsdelivr.net/npm/@openwebwork/pg-codemirror-editor@0.0.5/dist/pg-codemirror-editor.js"
+		defer></script>
+	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css">
 </head>
 
 
@@ -21,23 +19,21 @@
 		<div class="row">
 			<div class="col">
 				<h1>General Solution to a Differential Equation</h1>
-				<p>Custom answer checkers for ODEs.</p>
+				<p>Use a custom answer checkers for ODEs to determine the general solution of a
+Differential Equation</p>
 			</div>
 			<div class="col text-end">
-				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../index.html">Return to the PG docs home</a>
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
 </div>
 		</div>
 		<div class="row">
 			<div class="col">
 				<h2>Complete Code</h2>
-				<p>
-				Download file: <a href="GeneralSolutionODE.pg">GeneralSolutionODE.pg</a>
-</p>
-			</div>
+				<p>Download file: <a href="GeneralSolutionODE.pg">GeneralSolutionODE.pg</a></p>
+</div>
 				<div class="col">
 					<h2>POD for Macro Files</h2>
 					<ul>
-								<li class="text-danger">PGunion.pl</li>
 								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserAssignment.html">parserAssignment.pl</a></li>
 					</ul>
 				</div>
@@ -51,29 +47,22 @@
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
 						type="button" data-code="DOCUMENT();
 
-loadMacros(
-    &#39;PGstandard.pl&#39;, &#39;PGunion.pl&#39;,
-    &#39;PGML.pl&#39;,       &#39;parserAssignment.pl&#39;,
-    &#39;PGcourse.pl&#39;
-);
+loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;parserAssignment.pl&#39;, &#39;PGcourse.pl&#39;);
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
 
-loadMacros(
-    &#39;PGstandard.pl&#39;, &#39;PGunion.pl&#39;,
-    &#39;PGML.pl&#39;,       &#39;parserAssignment.pl&#39;,
-    &#39;PGcourse.pl&#39;
-);
+loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;parserAssignment.pl&#39;, &#39;PGcourse.pl&#39;);
 </pre>
 				</div>
-				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Preamble</b></p>
-						<p>We load <code>parserAssignment.pl</code> to require student answers to be of the form <code>y = ...</code>. Please see the POD documentation <code>parserAssignment.pl</code>.</p>
+						<p>We load <code>parserAssignment.pl</code> to require student answers
+to be of the form <code>y = ...</code>.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -85,11 +74,6 @@ loadMacros(
     c3 =&gt; &#39;Real&#39;,
     y  =&gt; &#39;Real&#39;,
 );
-Context()-&gt;variables-&gt;set(
-    c1 =&gt; { limits =&gt; [ 2, 4 ] },
-    c2 =&gt; { limits =&gt; [ 2, 4 ] },
-    c3 =&gt; { limits =&gt; [ 2, 4 ] }
-);
 Context()-&gt;flags-&gt;set(
     formatStudentAnswer     =&gt; &#39;parsed&#39;,
     reduceConstants         =&gt; 0,
@@ -99,7 +83,7 @@ parser::Assignment-&gt;Allow;
 
 $a = list_random(2, 3, 5, 6, 7, 8);
 
-# char poly (r-1)(r^2 + $a)
+# The characteristic polynomial is (r - 1)(r^2 + $a).
 
 $answer = Compute(&quot;y = c1 e^x + c2 cos(sqrt($a) x) + c3 sin(sqrt($a) x)&quot;);
 
@@ -163,16 +147,11 @@ $cmp = $answer-&gt;cmp(
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context()-&gt;variables-&gt;add(
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context()-&gt;variables-&gt;add(
     c1 =&gt; &#39;Real&#39;,
     c2 =&gt; &#39;Real&#39;,
     c3 =&gt; &#39;Real&#39;,
     y  =&gt; &#39;Real&#39;,
-);
-Context()-&gt;variables-&gt;set(
-    c1 =&gt; { limits =&gt; [ 2, 4 ] },
-    c2 =&gt; { limits =&gt; [ 2, 4 ] },
-    c3 =&gt; { limits =&gt; [ 2, 4 ] }
 );
 Context()-&gt;flags-&gt;set(
     formatStudentAnswer     =&gt; &#39;parsed&#39;,
@@ -183,7 +162,7 @@ parser::Assignment-&gt;Allow;
 
 $a = list_random(2, 3, 5, 6, 7, 8);
 
-# char poly (r-1)(r^2 + $a)
+# The characteristic polynomial is (r - 1)(r^2 + $a).
 
 $answer = Compute(&quot;y = c1 e^x + c2 cos(sqrt($a) x) + c3 sin(sqrt($a) x)&quot;);
 
@@ -243,12 +222,32 @@ $cmp = $answer-&gt;cmp(
 );
 </pre>
 				</div>
-				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Setup</b></p>
-						<p>Add the arbitrary constants <code>c1, c2, c3</code> to the context as variables so that we can evaluate them later. Set the domain of function evaluation on these variables to something sensible. Use <code>parser::Assignment-&gt;Allow;</code> to allow equation answers of the form <code>y = ...</code>. See <a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserAssignment.html">parserAssignment.pl</a> for additional information.</p>
-<p>For the checker, we use my <code>$stu = Formula($student-&gt;{tree}{rop});</code> to get the right side of the student answer (to get the left side, we could have used lop for the left operand). Use <code>Formula($stu-&gt;D('c1')) == Formula(0)</code> to check that the student actually has c1 in their answer.</p>
-<p>We substitute numerical values that the student is unlikely to choose for <code>c1, c2, c3</code> and then apply the Wronskian test for independence. Normally, we would check to see if the Wronskian was zero, but zero level tolerance in WeBWorK is much more stringent than non-zero level tolerance. So, we rearrange the terms of the Wronskian == 0 equation so that there are nonzero terms on both sides of the equation, and as a result we get a more reliable answer checker.</p>
-<p>Finally, we take several derivatives of the student answer and use them to check that the student answer actually satisfies the differential equation. Again, instead of checking (left side of ODE) == 0, we rearrange the terms of the differential equation to be of the form (some nonzero function) == (some other nonzero function) in order to get a more reliable answer checker.</p>
+						<p>Add the arbitrary constants <code>c1</code>, <code>c2</code>, and
+<code>c3</code> to the context as variables so that they can be used in
+evaluations.</p>
+<p>Use <code>parser::Assignment-&gt;Allow</code> to allow equation
+answers of the form <code>y = ...</code>. See <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserAssignment.html">parserAssignment.pl</a>
+for additional information.</p>
+<p>In the checker
+<code>my $stu = Formula($student-&gt;{tree}{rop});</code> is used to get
+the right side of the assignment in the student answer (to get the left
+side of the assignment use <code>lop</code>). Use
+<code>Formula($stu-&gt;D('c1')) == Formula(0)</code> to verify that the
+student answer uses the variable <code>c1</code>.</p>
+<p>Substitute numerical values for the variables <code>c1</code>,
+<code>c2</code>, and <code>c3</code> and apply the Wronskian test for
+independence. Note that zero level tolerance in WeBWorK is much more
+stringent that non-zero level tolerance. So the terms of the Wronskian
+equation are rearranged so that there are nonzero terms on both sides of
+the equation to give a more reliable check.</p>
+<p>Finally, several derivatives of the student answer are computed and
+used to check that the student answer satisfies the differential
+equation. Again, to check that differential equation, the terms are
+rearanged to have nonzero terms on both sides, in order to give a more
+reliable check.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -271,7 +270,7 @@ END_PGML
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
 Find the general solution to
 [`y^{\,\prime\prime\prime} - y^{\,\prime\prime} + [$a] y^{\,\prime} - [$a] y = 0`].
 
@@ -284,9 +283,10 @@ form [`y = \ldots`] and you should enter [`c_1`] as [|c1|]*,
 END_PGML
 </pre>
 				</div>
-				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Statement</b></p>
-						<p>Give students detailed instructions about the format of the answer that is expected.</p>
+						<p>Give students detailed instructions about the format of the answer
+that is expected.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -302,13 +302,13 @@ ENDDOCUMENT();" aria-label="copy to clipboard">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
 Solution explanation goes here.
 END_PGML_SOLUTION
 
 ENDDOCUMENT();</pre>
 				</div>
-				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Solution</b></p>
 						A solution should be provided here.
 				</div>
@@ -316,12 +316,14 @@ ENDDOCUMENT();</pre>
 	</div>
 
 	<script type="module">
-		for (const pre of document.body.querySelectorAll('pre.CodeMirror')) {
-			CodeMirror.runMode(pre.textContent, 'PG', pre);
+		for (const pre of document.body.querySelectorAll('pre.PGCodeMirror')) {
+			PGCodeMirrorEditor.runMode(pre.textContent, pre);
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard)
+				btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

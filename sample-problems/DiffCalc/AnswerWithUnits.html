@@ -4,15 +4,13 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>AnswerWithUnits</title>
+	<title>AnswerWithUnits.pg</title>
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/lib/codemirror.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/theme/eclipse.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/addon/runmode/runmode-standalone.min.js" defer>
-	</script>
-	<script src="https://openwebwork.github.io/pg-docs/sample-problems/PG.js" defer></script>
-	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css" >
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script
+		src="https://cdn.jsdelivr.net/npm/@openwebwork/pg-codemirror-editor@0.0.5/dist/pg-codemirror-editor.js"
+		defer></script>
+	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css">
 </head>
 
 
@@ -24,21 +22,18 @@
 				<p>Answer is a number or formula with units</p>
 			</div>
 			<div class="col text-end">
-				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../index.html">Return to the PG docs home</a>
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
 </div>
 		</div>
 		<div class="row">
 			<div class="col">
 				<h2>Complete Code</h2>
-				<p>
-				Download file: <a href="AnswerWithUnits.pg">AnswerWithUnits.pg</a>
-</p>
-			</div>
+				<p>Download file: <a href="AnswerWithUnits.pg">AnswerWithUnits.pg</a></p>
+</div>
 				<div class="col">
 					<h2>POD for Macro Files</h2>
 					<ul>
-								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserNumberWithUnits.html">parserNumberWithUnits.pl</a></li>
-								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserFormulaWithUnits.html">parserFormulaWithUnits.pl</a></li>
+								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/contexts/contextUnits.html">contextUnits.pl</a></li>
 					</ul>
 				</div>
 		</div>
@@ -51,65 +46,66 @@
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
 						type="button" data-code="DOCUMENT();
 
-loadMacros(
-    &#39;PGstandard.pl&#39;,            &#39;PGML.pl&#39;,
-    &#39;parserNumberWithUnits.pl&#39;, &#39;parserFormulaWithUnits.pl&#39;,
-    &#39;PGcourse.pl&#39;
-);
+loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;contextUnits.pl&#39;, &#39;PGcourse.pl&#39;);
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
 
-loadMacros(
-    &#39;PGstandard.pl&#39;,            &#39;PGML.pl&#39;,
-    &#39;parserNumberWithUnits.pl&#39;, &#39;parserFormulaWithUnits.pl&#39;,
-    &#39;PGcourse.pl&#39;
-);
+loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;contextUnits.pl&#39;, &#39;PGcourse.pl&#39;);
 </pre>
 				</div>
-				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Preamble</b></p>
-						<p>We load <code>parserNumberWithUnits.pl</code> and <code>parserFormulaWithUnits.pl</code>.</p>
+						<p>Load the <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserNumberWithUnits.html">parserNumberWithUnits.pl</a>
+and <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserFormulaWithUnits.html">parserFormulaWithUnits.pl</a>
+macros.</p>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
-						type="button" data-code="Context()-&gt;variables-&gt;are(t =&gt; &#39;Real&#39;);
+						type="button" data-code="Context(&#39;Units&#39;)-&gt;withUnitsFor(&#39;length&#39;, &#39;time&#39;)-&gt;variables-&gt;are(t =&gt; &#39;Real&#39;);
+Context()-&gt;assignUnits(t =&gt; &#39;s&#39;);
 
-$h  = Formula(&#39;-16 t^2 + 16&#39;);
+$v0 = random(16, 96, 16);
+
+$h  = Formula(&quot;(-16 t^2 + $v0 t) ft&quot;);
 $v  = $h-&gt;D(&#39;t&#39;);
-$v1 = $v-&gt;eval(t =&gt; 1);
+$v1 = $v-&gt;eval(t =&gt; $v0 / 16);
 $a  = $v-&gt;D(&#39;t&#39;);
-
-$ans1 = FormulaWithUnits(&quot;$v&quot;, &#39;ft/s&#39;);
-$ans2 = NumberWithUnits(&quot;$v1&quot;, &#39;ft/s&#39;);
-$ans3 = FormulaWithUnits(&quot;$a&quot;, &#39;ft/s^2&#39;);
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context()-&gt;variables-&gt;are(t =&gt; &#39;Real&#39;);
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context(&#39;Units&#39;)-&gt;withUnitsFor(&#39;length&#39;, &#39;time&#39;)-&gt;variables-&gt;are(t =&gt; &#39;Real&#39;);
+Context()-&gt;assignUnits(t =&gt; &#39;s&#39;);
 
-$h  = Formula(&#39;-16 t^2 + 16&#39;);
+$v0 = random(16, 96, 16);
+
+$h  = Formula(&quot;(-16 t^2 + $v0 t) ft&quot;);
 $v  = $h-&gt;D(&#39;t&#39;);
-$v1 = $v-&gt;eval(t =&gt; 1);
+$v1 = $v-&gt;eval(t =&gt; $v0 / 16);
 $a  = $v-&gt;D(&#39;t&#39;);
-
-$ans1 = FormulaWithUnits(&quot;$v&quot;, &#39;ft/s&#39;);
-$ans2 = NumberWithUnits(&quot;$v1&quot;, &#39;ft/s&#39;);
-$ans3 = FormulaWithUnits(&quot;$a&quot;, &#39;ft/s^2&#39;);
 </pre>
 				</div>
-				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Setup</b></p>
-						<p>We use the differentiation operator <code>-&gt;D('t')</code> and the evaluation method <code>-&gt;eval()</code> to construct the derivative and evaluate it as a function. If we were writing several questions like this with different height functions, using the differentiation and evaluation methods would really speed up the writing.</p>
+						<p>First select the “Units” context, allow units for “length” and “time”
+in the context, and set the variable for functions in the context to be
+<code>t</code>.</p>
+<p>Then, assign the unit “seconds” to the variable <code>t</code>.</p>
+<p>Use the differentiation operator <code>-&gt;D('t')</code> to compute
+the derivated, and the evaluation method <code>-&gt;eval()</code> to
+evaluate it as a function. All of these will now have the expect
+units.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -121,18 +117,18 @@ by [`h(t) = [$h]`] for [`t \geq 0`], where time is measured in seconds.
 
 a. What is the velocity of the object?  Include units in your answer.
 
-    [_]{$ans1}{15}
+    [_]{$v}{15}
 
 b. What is the velocity of the object when it hits the ground?  Include units in
 your answer.
 
-    [_]{$ans2}{15}
+    [_]{$v1}{15}
 
 c. What is the acceleration of the object?  Include units in your answer.
 
-    [_]{$ans3}{15}
+    [_]{$a}{15}
 
-Note: use units in all answers. [@ helpLink(&#39;units&#39;) @]*
+Note: Use units in all answers. [@ helpLink(&#39;units&#39;) @]*
 END_PGML
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -140,30 +136,32 @@ END_PGML
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
 Suppose the height of a falling object, in feet above the ground, is given
 by [`h(t) = [$h]`] for [`t \geq 0`], where time is measured in seconds.
 
 a. What is the velocity of the object?  Include units in your answer.
 
-    [_]{$ans1}{15}
+    [_]{$v}{15}
 
 b. What is the velocity of the object when it hits the ground?  Include units in
 your answer.
 
-    [_]{$ans2}{15}
+    [_]{$v1}{15}
 
 c. What is the acceleration of the object?  Include units in your answer.
 
-    [_]{$ans3}{15}
+    [_]{$a}{15}
 
-Note: use units in all answers. [@ helpLink(&#39;units&#39;) @]*
+Note: Use units in all answers. [@ helpLink(&#39;units&#39;) @]*
 END_PGML
 </pre>
 				</div>
-				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Statement</b></p>
-						<p>Don’t forget to use <code>helpLink('units')</code> so your students will have access to the complete list of units that WeBWorK understands.</p>
+						<p>Give students access to help on entering units and the complete list
+of units that WeBWorK understands by inserting the result of calling
+<code>helpLink('units')</code> into the problem text.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -179,13 +177,13 @@ ENDDOCUMENT();" aria-label="copy to clipboard">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
 Solution explanation goes here.
 END_PGML_SOLUTION
 
 ENDDOCUMENT();</pre>
 				</div>
-				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Solution</b></p>
 						A solution should be provided here.
 				</div>
@@ -193,12 +191,14 @@ ENDDOCUMENT();</pre>
 	</div>
 
 	<script type="module">
-		for (const pre of document.body.querySelectorAll('pre.CodeMirror')) {
-			CodeMirror.runMode(pre.textContent, 'PG', pre);
+		for (const pre of document.body.querySelectorAll('pre.PGCodeMirror')) {
+			PGCodeMirrorEditor.runMode(pre.textContent, pre);
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard)
+				btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

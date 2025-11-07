@@ -1,0 +1,40 @@
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'plots.pl', 'PGcourse.pl');
+
+
+$plot = Plot(
+    xmin        => -2.2,
+    xmax        =>  2.2,
+    ymin        => -2.2,
+    ymax        =>  2.2,
+    xtick_delta =>  0.5,
+    ytick_delta =>  0.5,
+    xlabel      => '\(x\)',
+    ylabel      => '\(y\)',
+);
+
+$plot->add_function(
+    '2cos(5t)', 't', '-pi/10', 'pi/10',
+    fill  => 'self',
+    polar => 1,
+    color => 'blue'
+);
+$plot->add_function('2cos(5t)', 't', 0, 'pi', polar => 1, color => 'blue');
+
+BEGIN_PGML
+Find the area enclosed by one petal of the rose curve
+[`r = f(\theta) = \cos(5\theta)`].
+
+>>[!a rose curve with five petals!]{$plot}{400}<<
+
+>>Graph of [`r = 2\cos(5\theta)`]<<
+
+Area = [_____]{Compute('pi / 20')}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

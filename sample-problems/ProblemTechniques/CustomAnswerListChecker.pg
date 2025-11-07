@@ -1,0 +1,66 @@
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+Context('Point');
+
+$c   = random(4, 8);
+$ans = List("(0, $c), ($c, 0), ($c - 1, 1)")->cmp(
+    list_checker => sub {
+        my ($correct, $student, $ansHash, $value) = @_;
+        return 0 if $ansHash->{isPreview};
+
+        my $n     = scalar(@$student);    # number of student answers
+        my $score = 0;                    # number of correct student answers
+        my @errors;                       # stores error messages
+
+        # Loop though the student answers.
+    STUDENT_ANS:
+        for my $i (0 .. $n - 1) {
+            my $ith = Value::List->NameForNumber($i + 1);
+            my $p   = $student->[$i];                       # ith student answer
+
+            # Check that the student's answer is a point.
+            if ($p->type ne 'Point') {
+                push(@errors, "Your $ith entry is not a point.");
+                next;
+            }
+
+            # Check that the point hasn't been given before.  If it is the same
+            # as a previous answer, then skip to the next student answer.
+            for (my $j = 0; $j < $i; ++$j) {
+                if ($student->[$j]->type eq 'Point' && $student->[$j] == $p)
+                {
+                    push(@errors,
+                        "Your $ith point is the same as a previous one.");
+                    next STUDENT_ANS;
+                }
+            }
+
+            # Check that it satisfies the equation and increase the score if so.
+            my ($a, $b) = $p->value;
+            if ($a + $b == $c) {
+                ++$score;
+            } else {
+                push(@errors, "Your $ith point is not correct.");
+            }
+        }
+
+        return ($score, @errors);
+    },
+    showLengthHints => 1,
+    showHints       => 0
+);
+
+BEGIN_PGML
+Enter three distinct points [`(x, y)`] that satisfy the equation
+[`x + y = [$c]`].
+
+[_]{$ans}{15}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Any three points who's coordinates sum to [`[$c]`] are valid.  For example,
+[`([$c], 0), (0, [$c]), (1, [$c - 1])`].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

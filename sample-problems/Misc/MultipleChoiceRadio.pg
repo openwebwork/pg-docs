@@ -10,7 +10,7 @@ $radio1 = RadioButtons(
 $radio2 = RadioButtons(
     [ [ 'Red', 'Blue', 'Green' ], 'None of these' ],
     2,         # correct answer as an index (starting at 0)
-    separator => $SPACE x 4
+    separator => $SPACE x 5
 );
 
 BEGIN_PGML

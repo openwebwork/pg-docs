@@ -4,15 +4,13 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>ParametricPlot</title>
+	<title>ParametricPlot.pg</title>
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/lib/codemirror.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/theme/eclipse.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/addon/runmode/runmode-standalone.min.js" defer>
-	</script>
-	<script src="https://openwebwork.github.io/pg-docs/sample-problems/PG.js" defer></script>
-	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css" >
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script
+		src="https://cdn.jsdelivr.net/npm/@openwebwork/pg-codemirror-editor@0.0.5/dist/pg-codemirror-editor.js"
+		defer></script>
+	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css">
 </head>
 
 
@@ -20,20 +18,18 @@
 	<div class="container-fluid p-3">
 		<div class="row">
 			<div class="col">
-				<h1>Parametric Curve Graph</h1>
+				<h1>Parametric Curve Graph (tikz)</h1>
 				<p>Graphing a parametric curve.</p>
 			</div>
 			<div class="col text-end">
-				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../index.html">Return to the PG docs home</a>
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
 </div>
 		</div>
 		<div class="row">
 			<div class="col">
 				<h2>Complete Code</h2>
-				<p>
-				Download file: <a href="ParametricPlot.pg">ParametricPlot.pg</a>
-</p>
-			</div>
+				<p>Download file: <a href="ParametricPlot.pg">ParametricPlot.pg</a></p>
+</div>
 				<div class="col">
 					<h2>POD for Macro Files</h2>
 					<ul>
@@ -57,14 +53,16 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGtikz.pl&#39;, &#39
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
 
 loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGtikz.pl&#39;, &#39;PGcourse.pl&#39;);
 </pre>
 				</div>
-				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Preamble</b></p>
-						<p>We use <code>PGtikz.pl</code> to generate the graph.</p>
+						<p>The <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/graph/PGtikz.html">PGtikz.pl</a>
+macro is used to generate the graph.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -75,85 +73,113 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGtikz.pl&#39;, &#39
 $graph = createTikZImage();
 $graph-&gt;tikzLibraries(&#39;arrows.meta&#39;);
 $graph-&gt;BEGIN_TIKZ
-\tikzset{&gt;={Stealth[scale=1.5]}}
+\tikzset{&gt;={Stealth[scale = 1.5]}}
 \filldraw[
-    draw=LightBlue,
-    fill=white,
-    rounded corners=10pt,
-    thick,use as bounding box
-] (-3.5,-3.5) rectangle (3.5,3.5);
-\draw[-&gt;] (-3.5,0) -- (3.5,0) node[above left,outer sep=3pt] {\(x\)};
-\foreach \x in {-3,-2,-1,1,2,3} \draw (\x,0.15) -- (\x,-0.15) node [below] {\x};
-\draw[-&gt;] (0,-3.5) -- (0,3.5) node[below right,outer sep=3pt] {\(y\)};
-\foreach \y in {-3,-2,-1,1,2,3} \draw (0.15,\y) -- (-0.15,\y) node [left] {\y};
-\draw[DarkBlue,very thick]
-    plot [samples=250,domain=0:{2*pi},variable=\t]
-    ({2*sin(2*\t r)},{2*sin(3*\t r)});
+    draw = LightBlue,
+    fill = white,
+    rounded corners = 10pt,
+    thick,
+    use as bounding box
+] (-3.5, -3.5) rectangle (3.5, 3.5);
+\draw[-&gt;] (-3.5, 0) -- (3.5, 0) node[above left, outer sep = 3pt] {\(x\)};
+\foreach \x in {-3, -2, -1, 1, 2, 3}
+    \draw (\x, 0.15) -- (\x, -0.15) node[below] {\x};
+\draw[-&gt;] (0, -3.5) -- (0, 3.5)
+    node[below right, outer sep = 3pt] {\(y\)};
+\foreach \y in {-3, -2, -1, 1, 2, 3}
+    \draw (0.15, \y) -- (-0.15, \y) node[left] {\y};
+\draw[DarkBlue, very thick]
+    plot[samples = 100, domain = 0:{2 * pi}, variable = \t]
+    ({2 * sin(2 * \t r)}, {2 * sin(3 * \t r)});
 END_TIKZ
 
-$x = Compute(&#39;2sin(2t)&#39;);
+$x  = Compute(&#39;2sin(2t)&#39;);
 $x0 = $x-&gt;eval(t =&gt; &#39;pi/3&#39;);
-$y = Compute(&#39;2sin(3t)&#39;);
+$y  = Compute(&#39;2sin(3t)&#39;);
 $y0 = $y-&gt;eval(t =&gt; &#39;pi/3&#39;);
 
-$m = $y-&gt;D(&#39;t&#39;)-&gt;eval(t =&gt; &#39;pi/3&#39;)/$x-&gt;D(&#39;t&#39;)-&gt;eval(t =&gt; &#39;pi/3&#39;);
-$line = Compute(&quot;$m*(x-$x0)+$y0&quot;);
+$m    = $y-&gt;D(&#39;t&#39;)-&gt;eval(t =&gt; &#39;pi/3&#39;) / $x-&gt;D(&#39;t&#39;)-&gt;eval(t =&gt; &#39;pi/3&#39;);
+$line = Compute(&quot;$m(x - $x0) + $y0&quot;);
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context()-&gt;variables-&gt;add(t =&gt; &#39;Real&#39;);
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context()-&gt;variables-&gt;add(t =&gt; &#39;Real&#39;);
 
 $graph = createTikZImage();
 $graph-&gt;tikzLibraries(&#39;arrows.meta&#39;);
 $graph-&gt;BEGIN_TIKZ
-\tikzset{&gt;={Stealth[scale=1.5]}}
+\tikzset{&gt;={Stealth[scale = 1.5]}}
 \filldraw[
-    draw=LightBlue,
-    fill=white,
-    rounded corners=10pt,
-    thick,use as bounding box
-] (-3.5,-3.5) rectangle (3.5,3.5);
-\draw[-&gt;] (-3.5,0) -- (3.5,0) node[above left,outer sep=3pt] {\(x\)};
-\foreach \x in {-3,-2,-1,1,2,3} \draw (\x,0.15) -- (\x,-0.15) node [below] {\x};
-\draw[-&gt;] (0,-3.5) -- (0,3.5) node[below right,outer sep=3pt] {\(y\)};
-\foreach \y in {-3,-2,-1,1,2,3} \draw (0.15,\y) -- (-0.15,\y) node [left] {\y};
-\draw[DarkBlue,very thick]
-    plot [samples=250,domain=0:{2*pi},variable=\t]
-    ({2*sin(2*\t r)},{2*sin(3*\t r)});
+    draw = LightBlue,
+    fill = white,
+    rounded corners = 10pt,
+    thick,
+    use as bounding box
+] (-3.5, -3.5) rectangle (3.5, 3.5);
+\draw[-&gt;] (-3.5, 0) -- (3.5, 0) node[above left, outer sep = 3pt] {\(x\)};
+\foreach \x in {-3, -2, -1, 1, 2, 3}
+    \draw (\x, 0.15) -- (\x, -0.15) node[below] {\x};
+\draw[-&gt;] (0, -3.5) -- (0, 3.5)
+    node[below right, outer sep = 3pt] {\(y\)};
+\foreach \y in {-3, -2, -1, 1, 2, 3}
+    \draw (0.15, \y) -- (-0.15, \y) node[left] {\y};
+\draw[DarkBlue, very thick]
+    plot[samples = 100, domain = 0:{2 * pi}, variable = \t]
+    ({2 * sin(2 * \t r)}, {2 * sin(3 * \t r)});
 END_TIKZ
 
-$x = Compute(&#39;2sin(2t)&#39;);
+$x  = Compute(&#39;2sin(2t)&#39;);
 $x0 = $x-&gt;eval(t =&gt; &#39;pi/3&#39;);
-$y = Compute(&#39;2sin(3t)&#39;);
+$y  = Compute(&#39;2sin(3t)&#39;);
 $y0 = $y-&gt;eval(t =&gt; &#39;pi/3&#39;);
 
-$m = $y-&gt;D(&#39;t&#39;)-&gt;eval(t =&gt; &#39;pi/3&#39;)/$x-&gt;D(&#39;t&#39;)-&gt;eval(t =&gt; &#39;pi/3&#39;);
-$line = Compute(&quot;$m*(x-$x0)+$y0&quot;);
+$m    = $y-&gt;D(&#39;t&#39;)-&gt;eval(t =&gt; &#39;pi/3&#39;) / $x-&gt;D(&#39;t&#39;)-&gt;eval(t =&gt; &#39;pi/3&#39;);
+$line = Compute(&quot;$m(x - $x0) + $y0&quot;);
 </pre>
 				</div>
-				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Setup</b></p>
-						<p>The package <code>PGtikz.pl</code> is used to produce the curve. The plotting routine used in this way plots parametrically, which is shown in the last statement in the TIKZ section with <code>\draw[DarkBlue, very thick] plot [....]</code>.</p>
-<p>The first two statements of the TIKZ section scales the plot and then gives a nice background that will contrast the rest of the problem page.</p>
+						<p>The <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/graph/PGtikz.html">PGtikz.pl</a>
+macro is used to produce the curve. The basics of such a plot are
+described in <a
+href="https://openwebwork.github.io/pg-docs/sample-problems/ProblemTechniques/TikZImages.html">Graphic
+Images, TikZ</a>.</p>
+<p>The initial TikZ code produces the axes and the nice border. The plot
+of the parametric function is the last command starting with
+<code>\draw[DarkBlue, very thick] plot [....]</code>. The options for
+the <code>plot</code> command are as follows.</p>
+<ul>
+<li><code>samples</code> is the number of sample points used to create
+the plot.</li>
+<li><code>domain</code> is the plot domain.</li>
+<li><code>variable</code> is the variable for the plot. <code>\x</code>
+is default. <code>\t</code> is switched to as it is standard for
+parametric plots.</li>
+<li>The function plotted is
+<code>({2 * sin(2 * \t r)}, {2 * sin(3 * \t r)})</code> where the
+<code>x</code> function is in the first set of braces, and the
+<code>y</code> function is in the second. It is important that the
+functions are wrapped in braces and the variable has the backslash.</li>
+</ul>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
 						type="button" data-code="BEGIN_PGML
-Find the tangent line to the parametric curve:
-&gt;&gt; [``x(t) = [$x], \qquad y(t) = [$y]``] &lt;&lt;
+Find the tangent line to the parametric curve
 
-when [`t=\pi/3`].  The graph of the curve is
+&gt;&gt; [``x(t) = [$x], \quad y(t) = [$y]``] &lt;&lt;
 
-&gt;&gt;[@ image($graph, width =&gt; 300) @]*&lt;&lt;
+when [`t = \pi/3`].  The graph of the curve is
 
-Tangent line in slope-intercept form
+&gt;&gt;[!a Lissajous curve!]{$graph}{300}&lt;&lt;
 
-[`y=`][_____]{$line}
+Tangent line in slope-intercept form: [`y =`] [_____]{$line}
 END_PGML
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -161,23 +187,25 @@ END_PGML
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
-Find the tangent line to the parametric curve:
-&gt;&gt; [``x(t) = [$x], \qquad y(t) = [$y]``] &lt;&lt;
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
+Find the tangent line to the parametric curve
 
-when [`t=\pi/3`].  The graph of the curve is
+&gt;&gt; [``x(t) = [$x], \quad y(t) = [$y]``] &lt;&lt;
 
-&gt;&gt;[@ image($graph, width =&gt; 300) @]*&lt;&lt;
+when [`t = \pi/3`].  The graph of the curve is
 
-Tangent line in slope-intercept form
+&gt;&gt;[!a Lissajous curve!]{$graph}{300}&lt;&lt;
 
-[`y=`][_____]{$line}
+Tangent line in slope-intercept form: [`y =`] [_____]{$line}
 END_PGML
 </pre>
 				</div>
-				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Statement</b></p>
-						This is the problem statement in PGML.
+						<p>The alternate text provided in this example is not sufficient. I
+don’t know how one would describe a Lissajous curve to someone who can
+not see it. Perhaps seek assistance from an expert in assistive
+technologies to find a better description.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -193,13 +221,13 @@ ENDDOCUMENT();" aria-label="copy to clipboard">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
 Solution explanation goes here.
 END_PGML_SOLUTION
 
 ENDDOCUMENT();</pre>
 				</div>
-				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Solution</b></p>
 						A solution should be provided here.
 				</div>
@@ -207,12 +235,14 @@ ENDDOCUMENT();</pre>
 	</div>
 
 	<script type="module">
-		for (const pre of document.body.querySelectorAll('pre.CodeMirror')) {
-			CodeMirror.runMode(pre.textContent, 'PG', pre);
+		for (const pre of document.body.querySelectorAll('pre.PGCodeMirror')) {
+			PGCodeMirrorEditor.runMode(pre.textContent, pre);
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard)
+				btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

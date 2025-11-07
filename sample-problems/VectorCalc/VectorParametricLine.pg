@@ -1,0 +1,28 @@
+DOCUMENT();
+loadMacros(
+    'PGstandard.pl',        'PGML.pl',
+    'parserVectorUtils.pl', 'parserParametricLine.pl',
+    'PGcourse.pl'
+);
+
+Context('Vector');
+Context()->variables->are(t => 'Real');
+
+$P    = non_zero_point3D();
+$disp = non_zero_vector3D();
+$line = ParametricLine("$P + t * $disp");
+
+BEGIN_PGML
+Find a vector parametric equation for the line through points [`P = [$P]`] and
+[`Q = [@ Point($P + $disp) @]`].
+
+[`\vec{r}(t) =`] [_]{$line}{15}
+
+Give A vector in the form  [|<x(t), y(t), z(t)>|]*.
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

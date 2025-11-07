@@ -1,0 +1,32 @@
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'contextFraction.pl', 'PGcourse.pl');
+
+Context('Fraction-NoDecimals');
+
+$f1 = Formula('cos(pi)');
+$f2 = Formula('sin(pi / 3)');
+
+Context()->functions->disable('All');
+Context()->functions->enable('sqrt');
+
+$answer1 = Compute('-1');
+$answer2 = Compute('sqrt(3) / 2');
+
+BEGIN_PGML
+Enter your answers as simplified fractions.
+
++ [`[$f1] =`] [_]{$answer1}{15}
+
++ [`[$f2] =`] [_]{$answer2}{15}
+END_PGML
+
+BEGIN_PGML_HINT
+The cosine of an angle is zero when the angle is an integer multiple of [`\pi`].
+END_PGML_HINT
+
+BEGIN_PGML_SOLUTION
+Provide a solution here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

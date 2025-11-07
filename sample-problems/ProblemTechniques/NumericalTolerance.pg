@@ -1,0 +1,34 @@
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+$ans1 = Compute('1.5708')->cmp(
+    tolType   => 'absolute',
+    tolerance => .0001,
+);
+
+$ans2 = Compute('1.5708');
+
+Context('Numeric')->flags->set(
+    tolerance => 0.0001,
+    tolType   => 'absolute',
+);
+
+$ans3 = Compute('1.5708');
+BEGIN_PGML
+For each of the following Enter your answer accurate to four decimal places .
+
+1. Enter [``\frac{\pi}{2} =``] [____]{$ans1}
+
+2. Enter [``\frac{\pi}{2} =``] [____]{$ans2->cmp(
+    tolType   => 'absolute',
+    tolerance => .0001,
+)}
+
+3. Enter [``\frac{\pi}{2} =``] [____]{$ans3}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

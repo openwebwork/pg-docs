@@ -15,7 +15,7 @@ of two simpler functions [`y = f(u)`] and [`u = g(x)`].
 
 * [`f(u) =`] [_]{ width => 15 }
 
-* [`g(x) =`]  [_]{ width => 15 }
+* [`g(x) =`] [_]{ width => 15 }
 END_PGML
 
 COMPOSITION_ANS($f, $g, vars => [ 'u', 'x' ], showVariableHints => 1);

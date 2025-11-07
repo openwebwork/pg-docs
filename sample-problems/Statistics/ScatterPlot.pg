@@ -1,0 +1,54 @@
+DOCUMENT();
+
+loadMacros(
+    'PGstandard.pl', 'PGML.pl',
+    'plots.pl',      'PGstatisticsmacros.pl',
+    'PGcourse.pl'
+);
+
+
+@data = ([ 5, 40 ], [ 7, 120 ], [ 12, 180 ], [ 16, 210 ], [ 20, 240 ]);
+
+$x = [ map { $_->[0] } @data ];
+$y = [ map { $_->[1] } @data ];
+($m, $b) = linear_regression($x, $y);
+
+$plot = Plot(
+    xmin        => 0,
+    xmax        => 24,
+    xtick_delta => 4,
+    ymin        => 0,
+    ymax        => 300,
+    aria_label  => 'Linear Regression'
+);
+$plot->add_dataset(
+    @data,
+    linestyle => 'none',
+    marks     => 'circle',
+    color     => 'blue'
+);
+$plot->add_function(
+    "$m x + $b",
+    'x',
+    1,
+    23,
+    color => 'black',
+    width => 1,
+);
+
+BEGIN_PGML
+A scatter plot of the data:
+
+[``` [@ join(', ', map { "($_->[0], $_->[1])" }  @data)  @] ```]
+
+together with the best-fit line is given by the following plot.
+
+>> [! Scatter Plot with best fit line !]{$plot}{500} <<
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

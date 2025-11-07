@@ -1,31 +1,27 @@
 DOCUMENT();
 
 loadMacros(
-    'PGstandard.pl',     'PGML.pl',
-    'weightedGrader.pl', 'parserPopUp.pl',
-    'PGtikz.pl',         'PGcourse.pl'
+    'PGstandard.pl', 'PGML.pl', 'parserPopUp.pl', 'PGtikz.pl',
+    'PGcourse.pl'
 );
 
-install_weighted_grader();
-
-$c = random(9, 13);       # a constant for scaling the function
-$f = Compute("x^2/$c");
-$a = random(2, 5);        # left endpoint of interval
-$b = $a + 2;              # right endpoint of interval
-
-# Generate arrays of x and y values for the Riemann sum.
-# There are n + 1 entries in each array so that we can use
-# only one pair of arrays for both the left and the right
-# endpoint Riemann sums.
-$n  = 4;                # number of rectangles
+$c  = random(9, 13);       # a constant for scaling the function
+$f  = Compute("x^2/$c");
+$a  = random(2, 5);        # left endpoint of interval
+$b  = $a + 2;              # right endpoint of interval
+$n  = 4;                   # number of rectangles
 $dx = ($b - $a) / $n;
-for $k (0 .. $n) {
+
+# Generate arrays of interval endpoints and function values.
+for my $k (0 .. $n) {
     $x[$k] = $a + $k * $dx;
     $y[$k] = $f->eval(x => $x[$k]);
 }
+
+# Compute the Riemann sums.
 $sumLeft  = 0;
 $sumRight = 0;
-for $k (0 .. $n - 1) {
+for my $k (0 .. $n - 1) {
     $sumLeft  += $y[$k] * $dx;
     $sumRight += $y[ $k + 1 ] * $dx;
 }
@@ -34,54 +30,56 @@ for $k (0 .. $n - 1) {
 $graph1 = createTikZImage();
 $graph1->tikzLibraries('arrows.meta');
 $graph1->BEGIN_TIKZ
-\tikzset{>={Stealth[scale=2]}}
+\tikzset{>={Stealth[scale = 2]}}
 \Large % Make the fonts a little bigger.
 \filldraw[
-    draw=LightBlue,
-    fill=white,
-    rounded corners=10pt,
-    thick,use as bounding box
-] (-1,-1) rectangle (9,9);
-\draw[->] (-1,0) -- (9,0) node[above left,outer sep=3pt] {\(x\)};
-\foreach \x in {1,...,8} \draw(\x,5pt) -- (\x,-5pt) node [below] {\(\x\)};
-\draw[->] (0,-1) -- (0,9) node[below right,outer sep=3pt] {\(y\)};
-\foreach \y in {1,...,8} \draw (5pt,\y) -- (-5pt,\y) node[left] {\(\y\)};
-\draw[<->] plot[domain=-1:9] (\x,{\x*\x/$c});
-\filldraw[draw=blue,fill=blue!50!white, fill opacity = 0.5]
-    ($x[0],0) rectangle ($x[1],$y[0]);
-\filldraw[draw=blue,fill=blue!50!white, fill opacity = 0.5]
-    ($x[1],0) rectangle ($x[2],$y[1]);
-\filldraw[draw=blue,fill=blue!50!white, fill opacity = 0.5]
-    ($x[2],0) rectangle ($x[3],$y[2]);
-\filldraw[draw=blue,fill=blue!50!white, fill opacity = 0.5]
-    ($x[3],0) rectangle ($x[4],$y[3]);
+    draw = LightBlue,
+    fill = white,
+    rounded corners = 10pt,
+    thick,
+    use as bounding box
+] (-1, -1) rectangle (9, 9);
+\draw[->] (-1, 0) -- (9, 0) node[above left, outer sep = 3pt] {\(x\)};
+\foreach \x in {1, ..., 8} \draw (\x, 5pt) -- (\x, -5pt) node [below] {\(\x\)};
+\draw[->] (0, -1) -- (0, 9) node[below right, outer sep = 3pt] {\(y\)};
+\foreach \y in {1, ..., 8} \draw (5pt, \y) -- (-5pt, \y) node[left] {\(\y\)};
+\draw[<->] plot[domain = -1:9] (\x, {\x * \x / $c});
+\filldraw[draw = blue, fill = blue!50!white, fill opacity = 0.5]
+    ($x[0], 0) rectangle ($x[1], $y[0]);
+\filldraw[draw = blue, fill = blue!50!white, fill opacity = 0.5]
+    ($x[1], 0) rectangle ($x[2], $y[1]);
+\filldraw[draw = blue, fill = blue!50!white, fill opacity = 0.5]
+    ($x[2], 0) rectangle ($x[3], $y[2]);
+\filldraw[draw = blue, fill = blue!50!white, fill opacity = 0.5]
+    ($x[3], 0) rectangle ($x[4], $y[3]);
 END_TIKZ
 
 # Graph of the right Riemann sum rectangles
 $graph2 = createTikZImage();
 $graph2->tikzLibraries('arrows.meta');
 $graph2->BEGIN_TIKZ
-\tikzset{>={Stealth[scale=2]}}
+\tikzset{>={Stealth[scale = 2]}}
 \Large % Make the fonts a little bigger.
 \filldraw[
-    draw=LightBlue,
-    fill=white,
-    rounded corners=10pt,
-    thick,use as bounding box
-] (-1,-1) rectangle (9,9);
-\draw[->] (-1,0) -- (9,0) node[above left,outer sep=3pt] {\(x\)};
-\foreach \x in {1,...,8} \draw(\x,5pt) -- (\x,-5pt) node [below] {\(\x\)};
-\draw[->] (0,-1) -- (0,9) node[below right,outer sep=3pt] {\(y\)};
-\foreach \y in {1,...,8} \draw (5pt,\y) -- (-5pt,\y) node[left] {\(\y\)};
-\draw[<->] plot[domain=-1:9] (\x,{\x*\x/$c});
-\filldraw[draw=blue,fill=blue!50!white, fill opacity = 0.5]
-    ($x[0],0) rectangle ($x[1],$y[1]);
-\filldraw[draw=blue,fill=blue!50!white, fill opacity = 0.5]
-    ($x[1],0) rectangle ($x[2],$y[2]);
-\filldraw[draw=blue,fill=blue!50!white, fill opacity = 0.5]
-    ($x[2],0) rectangle ($x[3],$y[3]);
-\filldraw[draw=blue,fill=blue!50!white, fill opacity = 0.5]
-    ($x[3],0) rectangle ($x[4],$y[4]);
+    draw = LightBlue,
+    fill = white,
+    rounded corners = 10pt,
+    thick,
+    use as bounding box
+] (-1, -1) rectangle (9, 9);
+\draw[->] (-1, 0) -- (9, 0) node[above left, outer sep = 3pt] {\(x\)};
+\foreach \x in {1, ..., 8} \draw (\x, 5pt) -- (\x, -5pt) node [below] {\(\x\)};
+\draw[->] (0, -1) -- (0, 9) node[below right, outer sep = 3pt] {\(y\)};
+\foreach \y in {1,...,8} \draw (5pt, \y) -- (-5pt, \y) node[left] {\(\y\)};
+\draw[<->] plot[domain = -1:9] (\x, {\x * \x / $c});
+\filldraw[draw = blue, fill = blue!50!white, fill opacity = 0.5]
+    ($x[0], 0) rectangle ($x[1], $y[1]);
+\filldraw[draw = blue, fill = blue!50!white, fill opacity = 0.5]
+    ($x[1], 0) rectangle ($x[2], $y[2]);
+\filldraw[draw = blue, fill = blue!50!white, fill opacity = 0.5]
+    ($x[2], 0) rectangle ($x[3], $y[3]);
+\filldraw[draw = blue, fill = blue!50!white, fill opacity = 0.5]
+    ($x[3], 0) rectangle ($x[4], $y[4]);
 END_TIKZ
 
 $leftEstimateDropDown = DropDown(
@@ -104,6 +102,18 @@ $rightEstimateDropDown = DropDown(
     0
 );
 
+$leftRiemannSumAltText =
+    "The graph of a parabola opening up with vertex at the point (0, 0) is "
+    . "shown. Rectangles above the intervals from $x[0] to $x[1], $x[1] to "
+    . "$x[2], $x[2] to $x[3], and $x[3] to $x[4] with heights $y[0], $y[1], "
+    . "$y[2], and $y[3], respectively are also shown.";
+
+$rightRiemannSumAltText =
+    "The graph of a parabola opening up with vertex at the point (0, 0) is "
+    . "shown. Rectangles above the intervals from $x[0] to $x[1], $x[1] to "
+    . "$x[2], $x[2] to $x[3], and $x[3] to $x[4] with heights $y[1], $y[2], "
+    . "$y[3], and $y[4], respectively are also shown.";
+
 BEGIN_PGML
 Suppose [``f(x) = \frac{x^2}{[$c]}``].
 
@@ -114,8 +124,7 @@ endpoint Riemann sum is [_]{Real($sumLeft)->cmp(weight => 45)}{5} and it is
 by [`y = f(x)`], the [`x`]-axis, and the vertical lines [`x = [$a]`] and
 [`x = [$b]`].
 
->>[@ image($graph1, height => 250, width => 250, tex_size => 450) @]*<<
-
+>>[![$leftRiemannSumAltText]!]{$graph1}{250}<<  
 >>Left endpoint Riemann sum<<
 
 b. The rectangles in the graph below illustrate a right endpoint Riemann sum for
@@ -125,8 +134,7 @@ endpoint Riemann sum is [_]{ Real($sumRight)->cmp(weight => 45) }{5} and it is
 by [`y = f(x)`], the [`x`]-axis, and the vertical lines [`x = [$a]`] and
 [`x = [$b]`].
 
->>[@ image($graph2, height => 250, width => 250, tex_size => 450) @]*<<
-
+>>[![$rightRiemannSumAltText]!]{$graph2}{250}<<  
 >>Right endpoint Riemann sum<<
 END_PGML
 

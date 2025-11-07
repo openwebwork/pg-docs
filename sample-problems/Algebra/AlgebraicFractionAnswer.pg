@@ -1,20 +1,14 @@
 DOCUMENT();
 
-loadMacros(
-    'PGstandard.pl',  'PGML.pl', 'niceTables.pl',
-    'parserMultiAnswer.pl', 'PGcourse.pl'
-);
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserMultiAnswer.pl', 'PGcourse.pl');
 
 Context()->variables->are(y => 'Real');
-Context()->{error}{msg}{"Operands of '*' can't be words"} = ' ';
 
 do {
     $a = random(2, 8, 2);
     $b = random(3, 9, 2);
     $c = random(1, 9, 1);
-} until ($a*$c != $b);
-
-$fraction = "\frac{$a y}{y-$c} + \frac{$b}{$c - y} ";
+} until ($a * $c != $b);
 
 $num = Formula("$a y - $b");
 $den = Formula("y - $c");
@@ -23,12 +17,11 @@ $numbogus = Formula("$a*y+$b");
 $denbogus = Formula("(y-$c)*($c-y)");
 
 $multians = MultiAnswer($num, $den)->with(
-    singleResult      => 0,
     allowBlankAnswers => 1,
     checker           => sub {
         my ($correct, $student, $self) = @_;
-        my ($f1stu, $f2stu) = @{$student};
-        my ($f1,    $f2)    = @{$correct};
+        my ($f1stu, $f2stu) = @$student;
+        my ($f1,    $f2)    = @$correct;
 
         if (($f1 == $f1stu && $f2 == $f2stu)
             || (-$f1 == $f1stu && -$f2 == $f2stu))
@@ -44,7 +37,10 @@ $multians = MultiAnswer($num, $den)->with(
             return [ 0, 0 ];
         } elsif ($f2 == $f2stu || -$f2 == $f2stu) {
             return [ 0, 1 ];
-        } elsif ($f1 * $f2stu == $f1stu * $f2) {
+        } elsif (Value::classMatch($f1stu, 'Formula')
+            && Value::classMatch($f2stu, 'Formula')
+            && $f1 * $f2stu == $f1stu * $f2)
+        {
             $self->setMessage(1, "Simplify your answer further");
             $self->setMessage(2, "Simplify your answer further");
             return [ 0, 0 ];
@@ -54,35 +50,19 @@ $multians = MultiAnswer($num, $den)->with(
     }
 );
 
-# Display the fraction and answer blanks nicely
-# Context()->texStrings;
-# if ($displayMode eq 'TeX') {
-#     $showfraction =
-#         "\[ $fraction = "
-#         . $multians->ans_rule(10)
-#         . $multians->ans_rule(10) . " \]";
-# } else {
-#     $showfraction = ColumnTable(
-#         "\( \displaystyle $fraction = \)",
-#         $multians->ans_rule(20) . $BR . $HR . $multians->ans_rule(20),
-#         separation => 10,
-#     );
-# }
-# Context()->normalStrings;
-
-$frac = LayoutTable([[[ans_rule(10), rowbottom => 1]],[ans_rule(10)]],
-    center => 0, allcellcss => {padding => '4pt'});
-
 BEGIN_PGML
-Perform the indicated operations.
-Express your answer in reduced form.
+Perform the indicated operations. Express your answer in reduced form.
 
-[``[$fraction]=``][$frac]***
-
+[#
+    [. [``\frac{[$a]y}{y - [$c]} + \frac{[$b]}{[$c] - y} =``] .]
+    [.
+        [#
+            [. [_]{$multians} .]*{ bottom => 1 }
+            [. [_]{$multians} .]
+        #]*{ padding => [ 0.5, 0 ] }
+    .]
+#]*{ padding => [ 0, 0.5 ], valign => 'middle' }
 END_PGML
-
-ANS($multians->cmp());
-# ANS($multians->cmp());
 
 BEGIN_PGML_SOLUTION
 Solution explanation goes here.

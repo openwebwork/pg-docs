@@ -1,0 +1,20 @@
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+Context()->{error}{msg}{"Missing operand after '-'"} =
+    "Enter '-1' instead of '-'";
+
+$ans1 = Real(-1);
+$ans2 = Formula('x - 2');
+
+BEGIN_PGML
+Factor [`-1`] from [`-x + 2`]
+
+[`-x + 2 =`] [__]{$ans1} [`\cdot \big(`] [__]{$ans2} [`\big)`]
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

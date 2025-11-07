@@ -6,7 +6,6 @@ loadMacros(
     'unionTables.pl',    'PGcourse.pl'
 );
 
-
 $showPartialCorrectAnswers = 0;
 
 # Incremental grader
@@ -21,7 +20,7 @@ $ENV{grader_message} =
 # All or nothing grader
 # install_problem_grader(~~&std_problem_grader);
 
-# Create a matching list and use popups
+# Create a matching list and use pop ups
 $ml = new_match_list();
 $ml->rf_print_q(~~&pop_up_list_print_q);
 $ml->ra_pop_up_list([
@@ -68,11 +67,8 @@ END_PGML
 
 ANS(str_cmp($ml->ra_correct_ans));
 
-@correct      = @{ $ml->ra_correct_ans() };
-$answerstring = join(', ', @correct);
-
 BEGIN_PGML_SOLUTION
-The correct answers are [$answerstring].
+The correct answers are [@ join(', ', @{ $ml->ra_correct_ans() }) @].
 END_PGML_SOLUTION
 
 ENDDOCUMENT();

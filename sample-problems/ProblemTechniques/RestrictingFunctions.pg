@@ -1,0 +1,18 @@
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+$expr  = Formula('sin(x)^2 + cos(x)^2');
+$deriv = Compute(0)->cmp(showTypeWarnings => 0);
+
+BEGIN_PGML
+Find and completely simplify:
+
+[`` \frac{d}{dx}\bigl(\sin^2 x +\cos^2 x \bigr)= ``] [__]{$deriv}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

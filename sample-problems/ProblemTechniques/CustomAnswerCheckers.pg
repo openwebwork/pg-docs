@@ -1,0 +1,23 @@
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+$ans = Compute('pi/3')->cmp(
+    checker => sub {
+        my ($correct, $student, $ansHash) = @_;
+        Value->Error('Try again.')
+            if cos($student) == sqrt(3) / 2 && !$ansHash->{isPreview};
+        return cos($correct) == cos($student);
+    }
+);
+
+BEGIN_PGML
+Enter a value of [`x`] for which [`\cos(x) = [@ Compute('cos(pi/3)') @]`]
+
+[`x =`] [___]{$ans}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

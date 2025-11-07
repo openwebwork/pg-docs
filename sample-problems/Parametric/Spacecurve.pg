@@ -16,15 +16,15 @@ $multians = MultiAnswer($x, $y, $z)->with(
     singleResult => 1,
     checker      => sub {
         my ($correct, $student, $self) = @_;
-        my ($xstu,    $ystu,    $zstu) = @{$student};
+        my ($xstu,    $ystu,    $zstu) = @$student;
         return 0 unless $xstu->isFormula;
-        return (($xstu == $a * $zstu**2) && ($ystu == 0)) ? 1 : 0;
+        return $xstu == $a * $zstu**2 && $ystu == 0 ? 1 : 0;
     }
 );
 
 BEGIN_PGML
-Find a parametrization of the curve [`x = [$a] z^2`] in the [`xz`]-plane.  Use
-[`t`] as the parameter for all of your answers.
+Find a parametrization of the curve [`x = [$a]z^2`] in the [`xz`]-plane.  Use
+[`t`] for the parameter.
 
 [`x(t) =`] [_]{$multians}{15}
 

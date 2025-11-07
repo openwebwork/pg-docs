@@ -2,7 +2,6 @@ DOCUMENT();
 
 loadMacros('PGstandard.pl', 'PGML.pl', 'scaffold.pl', 'PGcourse.pl');
 
-
 Scaffold::Begin();
 
 Section::Begin('Part 1: The first part');

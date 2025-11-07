@@ -4,15 +4,13 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>MatrixCustomAnswerChecker</title>
+	<title>MatrixCustomAnswerChecker.pg</title>
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/lib/codemirror.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/theme/eclipse.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/addon/runmode/runmode-standalone.min.js" defer>
-	</script>
-	<script src="https://openwebwork.github.io/pg-docs/sample-problems/PG.js" defer></script>
-	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css" >
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script
+		src="https://cdn.jsdelivr.net/npm/@openwebwork/pg-codemirror-editor@0.0.5/dist/pg-codemirror-editor.js"
+		defer></script>
+	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css">
 </head>
 
 
@@ -24,16 +22,14 @@
 				<p>Answer is a pair of matrices that require a custom answer checker</p>
 			</div>
 			<div class="col text-end">
-				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../index.html">Return to the PG docs home</a>
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
 </div>
 		</div>
 		<div class="row">
 			<div class="col">
 				<h2>Complete Code</h2>
-				<p>
-				Download file: <a href="MatrixCustomAnswerChecker.pg">MatrixCustomAnswerChecker.pg</a>
-</p>
-			</div>
+				<p>Download file: <a href="MatrixCustomAnswerChecker.pg">MatrixCustomAnswerChecker.pg</a></p>
+</div>
 				<div class="col">
 					<h2>POD for Macro Files</h2>
 					<ul>
@@ -48,8 +44,7 @@
 			<div class="row">
 				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
-						type="button" data-code="
-DOCUMENT();
+						type="button" data-code="DOCUMENT();
 
 loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;parserMultiAnswer.pl&#39;, &#39;PGcourse.pl&#39;);
 
@@ -60,17 +55,18 @@ $showPartialCorrectAnswers = 0;
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">
-DOCUMENT();
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
 
 loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;parserMultiAnswer.pl&#39;, &#39;PGcourse.pl&#39;);
 
 $showPartialCorrectAnswers = 0;
 </pre>
 				</div>
-				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Preamble</b></p>
-						<p>Since the answer will depend on the two matrices input, we need to use <code>parserMultiAnswer.pl</code>.</p>
+						<p>Since the answer will depend on two matrix inputs at once, the <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserMultiAnswer.html">parserMultiAnswer.pl</a>
+macro must be loaded.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -84,11 +80,8 @@ $B = Matrix([ [ 1, 0 ], [ 1, 1 ] ]);
 $multians = MultiAnswer($A, $B)-&gt;with(
     singleResult =&gt; 1,
     checker      =&gt; sub {
-        my ($correct, $student, $answerHash) = @_;
-        my @s = @{$student};
-        $s0 = Matrix($s[0]);
-        $s1 = Matrix($s[1]);
-        return $s0 * $s1 != $s1 * $s0;
+        my ($c, $s, $ansHash) = @_;
+        return $s-&gt;[0] * $s-&gt;[1] != $s-&gt;[1] * $s-&gt;[0] ? 1 : 0;
     }
 );
 " aria-label="copy to clipboard">
@@ -97,7 +90,7 @@ $multians = MultiAnswer($A, $B)-&gt;with(
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context(&#39;Matrix&#39;);
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context(&#39;Matrix&#39;);
 
 $A = Matrix([ [ 1, 1 ], [ 0, 1 ] ]);
 $B = Matrix([ [ 1, 0 ], [ 1, 1 ] ]);
@@ -105,18 +98,25 @@ $B = Matrix([ [ 1, 0 ], [ 1, 1 ] ]);
 $multians = MultiAnswer($A, $B)-&gt;with(
     singleResult =&gt; 1,
     checker      =&gt; sub {
-        my ($correct, $student, $answerHash) = @_;
-        my @s = @{$student};
-        $s0 = Matrix($s[0]);
-        $s1 = Matrix($s[1]);
-        return $s0 * $s1 != $s1 * $s0;
+        my ($c, $s, $ansHash) = @_;
+        return $s-&gt;[0] * $s-&gt;[1] != $s-&gt;[1] * $s-&gt;[0] ? 1 : 0;
     }
 );
 </pre>
 				</div>
-				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Setup</b></p>
-						<p>Construct two matrices <code>$A</code> and <code>$B</code> that do not commute and therefore serve as a correct answer. Use a $multians object with a custom answer checker subroutine. The answer checker uses <code>my ( $correct, $student, $answerHash ) = @_;</code> to grab the inputs (the correct answer, the student answer, and the answer hash table info). Then, put the student’s two answers into an array using <code>my @s = @{$student};</code>. Make sure the student’s first matrix <code>$s[0]</code> is converted to a <code>MathObject</code> matrix using <code>$s0 = Matrix($s[0]);</code> and similarly for the student’s second matrix. The return value, which is boolean, is the truth value of the statement <code>$s0 * $s1 != $s1 * $s0</code>.</p>
+						<p>Construct two matrices <code>$A</code> and <code>$B</code> that do
+not commute. Use a <code>$multians</code> object with a custom answer
+checker subroutine. The answer checker uses
+<code>my ($c, $s, $ansHash) = @_</code> to extract the inputs (the
+correct answer, the student answer, and the answer hash). The checker
+returns 1 if
+<code>$s-&gt;[0] * $s-&gt;[1] != $s-&gt;[1] * $s-&gt;[0]</code> is true
+and 0 otherwise. Note that <code>$s-&gt;[0]</code> is the MathObject
+representation of the student’s answer for the first matrix, and
+$s-&gt;[1] is the MathObject representation of the student’s answer for
+second matrix.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -136,7 +136,7 @@ END_PGML
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
 Give an example of two [`2 \times 2`] matrices [`A`] and [`B`] such that
 [`AB \ne BA`] .
 
@@ -146,9 +146,10 @@ Give an example of two [`2 \times 2`] matrices [`A`] and [`B`] such that
 END_PGML
 </pre>
 				</div>
-				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Statement</b></p>
-						<p>Make sure that both answer arrays are called as methods on the <code>$multians</code> object</p>
+						<p>Make sure that both answer arrays are called as methods on the
+<code>$multians</code> object.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -164,13 +165,13 @@ ENDDOCUMENT();" aria-label="copy to clipboard">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
 Solution explanation goes here.
 END_PGML_SOLUTION
 
 ENDDOCUMENT();</pre>
 				</div>
-				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Solution</b></p>
 						A solution should be provided here.
 				</div>
@@ -178,12 +179,14 @@ ENDDOCUMENT();</pre>
 	</div>
 
 	<script type="module">
-		for (const pre of document.body.querySelectorAll('pre.CodeMirror')) {
-			CodeMirror.runMode(pre.textContent, 'PG', pre);
+		for (const pre of document.body.querySelectorAll('pre.PGCodeMirror')) {
+			PGCodeMirrorEditor.runMode(pre.textContent, pre);
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard)
+				btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

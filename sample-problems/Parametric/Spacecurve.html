@@ -4,15 +4,13 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Spacecurve</title>
+	<title>Spacecurve.pg</title>
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/lib/codemirror.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/theme/eclipse.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/addon/runmode/runmode-standalone.min.js" defer>
-	</script>
-	<script src="https://openwebwork.github.io/pg-docs/sample-problems/PG.js" defer></script>
-	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css" >
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script
+		src="https://cdn.jsdelivr.net/npm/@openwebwork/pg-codemirror-editor@0.0.5/dist/pg-codemirror-editor.js"
+		defer></script>
+	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css">
 </head>
 
 
@@ -20,20 +18,18 @@
 	<div class="container-fluid p-3">
 		<div class="row">
 			<div class="col">
-				<h1>Polar Graph</h1>
+				<h1>Space Curve</h1>
 				<p>Parametric equations: parametric curve in space</p>
 			</div>
 			<div class="col text-end">
-				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../index.html">Return to the PG docs home</a>
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
 </div>
 		</div>
 		<div class="row">
 			<div class="col">
 				<h2>Complete Code</h2>
-				<p>
-				Download file: <a href="Spacecurve.pg">Spacecurve.pg</a>
-</p>
-			</div>
+				<p>Download file: <a href="Spacecurve.pg">Spacecurve.pg</a></p>
+</div>
 				<div class="col">
 					<h2>POD for Macro Files</h2>
 					<ul>
@@ -59,14 +55,14 @@ $showPartialCorrectAnswers = 0;
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
 
 loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;parserMultiAnswer.pl&#39;, &#39;PGcourse.pl&#39;);
 
 $showPartialCorrectAnswers = 0;
 </pre>
 				</div>
-				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Preamble</b></p>
 						These standard macros need to be loaded.
 				</div>
@@ -86,9 +82,9 @@ $multians = MultiAnswer($x, $y, $z)-&gt;with(
     singleResult =&gt; 1,
     checker      =&gt; sub {
         my ($correct, $student, $self) = @_;
-        my ($xstu,    $ystu,    $zstu) = @{$student};
+        my ($xstu,    $ystu,    $zstu) = @$student;
         return 0 unless $xstu-&gt;isFormula;
-        return (($xstu == $a * $zstu**2) &amp;&amp; ($ystu == 0)) ? 1 : 0;
+        return $xstu == $a * $zstu**2 &amp;&amp; $ystu == 0 ? 1 : 0;
     }
 );
 " aria-label="copy to clipboard">
@@ -97,7 +93,7 @@ $multians = MultiAnswer($x, $y, $z)-&gt;with(
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context()-&gt;variables-&gt;are(t =&gt; &#39;Real&#39;);
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context()-&gt;variables-&gt;are(t =&gt; &#39;Real&#39;);
 Context()-&gt;variables-&gt;set(t =&gt; { limits =&gt; [ 0, 10 ] });
 
 $a = random(-5, -2);
@@ -109,25 +105,36 @@ $multians = MultiAnswer($x, $y, $z)-&gt;with(
     singleResult =&gt; 1,
     checker      =&gt; sub {
         my ($correct, $student, $self) = @_;
-        my ($xstu,    $ystu,    $zstu) = @{$student};
+        my ($xstu,    $ystu,    $zstu) = @$student;
         return 0 unless $xstu-&gt;isFormula;
-        return (($xstu == $a * $zstu**2) &amp;&amp; ($ystu == 0)) ? 1 : 0;
+        return $xstu == $a * $zstu**2 &amp;&amp; $ystu == 0 ? 1 : 0;
     }
 );
 </pre>
 				</div>
-				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Setup</b></p>
-						<p>Because the answers can vary and are interdependent, we use the <code>MultiAnswer</code> to check the results.</p>
-<p>We use <code>singleResult =&gt; 1</code> since it doesn’t make sense to say that <code>x(t)</code> is correct but <code>z(t)</code> is incorrect since they depend on one another. First, we check that the student hasn’t fed us a bogus constant solution such as <code>x=y=z=0</code> by requiring the x-coordinate to be a formula (not a constant) via return 0 unless <code>$xstu-&gt;isFormula;</code>. Then, we check that the student’s answers satisfy the parametric equation.</p>
+						<p>The <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserMultiAnswer.html">parserMultiAnswer.pl</a>
+is used to check the answers together since they are interdependent.</p>
+<p>The option <code>singleResult =&gt; 1</code> is used since it doesn’t
+make sense to say that <code>x(t)</code> is correct but
+<code>z(t)</code> is incorrect since they depend on one another.</p>
+<p>The checker first ensures that the student has not given a bogus
+constant solution such as <code>x = y = z = 0</code> by requiring the
+<code>x</code>-coordinate to be a non-constant formula via</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode perl"><code class="sourceCode perl"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">return</span> <span class="dv">0</span> <span class="kw">unless</span> <span class="dt">$xstu</span>-&gt;<span class="dt">isFormula</span>;</span></code></pre></div>
+<p>Then, it checks that the student answers satisfy the curve
+equation.</p>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
 						type="button" data-code="BEGIN_PGML
-Find a parametrization of the curve [`x = [$a] z^2`] in the [`xz`]-plane.  Use
-[`t`] as the parameter for all of your answers.
+Find a parametrization of the curve [`x = [$a]z^2`] in the [`xz`]-plane.  Use
+[`t`] for the parameter.
 
 [`x(t) =`] [_]{$multians}{15}
 
@@ -141,9 +148,9 @@ END_PGML
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
-Find a parametrization of the curve [`x = [$a] z^2`] in the [`xz`]-plane.  Use
-[`t`] as the parameter for all of your answers.
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
+Find a parametrization of the curve [`x = [$a]z^2`] in the [`xz`]-plane.  Use
+[`t`] for the parameter.
 
 [`x(t) =`] [_]{$multians}{15}
 
@@ -153,9 +160,10 @@ Find a parametrization of the curve [`x = [$a] z^2`] in the [`xz`]-plane.  Use
 END_PGML
 </pre>
 				</div>
-				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Statement</b></p>
-						<p>Notice that we use $multians in each answer blank because they results in the three answers are dependent on each other.</p>
+						<p>Notice that <code>$multians</code> is used for the answer for all
+answer rules.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -171,13 +179,13 @@ ENDDOCUMENT();" aria-label="copy to clipboard">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
 Solution explanation goes here.
 END_PGML_SOLUTION
 
 ENDDOCUMENT();</pre>
 				</div>
-				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Solution</b></p>
 						A solution should be provided here.
 				</div>
@@ -185,12 +193,14 @@ ENDDOCUMENT();</pre>
 	</div>
 
 	<script type="module">
-		for (const pre of document.body.querySelectorAll('pre.CodeMirror')) {
-			CodeMirror.runMode(pre.textContent, 'PG', pre);
+		for (const pre of document.body.querySelectorAll('pre.PGCodeMirror')) {
+			PGCodeMirrorEditor.runMode(pre.textContent, pre);
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard)
+				btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

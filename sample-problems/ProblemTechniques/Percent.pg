@@ -1,0 +1,17 @@
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'contextPercent.pl', 'PGcourse.pl');
+
+Context('Percent');
+
+$p   = random(5, 95, 5);
+$ans = Compute("$p %");
+
+BEGIN_PGML
+Enter [`[$ans]`]: [__]{$ans}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

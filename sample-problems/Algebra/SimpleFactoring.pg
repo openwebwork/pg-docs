@@ -1,0 +1,34 @@
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+($x0, $x1) = (non_zero_random(-6, 6), non_zero_random(-6, 6));
+$factor1 = Compute("x-$x0")->reduce;
+$factor2 = Compute("x-$x1")->reduce;
+$f       = Compute("x^2-($x0+$x1)x+$x0*$x1")->reduce;
+$factors = List($factor1, $factor2);
+$roots   = List($x0,      $x1);
+
+# If there were only one solution
+# $roots = List(4);
+
+# If there were no solutions
+# $roots = List("NONE");
+
+BEGIN_PGML
+a) What are the factors of [`[$f]`]?
+
+    Factors = [__]{$factors}
+
+
+b) What are the roots of this equation?
+
+    Roots = [__]{$roots}
+
+_(Enter both answers as a comma-separated list.)_
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

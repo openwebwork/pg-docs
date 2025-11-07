@@ -16,7 +16,7 @@ $products[1]  = Formula('C_6 H_12 O_6 + 6 O_2');
 $reactants[2] = Formula('3 Ca Cl_2 + 2 Na_3 PO_4');
 $products[2]  = Formula('Ca_3 (PO_4)_2 + 6 Na Cl');
 
-# variations on 2NaOH + MgCl_2 --> 2NaCl + Mg(OH)_2
+# Variations on 2NaOH + MgCl_2 --> 2NaCl + Mg(OH)_2
 $a = list_random('Li', 'Na', 'K');
 $b = list_random('F',  'Cl', 'Br');
 
@@ -29,13 +29,14 @@ $i = random(0, $#reactants, 1);
 
 for $i (0 .. 3) {
 BEGIN_PGML
-[`[$reactants[$i]] \longrightarrow `] [_]{$products[$i]}{10}
+[`[$reactants[$i]] \longrightarrow`] [_]{$products[$i]}{10}
 
 END_PGML
 }
 
 BEGIN_PGML
-Enter a subscript using an underscore, such as [|H_2 O|]* for [`\mathrm{H_2 O}`].
+Enter a subscript using an underscore, such as [|H_2 O|]* for
+[`\mathrm{H_2 O}`].
 END_PGML
 
 ENDDOCUMENT();

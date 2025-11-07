@@ -1,0 +1,87 @@
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserGraphTool.pl', 'PGcourse.pl');
+
+
+$h = non_zero_random(-5, 5);
+$k = non_zero_random(-5, 5);
+$r = random(1, 4);
+
+Context()->variables->add(y => 'Real');
+$circle_eq_lhs = Formula("(x - $h)^2 + (y - $k)^2")->reduce;
+
+$gt = GraphTool("{circle, solid, ($h, $k), ($h + $r, $k)}")->with(
+    bBox       => [ -11, 11, 11, -11 ],
+    cmpOptions => {
+        list_checker => sub {
+            my ($correct, $student, $ans, $value) = @_;
+            return 0 if $ans->{isPreview};
+
+            my $score = 0;
+            my @errors;
+            my $count = 1;
+
+            # Iterate through the objects the student graphed and check to
+            # see if each is the correct circle.
+            for (@$student) {
+                my $nth = Value::List->NameForNumber($count++);
+
+                # This checks if the object graphed by the student is the same
+                # type as the correct object type (a circle in this case),
+                # has the same solid or dashed status, has the same center, and
+                # if the other point graphed is on the circle.
+                if ($correct->[0] == $_) {
+                    ++$score;
+                    next;
+                }
+
+                # Add messages for incorrect answers.
+
+                if ($_->extract(1) ne $correct->[0]->extract(1)) {
+                    push(@errors,
+                        "The $nth object graphed is not a circle");
+                    next;
+                }
+
+                # Calling $correct->[0]->cmp($_, 1) does a "fuzzy" comparison.
+                # This is the same as $correct->[0] == $_ except that it ignores
+                # the solid or dashed status and only checks the center point
+                # and radius, i.e., that the circles are the same.
+                if ($correct->[0]->cmp($_, 1)
+                    && $_->extract(2) ne $correct->[0]->extract(2))
+                {
+                    push(@errors,
+                        "The $nth object graphed should be a "
+                            . $correct->[0]->extract(2)
+                            . " circle.");
+                    next;
+                }
+
+                push(@errors, "The $nth object graphed is incorrect.");
+            }
+
+            return ($score, @errors);
+        }
+    }
+);
+
+BEGIN_PGML
+Graph the circle given by the following equation.
+
+    [`[$circle_eq_lhs] = [$r ** 2]`]
+
+[_]{$gt}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+The equation of the circle given by the equation
+
+    [`[$circle_eq_lhs] = [$r ** 2]`]
+
+has center at [`([$h],[$k])`] and radius [$r].  To enter the graph, click the
+circle tool, then click on the center at [`([$h],[$k])`] and then click on a
+second point that is [$r] units from the center.  This is easiest going left,
+right, up or down from the center.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

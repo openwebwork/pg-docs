@@ -1,0 +1,17 @@
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+$a = Compute(random(2, 9));
+
+$ans = $a->cmp(checker => sub { return 1; });
+
+BEGIN_PGML
+Enter anything, e.g. [`[$a]`] and it will be marked correct: [__]{$ans}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

@@ -1,0 +1,33 @@
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+# Disable exponents in the context.
+Context()->operators->undefine('^', '**');
+
+# Disable the 'sin', 'cos', 'tan', 'abs', and 'sqrt' functions.
+Context()->functions->undefine('sin', 'cos', 'tan', 'abs', 'sqrt');
+
+# Remove the '|' parenthesis operator which starts and ends an absolute value.
+# This needs to be done in addition to disabling the 'abs' function to fully
+# disable absolute values.
+Context()->parens->remove('|');
+
+# Give consistent error messages if the '|' absolute value parenthesis operator
+# is attempted to be used by the student.
+Context()->{error}{convert} = sub {
+    my $message = shift;
+    $message =~ s/Unexpected character '~~|'/Absolute value is not allowed/;
+    return $message;
+};
+
+$ans = Compute('1/2');
+
+BEGIN_PGML
+Find the numerical value: [`\sin^2(\pi / 4) =`] [____]{$ans}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

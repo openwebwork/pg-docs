@@ -4,7 +4,7 @@ loadMacros('PGstandard.pl', 'PGML.pl');
 
 
 $a = non_zero_random(-9, 9);
-do { $b = random(2, 9) } until ($b != $a);
+do { $b = random(2, 9) } until $b != $a;
 
 $answer1 = Compute("$a");
 $answer2 = Compute("($a x^($b) + $b)/x")->reduce();

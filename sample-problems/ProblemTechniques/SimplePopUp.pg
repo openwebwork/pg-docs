@@ -1,0 +1,33 @@
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserPopUp.pl', 'PGcourse.pl');
+
+$popup = PopUp([ '?', 'one', 'two', 'three' ], 'three');
+
+$dropdown1 = DropDown([ 'one', 'two', 'three' ], 'two');
+$dropdown2 = DropDown([ 'one', 'two', 'three' ],
+    'one', placeholder => 'Select an option');
+$dropdown3 =
+    DropDown([ 'one', [ 'two', 'three', 'four', 'five' ], 'six' ], 'six');
+
+$tf = DropDownTF('T');
+
+BEGIN_PGML
+- [_]{$popup} (Answer: 'three')
+
+- [_]{$dropdown1} (Answer: 'two')
+
+- [_]{$dropdown2} (Answer: 'one')
+
+- [_]{$dropdown3} (Answer: 'six')
+
+- [_]{$tf} (Answer: 'True')
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+COMMENT('MathObject version. Uses PGML.');
+
+ENDDOCUMENT();

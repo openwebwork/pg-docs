@@ -1,21 +1,12 @@
 DOCUMENT();
 
-loadMacros(
-    'PGstandard.pl', 'PGunion.pl',
-    'PGML.pl',       'parserAssignment.pl',
-    'PGcourse.pl'
-);
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserAssignment.pl', 'PGcourse.pl');
 
 Context()->variables->add(
     c1 => 'Real',
     c2 => 'Real',
     c3 => 'Real',
     y  => 'Real',
-);
-Context()->variables->set(
-    c1 => { limits => [ 2, 4 ] },
-    c2 => { limits => [ 2, 4 ] },
-    c3 => { limits => [ 2, 4 ] }
 );
 Context()->flags->set(
     formatStudentAnswer     => 'parsed',
@@ -26,7 +17,7 @@ parser::Assignment->Allow;
 
 $a = list_random(2, 3, 5, 6, 7, 8);
 
-# char poly (r-1)(r^2 + $a)
+# The characteristic polynomial is (r - 1)(r^2 + $a).
 
 $answer = Compute("y = c1 e^x + c2 cos(sqrt($a) x) + c3 sin(sqrt($a) x)");
 

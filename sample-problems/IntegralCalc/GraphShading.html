@@ -4,15 +4,13 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>GraphShading</title>
+	<title>GraphShading.pg</title>
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/lib/codemirror.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/theme/eclipse.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/addon/runmode/runmode-standalone.min.js" defer>
-	</script>
-	<script src="https://openwebwork.github.io/pg-docs/sample-problems/PG.js" defer></script>
-	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css" >
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script
+		src="https://cdn.jsdelivr.net/npm/@openwebwork/pg-codemirror-editor@0.0.5/dist/pg-codemirror-editor.js"
+		defer></script>
+	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css">
 </head>
 
 
@@ -20,20 +18,18 @@
 	<div class="container-fluid p-3">
 		<div class="row">
 			<div class="col">
-				<h1>Graph Shading</h1>
+				<h1>Graph Shading (tikz)</h1>
 				<p>Dynamically generated graph of a function with shading</p>
 			</div>
 			<div class="col text-end">
-				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../index.html">Return to the PG docs home</a>
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
 </div>
 		</div>
 		<div class="row">
 			<div class="col">
 				<h2>Complete Code</h2>
-				<p>
-				Download file: <a href="GraphShading.pg">GraphShading.pg</a>
-</p>
-			</div>
+				<p>Download file: <a href="GraphShading.pg">GraphShading.pg</a></p>
+</div>
 				<div class="col">
 					<h2>POD for Macro Files</h2>
 					<ul>
@@ -57,111 +53,136 @@ loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGtikz.pl&#39;, &#39
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
 
 loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;PGtikz.pl&#39;, &#39;PGcourse.pl&#39;);
 </pre>
 				</div>
-				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Preamble</b></p>
-						<p>The macro <code>PGikz.pl</code> is used to create the plot.</p>
+						<p>The macro <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/graph/PGtikz.html">PGtikz.pl</a>
+is used to create the plot.</p>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
-						type="button" data-code="$a    = random(-4, 2);
-$b    = random(1,  4);
-$g    = Compute(&quot;$b + sqrt(x - $a)&quot;);
-$gtex = &quot;$b + \sqrt{&quot; . nicestring([ 1, -$a ]) . &#39;}&#39;;
-$ans  = Compute(&quot;3*$b + 14/3&quot;);
+						type="button" data-code="
+$a    = random(-4, 2);
+$b    = random( 1, 4);
+$g    = Compute(&quot;$b + sqrt(x - $a)&quot;)-&gt;reduce;
+$area = Compute(&quot;3*$b + 14/3&quot;);
 
 $graph = createTikZImage();
 $graph-&gt;tikzLibraries(&#39;arrows.meta&#39;);
 $graph-&gt;BEGIN_TIKZ
-\tikzset{&gt;={Stealth[scale=1.5]}}
+\tikzset{&gt;={Stealth[scale = 1.5]}}
 \filldraw[
-    draw=LightBlue,
-    fill=white,
-    rounded corners=10pt,
+    draw = LightBlue,
+    fill = white,
+    rounded corners = 10pt,
     thick,use as bounding box
-] (-6,-2) rectangle (6,8);
+] (-6, -2) rectangle (6, 8);
 \begin{scope}
-    \clip[rounded corners=14pt] (-6,-2) rectangle (6,8);
-    \draw[ultra thin] (-6,-2) grid (6,8);
+    \clip[rounded corners = 14pt] (-6, -2) rectangle (6, 8);
+    \draw[ultra thin] (-6, -2) grid (6, 8);
 \end{scope}
-\draw[-&gt;,thick] (-6,0) -- (6,0) node[above left,outer sep=3pt] {\(x\)};
-\foreach \x in {-5,...,-1,1,2,...,5}
-    \draw(\x,5pt) -- (\x,-5pt) node[below] {\(\x\)};
-\draw[-&gt;,thick] (0,-2) -- (0,8) node[below right,outer sep=3pt] {\(y\)};
-\foreach \y in {-1,1,2,...,7}
-    \draw (5pt,\y) -- (-5pt,\y) node[left]{\(\y\)};
-\filldraw[draw=blue,fill=blue!50!white,fill opacity=0.5]
-    ({$a+1},0) -- ({$a+1},{$b+1})
-    -- plot[domain={$a+1}:{$a+4},samples=100] (\x,{$b+sqrt(\x-$a)})
-    -- ({$a+4},0) -- cycle;
-\draw[blue,ultra thick,-&gt;]
-    plot[domain={$a}:6,samples=100] (\x,{$b+sqrt(\x-$a)});
+\draw[-&gt;, thick] (-6, 0) -- (6, 0) node[above left, outer sep = 3pt] {\(x\)};
+\foreach \x in {-5, ..., -1, 1, 2, ..., 5}
+    \draw (\x, 5pt) -- (\x, -5pt) node[below] {\(\x\)};
+\draw[-&gt;, thick] (0, -2) -- (0, 8) node[below right, outer sep = 3pt] {\(y\)};
+\foreach \y in {-1, 1, 2, ..., 7}
+    \draw (5pt, \y) -- (-5pt, \y) node[left] {\(\y\)};
+\filldraw[draw = blue, fill = blue!50!white, fill opacity = 0.5]
+    ({$a + 1}, 0) -- ({$a + 1}, {$b + 1})
+    -- plot[domain = {$a + 1}:{$a + 4}, samples = 100] (\x, {$b + sqrt(\x - $a)})
+    -- ({$a + 4}, 0) -- cycle;
+\draw[blue, ultra thick, -&gt;]
+    plot[domain = {$a}:6, samples = 100] (\x, {$b + sqrt(\x - $a)});
 END_TIKZ
+
+$altText =
+    &quot;The graph of f(x) is shown starting at the point ($a, $b) and increasing &quot;
+    . &quot;to the right, sharply at first, and less sharply as it continues to the &quot;
+    . &quot;right. The region from x = &quot;
+    . ($a + 1)
+    . &quot; to x = &quot;
+    . ($a + 4)
+    . &quot; that is above the x-axis and below the function is shaded.&quot;;
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">$a    = random(-4, 2);
-$b    = random(1,  4);
-$g    = Compute(&quot;$b + sqrt(x - $a)&quot;);
-$gtex = &quot;$b + \sqrt{&quot; . nicestring([ 1, -$a ]) . &#39;}&#39;;
-$ans  = Compute(&quot;3*$b + 14/3&quot;);
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">
+$a    = random(-4, 2);
+$b    = random( 1, 4);
+$g    = Compute(&quot;$b + sqrt(x - $a)&quot;)-&gt;reduce;
+$area = Compute(&quot;3*$b + 14/3&quot;);
 
 $graph = createTikZImage();
 $graph-&gt;tikzLibraries(&#39;arrows.meta&#39;);
 $graph-&gt;BEGIN_TIKZ
-\tikzset{&gt;={Stealth[scale=1.5]}}
+\tikzset{&gt;={Stealth[scale = 1.5]}}
 \filldraw[
-    draw=LightBlue,
-    fill=white,
-    rounded corners=10pt,
+    draw = LightBlue,
+    fill = white,
+    rounded corners = 10pt,
     thick,use as bounding box
-] (-6,-2) rectangle (6,8);
+] (-6, -2) rectangle (6, 8);
 \begin{scope}
-    \clip[rounded corners=14pt] (-6,-2) rectangle (6,8);
-    \draw[ultra thin] (-6,-2) grid (6,8);
+    \clip[rounded corners = 14pt] (-6, -2) rectangle (6, 8);
+    \draw[ultra thin] (-6, -2) grid (6, 8);
 \end{scope}
-\draw[-&gt;,thick] (-6,0) -- (6,0) node[above left,outer sep=3pt] {\(x\)};
-\foreach \x in {-5,...,-1,1,2,...,5}
-    \draw(\x,5pt) -- (\x,-5pt) node[below] {\(\x\)};
-\draw[-&gt;,thick] (0,-2) -- (0,8) node[below right,outer sep=3pt] {\(y\)};
-\foreach \y in {-1,1,2,...,7}
-    \draw (5pt,\y) -- (-5pt,\y) node[left]{\(\y\)};
-\filldraw[draw=blue,fill=blue!50!white,fill opacity=0.5]
-    ({$a+1},0) -- ({$a+1},{$b+1})
-    -- plot[domain={$a+1}:{$a+4},samples=100] (\x,{$b+sqrt(\x-$a)})
-    -- ({$a+4},0) -- cycle;
-\draw[blue,ultra thick,-&gt;]
-    plot[domain={$a}:6,samples=100] (\x,{$b+sqrt(\x-$a)});
+\draw[-&gt;, thick] (-6, 0) -- (6, 0) node[above left, outer sep = 3pt] {\(x\)};
+\foreach \x in {-5, ..., -1, 1, 2, ..., 5}
+    \draw (\x, 5pt) -- (\x, -5pt) node[below] {\(\x\)};
+\draw[-&gt;, thick] (0, -2) -- (0, 8) node[below right, outer sep = 3pt] {\(y\)};
+\foreach \y in {-1, 1, 2, ..., 7}
+    \draw (5pt, \y) -- (-5pt, \y) node[left] {\(\y\)};
+\filldraw[draw = blue, fill = blue!50!white, fill opacity = 0.5]
+    ({$a + 1}, 0) -- ({$a + 1}, {$b + 1})
+    -- plot[domain = {$a + 1}:{$a + 4}, samples = 100] (\x, {$b + sqrt(\x - $a)})
+    -- ({$a + 4}, 0) -- cycle;
+\draw[blue, ultra thick, -&gt;]
+    plot[domain = {$a}:6, samples = 100] (\x, {$b + sqrt(\x - $a)});
 END_TIKZ
+
+$altText =
+    &quot;The graph of f(x) is shown starting at the point ($a, $b) and increasing &quot;
+    . &quot;to the right, sharply at first, and less sharply as it continues to the &quot;
+    . &quot;right. The region from x = &quot;
+    . ($a + 1)
+    . &quot; to x = &quot;
+    . ($a + 4)
+    . &quot; that is above the x-axis and below the function is shaded.&quot;;
 </pre>
 				</div>
-				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Setup</b></p>
-						<p>We create a randomly transformed version of <code>sqrt(x)</code> as the function with a reasonably straightforward answer.</p>
-<p>The <code>nicestring</code> function is useful for printing polynomials in a nice way.</p>
-<p>The graph is created with <code>PGtikz.pl</code>, a very robust plotting package. The shading in done with the <code>\filldraw</code> command with the <code>fill opacity=0.5</code>. Also note that one of the sides of the filled area is the square root function.</p>
+						<p>A randomly transformed version of <code>sqrt(x)</code> is created as
+the function with a reasonably straightforward answer.</p>
+<p>The graph is created with <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/graph/PGtikz.html">PGtikz.pl</a>,
+a robust plotting package. The shading in done with the
+<code>\filldraw</code> command with the <code>fill opacity = 0.5</code>.
+Also note that one of the sides of the filled area is the square root
+function.</p>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
 						type="button" data-code="BEGIN_PGML
-Use the graph to find the area of the shaded region under [`f(x) = [$gtex]`].
+Use the graph to find the area of the shaded region under [`f(x) = [$g]`].
 
-&gt;&gt;[@ image($graph, width =&gt; 400, tex_size =&gt; 800) @]*&lt;&lt;
+&gt;&gt;[![$altText]!]{$graph}{400}&lt;&lt;
 
 &gt;&gt;Graph of [`y = f(x)`].&lt;&lt;
 
-Area: [_]{$ans}{15}
+Area: [_]{$area}{15}
 END_PGML
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -169,18 +190,18 @@ END_PGML
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
-Use the graph to find the area of the shaded region under [`f(x) = [$gtex]`].
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
+Use the graph to find the area of the shaded region under [`f(x) = [$g]`].
 
-&gt;&gt;[@ image($graph, width =&gt; 400, tex_size =&gt; 800) @]*&lt;&lt;
+&gt;&gt;[![$altText]!]{$graph}{400}&lt;&lt;
 
 &gt;&gt;Graph of [`y = f(x)`].&lt;&lt;
 
-Area: [_]{$ans}{15}
+Area: [_]{$area}{15}
 END_PGML
 </pre>
 				</div>
-				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Statement</b></p>
 						This is the problem statement in PGML.
 				</div>
@@ -198,13 +219,13 @@ ENDDOCUMENT();" aria-label="copy to clipboard">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
 Solution explanation goes here.
 END_PGML_SOLUTION
 
 ENDDOCUMENT();</pre>
 				</div>
-				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Solution</b></p>
 						A solution should be provided here.
 				</div>
@@ -212,12 +233,14 @@ ENDDOCUMENT();</pre>
 	</div>
 
 	<script type="module">
-		for (const pre of document.body.querySelectorAll('pre.CodeMirror')) {
-			CodeMirror.runMode(pre.textContent, 'PG', pre);
+		for (const pre of document.body.querySelectorAll('pre.PGCodeMirror')) {
+			PGCodeMirrorEditor.runMode(pre.textContent, pre);
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard)
+				btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

@@ -1,0 +1,37 @@
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+Context()->variables->set(x => { limits => [ 0.1, 4 ] });
+
+$a = random(3, 7);
+
+$ans1 = Real(Round(ln($a), 3));
+
+$ans2 = Formula('ln(x)')->eval(x => $a);
+
+$ans3 = Real(Round(ln($a) / ln(10), 3));
+
+$ans4 = Formula('ln(x) / ln(10)')->eval(x => $a);
+
+BEGIN_PGML
+Notice the formatting and rounding differences between [`[$ans1]`] and
+[`[$ans2]`].
+
+Try entering [`\ln([$a])`], [`\log([$a])`], [`\ln([$a]) / \ln(10)`],
+[`\log([$a]) / \log(10)`], [`\mathrm{logten}([$a])`], or
+[`\mathrm{log10}([$a]) `].
+
+1. [`\ln([$a]) =`] [_]{$ans1}{10}
+
+2. [`\ln([$a]) =`] [_]{$ans2}{10}
+
+3. [`\log_{10}([$a]) =`] [_]{$ans3}{10}
+
+4. [`\log_{10}([$a]) =`] [_]{$ans4}{10}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

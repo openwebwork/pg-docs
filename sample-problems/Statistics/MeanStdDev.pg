@@ -1,0 +1,42 @@
+DOCUMENT();
+
+loadMacros("PGstandard.pl", "PGML.pl", 'PGstatisticsmacros.pl', "PGcourse.pl");
+
+@x = map { random(1, 10) } 0 .. 7;
+
+$mean = stats_mean(@x);
+$sd   = stats_sd(@x);
+
+BEGIN_PGML
+Find the mean and standard deviation of the following list of numbers:
+[@ join(', ', @x) @]
+
+a) Mean: [_]{$mean}{8}
+
+b) Standard Deviation: [_]{$sd}{8}
+END_PGML
+
+($sum_x, $sum_sq) = stats_SX_SXX(@x);
+$var = $sum_sq - ($sum_x**2) / 8;
+
+BEGIN_PGML_SOLUTION
+The mean is
+
+[``\bar{x} = \frac{1}{n} \sum_{i = 1}^n x_i = \frac{[$sum_x]}{8} = [$mean]``]
+
+For the standard deviation, first, find the variance.
+
+[``
+    \begin{aligned}
+    s^2 &= \frac{1}{n - 1} \left(
+        \sum_{i = 1}^n x_i^2 - \frac{1}{n}\left(\sum_{i = 1}^n x_i\right)^2
+    \right) \\
+    &= \frac{1}{7} \left( [$sum_sq] - \frac{1}{8} ([$sum_x])^2\right) \\
+    &= \frac{[$var]}{7}
+    \end{aligned}
+``]
+
+Taking the square root gives [`s \approx [$sd]`]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

@@ -1,0 +1,65 @@
+DOCUMENT();
+
+loadMacros(
+    "PGstandard.pl", "PGML.pl",
+    'PGtikz.pl',     'contextPercent.pl',
+    "PGcourse.pl"
+);
+
+
+
+Context('Percent');
+
+@grades = map { random(1, 5) } (0 .. 3);
+
+$graph = createTikZImage();
+$graph->tikzLibraries('arrows.meta');
+$graph->BEGIN_TIKZ
+\tikzset{>={Stealth[scale = 1.5]}}
+\filldraw[
+    draw = LightBlue,
+    fill = white,
+    rounded corners = 10pt,
+    thick,
+    use as bounding box
+] (-1, -1) rectangle (11, 7);
+\draw[->, thick] (-1, 0) -- (10, 0);
+
+\foreach \x/\label in {2/A,4/B,6/C,8/D}
+    \draw(\x,0.25)--(\x,-0.25) node [below] {\label};
+\draw[-, thick] (0, -1) -- (0, 6);
+\foreach \y in {1, ..., 5}
+    \draw (5pt, \y) -- (-5pt, \y) node[left] {\(\y\)};
+
+\filldraw[fill=LightBlue, draw=black] (1.2,0) rectangle (2.8,$grades[0]);
+\filldraw[fill=LightSalmon, draw=black]  (3.2,0) rectangle (4.8,$grades[1]);
+\filldraw[fill=LightYellow, draw=black]  (5.2,0) rectangle (6.8,$grades[2]);
+\filldraw[fill=LightGreen, draw=black]  (7.2,0) rectangle (8.8,$grades[3]);
+
+END_TIKZ
+
+$alt_text =
+    "A bar graph with vertical bars.  The height of the bar labelled A "
+    . "is $grades[0]. The height of the bar labelled B is $grades[1].  "
+    . " The height of the bar labelled C is $grades[2] and finally the "
+    . "bar labelled D is $grades[3].";
+
+# This code adds up all the numbers in the @grades array.
+$num_students = 0;
+$num_students += $_ for @grades;
+
+$perA = Real($grades[0] / $num_students);
+
+BEGIN_PGML
+The following is a distribution of grades on a Statistics quiz.
+>>[! [$alt_text] !]{$graph}{400}<<
+
+What percentage of students earned an A? [_]{$perA}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+The total number of students that took the quiz is [$total] so the percentage is
+the number of A students or [`[$grades[0]]/[$num_students] = [$perA] `]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

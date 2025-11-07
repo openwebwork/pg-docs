@@ -1,0 +1,35 @@
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'contextFraction.pl', 'PGcourse.pl');
+
+Context("Fraction-NoDecimals");
+Context()->operators->undefine('+', '-', '*', '*', '**', '^');
+
+$a    = random(2, 4);
+$b    = random(1, 9);
+$c    = random(1, 9);
+$den  = $c + $a * $a;
+$frac = Compute("$b / $den");
+
+$ans = $frac->cmp(
+    studentsMustReduceFractions => 1,
+    strictFractions             => 1,
+    strictMinus                 => 1,
+    strictMultiplication        => 1
+);
+
+BEGIN_PGML
+Find and simplify the value of [`f([$a])`] if
+[`` f(x) = \frac{[$b]}{[$c] + x^2}. ``]
+
+[`f([$a]) = `] [__]{$ans}
+
+_(Simplify your answer as much as possible, and enter a fraction instead of a
+decimal.)_
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

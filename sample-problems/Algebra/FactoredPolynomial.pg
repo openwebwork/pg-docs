@@ -6,6 +6,7 @@ loadMacros(
     'PGcourse.pl'
 );
 
+
 # Expanded form
 Context('Numeric');
 $poly = Compute('8x^2 + 28x + 12');

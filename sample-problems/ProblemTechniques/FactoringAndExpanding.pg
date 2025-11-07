@@ -1,0 +1,50 @@
+DOCUMENT();
+loadMacros(
+    'PGstandard.pl',               'PGML.pl',
+    'contextLimitedPolynomial.pl', 'contextPolynomialFactors.pl',
+    'contextLimitedPowers.pl',     'PGcourse.pl'
+);
+
+Context('Numeric');
+
+$a = random(2, 5);
+$b = ($a + 2 * random(2, 5));
+
+#  Vertex form
+$h          = ($b - $a) / 2;
+$k          = $h**2 + $a * $b;
+$vertexform = Compute("(x - $h)^2 - $k");
+
+#  Expanded form
+Context('LimitedPolynomial-Strict');
+$p0           = $h**2 - $k;
+$p1           = 2 * $h;
+$expandedform = Formula("x^2 - $p1 x + $p0")->reduce;
+
+#  Factored form
+Context('PolynomialFactors-Strict');
+Context()->flags->set(singleFactors => 0);
+LimitedPowers::OnlyIntegers(
+    minPower => 0,
+    maxPower => 1,
+    message  => 'either 0 or 1',
+);
+$factoredform = Compute("(x + $a)(x - $b)");
+
+BEGIN_PGML
+The quadratic expression [`[$vertexform]`] is written in vertex form.
+
+a. Write the expression in expanded form [`ax^2 + bx + c`].
+
+    [_]{$expandedform}{15}
+
+b. Write the expression in factored form [`k(ax + b)(cx + d)`].
+
+    [_]{$factoredform}{15}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

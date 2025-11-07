@@ -4,15 +4,13 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>SeriesTest</title>
+	<title>SeriesTest.pg</title>
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/lib/codemirror.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/theme/eclipse.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.11/addon/runmode/runmode-standalone.min.js" defer>
-	</script>
-	<script src="https://openwebwork.github.io/pg-docs/sample-problems/PG.js" defer></script>
-	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css" >
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script
+		src="https://cdn.jsdelivr.net/npm/@openwebwork/pg-codemirror-editor@0.0.5/dist/pg-codemirror-editor.js"
+		defer></script>
+	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css">
 </head>
 
 
@@ -24,23 +22,21 @@
 				<p>Series: limit comparison test</p>
 			</div>
 			<div class="col text-end">
-				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../index.html">Return to the PG docs home</a>
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
 </div>
 		</div>
 		<div class="row">
 			<div class="col">
 				<h2>Complete Code</h2>
-				<p>
-				Download file: <a href="SeriesTest.pg">SeriesTest.pg</a>
-</p>
-			</div>
+				<p>Download file: <a href="SeriesTest.pg">SeriesTest.pg</a></p>
+</div>
 				<div class="col">
 					<h2>POD for Macro Files</h2>
 					<ul>
-								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserMultiAnswer.html">parserMultiAnswer.pl</a></li>
-								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/ui/unionTables.html">unionTables.pl</a></li>
-								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/answers/PGgraders.html">PGgraders.pl</a></li>
 								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserPopUp.html">parserPopUp.pl</a></li>
+								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/core/PGgraders.html">PGgraders.pl</a></li>
+								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserMultiAnswer.html">parserMultiAnswer.pl</a></li>
+								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserRadioMultiAnswer.html">parserRadioMultiAnswer.pl</a></li>
 					</ul>
 				</div>
 		</div>
@@ -54,9 +50,9 @@
 						type="button" data-code="DOCUMENT();
 
 loadMacros(
-    &#39;PGstandard.pl&#39;,  &#39;PGML.pl&#39;,
-    &#39;unionTables.pl&#39;, &#39;parserPopUp.pl&#39;,
-    &#39;PGgraders.pl&#39;,   &#39;parserMultiAnswer.pl&#39;,
+    &#39;PGstandard.pl&#39;,        &#39;PGML.pl&#39;,
+    &#39;parserPopUp.pl&#39;,       &#39;PGgraders.pl&#39;,
+    &#39;parserMultiAnswer.pl&#39;, &#39;parserRadioMultiAnswer.pl&#39;,
     &#39;PGcourse.pl&#39;
 );
 " aria-label="copy to clipboard">
@@ -65,19 +61,35 @@ loadMacros(
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
 
 loadMacros(
-    &#39;PGstandard.pl&#39;,  &#39;PGML.pl&#39;,
-    &#39;unionTables.pl&#39;, &#39;parserPopUp.pl&#39;,
-    &#39;PGgraders.pl&#39;,   &#39;parserMultiAnswer.pl&#39;,
+    &#39;PGstandard.pl&#39;,        &#39;PGML.pl&#39;,
+    &#39;parserPopUp.pl&#39;,       &#39;PGgraders.pl&#39;,
+    &#39;parserMultiAnswer.pl&#39;, &#39;parserRadioMultiAnswer.pl&#39;,
     &#39;PGcourse.pl&#39;
 );
 </pre>
 				</div>
-				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Preamble</b></p>
-						<p>We load <code>unionTables.pl</code> to create a table in which answer blanks are stacked on top of each other to form a fraction. We use <code>PGgraders.pl</code> to give partial credit incrementally. We use <code>parserMultiAnswer.pl</code> for the fraction answer so that we can accept two correct answers, depending on how much a student has simplified their answer.</p>
+						<p>The <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserMultiAnswer.html">parserMultiAnswer.pl</a>
+macro is used for the fraction answer so that the numerator and
+denominator can be checked together.</p>
+<p>The <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserRadioMultiAnswer.html">parserRadioMultiAnswer.pl</a>
+macro is used for a better way for students to enter an answer that
+might not exist than telling students to enter DNE.</p>
+<p>The <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/ui/niceTables.html">niceTables.pl</a>
+macro which is loaded by the <code>PGML.pl</code> macro is used to
+create a table in which answer blanks are stacked on top of each other
+to form a fraction.</p>
+<p>The <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/core/PGgraders.html">PGgraders.pl</a>
+macro is used to give incremental partial credit (although that is a
+poor choice for this problem).</p>
 				</div>
 			</div>
 			<div class="row">
@@ -91,18 +103,12 @@ $c = random(5, 20);
 $d = random(3, 9);
 $e = random(2, 9);
 
-$dm1 = $d - 1;
-$dm2 = $d - 2;
-
-# TeX
-$series   = &quot;\sum_{n=$c}^{\infty} \frac{$a n + $b}{$c n^{$d} + $e}&quot;;
-$fraction = &quot;\lim_{n\to\infty} \frac{a_n}{b_n} = \lim_{n\to\infty}&quot;;
-
-$num1 = Formula(&quot;$a n^$d + $b n^$dm1&quot;);
+$num1 = Formula(&quot;$a n^$d + $b n^&quot; . ($d - 1));
 $den1 = Formula(&quot;$c n^$d + $e&quot;);
 
-$num2 = Formula(&quot;$a + $b/n&quot;);
-$den2 = Formula(&quot;$c + $e/(n^$d)&quot;);
+# Alternate form of the correct answer
+$num2 = Formula(&quot;$a + $b / n&quot;);
+$den2 = Formula(&quot;$c + $e / (n^$d)&quot;);
 
 $multians = MultiAnswer($num1, $den1)-&gt;with(
     singleResult =&gt; 0,
@@ -130,30 +136,25 @@ $multians = MultiAnswer($num1, $den1)-&gt;with(
     }
 );
 
-$limit = Formula(&quot;$a/$c&quot;);
-$popup =
-    PopUp([ &#39;Choose&#39;, &#39;Converges&#39;, &#39;Diverges&#39;, &#39;Inconclusive&#39; ], &#39;Converges&#39;);
+$limitRMA = RadioMultiAnswer(
+    [
+        [
+            &#39;\(\displaystyle\lim_{n \to \infty}\frac{a_n}{b_n} =\) %s&#39;,
+            Formula(&quot;$a / $c&quot;)
+        ],
+        [&#39;The limit does not exist, and is not infinite.&#39;]
+    ],
+    0
+);
 
-# Display the fraction and answer blanks nicely
-if ($displayMode eq &#39;TeX&#39;) {
-    $showfraction =
-        &quot;\[ $fraction &quot;
-        . $multians-&gt;ans_rule(10)
-        . $multians-&gt;ans_rule(10) . &quot; \]&quot;;
-} else {
-    $showfraction = ColumnTable(
-        &quot;\( \displaystyle $fraction \)&quot;,
-        $multians-&gt;ans_rule(20) . $BR . $HR . $multians-&gt;ans_rule(20),
-        separation =&gt; 10
-    );
-}
+$popup = DropDown([ &#39;Converges&#39;, &#39;Diverges&#39;, &#39;Inconclusive&#39; ], &#39;Converges&#39;);
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context()-&gt;variables-&gt;are(n =&gt; &#39;Real&#39;);
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context()-&gt;variables-&gt;are(n =&gt; &#39;Real&#39;);
 
 $a = random(2, 9);
 $b = random(2, 9);
@@ -161,18 +162,12 @@ $c = random(5, 20);
 $d = random(3, 9);
 $e = random(2, 9);
 
-$dm1 = $d - 1;
-$dm2 = $d - 2;
-
-# TeX
-$series   = &quot;\sum_{n=$c}^{\infty} \frac{$a n + $b}{$c n^{$d} + $e}&quot;;
-$fraction = &quot;\lim_{n\to\infty} \frac{a_n}{b_n} = \lim_{n\to\infty}&quot;;
-
-$num1 = Formula(&quot;$a n^$d + $b n^$dm1&quot;);
+$num1 = Formula(&quot;$a n^$d + $b n^&quot; . ($d - 1));
 $den1 = Formula(&quot;$c n^$d + $e&quot;);
 
-$num2 = Formula(&quot;$a + $b/n&quot;);
-$den2 = Formula(&quot;$c + $e/(n^$d)&quot;);
+# Alternate form of the correct answer
+$num2 = Formula(&quot;$a + $b / n&quot;);
+$den2 = Formula(&quot;$c + $e / (n^$d)&quot;);
 
 $multians = MultiAnswer($num1, $den1)-&gt;with(
     singleResult =&gt; 0,
@@ -200,29 +195,32 @@ $multians = MultiAnswer($num1, $den1)-&gt;with(
     }
 );
 
-$limit = Formula(&quot;$a/$c&quot;);
-$popup =
-    PopUp([ &#39;Choose&#39;, &#39;Converges&#39;, &#39;Diverges&#39;, &#39;Inconclusive&#39; ], &#39;Converges&#39;);
+$limitRMA = RadioMultiAnswer(
+    [
+        [
+            &#39;\(\displaystyle\lim_{n \to \infty}\frac{a_n}{b_n} =\) %s&#39;,
+            Formula(&quot;$a / $c&quot;)
+        ],
+        [&#39;The limit does not exist, and is not infinite.&#39;]
+    ],
+    0
+);
 
-# Display the fraction and answer blanks nicely
-if ($displayMode eq &#39;TeX&#39;) {
-    $showfraction =
-        &quot;\[ $fraction &quot;
-        . $multians-&gt;ans_rule(10)
-        . $multians-&gt;ans_rule(10) . &quot; \]&quot;;
-} else {
-    $showfraction = ColumnTable(
-        &quot;\( \displaystyle $fraction \)&quot;,
-        $multians-&gt;ans_rule(20) . $BR . $HR . $multians-&gt;ans_rule(20),
-        separation =&gt; 10
-    );
-}
+$popup = DropDown([ &#39;Converges&#39;, &#39;Diverges&#39;, &#39;Inconclusive&#39; ], &#39;Converges&#39;);
 </pre>
 				</div>
-				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Setup</b></p>
-						<p>We use the <code>MultiAnswer</code> object <code>$multians</code> to allow students to enter one of two correct answers. We could have also accomplished this using two custom answer checkers.</p>
-<p>We display the answerblanks nicely as a fraction in HTML and TeX modes by how we constructed <code>$showfraction</code>.</p>
+						<p>Create <code>$multians</code> as a <code>MultiAnswer</code> with the
+two answers <code>$num1</code> and <code>$den1</code>. An alternate form
+of the correct answer is <code>$num2 / $den2</code>. This alternate form
+is also checked for in the <code>MultiAnswer</code> checker.</p>
+<p>The value of the limit in the limit comparison test is created as a
+<code>RadioMultiAnswer</code>. This allows a clear way for students to
+enter a non-existent limit, and is better than telling students to enter
+DNE and results in the invalid statement <code>lim ... = DNE</code>.</p>
+<p>Also create a drop down answer for asking about convergence of the
+series.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -230,21 +228,39 @@ if ($displayMode eq &#39;TeX&#39;) {
 					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
 						type="button" data-code="BEGIN_PGML
 Use the limit comparison test to determine whether
-[``\sum_{n=[$c]}^{\infty} a_n = \sum_{n=[$c]}^{\infty} \frac{[$a] n + [$b]}{[$c] n^{[$d]} + [$e]}``]
+[``\sum_{n = [$c]}^{\infty} a_n
+    = \sum_{n = [$c]}^{\infty} \frac{[$a] n + [$b]}{[$c] n^{[$d]} + [$e]}``]
 converges or diverges.
 
-a. Choose a series [``\sum_{n=[$c]}^\infty b_n``] with terms of the form
-[``b_n = \frac{1}{n^p}``] and apply the limit comparison test.  Write your
-answer as a fully reduced fraction.  For [``n \geq [$c]``],
-[$showfraction]*** [@ ANS($multians-&gt;cmp); &#39;&#39; @]*
+Choose a series [``\sum_{n = [$c]}^\infty b_n``] with terms of the form
+[``b_n = \frac{1}{n^p}``] to use in the limit comparison test.
 
-b. Evaluate the limit in the previous part.  Enter [` \infty `] as _infinity_
-and [` -\infty `] as _-infinity_.  If the limit does not exist, enter _DNE_.
-[$BR]*
-[``\lim_{n\to\infty} \frac{a_{n}}{b_{n}} =``] [_]{$limit}{15}
+a. Simplify the fraction [``\frac{a_n}{b_n}``] in the application of the limit
+comparison test shown. Give your answer as a fully reduced fraction.
+[#
+    [.
+        For [`n \geq [$c]`],
+           [``\lim_{n \to \infty}\frac{a_n}{b_n} = \lim_{n \to \infty}``]
+    .]
+    [.
+        [#
+            [.[_]{$multians}{10}.]*{ bottom =&gt; 1 }
+            [.[_]{$multians}{10}.]
+        #]*{ padding =&gt; [ 0.5, 0 ] }
+    .]
+#]*{
+    center     =&gt; 0,
+    valign     =&gt; &#39;middle&#39;,
+    allcellcss =&gt; { padding =&gt; &#39;4pt&#39; }
+}
+
+b. Evaluate the limit in the previous part. Enter [|infinity|]* for [` \infty `]
+and [|-infinity|]* for [`-\infty`].
+
+    [_]{$limitRMA}{10}
 
 c. By the limit comparison test, does the series converge, diverge, or is the
-test inconclusive?  [_]{$popup}
+test inconclusive? [_]{$popup}
 END_PGML
 " aria-label="copy to clipboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -252,29 +268,50 @@ END_PGML
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
 Use the limit comparison test to determine whether
-[``\sum_{n=[$c]}^{\infty} a_n = \sum_{n=[$c]}^{\infty} \frac{[$a] n + [$b]}{[$c] n^{[$d]} + [$e]}``]
+[``\sum_{n = [$c]}^{\infty} a_n
+    = \sum_{n = [$c]}^{\infty} \frac{[$a] n + [$b]}{[$c] n^{[$d]} + [$e]}``]
 converges or diverges.
 
-a. Choose a series [``\sum_{n=[$c]}^\infty b_n``] with terms of the form
-[``b_n = \frac{1}{n^p}``] and apply the limit comparison test.  Write your
-answer as a fully reduced fraction.  For [``n \geq [$c]``],
-[$showfraction]*** [@ ANS($multians-&gt;cmp); &#39;&#39; @]*
+Choose a series [``\sum_{n = [$c]}^\infty b_n``] with terms of the form
+[``b_n = \frac{1}{n^p}``] to use in the limit comparison test.
 
-b. Evaluate the limit in the previous part.  Enter [` \infty `] as _infinity_
-and [` -\infty `] as _-infinity_.  If the limit does not exist, enter _DNE_.
-[$BR]*
-[``\lim_{n\to\infty} \frac{a_{n}}{b_{n}} =``] [_]{$limit}{15}
+a. Simplify the fraction [``\frac{a_n}{b_n}``] in the application of the limit
+comparison test shown. Give your answer as a fully reduced fraction.
+[#
+    [.
+        For [`n \geq [$c]`],
+           [``\lim_{n \to \infty}\frac{a_n}{b_n} = \lim_{n \to \infty}``]
+    .]
+    [.
+        [#
+            [.[_]{$multians}{10}.]*{ bottom =&gt; 1 }
+            [.[_]{$multians}{10}.]
+        #]*{ padding =&gt; [ 0.5, 0 ] }
+    .]
+#]*{
+    center     =&gt; 0,
+    valign     =&gt; &#39;middle&#39;,
+    allcellcss =&gt; { padding =&gt; &#39;4pt&#39; }
+}
+
+b. Evaluate the limit in the previous part. Enter [|infinity|]* for [` \infty `]
+and [|-infinity|]* for [`-\infty`].
+
+    [_]{$limitRMA}{10}
 
 c. By the limit comparison test, does the series converge, diverge, or is the
-test inconclusive?  [_]{$popup}
+test inconclusive? [_]{$popup}
 END_PGML
 </pre>
 				</div>
-				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Statement</b></p>
-						This is the problem statement in PGML.
+						<p>Display the answer rules nicely as a fraction in HTML and TeX modes
+by using the <code>PGML</code> syntax for a <code>LayoutTable</code>
+from <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/ui/niceTables.html">niceTables.pl</a>.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -292,7 +329,7 @@ $ENV{grader_message} =
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">install_problem_grader(~~&amp;custom_problem_grader_fluid);
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">install_problem_grader(~~&amp;custom_problem_grader_fluid);
 
 $ENV{grader_numright} = [ 2,   4 ];
 $ENV{grader_scores}   = [ 0.4, 1 ];
@@ -300,9 +337,20 @@ $ENV{grader_message} =
     &#39;You can earn 40% partial credit for 2 - 3 correct answers.&#39;;
 </pre>
 				</div>
-				<div class="explanation answers col-sm-12 col-md-6 order-md-last order-first border border-dark">
-					<p><b>Answers</b></p>
-						<p>We use the problem grader fluid to give partial credit incrementally: 0% for 0-1 correct answers, 40% for 2-3 correct answers, and full credit for 4 correct answers.</p>
+				<div class="explanation answer col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Answer</b></p>
+						<p>The problem grader fluid is used to give partial credit
+incrementally.</p>
+<ul>
+<li>0% is awarded for 0-1 correct answers,</li>
+<li>40% is awarded for 2-3 correct answers, and</li>
+<li>full credit is awarded for 4 correct answers.</li>
+</ul>
+<p>This is only here to demonstrate the usage of the fluid problem
+grader, and because that is how this problem has been. It would be
+better to use weights with the default <code>avg_problem_grader</code>
+for a problem like this. The parts of this problem are not equal, so the
+fluid problem grader is not a good choice.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -318,13 +366,13 @@ ENDDOCUMENT();" aria-label="copy to clipboard">
 							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
 						</svg>
 					</button>
-					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
 Solution explanation goes here.
 END_PGML_SOLUTION
 
 ENDDOCUMENT();</pre>
 				</div>
-				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first border border-dark">
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
 					<p><b>Solution</b></p>
 						A solution should be provided here.
 				</div>
@@ -332,12 +380,14 @@ ENDDOCUMENT();</pre>
 	</div>
 
 	<script type="module">
-		for (const pre of document.body.querySelectorAll('pre.CodeMirror')) {
-			CodeMirror.runMode(pre.textContent, 'PG', pre);
+		for (const pre of document.body.querySelectorAll('pre.PGCodeMirror')) {
+			PGCodeMirrorEditor.runMode(pre.textContent, pre);
 		}
 
 		for (const btn of document.querySelectorAll('.clipboard-btn')) {
-			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			if (navigator.clipboard)
+				btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
 		}
 	</script>
 </body>

@@ -8,25 +8,20 @@ loadMacros(
 
 Context('Vector')->variables->are(t => 'Real');
 
-$P = non_zero_point3D(-9, 9, 1);
-$V = non_zero_vector3D(-9, 9, 1);
-
-$Q1 = Point($P + $V);
-$Q2 = Point($P + 2 * $V);
+$P = non_zero_point3D(-9, 9);
+$V = non_zero_vector3D(-9, 9);
 
 $general    = ParametricLine($P, $V);
-$particular = Line($P, $V, '2t');
+$particular = Line($P, 2 * $V);
 
 BEGIN_PGML
-a. Find any vector parametric equation for the
-line that goes through the points [`[$P]`] and
-[`[$Q1]`].
+a. Find any vector parametric equation for the line that goes through the points
+[`[$P]`] and [`[@ Point($P + $V) @]`].
 
     [`\vec{L}(t) =`] [_]{$general}{20}
 
-b. Find a vector parametric equation for the
-line that goes through the point [`[$P]`]
-when [`t = 0`] and the point [`[$Q2]`] when
+b. Find a vector parametric equation for the line that goes through the point
+[`[$P]`] when [`t = 0`] and the point [`[@ Point($P + 2 * $V) @]`] when
 [`t = 1`].
 
     [`\vec{L}(t) =`] [_]{$particular}{20}

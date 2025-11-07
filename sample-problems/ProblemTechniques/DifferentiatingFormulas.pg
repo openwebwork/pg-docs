@@ -1,0 +1,30 @@
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+Context()->variables->add(y => 'Real');
+
+$a = random(2, 4);
+$f = Formula('x^2y');
+
+$fx  = $f->D('x');
+$fxa = $fx->substitute(x => $a);
+$fy  = $f->D('y');
+$fyx = $fy->D('x')->reduce;
+
+BEGIN_PGML
+Suppose [`f(x) = [$f]`].  Then
+
+a. [``\frac{\partial f}{\partial x} =``] [____]{$fx}
+
+b. [`f_x ([$a],y) =`] [____]{$fxa}
+
+c. [`f_y(x, y) =`] [____]{$fy}
+
+d. [`f_{yx}(x, y) =`] [___]{$fyx}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

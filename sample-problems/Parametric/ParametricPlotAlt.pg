@@ -1,0 +1,44 @@
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'plots.pl', 'PGcourse.pl');
+
+Context()->variables->add(t => 'Real');
+@tvals     = ('pi/12',   'pi/6',   '5pi/12',   'pi/3',   '2pi/3',   '7pi/12');
+@tvals_tex = ('\pi/12', '\pi/6', '5\pi/12', '\pi/3', '2\pi/3', '7\pi/12');
+$n         = random(1, $#tvals);
+$x         = Compute('2sin(2t)');
+$x0        = $x->eval(t => $tvals[$n]);
+$y         = Compute('2sin(3t)');
+$y0        = $y->eval(t => $tvals[$n]);
+
+$m    = $y->D('t')->eval(t => $tvals[$n]) / $x->D('t')->eval(t => $tvals[$n]);
+$line = Compute("$m(x - $x0) + $y0");
+
+$plot = Plot(
+    xmin        => -2.5,
+    xmax        =>  2.5,
+    ymin        => -2.5,
+    ymax        =>  2.5,
+    xtick_delta =>  0.5,
+    ytick_delta => 0.5
+);
+
+$plot->add_function([ $x, $y ], 't', 0, '2pi', color => 'blue');
+
+BEGIN_PGML
+Find the tangent line to the parametric curve
+
+>> [``x(t) = [$x], \quad y(t) = [$y]``] <<
+
+when [`t = [$tvals_tex[$n]]`].  The graph of the curve is
+
+>>[!a Lissajous curve!]{$plot}{500}<<
+
+Tangent line in slope-intercept form: [`y =`] [_____]{$line}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();
